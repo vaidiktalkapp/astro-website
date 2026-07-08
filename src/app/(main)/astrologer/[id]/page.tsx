@@ -70,10 +70,10 @@ export default function AstrologerProfilePage() {
   }, [id]);
 
   useEffect(() => {
-    if (isAuthenticated && id) {
+    if (isAuthenticated && astrologer) {
       checkFollowStatus();
     }
-  }, [isAuthenticated, id]);
+  }, [isAuthenticated, astrologer]);
 
   const loadAstrologer = async () => {
     try {
@@ -105,10 +105,10 @@ export default function AstrologerProfilePage() {
   const checkFollowStatus = async () => {
     try {
       const response = await astrologerService.getFavorites();
-      if (response.success) {
+      if (response.success && astrologer?._id) {
         const isFav = response.data.some((fav: any) => {
           const favId = typeof fav === 'string' ? fav : fav._id || fav.astrologerId;
-          return favId === id;
+          return favId === astrologer._id;
         });
         setIsFollowing(isFav);
       }
@@ -126,10 +126,10 @@ export default function AstrologerProfilePage() {
     try {
       setFollowLoading(true);
       if (isFollowing) {
-        await astrologerService.removeFavorite(id);
+        await astrologerService.removeFavorite(astrologer!._id);
         setIsFollowing(false);
       } else {
-        await astrologerService.addFavorite(id);
+        await astrologerService.addFavorite(astrologer!._id);
         setIsFollowing(true);
       }
     } catch (error) {

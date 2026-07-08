@@ -16,14 +16,15 @@ import {
   Edit2,
   Save,
   X,
-  Loader2
+  Loader2,
+  Lock
 } from
   'lucide-react';
 
 export default function ProfilePage() {
   const { t } = useTranslation();
 
-  const { user, refreshUser } = useAuth();
+  const { user, refreshUser, isAuthenticated, loading, openLoginModal } = useAuth();
 
   // Modes: 'VIEW' | 'EDIT'
   const [isEditing, setIsEditing] = useState(false);
@@ -195,7 +196,35 @@ export default function ProfilePage() {
     setIsEditing(false);
   };
 
-  if (!user) return null;
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-yellow-500" />
+      </div>
+    );
+  }
+
+  if (!isAuthenticated || !user) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 max-w-md w-full text-center space-y-6">
+          <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto">
+            <Lock className="w-8 h-8 text-yellow-600" />
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">{t("profile.login_required") || "Authentication Required"}</h2>
+            <p className="text-gray-500">{t("profile.login_prompt_msg") || "Please login to access your profile settings and details."}</p>
+          </div>
+          <button
+            onClick={openLoginModal}
+            className="w-full py-3 px-4 bg-yellow-400 hover:bg-yellow-500 text-black font-bold rounded-xl transition-colors shadow-sm"
+          >
+            {t("profile.login_now") || "Login Now"}
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6">

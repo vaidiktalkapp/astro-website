@@ -89,7 +89,7 @@ const AstrologerCard: React.FC<Props> = ({ astrologer, mode }) => {
   return (
     <div
       className="relative flex bg-white rounded-xl border border-gray-200 p-3 shadow-sm hover:shadow-md transition-shadow text-black cursor-pointer group"
-      onClick={() => router.push(`/astrologer/${astrologer._id}`)}
+      onClick={() => router.push(`/astrologer/${astrologer.slug || astrologer._id}`)}
     >
       {/* Badge */}
       {tier && tier !== 'none' && (

@@ -24,6 +24,7 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v
 
 interface Astrologer {
   _id: string;
+  slug?: string;
   name: string;
   email: string;
   phoneNumber: string;
@@ -318,7 +319,7 @@ function ResultsContent() {
                              </div>
                              <div className="flex items-center gap-3 w-full sm:w-auto">
                                 <Link
-                             href={`/astrologer/${astro._id}`}
+                             href={`/astrologer/${astro.slug || astro._id}`}
                              className="flex-1 sm:flex-none px-8 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] rounded-xl transition-all shadow-md active:scale-95 text-center"
                              style={{ background: 'linear-gradient(135deg, #1a1209 0%, #332b1d 100%)', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
 {T("results.experience_now")}

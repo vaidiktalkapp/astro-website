@@ -22,6 +22,7 @@ export interface User {
 
 export interface Astrologer {
   _id: string;
+  slug?: string;
   name: string;
   bio?: string;
   profilePicture?: string;
