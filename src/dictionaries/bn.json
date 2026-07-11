@@ -1384,7 +1384,10 @@
     "permanently_remove_your_accoun": "স্থায়ীভাবে আপনার অ্যাকাউন্ট এবং ডেটা মুছে ফেলুন।",
     "delete": "মুছুন",
     "not_set": "সেট করা হয়নি",
-    "select": "নির্বাচন করুন"
+    "select": "নির্বাচন করুন",
+    "login_required": "Authentication Required",
+    "login_prompt_msg": "Please login to access your profile settings and details.",
+    "login_now": "Login Now"
   },
   "rahu_kaal": {
     "rahu_kaal": "রাহু কাল",
@@ -1406,7 +1409,9 @@
     "loading": "লোড হচ্ছে...",
     "no_transactions_found": "কোন লেনদেন পাওয়া যায়নি",
     "via": "মাধ্যমে",
-    "no_payment_logs_available": "কোন পেমেন্ট লগ উপলব্ধ"
+    "no_payment_logs_available": "কোন পেমেন্ট লগ উপলব্ধ",
+    "login_required": "Authentication Required",
+    "login_prompt_msg": "Please login to view your wallet balance and transactions."
   },
   "payment": {
     "review_payment": "পেমেন্ট পর্যালোচনা করুন",

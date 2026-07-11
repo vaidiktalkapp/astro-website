@@ -58,8 +58,10 @@ export default function WalletPage() {
   const [paymentLogs, setPaymentLogs] = useState<PaymentLog[]>([]);
 
   useEffect(() => {
-    loadWalletData();
-  }, [activeTab]);
+    if (isAuthenticated) {
+      loadWalletData();
+    }
+  }, [activeTab, isAuthenticated]);
 
   const loadWalletData = async (refresh = false) => {
     try {

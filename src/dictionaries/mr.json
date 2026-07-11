@@ -1388,7 +1388,10 @@
     "permanently_remove_your_accoun": "तुमचे खाते आणि डेटा कायमचा काढून टाका.",
     "delete": "हटवा",
     "not_set": "सेट नाही",
-    "select": "निवडा"
+    "select": "निवडा",
+    "login_required": "Authentication Required",
+    "login_prompt_msg": "Please login to access your profile settings and details.",
+    "login_now": "Login Now"
   },
   "rahu_kaal": {
     "rahu_kaal": "राहू काळ",
@@ -1410,7 +1413,9 @@
     "loading": "लोड करत आहे...",
     "no_transactions_found": "कोणतेही व्यवहार आढळले नाहीत",
     "via": "द्वारे",
-    "no_payment_logs_available": "कोणतेही पेमेंट लॉग उपलब्ध नाहीत"
+    "no_payment_logs_available": "कोणतेही पेमेंट लॉग उपलब्ध नाहीत",
+    "login_required": "Authentication Required",
+    "login_prompt_msg": "Please login to view your wallet balance and transactions."
   },
   "payment": {
     "review_payment": "पेमेंटचे पुनरावलोकन करा",

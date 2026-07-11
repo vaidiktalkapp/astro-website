@@ -171,7 +171,10 @@
     "state": "State",
     "country": "Country",
     "pincode": "Pincode",
-    "enter": "Enter"
+    "enter": "Enter",
+    "login_required": "Authentication Required",
+    "login_prompt_msg": "Please login to access your profile settings and details.",
+    "login_now": "Login Now"
   },
   "ai_chat_history": {
     "chat": "Chat",
@@ -331,7 +334,9 @@
     "wallet_recharge_via": "Wallet Recharge Via",
     "success": "Success",
     "failed": "Failed",
-    "pending": "Pending"
+    "pending": "Pending",
+    "login_required": "Authentication Required",
+    "login_prompt_msg": "Please login to view your wallet balance and transactions."
   },
   "setup": {
     "back_to_matrimony": "Back to Matrimony",

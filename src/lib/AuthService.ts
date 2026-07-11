@@ -6,125 +6,152 @@ import { User } from './types';
 
 export class AuthService {
   static async sendOtp(phoneNumber: string, countryCode: string) {
-    console.log('📡 Sending OTP...');
-    const response = await apiClient.post('/auth/send-otp', {
-      phoneNumber,
-      countryCode,
-    });
-    return response.data;
+    try {
+      console.log('📡 Sending OTP...');
+      const response = await apiClient.post('/auth/send-otp', {
+        phoneNumber,
+        countryCode,
+      });
+      return response.data;
+    } catch (error: any) {
+      console.error('Send OTP error', error);
+      const data = error.response?.data;
+      if (data && data.message) {
+        throw new Error(Array.isArray(data.message) ? data.message.join(', ') : data.message);
+      }
+      throw error;
+    }
   }
 
   static async verifyOtp(phoneNumber: string, countryCode: string, otp: string) {
-    console.log('📡 Verifying OTP...');
-    const deviceInfo = getWebDeviceInfo();
-    const fcmToken = await getFCMToken();
-    console.log('📱 Device info:', deviceInfo);
-    console.log('🔔 FCM Token:', fcmToken);
-    
-    const response = await apiClient.post('/auth/verify-otp', {
-      phoneNumber,
-      countryCode,
-      otp,
-      fcmToken: fcmToken || undefined,
-      deviceId: deviceInfo.deviceId,
-      deviceType: deviceInfo.deviceType,
-      deviceName: deviceInfo.deviceName,
-    });
-
-    console.log('✅ OTP Verification Response:', response.data);
-    
-    if (response.data.success) {
-      const { tokens } = response.data.data;
-      const { accessToken, refreshToken } = tokens || {};
+    try {
+      console.log('📡 Verifying OTP...');
+      const deviceInfo = getWebDeviceInfo();
+      const fcmToken = await getFCMToken();
+      console.log('📱 Device info:', deviceInfo);
+      console.log('🔔 FCM Token:', fcmToken);
       
-      console.log('🔑 Access Token received:', accessToken ? 'Yes' : 'No');
-      console.log('🔑 Refresh Token received:', refreshToken ? 'Yes' : 'No');
+      const response = await apiClient.post('/auth/verify-otp', {
+        phoneNumber,
+        countryCode,
+        otp,
+        fcmToken: fcmToken || undefined,
+        deviceId: deviceInfo.deviceId,
+        deviceType: deviceInfo.deviceType,
+        deviceName: deviceInfo.deviceName,
+      });
 
-      if (accessToken) {
-        localStorage.setItem('accessToken', accessToken);
-        console.log('✅ Access token stored in localStorage');
-      }
+      console.log('✅ OTP Verification Response:', response.data);
+      
+      if (response.data.success) {
+        const { tokens } = response.data.data;
+        const { accessToken, refreshToken } = tokens || {};
+        
+        console.log('🔑 Access Token received:', accessToken ? 'Yes' : 'No');
+        console.log('🔑 Refresh Token received:', refreshToken ? 'Yes' : 'No');
 
-      if (refreshToken) {
-        localStorage.setItem('refreshToken', refreshToken);
-        console.log('✅ Refresh token stored in localStorage');
-      }
-
-      // 🆕 FETCH FULL USER PROFILE after storing tokens
-      try {
-        const profileResponse = await apiClient.get('/users/profile');
-        if (profileResponse.data.success && profileResponse.data.data) {
-          const fullUser = profileResponse.data.data;
-          
-          // 🆕 Ensure both _id and id exist
-          if (fullUser._id && !fullUser.id) {
-            fullUser.id = fullUser._id;
-          } else if (fullUser.id && !fullUser._id) {
-            fullUser._id = fullUser.id;
-          }
-          
-          localStorage.setItem('userData', JSON.stringify(fullUser));
-          console.log('✅ Full user profile stored:', fullUser.name, 'ID:', fullUser._id);
-          
-          // Return with full user data
-          return {
-            ...response.data,
-            data: {
-              ...response.data.data,
-              user: fullUser,
-            },
-          };
+        if (accessToken) {
+          localStorage.setItem('accessToken', accessToken);
+          console.log('✅ Access token stored in localStorage');
         }
-      } catch (profileError) {
-        console.error('⚠️ Failed to fetch profile, using token user data:', profileError);
-      }
-    }
 
-    return response.data;
+        if (refreshToken) {
+          localStorage.setItem('refreshToken', refreshToken);
+          console.log('✅ Refresh token stored in localStorage');
+        }
+
+        // 🆕 FETCH FULL USER PROFILE after storing tokens
+        try {
+          const profileResponse = await apiClient.get('/users/profile');
+          if (profileResponse.data.success && profileResponse.data.data) {
+            const fullUser = profileResponse.data.data;
+            
+            // 🆕 Ensure both _id and id exist
+            if (fullUser._id && !fullUser.id) {
+              fullUser.id = fullUser._id;
+            } else if (fullUser.id && !fullUser._id) {
+              fullUser._id = fullUser.id;
+            }
+            
+            localStorage.setItem('userData', JSON.stringify(fullUser));
+            console.log('✅ Full user profile stored:', fullUser.name, 'ID:', fullUser._id);
+            
+            // Return with full user data
+            return {
+              ...response.data,
+              data: {
+                ...response.data.data,
+                user: fullUser,
+              },
+            };
+          }
+        } catch (profileError) {
+          console.error('⚠️ Failed to fetch profile, using token user data:', profileError);
+        }
+      }
+
+      return response.data;
+    } catch (error: any) {
+      console.error('Verify OTP error', error);
+      const data = error.response?.data;
+      if (data && data.message) {
+        throw new Error(Array.isArray(data.message) ? data.message.join(', ') : data.message);
+      }
+      throw error;
+    }
   }
 
   static async verifyTruecaller(truecallerData: any) {
-    const response = await apiClient.post('/auth/truecaller', truecallerData);
-    
-    if (response.data.success) {
-      const { accessToken, refreshToken } = response.data.data;
+    try {
+      const response = await apiClient.post('/auth/truecaller', truecallerData);
       
-      if (accessToken) {
-        localStorage.setItem('accessToken', accessToken);
-      }
-      if (refreshToken) {
-        localStorage.setItem('refreshToken', refreshToken);
-      }
-
-      // 🆕 FETCH FULL USER PROFILE
-      try {
-        const profileResponse = await apiClient.get('/users/profile');
-        if (profileResponse.data.success && profileResponse.data.data) {
-          const fullUser = profileResponse.data.data;
-          
-          if (fullUser._id && !fullUser.id) {
-            fullUser.id = fullUser._id;
-          } else if (fullUser.id && !fullUser._id) {
-            fullUser._id = fullUser.id;
-          }
-          
-          localStorage.setItem('userData', JSON.stringify(fullUser));
-          console.log('✅ Full user profile stored');
-          
-          return {
-            ...response.data,
-            data: {
-              ...response.data.data,
-              user: fullUser,
-            },
-          };
+      if (response.data.success) {
+        const { accessToken, refreshToken } = response.data.data;
+        
+        if (accessToken) {
+          localStorage.setItem('accessToken', accessToken);
         }
-      } catch (profileError) {
-        console.error('⚠️ Failed to fetch profile:', profileError);
+        if (refreshToken) {
+          localStorage.setItem('refreshToken', refreshToken);
+        }
+
+        // 🆕 FETCH FULL USER PROFILE
+        try {
+          const profileResponse = await apiClient.get('/users/profile');
+          if (profileResponse.data.success && profileResponse.data.data) {
+            const fullUser = profileResponse.data.data;
+            
+            if (fullUser._id && !fullUser.id) {
+              fullUser.id = fullUser._id;
+            } else if (fullUser.id && !fullUser._id) {
+              fullUser._id = fullUser.id;
+            }
+            
+            localStorage.setItem('userData', JSON.stringify(fullUser));
+            console.log('✅ Full user profile stored');
+            
+            return {
+              ...response.data,
+              data: {
+                ...response.data.data,
+                user: fullUser,
+              },
+            };
+          }
+        } catch (profileError) {
+          console.error('⚠️ Failed to fetch profile:', profileError);
+        }
       }
+      
+      return response.data;
+    } catch (error: any) {
+      console.error('Verify Truecaller error', error);
+      const data = error.response?.data;
+      if (data && data.message) {
+        throw new Error(Array.isArray(data.message) ? data.message.join(', ') : data.message);
+      }
+      throw error;
     }
-    
-    return response.data;
   }
 
   static async logout() {

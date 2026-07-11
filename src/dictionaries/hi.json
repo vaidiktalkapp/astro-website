@@ -171,7 +171,10 @@
     "state": "State",
     "country": "Country",
     "pincode": "Pincode",
-    "enter": "Enter"
+    "enter": "Enter",
+    "login_required": "लॉगिन आवश्यक है",
+    "login_prompt_msg": "अपनी प्रोफ़ाइल सेटिंग्स देखने के लिए कृपया लॉगिन करें।",
+    "login_now": "अभी लॉगिन करें"
   },
   "ai_chat_history": {
     "chat": "बात करना",
@@ -331,7 +334,9 @@
     "wallet_recharge_via": "Wallet Recharge Via",
     "success": "Success",
     "failed": "Failed",
-    "pending": "Pending"
+    "pending": "Pending",
+    "login_required": "लॉगिन आवश्यक है",
+    "login_prompt_msg": "अपना वॉलेट बैलेंस और लेनदेन देखने के लिए कृपया लॉगिन करें।"
   },
   "language": {
     "select_title": "भाषा चुनें",

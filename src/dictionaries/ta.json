@@ -1384,7 +1384,10 @@
     "permanently_remove_your_accoun": "உங்கள் கணக்கையும் தரவையும் நிரந்தரமாக அகற்றவும்.",
     "delete": "நீக்கு",
     "not_set": "அமைக்கப்படவில்லை",
-    "select": "தேர்ந்தெடு"
+    "select": "தேர்ந்தெடு",
+    "login_required": "Authentication Required",
+    "login_prompt_msg": "Please login to access your profile settings and details.",
+    "login_now": "Login Now"
   },
   "rahu_kaal": {
     "rahu_kaal": "ராகு காலம்",
@@ -1406,7 +1409,9 @@
     "loading": "ஏற்றுகிறது...",
     "no_transactions_found": "பரிவர்த்தனைகள் எதுவும் இல்லை",
     "via": "வழியாக",
-    "no_payment_logs_available": "கட்டணப் பதிவுகள் எதுவும் இல்லை"
+    "no_payment_logs_available": "கட்டணப் பதிவுகள் எதுவும் இல்லை",
+    "login_required": "Authentication Required",
+    "login_prompt_msg": "Please login to view your wallet balance and transactions."
   },
   "payment": {
     "review_payment": "கட்டணத்தை மதிப்பாய்வு செய்யவும்",

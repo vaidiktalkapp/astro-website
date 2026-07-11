@@ -1384,7 +1384,10 @@
     "permanently_remove_your_accoun": "ਆਪਣੇ ਖਾਤੇ ਅਤੇ ਡੇਟਾ ਨੂੰ ਸਥਾਈ ਤੌਰ 'ਤੇ ਹਟਾਓ।",
     "delete": "ਮਿਟਾਓ",
     "not_set": "ਸੈੱਟ ਨਹੀਂ ਹੈ",
-    "select": "ਚੁਣੋ"
+    "select": "ਚੁਣੋ",
+    "login_required": "Authentication Required",
+    "login_prompt_msg": "Please login to access your profile settings and details.",
+    "login_now": "Login Now"
   },
   "rahu_kaal": {
     "rahu_kaal": "ਰਹਾਉ ਕਾਲ",
@@ -1406,7 +1409,9 @@
     "loading": "ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...",
     "no_transactions_found": "ਕੋਈ ਲੈਣ-ਦੇਣ ਨਹੀਂ ਮਿਲਿਆ",
     "via": "ਰਾਹੀਂ",
-    "no_payment_logs_available": "ਕੋਈ ਭੁਗਤਾਨ ਲੌਗ ਉਪਲਬਧ ਨਹੀਂ ਹਨ"
+    "no_payment_logs_available": "ਕੋਈ ਭੁਗਤਾਨ ਲੌਗ ਉਪਲਬਧ ਨਹੀਂ ਹਨ",
+    "login_required": "Authentication Required",
+    "login_prompt_msg": "Please login to view your wallet balance and transactions."
   },
   "payment": {
     "review_payment": "ਭੁਗਤਾਨ ਦੀ ਸਮੀਖਿਆ ਕਰੋ",

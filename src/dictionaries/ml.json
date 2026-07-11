@@ -1384,7 +1384,10 @@
     "permanently_remove_your_accoun": "നിങ്ങളുടെ അക്കൗണ്ടും ഡാറ്റയും ശാശ്വതമായി നീക്കം ചെയ്യുക.",
     "delete": "ഇല്ലാതാക്കുക",
     "not_set": "സജ്ജമാക്കിയിട്ടില്ല",
-    "select": "തിരഞ്ഞെടുക്കുക"
+    "select": "തിരഞ്ഞെടുക്കുക",
+    "login_required": "Authentication Required",
+    "login_prompt_msg": "Please login to access your profile settings and details.",
+    "login_now": "Login Now"
   },
   "rahu_kaal": {
     "rahu_kaal": "രാഹുകാലം",
@@ -1406,7 +1409,9 @@
     "loading": "ലോഡ് ചെയ്യുന്നു...",
     "no_transactions_found": "ഇടപാടുകളൊന്നും കണ്ടെത്തിയില്ല",
     "via": "വഴി",
-    "no_payment_logs_available": "പേയ്‌മെൻ്റ് ലോഗുകളൊന്നും ലഭ്യമല്ല"
+    "no_payment_logs_available": "പേയ്‌മെൻ്റ് ലോഗുകളൊന്നും ലഭ്യമല്ല",
+    "login_required": "Authentication Required",
+    "login_prompt_msg": "Please login to view your wallet balance and transactions."
   },
   "payment": {
     "review_payment": "പേയ്‌മെൻ്റ് അവലോകനം ചെയ്യുക",
