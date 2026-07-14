@@ -36,7 +36,7 @@ const KundliResult = ({ data, onBack, onNew, hideHeader = false }: KundliResultP
             <div className="flex flex-col items-center justify-center min-h-[60vh] text-center p-10 rounded-xl border border-[#d6c89a]" style={{ background: '#fffdf5' }}>
                 <div className="w-10 h-10 border-2 border-t-transparent rounded-full animate-spin mb-4" style={{ borderColor: '#b8962e', borderTopColor: 'transparent' }} />
                 <h3 className="text-[15px] font-semibold text-gray-900">Synchronizing with Stars</h3>
-                <p className="text-sm text-gray-400 mt-1">Connecting to the celestial bridge. Please wait...</p>
+                <p className="text-sm text-gray-600 font-medium mt-1">Connecting to the celestial bridge. Please wait...</p>
                 <button onClick={onBack} className="mt-6 px-6 py-2.5 rounded-lg text-white text-[13px] font-semibold" style={{ background: '#b8962e' }}>Go Back</button>
             </div>
         );
@@ -102,13 +102,13 @@ const KundliResult = ({ data, onBack, onNew, hideHeader = false }: KundliResultP
                     <div className="flex items-center gap-2 flex-wrap">
                         <button
                             onClick={() => router.push('/kundli/history')}
-                            className="flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[#d6c89a] text-[12px] font-medium text-gray-600 hover:bg-[#f5e9c8] transition-all"
+                            className="flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[#d6c89a] text-[12px] font-bold text-gray-800 hover:bg-[#f5e9c8] transition-all"
                         >
                             <History className="w-3.5 h-3.5" /> History
                         </button>
                         <button
                             onClick={onNew}
-                            className="px-4 py-2 rounded-lg border border-[#d6c89a] text-[12px] font-medium text-gray-600 hover:bg-[#f5e9c8] transition-all"
+                            className="px-4 py-2 rounded-lg border border-[#d6c89a] text-[12px] font-bold text-gray-800 hover:bg-[#f5e9c8] transition-all"
                         >
                             New Chart
                         </button>
@@ -232,7 +232,7 @@ const KundliResult = ({ data, onBack, onNew, hideHeader = false }: KundliResultP
                                                             background: a.is_current
                                                                 ? '#fffdf5'
                                                                 : item.is_current ? 'rgba(255,255,255,0.1)' : 'rgba(184,150,46,0.06)',
-                                                            color: a.is_current ? '#b8962e' : item.is_current ? 'rgba(255,255,255,0.8)' : '#6b7280',
+                                                            color: a.is_current ? '#b8962e' : item.is_current ? 'rgba(255,255,255,0.8)' : '#374151',
                                                         }}
                                                     >
                                                         <span className="text-[12px] font-semibold">{a.lord}</span>
@@ -247,7 +247,7 @@ const KundliResult = ({ data, onBack, onNew, hideHeader = false }: KundliResultP
                                 <div className="p-5 rounded-xl border border-[#d6c89a] text-center" style={{ background: 'rgba(184,150,46,0.05)' }}>
                                     <p className="text-[10px] font-semibold uppercase tracking-widest mb-1" style={{ color: '#b8962e' }}>Current Active Dasha</p>
                                     <p className="text-[17px] font-semibold text-gray-900">{dasha?.mahadasha?.lord || 'N/A'}</p>
-                                    <p className="text-[11px] text-gray-400 mt-0.5">Recalculate to see full timeline</p>
+                                    <p className="text-[11px] text-gray-600 font-medium mt-0.5">Recalculate to see full timeline</p>
                                 </div>
                             )}
                         </div>
@@ -272,7 +272,7 @@ const KundliResult = ({ data, onBack, onNew, hideHeader = false }: KundliResultP
                                 <p className="text-[12px] font-semibold uppercase tracking-widest mb-1.5"
                                     style={{ color: doshas.manglik.is_present ? '#b91c1c' : '#15803d' }}>Manglik Analysis</p>
                                 <p className="text-[15px] font-semibold text-gray-900 mb-1.5">{doshas.manglik.is_present ? 'Dosha Present' : 'No Dosha'}</p>
-                                <p className="text-[13px] text-gray-700 leading-relaxed">{doshas.manglik.details}</p>
+                                <p className="text-[13px] text-gray-900 font-medium leading-relaxed">{doshas.manglik.details}</p>
                             </div>
                             {/* Kalsarp */}
                             <div
@@ -286,7 +286,7 @@ const KundliResult = ({ data, onBack, onNew, hideHeader = false }: KundliResultP
                                 <p className="text-[12px] font-semibold uppercase tracking-widest mb-1.5"
                                     style={{ color: doshas.kalsarp.is_present ? '#b91c1c' : '#15803d' }}>Kalsarp Analysis</p>
                                 <p className="text-[15px] font-semibold text-gray-900 mb-1.5">{doshas.kalsarp.is_present ? 'Dosha Present' : 'No Dosha'}</p>
-                                <p className="text-[13px] text-gray-700 leading-relaxed">{doshas.kalsarp.details}</p>
+                                <p className="text-[13px] text-gray-900 font-medium leading-relaxed">{doshas.kalsarp.details}</p>
                             </div>
                             {/* Aspects */}
                             {kundli.aspects && kundli.aspects.length > 0 && (
@@ -294,7 +294,7 @@ const KundliResult = ({ data, onBack, onNew, hideHeader = false }: KundliResultP
                                     <p className="text-[12px] font-semibold uppercase tracking-widest mb-3" style={{ color: '#b8962e' }}>Planetary Aspects</p>
                                     <div className="space-y-1.5">
                                         {kundli.aspects.slice(0, 10).map((asp: string, idx: number) => (
-                                            <div key={idx} className="flex items-center gap-2 text-[13px] text-gray-800">
+                                            <div key={idx} className="flex items-center gap-2 text-[13px] text-gray-900 font-semibold">
                                                 <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#b8962e' }} />
                                                 {asp}
                                             </div>
@@ -313,7 +313,7 @@ const KundliResult = ({ data, onBack, onNew, hideHeader = false }: KundliResultP
                     <div>
                         <div className="flex items-center gap-2 mb-3">
                             <User className="w-3.5 h-3.5" style={{ color: '#b8962e' }} />
-                            <span className="text-[13px] font-semibold uppercase tracking-widest text-gray-700">Core Astrological Identity</span>
+                            <span className="text-[13px] font-bold uppercase tracking-widest text-gray-900">Core Astrological Identity</span>
                         </div>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                             {[
@@ -376,7 +376,7 @@ const KundliResult = ({ data, onBack, onNew, hideHeader = false }: KundliResultP
                                                     </div>
                                                     <h4 className="text-[14px] font-semibold text-gray-900">{name}</h4>
                                                 </div>
-                                                <p className="text-[13px] text-gray-700 leading-relaxed">{p.basic_reading || 'No reading generated.'}</p>
+                                                <p className="text-[13px] text-gray-900 font-medium leading-relaxed">{p.basic_reading || 'No reading generated.'}</p>
                                             </div>
                                         );
                                     })}
@@ -402,18 +402,18 @@ const KundliResult = ({ data, onBack, onNew, hideHeader = false }: KundliResultP
                             <span className="text-[14px] font-semibold text-gray-900 uppercase tracking-widest">Deep Cosmic Insights</span>
                         </div>
                         <div className="p-5 space-y-4">
-                            <p className="text-[13px] text-gray-600">Vedic personality & life analysis based on your unique alignment.</p>
+                            <p className="text-[13px] text-gray-900 font-medium">Vedic personality & life analysis based on your unique alignment.</p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {/* Core Identity */}
                                 <div className="p-4 rounded-xl border border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.05)' }}>
                                     <p className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: '#b8962e' }}>Core Identity & Ascendant</p>
-                                    <p className="text-[13px] text-gray-800 leading-relaxed">"{data.interpretations.ascendant.reading}"</p>
+                                    <p className="text-[13px] text-gray-900 font-medium leading-relaxed">"{data.interpretations.ascendant.reading}"</p>
                                 </div>
                                 {/* Emotional Nature */}
                                 <div className="p-4 rounded-xl border border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.05)' }}>
                                     <p className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: '#b8962e' }}>Emotional Nature</p>
-                                    <p className="text-[13px] text-gray-800 leading-relaxed">"{data.interpretations.moon.reading}"</p>
+                                    <p className="text-[13px] text-gray-900 font-medium leading-relaxed">"{data.interpretations.moon.reading}"</p>
                                 </div>
                             </div>
 
@@ -424,7 +424,7 @@ const KundliResult = ({ data, onBack, onNew, hideHeader = false }: KundliResultP
                                     <p className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#b8962e' }}>Your Life's Path & Purpose</p>
                                 </div>
                                 <p className="text-[14px] font-semibold text-gray-900 mb-2">General Soul Blueprint</p>
-                                <p className="text-[13px] text-gray-800 leading-relaxed">{data.interpretations.life_path.reading}</p>
+                                <p className="text-[13px] text-gray-900 font-medium leading-relaxed">{data.interpretations.life_path.reading}</p>
                             </div>
 
                             <div className="pt-1">
