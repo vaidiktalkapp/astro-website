@@ -62,18 +62,34 @@ export const downloadKundliPDF = async (data: KundliData) => {
     const { kundli, dasha, panchang, input, doshas, interpretations } = data;
 
     // ─── Utility: Clean Text ───
-    const clean = (txt: any) => {
-      if (!txt) return 'N/A';
-      let decoded = String(txt).replace(/<[^>]*>?/gm, '');
-      if (typeof document !== 'undefined') {
-          const temp = document.createElement('textarea');
-          temp.innerHTML = decoded;
-          decoded = temp.value;
-      } else {
-          decoded = decoded.replace(/&nbsp;/g, ' ').replace(/\u00A0/g, ' ');
-      }
-      return decoded.replace(/[\n\r\t]+/g, ' ').replace(/\s+/g, ' ').trim();
-    };
+            const clean = (txt: any): string => {
+            if (txt === undefined || txt === null || !txt) return '-';
+            if (typeof txt !== 'string') {
+                const val = txt.text || txt.title || txt.description || String(txt);
+                return typeof val === 'string' ? clean(val) : String(val);
+            }
+            // Preserve paragraphs and breaks before stripping tags
+            let decoded = String(txt)
+                .replace(/<br\s*\/?>/gi, '\n')
+                .replace(/<\/p>/gi, '\n\n')
+                .replace(/<\/h[1-6]>/gi, '\n\n')
+                .replace(/<li>/gi, '\n• ')
+                .replace(/<\/li>/gi, '\n');
+                
+            decoded = decoded.replace(/<[^>]*>?/gm, '');
+            if (typeof document !== 'undefined') {
+                const temp = document.createElement('textarea');
+                temp.innerHTML = decoded;
+                decoded = temp.value;
+            } else {
+                decoded = decoded.replace(/&nbsp;/g, ' ').replace(/\u00A0/g, ' ');
+            }
+            return decoded
+                .replace(/[\r\t]+/g, ' ')
+                .replace(/[ ]{2,}/g, ' ')
+                .replace(/\n\s*\n/g, '\n\n')
+                .trim();
+        };
 
     // ─── Utility: Check if we need a new page ───
     const checkPage = (needed: number) => {

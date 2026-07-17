@@ -55,13 +55,21 @@ export const downloadNumerologyPDF = async (data: NumerologyData) => {
         const margin = 15;
 
         // ─── Utility: Clean Text ───
-        const clean = (txt: any): string => {
+                const clean = (txt: any): string => {
             if (txt === undefined || txt === null || !txt) return '-';
             if (typeof txt !== 'string') {
                 const val = txt.text || txt.title || txt.description || String(txt);
                 return typeof val === 'string' ? clean(val) : String(val);
             }
-            let decoded = String(txt).replace(/<[^>]*>?/gm, '');
+            // Preserve paragraphs and breaks before stripping tags
+            let decoded = String(txt)
+                .replace(/<br\s*\/?>/gi, '\n')
+                .replace(/<\/p>/gi, '\n\n')
+                .replace(/<\/h[1-6]>/gi, '\n\n')
+                .replace(/<li>/gi, '\n• ')
+                .replace(/<\/li>/gi, '\n');
+                
+            decoded = decoded.replace(/<[^>]*>?/gm, '');
             if (typeof document !== 'undefined') {
                 const temp = document.createElement('textarea');
                 temp.innerHTML = decoded;
@@ -69,7 +77,11 @@ export const downloadNumerologyPDF = async (data: NumerologyData) => {
             } else {
                 decoded = decoded.replace(/&nbsp;/g, ' ').replace(/\u00A0/g, ' ');
             }
-            return decoded.replace(/[\n\r\t]+/g, ' ').replace(/\s+/g, ' ').trim();
+            return decoded
+                .replace(/[\r\t]+/g, ' ')
+                .replace(/[ ]{2,}/g, ' ')
+                .replace(/\n\s*\n/g, '\n\n')
+                .trim();
         };
 
         const checkPage = (addedHeight: number) => {

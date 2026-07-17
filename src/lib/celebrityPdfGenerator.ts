@@ -51,15 +51,32 @@ export const downloadCelebrityPDF = async (data: CelebrityPdfData) => {
 
         const clean = (txt: any) => {
             if (!txt) return 'N/A';
-            let decoded = String(txt).replace(/<[^>]*>?/gm, '');
+            
+            // Preserve paragraphs and breaks before stripping tags
+            let decoded = String(txt)
+                .replace(/<br\s*\/?>/gi, '\n')
+                .replace(/<\/p>/gi, '\n\n')
+                .replace(/<\/h[1-6]>/gi, '\n\n')
+                .replace(/<li>/gi, '\n• ')
+                .replace(/<\/li>/gi, '\n');
+                
+            // Strip remaining HTML tags
+            decoded = decoded.replace(/<[^>]*>?/gm, '');
+            
             if (typeof document !== 'undefined') {
                 const temp = document.createElement('textarea');
                 temp.innerHTML = decoded;
                 decoded = temp.value;
             } else {
-                decoded = decoded.replace(/&nbsp;/g, ' ');
+                decoded = decoded.replace(/&nbsp;/g, ' ').replace(/\u00A0/g, ' ');
             }
-            return decoded.replace(/\s+/g, ' ').trim();
+            
+            // Clean whitespace but preserve deliberate newlines
+            return decoded
+                .replace(/[\r\t]+/g, ' ')
+                .replace(/[ ]{2,}/g, ' ')
+                .replace(/\n\s*\n/g, '\n\n')
+                .trim();
         };
 
         const drawSectionTitle = (title: string, yPos: number) => {
@@ -117,8 +134,15 @@ export const downloadCelebrityPDF = async (data: CelebrityPdfData) => {
         pdf.setTextColor(...DARK);
         const summaryText = clean(profile.summary);
         const splitSummary = pdf.splitTextToSize(summaryText, contentW);
-        pdf.text(splitSummary, margin, y);
-        y += (splitSummary.length * 5) + 10;
+        for (let i = 0; i < splitSummary.length; i++) {
+            if (y > pageH - 25) {
+                pdf.addPage();
+                y = 20;
+            }
+            pdf.text(splitSummary[i], margin, y);
+            y += 5;
+        }
+        y += 10;
 
         // ─── 2. Astrological Stats ───
         drawSectionTitle('CORE ASTROLOGICAL IDENTITY', y);
@@ -288,9 +312,19 @@ export const downloadCelebrityPDF = async (data: CelebrityPdfData) => {
         pdf.setFont('helvetica', 'normal');
         pdf.setFontSize(9.5);
         pdf.setTextColor(...DARK);
+        
         const legacyText = clean(profile.content);
         const splitLegacy = pdf.splitTextToSize(legacyText, contentW);
-        pdf.text(splitLegacy, margin, y);
+        
+        // Print text line by line with auto-pagination
+        for (let i = 0; i < splitLegacy.length; i++) {
+            if (y > pageH - 25) {
+                pdf.addPage();
+                y = 20; // reset y for new page
+            }
+            pdf.text(splitLegacy[i], margin, y);
+            y += 5; // line height
+        }
 
         // ─── Footer ───
         const totalPages = pdf.getNumberOfPages();
