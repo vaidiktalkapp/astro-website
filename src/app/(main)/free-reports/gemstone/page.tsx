@@ -457,7 +457,11 @@ export default function GemstonePage() {
                             <div
                 className="text-[14px] text-gray-700 leading-relaxed rich-content"
                 dangerouslySetInnerHTML={{
-                  __html: gemstones.length > 0 && customSettings?.gemstones?.[gemstones[0].gemstone]?.intro || customSettings?.gemstonesIntro || `
+                  __html: (gemstones.length > 0 && customSettings?.gemstones?.[gemstones[0].gemstone]?.intro && customSettings.gemstones[gemstones[0].gemstone].intro !== '<p><br></p>' && customSettings.gemstones[gemstones[0].gemstone].intro !== '<p></p>') 
+                    ? customSettings.gemstones[gemstones[0].gemstone].intro 
+                    : (customSettings?.gemstonesIntro && customSettings.gemstonesIntro !== '<p><br></p>' && customSettings.gemstonesIntro !== '<p></p>') 
+                        ? customSettings.gemstonesIntro 
+                        : `
                                     The primary use for gems throughout history has been for healing and spiritual rituals. Although gems were rare and exhibited great beauty, the reason they were so precious was due to the power they imparted to their wearers. They are storehouses of empowerment, transmitted through contact with one's body. Gems exhibit their power in a beneficial or detrimental way — depending on how they are used. All stones or gems have magnetic powers in varying degrees, and many of them are beneficial to us for their therapeutic cures. They emit vibrations and frequencies which have strong potential influence on our whole being. Here's what your Gemstone prediction looks like.
                                 ` }} />
               

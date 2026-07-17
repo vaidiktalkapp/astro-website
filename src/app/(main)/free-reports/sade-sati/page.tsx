@@ -333,7 +333,11 @@ export default function SadeSatiPage() {
                                     </div>
                                     <div
                     className="text-[14px] text-gray-800 leading-relaxed space-y-4 rich-content"
-                    dangerouslySetInnerHTML={{ __html: customSettings?.sadeSati?.[currentPhaseKey || '']?.intro || customSettings?.sadeSatiIntro || `
+                    dangerouslySetInnerHTML={{ __html: (customSettings?.sadeSati?.[currentPhaseKey || '']?.intro && customSettings.sadeSati[currentPhaseKey || ''].intro !== '<p><br></p>' && customSettings.sadeSati[currentPhaseKey || ''].intro !== '<p></p>')
+                        ? customSettings.sadeSati[currentPhaseKey || ''].intro
+                        : (customSettings?.sadeSatiIntro && customSettings.sadeSatiIntro !== '<p><br></p>' && customSettings.sadeSatiIntro !== '<p></p>')
+                            ? customSettings.sadeSatiIntro
+                            : `
                                             <p className="font-bold text-gray-900 text-[15px] border-l-4 border-amber-400 pl-4 py-1">${sadeSati.details}</p>
                                             <p>This is a major karmic transit representing a cycle of maturity and growth. Shani Dev tests your integrity and patience, eventually rewards the hard work and discipline demonstrated during this period.</p>
                                         ` }} />
