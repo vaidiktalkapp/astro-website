@@ -59,14 +59,22 @@ export const downloadMatchingPDF = async (data: MatchingData) => {
     const isSouth = system === 'south_indian';
 
     // ─── Utility: Clean Text ───
-    const clean = (txt: any) => {
-      if (!txt === undefined || txt === null) return '-';
-      return String(txt)
-        .replace(/[\n\r\t]+/g, ' ')
-        .replace(/\u00A0/g, ' ')
-        .replace(/\s{2,}/g, ' ')
-        .trim();
-    };
+    const clean = (txt: any): string => {
+            if (txt === undefined || txt === null || !txt) return '-';
+            if (typeof txt !== 'string') {
+                const val = txt.text || txt.title || txt.description || String(txt);
+                return typeof val === 'string' ? clean(val) : String(val);
+            }
+            let decoded = String(txt).replace(/<[^>]*>?/gm, '');
+            if (typeof document !== 'undefined') {
+                const temp = document.createElement('textarea');
+                temp.innerHTML = decoded;
+                decoded = temp.value;
+            } else {
+                decoded = decoded.replace(/&nbsp;/g, ' ').replace(/\u00A0/g, ' ');
+            }
+            return decoded.replace(/[\n\r\t]+/g, ' ').replace(/\s+/g, ' ').trim();
+        };
 
     // ─── Utility: Check Page ───
     const checkPage = (needed: number) => {

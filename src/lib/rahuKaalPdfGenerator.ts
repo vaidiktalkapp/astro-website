@@ -44,7 +44,15 @@ export const downloadRahuKaalPDF = async (data: RahuKaalData) => {
 
         const clean = (txt: any): string => {
             if (txt === undefined || txt === null) return '-';
-            return String(txt).replace(/<[^>]*>?/gm, '').replace(/\s+/g, ' ').trim();
+            let decoded = String(txt).replace(/<[^>]*>?/gm, '');
+            if (typeof document !== 'undefined') {
+                const temp = document.createElement('textarea');
+                temp.innerHTML = decoded;
+                decoded = temp.value;
+            } else {
+                decoded = decoded.replace(/&nbsp;/g, ' ').replace(/\u00A0/g, ' ');
+            }
+            return decoded.replace(/[\n\r\t]+/g, ' ').replace(/\s+/g, ' ').trim();
         };
 
         let y = 20;

@@ -64,11 +64,15 @@ export const downloadKundliPDF = async (data: KundliData) => {
     // ─── Utility: Clean Text ───
     const clean = (txt: any) => {
       if (!txt) return 'N/A';
-      return String(txt)
-        .replace(/[\n\r\t]+/g, ' ') // Replace newlines/tabs with space
-        .replace(/\u00A0/g, ' ')    // Replace non-breaking spaces
-        .replace(/\s{2,}/g, ' ')   // Collapse multiple spaces
-        .trim();
+      let decoded = String(txt).replace(/<[^>]*>?/gm, '');
+      if (typeof document !== 'undefined') {
+          const temp = document.createElement('textarea');
+          temp.innerHTML = decoded;
+          decoded = temp.value;
+      } else {
+          decoded = decoded.replace(/&nbsp;/g, ' ').replace(/\u00A0/g, ' ');
+      }
+      return decoded.replace(/[\n\r\t]+/g, ' ').replace(/\s+/g, ' ').trim();
     };
 
     // ─── Utility: Check if we need a new page ───
@@ -167,6 +171,17 @@ export const downloadKundliPDF = async (data: KundliData) => {
 
     y += chartSize + 12;
 
+    checkPage(100);
+    // North Bhav Chalit (centered)
+    const centerX = (pageW - chartSize) / 2;
+    drawNorthIndianChart(pdf, centerX, y, chartSize, kundli, 'Bhav');
+    pdf.setFont('helvetica', 'bold');
+    pdf.setFontSize(7);
+    pdf.setTextColor(...DARK);
+    pdf.text('Bhav Chalit Chart', centerX + chartSize / 2, y + chartSize + 4, { align: 'center' });
+
+    y += chartSize + 12;
+
     // ── South Indian Charts ──
     checkPage(100);
     drawSectionTitle(pdf, margin, y, 'SOUTH INDIAN CHARTS');
@@ -182,6 +197,16 @@ export const downloadKundliPDF = async (data: KundliData) => {
     // South D9 on right
     drawSouthIndianChart(pdf, startX2, y, chartSize, kundli, 'D9');
     pdf.text('Navamsa Chart (D9)', startX2 + chartSize / 2, y + chartSize + 4, { align: 'center' });
+
+    y += chartSize + 12;
+
+    checkPage(100);
+    // South Bhav Chalit (centered)
+    drawSouthIndianChart(pdf, centerX, y, chartSize, kundli, 'Bhav');
+    pdf.setFont('helvetica', 'bold');
+    pdf.setFontSize(7);
+    pdf.setTextColor(...DARK);
+    pdf.text('Bhav Chalit Chart', centerX + chartSize / 2, y + chartSize + 4, { align: 'center' });
 
     y += chartSize + 10;
 
@@ -503,7 +528,7 @@ function drawFooter(pdf: any, pageW: number, pageH: number, current: number, tot
 }
 
 // ─── Helper: Draw North Indian Chart ───
-function drawNorthIndianChart(pdf: any, ox: number, oy: number, size: number, kundli: any, chartType: 'D1' | 'D9') {
+function drawNorthIndianChart(pdf: any, ox: number, oy: number, size: number, kundli: any, chartType: 'D1' | 'D9' | 'Bhav') {
   const { planets, houses } = kundli;
   const s = size;
   const mid = s / 2;
@@ -518,12 +543,22 @@ function drawNorthIndianChart(pdf: any, ox: number, oy: number, size: number, ku
   const d9AscIdx = zodiacMap[d9AscSign] || 1;
 
   const getHouseSign = (h: number) => {
-    if (chartType === 'D1') return houses?.[h]?.sign || 'Aries';
+    if (chartType === 'D1' || chartType === 'Bhav') return houses?.[h]?.sign || 'Aries';
     const signIdx = ((d9AscIdx + h - 2) % 12) + 1;
     return Object.entries(zodiacMap).find(([_, idx]) => idx === signIdx)?.[0] || 'Aries';
   };
 
   const getPlanetsInHouse = (h: number) => {
+    if (chartType === 'Bhav') {
+      return Object.entries(planets || {})
+        .filter(([name, p]: any) => name !== 'Ascendant' && p.bhav_house === h)
+        .map(([name, p]: any) => {
+          const abbr = name.substring(0, 2);
+          const retro = p.is_retrograde ? '*' : '';
+          return `${abbr}${retro}`;
+        });
+    }
+
     const houseSign = getHouseSign(h);
     return Object.entries(planets || {})
       .filter(([name, p]: any) => {
@@ -594,7 +629,7 @@ function drawNorthIndianChart(pdf: any, ox: number, oy: number, size: number, ku
 }
 
 // ─── Helper: Draw South Indian Chart ───
-function drawSouthIndianChart(pdf: any, ox: number, oy: number, size: number, kundli: any, chartType: 'D1' | 'D9') {
+function drawSouthIndianChart(pdf: any, ox: number, oy: number, size: number, kundli: any, chartType: 'D1' | 'D9' | 'Bhav') {
   const { planets, houses } = kundli;
   const s = size;
   const cell = s / 4; // each cell in the 4x4 grid
@@ -618,6 +653,24 @@ function drawSouthIndianChart(pdf: any, ox: number, oy: number, size: number, ku
 
   const getPlanetsInSign = (sign: string) => {
     const result: string[] = [];
+
+    if (chartType === 'Bhav') {
+        // Find which house number corresponds to this sign in D1
+        const houseEntry = Object.entries(houses || {}).find(([h, data]: any) => data.sign === sign);
+        if (houseEntry) {
+            const houseNum = Number(houseEntry[0]);
+            Object.entries(planets || {}).forEach(([name, p]: any) => {
+                if (name === 'Ascendant') return;
+                if (p.bhav_house === houseNum) {
+                    const abbr = name.substring(0, 2);
+                    const retro = p.is_retrograde ? '*' : '';
+                    result.push(`${abbr}${retro}`);
+                }
+            });
+        }
+        return result;
+    }
+
     // Check if Ascendant (Lagnam) is in this sign
     const lagnamSign = chartType === 'D1'
       ? houses?.[1]?.sign

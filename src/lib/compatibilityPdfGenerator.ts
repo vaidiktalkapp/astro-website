@@ -46,7 +46,15 @@ export const downloadCompatibilityPDF = async (data: CompatibilityData) => {
         // ─── Utility: Clean Text ───
         const clean = (txt: any): string => {
             if (txt === undefined || txt === null) return '-';
-            return String(txt).replace(/\s+/g, ' ').trim();
+            let decoded = String(txt).replace(/<[^>]*>?/gm, '');
+            if (typeof document !== 'undefined') {
+                const temp = document.createElement('textarea');
+                temp.innerHTML = decoded;
+                decoded = temp.value;
+            } else {
+                decoded = decoded.replace(/&nbsp;/g, ' ').replace(/\u00A0/g, ' ');
+            }
+            return decoded.replace(/[\n\r\t]+/g, ' ').replace(/\s+/g, ' ').trim();
         };
 
         const checkPage = (addedHeight: number) => {
