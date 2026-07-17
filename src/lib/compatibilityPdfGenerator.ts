@@ -67,6 +67,8 @@ export const downloadCompatibilityPDF = async (data: CompatibilityData) => {
                 decoded = decoded.replace(/&nbsp;/g, ' ').replace(/\u00A0/g, ' ');
             }
             return decoded
+                .replace(/\u00A0/g, ' ')
+                .replace(/&nbsp;/g, ' ')
                 .replace(/[\r\t]+/g, ' ')
                 .replace(/[ ]{2,}/g, ' ')
                 .replace(/\n\s*\n/g, '\n\n')
