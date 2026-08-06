@@ -985,7 +985,7 @@ export default function HomePage() {
                     <>
                       {/* Scaled image to crop out YouTube letterboxing on vertical videos */}
                       <div className="absolute inset-0 flex items-center justify-center bg-black cursor-pointer">
-                        <img loading="lazy" src={vId ? `https://img.youtube.com/vi/${vId}/hqdefault.jpg` : '/placeholder-video.jpg'} alt={item.name} loading="lazy" className="w-full h-full object-cover scale-[1.35] group-hover:scale-[1.45] transition-transform duration-700 opacity-90 group-hover:opacity-100" />
+                        <img src={vId ? `https://img.youtube.com/vi/${vId}/hqdefault.jpg` : '/placeholder-video.jpg'} alt={item.name} loading="lazy" className="w-full h-full object-cover scale-[1.35] group-hover:scale-[1.45] transition-transform duration-700 opacity-90 group-hover:opacity-100" />
                       </div>
 
                       {/* Play Button Overlay */}
