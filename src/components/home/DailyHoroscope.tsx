@@ -226,7 +226,7 @@ const DailyHoroscope = () => {
                       <div className="flex items-center gap-4">
                         <div className="w-[64px] h-[64px] rounded-full bg-[#fdf0e0] shrink-0 flex items-center justify-center text-[32px] text-[#ee6c1e] border border-[#f0ddc0] overflow-hidden">
                           {active.image ? (
-                            <img src={active.image} alt={active.name} className="w-full h-full object-cover" />
+                            <img src={active.image} alt={active.name} loading="lazy" className="w-full h-full object-cover" />
                           ) : (
                             active.icon
                           )}

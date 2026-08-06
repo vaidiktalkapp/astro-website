@@ -326,7 +326,7 @@ export default function HomePage() {
                     <div className="flex items-center gap-3 md:gap-3.5">
                       <div className="relative w-[45px] h-[45px] md:w-[50px] md:h-[50px] shrink-0">
                         <div className="w-full h-full rounded-full overflow-hidden border-[1.5px] border-[#22c55e] p-0.5">
-                          <img src={getImageUrl(astrologer.profileImage || astrologer.profilePicture, astrologer.name)} alt={astrologer.name} className="w-full h-full rounded-full object-cover" />
+                          <img loading="lazy" src={getImageUrl(astrologer.profileImage || astrologer.profilePicture, astrologer.name)} alt={astrologer.name} className="w-full h-full rounded-full object-cover" />
                         </div>
                         {(astrologer.availability?.isOnline || astrologer.status === 'online' || astrologer.isOnline) && (
                           <div className="absolute bottom-0 right-0 w-2.5 h-2.5 md:w-3 md:h-3 bg-[#22c55e] rounded-full border-[1.5px] border-white"></div>
@@ -468,7 +468,7 @@ export default function HomePage() {
                     <div className="flex items-center gap-3 md:gap-3.5">
                       <div className="relative w-[45px] h-[45px] md:w-[50px] md:h-[50px] shrink-0">
                         <div className="w-full h-full rounded-full overflow-hidden border-[1.5px] border-[#22c55e] p-0.5">
-                          <img src={getImageUrl(astro.profileImage, astro.name)} alt={astro.name} className="w-full h-full rounded-full object-cover" />
+                          <img loading="lazy" src={getImageUrl(astro.profileImage, astro.name)} alt={astro.name} className="w-full h-full rounded-full object-cover" />
                         </div>
                         {astro.status === 'active' && (
                           <div className="absolute bottom-0 right-0 w-2.5 h-2.5 md:w-3 md:h-3 bg-[#22c55e] rounded-full border-[1.5px] border-white"></div>
@@ -565,7 +565,7 @@ export default function HomePage() {
           {/* 1. Kundli Milan Report */}
           <Link href="/horoscope-matching" className="group text-center block bg-white border border-[#f0ddc0]/80 rounded-2xl p-4 md:p-5 hover:shadow-[0_4px_14px_rgba(92,20,32,0.1)] transition-all duration-300">
             <div className="w-full aspect-[4/3] rounded-lg overflow-hidden mb-4">
-              <img src="/images/reports/kundli-milan.webp" alt="Kundli Milan" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              <img loading="lazy" src="/images/reports/kundli-milan.webp" alt="Kundli Milan" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
             </div>
             <div className="font-bold text-[14px] text-[#3a1216] mb-3">Kundli Milan Report</div>
             <div className="border border-[#8a1c2a] text-[#8a1c2a] text-[12px] font-semibold py-2.5 rounded-lg group-hover:bg-[#8a1c2a] group-hover:text-white transition-colors w-full">View Report</div>
@@ -574,7 +574,7 @@ export default function HomePage() {
           {/* 2. Free Janam Kundli */}
           <Link href="/kundli" className="group text-center block bg-white border border-[#f0ddc0]/80 rounded-2xl p-4 md:p-5 hover:shadow-[0_4px_14px_rgba(92,20,32,0.1)] transition-all duration-300">
             <div className="w-full aspect-[4/3] rounded-lg overflow-hidden mb-4">
-              <img src="/images/reports/janam-kundli.webp" alt="Janam Kundli" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              <img loading="lazy" src="/images/reports/janam-kundli.webp" alt="Janam Kundli" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
             </div>
             <div className="font-bold text-[14px] text-[#3a1216] mb-3">Free Janam Kundli</div>
             <div className="border border-[#8a1c2a] text-[#8a1c2a] text-[12px] font-semibold py-2.5 rounded-lg group-hover:bg-[#8a1c2a] group-hover:text-white transition-colors w-full">Get Free Kundli</div>
@@ -583,7 +583,7 @@ export default function HomePage() {
           {/* 3. Moon Sign Finder */}
           <Link href="/moon-signs" className="group text-center block bg-white border border-[#f0ddc0]/80 rounded-2xl p-4 md:p-5 hover:shadow-[0_4px_14px_rgba(92,20,32,0.1)] transition-all duration-300">
             <div className="w-full aspect-[4/3] rounded-lg overflow-hidden mb-4">
-              <img src="/images/reports/moon-sign.webp" alt="Moon Sign" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              <img loading="lazy" src="/images/reports/moon-sign.webp" alt="Moon Sign" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
             </div>
             <div className="font-bold text-[14px] text-[#3a1216] mb-3">Moon Sign Finder</div>
             <div className="border border-[#8a1c2a] text-[#8a1c2a] text-[12px] font-semibold py-2.5 rounded-lg group-hover:bg-[#8a1c2a] group-hover:text-white transition-colors w-full">Find Now</div>
@@ -592,7 +592,7 @@ export default function HomePage() {
           {/* 4. Lucky Number */}
           <Link href="/numerology" className="group text-center block bg-white border border-[#f0ddc0]/80 rounded-2xl p-4 md:p-5 hover:shadow-[0_4px_14px_rgba(92,20,32,0.1)] transition-all duration-300">
             <div className="w-full aspect-[4/3] rounded-lg overflow-hidden mb-4">
-              <img src="/images/reports/lucky-number.webp" alt="Lucky Number" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              <img loading="lazy" src="/images/reports/lucky-number.webp" alt="Lucky Number" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
             </div>
             <div className="font-bold text-[14px] text-[#3a1216] mb-3">Lucky Number</div>
             <div className="border border-[#8a1c2a] text-[#8a1c2a] text-[12px] font-semibold py-2.5 rounded-lg group-hover:bg-[#8a1c2a] group-hover:text-white transition-colors w-full">Find Now</div>
@@ -601,7 +601,7 @@ export default function HomePage() {
           {/* 5. Love Compatibility */}
           <Link href="/love-compatibility" className="group text-center block bg-white border border-[#f0ddc0]/80 rounded-2xl p-4 md:p-5 hover:shadow-[0_4px_14px_rgba(92,20,32,0.1)] transition-all duration-300">
             <div className="w-full aspect-[4/3] rounded-lg overflow-hidden mb-4">
-              <img src="/images/reports/love-compatibility.webp" alt="Love Compatibility" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              <img loading="lazy" src="/images/reports/love-compatibility.webp" alt="Love Compatibility" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
             </div>
             <div className="font-bold text-[14px] text-[#3a1216] mb-3">Love Compatibility</div>
             <div className="border border-[#8a1c2a] text-[#8a1c2a] text-[12px] font-semibold py-2.5 rounded-lg group-hover:bg-[#8a1c2a] group-hover:text-white transition-colors w-full">Check Match</div>
@@ -773,7 +773,7 @@ export default function HomePage() {
         {/* Banner */}
         <div className="rounded-t-xl overflow-hidden grid grid-cols-1 md:grid-cols-[1fr_1.6fr] bg-[#fdfaf5] border border-[#f0ddc0]/80 border-b-0 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
           <div className="h-[250px] md:h-auto border-r border-[#f0ddc0]/50">
-            <img src="/founder.webp" alt="Founder Shri Jitendra Kumar Mishra" className="w-full h-full object-cover object-top" />
+            <img loading="lazy" src="/founder.webp" alt="Founder Shri Jitendra Kumar Mishra" className="w-full h-full object-cover object-top" />
           </div>
           <div className="p-7 md:p-9 text-[#6E2F37] flex flex-col justify-center">
             <div className="font-serif font-bold text-xl md:text-[25px] leading-tight text-[#5c1420] mb-2">
@@ -985,7 +985,7 @@ export default function HomePage() {
                     <>
                       {/* Scaled image to crop out YouTube letterboxing on vertical videos */}
                       <div className="absolute inset-0 flex items-center justify-center bg-black cursor-pointer">
-                        <img src={vId ? `https://img.youtube.com/vi/${vId}/hqdefault.jpg` : '/placeholder-video.jpg'} alt={item.name} loading="lazy" className="w-full h-full object-cover scale-[1.35] group-hover:scale-[1.45] transition-transform duration-700 opacity-90 group-hover:opacity-100" />
+                        <img loading="lazy" src={vId ? `https://img.youtube.com/vi/${vId}/hqdefault.jpg` : '/placeholder-video.jpg'} alt={item.name} loading="lazy" className="w-full h-full object-cover scale-[1.35] group-hover:scale-[1.45] transition-transform duration-700 opacity-90 group-hover:opacity-100" />
                       </div>
 
                       {/* Play Button Overlay */}
@@ -1067,11 +1067,11 @@ export default function HomePage() {
             <div className="flex flex-wrap gap-3 justify-center md:justify-start">
               {/* App Store Button */}
               <a href="https://apps.apple.com/in/app/vaidik-talk/id6759283230" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity inline-block w-[140px]">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" className="w-full h-auto" />
+                <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" className="w-full h-auto" />
               </a>
               {/* Google Play Button */}
               <a href="https://play.google.com/store/apps/details?id=com.vaidiktalk&hl=en_IN" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity inline-block w-[140px]">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" className="w-full h-auto" />
+                <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" className="w-full h-auto" />
               </a>
             </div>
           </div>
@@ -1079,7 +1079,7 @@ export default function HomePage() {
           {/* Middle Column - QR Code */}
           <div className="relative z-10 flex flex-col items-center shrink-0 hidden lg:flex">
             <div className="w-[100px] h-[100px] bg-white p-1 rounded-xl shadow-sm border border-gray-200 flex items-center justify-center overflow-hidden">
-              <img src="/VaidikTalk_PlayStore_QR.webp" alt="Scan to Download" className="w-full h-full object-contain" />
+              <img loading="lazy" src="/VaidikTalk_PlayStore_QR.webp" alt="Scan to Download" className="w-full h-full object-contain" />
             </div>
             <div className="text-[#c62828] font-bold text-[12px] mt-2">Scan to Download</div>
           </div>
@@ -1091,7 +1091,7 @@ export default function HomePage() {
               <div className="w-[140px] lg:w-[160px] h-[280px] lg:h-[320px] bg-[#111] rounded-[24px] border-4 border-[#222] p-1 shadow-2xl relative overflow-hidden">
                 <div className="w-full h-full bg-white rounded-[18px] overflow-hidden flex flex-col relative">
                   {/* Screen Content */}
-                  <img src="/app-mockup.webp" alt="App Screen" className="w-full h-full object-cover" />
+                  <img loading="lazy" src="/app-mockup.webp" alt="App Screen" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
