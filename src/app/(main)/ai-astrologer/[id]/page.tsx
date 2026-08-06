@@ -104,11 +104,11 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
   if (!astrologer) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-center p-6 bg-gray-50">
-                <p className="text-lg font-medium text-gray-800 mb-2">{t("_id_.astrologer_not_found")}</p>
-                <p className="text-sm text-gray-500 mb-6">{t("_id_.this_profile_may_have_been_rem")}</p>
+                <p className="text-lg font-medium text-gray-850 mb-2">{t("_id_.astrologer_not_found")}</p>
+                <p className="text-sm text-gray-850 mb-6">{t("_id_.this_profile_may_have_been_rem")}</p>
                 <button
           onClick={() => router.back()}
-          className="text-sm font-medium text-gray-700 border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">
+          className="text-sm font-medium text-gray-850 border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">
 {t("_id_.go_back")}
 
         </button>
@@ -144,7 +144,7 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                 {/* Back */}
                 <button
           onClick={() => router.back()}
-          className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-800 mb-6 transition-colors">
+          className="flex items-center gap-2 text-sm text-gray-850 hover:text-gray-850 mb-6 transition-colors">
           
                     <ArrowLeft className="w-4 h-4" />
 {t("_id_.back")}
@@ -181,7 +181,7 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                       </span>
                                         </div>
                                         {astrologer.specialization?.[0] &&
-                    <span className="text-[11px] font-medium text-gray-500 bg-gray-100 px-2.5 py-1 rounded-md border border-gray-200">
+                    <span className="text-[11px] font-medium text-gray-850 bg-gray-100 px-2.5 py-1 rounded-md border border-gray-200">
                                                 {astrologer.specialization[0]}
                                             </span>
                     }
@@ -194,7 +194,7 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                                             <BadgeCheck className="w-6 h-6 text-blue-500 flex-shrink-0" />
                                         </div>
 
-                                        <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-3">
+                                        <p className="text-xs font-medium text-[#3a1216] uppercase tracking-wide mb-3">
                                             {astrologer.specialization?.[0] ?
                       `${astrologer.specialization[0]} Expert` :
                       'Astrology Expert'}
@@ -206,12 +206,12 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                                             {statItems.map(({ label, value, unit, icon: Icon }) =>
                                               <div key={label} className="bg-white rounded-xl p-3 border border-gray-100 shadow-sm hover:shadow-md hover:border-orange-200 transition-all group">
                                                             <div className="flex items-center gap-1.5 mb-1.5">
-                                                                <Icon className="w-3.5 h-3.5 text-gray-400 group-hover:text-orange-500 transition-colors" />
-                                                                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">{label}</span>
+                                                                <Icon className="w-3.5 h-3.5 text-[#3a1216] group-hover:text-orange-500 transition-colors" />
+                                                                <span className="text-[10px] font-bold text-gray-850 uppercase tracking-wider">{label}</span>
                                                             </div>
                                                             <p className="text-lg font-bold text-gray-900 group-hover:text-orange-600 transition-colors">
                                                                 {value}
-                                                                {unit && <span className="text-xs font-medium text-gray-400 ml-0.5">{unit}</span>}
+                                                                {unit && <span className="text-xs font-medium text-[#3a1216] ml-0.5">{unit}</span>}
                                                             </p>
                                                         </div>
                                               )}
@@ -224,7 +224,7 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                                                     <Shield className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
                                                     <div className="flex-1 min-w-0">
                                                         <p className="text-xs font-semibold text-red-700">{t("_id_.insufficient_balance")}</p>
-                                                        <span className="text-gray-600 block mt-1 text-sm font-medium">
+                                                        <span className="text-gray-850 block mt-1 text-sm font-medium">
                                 {t("_id_.minimum")}{minRequiredBalance}{t("_id_.required_to_start_a_session")}
                               </span>
                                                         <button
@@ -266,11 +266,11 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                             {/* About */}
                             <div className="border-t border-gray-100 px-6 py-5">
                                 <h2 className="text-sm font-semibold text-gray-900 flex items-center gap-2 mb-3">
-                                    <Info className="w-4 h-4 text-gray-400" />
+                                    <Info className="w-4 h-4 text-[#3a1216]" />
 {t("_id_.about")}
                 </h2>
                                 <div>
-                                    <p className={`text-sm text-gray-500 leading-relaxed ${!isBioExpanded ? 'line-clamp-4' : ''}`}>
+                                    <p className={`text-sm text-gray-850 leading-relaxed ${!isBioExpanded ? 'line-clamp-4' : ''}`}>
                                         {astrologer.bio ||
                       `${astrologer.name} is an experienced Vedic astrology practitioner who combines ancient wisdom with precise astronomical analysis. With a strong background in birth chart reading and planetary transit forecasting, they offer meaningful guidance on relationships, career decisions, and spiritual growth.`}
                                     </p>
@@ -289,14 +289,14 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                             {astrologer.specialization && astrologer.specialization.length > 0 &&
               <div className="border-t border-gray-100 px-6 py-5">
                                     <h2 className="text-sm font-semibold text-gray-900 flex items-center gap-2 mb-3">
-                                        <Star className="w-4 h-4 text-gray-400" />
+                                        <Star className="w-4 h-4 text-[#3a1216]" />
 {t("_id_.areas_of_expertise")}
                 </h2>
                                     <div className="flex flex-wrap gap-2">
                                         {astrologer.specialization.filter(s => s.toLowerCase() !== 'palmistry').map((spec) =>
                   <span
                     key={spec}
-                    className="text-xs font-medium text-gray-600 bg-gray-100 border border-gray-200 px-2.5 py-1 rounded-full">
+                    className="text-xs font-medium text-gray-850 bg-gray-100 border border-gray-200 px-2.5 py-1 rounded-full">
                     
                                                 {spec}
                                             </span>
@@ -313,7 +313,7 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                                             <BadgeCheck className="w-5 h-5 text-orange-500" />
                                             Reviews
                                         </h2>
-                                        <p className="text-xs text-gray-400">Feedback from our spiritual community</p>
+                                        <p className="text-xs text-[#3a1216]">Feedback from our spiritual community</p>
                                     </div>
                                     <div className="flex flex-col items-end">
                                         <div className="flex items-center gap-1.5">
@@ -322,12 +322,12 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                                                 {[1, 2, 3, 4, 5].map((s) => (
                                                     <Star 
                                                         key={s} 
-                                                        className={`w-4 h-4 ${s <= Math.round(reviewStats?.averageRating || astrologer.rating || 4.8) ? 'fill-yellow-400 text-yellow-400' : 'fill-gray-100 text-gray-200'}`} 
+                                                        className={`w-4 h-4 ${s <= Math.round(reviewStats?.averageRating || astrologer.rating || 4.8) ? 'fill-yellow-400 text-yellow-400' : 'fill-gray-100 text-[#3a1216]'}`} 
                                                     />
                                                 ))}
                                             </div>
                                         </div>
-                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{totalReviews} Reviews</p>
+                                        <p className="text-[10px] font-bold text-[#3a1216] uppercase tracking-wider">{totalReviews} Reviews</p>
                                     </div>
                                 </div>
 
@@ -342,7 +342,7 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                                                         const percentage = totalReviews > 0 ? (count / totalReviews) * 100 : 0;
                                                         return (
                                                             <div key={rating} className="flex items-center gap-3">
-                                                                <span className="text-xs font-bold text-gray-500 w-4">{rating}</span>
+                                                                <span className="text-xs font-bold text-gray-850 w-4">{rating}</span>
                                                                 <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                                                                 <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
                                                                     <motion.div 
@@ -352,7 +352,7 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                                                                         className="h-full bg-orange-400 rounded-full" 
                                                                     />
                                                                 </div>
-                                                                <span className="text-[10px] font-bold text-gray-400 w-6 text-right">{count}</span>
+                                                                <span className="text-[10px] font-bold text-[#3a1216] w-6 text-right">{count}</span>
                                                             </div>
                                                         );
                                                     })}
@@ -361,7 +361,7 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                                                     <div className="relative">
                                                         <div className="absolute -inset-4 bg-orange-100/50 blur-xl rounded-full" />
                                                         <div className="relative bg-white p-4 rounded-2xl shadow-sm border border-orange-100">
-                                                            <p className="text-sm font-bold text-gray-800 text-center mb-1">Satisfied Clients</p>
+                                                            <p className="text-sm font-bold text-gray-850 text-center mb-1">Satisfied Clients</p>
                                                             <div className="flex items-center justify-center gap-2">
                                                                 <CheckCircle className="w-4 h-4 text-green-500" />
                                                                 <span className="text-2xl font-black text-gray-900">98%</span>
@@ -388,7 +388,7 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                                                                 {review.userProfileImage ? (
                                                                     <img src={review.userProfileImage} alt={review.userName} className="w-full h-full object-cover" />
                                                                 ) : (
-                                                                    <Users className="w-5 h-5 text-gray-300" />
+                                                                    <Users className="w-5 h-5 text-[#3a1216]" />
                                                                 )}
                                                             </div>
                                                             <div>
@@ -396,7 +396,7 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                                                                 <div className="flex items-center gap-2">
                                                                     <div className="flex">
                                                                         {[1, 2, 3, 4, 5].map((s) => (
-                                                                            <Star key={s} className={`w-2.5 h-2.5 ${s <= review.rating ? 'fill-yellow-400 text-yellow-400' : 'fill-gray-100 text-gray-200'}`} />
+                                                                            <Star key={s} className={`w-2.5 h-2.5 ${s <= review.rating ? 'fill-yellow-400 text-yellow-400' : 'fill-gray-100 text-[#3a1216]'}`} />
                                                                         ))}
                                                                     </div>
                                                                     <span className="w-1 h-1 bg-gray-300 rounded-full" />
@@ -404,11 +404,11 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <span className="text-[10px] font-medium text-gray-400">
+                                                        <span className="text-[10px] font-medium text-[#3a1216]">
                                                             {new Date(review.reviewDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
                                                         </span>
                                                     </div>
-                                                    <p className="text-sm text-gray-600 leading-relaxed italic">
+                                                    <p className="text-sm text-gray-850 leading-relaxed italic">
                                                         "{review.reviewText || 'No comment provided'}"
                                                     </p>
                                                 </motion.div>
@@ -437,9 +437,9 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                                     </>
                                 ) : (
                                     <div className="text-center py-12 bg-gray-50/50 rounded-2xl border border-dashed border-gray-200">
-                                        <MessageSquare className="w-10 h-10 text-gray-200 mx-auto mb-3" />
-                                        <p className="text-sm font-bold text-gray-500">No reviews yet</p>
-                                        <p className="text-xs text-gray-400 mt-1">Be the first to consult and share your experience!</p>
+                                        <MessageSquare className="w-10 h-10 text-[#3a1216] mx-auto mb-3" />
+                                        <p className="text-sm font-bold text-gray-850">No reviews yet</p>
+                                        <p className="text-xs text-[#3a1216] mt-1">Be the first to consult and share your experience!</p>
                                     </div>
                                 )}
                             </div>
@@ -450,10 +450,10 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
 
                             <div className="bg-white border border-gray-200 rounded-2xl p-5">
                                 <div className="w-8 h-8 bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-center mb-4">
-                                    <BookOpen className="w-4 h-4 text-gray-500" />
+                                    <BookOpen className="w-4 h-4 text-gray-850" />
                                 </div>
                                 <h3 className="text-sm font-semibold text-gray-900 mb-2">{t("_id_.training_background")}</h3>
-                                <p className="text-xs text-gray-500 leading-relaxed mb-4">
+                                <p className="text-xs text-gray-850 leading-relaxed mb-4">
                                     {astrologer.bio ? 
                                         astrologer.bio.split('.')[0] + '.' : 
                                         `${t("_id_.highly_experienced_in")}${astrologer.specialization?.join(', ') || 'Vedic Astrology'}. Providing professional guidance with ${astrologer.experienceYears || 5} years of experience.`
@@ -461,7 +461,7 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                                 </p>
                                 <div className="flex flex-wrap gap-1.5">
                                     {astrologer.specialization?.map((spec) => (
-                                        <span key={spec} className="text-[11px] font-medium text-gray-500 bg-gray-100 px-2.5 py-0.5 rounded-full border border-gray-200">
+                                        <span key={spec} className="text-[11px] font-medium text-gray-850 bg-gray-100 px-2.5 py-0.5 rounded-full border border-gray-200">
                                             {spec}
                                         </span>
                                     ))}
@@ -470,15 +470,15 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
 
                             <div className="bg-white border border-gray-200 rounded-2xl p-5">
                                 <div className="w-8 h-8 bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-center mb-4">
-                                    <Target className="w-4 h-4 text-gray-500" />
+                                    <Target className="w-4 h-4 text-gray-850" />
                                 </div>
                                 <h3 className="text-sm font-semibold text-gray-900 mb-2">{t("_id_.consultation_focus")}</h3>
-                                <p className="text-xs text-gray-500 leading-relaxed mb-4 line-clamp-2">
+                                <p className="text-xs text-gray-850 leading-relaxed mb-4 line-clamp-2">
                                     {astrologer.focusArea || 'Specialized guidance focused on resolving complex life challenges and providing path-breaking insights.'}
                                 </p>
                                 <div className="flex flex-wrap gap-1.5">
                                     {(astrologer.focusArea || 'Life Path, Prosperity').split(',').map((focus) => (
-                                        <span key={focus} className="text-[11px] font-medium text-gray-500 bg-gray-100 px-2.5 py-0.5 rounded-full border border-gray-200">
+                                        <span key={focus} className="text-[11px] font-medium text-gray-850 bg-gray-100 px-2.5 py-0.5 rounded-full border border-gray-200">
                                             {focus.trim()}
                                         </span>
                                     ))}
@@ -498,23 +498,23 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                 className="w-20 h-20 rounded-full object-cover border border-gray-200 mx-auto mb-3" />
               
                             <p className="text-sm font-semibold text-gray-900 mb-1">{astrologer.name}</p>
-                            <p className="text-xs text-gray-500 leading-relaxed mb-4">
+                            <p className="text-xs text-gray-850 leading-relaxed mb-4">
                                 {astrologer.bio ? astrologer.bio.slice(0, 80) + '...' : 'Guiding seekers through cosmic rhythms with clarity and precision.'}
                             </p>
                             <div className="flex flex-col gap-2 text-left">
                                 <div className="flex items-center gap-2.5 bg-gray-50 rounded-lg px-3 py-2 border border-gray-100">
-                                    <Heart className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
-                                    <span className="text-xs text-gray-600 capitalize">{astrologer.tone || 'Compassionate guidance'}</span>
+                                    <Heart className="w-3.5 h-3.5 text-[#3a1216] flex-shrink-0" />
+                                    <span className="text-xs text-gray-850 capitalize">{astrologer.tone || 'Compassionate guidance'}</span>
                                 </div>
                                 <div className="flex items-center gap-2.5 bg-gray-50 rounded-lg px-3 py-2 border border-gray-100">
-                                    <Shield className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
-                                    <span className="text-xs text-gray-600">
+                                    <Shield className="w-3.5 h-3.5 text-[#3a1216] flex-shrink-0" />
+                                    <span className="text-xs text-gray-850">
                                         {astrologer.specialization?.join(' & ') || 'Vedic Expert'}
                                     </span>
                                 </div>
                                 <div className="flex items-center gap-2.5 bg-gray-50 rounded-lg px-3 py-2 border border-gray-100">
-                                    <CheckCircle className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
-                                    <span className="text-xs text-gray-600">Verified AI Expert</span>
+                                    <CheckCircle className="w-3.5 h-3.5 text-[#3a1216] flex-shrink-0" />
+                                    <span className="text-xs text-gray-850">Verified AI Expert</span>
                                 </div>
                             </div>
                         </div>
@@ -535,7 +535,7 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                                 { label: 'Availability', value: 'Online now', highlight: true }].
                                 map(({ label, value, highlight }) =>
                                 <div key={label} className="flex justify-between items-center">
-                                    <span className="text-xs text-gray-400">{label}</span>
+                                    <span className="text-xs text-[#3a1216]">{label}</span>
                                     <span className={`text-xs font-bold ${highlight ? 'text-green-600' : 'text-gray-900'}`}>{value}</span>
                                 </div>
                                 )}
@@ -547,9 +547,9 @@ const AiAstrologerProfilePage = ({ params }: PageProps) => {
                             <div className="w-9 h-9 bg-gray-50 border border-gray-200 rounded-full flex items-center justify-center mx-auto mb-3 text-base">
                                 ॐ
                             </div>
-                            <p className="text-[10px] font-medium text-gray-400 uppercase tracking-widest mb-2">{t("_id_.daily_mantra")}</p>
+                            <p className="text-[10px] font-medium text-[#3a1216] uppercase tracking-widest mb-2">{t("_id_.daily_mantra")}</p>
                             <p className="text-sm font-medium text-gray-900 font-mono mb-1">ॐ श्री महालक्ष्म्यै नमः</p>
-                            <p className="text-xs text-gray-400">{t("_id_.chant_for_abundance_and_wisdom")}</p>
+                            <p className="text-xs text-[#3a1216]">{t("_id_.chant_for_abundance_and_wisdom")}</p>
                         </div>
                     </div>
                 </div>

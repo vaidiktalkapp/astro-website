@@ -216,7 +216,7 @@ export default function SmartKundaliPage() {
   const samplePdf = settings?.samplePdf;
 
   const FaqAnswer = ({ blocks }: { blocks: FaqBlock[] }) => (
-    <div className="text-gray-800 text-[15px] leading-relaxed space-y-4 font-medium">
+    <div className="text-gray-850 text-[15px] leading-relaxed space-y-4 font-medium">
       {blocks.map((block, i) => {
         if (block.type === 'p') {
           return <p key={i}>{block.text}</p>;
@@ -270,7 +270,7 @@ export default function SmartKundaliPage() {
   );
 
   return (
-    <div className="w-full min-h-screen bg-[#fdfaf6] font-sans text-gray-800 relative">
+    <div className="w-full min-h-screen bg-[#fdfaf6] font-sans text-gray-850 relative">
 
       {/* Lightbox */}
       {lightboxImg && (
@@ -304,7 +304,7 @@ export default function SmartKundaliPage() {
           <p className="text-[17px] md:text-[20px] text-white/100 mb-6 max-w-2xl mx-auto font-semibold drop-shadow-sm">Premium Personalized Kundli by India's Most Trusted Astrologer</p>
 
           <Link href="/report/kundali/vaidik-smart-kundali-10-years/checkout" className="inline-block bg-white text-[#b06126] font-bold text-[16px] md:text-[18px] px-10 py-3.5 md:py-4 rounded-xl shadow-lg hover:scale-105 transition-transform mb-6">
-            Get Your Kundali Now @ <span className="line-through text-gray-400 mx-1">₹1799</span> ₹649
+            Get Your Kundali Now @ <span className="line-through text-[#3a1216] mx-1">₹1799</span> ₹649
           </Link>
 
           {/* Happy Customers Avatars */}
@@ -451,7 +451,7 @@ export default function SmartKundaliPage() {
 
             <div className="flex items-center gap-3 mb-8">
               <span className="text-[32px] md:text-[40px] font-bold text-[#5c1a1f]">₹649</span>
-              <span className="text-lg text-gray-400 line-through font-medium">₹1799</span>
+              <span className="text-lg text-[#3a1216] line-through font-medium">₹1799</span>
               <span className="bg-[#e8ffd6] text-[#2e7d32] text-[11px] font-bold px-2 py-1 rounded border border-[#a5d6a7] uppercase tracking-wide ml-2">SPECIAL</span>
             </div>
 
@@ -469,28 +469,28 @@ export default function SmartKundaliPage() {
             <div className="flex items-center gap-2 text-[22px] md:text-[26px] font-bold text-[#b07d54] mb-1">
               <ShieldCheck className="w-6 h-6" /> 10 Lakh+
             </div>
-            <div className="text-[12px] text-gray-700 font-bold uppercase tracking-wider">Lives Transformed</div>
+            <div className="text-[12px] text-gray-850 font-bold uppercase tracking-wider">Lives Transformed</div>
           </div>
           <div className="hidden md:block w-px h-12 bg-[#ebdcc7]"></div>
           <div className="flex flex-col items-center">
             <div className="flex items-center gap-2 text-[22px] md:text-[26px] font-bold text-[#b07d54] mb-1">
               <BookOpen className="w-6 h-6" /> 100+ Pages
             </div>
-            <div className="text-[12px] text-gray-700 font-bold uppercase tracking-wider">Detailed Horoscope</div>
+            <div className="text-[12px] text-gray-850 font-bold uppercase tracking-wider">Detailed Horoscope</div>
           </div>
           <div className="hidden md:block w-px h-12 bg-[#ebdcc7]"></div>
           <div className="flex flex-col items-center">
             <div className="flex items-center gap-2 text-[22px] md:text-[26px] font-bold text-[#b07d54] mb-1">
               <Star className="w-6 h-6 fill-current" /> 4.8/5
             </div>
-            <div className="text-[12px] text-gray-700 font-bold uppercase tracking-wider">Average Rating</div>
+            <div className="text-[12px] text-gray-850 font-bold uppercase tracking-wider">Average Rating</div>
           </div>
           <div className="hidden md:block w-px h-12 bg-[#ebdcc7]"></div>
           <div className="flex flex-col items-center">
             <div className="flex items-center gap-2 text-[22px] md:text-[26px] font-bold text-[#b07d54] mb-1">
               <Heart className="w-6 h-6" /> Featured
             </div>
-            <div className="text-[12px] text-gray-700 font-bold uppercase tracking-wider">In Top Media</div>
+            <div className="text-[12px] text-gray-850 font-bold uppercase tracking-wider">In Top Media</div>
           </div>
         </div>
       </section>
@@ -593,12 +593,12 @@ export default function SmartKundaliPage() {
                   <div className="flex gap-1 mb-5 text-[#d68636]">
                     {[...Array(5)].map((_, idx) => <Star key={idx} className="w-4 h-4 fill-current" />)}
                   </div>
-                  <p className="text-gray-600 text-[14px] leading-relaxed mb-8 flex-1 italic">"{t.review}"</p>
+                  <p className="text-gray-850 text-[14px] leading-relaxed mb-8 flex-1 italic">"{t.review}"</p>
                   <div className="flex items-center gap-4 border-t border-gray-100 pt-5">
                     <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shrink-0" style={{ backgroundColor: t.color || '#5c1a1f' }}>{t.initial}</div>
                     <div>
                       <h4 className="font-bold text-[#5c1a1f] text-[14px] leading-none mb-1">{t.name}</h4>
-                      {t.city && <p className="text-[12px] text-gray-700">{t.city}</p>}
+                      {t.city && <p className="text-[12px] text-gray-850">{t.city}</p>}
                     </div>
                   </div>
                 </div>

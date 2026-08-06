@@ -78,7 +78,7 @@ export default function FaqPage() {
           ) : faqs.length === 0 ? (
             <div className="text-center py-20 bg-white rounded-2xl border border-[#f0ddc0]/80">
               <h3 className="text-xl font-bold text-[#5c1420]">Check back later!</h3>
-              <p className="text-gray-500 mt-2">We are updating our frequently asked questions.</p>
+              <p className="text-gray-850 mt-2">We are updating our frequently asked questions.</p>
             </div>
           ) : (
             <>
@@ -115,7 +115,7 @@ export default function FaqPage() {
                       <h3 className={`text-lg md:text-xl font-bold pr-8 transition-colors ${expandedId === faq._id ? 'text-[#d97706]' : 'text-[#3a1216] hover:text-[#5c1420]'}`}>
                         {faq.question}
                       </h3>
-                      <div className={`shrink-0 w-8 h-8 rounded-full border-2 flex items-center justify-center transition-all ${expandedId === faq._id ? 'border-[#d97706] text-[#d97706]' : 'border-gray-200 text-gray-400'}`}>
+                      <div className={`shrink-0 w-8 h-8 rounded-full border-2 flex items-center justify-center transition-all ${expandedId === faq._id ? 'border-[#d97706] text-[#d97706]' : 'border-gray-200 text-[#3a1216]'}`}>
                         <svg 
                           width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
                           className={`transition-transform duration-300 ${expandedId === faq._id ? 'rotate-180' : ''}`}

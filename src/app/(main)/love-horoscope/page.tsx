@@ -136,7 +136,7 @@ function LoveHoroscopeContent() {
                     <button
             onClick={() => {router.push('/love-horoscope?mode=zodiac');setView('selection');setResult(null);}}
             className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
-            mode === 'zodiac' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-500 hover:text-[#b8962e]'}`
+            mode === 'zodiac' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-850 hover:text-[#b8962e]'}`
             }>
             
                         <Grid className="w-3.5 h-3.5" />{t("love_horoscope.zodiac")}
@@ -144,7 +144,7 @@ function LoveHoroscopeContent() {
                     <button
             onClick={() => {router.push('/love-horoscope?mode=personal');setView('selection');setResult(null);}}
             className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
-            mode === 'personal' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-500 hover:text-[#b8962e]'}`
+            mode === 'personal' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-850 hover:text-[#b8962e]'}`
             }>
             
                         <User className="w-3.5 h-3.5" />{t("love_horoscope.reading")}
@@ -152,7 +152,7 @@ function LoveHoroscopeContent() {
                     <button
             onClick={() => {router.push('/love-horoscope?mode=history');setView('selection');}}
             className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
-            mode === 'history' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-500 hover:text-[#b8962e]'}`
+            mode === 'history' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-850 hover:text-[#b8962e]'}`
             }>
             
                         <History className="w-3.5 h-3.5" />{t("love_horoscope.history")}
@@ -174,7 +174,7 @@ function LoveHoroscopeContent() {
                             <Loader2 className="w-7 h-7 text-[#b8962e] animate-spin absolute" />
                         </div>
                         <h3 className="mt-6 text-lg font-semibold text-gray-900 serif">{t("love_horoscope.consulting_the_cosmic_lovers")}</h3>
-                        <p className="text-gray-400 text-xs mt-2 tracking-widest uppercase"></p>
+                        <p className="text-[#3a1216] text-xs mt-2 tracking-widest uppercase"></p>
                     </motion.div> :
         view === 'selection' ?
         <motion.div
@@ -205,7 +205,7 @@ function LoveHoroscopeContent() {
                                     {history.length === 0 ?
               <div className="col-span-full py-16 rounded-2xl border border-[#d6c89a] border-dashed text-center bg-transparent">
                                             <Heart className="w-10 h-10 text-[#d6c89a] mx-auto mb-3" />
-                                            <p className="text-gray-400 text-sm uppercase tracking-widest">{t("love_horoscope.no_entries_found_in_the_divine")}</p>
+                                            <p className="text-[#3a1216] text-sm uppercase tracking-widest">{t("love_horoscope.no_entries_found_in_the_divine")}</p>
                                         </div> :
 
               history.map((item: any, idx: number) =>
@@ -222,13 +222,13 @@ function LoveHoroscopeContent() {
                                                     </div>
                                                     <div>
                                                         <h4 className="font-semibold text-gray-900 text-[14px]">{item.name}</h4>
-                                                        <p className="text-[11px] text-gray-400 flex items-center gap-1 mt-0.5">
+                                                        <p className="text-[11px] text-[#3a1216] flex items-center gap-1 mt-0.5">
                                                             <Calendar className="w-3 h-3" />
                                                             {new Date(item.timestamp).toLocaleDateString()}
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <ChevronLeft className="w-4 h-4 text-gray-300 group-hover:text-[#b8962e] rotate-180 transition-colors" />
+                                                <ChevronLeft className="w-4 h-4 text-[#3a1216] group-hover:text-[#b8962e] rotate-180 transition-colors" />
                                             </motion.button>
               )
               }

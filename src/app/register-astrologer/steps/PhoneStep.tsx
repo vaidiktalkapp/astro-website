@@ -23,13 +23,13 @@ export default function PhoneStep() {
   return (
     <div className="p-8 flex flex-col ">
       <h1 className="text-3xl font-extrabold text-[#5b2b84] mb-2">Welcome to VaidikTalk</h1>
-      <p className="text-gray-500 mb-8">Register as Astrologer</p>
+      <p className="text-gray-850 mb-8">Register as Astrologer</p>
 
       <form onSubmit={handleSubmit} className="flex-1">
-        <label className="block text-sm font-bold text-gray-700 mb-2">Mobile Number</label>
+        <label className="block text-sm font-bold text-gray-850 mb-2">Mobile Number</label>
         <div className="flex gap-3 mb-6">
           <select 
-            className="bg-white border-2 border-gray-200 rounded-xl px-3 py-3 text-gray-700 focus:border-[#5b2b84] outline-none font-semibold"
+            className="bg-white border-2 border-gray-200 rounded-xl px-3 py-3 text-gray-850 focus:border-[#5b2b84] outline-none font-semibold"
             value={code}
             onChange={(e) => setCode(e.target.value)}
           >

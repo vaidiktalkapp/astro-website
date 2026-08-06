@@ -245,7 +245,7 @@ export default function AstrologerProfilePage() {
     const percentage = total > 0 ? count / total * 100 : 0;
     return (
       <div key={star} className="flex items-center text-xs mb-1">
-        <span className="w-3 font-semibold text-gray-600">{star}</span>
+        <span className="w-3 font-semibold text-gray-850">{star}</span>
         <Star className="w-3 h-3 text-yellow-400 fill-current mx-1" />
         <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden mx-2">
           <div
@@ -253,7 +253,7 @@ export default function AstrologerProfilePage() {
             style={{ width: `${percentage}%` }} />
           
         </div>
-        <span className="w-8 text-right text-gray-500">{count}</span>
+        <span className="w-8 text-right text-gray-850">{count}</span>
       </div>);
 
   };
@@ -267,7 +267,7 @@ export default function AstrologerProfilePage() {
   }
 
   if (!astrologer) {
-    return <div className="text-center py-12 text-gray-700">{t("_id_.astrologer_not_found")}</div>;
+    return <div className="text-center py-12 text-gray-850">{t("_id_.astrologer_not_found")}</div>;
   }
 
   const bioText = astrologer.bio || (astrologer as any).about || (astrologer as any).description || "Expert astrologer with deep knowledge.";
@@ -320,7 +320,7 @@ export default function AstrologerProfilePage() {
                             {astrologer.education || 'Certified Astrologer'}
                           </span>
                         </div>
-                        <p className="text-sm sm:text-base text-gray-700 font-medium mb-2 truncate">
+                        <p className="text-sm sm:text-base text-gray-850 font-medium mb-2 truncate">
                           {astrologer.specializations?.join(', ') || 'Expert Astrologer'}
                         </p>
                       </div>
@@ -332,7 +332,7 @@ export default function AstrologerProfilePage() {
                           disabled={followLoading}
                           className={`flex items-center gap-1 px-3 py-1.5 rounded-full border text-xs font-semibold transition-all ${isFollowing ?
                           'bg-pink-50 border-pink-200 text-pink-600' :
-                          'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'}`
+                          'bg-white border-gray-300 text-gray-850 hover:bg-gray-50'}`
                           }>
                           
                           <Heart className={`w-3.5 h-3.5 ${isFollowing ? 'fill-current' : ''}`} />
@@ -341,7 +341,7 @@ export default function AstrologerProfilePage() {
 
                         <button
                           onClick={handleShare}
-                          className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-full transition-colors"
+                          className="p-1.5 text-[#3a1216] hover:text-gray-850 hover:bg-gray-50 rounded-full transition-colors"
                           title="Share Profile">
                           
                           <Share2 className="w-4 h-4" />
@@ -351,17 +351,17 @@ export default function AstrologerProfilePage() {
 
                     {/* OPTIMIZED: Compact info badges */}
                     <div className="flex flex-wrap gap-2 text-xs">
-                      <div className="flex items-center text-gray-600 bg-gray-50 px-2.5 py-1 rounded-md border border-gray-100">
+                      <div className="flex items-center text-gray-850 bg-gray-50 px-2.5 py-1 rounded-md border border-gray-100">
                         <Star className="w-3.5 h-3.5 text-yellow-500 fill-current mr-1" />
                         <span className="font-bold text-gray-900">{astrologer.ratings.average.toFixed(1)}</span>
-                        {/* <span className="mx-1 text-gray-300">•</span>
-                        <span className="text-gray-600">{formatCount(astrologer.stats.totalOrders)}</span> */}
+                        {/* <span className="mx-1 text-[#3a1216]">•</span>
+                        <span className="text-gray-850">{formatCount(astrologer.stats.totalOrders)}</span> */}
                       </div>
-                      <div className="flex items-center text-gray-600 bg-gray-50 px-2.5 py-1 rounded-md border border-gray-100">
+                      <div className="flex items-center text-gray-850 bg-gray-50 px-2.5 py-1 rounded-md border border-gray-100">
                         <Languages className="w-3.5 h-3.5 mr-1" />
                         {astrologer.languages?.join(', ') || 'N/A'}
                       </div>
-                      <div className="flex items-center text-gray-600 bg-gray-50 px-2.5 py-1 rounded-md border border-gray-100">
+                      <div className="flex items-center text-gray-850 bg-gray-50 px-2.5 py-1 rounded-md border border-gray-100">
                         <ShieldCheck className="w-3.5 h-3.5 mr-1" />
                         {astrologer.experienceYears}{t("_id_.y_exp")}
                       </div>
@@ -376,7 +376,7 @@ export default function AstrologerProfilePage() {
                     disabled={followLoading}
                     className={`flex items-center gap-1 px-4 py-1.5 rounded-full border text-xs font-semibold transition-all ${isFollowing ?
                     'bg-pink-50 border-pink-200 text-pink-600' :
-                    'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'}`
+                    'bg-white border-gray-300 text-gray-850 hover:bg-gray-50'}`
                     }>
                     
                     <Heart className={`w-3.5 h-3.5 ${isFollowing ? 'fill-current' : ''}`} />
@@ -385,7 +385,7 @@ export default function AstrologerProfilePage() {
 
                   <button
                     onClick={handleShare}
-                    className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-full transition-colors border border-gray-200"
+                    className="p-2 text-[#3a1216] hover:text-gray-850 hover:bg-gray-50 rounded-full transition-colors border border-gray-200"
                     title="Share Profile">
                     
                     <Share2 className="w-4 h-4" />
@@ -398,7 +398,7 @@ export default function AstrologerProfilePage() {
           {/* OPTIMIZED: Stats Grid - More compact */}
           <div className="grid grid-cols-2 divide-x divide-gray-100 bg-gray-50/50 border-t border-gray-100">
             <div className="px-3 py-2.5 text-center">
-              <div className="flex items-center justify-center text-gray-500 mb-0.5">
+              <div className="flex items-center justify-center text-gray-850 mb-0.5">
                 <MessageCircle className="w-3.5 h-3.5 mr-1" />
                 <span className="text-[10px] font-semibold uppercase tracking-wide">{t("_id_.chat_mins")}</span>
               </div>
@@ -407,7 +407,7 @@ export default function AstrologerProfilePage() {
               </p>
             </div>
             <div className="px-3 py-2.5 text-center">
-              <div className="flex items-center justify-center text-gray-500 mb-0.5">
+              <div className="flex items-center justify-center text-gray-850 mb-0.5">
                 <Phone className="w-3.5 h-3.5 mr-1" />
                 <span className="text-[10px] font-semibold uppercase tracking-wide">{t("_id_.call_mins")}</span>
               </div>
@@ -425,7 +425,7 @@ export default function AstrologerProfilePage() {
             <span className="ml-2 w-12 h-px bg-linear-to-r from-yellow-400 to-transparent"></span>
           </h2>
           <div className="relative">
-            <p className="text-gray-700 leading-relaxed text-sm">
+            <p className="text-gray-850 leading-relaxed text-sm">
               {displayedBio}
             </p>
             {actualIsBioLong &&
@@ -469,7 +469,7 @@ export default function AstrologerProfilePage() {
             onClick={() => setActiveImage(null)}
           >
             <button 
-              className="absolute top-4 right-4 text-white hover:text-gray-300 text-3xl font-light cursor-pointer"
+              className="absolute top-4 right-4 text-white hover:text-[#3a1216] text-3xl font-light cursor-pointer"
               onClick={() => setActiveImage(null)}
             >
               &times;
@@ -504,7 +504,7 @@ export default function AstrologerProfilePage() {
 
                 )}
                 </div>
-                <span className="text-xs text-gray-500">{formatCount(totalRatingCount)}{t("_id_.reviews")}</span>
+                <span className="text-xs text-gray-850">{formatCount(totalRatingCount)}{t("_id_.reviews")}</span>
               </div>
 
               <div className="flex-1 max-w-xs py-1">
@@ -530,27 +530,27 @@ export default function AstrologerProfilePage() {
 
 
                   <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
-                          <User className="w-4 h-4 text-gray-400" />
+                          <User className="w-4 h-4 text-[#3a1216]" />
                         </div>
                   }
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-1.5 flex-wrap">
                           <p className="text-sm font-semibold text-gray-900 truncate">{review.userName || 'Anonymous'}</p>
                           {review.serviceType &&
-                      <span className="text-[11px] text-gray-400 truncate">• {review.serviceType}</span>
+                      <span className="text-[11px] text-[#3a1216] truncate">• {review.serviceType}</span>
                       }
                         </div>
                         <div className="flex items-center gap-1 mt-0.5">
                           {[1, 2, 3, 4, 5].map((i) =>
                       <Star
                         key={i}
-                        className={`w-2.5 h-2.5 ${i <= review.rating ? 'text-yellow-400 fill-current' : 'text-gray-200'}`} />
+                        className={`w-2.5 h-2.5 ${i <= review.rating ? 'text-yellow-400 fill-current' : 'text-[#3a1216]'}`} />
 
                       )}
                         </div>
                       </div>
                     </div>
-                    <div className="flex items-center text-[11px] text-gray-400 shrink-0">
+                    <div className="flex items-center text-[11px] text-[#3a1216] shrink-0">
                       <Calendar className="w-3 h-3 mr-0.5" />
                       {new Date(review.reviewDate).toLocaleDateString(undefined, {
                     month: 'short',
@@ -560,7 +560,7 @@ export default function AstrologerProfilePage() {
                   </div>
 
                   {review.reviewText &&
-              <p className="mt-2 text-xs sm:text-sm text-gray-600 leading-relaxed pl-10">
+              <p className="mt-2 text-xs sm:text-sm text-gray-850 leading-relaxed pl-10">
                       {review.reviewText}
                     </p>
               }
@@ -595,10 +595,10 @@ export default function AstrologerProfilePage() {
 
           <div className="flex flex-col items-center justify-center py-8 px-4 border-2 border-dashed border-gray-100 rounded-lg bg-gray-50/30">
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm mb-3">
-                <MessageCircle className="w-6 h-6 text-gray-300" />
+                <MessageCircle className="w-6 h-6 text-[#3a1216]" />
               </div>
               <h3 className="text-sm font-semibold text-gray-900 mb-1">{t("_id_.no_reviews_yet")}</h3>
-              <p className="text-gray-500 text-center text-xs max-w-xs mb-3">
+              <p className="text-gray-850 text-center text-xs max-w-xs mb-3">
 {t("_id_.be_the_first_to_consult_and_sh")}
             </p>
               <button
@@ -628,14 +628,14 @@ export default function AstrologerProfilePage() {
                 {isChatProcessing ?
                 <div className="w-4 h-4 border-2 border-green-600 border-t-transparent rounded-full animate-spin" /> :
 
-                <MessageCircle className={`w-4 h-4 ${isAvailable ? 'text-green-600' : 'text-gray-400'}`} />
+                <MessageCircle className={`w-4 h-4 ${isAvailable ? 'text-green-600' : 'text-[#3a1216]'}`} />
                 }
 
-                <span className={`font-bold text-sm ${isAvailable ? 'text-green-700' : 'text-gray-500'}`}>
+                <span className={`font-bold text-sm ${isAvailable ? 'text-green-700' : 'text-gray-850'}`}>
                   {isChatProcessing ? 'Starting...' : isBusy ? `Busy ${waitTime}m` : 'Chat'}
                 </span>
               </div>
-              <span className={`text-[11px] mt-0.5 ${isAvailable ? 'text-green-600 font-medium' : 'text-gray-400'}`}>
+              <span className={`text-[11px] mt-0.5 ${isAvailable ? 'text-green-600 font-medium' : 'text-[#3a1216]'}`}>
                 ₹{astrologer.pricing.chat}{t("_id_._min")}
               </span>
             </button>
@@ -653,13 +653,13 @@ export default function AstrologerProfilePage() {
                 {isCallProcessing ?
                 <div className="w-4 h-4 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" /> :
 
-                <Phone className={`w-4 h-4 ${isAvailable ? 'text-blue-600' : 'text-gray-400'}`} />
+                <Phone className={`w-4 h-4 ${isAvailable ? 'text-blue-600' : 'text-[#3a1216]'}`} />
                 }
-                <span className={`font-bold text-sm ${isAvailable ? 'text-blue-700' : 'text-gray-500'}`}>
+                <span className={`font-bold text-sm ${isAvailable ? 'text-blue-700' : 'text-gray-850'}`}>
                   {isCallProcessing ? 'Calling...' : isBusy ? `Busy ${waitTime}m` : 'Call'}
                 </span>
               </div>
-              <span className={`text-[11px] mt-0.5 ${isAvailable ? 'text-blue-600 font-medium' : 'text-gray-400'}`}>
+              <span className={`text-[11px] mt-0.5 ${isAvailable ? 'text-blue-600 font-medium' : 'text-[#3a1216]'}`}>
                 ₹{astrologer.pricing.call}{t("_id_._min")}
               </span>
             </button>

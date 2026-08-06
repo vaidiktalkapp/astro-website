@@ -116,7 +116,7 @@ const AstrologerCard: React.FC<Props> = ({ astrologer, mode }) => {
             <span>⭐</span>
             <span className="font-bold">{astrologer.ratings?.average?.toFixed(1) || '5.0'}</span>
           </div>
-          {/* <div className="text-[10px] text-gray-400">
+          {/* <div className="text-[10px] text-[#3a1216]">
             {astrologer.stats?.totalOrders || 0} orders
           </div> */}
         </div>
@@ -135,13 +135,13 @@ const AstrologerCard: React.FC<Props> = ({ astrologer, mode }) => {
           )}
         </div>
 
-        <p className="text-[12px] text-gray-500 mt-0.5 w-full truncate">{skills}</p>
-        <p className="text-[12px] text-gray-500 mt-0.5 w-full truncate">{langs || 'English'}</p>
-        <p className="text-[12px] text-gray-500 mt-0.5 w-full truncate">Exp: {astrologer.experienceYears || 0} Years</p>
+        <p className="text-[12px] text-gray-850 mt-0.5 w-full truncate">{skills}</p>
+        <p className="text-[12px] text-gray-850 mt-0.5 w-full truncate">{langs || 'English'}</p>
+        <p className="text-[12px] text-gray-850 mt-0.5 w-full truncate">Exp: {astrologer.experienceYears || 0} Years</p>
 
         <div className="flex items-center mt-2 gap-2 flex-wrap">
           <div className="flex items-center gap-2">
-            <span className="text-[12px] text-gray-400 line-through">
+            <span className="text-[12px] text-[#3a1216] line-through">
               ₹{originalPrice}
             </span>
             <span className="text-[14px] font-bold text-red-600 whitespace-nowrap">
@@ -185,7 +185,7 @@ const AstrologerCard: React.FC<Props> = ({ astrologer, mode }) => {
         ) : (
           <button
             disabled
-            className="px-3 py-1.5 rounded-full border border-gray-200 bg-gray-50 text-gray-400 text-[12px] font-medium cursor-not-allowed"
+            className="px-3 py-1.5 rounded-full border border-gray-200 bg-gray-50 text-[#3a1216] text-[12px] font-medium cursor-not-allowed"
           >
             Offline
           </button>

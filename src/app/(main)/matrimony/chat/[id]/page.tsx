@@ -293,7 +293,7 @@ export default function MatrimonyChatPage() {
                 <div className="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
                     <div className="flex items-center gap-4">
                         <Link href="/matrimony" className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-                            <ArrowLeft className="w-5 h-5 text-gray-700" />
+                            <ArrowLeft className="w-5 h-5 text-gray-850" />
                         </Link>
                         <div>
                             <h1 className="text-base font-bold text-gray-900 serif flex items-center gap-2">
@@ -345,7 +345,7 @@ export default function MatrimonyChatPage() {
                             <div className="flex flex-col items-center justify-center h-full text-center space-y-3">
                                 <Heart className="w-10 h-10 text-[#b8962e]" />
                                 <p className="text-sm font-black uppercase tracking-widest text-[#1a1a1a]">Start the divine conversation</p>
-                                {!hasActiveQuota && <p className="text-xs text-gray-500">Purchase a message pack to begin chatting</p>}
+                                {!hasActiveQuota && <p className="text-xs text-gray-850">Purchase a message pack to begin chatting</p>}
                             </div>
                         ) : (
                             messages.map((msg, i) => {
@@ -361,7 +361,7 @@ export default function MatrimonyChatPage() {
                                             {/* Blur Overlay */}
                                             {msg.isBlurred && (
                                                 <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-gray-100/50 backdrop-blur-[6px]">
-                                                    <Shield className="w-4 h-4 text-gray-500 bg-white rounded-full mb-1" />
+                                                    <Shield className="w-4 h-4 text-gray-850 bg-white rounded-full mb-1" />
                                                 </div>
                                             )}
 
@@ -369,7 +369,7 @@ export default function MatrimonyChatPage() {
                                                 {msg.content}
                                             </span>
                                             
-                                            <div className={`text-[9px] mt-1 text-right font-bold ${isMe ? 'text-white/70' : 'text-gray-400'}`}>
+                                            <div className={`text-[9px] mt-1 text-right font-bold ${isMe ? 'text-white/70' : 'text-[#3a1216]'}`}>
                                                 {new Date(msg.sentAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                             </div>
                                         </div>
@@ -434,7 +434,7 @@ export default function MatrimonyChatPage() {
                                 <Sparkles className="w-6 h-6 text-white" />
                             </div>
                             <h2 className="text-xl font-bold text-gray-900" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>Unlock Matrimony Chat</h2>
-                            <p className="text-xs text-gray-500 mt-1.5">Buy a message pack to unblur and reply.</p>
+                            <p className="text-xs text-gray-850 mt-1.5">Buy a message pack to unblur and reply.</p>
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
@@ -462,7 +462,7 @@ export default function MatrimonyChatPage() {
                             </div>
                         )}
 
-                        <button onClick={() => setShowPurchaseModal(false)} className="w-full py-3 text-gray-400 text-sm font-bold hover:text-gray-600 transition-colors">
+                        <button onClick={() => setShowPurchaseModal(false)} className="w-full py-3 text-[#3a1216] text-sm font-bold hover:text-gray-850 transition-colors">
                             Cancel
                         </button>
                     </div>

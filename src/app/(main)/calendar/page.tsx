@@ -234,7 +234,7 @@ export default function AstrologyCalendarPage() {
                                 <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight mb-1">
 {t("calendar.astrology_calendar")}
                 </h1>
-                                <div className="flex items-center gap-1.5 text-gray-500 text-sm">
+                                <div className="flex items-center gap-1.5 text-gray-850 text-sm">
                                     <Navigation className="w-3 h-3 text-[#b8962e]" />
                                     <span>{t("calendar.showing_results_for")}<span className="text-[#b8962e] font-semibold">{location.place}</span></span>
                                 </div>
@@ -258,14 +258,14 @@ export default function AstrologyCalendarPage() {
 
                                 {/* Month Navigator */}
                                 <div className="flex items-center gap-1 px-1 py-1 rounded-lg border border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.05)' }}>
-                                    <button onClick={prevMonth} className="p-1.5 rounded-md hover:bg-[#f5e9c8] transition-all text-gray-600 hover:text-[#7a6010] active:scale-95">
+                                    <button onClick={prevMonth} className="p-1.5 rounded-md hover:bg-[#f5e9c8] transition-all text-gray-850 hover:text-[#7a6010] active:scale-95">
                                         <ChevronLeft className="w-4 h-4" />
                                     </button>
                                     <div className="px-4 text-center min-w-[110px]">
                                         <div className="text-[10px] font-semibold uppercase tracking-widest text-[#b8962e]">{year}</div>
                                         <div className="text-base font-semibold text-gray-900 leading-none">{monthName}</div>
                                     </div>
-                                    <button onClick={nextMonth} className="p-1.5 rounded-md hover:bg-[#f5e9c8] transition-all text-gray-600 hover:text-[#7a6010] active:scale-95">
+                                    <button onClick={nextMonth} className="p-1.5 rounded-md hover:bg-[#f5e9c8] transition-all text-gray-850 hover:text-[#7a6010] active:scale-95">
                                         <ChevronRight className="w-4 h-4" />
                                     </button>
                                     <div className="w-px h-6 mx-1" style={{ background: '#d6c89a' }} />
@@ -291,9 +291,9 @@ export default function AstrologyCalendarPage() {
                                 <div className="px-5 py-4 border-b border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.08)' }}>
                                     <div className="flex items-center gap-2 mb-0.5">
                                         <Sun className="w-4 h-4 text-[#b8962e]" />
-                                        <span className="text-[13px] font-semibold text-gray-800">{t("calendar.panchang_for_today")}</span>
+                                        <span className="text-[13px] font-semibold text-gray-850">{t("calendar.panchang_for_today")}</span>
                                     </div>
-                                    <p className="text-[11px] text-gray-500">
+                                    <p className="text-[11px] text-gray-850">
                                         {new Date().toLocaleDateString(t('common.locale_code') === 'hi' ? 'hi-IN' : 'en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
                                     </p>
                                 </div>
@@ -371,7 +371,7 @@ export default function AstrologyCalendarPage() {
                                         </div>
                                     </div> :
 
-                <div className="p-8 text-center text-sm text-gray-400" style={{ background: '#fffdf5' }}>{t("calendar.could_not_load_today_s_panchan")}</div>
+                <div className="p-8 text-center text-sm text-[#3a1216]" style={{ background: '#fffdf5' }}>{t("calendar.could_not_load_today_s_panchan")}</div>
                 }
                             </div>
                         </div>
@@ -402,7 +402,7 @@ export default function AstrologyCalendarPage() {
                                     {/* Prev month filler */}
                                     {prevMonthDays.map((day) =>
                   <div key={`prev-${day}`} className="aspect-square p-2 flex flex-col items-start border-r border-b border-[#e9ddb8] opacity-30" style={{ background: 'rgba(184,150,46,0.02)' }}>
-                                            <span className="text-[10px] font-medium text-gray-400 self-end">{day}</span>
+                                            <span className="text-[10px] font-medium text-[#3a1216] self-end">{day}</span>
                                         </div>
                   )}
 
@@ -459,7 +459,7 @@ export default function AstrologyCalendarPage() {
                                     {/* Next month filler */}
                                     {nextMonthDays.map((day) =>
                   <div key={`next-${day}`} className="aspect-square p-2 flex flex-col items-start border-r border-b border-[#e9ddb8] opacity-30" style={{ background: 'rgba(184,150,46,0.02)' }}>
-                                            <span className="text-[10px] font-medium text-gray-400 self-end">{day}</span>
+                                            <span className="text-[10px] font-medium text-[#3a1216] self-end">{day}</span>
                                         </div>
                   )}
                                 </div>
@@ -469,19 +469,19 @@ export default function AstrologyCalendarPage() {
                             <div className="flex flex-wrap items-center gap-5 py-3 px-5 rounded-lg border border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.04)' }}>
                                 <div className="flex items-center gap-2">
                                     <div className="w-2 h-2 rounded-full bg-emerald-500" />
-                                    <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-600">{t("calendar.auspicious")}</span>
+                                    <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-850">{t("calendar.auspicious")}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <div className="w-2 h-2 rounded-full bg-red-400" />
-                                    <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-600">{t("calendar.inauspicious")}</span>
+                                    <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-850">{t("calendar.inauspicious")}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
-                                    <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-600">{t("calendar.transit")}</span>
+                                    <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-850">{t("calendar.transit")}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <div className="w-2 h-2 rounded-full" style={{ background: '#b8962e' }} />
-                                    <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-600">{t("calendar.today")}</span>
+                                    <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-850">{t("calendar.today")}</span>
                                 </div>
                             </div>
                         </div>
@@ -501,9 +501,9 @@ export default function AstrologyCalendarPage() {
                                         <div className="px-5 py-4 border-b border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.08)' }}>
                                             <div className="flex items-center gap-2 mb-0.5">
                                                 <CalendarIcon className="w-4 h-4 text-[#b8962e]" />
-                                                <span className="text-[13px] font-semibold text-gray-800">{t("calendar.day_insights")}</span>
+                                                <span className="text-[13px] font-semibold text-gray-850">{t("calendar.day_insights")}</span>
                                             </div>
-                                            <p className="text-[11px] text-gray-500">
+                                            <p className="text-[11px] text-gray-850">
                                                 {new Date(selectedDay.date).toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
                                             </p>
                                         </div>
@@ -549,7 +549,7 @@ export default function AstrologyCalendarPage() {
                                                                 </div>
                                                                 <div>
                                                                     <span className="text-[11px] font-semibold uppercase tracking-wider block" style={{ color: '#b8962e' }}>{t.planet}</span>
-                                                                    <span className="text-[12px] text-gray-700">
+                                                                    <span className="text-[12px] text-gray-850">
                                                                         {t.from} → <span className="font-semibold text-gray-900">{t.to}</span>
                                                                     </span>
                                                                 </div>
@@ -591,7 +591,7 @@ export default function AstrologyCalendarPage() {
                         <Info className="w-4 h-4" />}
                                                 </div>
                                                 <div>
-                                                    <span className="text-[10px] font-semibold uppercase tracking-wider block text-gray-400 mb-0.5">{t("calendar.note")}</span>
+                                                    <span className="text-[10px] font-semibold uppercase tracking-wider block text-[#3a1216] mb-0.5">{t("calendar.note")}</span>
                                                     <span
                           className="text-[12px] font-semibold leading-tight block"
                           style={{ color: selectedDay.is_auspicious ? '#15803d' : selectedDay.is_inauspicious ? '#b91c1c' : '#7a6010' }}>
@@ -619,8 +619,8 @@ export default function AstrologyCalendarPage() {
                     
                                             <CalendarIcon className="w-6 h-6 text-[#b8962e] opacity-50" />
                                         </div>
-                                        <h3 className="text-[15px] font-semibold text-gray-700 mb-1">{t("calendar.select_a_date")}</h3>
-                                        <p className="text-[13px] text-gray-400">{t("calendar.click_any_day_to_view_detailed")}</p>
+                                        <h3 className="text-[15px] font-semibold text-gray-850 mb-1">{t("calendar.select_a_date")}</h3>
+                                        <p className="text-[13px] text-[#3a1216]">{t("calendar.click_any_day_to_view_detailed")}</p>
                                     </motion.div>
                 }
                             </AnimatePresence>

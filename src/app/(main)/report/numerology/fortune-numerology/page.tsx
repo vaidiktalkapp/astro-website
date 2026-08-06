@@ -377,12 +377,12 @@ export default function LalKitabPage() {
   const SectionHeading = ({ title, sub }: { title: string; sub?: string }) => (
     <div className="text-center mb-8 md:mb-10 px-2">
       <h2 className="premium-serif text-[26px] md:text-[36px] font-bold text-[#5c1a1f] mb-3 md:mb-4 leading-tight">{title}</h2>
-      {sub && <p className="text-gray-800 text-[15px] md:text-[17px] max-w-[560px] mx-auto leading-relaxed">{sub}</p>}
+      {sub && <p className="text-gray-850 text-[15px] md:text-[17px] max-w-[560px] mx-auto leading-relaxed">{sub}</p>}
     </div>
   );
 
   const ContentBlocks = ({ blocks }: { blocks: ContentBlock[] }) => (
-    <div className="text-gray-800 text-[14.5px] md:text-[15.5px] leading-relaxed space-y-4">
+    <div className="text-gray-850 text-[14.5px] md:text-[15.5px] leading-relaxed space-y-4">
       {blocks.map((block, i) => {
         if (block.type === 'p') {
           return <p key={i}>{block.text}</p>;
@@ -436,7 +436,7 @@ export default function LalKitabPage() {
   );
 
   return (
-    <div className="w-full min-h-screen bg-transparent font-sans text-gray-800 relative selection:bg-[#ee6c1e] selection:text-white">
+    <div className="w-full min-h-screen bg-transparent font-sans text-gray-850 relative selection:bg-[#ee6c1e] selection:text-white">
 
       {/* ============ HERO ============ */}
       <section className="relative w-full min-h-[550px] lg:min-h-[600px] flex flex-col md:flex-row md:items-center overflow-hidden pt-12 md:py-20 z-10">
@@ -503,7 +503,7 @@ export default function LalKitabPage() {
             <h2 className="premium-serif text-[26px] md:text-[36px] font-bold text-[#5c1a1f] mb-4 md:mb-6">
               Fortune Numerology Report
             </h2>
-            <div className="space-y-4 text-gray-800 text-[15.5px] md:text-[17px] leading-relaxed">
+            <div className="space-y-4 text-gray-850 text-[15.5px] md:text-[17px] leading-relaxed">
               <p>
                 At VaidikTalk, we bring you a Complete Fortune Numerology Report — a powerful, personalized guide that dives deep into your number blueprint to help you realign your energies and unlock your full potential.
               </p>
@@ -563,7 +563,7 @@ export default function LalKitabPage() {
                   {item.step}
                 </div>
                 <h4 className="text-[15.5px] md:text-[18px] font-bold text-[#5c1a1f] mb-1.5 md:mb-3">{item.title}</h4>
-                <p className="text-gray-800 text-[13.5px] md:text-[15px] max-w-[220px] mx-auto leading-relaxed">{item.desc}</p>
+                <p className="text-gray-850 text-[13.5px] md:text-[15px] max-w-[220px] mx-auto leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -576,7 +576,7 @@ export default function LalKitabPage() {
           <div className="bg-white max-w-[700px] mx-auto p-6 md:p-12 border border-[#ebdcc7] border-t-[4px] border-t-[#d4af37] shadow-[0_10px_40px_rgba(0,0,0,0.05)] rounded-lg">
             <Kicker text="Get Started" />
             <h2 className="premium-serif text-center text-[28px] md:text-[34px] font-bold text-[#5c1a1f] mb-2 md:mb-3 leading-tight">Fill the Form Below</h2>
-            <p className="text-center text-gray-800 text-[15px] md:text-[16px] mb-8 md:mb-12">Kindly provide accurate information for more precise calculations</p>
+            <p className="text-center text-gray-850 text-[15px] md:text-[16px] mb-8 md:mb-12">Kindly provide accurate information for more precise calculations</p>
 
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
@@ -628,7 +628,7 @@ export default function LalKitabPage() {
                 <button type="submit" disabled={isProcessing} className="w-full bg-[#d4af37] hover:bg-[#c29f2f] text-[#3a1216] font-bold text-[17px] py-4 rounded-md transition-colors shadow-sm disabled:opacity-70 disabled:cursor-not-allowed">
                   {isProcessing ? 'Processing...' : `Submit & Proceed to Payment — ₹${settings?.discountedPrice || 449}`}
                 </button>
-                <p className="text-center text-[13.5px] text-gray-500 mt-5">
+                <p className="text-center text-[13.5px] text-gray-850 mt-5">
                   Your details are used only to prepare your Fortune Numerology report and are kept confidential.
                 </p>
               </div>
@@ -647,7 +647,7 @@ export default function LalKitabPage() {
             <div className="bg-[#fffdf8]">
               <div className="p-6 md:p-8 border-b border-[#ebdcc7]">
                 <strong className="premium-serif block text-[22px] md:text-[24px] font-bold text-[#5c1a1f] mb-1">Common Problems</strong>
-                <span className="text-[13px] md:text-[14px] text-gray-800">Limitations of Generic Numerology Reports</span>
+                <span className="text-[13px] md:text-[14px] text-gray-850">Limitations of Generic Numerology Reports</span>
               </div>
               <ul className="p-6 md:p-8 space-y-4 md:space-y-5">
                 {[
@@ -657,7 +657,7 @@ export default function LalKitabPage() {
                   'Ignores karmic patterns and emotional cycles',
                   'No remedies to balance negative number vibrations'
                 ].map((item, i) => (
-                  <li key={i} className="flex gap-3 md:gap-4 text-[15px] md:text-[16px] text-gray-800 items-start">
+                  <li key={i} className="flex gap-3 md:gap-4 text-[15px] md:text-[16px] text-gray-850 items-start">
                     <X className="w-4 h-4 md:w-5 md:h-5 text-red-700 flex-shrink-0 mt-0.5 md:mt-1" />
                     <span className="leading-snug">{item}</span>
                   </li>
@@ -678,7 +678,7 @@ export default function LalKitabPage() {
                   'Includes lucky numbers, colors, days & directions',
                   'Actionable remedies to realign life with number vibrations'
                 ].map((item, i) => (
-                  <li key={i} className="flex gap-3 md:gap-4 text-[15px] md:text-[16px] text-gray-800 font-medium items-start">
+                  <li key={i} className="flex gap-3 md:gap-4 text-[15px] md:text-[16px] text-gray-850 font-medium items-start">
                     <Check className="w-4 h-4 md:w-5 md:h-5 text-green-700 flex-shrink-0 mt-0.5 md:mt-1" />
                     <span className="leading-snug">{item}</span>
                   </li>
@@ -700,7 +700,7 @@ export default function LalKitabPage() {
             <div className="flex-1 bg-white p-6 md:p-10">
               <Sparkles className="w-7 h-7 md:w-8 md:h-8 text-[#d4af37] mb-4 md:mb-5" strokeWidth={1.5} />
               <h3 className="text-[18px] md:text-[20px] font-bold text-[#5c1a1f] mb-3 md:mb-4">🔮 Practical Understanding</h3>
-              <ul className="space-y-2 md:space-y-3 text-gray-800 text-[15px] md:text-[16px]">
+              <ul className="space-y-2 md:space-y-3 text-gray-850 text-[15px] md:text-[16px]">
                 <li className="relative pl-5 md:pl-6 before:content-['—'] before:absolute before:left-0 before:text-[#d4af37] leading-relaxed">Individuals seeking clarity, peace, or success. Parents naming a newborn, couples planning marriage.</li>
                 <li className="relative pl-5 md:pl-6 before:content-['—'] before:absolute before:left-0 before:text-[#d4af37] leading-relaxed">Business owners launching or renaming brands. Anyone feeling stuck or confused about life direction.</li>
                 <li className="relative pl-5 md:pl-6 before:content-['—'] before:absolute before:left-0 before:text-[#d4af37] leading-relaxed">With the Complete Numerology Report by VaidikTalk, you're not just getting answers — you're getting aligned.</li>
@@ -710,10 +710,10 @@ export default function LalKitabPage() {
             <div className="flex-1 bg-white p-6 md:p-10">
               <Gift className="w-7 h-7 md:w-8 md:h-8 text-[#d4af37] mb-4 md:mb-5" strokeWidth={1.5} />
               <h3 className="text-[18px] md:text-[20px] font-bold text-[#5c1a1f] mb-2 md:mb-3">🌟 Gifting Consideration</h3>
-              <p className="text-gray-800 text-[15px] md:text-[16px] leading-relaxed mb-3">
+              <p className="text-gray-850 text-[15px] md:text-[16px] leading-relaxed mb-3">
                 A personalized astrological report may also be considered as a gift for individuals who appreciate traditional frameworks for life planning. The document contains personal information about the person's celestial body positions which serves as educational material.
               </p>
-              <p className="text-gray-800 text-[15px] md:text-[16px] leading-relaxed">
+              <p className="text-gray-850 text-[15px] md:text-[16px] leading-relaxed">
                 Explore our website to learn more about the Fortune Numerology and practical remedies based on solid predictions to optimize guidance for healthy, balanced living.
               </p>
             </div>
@@ -737,7 +737,7 @@ export default function LalKitabPage() {
                  <FileText className="w-8 h-8 text-[#5c1a1f]" />
                </div>
                <h3 className="font-bold text-[#5c1a1f] text-lg mb-2">PDF Format</h3>
-               <p className="text-sm text-gray-600 mb-6">Download a high-quality PDF ready for print.</p>
+               <p className="text-sm text-gray-850 mb-6">Download a high-quality PDF ready for print.</p>
                <div className="relative w-full mb-4 flex-1">
                  <img src={settings?.mockups?.pdf || "/images/kundali-pdf-mockup.webp"} alt="PDF Preview" className="w-full max-w-[200px] h-auto mx-auto rounded drop-shadow-md bg-gray-100 min-h-[150px] object-cover group-hover:scale-105 transition-transform duration-300" onError={(e) => { e.currentTarget.src = 'https://placehold.co/400x500/f8f9fa/333333?text=PDF+Preview' }} />
                </div>
@@ -747,7 +747,7 @@ export default function LalKitabPage() {
                    View Sample PDF
                  </div>
                ) : (
-                 <div className="mt-auto opacity-50 bg-gray-200 text-gray-500 px-6 py-2.5 rounded-full text-sm font-bold flex items-center justify-center gap-2 cursor-not-allowed w-full max-w-[200px] mx-auto">
+                 <div className="mt-auto opacity-50 bg-gray-200 text-gray-850 px-6 py-2.5 rounded-full text-sm font-bold flex items-center justify-center gap-2 cursor-not-allowed w-full max-w-[200px] mx-auto">
                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
                    View Sample PDF
                  </div>
@@ -759,7 +759,7 @@ export default function LalKitabPage() {
                  <svg className="w-8 h-8 text-[#5c1a1f]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
                </div>
                <h3 className="font-bold text-[#5c1a1f] text-lg mb-2">Mobile View</h3>
-               <p className="text-sm text-gray-600 mb-6">Read your report seamlessly on any smartphone.</p>
+               <p className="text-sm text-gray-850 mb-6">Read your report seamlessly on any smartphone.</p>
                <img src={settings?.mockups?.mobile || "/images/kundali-mobile-mockup.webp"} alt="Mobile Preview" className="w-full max-w-[150px] h-auto mx-auto rounded-3xl drop-shadow-lg border-[4px] border-gray-800 bg-gray-100 min-h-[250px] object-cover group-hover:scale-105 transition-transform duration-300" onError={(e) => { e.currentTarget.src = 'https://placehold.co/300x600/f8f9fa/333333?text=Mobile+View' }} />
             </div>
 
@@ -768,7 +768,7 @@ export default function LalKitabPage() {
                  <svg className="w-8 h-8 text-[#5c1a1f]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                </div>
                <h3 className="font-bold text-[#5c1a1f] text-lg mb-2">Desktop View</h3>
-               <p className="text-sm text-gray-600 mb-6">Explore interactive charts on the web portal.</p>
+               <p className="text-sm text-gray-850 mb-6">Explore interactive charts on the web portal.</p>
                <img src={settings?.mockups?.desktop || "/images/kundali-desktop-mockup.webp"} alt="Desktop Preview" className="w-full max-w-[280px] h-auto mx-auto rounded-lg drop-shadow-md border-2 border-gray-200 bg-gray-100 min-h-[160px] object-cover group-hover:scale-105 transition-transform duration-300" onError={(e) => { e.currentTarget.src = 'https://placehold.co/600x400/f8f9fa/333333?text=Desktop+View' }} />
             </div>
           </div>
@@ -873,7 +873,7 @@ export default function LalKitabPage() {
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-[1400px] pb-5 md:pb-6' : 'max-h-0'}`}>
                                     {faq.a ? (
-                    <div className="text-gray-800 text-[15px] md:text-[16px] leading-relaxed whitespace-pre-wrap">{faq.a}</div>
+                    <div className="text-gray-850 text-[15px] md:text-[16px] leading-relaxed whitespace-pre-wrap">{faq.a}</div>
                   ) : (
                     <ContentBlocks blocks={faq.content} />
                   )}
@@ -892,7 +892,7 @@ export default function LalKitabPage() {
             <h2 className="premium-serif text-[28px] md:text-[42px] font-bold text-[#5c1a1f] mb-3 md:mb-4 leading-tight relative z-10">
               Ready to Align Your Life with the Power of Numbers?
             </h2>
-            <p className="text-gray-800 text-[14.5px] md:text-[16px] mb-6 md:mb-8 relative z-10 max-w-[500px] mx-auto leading-relaxed">
+            <p className="text-gray-850 text-[14.5px] md:text-[16px] mb-6 md:mb-8 relative z-10 max-w-[500px] mx-auto leading-relaxed">
               Take your first step toward clarity, harmony, and energetic success.\nOrder your Complete Numerology Report today and invite the wisdom of numbers into your life.
             </p>
             <a href="#order-form" className="inline-flex justify-center w-full sm:w-auto items-center gap-2 bg-[#d4af37] hover:bg-[#c29f2f] text-[#3a1216] font-bold text-[16px] md:text-[17px] px-8 md:px-10 py-4 rounded-md transition-colors shadow-md relative z-10">

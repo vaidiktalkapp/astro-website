@@ -61,7 +61,7 @@ export default function HealingGuideDetail() {
       <div className="min-h-screen bg-[#fffdf5] flex flex-col items-center justify-center p-6 text-center">
                 <AlertCircle className="w-16 h-16 text-red-400 mb-4" />
                 <h1 className="text-3xl font-bold text-gray-900 serif mb-2">{t("_slug_.guide_not_found")}</h1>
-                <p className="text-gray-600 mb-8 max-w-sm">{t("_slug_.this_guide_might_have_been_arc")}</p>
+                <p className="text-gray-850 mb-8 max-w-sm">{t("_slug_.this_guide_might_have_been_arc")}</p>
                 <Link href="/healing" className="bg-[#b8962e] text-white px-8 py-3 rounded-2xl font-bold text-sm">{t("_slug_.return_to_healing_hub")}</Link>
             </div>);
 
@@ -107,7 +107,7 @@ export default function HealingGuideDetail() {
                 {/* Breadcrumb */}
                 <Link
           href="/healing"
-          className="inline-flex items-center gap-2 text-[11px] font-black uppercase text-gray-400 tracking-widest hover:text-[#b8962e] transition-colors mb-8">
+          className="inline-flex items-center gap-2 text-[11px] font-black uppercase text-[#3a1216] tracking-widest hover:text-[#b8962e] transition-colors mb-8">
           
                     <ArrowLeft className="w-3.5 h-3.5" />{t("_slug_.back_to_healing_hub")}
         </Link>
@@ -133,7 +133,7 @@ export default function HealingGuideDetail() {
                                 {item.title}
                             </h1>
                             {item.shortDescription &&
-              <p className="text-[17px] text-gray-500 serif leading-relaxed opacity-80">{item.shortDescription}</p>
+              <p className="text-[17px] text-gray-850 serif leading-relaxed opacity-80">{item.shortDescription}</p>
               }
                         </div>
                     </div>
@@ -165,7 +165,7 @@ export default function HealingGuideDetail() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="healing-content prose prose-sm md:prose-base lg:prose-lg max-w-none serif text-gray-800 leading-relaxed overflow-hidden break-words"
+          className="healing-content prose prose-sm md:prose-base lg:prose-lg max-w-none serif text-gray-850 leading-relaxed overflow-hidden break-words"
           dangerouslySetInnerHTML={{ __html: item.content }} />
         
 
@@ -180,7 +180,7 @@ export default function HealingGuideDetail() {
                             {m.benefits.map((benefit: string, idx: number) =>
             <div key={idx} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-[#e8dbb8]/30">
                                     <div className="w-2 h-2 rounded-full bg-[#b8962e]" />
-                                    <span className="text-sm font-medium text-gray-700 serif">{benefit}</span>
+                                    <span className="text-sm font-medium text-gray-850 serif">{benefit}</span>
                                 </div>
             )}
                         </div>

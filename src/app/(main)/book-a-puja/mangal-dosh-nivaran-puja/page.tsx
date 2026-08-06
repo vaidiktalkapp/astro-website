@@ -68,7 +68,7 @@ export default function MangalDoshNivaranPage() {
           <h1 className="premium-serif text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight max-w-3xl">
             Mangal Dosh Nivaran <span className="text-[#f5d08b]">Puja</span>
           </h1>
-          <p className="text-gray-300 text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light">
+          <p className="text-[#3a1216] text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light">
             Our vedic mangaldosh nivaran puja brings peace and protection. Strengthen your destiny with blessings from the divine.
           </p>
 
@@ -92,7 +92,7 @@ export default function MangalDoshNivaranPage() {
             <p className="text-gray-900 text-lg leading-relaxed mb-6">
               Mangal Dosh, also known as Kuja Dosh, is often associated with delays in marriage, relationship instability, health concerns, and financial setbacks. The Mangal Dosh Nivaran Pooja is a powerful Mangal Dosh Puja performed to pacify the negative effects of the Mars planet (Mangal) and support Manglik Dosh Removal.
             </p>
-            <p className="text-gray-700 text-lg leading-relaxed mb-6">
+            <p className="text-gray-850 text-lg leading-relaxed mb-6">
               This pooja also serves as a spiritually guided Marriage Compatibility Puja, promoting harmony in relationships, ensuring timely and joyful marriages, and removing barriers that hinder financial and personal growth. It invokes the blessings of Mangal Dev to bring courage, vitality, and stability into one’s life.
             </p>
             <h3 className="font-bold text-[#5c1a1f] text-xl mt-8 mb-4">Key Benefits:</h3>
@@ -103,7 +103,7 @@ export default function MangalDoshNivaranPage() {
                 "Helps overcome health challenges and prevents accidents.",
                 "Enhances financial stability and growth by removing planetary blocks."
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-gray-800 font-medium">
+                <li key={i} className="flex items-start gap-3 text-gray-850 font-medium">
                   <CheckCircle2 className="w-6 h-6 text-[#d4af37] shrink-0" />
                   <span>{item}</span>
                 </li>
@@ -122,7 +122,7 @@ export default function MangalDoshNivaranPage() {
               <h4 className="text-xl font-bold text-[#5c1a1f] mb-3 flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-[#d4af37]" /> About Mangal Dosh
               </h4>
-              <p className="text-gray-700 leading-relaxed text-sm">
+              <p className="text-gray-850 leading-relaxed text-sm">
                 Mangal Dosh occurs due to the unfavourable placement of Mars in one's birth chart and is traditionally believed to affect marital harmony and financial success. Performing the Mangal Dosh Nivaran Pooja balances Mars energy, calms its malefic influence, and opens new paths for joy, well-being, and abundance.
               </p>
             </div>
@@ -149,7 +149,7 @@ export default function MangalDoshNivaranPage() {
                   {idx + 1}
                 </div>
                 <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-white p-5 rounded-xl shadow-sm border border-[#f0ddc0]">
-                  <p className="text-gray-800 font-medium">{step}</p>
+                  <p className="text-gray-850 font-medium">{step}</p>
                 </div>
               </div>
             ))}
@@ -168,7 +168,7 @@ export default function MangalDoshNivaranPage() {
               "Each Kundali includes graphical insights, charts, and highlights to simplify life’s ups and downs.",
               "Personalized remedies are included to help you take meaningful action after the pooja."
             ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3 text-gray-700 font-medium text-sm md:text-base">
+              <li key={i} className="flex items-start gap-3 text-gray-850 font-medium text-sm md:text-base">
                 <CheckCircle2 className="w-5 h-5 text-[#d4af37] shrink-0 mt-0.5" />
                 <span>{item}</span>
               </li>
@@ -176,7 +176,7 @@ export default function MangalDoshNivaranPage() {
           </ul>
 
           <h2 className="premium-serif text-2xl md:text-3xl font-bold text-[#5c1a1f] mb-4">Our Unique Approach: Why We're Different</h2>
-          <p className="text-gray-800 mb-8 leading-relaxed">
+          <p className="text-gray-850 mb-8 leading-relaxed">
             We are honored to have highly experienced and spiritually enlightened Panditjis from the sacred Char Dham and other renowned pilgrimage sites, including <strong className="text-[#5c1a1f]">Varanasi, Bodh Gaya, Deoghar, Ujjain, Puri, Badrinath, Rameswaram, and Dwarka</strong>.
           </p>
 
@@ -191,7 +191,7 @@ export default function MangalDoshNivaranPage() {
                 <div className="mt-1"><ShieldCheck className="w-6 h-6 text-[#d4af37]" /></div>
                 <div>
                   <h4 className="text-base font-bold text-[#5c1a1f] mb-1">{feature.title}</h4>
-                  <p className="text-gray-800 text-sm leading-relaxed">{feature.desc}</p>
+                  <p className="text-gray-850 text-sm leading-relaxed">{feature.desc}</p>
                 </div>
               </div>
             ))}
@@ -205,7 +205,7 @@ export default function MangalDoshNivaranPage() {
           
           <div className="text-center mb-10 md:mb-14">
             <h2 className="premium-serif text-3xl md:text-5xl font-bold text-[#5c1a1f] mb-4">Complete Your Booking</h2>
-            <p className="text-gray-800 text-base md:text-lg max-w-2xl mx-auto">Please provide your details below. This information will be used by our Purohits for your personalized Sankalp.</p>
+            <p className="text-gray-850 text-base md:text-lg max-w-2xl mx-auto">Please provide your details below. This information will be used by our Purohits for your personalized Sankalp.</p>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-8 items-start relative pb-24 lg:pb-0">
@@ -223,40 +223,40 @@ export default function MangalDoshNivaranPage() {
               <form id="booking-form" onSubmit={handleSubmit} className="space-y-5 md:space-y-6 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">Full Name *</label>
-                    <input required type="text" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-800 bg-gray-50/50" placeholder="Enter Full Name" />
+                    <label className="block text-sm font-semibold text-gray-850 mb-1.5">Full Name *</label>
+                    <input required type="text" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-850 bg-gray-50/50" placeholder="Enter Full Name" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">Gotra (Optional)</label>
-                    <input type="text" name="gotra" value={formData.gotra} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-800 bg-gray-50/50" placeholder="Enter Gotra" />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">Phone No. *</label>
-                    <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-800 bg-gray-50/50" placeholder="Phone Number" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">Email *</label>
-                    <input required type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-800 bg-gray-50/50" placeholder="Email Address" />
+                    <label className="block text-sm font-semibold text-gray-850 mb-1.5">Gotra (Optional)</label>
+                    <input type="text" name="gotra" value={formData.gotra} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-850 bg-gray-50/50" placeholder="Enter Gotra" />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">City / Location *</label>
-                    <input required type="text" name="location" value={formData.location} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-800 bg-gray-50/50" placeholder="Your City" />
+                    <label className="block text-sm font-semibold text-gray-850 mb-1.5">Phone No. *</label>
+                    <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-850 bg-gray-50/50" placeholder="Phone Number" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">Preferred Pooja Date *</label>
-                    <input required type="date" name="date" value={formData.date} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-700 bg-gray-50/50" />
+                    <label className="block text-sm font-semibold text-gray-850 mb-1.5">Email *</label>
+                    <input required type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-850 bg-gray-50/50" placeholder="Email Address" />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-850 mb-1.5">City / Location *</label>
+                    <input required type="text" name="location" value={formData.location} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-850 bg-gray-50/50" placeholder="Your City" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-850 mb-1.5">Preferred Pooja Date *</label>
+                    <input required type="date" name="date" value={formData.date} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-850 bg-gray-50/50" />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Additional Message / Intentions</label>
-                  <textarea rows={3} name="message" value={formData.message} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all resize-none text-gray-800 bg-gray-50/50" placeholder="Any specific issues or wishes?"></textarea>
+                  <label className="block text-sm font-semibold text-gray-850 mb-1.5">Additional Message / Intentions</label>
+                  <textarea rows={3} name="message" value={formData.message} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all resize-none text-gray-850 bg-gray-50/50" placeholder="Any specific issues or wishes?"></textarea>
                 </div>
                 
                 {/* Mobile Standard Submit Button (Inside Form) */}
@@ -284,11 +284,11 @@ export default function MangalDoshNivaranPage() {
                 
                 <div className="space-y-4 mb-6 relative z-10">
                   <div className="flex justify-between items-start gap-4">
-                    <span className="text-gray-300 text-sm">Pooja Name</span>
+                    <span className="text-[#3a1216] text-sm">Pooja Name</span>
                     <span className="font-bold text-right text-[15px]">Mangal Dosh Nivaran</span>
                   </div>
                   <div className="flex justify-between items-start gap-4">
-                    <span className="text-gray-300 text-sm">Includes</span>
+                    <span className="text-[#3a1216] text-sm">Includes</span>
                     <span className="text-right text-[14px]">Samagri & Dakshina</span>
                   </div>
                 </div>
@@ -307,7 +307,7 @@ export default function MangalDoshNivaranPage() {
                 >
                   <Lock className="w-5 h-5" /> Proceed to Pay
                 </button>
-                <p className="text-center text-xs text-gray-300 mt-4 flex items-center justify-center gap-1 relative z-10">
+                <p className="text-center text-xs text-[#3a1216] mt-4 flex items-center justify-center gap-1 relative z-10">
                   <ShieldCheck className="w-4 h-4 text-[#f5d08b]" /> 100% Secure & Authentic
                 </p>
               </div>
@@ -320,7 +320,7 @@ export default function MangalDoshNivaranPage() {
       {/* Mobile Sticky Bottom Pay Bar */}
       <div className="lg:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 shadow-[0_-10px_25px_rgba(0,0,0,0.1)] z-[100] flex justify-between items-center">
         <div className="flex flex-col">
-          <span className="text-[10px] text-gray-700 font-bold uppercase tracking-wider mb-0.5">Total Offering</span>
+          <span className="text-[10px] text-gray-850 font-bold uppercase tracking-wider mb-0.5">Total Offering</span>
           <div className="flex items-end gap-1.5">
             <span className="text-xl font-black text-[#5c1a1f]">₹2199</span>
           </div>
@@ -342,7 +342,7 @@ export default function MangalDoshNivaranPage() {
             <div className="lg:w-1/3 lg:sticky lg:top-32">
               <p className="text-[#d97706] text-[11px] font-bold tracking-[0.2em] uppercase mb-4">Simple & Transparent</p>
               <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#1a0a0b] mb-5 leading-tight">Book Your Puja<br/>in Minutes</h2>
-              <p className="text-gray-800 text-sm leading-relaxed mb-8">A seamless process from your home to divine blessings — our pandits handle everything.</p>
+              <p className="text-gray-850 text-sm leading-relaxed mb-8">A seamless process from your home to divine blessings — our pandits handle everything.</p>
               <a href="#booking-section" className="inline-flex items-center gap-2 px-6 py-3 bg-[#5c1a1f] text-white rounded-xl font-bold text-sm hover:bg-[#4a1519] transition-all shadow-sm">
                 Book Now
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -363,7 +363,7 @@ export default function MangalDoshNivaranPage() {
                     </div>
                     <div>
                       <h4 className="font-bold text-[#1a0a0b] text-[15px] mb-1.5">{item.label}</h4>
-                      <p className="text-gray-800 text-[13px] leading-relaxed">{item.desc}</p>
+                      <p className="text-gray-850 text-[13px] leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
                   {idx < 4 && (
@@ -390,7 +390,7 @@ export default function MangalDoshNivaranPage() {
             <div className="md:w-1/3">
               <p className="text-[#d97706] text-[11px] font-bold tracking-[0.2em] uppercase mb-3">Our Promise</p>
               <h2 className="premium-serif text-2xl md:text-3xl font-bold text-[#5c1a1f] mb-3 leading-tight">Every Booking.<br/>Every Ritual.<br/>Guaranteed.</h2>
-              <p className="text-gray-800 text-sm leading-relaxed">We stand by the authenticity, quality, and results of every puja we perform.</p>
+              <p className="text-gray-850 text-sm leading-relaxed">We stand by the authenticity, quality, and results of every puja we perform.</p>
             </div>
             <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
@@ -407,7 +407,7 @@ export default function MangalDoshNivaranPage() {
                   </div>
                   <div>
                     <p className="text-[#1a0a0b] text-[13px] font-bold mb-0.5">{item.label}</p>
-                    <p className="text-gray-800 text-[11px] leading-relaxed">{item.desc}</p>
+                    <p className="text-gray-850 text-[11px] leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -426,7 +426,7 @@ export default function MangalDoshNivaranPage() {
               <div className="flex">{[1,2,3,4,5].map(s => <span key={s} className="text-[#f59e0b] text-lg">★</span>)}</div>
               <span className="text-[#111827] font-bold text-sm">4.9 out of 5</span>
               <span className="text-[#D1D5DB] mx-1">|</span>
-              <span className="text-gray-800 text-sm">5,000+ verified reviews</span>
+              <span className="text-gray-850 text-sm">5,000+ verified reviews</span>
             </div>
           </div>
 
@@ -441,7 +441,7 @@ export default function MangalDoshNivaranPage() {
                   <div className="flex gap-0.5">{[1,2,3,4,5].map(s => <span key={s} className="text-[#f59e0b] text-[15px]">★</span>)}</div>
                   <svg width="22" height="18" viewBox="0 0 32 24" fill="#e8d8c0"><path d="M0 24V14.4C0 6.4 4.8 1.6 14.4 0l1.6 2.4C10.4 3.6 7.6 6.4 6.4 11.2H12V24H0zm20 0V14.4C20 6.4 24.8 1.6 34.4 0L36 2.4C30.4 3.6 27.6 6.4 26.4 11.2H32V24H20z"/></svg>
                 </div>
-                <p className="text-gray-800 text-[13.5px] leading-[1.85] flex-grow mb-6">{t.review}</p>
+                <p className="text-gray-850 text-[13.5px] leading-[1.85] flex-grow mb-6">{t.review}</p>
                 <div className="flex items-center gap-3 pt-5 border-t border-[#f0ddc0]">
                   <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-black shrink-0" style={{backgroundColor: t.color}}>{t.initial}</div>
                   <div className="flex-1">
@@ -460,7 +460,7 @@ export default function MangalDoshNivaranPage() {
             <div className="text-center mb-10">
               <p className="text-[#d97706] text-[11px] font-bold tracking-[0.2em] uppercase mb-3">Video Testimonials</p>
               <h3 className="premium-serif text-3xl md:text-4xl font-bold text-[#1a0a0b] mb-3">Real Devotees. Real Experiences.</h3>
-              <p className="text-gray-800 text-base md:text-lg">Watch unscripted reviews from our community of devotees</p>
+              <p className="text-gray-850 text-base md:text-lg">Watch unscripted reviews from our community of devotees</p>
             </div>
             <div className="overflow-hidden relative w-full mb-8"><div className="flex w-max animate-marquee gap-5 pb-4 hover:pause">
               {(dynamicData?.videoTestimonials?.length > 0 ? dynamicData.videoTestimonials : [
@@ -503,7 +503,7 @@ export default function MangalDoshNivaranPage() {
           <div className="text-center mb-12">
             <p className="text-[#d97706] text-[11px] font-bold tracking-[0.2em] uppercase mb-3">Puja Glimpses</p>
             <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#1a0a0b] mb-3">Divine Photo Gallery</h2>
-            <p className="text-gray-800 text-base md:text-lg max-w-2xl mx-auto">Experience the divine energy through authentic moments captured during our Vedic rituals.</p>
+            <p className="text-gray-850 text-base md:text-lg max-w-2xl mx-auto">Experience the divine energy through authentic moments captured during our Vedic rituals.</p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -596,7 +596,7 @@ export default function MangalDoshNivaranPage() {
             <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#5c1a1f] mb-4">
               Frequently Asked <span className="text-[#d97706]">Questions</span>
             </h2>
-            <p className="text-gray-800 text-sm md:text-base max-w-xl mx-auto">Everything you need to know about this puja and how we deliver it.</p>
+            <p className="text-gray-850 text-sm md:text-base max-w-xl mx-auto">Everything you need to know about this puja and how we deliver it.</p>
           </div>
           <div className="space-y-3">
             {(dynamicData?.faqs?.length > 0 ? dynamicData.faqs : [
@@ -613,7 +613,7 @@ export default function MangalDoshNivaranPage() {
                   </div>
                 </summary>
                 <div className="px-6 pb-6 pt-2">
-                  <p className="text-gray-800 text-[14.5px] leading-relaxed border-t border-gray-100 pt-4">{faq.answer || faq.a}</p>
+                  <p className="text-gray-850 text-[14.5px] leading-relaxed border-t border-gray-100 pt-4">{faq.answer || faq.a}</p>
                 </div>
               </details>
             ))}
@@ -631,7 +631,7 @@ export default function MangalDoshNivaranPage() {
           <h3 className="premium-serif text-3xl md:text-5xl font-bold text-[#5c1a1f] mb-4 leading-tight">
             Ready to book your <br className="md:hidden" /> Puja?
           </h3>
-          <p className="text-gray-800 mb-8 max-w-2xl mx-auto text-[15px] md:text-[17px] leading-relaxed">
+          <p className="text-gray-850 mb-8 max-w-2xl mx-auto text-[15px] md:text-[17px] leading-relaxed">
             Experience divine blessings with our expert purohits. Secure your slot now to bring peace, prosperity, and success to your life.
           </p>
           <button 
@@ -658,7 +658,7 @@ export default function MangalDoshNivaranPage() {
               <div key={idx} className="flex flex-col items-center">
                 <div className="mb-4">{feature.icon}</div>
                 <h4 className="font-bold text-white text-lg mb-1">{feature.title}</h4>
-                <p className="text-sm text-gray-300">{feature.desc}</p>
+                <p className="text-sm text-[#3a1216]">{feature.desc}</p>
               </div>
             ))}
         </div>

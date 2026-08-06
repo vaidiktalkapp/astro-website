@@ -68,7 +68,7 @@ export default function MatchingHistoryPage() {
                             <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight mb-1">
 {t("history.matching_results")}
               </h1>
-                            <p className="text-gray-500 text-sm">
+                            <p className="text-gray-850 text-sm">
 {t("history.history_of_compatibility_calcu")}
               </p>
                         </div>
@@ -121,7 +121,7 @@ export default function MatchingHistoryPage() {
                 
                                         {item.system === 'south_indian' ? t("history.south_indian") : t("history.north_indian")}
                                     </span>
-                                    <span className="text-[10px] text-gray-400 font-medium flex items-center gap-1.5">
+                                    <span className="text-[10px] text-[#3a1216] font-medium flex items-center gap-1.5">
                                         <Calendar className="w-3 h-3" />
                                         {item.timestamp ? new Date(item.timestamp).toLocaleDateString(t('common.locale_code') === 'hi' ? 'hi-IN' : 'en-IN') : t("history.recent")}
                                     </span>
@@ -164,10 +164,10 @@ export default function MatchingHistoryPage() {
 
                                 {/* Card footer */}
                                 <div className="px-4 py-2.5 border-t border-[#e9ddb8] flex items-center justify-between">
-                                    <span className="mh-card-footer-label text-[11px] font-semibold uppercase tracking-wider text-gray-400 transition-colors">
+                                    <span className="mh-card-footer-label text-[11px] font-semibold uppercase tracking-wider text-[#3a1216] transition-colors">
 {t("history.view_analysis")}
               </span>
-                                    <ChevronRight className="mh-card-arrow w-3.5 h-3.5 text-gray-300 transition-all" />
+                                    <ChevronRight className="mh-card-arrow w-3.5 h-3.5 text-[#3a1216] transition-all" />
                                 </div>
                             </motion.div>
           )}
@@ -185,7 +185,7 @@ export default function MatchingHistoryPage() {
                             <Heart className="w-7 h-7 opacity-40" style={{ color: '#b8962e' }} />
                         </div>
                         <h3 className="text-xl font-semibold text-gray-900 mb-2">{t("history.no_matching_history")}</h3>
-                        <p className="text-gray-400 text-sm max-w-sm mx-auto mb-7 leading-relaxed">
+                        <p className="text-[#3a1216] text-sm max-w-sm mx-auto mb-7 leading-relaxed">
 {t("history.you_haven_t_performed_any_horo")}
           </p>
                         <button

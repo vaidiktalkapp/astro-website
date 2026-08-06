@@ -869,7 +869,7 @@ Occupation: ${intakeData.occupation || 'Employee'}`;
                   <Star key={star} className="w-2 h-2 md:w-3 md:h-3 fill-yellow-400 text-yellow-400" />
                   )}
                 </div>
-                <span className="text-[9px] md:text-xs font-bold text-gray-700">{astrologer?.rating || 4.8}</span>
+                <span className="text-[9px] md:text-xs font-bold text-gray-850">{astrologer?.rating || 4.8}</span>
               </div>
             </div>
           </div>
@@ -896,7 +896,7 @@ Occupation: ${intakeData.occupation || 'Employee'}`;
             <div className="flex items-center gap-1 md:gap-3">
               {/* Timer */}
               <div className="flex flex-col items-center bg-white px-2 md:px-5 py-0.5 md:py-2 rounded-lg md:rounded-2xl border border-orange-100 shadow-sm">
-                <div className="flex items-center text-[8px] md:text-xs text-gray-700 font-black uppercase tracking-widest">
+                <div className="flex items-center text-[8px] md:text-xs text-gray-850 font-black uppercase tracking-widest">
                   <Clock className="w-2.5 h-2.5 md:w-4 md:h-4 mr-1 text-orange-600" />
                   <span className="hidden xs:inline">{t("_orderId_.time")}</span>
                 </div>
@@ -907,7 +907,7 @@ Occupation: ${intakeData.occupation || 'Employee'}`;
 
               {/* Balance & Cost */}
               <div className="flex flex-col items-center bg-white px-2 md:px-5 py-0.5 md:py-2 rounded-lg md:rounded-2xl border border-orange-100 shadow-sm">
-                <div className="flex items-center text-[8px] md:text-xs text-gray-700 font-black uppercase tracking-widest">
+                <div className="flex items-center text-[8px] md:text-xs text-gray-850 font-black uppercase tracking-widest">
                   <Wallet className="w-2.5 h-2.5 md:w-4 md:h-4 mr-1 text-orange-600" />
                   <span className="hidden xs:inline">{t("_orderId_.bal")}</span>
                 </div>
@@ -967,8 +967,8 @@ Occupation: ${intakeData.occupation || 'Employee'}`;
                 </div>
               </div>
               <div className="max-w-md">
-                <h3 className="font-bold text-gray-800 text-lg mb-2">{t("_orderId_.start_your_spiritual_consultat")}</h3>
-                <p className="text-sm text-gray-600">{t("_orderId_.ask_about_your_career_relation")}</p>
+                <h3 className="font-bold text-gray-850 text-lg mb-2">{t("_orderId_.start_your_spiritual_consultat")}</h3>
+                <p className="text-sm text-gray-850">{t("_orderId_.ask_about_your_career_relation")}</p>
                 <div className="mt-4 text-xs text-orange-600 font-bold bg-orange-50/50 px-4 py-2 rounded-lg border border-orange-200">
                   <Heart className="w-3 h-3 inline mr-1" />
 {t("_orderId_.your_questions_are_answered_wi")}
@@ -992,7 +992,7 @@ Occupation: ${intakeData.occupation || 'Employee'}`;
               'bg-gradient-to-br from-orange-500 to-amber-600 text-white rounded-tr-none' :
               msg.senderModel === 'System' ?
               'bg-red-50 border-2 border-red-200 text-red-800 rounded-xl shadow-red-100' :
-              'bg-white/80 backdrop-blur-sm text-gray-800 rounded-tl-none border border-orange-100/50 shadow-orange-100/20'}`
+              'bg-white/80 backdrop-blur-sm text-gray-850 rounded-tl-none border border-orange-100/50 shadow-orange-100/20'}`
               }>
 
                   {isAstrologerMsg &&
@@ -1016,7 +1016,7 @@ Occupation: ${intakeData.occupation || 'Employee'}`;
                         <div className="flex items-center gap-3 md:gap-4">
                           <button 
                             onClick={() => handleCopy(msg.content, msg._id)}
-                            className="text-gray-400 hover:text-orange-600 transition-all active:scale-90"
+                            className="text-[#3a1216] hover:text-orange-600 transition-all active:scale-90"
                             title="Copy">
                             {copiedId === msg._id ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5" />}
                           </button>
@@ -1024,13 +1024,13 @@ Occupation: ${intakeData.occupation || 'Employee'}`;
                           <div className="flex items-center gap-2 border-l border-orange-100/50 pl-2 md:pl-3">
                             <button 
                               onClick={() => handleFeedback(msg._id, 'up')}
-                              className={`transition-all active:scale-90 ${feedback[msg._id] === 'up' ? 'text-orange-600 scale-110' : 'text-gray-400 hover:text-orange-600'}`}
+                              className={`transition-all active:scale-90 ${feedback[msg._id] === 'up' ? 'text-orange-600 scale-110' : 'text-[#3a1216] hover:text-orange-600'}`}
                               title="Helpful">
                               <ThumbsUp className="w-3.5 h-3.5" />
                             </button>
                             <button 
                               onClick={() => handleFeedback(msg._id, 'down')}
-                              className={`transition-all active:scale-90 ${feedback[msg._id] === 'down' ? 'text-red-500 scale-110' : 'text-gray-400 hover:text-red-500'}`}
+                              className={`transition-all active:scale-90 ${feedback[msg._id] === 'down' ? 'text-red-500 scale-110' : 'text-[#3a1216] hover:text-red-500'}`}
                               title="Not helpful">
                               <ThumbsDown className="w-3.5 h-3.5" />
                             </button>
@@ -1038,23 +1038,23 @@ Occupation: ${intakeData.occupation || 'Employee'}`;
 
                           <button 
                             onClick={() => handleShare(msg.content)}
-                            className="text-gray-400 hover:text-orange-600 transition-all active:scale-90"
+                            className="text-[#3a1216] hover:text-orange-600 transition-all active:scale-90"
                             title="Share">
                             <Share2 className="w-3.5 h-3.5" />
                           </button>
 
                           <button 
                             onClick={() => handleSpeak(msg.content, msg._id)}
-                            className={`transition-all active:scale-90 ${speakingId === msg._id ? 'text-orange-600 animate-pulse' : 'text-gray-400 hover:text-orange-600'}`}
+                            className={`transition-all active:scale-90 ${speakingId === msg._id ? 'text-orange-600 animate-pulse' : 'text-[#3a1216] hover:text-orange-600'}`}
                             title="Listen">
                             <Volume2 className="w-3.5 h-3.5" />
                           </button>
 
-                          <button className="text-gray-300 hover:text-orange-600 transition-all opacity-40 cursor-not-allowed">
+                          <button className="text-[#3a1216] hover:text-orange-600 transition-all opacity-40 cursor-not-allowed">
                             <RefreshCw className="w-3.5 h-3.5" />
                           </button>
                           
-                          <button className="text-gray-300 hover:text-orange-600 transition-all opacity-40 cursor-not-allowed">
+                          <button className="text-[#3a1216] hover:text-orange-600 transition-all opacity-40 cursor-not-allowed">
                             <MoreHorizontal className="w-3.5 h-3.5" />
                           </button>
                         </div>
@@ -1076,7 +1076,7 @@ Occupation: ${intakeData.occupation || 'Employee'}`;
                     <div className="w-2 h-2 bg-gradient-to-br from-orange-500 to-amber-600 rounded-full animate-bounce [animation-delay:0.2s]"></div>
                     <div className="w-2 h-2 bg-gradient-to-br from-orange-600 to-amber-700 rounded-full animate-bounce [animation-delay:0.4s]"></div>
                   </div>
-                  <span className="text-xs text-gray-600 font-bold">{t("_orderId_.astrologer_is_typing")}</span>
+                  <span className="text-xs text-gray-850 font-bold">{t("_orderId_.astrologer_is_typing")}</span>
                 </div>
               </motion.div>
             }
@@ -1152,7 +1152,7 @@ Occupation: ${intakeData.occupation || 'Employee'}`;
                 </div>
 
                 {/* Footer Info */}
-                <div className="mt-2 flex items-center justify-between text-[8px] md:text-[10px] text-gray-500">
+                <div className="mt-2 flex items-center justify-between text-[8px] md:text-[10px] text-gray-850">
                   <div className="flex items-center gap-3">
                     <div className="flex items-center font-bold text-green-600">
                       <div className="w-1 h-1 bg-green-500 rounded-full mr-1"></div>
@@ -1172,7 +1172,7 @@ Occupation: ${intakeData.occupation || 'Employee'}`;
           </footer>
         ) : isSessionEnded ? (
           <footer className="bg-gray-100 border-t border-gray-300 p-4 text-center">
-            <p className="text-gray-600 font-bold">This consultation has ended. Thank you for seeking guidance.</p>
+            <p className="text-gray-850 font-bold">This consultation has ended. Thank you for seeking guidance.</p>
             <button 
               onClick={() => router.push('/ai-chat-history')}
               className="mt-2 text-orange-600 font-bold hover:underline"

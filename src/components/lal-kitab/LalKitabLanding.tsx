@@ -101,7 +101,7 @@ const LalKitabLanding = ({ onStart }: LalKitabLandingProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-gray-700 text-[19px] leading-relaxed max-w-2xl mx-auto mb-8 font-medium"
+          className="text-gray-850 text-[19px] leading-relaxed max-w-2xl mx-auto mb-8 font-medium"
         >
           {t("lal_kitab.landing_desc")}
         </motion.p>
@@ -113,17 +113,17 @@ const LalKitabLanding = ({ onStart }: LalKitabLandingProps) => {
           transition={{ delay: 0.3 }}
           className="flex flex-wrap items-center justify-center gap-4 py-3 px-6 rounded-2xl bg-white/40 border border-white/60 shadow-sm backdrop-blur-sm max-w-fit mx-auto"
         >
-          <div className="flex items-center gap-2 text-[15px] text-gray-700 font-semibold">
+          <div className="flex items-center gap-2 text-[15px] text-gray-850 font-semibold">
             <Shield className="w-4 h-4 text-[#b8962e]" />
             <span>{t("lal_kitab.secure")}</span>
           </div>
           <div className="w-1 h-1 rounded-full bg-gray-300" />
-          <div className="flex items-center gap-2 text-[15px] text-gray-700 font-semibold">
+          <div className="flex items-center gap-2 text-[15px] text-gray-850 font-semibold">
             <Award className="w-4 h-4 text-[#b8962e]" />
             <span>{t("lal_kitab.accurate")}</span>
           </div>
           <div className="w-1 h-1 rounded-full bg-gray-300" />
-          <div className="flex items-center gap-2 text-[15px] text-gray-700 font-semibold">
+          <div className="flex items-center gap-2 text-[15px] text-gray-850 font-semibold">
             <Sparkles className="w-4 h-4 text-[#b8962e]" />
             <span>{t("lal_kitab.remedial")}</span>
           </div>
@@ -156,7 +156,7 @@ const LalKitabLanding = ({ onStart }: LalKitabLandingProps) => {
         <section className="py-14">
           <hr className="lk-divider mb-14" />
           <h2 className="text-4xl font-semibold text-gray-900 mb-6 serif text-center">{t("lal_kitab.what_is_lal_kitab")}</h2>
-          <div className="max-w-3xl mx-auto space-y-4 text-gray-700 leading-relaxed text-[18px] text-center">
+          <div className="max-w-3xl mx-auto space-y-4 text-gray-850 leading-relaxed text-[18px] text-center">
             <p>
               {t("lal_kitab.what_desc_1")}
             </p>
@@ -199,7 +199,7 @@ const LalKitabLanding = ({ onStart }: LalKitabLandingProps) => {
                   <feature.icon size={22} />
                 </div>
                 <h3 className="text-[19px] font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-[16px] text-gray-600 leading-relaxed">{feature.desc}</p>
+                <p className="text-[16px] text-gray-850 leading-relaxed">{feature.desc}</p>
               </div>
             ))}
           </div>
@@ -209,7 +209,7 @@ const LalKitabLanding = ({ onStart }: LalKitabLandingProps) => {
         <section className="py-14">
           <hr className="lk-divider mb-14" />
           <h2 className="text-4xl font-semibold text-gray-900 mb-3 serif text-center">{t("lal_kitab.how_it_differs")}</h2>
-          <p className="text-center text-gray-700 text-[17px] max-w-xl mx-auto mb-10">
+          <p className="text-center text-gray-850 text-[17px] max-w-xl mx-auto mb-10">
           </p>
           <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5">
             {[
@@ -237,12 +237,12 @@ const LalKitabLanding = ({ onStart }: LalKitabLandingProps) => {
               <div key={i} className="p-5 rounded-2xl border border-[#d6c89a]/30 bg-white/40">
                 <p className="text-[12px] font-bold tracking-widest uppercase text-[#b8962e] mb-3">{row.label}</p>
                 <div className="flex gap-3 items-start">
-                  <div className="flex-1 text-[15px] text-gray-500 leading-snug">
-                    <span className="block text-[11px] uppercase font-semibold mb-1 text-gray-400">{t("lal_kitab.vedic")}</span>
+                  <div className="flex-1 text-[15px] text-gray-850 leading-snug">
+                    <span className="block text-[11px] uppercase font-semibold mb-1 text-[#3a1216]">{t("lal_kitab.vedic")}</span>
                     {row.vedic}
                   </div>
                   <div className="w-px self-stretch bg-[#d6c89a]/40" />
-                  <div className="flex-1 text-[15px] text-gray-700 leading-snug">
+                  <div className="flex-1 text-[15px] text-gray-850 leading-snug">
                     <span className="block text-[11px] uppercase font-semibold mb-1 text-[#b8962e]">{t("lal_kitab.lal_kitab")}</span>
                     {row.lk}
                   </div>
@@ -256,7 +256,7 @@ const LalKitabLanding = ({ onStart }: LalKitabLandingProps) => {
         <section className="py-14">
           <hr className="lk-divider mb-14" />
           <h2 className="text-4xl font-semibold text-gray-900 mb-3 serif text-center">{t("lal_kitab.nine_planets_role")}</h2>
-          <p className="text-center text-gray-700 text-[17px] max-w-xl mx-auto mb-10">
+          <p className="text-center text-gray-850 text-[17px] max-w-xl mx-auto mb-10">
             {t("lal_kitab.nine_planets_desc")}
           </p>
           <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -267,14 +267,14 @@ const LalKitabLanding = ({ onStart }: LalKitabLandingProps) => {
               { planet: "Mercury (Budh)", rules: "Intelligence, communication, business", remedy: "Feed green vegetables to cows", color: "text-green-600 bg-green-50" },
               { planet: "Jupiter (Guru)", rules: "Wisdom, children, wealth, religion", remedy: "Serve Brahmins & teachers", color: "text-yellow-600 bg-yellow-50" },
               { planet: "Venus (Shukra)", rules: "Love, luxury, beauty, marriage", remedy: "Respect women in your life", color: "text-pink-500 bg-pink-50" },
-              { planet: "Saturn (Shani)", rules: "Karma, discipline, servants, delays", remedy: "Feed oil to a peepal tree", color: "text-gray-600 bg-gray-100" },
+              { planet: "Saturn (Shani)", rules: "Karma, discipline, servants, delays", remedy: "Feed oil to a peepal tree", color: "text-gray-850 bg-gray-100" },
               { planet: "Rahu", rules: "Illusion, foreign, technology, ambition", remedy: "Donate items to orphanages", color: "text-indigo-600 bg-indigo-50" },
               { planet: "Ketu", rules: "Spirituality, detachment, past karma", remedy: "Keep a dog & care for it", color: "text-purple-600 bg-purple-50" },
             ].map((p, i) => (
               <div key={i} className="p-5 rounded-xl border border-[#d6c89a]/30 bg-white/50 hover:bg-white hover:shadow-md transition-all">
                 <p className={`text-[13px] font-bold px-2.5 py-1 rounded-full inline-block mb-3 ${p.color}`}>{p.planet}</p>
-                <p className="text-[15px] text-gray-700 font-medium leading-snug mb-1">{p.rules}</p>
-                <p className="text-[13px] text-gray-600 leading-snug">Upaya: {p.remedy}</p>
+                <p className="text-[15px] text-gray-850 font-medium leading-snug mb-1">{p.rules}</p>
+                <p className="text-[13px] text-gray-850 leading-snug">Upaya: {p.remedy}</p>
               </div>
             ))}
           </div>
@@ -284,7 +284,7 @@ const LalKitabLanding = ({ onStart }: LalKitabLandingProps) => {
         <section className="py-14">
           <hr className="lk-divider mb-14" />
           <h2 className="text-4xl font-semibold text-gray-900 mb-3 serif text-center">{t("lal_kitab.types_of_upayas")}</h2>
-          <p className="text-center text-gray-700 text-[17px] max-w-xl mx-auto mb-10">
+          <p className="text-center text-gray-850 text-[17px] max-w-xl mx-auto mb-10">
             {t("lal_kitab.types_of_upayas_desc")}
           </p>
           <div className="max-w-3xl mx-auto space-y-4">
@@ -320,7 +320,7 @@ const LalKitabLanding = ({ onStart }: LalKitabLandingProps) => {
                 </div>
                 <div>
                   <h3 className="text-[17px] font-bold text-gray-900 mb-1">{u.title}</h3>
-                  <p className="text-[16px] text-gray-600 leading-relaxed">{u.desc}</p>
+                  <p className="text-[16px] text-gray-850 leading-relaxed">{u.desc}</p>
                 </div>
               </div>
             ))}
@@ -331,7 +331,7 @@ const LalKitabLanding = ({ onStart }: LalKitabLandingProps) => {
         <section className="py-14">
           <hr className="lk-divider mb-14" />
           <h2 className="text-4xl font-semibold text-gray-900 mb-3 serif text-center">{t("lal_kitab.twelve_houses")}</h2>
-          <p className="text-center text-gray-700 text-[17px] max-w-xl mx-auto mb-10">
+          <p className="text-center text-gray-850 text-[17px] max-w-xl mx-auto mb-10">
             {t("lal_kitab.twelve_houses_desc")}
           </p>
           <div className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -351,8 +351,8 @@ const LalKitabLanding = ({ onStart }: LalKitabLandingProps) => {
             ].map((h, i) => (
               <div key={i} className="p-4 rounded-xl border border-[#d6c89a]/30 bg-white/40 hover:bg-white hover:shadow-md transition-all text-center">
                 <p className="text-[20px] font-bold text-[#b8962e] serif mb-0.5">{h.num}</p>
-                <p className="text-[15px] font-semibold text-gray-800 mb-1">{h.name}</p>
-                <p className="text-[13px] text-gray-600 leading-snug">{h.governs}</p>
+                <p className="text-[15px] font-semibold text-gray-850 mb-1">{h.name}</p>
+                <p className="text-[13px] text-gray-850 leading-snug">{h.governs}</p>
               </div>
             ))}
           </div>
@@ -383,7 +383,7 @@ const LalKitabLanding = ({ onStart }: LalKitabLandingProps) => {
             ].map((faq, i) => (
               <div key={i} className="border-b border-[#d6c89a]/30 pb-6 last:border-0">
                 <h3 className="text-[18px] font-bold text-gray-900 mb-2">{faq.q}</h3>
-                <p className="text-[16px] text-gray-600 leading-relaxed">{faq.a}</p>
+                <p className="text-[16px] text-gray-850 leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>

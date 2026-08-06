@@ -17,7 +17,7 @@ export default function YogaSection({ items }: { items: any[] }) {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
           <div>
             <h2 className="text-3xl font-black text-gray-900 mb-2 tracking-tight">Ancient Flow</h2>
-            <p className="text-gray-500 max-w-lg">
+            <p className="text-gray-850 max-w-lg">
               Explore the sacred geometry of the body. Yoga is more than physical 
               exercise—it's a path to spiritual alignment.
             </p>
@@ -65,7 +65,7 @@ export default function YogaSection({ items }: { items: any[] }) {
                         <h4 className={`font-black text-lg ${selectedPose?._id === pose._id ? 'text-white' : 'text-gray-900'}`}>
                           {pose.title}
                         </h4>
-                        <p className={`text-xs font-medium italic ${selectedPose?._id === pose._id ? 'text-emerald-100' : 'text-gray-400'}`}>
+                        <p className={`text-xs font-medium italic ${selectedPose?._id === pose._id ? 'text-emerald-100' : 'text-[#3a1216]'}`}>
                           {pose.metadata?.sanskritName || ''}
                         </p>
                       </div>
@@ -107,12 +107,12 @@ export default function YogaSection({ items }: { items: any[] }) {
 
                 <div className="space-y-6">
                   <div>
-                    <h5 className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3 flex items-center gap-2">
+                    <h5 className="text-[10px] font-black uppercase tracking-widest text-[#3a1216] mb-3 flex items-center gap-2">
                        <Info size={14} /> Key Benefits
                     </h5>
                     <div className="space-y-3">
                       {(selectedPose.metadata?.benefits || []).map((benefit: string, i: number) => (
-                        <div key={i} className="flex items-start gap-3 p-3 rounded-2xl bg-gray-50/80 text-sm font-medium text-gray-700">
+                        <div key={i} className="flex items-start gap-3 p-3 rounded-2xl bg-gray-50/80 text-sm font-medium text-gray-850">
                           <Sparkles size={14} className="text-emerald-500 mt-0.5 shrink-0" />
                           {benefit}
                         </div>
@@ -134,11 +134,11 @@ export default function YogaSection({ items }: { items: any[] }) {
               </motion.div>
             ) : (
               <div className="sticky top-24 bg-white/40 border-2 border-dashed border-gray-200 rounded-[2.5rem] p-12 text-center flex flex-col items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 mb-6">
+                <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-[#3a1216] mb-6">
                   <Sparkles size={24} />
                 </div>
                 <h4 className="text-xl font-black text-gray-900 mb-2">Select a Pose</h4>
-                <p className="text-gray-500 text-sm font-medium">Discover the benefits and guidance for individual asanas.</p>
+                <p className="text-gray-850 text-sm font-medium">Discover the benefits and guidance for individual asanas.</p>
               </div>
             )}
           </AnimatePresence>

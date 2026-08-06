@@ -88,7 +88,7 @@ export default function BlogSearchClient({
         onChange={(e) => setSearch(e.target.value)}
         className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-white border-b-2 border-transparent hover:border-[#f0ddc0] focus:border-[#d97706] shadow-sm text-[#3a1216] focus:outline-none transition-all placeholder-gray-400"
       />
-      <svg className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      <svg className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-[#3a1216]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
     </>
   );
 }

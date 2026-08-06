@@ -60,8 +60,8 @@ function MuhuratCard({ date, index }: {date: any;index: number;}) {
           { label: 'Karana', val: date.karana }].
           map((item, i) =>
           <div key={i} className="bg-white border border-[#e8dbb8]/40 rounded-3xl p-5 shadow-sm">
-                            <p className="text-[10px] uppercase font-black text-gray-400 tracking-[0.2em] mb-2">{item.label}</p>
-                            <p className="text-[14px] font-bold text-gray-800 leading-tight mb-1">{item.val}</p>
+                            <p className="text-[10px] uppercase font-black text-[#3a1216] tracking-[0.2em] mb-2">{item.label}</p>
+                            <p className="text-[14px] font-bold text-gray-850 leading-tight mb-1">{item.val}</p>
                             {item.sub && <p className="text-[11px] text-[#b8962e] font-semibold serif">{item.sub}</p>}
                         </div>
           )}
@@ -70,7 +70,7 @@ function MuhuratCard({ date, index }: {date: any;index: number;}) {
                 {/* Timing & AI Row */}
                 <div className="flex flex-col lg:flex-row gap-6 mb-8">
                     <div className="flex-1 space-y-4">
-                        <div className="flex flex-wrap gap-6 text-[13px] text-gray-600 bg-white/50 border border-[#e8dbb8]/30 px-6 py-4 rounded-3xl">
+                        <div className="flex flex-wrap gap-6 text-[13px] text-gray-850 bg-white/50 border border-[#e8dbb8]/30 px-6 py-4 rounded-3xl">
                             <span className="flex items-center gap-2.5">
                                 <Sun className="w-4 h-4 text-amber-500" />
 {t("result.sunrise")}<strong className="text-gray-900">{date.sun_rise}</strong>
@@ -104,7 +104,7 @@ function MuhuratCard({ date, index }: {date: any;index: number;}) {
                                     </div>
                                     <div className="space-y-1.5">
                                         <h4 className="text-[10px] font-black uppercase text-indigo-400 tracking-[0.25em]">{t("result.refined_astrological_pulse")}</h4>
-                                        <p className="text-gray-800 text-[14px] leading-relaxed font-medium">
+                                        <p className="text-gray-850 text-[14px] leading-relaxed font-medium">
                                             "{date.aiVerdict}"
                                         </p>
                                     </div>
@@ -255,7 +255,7 @@ function MuhuratMonthGrid({
             <div className="grid grid-cols-7">
                 {prevMonthDays.map((d) =>
         <div key={`prev-${d}`} className="min-h-[90px] p-2 border-r border-b border-[#e9ddb8]/30 opacity-20 bg-[#b8962e]/[0.01] flex flex-col justify-between">
-                        <span className="text-[11px] font-medium text-gray-400 self-end">{d}</span>
+                        <span className="text-[11px] font-medium text-[#3a1216] self-end">{d}</span>
                     </div>
         )}
 
@@ -272,12 +272,12 @@ function MuhuratMonthGrid({
               className="relative min-h-[90px] p-2 border-r border-b border-[#e9ddb8]/40 transition-all flex flex-col items-start justify-between group hover:bg-[#b8962e]/[0.03]"
               style={{ background: isAuspicious ? 'rgba(34,197,94,0.06)' : 'transparent' }}>
               
-                            <span className="text-[13px] font-bold text-gray-700 self-end">
+                            <span className="text-[13px] font-bold text-gray-850 self-end">
                                 {day}
                             </span>
 
                             <div className="w-full leading-snug">
-                                <div className="text-[10px] font-bold truncate text-gray-800">
+                                <div className="text-[10px] font-bold truncate text-gray-850">
                                     {(searchInfo?.tithi || baseInfo?.tithi || '').split('(')[0]}
                                 </div>
                                 <div className="text-[9px] font-semibold truncate uppercase tracking-tighter text-[#b8962e] opacity-80 serif">
@@ -299,7 +299,7 @@ function MuhuratMonthGrid({
 
                 {nextMonthDays.map((d) =>
         <div key={`next-${d}`} className="min-h-[90px] p-2 border-r border-b border-[#e9ddb8]/30 opacity-20 bg-[#b8962e]/[0.01] flex flex-col justify-between">
-                        <span className="text-[11px] font-medium text-gray-400 self-end">{d}</span>
+                        <span className="text-[11px] font-medium text-[#3a1216] self-end">{d}</span>
                     </div>
         )}
             </div>
@@ -326,15 +326,15 @@ function MuhuratCalendar({ allDates, metadata }: {allDates: any[];metadata?: any
             <div className="flex flex-wrap items-center gap-6 pb-6 border-b border-[#d6c89a]/40">
                 <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-sm" />
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">{t("result.perfect_alignment")}</span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-850">{t("result.perfect_alignment")}</span>
                 </div>
                 <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-emerald-500/20" />
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">{t("result.regular_day")}</span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#3a1216]">{t("result.regular_day")}</span>
                 </div>
                 <div className="flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-indigo-400" />
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">{t("result.divine_insight_available")}</span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-850">{t("result.divine_insight_available")}</span>
                 </div>
             </div>
 
@@ -453,7 +453,7 @@ function MuhuratResultContent() {
                         </div>
                         <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 serif leading-tight">{t("result.auspicious_dates_found")}</h1>
                         {input?.place &&
-            <div className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/60 border border-[#e8dbb8]/40 shadow-sm text-gray-600 text-sm font-medium">
+            <div className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/60 border border-[#e8dbb8]/40 shadow-sm text-gray-850 text-sm font-medium">
                                 <Sun className="w-4 h-4 text-orange-400" />
                                 <span>{t("result.calculated_for_celestial_align")}<strong className="text-gray-900">{input.place}</strong></span>
                             </div>
@@ -468,7 +468,7 @@ function MuhuratResultContent() {
                             <Loader2 className="w-12 h-12 text-[#b8962e] animate-spin relative" />
                         </div>
                         <h3 className="text-xl font-bold text-gray-900 mb-2 serif">{t("result.scanning_panchang_data")}</h3>
-                        <p className="text-gray-500 font-medium anim-pulse uppercase tracking-[0.2em] text-[11px]">{t("result.identifying_auspicious_moments")}</p>
+                        <p className="text-gray-850 font-medium anim-pulse uppercase tracking-[0.2em] text-[11px]">{t("result.identifying_auspicious_moments")}</p>
                     </div>
         }
 
@@ -493,7 +493,7 @@ function MuhuratResultContent() {
                         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-10 p-7 rounded-[2.5rem] bg-white/60 border border-[#e8dbb8]/40 shadow-sm backdrop-blur-sm">
                             <div className="flex items-center gap-10">
                                 <div className="space-y-1">
-                                    <p className="text-[10px] font-black uppercase text-gray-400 tracking-[0.25em]">{t("result.panchang_scan")}</p>
+                                    <p className="text-[10px] font-black uppercase text-[#3a1216] tracking-[0.25em]">{t("result.panchang_scan")}</p>
                                     <div className="flex items-center gap-2">
                                         <Calendar className="w-4 h-4 text-[#b8962e]" />
                                         <span className="text-[15px] font-bold text-gray-900">
@@ -518,7 +518,7 @@ function MuhuratResultContent() {
                 type="button"
                 onClick={() => setViewMode('list')}
                 className={`px-8 py-3 rounded-xl font-bold text-[13px] transition-all duration-300 ${
-                viewMode === 'list' ? 'bg-[#b8962e] text-white shadow-lg' : 'text-gray-500 hover:text-gray-900'}`
+                viewMode === 'list' ? 'bg-[#b8962e] text-white shadow-lg' : 'text-gray-850 hover:text-gray-900'}`
                 }>
 {t("result.list_view")}
 
@@ -527,7 +527,7 @@ function MuhuratResultContent() {
                 type="button"
                 onClick={() => setViewMode('calendar')}
                 className={`px-8 py-3 rounded-xl font-bold text-[13px] transition-all duration-300 ${
-                viewMode === 'calendar' ? 'bg-[#b8962e] text-white shadow-lg' : 'text-gray-500 hover:text-gray-900'}`
+                viewMode === 'calendar' ? 'bg-[#b8962e] text-white shadow-lg' : 'text-gray-850 hover:text-gray-900'}`
                 }>
 {t("result.grid_view")}
 

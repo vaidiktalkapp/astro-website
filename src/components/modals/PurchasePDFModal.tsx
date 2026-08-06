@@ -75,7 +75,7 @@ export default function PurchasePDFModal({
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute right-4 top-4 p-2 rounded-full hover:bg-gray-100 transition-colors text-gray-500"
+          className="absolute right-4 top-4 p-2 rounded-full hover:bg-gray-100 transition-colors text-gray-850"
         >
           <X className="w-5 h-5" />
         </button>
@@ -93,7 +93,7 @@ export default function PurchasePDFModal({
 
           <div className="text-center mb-6">
             <h2 className="text-xl font-bold text-gray-900 mb-1.5">Unlock Detailed Report</h2>
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-850 text-sm">
               Get your premium <strong>{toolName}</strong> PDF report instantly.
             </p>
           </div>
@@ -101,14 +101,14 @@ export default function PurchasePDFModal({
           {/* Pricing Card */}
           <div className="bg-[#fffdf5] border border-[#d6c89a] rounded-xl p-5 mb-6">
             <div className="flex items-center justify-between mb-3 pb-3 border-b border-[#d6c89a]/30">
-              <span className="text-gray-600 text-sm font-medium">Report Price</span>
+              <span className="text-gray-850 text-sm font-medium">Report Price</span>
               <span className="text-xl font-black text-gray-900">₹{price}</span>
             </div>
             
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1.5">
-                <Wallet className="w-4 h-4 text-gray-400" />
-                <span className="text-sm text-gray-500">Your Wallet Balance</span>
+                <Wallet className="w-4 h-4 text-[#3a1216]" />
+                <span className="text-sm text-gray-850">Your Wallet Balance</span>
               </div>
               <span className={`font-bold text-sm ${isInsufficient ? 'text-red-500' : 'text-green-600'}`}>
                 ₹{currentBalance}
@@ -149,7 +149,7 @@ export default function PurchasePDFModal({
             </button>
           )}
 
-          <p className="text-center text-[10px] text-gray-400 mt-5 leading-tight">
+          <p className="text-center text-[10px] text-[#3a1216] mt-5 leading-tight">
             Secure payment powered by VaidikTalk Wallet. <br /> 
             Reports are available for lifetime in your history.
           </p>

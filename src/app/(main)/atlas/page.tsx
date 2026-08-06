@@ -171,7 +171,7 @@ export default function AtlasPage() {
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2 leading-tight serif">
 {t("atlas.atlas")}<span className="text-[#b8962e]">{t("atlas.search")}</span>
                 </h1>
-                <p className="text-gray-600 text-[16px] leading-relaxed max-w-lg mx-auto mb-4 font-medium">
+                <p className="text-gray-850 text-[16px] leading-relaxed max-w-lg mx-auto mb-4 font-medium">
 {t("atlas.scientific_precision_for_latit")}
                 </p>
               </div>
@@ -181,7 +181,7 @@ export default function AtlasPage() {
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 pb-2 border-b border-[#d6c89a]/30 mb-1">
                     <Search className="w-4 h-4 text-[#b8962e]" />
-                    <span className="text-[11px] font-black text-gray-800 uppercase tracking-widest">{t("atlas.identify_coordinates")}</span>
+                    <span className="text-[11px] font-black text-gray-850 uppercase tracking-widest">{t("atlas.identify_coordinates")}</span>
                   </div>
 
                   <div className="flex flex-col md:flex-row gap-3">
@@ -307,7 +307,7 @@ export default function AtlasPage() {
                         {/* RIGHT COLUMN: Map Display */}
                         <div className="bg-white rounded-3xl p-2 relative shadow-sm shadow-[#b8962e]/5 border border-[#d6c89a]/20 min-h-[350px] lg:min-h-full">
                            <div className="absolute top-4 left-4 right-4 z-10 bg-white/90 backdrop-blur-md rounded-xl p-3 shadow-md pointer-events-none border border-[#d6c89a]/20">
-                              <p className="text-[11px] sm:text-xs font-bold text-gray-800 tracking-wide font-sans text-center">
+                              <p className="text-[11px] sm:text-xs font-bold text-gray-850 tracking-wide font-sans text-center">
 {t("atlas.latitude")}<span className="text-[#b8962e] font-normal">{result.lat.toFixed(6)}</span>{t("atlas._longitude")}
                             <span className="text-[#b8962e] font-normal">{result.lon.toFixed(6)}</span> 
                                 <span className="hidden sm:inline"> | <span className="text-[#b8962e] font-bold">{result.name.split(',')[0]}</span></span>
@@ -358,8 +358,8 @@ export default function AtlasPage() {
                     animate={{ opacity: 1 }}
                     className="text-center py-20 space-y-6 opacity-30 grayscale">
                     
-                      <Globe className="w-16 h-16 text-gray-400 mx-auto" />
-                      <p className="text-gray-500 font-medium serif text-xl">
+                      <Globe className="w-16 h-16 text-[#3a1216] mx-auto" />
+                      <p className="text-gray-850 font-medium serif text-xl">
 {t("atlas.enter_a_location_to_retrieve_p")}
                     </p>
                     </motion.div>
@@ -368,7 +368,7 @@ export default function AtlasPage() {
               </div>
 
               {/* Minimalist Footnote */}
-              <div className="text-center text-[10px] text-gray-400 font-bold uppercase tracking-[0.5em] pt-8 opacity-50">
+              <div className="text-center text-[10px] text-[#3a1216] font-bold uppercase tracking-[0.5em] pt-8 opacity-50">
 {t("atlas.precision_mapping_system")}
               </div>
 

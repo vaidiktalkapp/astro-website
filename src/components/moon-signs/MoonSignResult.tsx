@@ -45,7 +45,7 @@ const Card = ({ children, className = '' }: { children: React.ReactNode; classNa
 const SectionLabel = ({ icon, label, color }: { icon: React.ReactNode; label: string; color?: string }) => (
     <div className="flex items-center gap-2 mb-3">
         <span style={{ color: color ?? '#d97706' }}>{icon}</span>
-        <span className="text-[11px] font-black uppercase tracking-[0.16em] text-gray-700">{label}</span>
+        <span className="text-[11px] font-black uppercase tracking-[0.16em] text-gray-850">{label}</span>
     </div>
 );
 
@@ -98,17 +98,17 @@ const MoonSignResult = ({ data, onBack, onNew }: MoonSignResultProps) => {
                                 <div className="flex items-baseline gap-2.5 flex-wrap">
                                     <h1 className="text-3xl font-black tracking-tight text-gray-900 leading-none">{sign}</h1>
                                     {data.sanskritName && (
-                                        <span className="text-base font-medium text-gray-500">{data.sanskritName}</span>
+                                        <span className="text-base font-medium text-gray-850">{data.sanskritName}</span>
                                     )}
                                 </div>
                                 <div className="flex flex-wrap gap-1.5 mt-2.5">
                                     {data.element && (
-                                        <span className="px-2.5 py-0.5 rounded-full border text-[10px] font-bold uppercase tracking-widest bg-gray-100 border-gray-300 text-gray-700">
+                                        <span className="px-2.5 py-0.5 rounded-full border text-[10px] font-bold uppercase tracking-widest bg-gray-100 border-gray-300 text-gray-850">
                                             {data.element}
                                         </span>
                                     )}
                                     {data.quality && (
-                                        <span className="px-2.5 py-0.5 rounded-full border text-[10px] font-bold uppercase tracking-widest bg-gray-100 border-gray-300 text-gray-700">
+                                        <span className="px-2.5 py-0.5 rounded-full border text-[10px] font-bold uppercase tracking-widest bg-gray-100 border-gray-300 text-gray-850">
                                             {data.quality}
                                         </span>
                                     )}
@@ -149,7 +149,7 @@ const MoonSignResult = ({ data, onBack, onNew }: MoonSignResultProps) => {
                                 </button>
                                 <button
                                     onClick={onBack}
-                                    className="flex items-center gap-1.5 px-4 py-2 bg-white text-gray-500 border border-[#d6c89a] rounded-xl text-[10px] font-black uppercase tracking-widest hover:text-[#b8962e] hover:border-[#b8962e] transition-all group shrink-0"
+                                    className="flex items-center gap-1.5 px-4 py-2 bg-white text-gray-850 border border-[#d6c89a] rounded-xl text-[10px] font-black uppercase tracking-widest hover:text-[#b8962e] hover:border-[#b8962e] transition-all group shrink-0"
                                     suppressHydrationWarning
                                 >
                                     <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
@@ -176,7 +176,7 @@ const MoonSignResult = ({ data, onBack, onNew }: MoonSignResultProps) => {
                             </div>
                             <div className="flex-1">
                                 <h3 className="text-sm font-black text-gray-900 leading-tight">Horoscope Matching</h3>
-                                <p className="text-[11px] text-gray-500 mt-0.5">Check compatibility with your partner</p>
+                                <p className="text-[11px] text-gray-850 mt-0.5">Check compatibility with your partner</p>
                             </div>
                         </Card>
                     </Link>
@@ -188,7 +188,7 @@ const MoonSignResult = ({ data, onBack, onNew }: MoonSignResultProps) => {
                             </div>
                             <div className="flex-1">
                                 <h3 className="text-sm font-black text-gray-900 leading-tight">Love Horoscope</h3>
-                                <p className="text-[11px] text-gray-500 mt-0.5">Explore your romantic future today</p>
+                                <p className="text-[11px] text-gray-850 mt-0.5">Explore your romantic future today</p>
                             </div>
                         </Card>
                     </Link>
@@ -200,7 +200,7 @@ const MoonSignResult = ({ data, onBack, onNew }: MoonSignResultProps) => {
                             </div>
                             <div className="flex-1">
                                 <h3 className="text-sm font-black text-gray-900 leading-tight">Moon Signs</h3>
-                                <p className="text-[11px] text-gray-500 mt-0.5">Discover your emotional blueprint</p>
+                                <p className="text-[11px] text-gray-850 mt-0.5">Discover your emotional blueprint</p>
                             </div>
                         </Card>
                     </Link>
@@ -214,17 +214,17 @@ const MoonSignResult = ({ data, onBack, onNew }: MoonSignResultProps) => {
                         {/* Soul Analysis */}
                         <Card className="p-6 border-[#d6c89a]">
                             <SectionLabel icon={<Sparkles className="w-4 h-4" />} label="Soul Analysis" color={'#b8962e'} />
-                            <div className="text-[14px] text-gray-800 leading-relaxed space-y-3">
+                            <div className="text-[14px] text-gray-850 leading-relaxed space-y-3">
                                 {data.overview?.split('\n').filter(Boolean).map((p: string, i: number) => (
                                     <p key={i}>{p}</p>
-                                )) ?? <p className="text-gray-500">Generating…</p>}
+                                )) ?? <p className="text-gray-850">Generating…</p>}
                             </div>
                         </Card>
 
                         {/* Moon Sign Explanation (Static Content to fill gap and educate) */}
                         <Card className="p-6 border-[#d6c89a] bg-amber-50/30">
                             <SectionLabel icon={<Moon className="w-4 h-4" />} label="Understanding Your Moon Sign" color={'#b8962e'} />
-                            <div className="text-[13px] text-gray-700 leading-relaxed space-y-3">
+                            <div className="text-[13px] text-gray-850 leading-relaxed space-y-3">
                                 <p>
                                     In Vedic Astrology (Jyotish), your <strong>Moon Sign (Chandra Rashi)</strong> is considered more important than your Sun Sign. While the Sun represents your soul and ego, the Moon governs your <strong>mind, emotions, and inner subconscious</strong>.
                                 </p>
@@ -243,7 +243,7 @@ const MoonSignResult = ({ data, onBack, onNew }: MoonSignResultProps) => {
                                 {(data.strengths ?? []).map((s: string, i: number) => (
                                     <li key={i} className="flex gap-3 items-start">
                                         <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
-                                        <span className="text-[13px] text-gray-800 font-medium leading-snug">{s}</span>
+                                        <span className="text-[13px] text-gray-850 font-medium leading-snug">{s}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -254,7 +254,7 @@ const MoonSignResult = ({ data, onBack, onNew }: MoonSignResultProps) => {
                                 {(data.weaknesses ?? []).map((s: string, i: number) => (
                                     <li key={i} className="flex gap-3 items-start">
                                         <span className="mt-[7px] w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: cfg.color }} />
-                                        <span className="text-[13px] text-gray-800 font-medium leading-snug">{s}</span>
+                                        <span className="text-[13px] text-gray-850 font-medium leading-snug">{s}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -269,7 +269,7 @@ const MoonSignResult = ({ data, onBack, onNew }: MoonSignResultProps) => {
                     <motion.div variants={fade}>
                         <div className="flex items-center gap-2 mb-3">
                             <Star className="w-4 h-4" style={{ color: cfg.color }} />
-                            <span className="text-[11px] font-black uppercase tracking-[0.16em] text-gray-700">Core Traits</span>
+                            <span className="text-[11px] font-black uppercase tracking-[0.16em] text-gray-850">Core Traits</span>
                         </div>
                         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                             {data.personalityTraits.map((t: any, i: number) => (
@@ -282,7 +282,7 @@ const MoonSignResult = ({ data, onBack, onNew }: MoonSignResultProps) => {
                                 >
                                     <span className="text-2xl block mb-2 leading-none">{t.emoji ?? '✦'}</span>
                                     <p className="text-[12px] font-black text-gray-900 mb-1">{t.title}</p>
-                                    <p className="text-[11px] text-gray-600 leading-relaxed">{t.description}</p>
+                                    <p className="text-[11px] text-gray-850 leading-relaxed">{t.description}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -303,11 +303,11 @@ const MoonSignResult = ({ data, onBack, onNew }: MoonSignResultProps) => {
                         >
                             <div className="flex items-center gap-2">
                                 <Heart className="w-4 h-4 text-rose-500" />
-                                <span className="text-[11px] font-black uppercase tracking-[0.16em] text-gray-700">Emotional Landscape</span>
+                                <span className="text-[11px] font-black uppercase tracking-[0.16em] text-gray-850">Emotional Landscape</span>
                             </div>
                             {emoOpen
-                                ? <ChevronUp className="w-4 h-4 text-gray-500" />
-                                : <ChevronDown className="w-4 h-4 text-gray-500" />
+                                ? <ChevronUp className="w-4 h-4 text-gray-850" />
+                                : <ChevronDown className="w-4 h-4 text-gray-850" />
                             }
                         </button>
                         <AnimatePresence>
@@ -319,7 +319,7 @@ const MoonSignResult = ({ data, onBack, onNew }: MoonSignResultProps) => {
                                     transition={{ duration: 0.2 }}
                                     className="overflow-hidden"
                                 >
-                                    <div className="px-5 pb-5 pt-2 border-t border-gray-200 text-[13px] text-gray-800 leading-relaxed space-y-2">
+                                    <div className="px-5 pb-5 pt-2 border-t border-gray-200 text-[13px] text-gray-850 leading-relaxed space-y-2">
                                         {data.emotionalNature?.split('\n').filter(Boolean).map((p: string, i: number) => (
                                             <p key={i}>{p}</p>
                                         ))}
@@ -328,7 +328,7 @@ const MoonSignResult = ({ data, onBack, onNew }: MoonSignResultProps) => {
                             )}
                         </AnimatePresence>
                         {!emoOpen && data.emotionalNature && (
-                            <p className="px-5 pb-4 text-[12px] text-gray-600 leading-relaxed line-clamp-3">
+                            <p className="px-5 pb-4 text-[12px] text-gray-850 leading-relaxed line-clamp-3">
                                 {data.emotionalNature.split('\n').filter(Boolean)[0]}
                             </p>
                         )}
@@ -375,7 +375,7 @@ const MoonSignResult = ({ data, onBack, onNew }: MoonSignResultProps) => {
                             ].map((a) => (
                                 <div key={a.label} className="rounded-xl border border-gray-200 bg-gray-50 p-2.5 text-center">
                                     <div className="flex justify-center mb-1" style={{ color: cfg.color }}>{a.icon}</div>
-                                    <p className="text-[9px] text-gray-500 font-bold uppercase tracking-widest leading-none mb-0.5">{a.label}</p>
+                                    <p className="text-[9px] text-gray-850 font-bold uppercase tracking-widest leading-none mb-0.5">{a.label}</p>
                                     <p className="text-[11px] font-black text-gray-900 truncate">{a.value ?? '—'}</p>
                                 </div>
                             ))}
@@ -390,9 +390,9 @@ const MoonSignResult = ({ data, onBack, onNew }: MoonSignResultProps) => {
                     <Card className="p-5">
                         <div className="flex items-center gap-2 mb-3">
                             <Star className="w-4 h-4" style={{ color: cfg.color }} />
-                            <span className="text-[11px] font-black uppercase tracking-[0.16em] text-gray-700">Nakshatra Essence</span>
+                            <span className="text-[11px] font-black uppercase tracking-[0.16em] text-gray-850">Nakshatra Essence</span>
                         </div>
-                        <p className="text-[14px] text-gray-800 leading-relaxed">&ldquo;{data.nakshatraInsight}&rdquo;</p>
+                        <p className="text-[14px] text-gray-850 leading-relaxed">&ldquo;{data.nakshatraInsight}&rdquo;</p>
                     </Card>
 
                     <div
@@ -414,7 +414,7 @@ const MoonSignResult = ({ data, onBack, onNew }: MoonSignResultProps) => {
                 <motion.div variants={fade} className="flex justify-center pb-4 pt-2">
                     <button
                         onClick={onBack}
-                        className="px-6 py-2.5 rounded-xl border-2 border-gray-300 text-[11px] font-bold uppercase tracking-widest text-gray-700 hover:border-amber-400 hover:text-amber-600 bg-white transition-all shadow-sm"
+                        className="px-6 py-2.5 rounded-xl border-2 border-gray-300 text-[11px] font-bold uppercase tracking-widest text-gray-850 hover:border-amber-400 hover:text-amber-600 bg-white transition-all shadow-sm"
                         suppressHydrationWarning
                     >
                         ← Get Another Reading

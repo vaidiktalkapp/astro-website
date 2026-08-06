@@ -51,7 +51,7 @@ export default function PostSessionModal({
       <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden relative animate-in zoom-in-95 duration-200">
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors z-10"
+          className="absolute top-4 right-4 text-[#3a1216] hover:text-gray-850 transition-colors z-10"
         >
           <X className="w-6 h-6" />
         </button>
@@ -61,7 +61,7 @@ export default function PostSessionModal({
             <h2 className="text-2xl font-bold text-gray-900 mb-1">
               {type === 'chat' ? 'Chat Ended' : 'Call Ended'}
             </h2>
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-850 text-sm">
               Your consultation with {astrologer?.name || 'Astrologer'} has ended.
             </p>
           </div>
@@ -76,7 +76,7 @@ export default function PostSessionModal({
 
           {!submitted ? (
             <div className="mb-6">
-              <h3 className="font-semibold text-gray-800 mb-3">Rate your experience</h3>
+              <h3 className="font-semibold text-gray-850 mb-3">Rate your experience</h3>
               <div className="flex justify-center gap-2 mb-4">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <button
@@ -90,7 +90,7 @@ export default function PostSessionModal({
                       className={`w-8 h-8 ${
                         star <= (hoverRating || rating) 
                           ? 'fill-yellow-400 text-yellow-400' 
-                          : 'fill-gray-100 text-gray-300'
+                          : 'fill-gray-100 text-[#3a1216]'
                       }`} 
                     />
                   </button>
@@ -122,7 +122,7 @@ export default function PostSessionModal({
           <div className="flex gap-3 mt-4 pt-4 border-t border-gray-100">
             <button
               onClick={onGoHome || onClose}
-              className="flex-1 py-2.5 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
+              className="flex-1 py-2.5 border border-gray-200 text-gray-850 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
             >
               Go to Home
             </button>

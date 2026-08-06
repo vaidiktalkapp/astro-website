@@ -225,7 +225,7 @@ const AiChatHistoryPage = () => {
                                 <h1 className="text-2xl md:text-4xl font-bold text-gray-900 truncate">
                                     AI <span className="text-orange-600">History</span>
                                 </h1>
-                                <p className="text-xs text-gray-600 md:text-gray-700 mt-1 truncate">{t("ai_chat_history.your_divine_consultations")}</p>
+                                <p className="text-xs text-gray-850 md:text-gray-850 mt-1 truncate">{t("ai_chat_history.your_divine_consultations")}</p>
                             </div>
                         </div>
 
@@ -236,7 +236,7 @@ const AiChatHistoryPage = () => {
                                 className={`flex items-center gap-2 px-5 py-2 rounded-xl text-sm font-bold transition-all ${
                                     activeTab === 'chat' 
                                     ? 'bg-white text-orange-600 shadow-md translate-y-0' 
-                                    : 'text-gray-500 hover:text-orange-500'
+                                    : 'text-gray-850 hover:text-orange-500'
                                 }`}
                             >
                                 <MessageSquare className="w-4 h-4" />
@@ -247,7 +247,7 @@ const AiChatHistoryPage = () => {
                                 className={`flex items-center gap-2 px-5 py-2 rounded-xl text-sm font-bold transition-all ${
                                     activeTab === 'call' 
                                     ? 'bg-white text-orange-600 shadow-md translate-y-0' 
-                                    : 'text-gray-500 hover:text-orange-500'
+                                    : 'text-gray-850 hover:text-orange-500'
                                 }`}
                             >
                                 <Phone className="w-4 h-4" />
@@ -257,7 +257,7 @@ const AiChatHistoryPage = () => {
 
                         <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
                             <div className="relative flex-1 sm:flex-none">
-                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600 w-4 h-4" />
+                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-850 w-4 h-4" />
                                 <input
                   type="text"
                   placeholder={t("ai_chat_history.search_sessions_placeholder")}
@@ -277,7 +277,7 @@ const AiChatHistoryPage = () => {
                                     <option value="ended" className="text-gray-900">{t("ai_chat_history.completed")}</option>
                                     <option value="insufficient_funds" className="text-gray-900">{t("ai_chat_history.ended_early")}</option>
                                 </select>
-                                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+                                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-850 w-4 h-4 pointer-events-none" />
                             </div>
                         </div>
                     </div>
@@ -287,7 +287,7 @@ const AiChatHistoryPage = () => {
                         <div className="bg-white p-3 md:p-4 rounded-xl md:rounded-2xl border border-orange-100 shadow-sm">
                             <div className="flex items-center justify-between">
                                 <div className="min-w-0">
-                                    <p className="text-[10px] md:text-xs text-gray-600 font-semibold uppercase tracking-wider truncate">{t("ai_chat_history.total")}</p>
+                                    <p className="text-[10px] md:text-xs text-gray-850 font-semibold uppercase tracking-wider truncate">{t("ai_chat_history.total")}</p>
                                     <p className="text-lg md:text-2xl font-bold text-gray-900 mt-0.5 md:mt-1">{totalSessions}</p>
                                 </div>
                                 <div className="bg-orange-100 p-2 md:p-3 rounded-lg md:rounded-xl shrink-0">
@@ -299,7 +299,7 @@ const AiChatHistoryPage = () => {
                         <div className="bg-white p-3 md:p-4 rounded-xl md:rounded-2xl border border-orange-100 shadow-sm">
                             <div className="flex items-center justify-between">
                                 <div className="min-w-0">
-                                    <p className="text-[10px] md:text-xs text-gray-600 font-semibold uppercase tracking-wider truncate">{t("ai_chat_history.time")}</p>
+                                    <p className="text-[10px] md:text-xs text-gray-850 font-semibold uppercase tracking-wider truncate">{t("ai_chat_history.time")}</p>
                                     <p className="text-lg md:text-2xl font-bold text-gray-900 mt-0.5 md:mt-1">
                                         {Math.floor(totalDuration / 60)}m
                                     </p>
@@ -313,7 +313,7 @@ const AiChatHistoryPage = () => {
                         <div className="bg-white p-3 md:p-4 rounded-xl md:rounded-2xl border border-orange-100 shadow-sm">
                             <div className="flex items-center justify-between">
                                 <div className="min-w-0">
-                                    <p className="text-[10px] md:text-xs text-gray-600 font-semibold uppercase tracking-wider truncate">{t("ai_chat_history.total_spend")}</p>
+                                    <p className="text-[10px] md:text-xs text-gray-850 font-semibold uppercase tracking-wider truncate">{t("ai_chat_history.total_spend")}</p>
                                     <p className="text-lg md:text-2xl font-bold text-gray-900 mt-0.5 md:mt-1">₹{totalSpend.toFixed(2)}</p>
                                 </div>
                                 <div className="bg-green-100 p-2 md:p-3 rounded-lg md:rounded-xl shrink-0">
@@ -370,7 +370,7 @@ const AiChatHistoryPage = () => {
                                                 {session.astrologer?.name || 'AI Astrologer'}
                                             </h3>
                                             <div className="flex flex-wrap items-center gap-3 mt-1">
-                                                <span className="flex items-center text-xs font-semibold text-gray-500">
+                                                <span className="flex items-center text-xs font-semibold text-gray-850">
                                                     <Calendar className="w-3 h-3 mr-1" />
                                                     {session.startedAt ? new Date(session.startedAt).toLocaleDateString(t('common.locale_code') === 'hi' ? 'hi-IN' : 'en-IN', {
                         day: 'numeric',
@@ -378,7 +378,7 @@ const AiChatHistoryPage = () => {
                         year: 'numeric'
                       }) : 'N/A'}
                                                 </span>
-                                                <span className="flex items-center text-xs font-semibold text-gray-500">
+                                                <span className="flex items-center text-xs font-semibold text-gray-850">
                                                     <Clock className="w-3 h-3 mr-1" />
                                                     {session.duration ? `${Math.floor(session.duration / 60)}m ${Math.round(session.duration % 60)}s` : '0m 0s'}
                                                 </span>
@@ -415,7 +415,7 @@ const AiChatHistoryPage = () => {
                       e.stopPropagation();
                       handleDeleteSession(session._id);
                     }}
-                    className="p-2 text-gray-300 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all"
+                    className="p-2 text-[#3a1216] hover:text-red-500 hover:bg-red-50 rounded-xl transition-all"
                     title="Delete session">
                     
                                                 <Trash2 className="w-4 h-4" />
@@ -441,12 +441,12 @@ const AiChatHistoryPage = () => {
                                     <Phone className="w-10 h-10 text-orange-400" />
                                 )}
                             </div>
-                            <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                            <h3 className="text-2xl font-bold text-gray-850 mb-2">
                                 {searchQuery || filterStatus !== 'all' ?
                                 t("ai_chat_history.no_matches") :
                                 activeTab === 'chat' ? "No AI Chats Found" : "No AI Voice Calls Found"}
                             </h3>
-                            <p className="text-gray-500 max-w-sm mx-auto px-6">
+                            <p className="text-gray-850 max-w-sm mx-auto px-6">
                                 {searchQuery || filterStatus !== 'all' ?
                                 t("ai_chat_history.try_adjusting_your_filters_to_find_") :
                                 activeTab === 'chat' ? "You haven't had any AI chat consultations yet." : "You haven't had any AI voice call consultations yet."}
@@ -528,7 +528,7 @@ const AiChatHistoryPage = () => {
                                 {loadingMessages ? (
                                     <div className="flex flex-col items-center justify-center min-h-full space-y-4">
                                         <div className="w-14 h-14 border-4 border-orange-500 border-t-transparent rounded-full animate-spin" />
-                                        <p className="text-sm font-semibold text-gray-600">{t("ai_chat_history.loading_conversation")}</p>
+                                        <p className="text-sm font-semibold text-gray-850">{t("ai_chat_history.loading_conversation")}</p>
                                     </div>
                                 ) : selectedSession.recordingUrl ? (
                                     <div className="flex items-center justify-center min-h-full">
@@ -539,7 +539,7 @@ const AiChatHistoryPage = () => {
                                         </div>
                                         
                                         <h4 className="text-xl font-bold text-gray-900 mb-2">AI Voice Recording</h4>
-                                        <p className="text-sm text-gray-500 mb-8 text-center px-4">Listen to your consultation with {selectedSession.astrologer?.name}</p>
+                                        <p className="text-sm text-gray-850 mb-8 text-center px-4">Listen to your consultation with {selectedSession.astrologer?.name}</p>
 
                                         {/* Audio Player */}
                                         <audio 
@@ -571,7 +571,7 @@ const AiChatHistoryPage = () => {
                                             >
                                                 <div className={`max-w-[80%] p-4 rounded-2xl text-sm shadow-sm ${msg.senderModel === 'User' ?
                                                     'bg-orange-600 text-white rounded-tr-none' :
-                                                    'bg-white border border-orange-100 text-gray-800 rounded-tl-none'}`
+                                                    'bg-white border border-orange-100 text-gray-850 rounded-tl-none'}`
                                                 }>
                                                     {msg.senderModel === 'AiAstrologer' &&
                                                         <div className="flex items-center gap-1.5 mb-2 text-xs font-bold text-orange-600">
@@ -598,7 +598,7 @@ const AiChatHistoryPage = () => {
                                     <div className="flex items-center justify-center min-h-full w-full">
                                         <div className="text-center py-20">
                                             <MessageSquare className="w-16 h-16 mx-auto mb-4 text-orange-200" />
-                                            <p className="text-sm font-semibold text-gray-500">
+                                            <p className="text-sm font-semibold text-gray-850">
                                                 {t("ai_chat_history.no_messages_found_for_this_ses")}
                                             </p>
                                         </div>
@@ -611,7 +611,7 @@ const AiChatHistoryPage = () => {
                                 <div className="flex flex-wrap items-center justify-between gap-4">
                                     <div className="flex gap-6">
                                         <div className="flex flex-col">
-                                            <span className="text-xs text-gray-400 font-bold uppercase tracking-wider">
+                                            <span className="text-xs text-[#3a1216] font-bold uppercase tracking-wider">
 {t("ai_chat_history.duration")}
                     </span>
                                             <span className="text-sm font-bold text-gray-900 mt-0.5">
@@ -619,7 +619,7 @@ const AiChatHistoryPage = () => {
                                             </span>
                                         </div>
                                         <div className="flex flex-col">
-                                            <span className="text-xs text-gray-400 font-bold uppercase tracking-wider">
+                                            <span className="text-xs text-[#3a1216] font-bold uppercase tracking-wider">
 {t("ai_chat_history.amount")}
                     </span>
                                             <span className="text-sm font-bold text-green-600 mt-0.5">

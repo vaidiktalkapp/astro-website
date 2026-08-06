@@ -33,7 +33,7 @@ export default function PagePlaceholder({ title, description, icon }: PagePlaceh
         <h1 className="text-4xl font-black text-gray-900 mb-4 tracking-tight">
           {title}
         </h1>
-        <p className="text-lg text-gray-500 mb-10 leading-relaxed">
+        <p className="text-lg text-gray-850 mb-10 leading-relaxed">
           {description || "We are currently crafting this cosmic feature for you. Stay tuned for a world-class astrology experience!"}
         </p>
 
@@ -41,7 +41,7 @@ export default function PagePlaceholder({ title, description, icon }: PagePlaceh
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
             onClick={() => router.back()}
-            className="flex items-center gap-2 px-8 py-4 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-2xl transition-all active:scale-95 w-full sm:w-auto"
+            className="flex items-center gap-2 px-8 py-4 bg-gray-100 hover:bg-gray-200 text-gray-850 font-bold rounded-2xl transition-all active:scale-95 w-full sm:w-auto"
           >
             <ArrowLeft size={20} />
             Go Back
@@ -56,7 +56,7 @@ export default function PagePlaceholder({ title, description, icon }: PagePlaceh
 
         {/* Footer info */}
         <div className="mt-12 pt-8 border-t border-gray-100">
-          <p className="text-sm font-medium text-gray-400 uppercase tracking-widest">
+          <p className="text-sm font-medium text-[#3a1216] uppercase tracking-widest">
             Coming Soon • VaidikTalk AI
           </p>
         </div>

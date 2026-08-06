@@ -62,7 +62,7 @@ export default function ChatWaitingModal() {
               <h3 className="text-lg font-bold text-gray-900 truncate">
                 {pendingChatSession.astrologer.name}
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-850">
                 ₹{pendingChatSession.ratePerMinute}/min
               </p>
             </div>
@@ -107,12 +107,12 @@ export default function ChatWaitingModal() {
                 <div className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
                 <div className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
               </div>
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-gray-850">
                 Waiting for astrologer to accept...
               </p>
             </div>
             {pendingChatSession.queuePosition && (
-              <p className="text-xs text-gray-600 mt-1">
+              <p className="text-xs text-gray-850 mt-1">
                 Queue position: {pendingChatSession.queuePosition}
               </p>
             )}
@@ -127,7 +127,7 @@ export default function ChatWaitingModal() {
           </button>
 
           {/* Info */}
-          <p className="text-xs text-gray-500 text-center mt-3">
+          <p className="text-xs text-gray-850 text-center mt-3">
             No charges until astrologer accepts
           </p>
         </div>

@@ -76,8 +76,8 @@ export default function FestivalMonthView({ festivals }: FestivalMonthViewProps)
                                 return (
                                     <div key={fest.slug} className="grid grid-cols-[140px_1fr] sm:grid-cols-[180px_1fr] hover:bg-[#fdfaf3] transition-colors group">
                                         <div className="px-6 py-3.5 flex items-center gap-2">
-                                            <span className="text-sm font-semibold text-gray-800">{dayNum}</span>
-                                            <span className="text-sm text-gray-500">{dayName}</span>
+                                            <span className="text-sm font-semibold text-gray-850">{dayNum}</span>
+                                            <span className="text-sm text-gray-850">{dayName}</span>
                                         </div>
                                         <div className="px-6 py-3.5 flex items-center gap-3 flex-wrap">
                                             <Link href={`/festivals/${fest.slug}`} className="flex items-center gap-2 group/link">

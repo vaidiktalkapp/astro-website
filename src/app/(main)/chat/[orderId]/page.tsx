@@ -116,7 +116,7 @@ const AudioPlayer = ({ url, duration }: { url: string; duration?: number; }) => 
             style={{ width: `${progress}%` }} />
 
         </div>
-        <span className="text-[10px] text-gray-600">
+        <span className="text-[10px] text-gray-850">
           {formatTime(currentTime)} / {formatTime(totalDuration)}
         </span>
       </div>
@@ -148,7 +148,7 @@ const VideoPlayer = ({ url, thumbnail }: { url: string; thumbnail?: string; }) =
         }
         <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors">
           <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
-            <Play className="w-8 h-8 text-gray-800 ml-1" fill="currentColor" />
+            <Play className="w-8 h-8 text-gray-850 ml-1" fill="currentColor" />
           </div>
         </div>
       </div>);
@@ -191,7 +191,7 @@ const ImageViewer = ({ url }: { url: string; }) => {
             className="max-w-full max-h-full object-contain" />
 
           <button
-            className="absolute top-4 right-4 text-white text-2xl hover:text-gray-300"
+            className="absolute top-4 right-4 text-white text-2xl hover:text-[#3a1216]"
             onClick={() => setFullscreen(false)}>
 
             ✕
@@ -228,7 +228,7 @@ const KundliCard = ({ details, content }: { details?: any; content?: string; }) 
         <span className="text-lg">📜</span>
         <span className="font-semibold text-purple-900 text-sm">{t("_orderId_.kundli_details")}</span>
       </div>
-      <div className="space-y-1 text-xs text-gray-700">
+      <div className="space-y-1 text-xs text-gray-850">
         {kundliInfo.name && <div><strong>{t("_orderId_.name")}</strong> {kundliInfo.name}</div>}
         {kundliInfo.gender && <div><strong>{t("_orderId_.gender")}</strong> {kundliInfo.gender}</div>}
         {kundliInfo.dob && <div><strong>{t("_orderId_.dob")}</strong> {kundliInfo.dob}</div>}
@@ -903,7 +903,7 @@ export default function ChatScreen() {
 
           {Object.keys(messageGroups).length === 0 && isActiveMode &&
             <div className="flex justify-center mt-10">
-              <p className="bg-white/80 px-3 py-1 rounded text-gray-500 text-xs shadow-sm">
+              <p className="bg-white/80 px-3 py-1 rounded text-gray-850 text-xs shadow-sm">
                 {t("_orderId_.session_started_send_a_message")}
               </p>
             </div>
@@ -933,13 +933,13 @@ export default function ChatScreen() {
                       {renderMessageContent(msg)}
 
                       <div className={`flex items-center justify-between mt-1 pt-1 border-t border-dashed ${isMe ? 'border-white/20' : 'border-gray-100'}`}>
-                        <span className={`text-[9px] flex items-center gap-1 font-medium ${isMe ? 'text-white/70' : 'text-gray-400'}`}>
+                        <span className={`text-[9px] flex items-center gap-1 font-medium ${isMe ? 'text-white/70' : 'text-[#3a1216]'}`}>
                           <Clock className="w-2.5 h-2.5" />
                           {formatMessageTime(msg.sentAt)}
                         </span>
 
                         {!isMe && msg.type === 'text' && (
-                          <div className="flex items-center gap-2 ml-4 text-gray-400">
+                          <div className="flex items-center gap-2 ml-4 text-[#3a1216]">
                             <button
                               onClick={() => handleFeedback(msg._id, 'up')}
                               className={`hover:text-[#5A2CCF] transition-colors ${feedback[msg._id] === 'up' ? 'text-[#5A2CCF] scale-110' : ''}`}
@@ -1007,7 +1007,7 @@ export default function ChatScreen() {
             <button
               onClick={() => fileInputRef.current?.click()}
               disabled={isUploading}
-              className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:text-[#5A2CCF] hover:bg-gray-100 transition-colors disabled:opacity-50"
+              className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-gray-850 hover:text-[#5A2CCF] hover:bg-gray-100 transition-colors disabled:opacity-50"
             >
               {isUploading ? <Loader2 className="w-5 h-5 animate-spin text-[#5A2CCF]" /> : <ImagePlus className="w-5 h-5" />}
             </button>
@@ -1030,7 +1030,7 @@ export default function ChatScreen() {
             </button>
           </div> :
           !showContinueModal && (
-            <div className="bg-gray-200 p-4 text-center text-gray-500 text-sm font-medium shrink-0">
+            <div className="bg-gray-200 p-4 text-center text-gray-850 text-sm font-medium shrink-0">
               {sessionStatus === 'waiting' ? 'Waiting for astrologer to join...' : 'This session has ended'}
             </div>
           )

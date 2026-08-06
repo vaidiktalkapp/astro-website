@@ -76,7 +76,7 @@ export default function NakshatraNamesPage() {
                 <Star className="w-6 h-6 inline text-[#b8962e] mr-2" />
                 <span className="text-[#b8962e]">{nakshatra}</span>{t("_name_.baby_names")}
               </h1>
-              <p className="text-gray-500 text-sm">{total}{t("_name_.names_found")}</p>
+              <p className="text-gray-850 text-sm">{total}{t("_name_.names_found")}</p>
             </div>
           </div>
 
@@ -99,9 +99,9 @@ export default function NakshatraNamesPage() {
                 </motion.div> :
               names.length === 0 ?
               <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-left py-16">
-                  <Baby className="w-12 h-12 text-gray-300 mb-4" />
-                  <p className="text-gray-500 serif text-lg">{t("_name_.no_names_found_for")}{nakshatra}.</p>
-                  <p className="text-gray-400 text-sm mt-1">{t("_name_.names_will_appear_here_once_ad")}</p>
+                  <Baby className="w-12 h-12 text-[#3a1216] mb-4" />
+                  <p className="text-gray-850 serif text-lg">{t("_name_.no_names_found_for")}{nakshatra}.</p>
+                  <p className="text-[#3a1216] text-sm mt-1">{t("_name_.names_will_appear_here_once_ad")}</p>
                 </motion.div> :
 
               <motion.div key="results" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -130,10 +130,10 @@ export default function NakshatraNamesPage() {
                             <td className="px-6 py-3 font-bold text-[#b87333] border-r border-[#d6c89a]/10">
                               {item.name}
                             </td>
-                            <td className="px-6 py-3 text-gray-600 border-r border-[#d6c89a]/10">
+                            <td className="px-6 py-3 text-gray-850 border-r border-[#d6c89a]/10">
                               {item.nameLength || item.name.length}
                             </td>
-                            <td className="px-6 py-3 text-gray-600 font-bold border-r border-[#d6c89a]/10">
+                            <td className="px-6 py-3 text-gray-850 font-bold border-r border-[#d6c89a]/10">
                               {item.numerologyNumber || '—'}
                             </td>
                             <td className="px-6 py-3 border-r border-[#d6c89a]/10">
@@ -151,7 +151,7 @@ export default function NakshatraNamesPage() {
                             <td className="px-6 py-3 border-r border-[#d6c89a]/10">
                               <span className="text-[10px] text-indigo-500 font-semibold uppercase">{item.nakshatra}</span>
                             </td>
-                            <td className="px-6 py-3 text-gray-500 max-w-xs md:max-w-md">
+                            <td className="px-6 py-3 text-gray-850 max-w-xs md:max-w-md">
                               {item.meaning}
                             </td>
                           </motion.tr>
@@ -161,7 +161,7 @@ export default function NakshatraNamesPage() {
                   </div>
                   {totalPages > 1 &&
                 <div className="flex items-center justify-between mt-8 pt-6 border-t border-[#d6c89a]/20">
-                      <p className="text-xs text-gray-400 font-semibold">{t("_name_.page")}{page} of {totalPages}</p>
+                      <p className="text-xs text-[#3a1216] font-semibold">{t("_name_.page")}{page} of {totalPages}</p>
                       <div className="flex gap-2">
                         <button disabled={page <= 1} onClick={() => setPage((p) => p - 1)} className="px-4 py-2 rounded-xl border border-[#d6c89a]/30 text-sm font-semibold text-[#7a6010] hover:bg-[#f5e9c8]/50 disabled:opacity-30 transition-all flex items-center gap-1"><ChevronLeft className="w-4 h-4" />{t("_name_.prev")}</button>
                         <button disabled={page >= totalPages} onClick={() => setPage((p) => p + 1)} className="px-4 py-2 rounded-xl border border-[#d6c89a]/30 text-sm font-semibold text-[#7a6010] hover:bg-[#f5e9c8]/50 disabled:opacity-30 transition-all flex items-center gap-1">{t("_name_.next")}<ChevronRight className="w-4 h-4" /></button>

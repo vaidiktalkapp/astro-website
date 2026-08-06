@@ -259,7 +259,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
               <div className="flex flex-col leading-none">
                 <span className="text-[#5c1420] font-semibold">{blog.authorName || 'VaidikTalk Editorial'}</span>
                 {blog.authorCredentials && (
-                  <span className="text-[10px] text-gray-500 font-normal mt-0.5">{blog.authorCredentials}</span>
+                  <span className="text-[10px] text-gray-850 font-normal mt-0.5">{blog.authorCredentials}</span>
                 )}
               </div>
             </div>
@@ -346,7 +346,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                             {recent.title}
                           </h4>
                           {recent.publishedAt && (
-                            <span className="text-[11px] text-gray-500 mt-1 block">
+                            <span className="text-[11px] text-gray-850 mt-1 block">
                               {format(new Date(recent.publishedAt), 'MMM dd, yyyy')}
                             </span>
                           )}

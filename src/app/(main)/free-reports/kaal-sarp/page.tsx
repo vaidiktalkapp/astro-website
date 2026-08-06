@@ -419,7 +419,7 @@ export default function KaalSarpPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                 <div className="bg-white rounded-2xl border border-[#d6c89a] shadow-sm overflow-hidden">
                                     <div className="px-5 py-3 border-b border-[#eee3c7] bg-[#fdf8ed]">
-                                        <h2 className="text-[13px] font-bold text-gray-800 uppercase tracking-wide">{t("kaal_sarp.lagna_kundli")}</h2>
+                                        <h2 className="text-[13px] font-bold text-gray-850 uppercase tracking-wide">{t("kaal_sarp.lagna_kundli")}</h2>
                                     </div>
                                     <div className="p-5">
                                         {kundli ?
@@ -436,7 +436,7 @@ export default function KaalSarpPage() {
                                     <div className="px-5 py-3 border-b bg-rose-50 border-rose-100">
                                         <div className="flex items-center gap-2">
                                             <AlertCircle className="w-5 h-5 text-rose-500" />
-                                            <h2 className="text-[13px] font-bold text-gray-800 uppercase tracking-wide">{t("kaal_sarp.analysis_result")}</h2>
+                                            <h2 className="text-[13px] font-bold text-gray-850 uppercase tracking-wide">{t("kaal_sarp.analysis_result")}</h2>
                                         </div>
                                     </div>
                                     <div className="p-6">
@@ -456,7 +456,7 @@ export default function KaalSarpPage() {
                                             </div>
                                         </div>
                                         {typeData &&
-                  <p className="text-[14px] text-gray-600 leading-relaxed mb-5">{typeData.meaning}</p>
+                  <p className="text-[14px] text-gray-850 leading-relaxed mb-5">{typeData.meaning}</p>
                   }
                                         <div className="space-y-2 mb-5">
                                             <div className="flex items-center gap-3 p-3 rounded-lg bg-rose-50 border border-rose-100">
@@ -469,7 +469,7 @@ export default function KaalSarpPage() {
                                             </div>
                                         </div>
                                         {typeData &&
-                  <p className="text-[14px] text-gray-700 leading-[1.7] border-t border-[#eee3c7] pt-4">
+                  <p className="text-[14px] text-gray-850 leading-[1.7] border-t border-[#eee3c7] pt-4">
                                                 {typeData.description.substring(0, 220)}...
                                             </p>
                   }
@@ -498,11 +498,11 @@ export default function KaalSarpPage() {
                                         <div className="max-w-xl mx-auto">
                                             {!isHtmlEmpty(typeData?.description) ?
                     <div
-                      className="text-[16px] text-gray-600 leading-relaxed rich-content"
+                      className="text-[16px] text-gray-850 leading-relaxed rich-content"
                       dangerouslySetInnerHTML={{ __html: typeData?.description || '' }} /> :
 
 
-                    <p className="text-[16px] text-gray-600 leading-relaxed ">
+                    <p className="text-[16px] text-gray-850 leading-relaxed ">
 {t("kaal_sarp._your_birth_chart_is_remarkabl")}
                     </p>
                     }
@@ -531,10 +531,10 @@ export default function KaalSarpPage() {
                                     </div>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div className="space-y-4">
-                                            <p className="text-[15px] text-gray-600 leading-relaxed">
+                                            <p className="text-[15px] text-gray-850 leading-relaxed">
 {t("kaal_sarp.since_your_chart_is_free_from")}
                     </p>
-                                            <p className="text-[15px] text-gray-600 leading-relaxed">
+                                            <p className="text-[15px] text-gray-850 leading-relaxed">
 {t("kaal_sarp.consider_these_daily_affirmati")}
                     </p>
                                         </div>
@@ -550,7 +550,7 @@ export default function KaalSarpPage() {
                                                         <div className="mt-1 w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                                                             <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                                                         </div>
-                                                        <span className="text-[14px] text-gray-700 font-medium">{tip}</span>
+                                                        <span className="text-[14px] text-gray-850 font-medium">{tip}</span>
                                                     </li>
                       )}
                                             </ul>
@@ -567,7 +567,7 @@ export default function KaalSarpPage() {
                                 <h2 className="text-xl font-bold text-gray-900">{t("kaal_sarp.about_kaal_sarp_dosha")}</h2>
                             </div>
                             <div
-                className="text-[15px] text-gray-700 leading-relaxed space-y-4 rich-content"
+                className="text-[15px] text-gray-850 leading-relaxed space-y-4 rich-content"
                 dangerouslySetInnerHTML={{
                   __html: typeData?.intro || customSettings?.kaalSarpIntro || `
                                     <p>As per the popular definition, when all planets are situated in between Rahu and Ketu in a birth-chart or horoscope, the astrologers call it <strong>Kalsarp Dosh</strong>. in present days, discussions about this dosh are common among Jyotishi or Hindu Astrologers of India. Many of the troubles in one's life are attributed to Kalsarp Dosh.</p>
@@ -582,11 +582,11 @@ export default function KaalSarpPage() {
                                 <div className="bg-white rounded-2xl border border-[#d6c89a] shadow-sm p-6 md:p-8">
                                     <div className="flex items-center gap-2 mb-5">
                                         <Info className="w-4 h-4 text-sky-500" />
-                                        <span className="text-[12px] font-black uppercase tracking-[0.16em] text-gray-700">{t("kaal_sarp.about_this_type")}</span>
+                                        <span className="text-[12px] font-black uppercase tracking-[0.16em] text-gray-850">{t("kaal_sarp.about_this_type")}</span>
                                     </div>
                                     <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t("kaal_sarp.what_is")}{doshas.type}{t("kaal_sarp.kalsarpa_yoga")}</h2>
                                     <div
-                  className="text-[15px] text-gray-700 leading-[1.8] space-y-4 rich-content"
+                  className="text-[15px] text-gray-850 leading-[1.8] space-y-4 rich-content"
                   dangerouslySetInnerHTML={{ __html: typeData.description }} />
                 
                                 </div>
@@ -594,13 +594,13 @@ export default function KaalSarpPage() {
                                 <div className="bg-white rounded-2xl border border-[#d6c89a] shadow-sm p-6 md:p-8">
                                     <div className="flex items-center gap-2 mb-5">
                                         <Star className="w-4 h-4 text-amber-500" />
-                                        <span className="text-[12px] font-black uppercase tracking-[0.16em] text-gray-700">{t("kaal_sarp.effects_of")}{doshas.type}{t("kaal_sarp.kalsarpa_yoga")}</span>
+                                        <span className="text-[12px] font-black uppercase tracking-[0.16em] text-gray-850">{t("kaal_sarp.effects_of")}{doshas.type}{t("kaal_sarp.kalsarpa_yoga")}</span>
                                     </div>
                                     <ul className="space-y-3">
                                         {typeData.effects.map((effect: string, i: number) =>
                   <li key={i} className="flex gap-3 items-start">
                                                 <span className="mt-1.5 w-2 h-2 rounded-full bg-amber-400 flex-shrink-0" />
-                                                <span className="text-[15px] text-gray-700 leading-relaxed">{effect}</span>
+                                                <span className="text-[15px] text-gray-850 leading-relaxed">{effect}</span>
                                             </li>
                   )}
                                     </ul>
@@ -609,9 +609,9 @@ export default function KaalSarpPage() {
                                 <div className="bg-white rounded-2xl border border-[#d6c89a] shadow-sm p-6 md:p-8">
                                     <div className="flex items-center gap-2 mb-5">
                                         <Sparkles className="w-4 h-4 text-sky-500" />
-                                        <span className="text-[12px] font-black uppercase tracking-[0.16em] text-gray-700">{t("kaal_sarp.recommended_remedies")}</span>
+                                        <span className="text-[12px] font-black uppercase tracking-[0.16em] text-gray-850">{t("kaal_sarp.recommended_remedies")}</span>
                                     </div>
-                                    <p className="text-[14px] text-gray-600 mb-5 leading-relaxed">
+                                    <p className="text-[14px] text-gray-850 mb-5 leading-relaxed">
 {t("kaal_sarp.to_deal_with_the_problems_caus")}{doshas.type}{t("kaal_sarp.kalsarpa_yoga_here_are_few_rem")}
                 </p>
                                     <div className="space-y-3">
@@ -620,7 +620,7 @@ export default function KaalSarpPage() {
                                                 <div className="w-7 h-7 rounded-lg bg-sky-500 text-white flex items-center justify-center flex-shrink-0 font-bold text-[11px]">
                                                     {i + 1}
                                                 </div>
-                                                <p className="text-[14px] text-gray-700 leading-relaxed pt-1">{remedy}</p>
+                                                <p className="text-[14px] text-gray-850 leading-relaxed pt-1">{remedy}</p>
                                             </div>
                   )}
                                     </div>
@@ -630,7 +630,7 @@ export default function KaalSarpPage() {
 
                         {/* CTA */}
                         <div className="flex flex-col items-center gap-4 pt-6 pb-4">
-                            <p className="text-[13px] text-gray-500 text-center">{t("kaal_sarp.looking_for_personalized_guida")}</p>
+                            <p className="text-[13px] text-gray-850 text-center">{t("kaal_sarp.looking_for_personalized_guida")}</p>
                             <Link href="/astrologers-chat" className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#b8962e] text-white font-bold rounded-xl hover:bg-[#7a6010] transition-all shadow-md group">
 {t("kaal_sarp.discuss_with_expert_astrologer")}<Sparkles className="w-4 h-4 text-yellow-300 group-hover:rotate-12 transition-transform" />
                             </Link>
@@ -663,7 +663,7 @@ export default function KaalSarpPage() {
                     <Link href="/free-reports" className="text-[#b8962e] hover:text-[#7a6010] font-bold flex items-center gap-2 text-sm">
                         <ChevronLeft className="w-4 h-4" />{t("kaal_sarp.back_to_reports")}
           </Link>
-                    <Link href="/free-reports/history" className="text-gray-600 hover:text-[#b8962e] font-bold flex items-center gap-2 text-sm transition-colors">
+                    <Link href="/free-reports/history" className="text-gray-850 hover:text-[#b8962e] font-bold flex items-center gap-2 text-sm transition-colors">
                         <Clock className="w-4 h-4" />{t("kaal_sarp.view_history")}
           </Link>
                 </div>
@@ -704,7 +704,7 @@ export default function KaalSarpPage() {
 {t("kaal_sarp.what_is_kaal_sarp_yog")}
               </h2>
                         </hgroup>
-                        <div className="space-y-4 text-[15px] text-gray-700 leading-relaxed">
+                        <div className="space-y-4 text-[15px] text-gray-850 leading-relaxed">
                             <p>
                                 <span className="text-[#c0392b] font-medium">{t("kaal_sarp.kaal_sarp_yog")}</span>{t("kaal_sarp.is_formed_when_all_seven_major")}
               </p>
@@ -723,7 +723,7 @@ export default function KaalSarpPage() {
                             <h3 className="text-xl font-bold text-gray-900 mb-3" style={{ fontFamily: 'Roboto, sans-serif' }}>
 {t("kaal_sarp.what_is_rahu")}
               </h3>
-                            <p className="text-[14px] text-gray-700 leading-relaxed">
+                            <p className="text-[14px] text-gray-850 leading-relaxed">
 {t("kaal_sarp.rahu_is_known_as_the")}<span className="text-[#c0392b] font-medium">{t("kaal_sarp._head_of_the_serpent")}</span>{t("kaal_sarp._it_is_a_chhaya_graha_shadow_p")}
               </p>
                         </section>
@@ -732,7 +732,7 @@ export default function KaalSarpPage() {
                             <h3 className="text-xl font-bold text-gray-900 mb-3" style={{ fontFamily: 'Roboto, sans-serif' }}>
 {t("kaal_sarp.what_is_ketu")}
               </h3>
-                            <p className="text-[14px] text-gray-700 leading-relaxed">
+                            <p className="text-[14px] text-gray-850 leading-relaxed">
 {t("kaal_sarp.ketu_is_the")}<span className="text-[#c0392b] font-medium">{t("kaal_sarp._tail_of_the_serpent")}</span>{t("kaal_sarp._the_south_node_and_the_counte")}
               </p>
                         </section>
@@ -743,7 +743,7 @@ export default function KaalSarpPage() {
                         <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-[#d6c89a]" style={{ fontFamily: 'Roboto, sans-serif' }}>
 {t("kaal_sarp.different_types_of_kaal_sarp_y")}
             </h2>
-                        <p className="text-[15px] text-gray-700 leading-relaxed mb-6">
+                        <p className="text-[15px] text-gray-850 leading-relaxed mb-6">
 {t("kaal_sarp.since_there_are_12_houses_in_a")}
             </p>
                         <div className="flex flex-wrap gap-2 mb-6">
@@ -753,7 +753,7 @@ export default function KaalSarpPage() {
                                 </span>
               )}
                         </div>
-                        <p className="text-[15px] text-gray-700 leading-relaxed">
+                        <p className="text-[15px] text-gray-850 leading-relaxed">
 {t("kaal_sarp.each_type_affects_different_as")}
             </p>
                     </section>
@@ -763,7 +763,7 @@ export default function KaalSarpPage() {
                         <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-[#d6c89a]" style={{ fontFamily: 'Roboto, sans-serif' }}>
 {t("kaal_sarp.effects_of_kaal_sarp_dosh")}
             </h2>
-                        <div className="space-y-4 text-[15px] text-gray-700 leading-relaxed">
+                        <div className="space-y-4 text-[15px] text-gray-850 leading-relaxed">
                             <p>
 {t("kaal_sarp.generally_it_is_believed_that")}
               </p>
@@ -796,7 +796,7 @@ export default function KaalSarpPage() {
                 'Difficulty in career growth',
                 'Mental tension and lack of peace'].
                 map((text, i) =>
-                <li key={i} className="text-[14px] text-gray-600 flex items-center gap-2">
+                <li key={i} className="text-[14px] text-gray-850 flex items-center gap-2">
                                         <div className="w-1.5 h-1.5 rounded-full bg-red-400" /> {text}
                                     </li>
                 )}
@@ -806,7 +806,7 @@ export default function KaalSarpPage() {
                             <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
                                 <span className="w-2 h-6 bg-emerald-400 rounded-full" />{t("kaal_sarp.auspicious_results")}
               </h3>
-                            <p className="text-[14px] text-gray-600 leading-relaxed">
+                            <p className="text-[14px] text-gray-850 leading-relaxed">
 {t("kaal_sarp.kaal_sarp_yog_also_has_a_const")}
               </p>
                         </div>
@@ -832,7 +832,7 @@ export default function KaalSarpPage() {
                                     <div className="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0 text-[12px] font-bold group-hover:bg-emerald-600 group-hover:text-white transition-colors capitalize">
                                         {i + 1}
                                     </div>
-                                    <p className="text-[14px] text-gray-700 font-medium">{remedy}</p>
+                                    <p className="text-[14px] text-gray-850 font-medium">{remedy}</p>
                                 </div>
               )}
                         </div>

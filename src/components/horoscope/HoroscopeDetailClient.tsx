@@ -445,7 +445,7 @@ export default function HoroscopeDetailClient({
               ) : (
                 !isLoading && (
                   <div className="text-center py-20 bg-gray-50 rounded-2xl border border-dashed border-gray-300">
-                    <p className="text-gray-500 font-medium">Cosmic energies are shifting. Reading is unavailable.</p>
+                    <p className="text-gray-850 font-medium">Cosmic energies are shifting. Reading is unavailable.</p>
                   </div>
                 )
               )}

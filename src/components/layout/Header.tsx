@@ -92,7 +92,7 @@ export default function Header() {
               {LANGUAGES.find(l => l.code === locale)?.name || 'English'} ▾
             </button>
             {isLanguageMenuOpen && (
-              <div className="absolute top-6 right-0 bg-white text-gray-800 rounded-md shadow-lg border border-gray-100 py-1 z-50 min-w-[100px]">
+              <div className="absolute top-6 right-0 bg-white text-gray-850 rounded-md shadow-lg border border-gray-100 py-1 z-50 min-w-[100px]">
                 {LANGUAGES.map(lang => (
                   <button
                     key={lang.code}
@@ -300,10 +300,10 @@ export default function Header() {
                   </span>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#8a1c2a] mr-1 group-hover:rotate-180 transition-transform duration-200"><path d="M6 9l6 6 6-6" /></svg>
                 </div>
-                <div className="absolute top-full right-0 mt-1 bg-white text-gray-800 shadow-[0_10px_40px_rgba(0,0,0,0.15)] rounded-lg min-w-[220px] py-2 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
+                <div className="absolute top-full right-0 mt-1 bg-white text-gray-850 shadow-[0_10px_40px_rgba(0,0,0,0.15)] rounded-lg min-w-[220px] py-2 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
                   <div className="px-5 py-3 border-b border-gray-100 mb-1 bg-gray-50/50 rounded-t-lg">
                     <p className="font-bold text-[#8a1c2a] text-sm truncate">{user?.name || 'Vaidik User'}</p>
-                    <p className="text-[11px] text-gray-500 font-medium truncate mt-0.5">{user?.phoneNumber || ''}</p>
+                    <p className="text-[11px] text-gray-850 font-medium truncate mt-0.5">{user?.phoneNumber || ''}</p>
                   </div>
                   <Link href="/profile" className="flex items-center gap-2 px-5 py-2.5 text-[13px] font-medium hover:bg-orange-50 hover:text-[#ee6c1e]">
                     My Profile
@@ -360,7 +360,7 @@ export default function Header() {
         <div className="p-5 border-b border-gray-100 bg-gray-50/50">
           {!isAuthenticated ? (
             <div className="flex flex-col gap-3">
-              <p className="text-sm font-medium text-gray-600">Login to access your profile</p>
+              <p className="text-sm font-medium text-gray-850">Login to access your profile</p>
               <button 
                 onClick={() => { setIsMobileMenuOpen(false); openLoginModal(); }}
                 className="w-full bg-[#8a1c2a] text-white py-3 rounded-lg font-bold shadow-md hover:bg-[#721522] transition-colors flex justify-center items-center gap-2 cursor-pointer"
@@ -377,7 +377,7 @@ export default function Header() {
                 </div>
                 <div>
                   <h3 className="font-bold text-[#8a1c2a] text-lg leading-tight">{user?.name || 'Vaidik User'}</h3>
-                  <p className="text-sm text-gray-500 font-medium">{user?.phoneNumber || ''}</p>
+                  <p className="text-sm text-gray-850 font-medium">{user?.phoneNumber || ''}</p>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-2 mt-2">
@@ -415,7 +415,7 @@ export default function Header() {
 
           {/* Kundli Accordion */}
           <div>
-            <button onClick={() => toggleAccordion('kundli')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-800">
+            <button onClick={() => toggleAccordion('kundli')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
               Kundli &amp; Reports
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'kundli' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
             </button>
@@ -439,7 +439,7 @@ export default function Header() {
 
           {/* Tools Accordion */}
           <div>
-            <button onClick={() => toggleAccordion('tools')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-800">
+            <button onClick={() => toggleAccordion('tools')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
               Free Astrology Tools
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'tools' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
             </button>
@@ -466,7 +466,7 @@ export default function Header() {
 
           {/* Horoscope Accordion */}
           <div>
-            <button onClick={() => toggleAccordion('horoscope')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-800">
+            <button onClick={() => toggleAccordion('horoscope')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
               Horoscope
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'horoscope' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
             </button>
@@ -489,7 +489,7 @@ export default function Header() {
 
           {/* Pujas Accordion */}
           <div>
-            <button onClick={() => toggleAccordion('pujas')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-800">
+            <button onClick={() => toggleAccordion('pujas')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
               Book a Remedy Puja
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'pujas' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
             </button>
@@ -507,7 +507,7 @@ export default function Header() {
 
           {/* Knowledge Accordion */}
           <div>
-            <button onClick={() => toggleAccordion('knowledge')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-800">
+            <button onClick={() => toggleAccordion('knowledge')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
               Knowledge Center
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'knowledge' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
             </button>
@@ -525,7 +525,7 @@ export default function Header() {
             )}
           </div>
 
-          <Link href="/about-us" onClick={() => setIsMobileMenuOpen(false)} className="block p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-800">About Us</Link>
+          <Link href="/about-us" onClick={() => setIsMobileMenuOpen(false)} className="block p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">About Us</Link>
         </div>
       </div>
 

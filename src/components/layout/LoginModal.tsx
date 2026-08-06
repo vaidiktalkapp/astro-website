@@ -263,12 +263,12 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           
           {detailsStep === 1 && (
             <div className="space-y-4">
-              <label className="text-xl font-bold text-gray-800">What is your name?</label>
+              <label className="text-xl font-bold text-gray-850">What is your name?</label>
               <input
                 ref={nameInputRef}
                 type="text"
                 placeholder="Enter your full name"
-                className="w-full px-4 py-4 text-lg placeholder:text-gray-700 text-gray-700 border-2 border-gray-200 rounded-xl focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100 outline-none transition-all"
+                className="w-full px-4 py-4 text-lg placeholder:text-gray-700 text-gray-850 border-2 border-gray-200 rounded-xl focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100 outline-none transition-all"
                 value={detailsData.name}
                 onChange={(e) => setDetailsData({ ...detailsData, name: e.target.value })}
                 onKeyDown={(e) => e.key === 'Enter' && handleDetailsNext()}
@@ -278,7 +278,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
           {detailsStep === 2 && (
             <div className="space-y-4">
-              <label className="text-xl font-bold text-gray-800">What is your gender?</label>
+              <label className="text-xl font-bold text-gray-850">What is your gender?</label>
               <div className="grid grid-cols-2 gap-4">
                 {['Male', 'Female'].map((g) => (
                   <button
@@ -290,7 +290,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                     className={`p-6 rounded-xl border-2 transition-all flex flex-col items-center gap-3 ${
                       detailsData.gender === g 
                         ? 'border-yellow-400 bg-yellow-50 text-black' 
-                        : 'border-gray-200 hover:border-yellow-200 text-gray-600'
+                        : 'border-gray-200 hover:border-yellow-200 text-gray-850'
                     }`}
                   >
                     <span className="text-3xl">{g === 'Male' ? '👨' : '👩'}</span>
@@ -303,11 +303,11 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
           {detailsStep === 3 && (
             <div className="space-y-4">
-              <label className="text-xl font-bold text-gray-800">Date of Birth</label>
-              <p className="text-sm text-gray-500">You must be at least 13 years old.</p>
+              <label className="text-xl font-bold text-gray-850">Date of Birth</label>
+              <p className="text-sm text-gray-850">You must be at least 13 years old.</p>
               <input
                 type="date"
-                className="w-full px-4 py-4 text-lg border-2 placeholder:text-gray-700 text-gray-700 border-gray-200 rounded-xl focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100 outline-none"
+                className="w-full px-4 py-4 text-lg border-2 placeholder:text-gray-700 text-gray-850 border-gray-200 rounded-xl focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100 outline-none"
                 value={detailsData.birthDate}
                 max={new Date().toISOString().split('T')[0]}
                 onChange={(e) => setDetailsData({ ...detailsData, birthDate: e.target.value })}
@@ -317,10 +317,10 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
           {detailsStep === 4 && (
             <div className="space-y-4">
-              <label className="text-xl font-bold text-gray-800">Time of Birth</label>
+              <label className="text-xl font-bold text-gray-850">Time of Birth</label>
               <input
                 type="time"
-                className="w-full px-4 py-4 text-lg border-2 placeholder:text-gray-700 text-gray-700 border-gray-200 rounded-xl focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100 outline-none"
+                className="w-full px-4 py-4 text-lg border-2 placeholder:text-gray-700 text-gray-850 border-gray-200 rounded-xl focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100 outline-none"
                 value={detailsData.birthTime}
                 onChange={(e) => setDetailsData({ ...detailsData, birthTime: e.target.value })}
               />
@@ -329,12 +329,12 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
           {detailsStep === 5 && (
             <div className="space-y-4">
-              <label className="text-xl font-bold text-gray-800">Place of Birth</label>
+              <label className="text-xl font-bold text-gray-850">Place of Birth</label>
               <div className="relative">
                 <input
                   type="text"
                   placeholder="City, State, Country"
-                  className="w-full px-4 py-4 text-lg border-2 placeholder:text-gray-700 text-gray-700 border-gray-200 rounded-xl focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100 outline-none pl-11"
+                  className="w-full px-4 py-4 text-lg border-2 placeholder:text-gray-700 text-gray-850 border-gray-200 rounded-xl focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100 outline-none pl-11"
                   value={detailsData.location}
                   onChange={(e) => setDetailsData({ ...detailsData, location: e.target.value })}
                   onKeyDown={(e) => e.key === 'Enter' && handleDetailsNext()}
@@ -350,7 +350,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           {detailsStep > 1 && (
             <button
               onClick={handleDetailsBack}
-              className="px-6 py-3 rounded-xl font-semibold text-gray-600 bg-gray-100 hover:bg-gray-200 transition-colors"
+              className="px-6 py-3 rounded-xl font-semibold text-gray-850 bg-gray-100 hover:bg-gray-200 transition-colors"
             >
               Back
             </button>
@@ -400,7 +400,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             {step === 'OTP' && 'Verify OTP'}
             {step === 'DETAILS' && 'Complete Your Profile'}
           </h2>
-          <p className="text-center text-gray-800 text-sm mt-1 font-medium opacity-90">
+          <p className="text-center text-gray-850 text-sm mt-1 font-medium opacity-90">
             {step === 'PHONE' && 'Enter your phone number to continue'}
             {step === 'OTP' && 'Enter the code we sent to your phone'}
             {step === 'DETAILS' && 'These details are required for consultations'}
@@ -410,7 +410,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           {step !== 'DETAILS' && (
             <button 
                 onClick={onClose}
-                className="absolute right-4 top-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/20 transition-colors text-gray-800"
+                className="absolute right-4 top-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/20 transition-colors text-gray-850"
             >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -433,7 +433,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           ) : step === 'PHONE' ? (
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                <label className="block text-sm font-semibold text-gray-850 mb-3">
                   Phone Number
                 </label>
                 <div className="flex border-2 border-gray-200 rounded-xl overflow-hidden focus-within:border-yellow-400 focus-within:ring-2 focus-within:ring-yellow-100 transition-all shadow-sm">
@@ -442,7 +442,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                     <button
                       type="button"
                       onClick={() => setShowCountryDropdown(!showCountryDropdown)}
-                      className="px-4 py-3.5 bg-yellow-50 hover:bg-yellow-100 border-r-2 border-gray-200 text-gray-700 flex items-center gap-2 font-semibold transition-colors"
+                      className="px-4 py-3.5 bg-yellow-50 hover:bg-yellow-100 border-r-2 border-gray-200 text-gray-850 flex items-center gap-2 font-semibold transition-colors"
                     >
                       <span className="text-lg">{selectedCountry.flag}</span>
                       <span>+{selectedCountry.dialCode}</span>
@@ -459,7 +459,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                             <span className="text-2xl">{country.flag}</span>
                             <div className="flex-1 text-left">
                               <p className="font-semibold text-gray-900">{country.name}</p>
-                              <p className="text-sm text-gray-600">+{country.dialCode}</p>
+                              <p className="text-sm text-gray-850">+{country.dialCode}</p>
                             </div>
                           </button>
                         ))}
@@ -501,8 +501,8 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
               {/* OTP Input Section */}
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <label className="block text-sm font-semibold text-gray-700">Enter OTP</label>
-                  <span className="text-sm text-gray-600 font-medium bg-yellow-50 px-3 py-1 rounded-full">{selectedCountry.flag} +{selectedCountry.dialCode} {phoneNumber}</span>
+                  <label className="block text-sm font-semibold text-gray-850">Enter OTP</label>
+                  <span className="text-sm text-gray-850 font-medium bg-yellow-50 px-3 py-1 rounded-full">{selectedCountry.flag} +{selectedCountry.dialCode} {phoneNumber}</span>
                 </div>
                 <input
                   ref={otpInputRef}
@@ -524,10 +524,10 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                 {loading ? 'Verifying...' : 'Verify & Continue'}
               </button>
               <div className="flex items-center justify-between pt-2">
-                <button onClick={() => { setStep('PHONE'); setOtp(''); setError(null); }} className="text-sm text-gray-600 hover:text-gray-900 font-medium flex items-center gap-1 transition-colors">
+                <button onClick={() => { setStep('PHONE'); setOtp(''); setError(null); }} className="text-sm text-gray-850 hover:text-gray-900 font-medium flex items-center gap-1 transition-colors">
                   Change Number
                 </button>
-                <button onClick={handleResendOtp} disabled={resendTimer > 0 || loading} className="text-sm font-semibold disabled:text-gray-400 text-yellow-600 hover:text-yellow-700 disabled:cursor-not-allowed transition-colors">
+                <button onClick={handleResendOtp} disabled={resendTimer > 0 || loading} className="text-sm font-semibold disabled:text-[#3a1216] text-yellow-600 hover:text-yellow-700 disabled:cursor-not-allowed transition-colors">
                   {resendTimer > 0 ? `Resend in ${resendTimer}s` : 'Resend OTP'}
                 </button>
               </div>
@@ -536,7 +536,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
           {step === 'PHONE' && (
             <div className="mt-8 pt-6 border-t border-gray-200">
-               <p className="text-xs text-center text-gray-500 leading-relaxed">
+               <p className="text-xs text-center text-gray-850 leading-relaxed">
                 By continuing, you agree to our <a href="#" className="text-yellow-600 hover:text-yellow-700 font-medium underline">Terms of Service</a> and <a href="#" className="text-yellow-600 hover:text-yellow-700 font-medium underline">Privacy Policy</a>
               </p>
             </div>

@@ -118,7 +118,7 @@ function MuhuratHistoryContent() {
                         <h1 className="text-4xl md:text-5xl font-semibold text-gray-900 leading-tight">
 {t("history.muhurat_history")}
             </h1>
-                        <p className="text-gray-500 text-base mt-2">
+                        <p className="text-gray-850 text-base mt-2">
 {t("history.review_your_previously_scanned")}
             </p>
                     </div>
@@ -162,11 +162,11 @@ function MuhuratHistoryContent() {
                                                 <div>
                                                     <h3 className="font-bold text-gray-900 text-lg flex items-center gap-2">
                                                         {meta.label}
-                                                        <span className="text-[10px] font-normal text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                                                        <span className="text-[10px] font-normal text-[#3a1216] bg-gray-100 px-2 py-0.5 rounded-full uppercase tracking-wider">
                                                             {dateStr}
                                                         </span>
                                                     </h3>
-                                                    <div className="flex flex-wrap items-center gap-y-1 gap-x-4 mt-1 text-[13px] text-gray-500">
+                                                    <div className="flex flex-wrap items-center gap-y-1 gap-x-4 mt-1 text-[13px] text-gray-850">
                                                         <span className="flex items-center gap-1">
                                                             <MapPin className="w-3.5 h-3.5 text-[#b8962e]" /> {item.place?.split(',')[0] || 'Unknown'}
                                                         </span>
@@ -180,7 +180,7 @@ function MuhuratHistoryContent() {
                                             <div className="flex items-center gap-2 self-end sm:self-center">
                                                 <button
                         onClick={(e) => handleDelete(item.id, e)}
-                        className="w-9 h-9 rounded-lg flex items-center justify-center text-gray-300 hover:text-rose-500 hover:bg-rose-50 transition-all opacity-0 group-hover:opacity-100"
+                        className="w-9 h-9 rounded-lg flex items-center justify-center text-[#3a1216] hover:text-rose-500 hover:bg-rose-50 transition-all opacity-0 group-hover:opacity-100"
                         title="Remove from history">
                         
                                                     <Trash2 className="w-4 h-4" />
@@ -203,7 +203,7 @@ function MuhuratHistoryContent() {
                                     <Search className="w-8 h-8 text-[#d6c89a]" />
                                 </div>
                                 <h2 className="text-2xl font-semibold text-gray-900 serif mb-2">{t("history.no_history_yet")}</h2>
-                                <p className="text-gray-500 max-w-xs mx-auto mb-8">
+                                <p className="text-gray-850 max-w-xs mx-auto mb-8">
 {t("history.your_scanned_muhurat_results_w")}
               </p>
                                 <button
@@ -218,7 +218,7 @@ function MuhuratHistoryContent() {
                 </div>
 
                 {/* Footer Tip */}
-                <p className="text-center text-xs text-gray-400 mt-12">
+                <p className="text-center text-xs text-[#3a1216] mt-12">
 {t("history._history_is_stored_locally_in")}
         </p>
             </div>

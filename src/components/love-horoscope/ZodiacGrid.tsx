@@ -160,9 +160,9 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
         <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 leading-tight mb-4">
           What Is My Love Horoscope?
         </h2>
-        <p className="text-gray-600 text-base leading-relaxed max-w-xl">
+        <p className="text-gray-850 text-base leading-relaxed max-w-xl">
           Select your zodiac sign to discover what the cosmos has planned for your{' '}
-          <span className="serif text-gray-700">romantic journey</span> today.
+          <span className="serif text-gray-850">romantic journey</span> today.
         </p>
       </div>
 
@@ -198,12 +198,12 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
               <span className="text-[14px] font-bold text-gray-900 group-hover:text-[#b8962e] transition-colors tracking-wide text-center leading-none">
                 {sign.name || sign.sign}
               </span>
-              <span className="text-[12px] text-gray-600 font-semibold mt-1">
+              <span className="text-[12px] text-gray-850 font-semibold mt-1">
                 {sign.hindiName || ZODIAC_SIGNS.find(s => s.name === (sign.name || sign.sign))?.hindiName || ''}
               </span>
             </div>
 
-            <span className="serif text-[11px] text-gray-500 mt-2 group-hover:text-[#b8962e] transition-colors leading-tight">
+            <span className="serif text-[11px] text-gray-850 mt-2 group-hover:text-[#b8962e] transition-colors leading-tight">
               {sign.date || ZODIAC_SIGNS.find(s => s.name === (sign.name || sign.sign))?.date || ''}
             </span>
           </motion.button>
@@ -212,7 +212,7 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
 
       {/* Footer quote */}
       <div className="mt-10 p-7 border border-[#d6c89a] rounded-2xl text-center bg-transparent">
-        <p className="text-gray-600 text-[15px] max-w-2xl mx-auto serif leading-relaxed">
+        <p className="text-gray-850 text-[15px] max-w-2xl mx-auto serif leading-relaxed">
           "Love is written in the stars, but it is lived in the heart. The cosmos illuminate the path — your choices, courage, and{' '}
           <span className="text-[#b8962e] font-semibold">commitment</span>{' '}
           make the journey unforgettable."
@@ -225,7 +225,7 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
         {/* What is Love Horoscope */}
         <section className="border-t border-[#d6c89a]/50 pt-10">
           <h2 className="text-3xl font-semibold text-gray-900 mb-4 serif">Love Horoscope — What Does It Mean?</h2>
-          <div className="space-y-4 text-gray-600 leading-relaxed text-[15px]">
+          <div className="space-y-4 text-gray-850 leading-relaxed text-[15px]">
             <p>
               A love horoscope is an astrological reading that reveals the influence of planetary positions on your romantic life, relationships, and emotional well-being. Based on your zodiac sign, it offers insights into compatibility, communication with your partner, the right time to express your feelings, and potential challenges you may face in love.
             </p>
@@ -241,7 +241,7 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
         {/* How Planets Influence Love */}
         <section className="border-t border-[#d6c89a]/50 pt-10">
           <h2 className="text-3xl font-semibold text-gray-900 mb-4 serif">How Planets Influence Your Love Life</h2>
-          <div className="space-y-4 text-gray-600 leading-relaxed text-[15px]">
+          <div className="space-y-4 text-gray-850 leading-relaxed text-[15px]">
             <p>
               In Vedic and Western astrology, certain planets hold special significance when it comes to love and relationships. Understanding their influence can give you deeper clarity about your romantic patterns and desires.
             </p>
@@ -256,7 +256,7 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
               ].map((item, i) => (
                 <div key={i} className="p-5 rounded-2xl border border-[#d6c89a]/60 bg-transparent">
                   <p className="text-[14px] font-bold text-[#b8962e] mb-1">{item.planet}</p>
-                  <p className="text-[13px] text-gray-600 leading-relaxed">{item.role}</p>
+                  <p className="text-[13px] text-gray-850 leading-relaxed">{item.role}</p>
                 </div>
               ))}
             </div>
@@ -266,17 +266,17 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
         {/* Love Traits by Zodiac */}
         <section className="border-t border-[#d6c89a]/50 pt-10">
           <h2 className="text-3xl font-semibold text-gray-900 mb-2 serif">Love Traits of Each Zodiac Sign</h2>
-          <p className="text-gray-600 text-[15px] leading-relaxed mb-6">
+          <p className="text-gray-850 text-[15px] leading-relaxed mb-6">
             Every zodiac sign has a unique way of loving and being loved. Here is a brief overview of the romantic nature of all 12 signs.
           </p>
           <div className="overflow-x-auto rounded-2xl border border-[#d6c89a]/60 bg-transparent">
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-[#d6c89a]/60">
-                  <th className="p-4 text-[12px] font-black text-gray-400 uppercase tracking-wider">Sign</th>
-                  <th className="p-4 text-[12px] font-black text-gray-400 uppercase tracking-wider">Element</th>
-                  <th className="p-4 text-[12px] font-black text-gray-400 uppercase tracking-wider">Ruling Planet</th>
-                  <th className="p-4 text-[12px] font-black text-gray-400 uppercase tracking-wider">Love Nature</th>
+                  <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">Sign</th>
+                  <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">Element</th>
+                  <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">Ruling Planet</th>
+                  <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">Love Nature</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#d6c89a]/30">
@@ -288,12 +288,12 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
                   >
                     <td className="p-4 whitespace-nowrap">
                       <span className="text-[#b8962e] font-bold text-[15px] mr-2" style={{ fontFamily: 'Georgia, serif' }}>{z.symbol}</span>
-                      <span className="font-semibold text-gray-800 text-[14px]">{z.name}</span>
-                      <span className="text-gray-500 text-[12px] ml-1 font-medium">{z.hindiName}</span>
+                      <span className="font-semibold text-gray-850 text-[14px]">{z.name}</span>
+                      <span className="text-gray-850 text-[12px] ml-1 font-medium">{z.hindiName}</span>
                     </td>
-                    <td className="p-4 text-[14px] text-gray-600">{z.element}</td>
-                    <td className="p-4 text-[14px] text-gray-600">{z.rulingPlanet}</td>
-                    <td className="p-4 text-[13px] text-gray-600 leading-relaxed">{z.loveTraits}</td>
+                    <td className="p-4 text-[14px] text-gray-850">{z.element}</td>
+                    <td className="p-4 text-[14px] text-gray-850">{z.rulingPlanet}</td>
+                    <td className="p-4 text-[13px] text-gray-850 leading-relaxed">{z.loveTraits}</td>
                   </tr>
                 ))}
               </tbody>
@@ -304,7 +304,7 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
         {/* Tips for Using Love Horoscope */}
         <section className="border-t border-[#d6c89a]/50 pt-10">
           <h2 className="text-3xl font-semibold text-gray-900 mb-4 serif">How to Use Your Daily Love Horoscope</h2>
-          <div className="space-y-4 text-gray-600 leading-relaxed text-[15px]">
+          <div className="space-y-4 text-gray-850 leading-relaxed text-[15px]">
             <p>
               Your daily love horoscope is a guide, not a guarantee. Here are a few ways to make the most of your reading:
             </p>
@@ -320,8 +320,8 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
                     {i + 1}
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-800 text-[14px] mb-1">{tip.title}</p>
-                    <p className="text-[13px] text-gray-600 leading-relaxed">{tip.desc}</p>
+                    <p className="font-semibold text-gray-850 text-[14px] mb-1">{tip.title}</p>
+                    <p className="text-[13px] text-gray-850 leading-relaxed">{tip.desc}</p>
                   </div>
                 </div>
               ))}

@@ -81,7 +81,7 @@ export default function HealingContent() {
                         <h1 className="text-4xl md:text-6xl font-bold text-gray-900 serif leading-tight">
                             Healing & Wellness
                         </h1>
-                        <p className="text-base text-gray-500 max-w-2xl mx-auto font-medium leading-relaxed">
+                        <p className="text-base text-gray-850 max-w-2xl mx-auto font-medium leading-relaxed">
                             Meditation • Yoga • Crystal Healing
                         </p>
                     </motion.div>
@@ -91,7 +91,7 @@ export default function HealingContent() {
                         <div className="flex items-center justify-center py-16">
                             <div className="animate-pulse flex flex-col items-center gap-3">
                                 <BookOpen className="w-10 h-10 text-[#b8962e] opacity-20" />
-                                <span className="text-xs text-gray-400 uppercase tracking-widest font-bold">Loading guides...</span>
+                                <span className="text-xs text-[#3a1216] uppercase tracking-widest font-bold">Loading guides...</span>
                             </div>
                         </div>
                     )}
@@ -127,17 +127,17 @@ export default function HealingContent() {
                                                 {item.title}
                                             </span>
                                             {item.metadata?.duration && (
-                                                <span className="text-[11px] text-gray-400 font-medium hidden sm:block">
+                                                <span className="text-[11px] text-[#3a1216] font-medium hidden sm:block">
                                                     {item.metadata.duration}
                                                 </span>
                                             )}
                                             {item.metadata?.sanskritName && (
-                                                <span className="text-[11px] text-gray-400 font-medium hidden sm:block">
+                                                <span className="text-[11px] text-[#3a1216] font-medium hidden sm:block">
                                                     {item.metadata.sanskritName}
                                                 </span>
                                             )}
                                             {item.metadata?.chakra && (
-                                                <span className="text-[11px] text-gray-400 font-medium hidden sm:block">
+                                                <span className="text-[11px] text-[#3a1216] font-medium hidden sm:block">
                                                     {item.metadata.chakra} Chakra
                                                 </span>
                                             )}
@@ -147,8 +147,8 @@ export default function HealingContent() {
                                 </div>
                             ) : (
                                 <div className="border border-[#e8dbb8] border-dashed rounded-2xl bg-white/50 py-8 text-center">
-                                    <p className="text-sm text-gray-400 serif">{cat.subtitle}</p>
-                                    <p className="text-[11px] text-gray-300 mt-1 uppercase tracking-wider font-bold">Coming soon — Add via Admin Portal</p>
+                                    <p className="text-sm text-[#3a1216] serif">{cat.subtitle}</p>
+                                    <p className="text-[11px] text-[#3a1216] mt-1 uppercase tracking-wider font-bold">Coming soon — Add via Admin Portal</p>
                                 </div>
                             )}
                         </motion.div>

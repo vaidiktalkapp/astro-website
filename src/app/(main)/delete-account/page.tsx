@@ -63,10 +63,10 @@ export default function DeleteAccountPage() {
                   <h3 className="font-semibold text-gray-900 flex items-center gap-2">
                     <Info size={18} />{t("delete_account.what_happens_next")}
                 </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  <p className="text-sm text-gray-850 leading-relaxed">
 {t("delete_account.your_account_has_been_schedule")}<strong>{t("delete_account.7_days")}</strong>.
                   </p>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  <p className="text-sm text-gray-850 leading-relaxed">
 {t("delete_account.if_you_wish_to_rejoin_simply")}<strong>{t("delete_account.log_in_within_these_7_days")}</strong>{t("delete_account.to_cancel_the_deletion_and_res")}
                 </p>
                 </div>
@@ -89,7 +89,7 @@ export default function DeleteAccountPage() {
               </button>
                 <button
                 onClick={() => router.back()}
-                className="w-full py-3 bg-white border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors">
+                className="w-full py-3 bg-white border border-gray-200 text-gray-850 font-semibold rounded-xl hover:bg-gray-50 transition-colors">
 {t("delete_account.cancel")}
 
               </button>
@@ -98,7 +98,7 @@ export default function DeleteAccountPage() {
 
           <>
               <div className="space-y-4">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-850">
 {t("delete_account.please_tell_us_why_you_are_lea")}
               </label>
                 <textarea
@@ -121,7 +121,7 @@ export default function DeleteAccountPage() {
                 <button
                 onClick={() => setStep('info')}
                 disabled={isDeleting}
-                className="w-full py-3 bg-white border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                className="w-full py-3 bg-white border border-gray-200 text-gray-850 font-semibold rounded-xl hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
                 
                   <ArrowLeft size={18} />{t("delete_account.back")}
               </button>

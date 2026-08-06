@@ -251,10 +251,10 @@ export default function MatrimonySetupPage() {
                 <div className="flex justify-center gap-8 mt-6">
                     {['Identity', 'Life & Interests', 'Preferences'].map((label, idx) => (
                         <div key={label} className="flex flex-col items-center gap-2">
-                            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold ${step > idx + 1 ? 'bg-[#b8962e] text-white' : step === idx + 1 ? 'bg-gray-900 text-white shadow-lg' : 'bg-gray-200 text-gray-400'}`}>
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold ${step > idx + 1 ? 'bg-[#b8962e] text-white' : step === idx + 1 ? 'bg-gray-900 text-white shadow-lg' : 'bg-gray-200 text-[#3a1216]'}`}>
                                 {step > idx + 1 ? '✓' : idx + 1}
                             </div>
-                            <span className={`text-[10px] font-bold uppercase tracking-tight ${step === idx + 1 ? 'text-gray-900' : 'text-gray-400'}`}>{label}</span>
+                            <span className={`text-[10px] font-bold uppercase tracking-tight ${step === idx + 1 ? 'text-gray-900' : 'text-[#3a1216]'}`}>{label}</span>
                         </div>
                     ))}
                 </div>
@@ -288,7 +288,7 @@ export default function MatrimonySetupPage() {
                                   </div> 
                                 :
                                   <div className="w-24 h-24 rounded-full bg-gray-50 flex items-center justify-center shadow-inner border-4 border-white">
-                                      <User className="w-10 h-10 text-gray-200" />
+                                      <User className="w-10 h-10 text-[#3a1216]" />
                                   </div>
                                 }
                                 <input type="file" ref={fileInputRef} className="hidden" accept="image/*" onChange={handleImageUpload} />
@@ -328,7 +328,7 @@ export default function MatrimonySetupPage() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div className="space-y-2">
-                                <label className="text-sm font-bold text-gray-700 flex items-center gap-2"><Briefcase className="w-4 h-4 text-[#b8962e]" />Profession</label>
+                                <label className="text-sm font-bold text-gray-850 flex items-center gap-2"><Briefcase className="w-4 h-4 text-[#b8962e]" />Profession</label>
                                 <input
                                   type="text"
                                   value={formData.profession}
@@ -338,7 +338,7 @@ export default function MatrimonySetupPage() {
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-bold text-gray-700 flex items-center gap-2"><GraduationCap className="w-4 h-4 text-[#b8962e]" />Education</label>
+                                <label className="text-sm font-bold text-gray-850 flex items-center gap-2"><GraduationCap className="w-4 h-4 text-[#b8962e]" />Education</label>
                                 <input
                                   type="text"
                                   value={formData.education}
@@ -348,7 +348,7 @@ export default function MatrimonySetupPage() {
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-bold text-gray-700 flex items-center gap-2"><Target className="w-4 h-4 text-[#b8962e]" />Height</label>
+                                <label className="text-sm font-bold text-gray-850 flex items-center gap-2"><Target className="w-4 h-4 text-[#b8962e]" />Height</label>
                                 <select
                                   value={formData.height}
                                   onChange={(e) => setFormData({ ...formData, height: e.target.value })}
@@ -359,7 +359,7 @@ export default function MatrimonySetupPage() {
                                 </select>
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-bold text-gray-700 flex items-center gap-2"><Star className="w-4 h-4 text-[#b8962e]" />Hobbies & Interests</label>
+                                <label className="text-sm font-bold text-gray-850 flex items-center gap-2"><Star className="w-4 h-4 text-[#b8962e]" />Hobbies & Interests</label>
                                 <input
                                   type="text"
                                   value={formData.hobbies}
@@ -384,7 +384,7 @@ export default function MatrimonySetupPage() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div className="space-y-2">
-                                <label className="text-sm font-bold text-gray-700 flex items-center gap-2">Religion</label>
+                                <label className="text-sm font-bold text-gray-850 flex items-center gap-2">Religion</label>
                                 <input
                                   type="text"
                                   value={formData.religion}
@@ -393,7 +393,7 @@ export default function MatrimonySetupPage() {
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-bold text-gray-700 flex items-center gap-2">Caste</label>
+                                <label className="text-sm font-bold text-gray-850 flex items-center gap-2">Caste</label>
                                 <input
                                   type="text"
                                   value={formData.caste}
@@ -407,7 +407,7 @@ export default function MatrimonySetupPage() {
                           <label className="text-sm font-bold text-gray-900 flex items-center gap-2 mb-4"><MapPin className="w-4 h-4 text-[#b8962e]" />Partner Preferences</label>
                           <div className="grid grid-cols-2 gap-4 mb-4">
                               <div className="space-y-1">
-                                <span className="text-[10px] text-gray-500 font-bold uppercase">Min Age</span>
+                                <span className="text-[10px] text-gray-850 font-bold uppercase">Min Age</span>
                                 <input
                                     type="number"
                                     min="18"
@@ -420,7 +420,7 @@ export default function MatrimonySetupPage() {
                                 />
                               </div>
                               <div className="space-y-1">
-                                <span className="text-[10px] text-gray-500 font-bold uppercase">Max Age</span>
+                                <span className="text-[10px] text-gray-850 font-bold uppercase">Max Age</span>
                                 <input
                                     type="number"
                                     min="18"
@@ -457,7 +457,7 @@ export default function MatrimonySetupPage() {
                     <button
                         onClick={() => step > 1 && setStep(step - 1)}
                         disabled={step === 1}
-                        className={`px-6 py-3 rounded-2xl font-bold transition-all flex items-center gap-2 ${step > 1 ? 'text-gray-900 hover:bg-white active:scale-95' : 'text-gray-300 pointer-events-none'}`}
+                        className={`px-6 py-3 rounded-2xl font-bold transition-all flex items-center gap-2 ${step > 1 ? 'text-gray-900 hover:bg-white active:scale-95' : 'text-[#3a1216] pointer-events-none'}`}
                     >
                         <ArrowLeft size={18} /> Previous Step
                     </button>

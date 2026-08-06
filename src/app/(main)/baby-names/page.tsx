@@ -150,7 +150,7 @@ export default function BabyNamesPage() {
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3 leading-tight bn-serif">
   {t("baby_names.baby")}<span style={{ color: '#b8962e' }}>{t("baby_names.names")}</span>
               </h1>
-              <p className="text-gray-600 text-[15px] leading-relaxed font-medium max-w-2xl">
+              <p className="text-gray-850 text-[15px] leading-relaxed font-medium max-w-2xl">
   {t("baby_names.baby_birth_is_most_delightful")}
               </p>
             </div>

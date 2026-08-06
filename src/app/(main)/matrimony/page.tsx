@@ -78,7 +78,7 @@ export default function MatrimonyPage() {
     return (
       <div className="min-h-[80vh] flex flex-col items-center justify-center p-6 text-center" style={{ backgroundColor: '#fdf6e3' }}>
         <div className="w-12 h-12 border-4 border-[#b8962e]/20 border-t-[#b8962e] rounded-full animate-spin mb-4" />
-        <p className="text-gray-400 text-sm" style={{ fontFamily: 'Georgia, serif', fontStyle: 'normal' }}>
+        <p className="text-[#3a1216] text-sm" style={{ fontFamily: 'Georgia, serif', fontStyle: 'normal' }}>
           Scanning the cosmos for your perfect union…
         </p>
       </div>
@@ -126,7 +126,7 @@ export default function MatrimonyPage() {
 
                 <div className="mat-divider mb-5" />
 
-                <p className="text-gray-500 mb-8" style={{ fontSize: 16, lineHeight: 1.75, maxWidth: 480, fontWeight: 300 }}>
+                <p className="text-gray-850 mb-8" style={{ fontSize: 16, lineHeight: 1.75, maxWidth: 480, fontWeight: 300 }}>
                   Vaidik Matrimony unites ancient Vedic wisdom with modern search — pairing you through Guna compatibility, planetary alignment, and sincere intent. Not swipes. Not algorithms. Destiny.
                 </p>
 

@@ -307,7 +307,7 @@ export default function BookAPujaPage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-4 md:py-8">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-sm text-gray-500 mb-6 md:mb-8">
+          <div className="flex items-center gap-2 text-sm text-gray-850 mb-6 md:mb-8">
             <Link href="/" className="hover:text-[#d97706] transition-colors">Home</Link>
             <span className="text-[#d4af37]">›</span>
             <span className="text-[#d97706] font-semibold">Puja</span>
@@ -385,34 +385,34 @@ export default function BookAPujaPage() {
                 placeholder="Search for Pujas, Temples or Benefits..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-200 shadow-sm focus:outline-none focus:ring-1 focus:ring-[#ea580c] focus:border-[#ea580c] text-gray-700 bg-white"
+                className="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-200 shadow-sm focus:outline-none focus:ring-1 focus:ring-[#ea580c] focus:border-[#ea580c] text-gray-850 bg-white"
               />
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3a1216] w-5 h-5" />
             </div>
             <div className="flex flex-wrap items-center gap-3">
               <button
                 onClick={() => setShowFilterModal(true)}
-                className="flex items-center justify-center w-10 h-10 border border-gray-200 rounded bg-white hover:bg-gray-50 text-gray-600 shadow-sm"
+                className="flex items-center justify-center w-10 h-10 border border-gray-200 rounded bg-white hover:bg-gray-50 text-gray-850 shadow-sm"
               >
                 <SlidersHorizontal className="w-5 h-5" />
               </button>
               <button
                 onClick={() => { setActiveFilterTab('pujaFor'); setShowFilterModal(true); }}
-                className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-800 rounded shadow-sm text-gray-800 hover:bg-gray-50 text-sm font-medium"
+                className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-800 rounded shadow-sm text-gray-850 hover:bg-gray-50 text-sm font-medium"
               >
-                Puja for <ChevronDown className="w-4 h-4 text-gray-800" />
+                Puja for <ChevronDown className="w-4 h-4 text-gray-850" />
               </button>
               <button
                 onClick={() => { setActiveFilterTab('benefits'); setShowFilterModal(true); }}
-                className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-800 rounded shadow-sm text-gray-800 hover:bg-gray-50 text-sm font-medium"
+                className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-800 rounded shadow-sm text-gray-850 hover:bg-gray-50 text-sm font-medium"
               >
-                Benefits <ChevronDown className="w-4 h-4 text-gray-800" />
+                Benefits <ChevronDown className="w-4 h-4 text-gray-850" />
               </button>
               <button
                 onClick={() => { setActiveFilterTab('deity'); setShowFilterModal(true); }}
-                className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-800 rounded shadow-sm text-gray-800 hover:bg-gray-50 text-sm font-medium"
+                className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-800 rounded shadow-sm text-gray-850 hover:bg-gray-50 text-sm font-medium"
               >
-                Deity <ChevronDown className="w-4 h-4 text-gray-800" />
+                Deity <ChevronDown className="w-4 h-4 text-gray-850" />
               </button>
             </div>
           </div>
@@ -470,16 +470,16 @@ export default function BookAPujaPage() {
                 <div className="px-4 pt-3 pb-0 flex flex-col">
 
                   {/* Dark tagline / shortDesc */}
-                  <p className="text-gray-700 text-[13px] font-medium leading-relaxed line-clamp-2 mb-3 min-h-[40px]">
+                  <p className="text-gray-850 text-[13px] font-medium leading-relaxed line-clamp-2 mb-3 min-h-[40px]">
                     {puja.desc || `Book at just ₹${puja.discountedPrice || puja.price} — Limited slots available`}
                   </p>
 
                   {/* Location-style row: Price + Duration */}
-                  <div className="flex items-center gap-3 mb-2 text-[13px] text-gray-800">
+                  <div className="flex items-center gap-3 mb-2 text-[13px] text-gray-850">
                     <span className="flex items-center gap-1.5">
                       <svg className="w-3.5 h-3.5 text-[#ee6c1e]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                       <span className="font-bold text-[#5c1a1f] text-[17.5px]">₹{puja.discountedPrice || puja.price}</span>
-                      {puja.discountedPrice && <span className="text-gray-400 line-through text-[11px]">₹{puja.price}</span>}
+                      {puja.discountedPrice && <span className="text-[#3a1216] line-through text-[11px]">₹{puja.price}</span>}
                     </span>
                     {puja.duration && (
                       <span className="flex items-center gap-1">
@@ -493,7 +493,7 @@ export default function BookAPujaPage() {
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-1">
                       {[1, 2, 3, 4, 5].map(star => <Star key={star} className="w-3 h-3 fill-[#f59e0b] text-[#f59e0b]" />)}
-                      <span className="text-[12px] text-gray-700 font-medium ml-1">({puja.reviews})</span>
+                      <span className="text-[12px] text-gray-850 font-medium ml-1">({puja.reviews})</span>
                     </div>
                     {puja.duration && (
                       <div className="flex items-center gap-1 text-[11px] text-[#5c1a1f] font-semibold bg-orange-50 border border-orange-100 px-2.5 py-0.5 rounded-md">
@@ -505,7 +505,7 @@ export default function BookAPujaPage() {
 
                   {/* Benefits row */}
                   <div className="mb-3">
-                    <p className="text-[11px] font-bold text-gray-700 uppercase tracking-wide mb-1.5">Best For</p>
+                    <p className="text-[11px] font-bold text-gray-850 uppercase tracking-wide mb-1.5">Best For</p>
                     <div className="flex gap-1.5 overflow-hidden" style={{ height: '24px' }}>
                       {puja.benefits.slice(0, 3).map((benefit: string, bIndex: number) => (
                         <span
@@ -552,7 +552,7 @@ export default function BookAPujaPage() {
               </Link>
             )) : (
               <div className="col-span-1 sm:col-span-2 lg:col-span-3 text-center py-20">
-                <p className="text-gray-700 text-lg">No pujas found matching your search.</p>
+                <p className="text-gray-850 text-lg">No pujas found matching your search.</p>
               </div>
             )}
           </div>
@@ -612,7 +612,7 @@ export default function BookAPujaPage() {
                     {item.n}
                   </div>
                   <h3 className="font-bold text-[#3a1216] text-[15px] leading-snug mb-2">{item.title}</h3>
-                  <p className="text-gray-800 text-[13px] leading-relaxed">{item.desc}</p>
+                  <p className="text-gray-850 text-[13px] leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -634,7 +634,7 @@ export default function BookAPujaPage() {
                 </div>
                 <div className="pt-0.5">
                   <p className="font-bold text-[#3a1216] text-[15px]">{item.title}</p>
-                  <p className="text-gray-500 text-[13px] mt-1 leading-relaxed">{item.desc}</p>
+                  <p className="text-gray-850 text-[13px] mt-1 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -726,7 +726,7 @@ export default function BookAPujaPage() {
                   </div>
                   <div>
                     <p className="font-bold text-[#3a1216] text-[13px]">{t.name}</p>
-                    <p className="text-gray-400 text-[11px]">{t.city}</p>
+                    <p className="text-[#3a1216] text-[11px]">{t.city}</p>
                   </div>
                 </div>
               </div>
@@ -741,7 +741,7 @@ export default function BookAPujaPage() {
           <div className="bg-white border border-[#f0ddc0] rounded-2xl px-6 md:px-10 py-6 flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm">
             <div>
               <h3 className="font-bold text-[#3a1216] text-lg md:text-xl mb-1">Need help booking your Puja?</h3>
-              <p className="text-gray-800 text-[13px] md:text-sm">Our team is here to guide you with any questions about your puja booking.</p>
+              <p className="text-gray-850 text-[13px] md:text-sm">Our team is here to guide you with any questions about your puja booking.</p>
             </div>
             <a
               href="https://wa.me/919999999999"
@@ -765,7 +765,7 @@ export default function BookAPujaPage() {
             <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#5c1a1f] mb-4">
               Frequently Asked <span className="text-[#d97706]">Questions</span>
             </h2>
-            <p className="text-gray-800 text-sm md:text-base max-w-xl mx-auto">Everything you need to know about our authentic Vedic Puja services.</p>
+            <p className="text-gray-850 text-sm md:text-base max-w-xl mx-auto">Everything you need to know about our authentic Vedic Puja services.</p>
           </div>
 
           <div className="space-y-3">
@@ -787,7 +787,7 @@ export default function BookAPujaPage() {
                 </button>
                 {openFaq === idx && (
                   <div className="px-6 pb-6 pt-2">
-                    <p className="text-gray-800 text-[14.5px] leading-relaxed border-t border-gray-100 pt-4">{faq.answer || faq.a}</p>
+                    <p className="text-gray-850 text-[14.5px] leading-relaxed border-t border-gray-100 pt-4">{faq.answer || faq.a}</p>
                   </div>
                 )}
               </div>
@@ -815,8 +815,8 @@ export default function BookAPujaPage() {
           <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col h-[500px]">
             {/* Header */}
             <div className="flex items-center justify-between p-5 border-b border-gray-100">
-              <h3 className="text-xl font-bold text-gray-800">Filter</h3>
-              <button onClick={() => setShowFilterModal(false)} className="text-gray-400 hover:text-gray-600">
+              <h3 className="text-xl font-bold text-gray-850">Filter</h3>
+              <button onClick={() => setShowFilterModal(false)} className="text-[#3a1216] hover:text-gray-850">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -827,19 +827,19 @@ export default function BookAPujaPage() {
               <div className="w-1/3 bg-gray-50 border-r border-gray-100 overflow-y-auto">
                 <button
                   onClick={() => setActiveFilterTab('pujaFor')}
-                  className={`w-full text-left px-5 py-4 font-medium text-sm transition-colors ${activeFilterTab === 'pujaFor' ? 'bg-white text-[#ea580c] border-l-4 border-[#ea580c]' : 'text-gray-600 hover:bg-gray-100 border-l-4 border-transparent'}`}
+                  className={`w-full text-left px-5 py-4 font-medium text-sm transition-colors ${activeFilterTab === 'pujaFor' ? 'bg-white text-[#ea580c] border-l-4 border-[#ea580c]' : 'text-gray-850 hover:bg-gray-100 border-l-4 border-transparent'}`}
                 >
                   Puja for
                 </button>
                 <button
                   onClick={() => setActiveFilterTab('benefits')}
-                  className={`w-full text-left px-5 py-4 font-medium text-sm transition-colors ${activeFilterTab === 'benefits' ? 'bg-white text-[#ea580c] border-l-4 border-[#ea580c]' : 'text-gray-600 hover:bg-gray-100 border-l-4 border-transparent'}`}
+                  className={`w-full text-left px-5 py-4 font-medium text-sm transition-colors ${activeFilterTab === 'benefits' ? 'bg-white text-[#ea580c] border-l-4 border-[#ea580c]' : 'text-gray-850 hover:bg-gray-100 border-l-4 border-transparent'}`}
                 >
                   Benefits
                 </button>
                 <button
                   onClick={() => setActiveFilterTab('deity')}
-                  className={`w-full text-left px-5 py-4 font-medium text-sm transition-colors ${activeFilterTab === 'deity' ? 'bg-white text-[#ea580c] border-l-4 border-[#ea580c]' : 'text-gray-600 hover:bg-gray-100 border-l-4 border-transparent'}`}
+                  className={`w-full text-left px-5 py-4 font-medium text-sm transition-colors ${activeFilterTab === 'deity' ? 'bg-white text-[#ea580c] border-l-4 border-[#ea580c]' : 'text-gray-850 hover:bg-gray-100 border-l-4 border-transparent'}`}
                 >
                   Deity
                 </button>
@@ -861,7 +861,7 @@ export default function BookAPujaPage() {
                           <div className="w-3 h-3 bg-[#ea580c] rounded-sm" />
                         )}
                       </div>
-                      <span className="text-gray-700 text-sm group-hover:text-gray-900">{option}</span>
+                      <span className="text-gray-850 text-sm group-hover:text-gray-900">{option}</span>
                     </label>
                   ))}
                 </div>
@@ -872,7 +872,7 @@ export default function BookAPujaPage() {
             <div className="p-4 border-t border-gray-100 flex items-center justify-between bg-white">
               <button
                 onClick={clearFilters}
-                className="text-sm font-semibold text-gray-800 hover:text-[#ea580c]"
+                className="text-sm font-semibold text-gray-850 hover:text-[#ea580c]"
               >
                 Clear all
               </button>

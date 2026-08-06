@@ -141,7 +141,7 @@ export default function ReportHistoryPage() {
                 </div>
                 }
                             </div>
-                            <p className="text-gray-500 text-[15px] mt-2">{t("history.all_your_previously_generated")}</p>
+                            <p className="text-gray-850 text-[15px] mt-2">{t("history.all_your_previously_generated")}</p>
                         </div>
                         {history.length > 0 &&
             <div className="flex gap-2">
@@ -158,7 +158,7 @@ export default function ReportHistoryPage() {
                                         <button onClick={handleClearAll} className="px-3 py-2 rounded-lg bg-rose-500 text-white text-[12px] font-bold hover:bg-rose-600 transition-all">
 {t("history.yes_delete")}
                 </button>
-                                        <button onClick={() => setShowClearConfirm(false)} className="px-3 py-2 rounded-lg border border-gray-200 text-gray-600 text-[12px] font-bold hover:bg-gray-50 transition-all">
+                                        <button onClick={() => setShowClearConfirm(false)} className="px-3 py-2 rounded-lg border border-gray-200 text-gray-850 text-[12px] font-bold hover:bg-gray-50 transition-all">
 {t("history.cancel")}
                 </button>
                                     </div>
@@ -185,11 +185,11 @@ export default function ReportHistoryPage() {
               className={`px-4 py-2 rounded-lg text-[13px] font-bold transition-all border ${
               filter === f.key ?
               'bg-[#b8962e] text-white border-[#b8962e]' :
-              'bg-white text-gray-600 border-[#d6c89a] hover:border-[#b8962e]'}`
+              'bg-white text-gray-850 border-[#d6c89a] hover:border-[#b8962e]'}`
               }>
               
                                     {f.label}
-                                    <span className={`ml-1.5 text-[11px] ${filter === f.key ? 'text-white/70' : 'text-gray-400'}`}>
+                                    <span className={`ml-1.5 text-[11px] ${filter === f.key ? 'text-white/70' : 'text-[#3a1216]'}`}>
                                         {counts[f.key]}
                                     </span>
                                 </button>
@@ -198,7 +198,7 @@ export default function ReportHistoryPage() {
 
                         {/* Search */}
                         <div className="relative flex-1 md:max-w-xs md:ml-auto">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#3a1216]" />
                             <input
               type="text"
               placeholder={t("history.search_placeholder")}
@@ -222,7 +222,7 @@ export default function ReportHistoryPage() {
                             <Clock className="w-10 h-10 text-[#d6c89a]" />
                         </div>
                         <h2 className="text-2xl font-semibold text-gray-900 serif mb-3">{t("history.no_reports_yet")}</h2>
-                        <p className="text-gray-500 text-[15px] mb-8 max-w-md mx-auto">
+                        <p className="text-gray-850 text-[15px] mb-8 max-w-md mx-auto">
 {t("history.generate_your_first_free_astro")}
           </p>
                         <Link
@@ -235,9 +235,9 @@ export default function ReportHistoryPage() {
         filtered.length === 0 ? (
         /* No results for current filter */
         <div className="bg-white rounded-2xl border border-[#d6c89a] shadow-sm p-12 text-center">
-                        <Search className="w-10 h-10 text-gray-300 mx-auto mb-4" />
-                        <h3 className="text-lg font-semibold text-gray-700 mb-2">{t("history.no_matching_reports")}</h3>
-                        <p className="text-gray-500 text-[14px]">{t("history.try_a_different_filter_or_sear")}</p>
+                        <Search className="w-10 h-10 text-[#3a1216] mx-auto mb-4" />
+                        <h3 className="text-lg font-semibold text-gray-850 mb-2">{t("history.no_matching_reports")}</h3>
+                        <p className="text-gray-850 text-[14px]">{t("history.try_a_different_filter_or_sear")}</p>
                         <button
             onClick={() => {setFilter('all');setSearchQuery('');}}
             className="mt-4 inline-flex items-center gap-2 text-[#b8962e] font-bold text-[13px] hover:text-[#7a6010] transition-colors">
@@ -273,21 +273,21 @@ export default function ReportHistoryPage() {
                                                 <span className={`text-[10px] font-black uppercase tracking-widest ${meta.color}`}>
                                                     {t(meta.labelKey)}
                                                 </span>
-                                                <span className="text-[10px] text-gray-300">•</span>
-                                                <span className="text-[10px] text-gray-400 font-medium" title={formatFullDate(entry.timestamp)} suppressHydrationWarning>
+                                                <span className="text-[10px] text-[#3a1216]">•</span>
+                                                <span className="text-[10px] text-[#3a1216] font-medium" title={formatFullDate(entry.timestamp)} suppressHydrationWarning>
                                                     {formatDate(entry.timestamp)}
                                                 </span>
                                             </div>
                                             <h3 className="text-[15px] font-bold text-gray-900 truncate">{entry.summary}</h3>
                                             <div className="flex items-center gap-4 mt-1.5 flex-wrap">
-                                                <span className="flex items-center gap-1.5 text-[12px] text-gray-500">
+                                                <span className="flex items-center gap-1.5 text-[12px] text-gray-850">
                                                     <User className="w-3 h-3" /> {entry.name}
                                                 </span>
-                                                <span className="flex items-center gap-1.5 text-[12px] text-gray-500">
+                                                <span className="flex items-center gap-1.5 text-[12px] text-gray-850">
                                                     <Calendar className="w-3 h-3" /> {entry.date}
                                                 </span>
                                                 {entry.place &&
-                      <span className="flex items-center gap-1.5 text-[12px] text-gray-500 truncate max-w-[200px]">
+                      <span className="flex items-center gap-1.5 text-[12px] text-gray-850 truncate max-w-[200px]">
                                                         <MapPin className="w-3 h-3 flex-shrink-0" /> {entry.place}
                                                     </span>
                       }
@@ -303,7 +303,7 @@ export default function ReportHistoryPage() {
                                             </span>
                                             <button
                       onClick={(e) => {e.stopPropagation();handleDelete(entry.id);}}
-                      className="p-2 rounded-lg text-gray-400 hover:text-rose-500 hover:bg-rose-50 transition-all"
+                      className="p-2 rounded-lg text-[#3a1216] hover:text-rose-500 hover:bg-rose-50 transition-all"
                       title="Delete report">
                       
                                                 <Trash2 className="w-4 h-4" />
@@ -319,7 +319,7 @@ export default function ReportHistoryPage() {
                 {/* Bottom CTA */}
                 {history.length > 0 &&
         <div className="mt-12 p-8 bg-white rounded-2xl border border-[#d6c89a] shadow-sm text-center">
-                        <p className="text-gray-500 text-[14px] mb-4">{t("history.want_deeper_insights_our_exper")}</p>
+                        <p className="text-gray-850 text-[14px] mb-4">{t("history.want_deeper_insights_our_exper")}</p>
                         <div className="flex flex-wrap justify-center gap-3">
                             <Link href="/free-reports" className="px-6 py-3 bg-[#b8962e] text-white font-bold rounded-xl hover:bg-[#7a6010] transition-all text-[14px] flex items-center gap-2">
                                 <Sparkles className="w-4 h-4" />{t("history.new_report")}

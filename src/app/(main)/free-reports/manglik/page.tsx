@@ -102,7 +102,7 @@ export default function ManglikPage() {
                                 <h1 className="text-3xl font-bold text-gray-900 mb-2">
                                     {isPresent ? 'Manglik Dosha Detected' : 'No Manglik Dosha Found'}
                                 </h1>
-                                <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
+                                <p className="text-lg text-gray-850 mb-8 max-w-xl mx-auto">
                                     {isPresent 
                                         ? "Your birth chart shows an alignment of Mars that indicates Manglik Dosha (Kuja Dosha)."
                                         : "Congratulations! Your birth chart is free from the influence of Manglik Dosha."}
@@ -116,8 +116,8 @@ export default function ManglikPage() {
                                 <Shield className="w-5 h-5 text-[#b8962e]" />
                                 <h2 className="text-xl font-bold text-gray-900">Technical Analysis</h2>
                             </div>
-                            <div className="text-gray-700 leading-relaxed space-y-4">
-                                <p className="p-4 rounded-xl bg-[#fdfbf3] border border-[#ede3c7] font-medium text-gray-800">
+                            <div className="text-gray-850 leading-relaxed space-y-4">
+                                <p className="p-4 rounded-xl bg-[#fdfbf3] border border-[#ede3c7] font-medium text-gray-850">
                                     {manglik.details}
                                 </p>
                             </div>
@@ -126,10 +126,10 @@ export default function ManglikPage() {
                         {/* Educational Info */}
                         <div className="bg-white rounded-2xl border border-[#d6c89a] shadow-sm p-8">
                             <h2 className="text-xl font-bold text-gray-900 mb-4">What is Manglik Dosha?</h2>
-                            <p className="text-gray-600 leading-relaxed mb-4">
+                            <p className="text-gray-850 leading-relaxed mb-4">
                                 Manglik Dosha, also known as Kuja Dosha, occurs when Mars (Mangal) is placed in certain houses of the birth chart (Lagna Kundli) - specifically the 1st, 4th, 7th, 8th, or 12th house.
                             </p>
-                            <p className="text-gray-600 leading-relaxed">
+                            <p className="text-gray-850 leading-relaxed">
                                 In Vedic astrology, Mars represents energy, fire, and assertiveness. While its placement in these houses can lead to challenges in marital harmony if not understood correctly, it also grants the native great drive, courage, and technical ability.
                             </p>
                         </div>
@@ -150,7 +150,7 @@ export default function ManglikPage() {
 
                 <div className="text-center mb-10">
                     <h1 className="text-4xl font-bold text-gray-900 mb-3">Manglik Dosha Check</h1>
-                    <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-gray-850 max-w-2xl mx-auto leading-relaxed">
                         Find out if you have Manglik Dosha in your birth chart and understand its impact on your life and marriage.
                     </p>
                 </div>

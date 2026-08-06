@@ -108,7 +108,7 @@ const AudioPlayer = ({ url, duration }: {url: string;duration?: number;}) => {
             style={{ width: `${progress}%` }} />
           
         </div>
-        <span className="text-[10px] text-gray-600">
+        <span className="text-[10px] text-gray-850">
           {formatTime(currentTime)} / {formatTime(totalDuration)}
         </span>
       </div>
@@ -140,7 +140,7 @@ const VideoPlayer = ({ url, thumbnail }: {url: string;thumbnail?: string;}) => {
         }
         <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors">
           <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
-            <Play className="w-8 h-8 text-gray-800 ml-1" fill="currentColor" />
+            <Play className="w-8 h-8 text-gray-850 ml-1" fill="currentColor" />
           </div>
         </div>
       </div>);
@@ -183,7 +183,7 @@ const ImageViewer = ({ url }: {url: string;}) => {
           className="max-w-full max-h-full object-contain" />
         
           <button
-          className="absolute top-4 right-4 text-white text-2xl hover:text-gray-300"
+          className="absolute top-4 right-4 text-white text-2xl hover:text-[#3a1216]"
           onClick={() => setFullscreen(false)}>
           
             ✕
@@ -205,7 +205,7 @@ const KundliCard = ({ details }: {details: Message['kundliDetails'];}) => {
         <span className="text-lg">📜</span>
         <span className="font-semibold text-purple-900 text-sm">{t("_orderId_.user_kundli_details")}</span>
       </div>
-      <div className="space-y-1 text-xs text-gray-700">
+      <div className="space-y-1 text-xs text-gray-850">
         {details.name && <div><strong>{t("_orderId_.name")}</strong> {details.name}</div>}
         {details.gender && <div><strong>{t("_orderId_.gender")}</strong> {details.gender}</div>}
         {(details.dob || details.dateOfBirth) &&
@@ -354,7 +354,7 @@ export default function ChatHistoryScreen() {
           <div className="bg-white border-b px-4 py-3 flex items-center justify-between shrink-0 sticky top-0 z-10">
             <div className="flex items-center gap-3">
               <button onClick={() => router.back()} className="p-1 hover:bg-gray-100 rounded-full">
-                <ArrowLeft className="w-5 h-5 text-gray-600" />
+                <ArrowLeft className="w-5 h-5 text-gray-850" />
               </button>
               <div className="flex items-center gap-3">
                 <img
@@ -364,8 +364,8 @@ export default function ChatHistoryScreen() {
                   alt="Astrologer"
                 />
                 <div>
-                  <h1 className="font-bold text-gray-800 text-sm">{astrologer?.name || 'Astrologer'}</h1>
-                  <p className="text-xs text-gray-500">{t("_orderId_.call_summary") || "Call Summary"}</p>
+                  <h1 className="font-bold text-gray-850 text-sm">{astrologer?.name || 'Astrologer'}</h1>
+                  <p className="text-xs text-gray-850">{t("_orderId_.call_summary") || "Call Summary"}</p>
                 </div>
               </div>
             </div>
@@ -388,16 +388,16 @@ export default function ChatHistoryScreen() {
                   <h2 className="text-xl font-bold text-gray-900">
                     {summaryData?.totalDuration ? Math.ceil(summaryData.totalDuration / 60) : 0} {t("_orderId_._min") || "Mins"}
                   </h2>
-                  <p className="text-sm text-gray-500 font-medium">Total Call Duration</p>
+                  <p className="text-sm text-gray-850 font-medium">Total Call Duration</p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                    <div className="bg-white border rounded-xl p-4 flex flex-col items-center shadow-sm">
-                      <span className="text-gray-500 text-xs mb-1 font-medium">Total Calls</span>
+                      <span className="text-gray-850 text-xs mb-1 font-medium">Total Calls</span>
                       <span className="text-lg font-bold text-gray-900">{summaryData?.totalCallSessions || 0}</span>
                    </div>
                    <div className="bg-white border rounded-xl p-4 flex flex-col items-center shadow-sm">
-                      <span className="text-gray-500 text-xs mb-1 font-medium">Total Cost</span>
+                      <span className="text-gray-850 text-xs mb-1 font-medium">Total Cost</span>
                       <span className="text-lg font-bold text-gray-900">₹{summaryData?.totalSpent || 0}</span>
                    </div>
                 </div>
@@ -409,7 +409,7 @@ export default function ChatHistoryScreen() {
                       {summaryData.sessionHistory.filter((s: any) => ['audio_call', 'video_call'].includes(s.sessionType)).map((session: any, index: number) => (
                         <div key={index} className="bg-white border border-gray-100 rounded-lg p-3 shadow-sm flex flex-col space-y-2">
                            <div className="flex justify-between items-center">
-                             <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                             <span className="text-xs font-semibold text-gray-850 uppercase tracking-wider">
                                {new Date(session.startedAt).toLocaleDateString()}
                              </span>
                              <span className="text-xs font-medium bg-green-50 text-green-700 px-2 py-0.5 rounded-full border border-green-200">
@@ -417,7 +417,7 @@ export default function ChatHistoryScreen() {
                              </span>
                            </div>
                            <div className="flex justify-between items-center">
-                              <span className="text-sm font-medium text-gray-800">
+                              <span className="text-sm font-medium text-gray-850">
                                 {new Date(session.startedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                               </span>
                               <span className="text-sm font-bold text-gray-900">
@@ -450,7 +450,7 @@ export default function ChatHistoryScreen() {
         <div className="bg-white border-b px-4 py-3 flex items-center justify-between shrink-0 z-10">
           <div className="flex items-center gap-3">
             <button onClick={() => router.back()} className="p-1 hover:bg-gray-100 rounded-full">
-              <ArrowLeft className="w-5 h-5 text-gray-600" />
+              <ArrowLeft className="w-5 h-5 text-gray-850" />
             </button>
             <div className="flex items-center gap-3">
               <img
@@ -460,8 +460,8 @@ export default function ChatHistoryScreen() {
                 alt="Astrologer" />
               
               <div>
-                <h1 className="font-bold text-gray-800 text-sm">{astrologer?.name || 'Astrologer'}</h1>
-                <p className="text-xs text-gray-500">{t("_orderId_.chat_history")}</p>
+                <h1 className="font-bold text-gray-850 text-sm">{astrologer?.name || 'Astrologer'}</h1>
+                <p className="text-xs text-gray-850">{t("_orderId_.chat_history")}</p>
               </div>
             </div>
           </div>
@@ -470,7 +470,7 @@ export default function ChatHistoryScreen() {
         {/* Search Bar */}
         <div className="bg-white px-4 py-2 border-b shrink-0">
           <div className="relative">
-            <Search className="absolute left-3 top-2.5 w-4 h-4 text-gray-400" />
+            <Search className="absolute left-3 top-2.5 w-4 h-4 text-[#3a1216]" />
             <input
               type="text"
               placeholder="Search in conversation..."
@@ -498,7 +498,7 @@ export default function ChatHistoryScreen() {
           Object.entries(messageGroups).map(([date, msgs]) =>
           <div key={date}>
                 <div className="flex justify-center my-4">
-                  <span className="bg-[#E1F5FE] text-gray-600 text-[10px] px-3 py-1 rounded-full shadow-sm border border-[#E1F3FB]">
+                  <span className="bg-[#E1F5FE] text-gray-850 text-[10px] px-3 py-1 rounded-full shadow-sm border border-[#E1F3FB]">
                     {date}
                   </span>
                 </div>
@@ -521,7 +521,7 @@ export default function ChatHistoryScreen() {
                         {renderMessageContent(msg)}
 
                         {/* Timestamp */}
-                        <span className={`text-[10px] block text-right mt-1 ${isMe ? 'text-gray-500' : 'text-gray-400'}`}>
+                        <span className={`text-[10px] block text-right mt-1 ${isMe ? 'text-gray-850' : 'text-[#3a1216]'}`}>
                           {new Date(msg.sentAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </span>
                       </div>

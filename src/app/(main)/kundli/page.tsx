@@ -264,7 +264,7 @@ const KundliPage = () => {
               
                                 <div className="w-16 h-16 border-4 border-orange-100 border-t-[#b8962e] rounded-full animate-spin mb-6" />
                                 <h1 className="text-3xl font-semibold text-gray-900 mb-2">{t("kundli.synchronizing_with_stars")}</h1>
-                                <p className="text-gray-500 font-medium max-w-sm">{t("kundli.re_aligning_the_celestial_coor")}</p>
+                                <p className="text-gray-850 font-medium max-w-sm">{t("kundli.re_aligning_the_celestial_coor")}</p>
                             </motion.div>
             }
 
@@ -290,23 +290,23 @@ const KundliPage = () => {
                                     <h1 className="text-4xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight">
 {t("kundli.janam_kundli")}<span className="text-[#b8962e]">{t("kundli.generator")}</span>
                                     </h1>
-                                    <p className="text-gray-800 text-[17px] leading-relaxed max-w-xl mx-auto mb-8 font-medium">
+                                    <p className="text-gray-850 text-[17px] leading-relaxed max-w-xl mx-auto mb-8 font-medium">
 {t("kundli.unlock_the_secrets_of_your_lif")}
                 </p>
 
                                     {/* Trust Indicators */}
                                     <div className="flex flex-wrap items-center justify-center gap-4 py-4 px-6 rounded-2xl bg-white/40 border border-white/60 shadow-sm backdrop-blur-sm max-w-fit mx-auto mb-8">
-                                        <div className="flex items-center gap-2 text-[13px] text-gray-700 font-semibold">
+                                        <div className="flex items-center gap-2 text-[13px] text-gray-850 font-semibold">
                                             <Shield className="w-4 h-4 text-[#b8962e]" />
                                             <span>{t("kundli.secure")}</span>
                                         </div>
                                         <div className="w-1 h-1 rounded-full bg-gray-300" />
-                                        <div className="flex items-center gap-2 text-[13px] text-gray-700 font-semibold">
+                                        <div className="flex items-center gap-2 text-[13px] text-gray-850 font-semibold">
                                             <Award className="w-4 h-4 text-[#b8962e]" />
                                             <span>{t("kundli.accurate")}</span>
                                         </div>
                                         <div className="w-1 h-1 rounded-full bg-gray-300" />
-                                        <div className="flex items-center gap-2 text-[13px] text-gray-700 font-semibold">
+                                        <div className="flex items-center gap-2 text-[13px] text-gray-850 font-semibold">
                                             <Sparkles className="w-4 h-4 text-[#b8962e]" />
                                             <span>{t("kundli.instant")}</span>
                                         </div>
@@ -356,15 +356,15 @@ const KundliPage = () => {
                                             <table className="w-full text-left border-collapse">
                                                 <thead>
                                                     <tr className="border-b border-[#d6c89a]/60 bg-[#fdf6e3]/40">
-                                                        <th className="p-4 text-[12px] font-black text-gray-800 uppercase tracking-wider">{t("kundli.house")}</th>
-                                                        <th className="p-4 text-[12px] font-black text-gray-800 uppercase tracking-wider">{t("kundli.area_of_life")}</th>
+                                                        <th className="p-4 text-[12px] font-black text-gray-850 uppercase tracking-wider">{t("kundli.house")}</th>
+                                                        <th className="p-4 text-[12px] font-black text-gray-850 uppercase tracking-wider">{t("kundli.area_of_life")}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody className="divide-y divide-[#d6c89a]/30">
                                                     {KUNDLI_HOUSES.map((h, i) =>
                         <tr key={i} className="hover:bg-[#fdf6e3]/30 transition-colors">
-                                                            <td className="p-4 font-semibold text-gray-800 text-[14px] whitespace-nowrap">{h.house}</td>
-                                                            <td className="p-4 text-[13px] text-gray-800 leading-relaxed">{h.rules}</td>
+                                                            <td className="p-4 font-semibold text-gray-850 text-[14px] whitespace-nowrap">{h.house}</td>
+                                                            <td className="p-4 text-[13px] text-gray-850 leading-relaxed">{h.rules}</td>
                                                         </tr>
                         )}
                                                 </tbody>
@@ -422,8 +422,8 @@ const KundliPage = () => {
                                                         {i + 1}
                                                     </div>
                                                     <div>
-                                                        <p className="font-semibold text-gray-800 text-[14px] mb-1">{tip.title}</p>
-                                                        <p className="text-[13px] text-gray-800 leading-relaxed">{tip.desc}</p>
+                                                        <p className="font-semibold text-gray-850 text-[14px] mb-1">{tip.title}</p>
+                                                        <p className="text-[13px] text-gray-850 leading-relaxed">{tip.desc}</p>
                                                     </div>
                                                 </div>
                     )}
@@ -466,7 +466,7 @@ const KundliPage = () => {
                                         <div className="flex items-center justify-between gap-2 pb-3 border-b border-[#d6c89a]">
                                         <div className="flex items-center gap-2">
                                             <Calendar className="w-4 h-4 text-[#b8962e]" />
-                                            <span className="text-[15px] font-semibold text-gray-800">{t("kundli.enter_birth_details")}</span>
+                                            <span className="text-[15px] font-semibold text-gray-850">{t("kundli.enter_birth_details")}</span>
                                         </div>
                                         {isAuthenticated && (
                                             <button 
@@ -481,7 +481,7 @@ const KundliPage = () => {
 
                                         {/* Name */}
                                         <div>
-                                            <label className="block text-[15px] font-semibold text-gray-800 mb-2.5">{t("kundli.full_name")}</label>
+                                            <label className="block text-[15px] font-semibold text-gray-850 mb-2.5">{t("kundli.full_name")}</label>
                                             <input
                       type="text"
                       required
@@ -496,7 +496,7 @@ const KundliPage = () => {
                                         {/* Date & Time */}
                                         <div className="grid grid-cols-2 gap-4">
                                             <div>
-                                                <label className="block text-[15px] font-semibold text-gray-800 mb-2.5 flex items-center gap-1.5">
+                                                <label className="block text-[15px] font-semibold text-gray-850 mb-2.5 flex items-center gap-1.5">
                                                     <Calendar className="w-3.5 h-3.5 text-[#b8962e]" />{t("kundli.birth_date")}
                       </label>
                                                 <input
@@ -509,7 +509,7 @@ const KundliPage = () => {
                       
                                             </div>
                                             <div>
-                                                <label className="block text-[15px] font-semibold text-gray-800 mb-2.5 flex items-center gap-1.5">
+                                                <label className="block text-[15px] font-semibold text-gray-850 mb-2.5 flex items-center gap-1.5">
                                                     <Clock className="w-3.5 h-3.5 text-[#b8962e]" />{t("kundli.birth_time")}
                       </label>
                                                 <input
@@ -525,7 +525,7 @@ const KundliPage = () => {
 
                                         {/* Birth Place */}
                                         <div>
-                                            <label className="block text-[15px] font-semibold text-gray-800 mb-2.5 flex items-center gap-1.5">
+                                            <label className="block text-[15px] font-semibold text-gray-850 mb-2.5 flex items-center gap-1.5">
                                                 <MapPin className="w-3.5 h-3.5 text-[#b8962e]" />{t("kundli.birth_place")}
                     </label>
                                             <div className="relative kundli-geo z-[100]">
@@ -593,28 +593,28 @@ const KundliPage = () => {
                                         <div>
                                             <div className="flex items-center gap-2 mb-1.5">
                                                 <Moon className="w-4 h-4 text-[#b8962e]" />
-                                                <span className="text-[14px] font-semibold text-gray-800">{t("kundli.janam_kundli")}</span>
+                                                <span className="text-[14px] font-semibold text-gray-850">{t("kundli.janam_kundli")}</span>
                                             </div>
                                             <p className="text-[13px] text-gray-850 leading-relaxed">{t("kundli.complete_birth_chart_with_all")}</p>
                                         </div>
                                         <div>
                                             <div className="flex items-center gap-2 mb-1.5">
                                                 <Star className="w-4 h-4 text-[#b8962e]" />
-                                                <span className="text-[14px] font-semibold text-gray-800">{t("kundli.planetary_positions")}</span>
+                                                <span className="text-[14px] font-semibold text-gray-850">{t("kundli.planetary_positions")}</span>
                                             </div>
                                             <p className="text-[13px] text-gray-850 leading-relaxed">{t("kundli.graha_positions_dashas_and_tra")}</p>
                                         </div>
                                         <div>
                                             <div className="flex items-center gap-2 mb-1.5">
                                                 <Compass className="w-4 h-4 text-[#b8962e]" />
-                                                <span className="text-[14px] font-semibold text-gray-800">{t("kundli.ascendant_nakshatra")}</span>
+                                                <span className="text-[14px] font-semibold text-gray-850">{t("kundli.ascendant_nakshatra")}</span>
                                             </div>
                                             <p className="text-[13px] text-gray-850 leading-relaxed">{t("kundli.lagna_birth_star_and_rashi_det")}</p>
                                         </div>
                                     </div>
 
                                     {/* Footer Note */}
-                                    <p className="text-center text-xs text-gray-800 mt-10">
+                                    <p className="text-center text-xs text-gray-850 mt-10">
 {t("kundli._your_kundli_is_calculated_usi")}
                 </p>
                                 </div>

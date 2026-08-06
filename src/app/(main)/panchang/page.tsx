@@ -239,7 +239,7 @@ export default function PanchangPage() {
                             <Icon className="w-5 h-5" style={{ color: iconColor }} />
                         </div>
                         <div>
-                            <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-gray-400">{label}</p>
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#3a1216]">{label}</p>
                             <p className="text-lg font-semibold text-gray-900 leading-tight">{value}</p>
                         </div>
                     </div>
@@ -255,9 +255,9 @@ export default function PanchangPage() {
         }
                 </div>
                 {subValue &&
-      <div className="flex items-center gap-1.5 text-[12px] text-gray-500 mb-3">
+      <div className="flex items-center gap-1.5 text-[12px] text-gray-850 mb-3">
                         <Clock className="w-3 h-3 text-[#b8962e]" />
-                        <span>{t("panchang.ends_at")}<span className="font-semibold text-gray-700">{formatTime12h(subValue)}</span></span>
+                        <span>{t("panchang.ends_at")}<span className="font-semibold text-gray-850">{formatTime12h(subValue)}</span></span>
                     </div>
       }
                 {children}
@@ -319,7 +319,7 @@ export default function PanchangPage() {
                                 <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight mb-1">
 {t("panchang.panchang")}
                 </h1>
-                                <div className="flex items-center gap-1.5 text-gray-500 text-sm">
+                                <div className="flex items-center gap-1.5 text-gray-850 text-sm">
                                     <Navigation className="w-3 h-3 text-[#b8962e]" />
                                     <span>{t("panchang.showing_for")}<span className="text-[#b8962e] font-semibold">{location.place}</span></span>
                                 </div>
@@ -343,7 +343,7 @@ export default function PanchangPage() {
 
                                 {/* Date Navigator */}
                                 <div className="flex items-center gap-1 px-1 py-1 rounded-lg border border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.05)' }}>
-                                    <button onClick={goToPrevDay} className="p-1.5 rounded-md hover:bg-[#f5e9c8] transition-all text-gray-600 hover:text-[#7a6010] active:scale-95">
+                                    <button onClick={goToPrevDay} className="p-1.5 rounded-md hover:bg-[#f5e9c8] transition-all text-gray-850 hover:text-[#7a6010] active:scale-95">
                                         <ChevronLeft className="w-4 h-4" />
                                     </button>
                                     <div className="px-4 text-center min-w-[140px]">
@@ -354,7 +354,7 @@ export default function PanchangPage() {
                                             {selectedDate.toLocaleDateString(t('common.locale_code') === 'hi' ? 'hi-IN' : 'en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
                                         </div>
                                     </div>
-                                    <button onClick={goToNextDay} className="p-1.5 rounded-md hover:bg-[#f5e9c8] transition-all text-gray-600 hover:text-[#7a6010] active:scale-95">
+                                    <button onClick={goToNextDay} className="p-1.5 rounded-md hover:bg-[#f5e9c8] transition-all text-gray-850 hover:text-[#7a6010] active:scale-95">
                                         <ChevronRight className="w-4 h-4" />
                                     </button>
                                     <div className="w-px h-6 mx-1" style={{ background: '#d6c89a' }} />
@@ -430,7 +430,7 @@ export default function PanchangPage() {
                   <Info className="w-5 h-5 text-[#b8962e]" />}
                                     </div>
                                     <div className="flex-1">
-                                        <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-gray-400 mb-0.5">{t("panchang.day_summary")}</p>
+                                        <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#3a1216] mb-0.5">{t("panchang.day_summary")}</p>
                                         <p className="text-sm font-semibold"
                   style={{
                     color: panchangData.is_auspicious ? '#15803d' : panchangData.is_inauspicious ? '#b91c1c' : '#7a6010'
@@ -468,8 +468,8 @@ export default function PanchangPage() {
                                         {tithiInfoText &&
                   <div className="mt-2 p-3 rounded-lg border border-[#e9ddb8]" style={{ background: 'rgba(184,150,46,0.04)' }}>
                                                 <p className="text-[10px] font-semibold uppercase tracking-wider text-[#b8962e] mb-1">{t("panchang.ruling_deity")}</p>
-                                                <p className="text-[12px] font-semibold text-gray-800">{tithiDeity}</p>
-                                                <p className="text-[11px] text-gray-500 mt-1 leading-snug">{tithiNature}</p>
+                                                <p className="text-[12px] font-semibold text-gray-850">{tithiDeity}</p>
+                                                <p className="text-[11px] text-gray-850 mt-1 leading-snug">{tithiNature}</p>
                                             </div>
                   }
                                     </PanchangCard>
@@ -486,7 +486,7 @@ export default function PanchangPage() {
                   
                                         <div className="mt-2 p-3 rounded-lg border border-[#e9ddb8]" style={{ background: 'rgba(184,150,46,0.04)' }}>
                                             <p className="text-[10px] font-semibold uppercase tracking-wider text-[#b8962e] mb-1">{t("panchang.moon_sign")}</p>
-                                            <p className="text-[12px] font-semibold text-gray-800">{panchangData.moon_sign}</p>
+                                            <p className="text-[12px] font-semibold text-gray-850">{panchangData.moon_sign}</p>
                                         </div>
                                     </PanchangCard>
 
@@ -502,7 +502,7 @@ export default function PanchangPage() {
                   
                                         <div className="mt-2 p-3 rounded-lg border border-[#e9ddb8]" style={{ background: 'rgba(184,150,46,0.04)' }}>
                                             <p className="text-[10px] font-semibold uppercase tracking-wider text-[#b8962e] mb-1">{t("panchang.sun_sign")}</p>
-                                            <p className="text-[12px] font-semibold text-gray-800">{panchangData.sun_sign}</p>
+                                            <p className="text-[12px] font-semibold text-gray-850">{panchangData.sun_sign}</p>
                                         </div>
                                     </PanchangCard>
 
@@ -517,8 +517,8 @@ export default function PanchangPage() {
                                         {panchangData.karana_details && panchangData.karana_details.length > 1 &&
                   <div className="mt-2 p-3 rounded-lg border border-[#e9ddb8]" style={{ background: 'rgba(184,150,46,0.04)' }}>
                                                 <p className="text-[10px] font-semibold uppercase tracking-wider text-[#b8962e] mb-1">{t("panchang.2nd_karana")}</p>
-                                                <p className="text-[12px] font-semibold text-gray-800">{panchangData.karana_details[1].name}</p>
-                                                <div className="flex items-center gap-1 mt-1 text-[11px] text-gray-500">
+                                                <p className="text-[12px] font-semibold text-gray-850">{panchangData.karana_details[1].name}</p>
+                                                <div className="flex items-center gap-1 mt-1 text-[11px] text-gray-850">
                                                     <Clock className="w-3 h-3 text-[#b8962e]" />
                                                     <span>{t("panchang.ends_at")}{formatTime12h(panchangData.karana_details[1].end)}</span>
                                                 </div>
@@ -541,7 +541,7 @@ export default function PanchangPage() {
                                         <div className="px-5 py-3.5 border-b border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.08)' }}>
                                             <div className="flex items-center gap-2">
                                                 <Sun className="w-4 h-4 text-[#b8962e]" />
-                                                <span className="text-[13px] font-semibold text-gray-800">{t("panchang.sun_moon")}</span>
+                                                <span className="text-[13px] font-semibold text-gray-850">{t("panchang.sun_moon")}</span>
                                             </div>
                                         </div>
                                         <div className="p-5">
@@ -558,7 +558,7 @@ export default function PanchangPage() {
                                                             <item.icon className="w-4 h-4" style={{ color: item.color }} />
                                                         </div>
                                                         <div>
-                                                            <p className="text-[9px] font-semibold uppercase tracking-wider text-gray-400">{item.label}</p>
+                                                            <p className="text-[9px] font-semibold uppercase tracking-wider text-[#3a1216]">{item.label}</p>
                                                             <p className="text-[14px] font-semibold text-gray-900">{formatTime12h(item.value)}</p>
                                                         </div>
                                                     </div>
@@ -569,9 +569,9 @@ export default function PanchangPage() {
                                             <div className="mt-4 p-3 rounded-lg border border-[#e9ddb8] flex items-center justify-between" style={{ background: 'rgba(184,150,46,0.03)' }}>
                                                 <div className="flex items-center gap-2">
                                                     <Timer className="w-3.5 h-3.5 text-[#b8962e]" />
-                                                    <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-500">{t("panchang.day_length")}</span>
+                                                    <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-850">{t("panchang.day_length")}</span>
                                                 </div>
-                                                <span className="text-[13px] font-semibold text-gray-800">
+                                                <span className="text-[13px] font-semibold text-gray-850">
                                                     {(() => {
                           if (!panchangData.sun_rise || !panchangData.sun_set || panchangData.sun_rise === '--:--') return '--';
                           const [rh, rm] = panchangData.sun_rise.split(':').map(Number);
@@ -595,7 +595,7 @@ export default function PanchangPage() {
                                         <div className="px-5 py-3.5 border-b border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.08)' }}>
                                             <div className="flex items-center gap-2">
                                                 <Shield className="w-4 h-4 text-[#b8962e]" />
-                                                <span className="text-[13px] font-semibold text-gray-800">{t("panchang.key_timings")}</span>
+                                                <span className="text-[13px] font-semibold text-gray-850">{t("panchang.key_timings")}</span>
                                             </div>
                                         </div>
                                         <div className="p-5 space-y-4">
@@ -606,7 +606,7 @@ export default function PanchangPage() {
                                                     <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-700">{t("panchang.abhijit_muhurat")}</p>
                                                 </div>
                                                 <p className="text-[15px] font-semibold text-gray-900">{panchangData.muhurats?.abhijit || '--:--'}</p>
-                                                <p className="text-[11px] text-gray-500 mt-1 leading-snug">
+                                                <p className="text-[11px] text-gray-850 mt-1 leading-snug">
 {t("panchang.most_auspicious_time_of_the_da")}
                       </p>
                                             </div>
@@ -618,7 +618,7 @@ export default function PanchangPage() {
                                                     <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-red-600">{t("panchang.rahu_kaal")}</p>
                                                 </div>
                                                 <p className="text-[15px] font-semibold text-gray-900">{panchangData.muhurats?.rahu_kaal || '--:--'}</p>
-                                                <p className="text-[11px] text-gray-500 mt-1 leading-snug">
+                                                <p className="text-[11px] text-gray-850 mt-1 leading-snug">
 {t("panchang.inauspicious_window_avoid_new")}
                       </p>
                                             </div>
@@ -645,7 +645,7 @@ export default function PanchangPage() {
                                         <div className="px-5 py-3.5 border-b border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.08)' }}>
                                             <div className="flex items-center gap-2">
                                                 <Eye className="w-4 h-4 text-[#b8962e]" />
-                                                <span className="text-[13px] font-semibold text-gray-800">{t("panchang.additional_details")}</span>
+                                                <span className="text-[13px] font-semibold text-gray-850">{t("panchang.additional_details")}</span>
                                             </div>
                                         </div>
                                         <div className="p-5 space-y-3">
@@ -661,7 +661,7 @@ export default function PanchangPage() {
                         style={{ background: 'rgba(184,150,46,0.08)', border: '1px solid #e9ddb8' }}>
                                                             <item.icon className="w-4 h-4" style={{ color: item.color }} />
                                                         </div>
-                                                        <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-500">{item.label}</span>
+                                                        <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-850">{item.label}</span>
                                                     </div>
                                                     <span className="text-[13px] font-semibold text-gray-900">{item.value}</span>
                                                 </div>
@@ -706,8 +706,8 @@ export default function PanchangPage() {
                             <div className="w-16 h-16 rounded-2xl flex items-center justify-center border border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.06)' }}>
                                 <Moon className="w-7 h-7 text-[#b8962e] opacity-50" />
                             </div>
-                            <h3 className="text-[15px] font-semibold text-gray-700">{t("panchang.could_not_load_panchang")}</h3>
-                            <p className="text-[13px] text-gray-400">{t("panchang.please_check_your_connection_a")}</p>
+                            <h3 className="text-[15px] font-semibold text-gray-850">{t("panchang.could_not_load_panchang")}</h3>
+                            <p className="text-[13px] text-[#3a1216]">{t("panchang.please_check_your_connection_a")}</p>
                             <button onClick={() => fetchPanchang(selectedDate)} className="mt-2 px-5 py-2 rounded-lg text-[12px] font-semibold text-white" style={{ background: '#b8962e' }}>
 {t("panchang.retry")}
             </button>

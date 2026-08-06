@@ -236,7 +236,7 @@ export default function RahuKaalPage() {
                                 <h1 className="text-3xl font-semibold text-gray-900 leading-tight whitespace-nowrap">
 {t("rahu_kaal.rahu_kaal_today")}
                 </h1>
-                                <div className="flex items-center gap-1.5 text-gray-500 text-sm mt-1">
+                                <div className="flex items-center gap-1.5 text-gray-850 text-sm mt-1">
                                     <MapPin className="w-3 h-3 text-[#b8962e]" />
                                     <span>{location.place}</span>
                                 </div>
@@ -381,7 +381,7 @@ export default function RahuKaalPage() {
                         {/* Section header */}
                         <div className="flex items-center gap-2 pb-3 border-b border-[#d6c89a]">
                             <CalendarIcon className="w-4 h-4 text-[#b8962e]" />
-                            <span className="text-[15px] font-semibold text-gray-800">{t("rahu_kaal.7_day_timing_table")}</span>
+                            <span className="text-[15px] font-semibold text-gray-850">{t("rahu_kaal.7_day_timing_table")}</span>
                         </div>
 
                         {/* Table */}
@@ -400,7 +400,7 @@ export default function RahuKaalPage() {
                                 {loading ?
                 <div className="p-12 flex flex-col items-center justify-center gap-3" style={{ background: '#ffffff' }}>
                                         <Loader2 className="w-5 h-5 animate-spin" style={{ color: '#b8962e' }} />
-                                        <span className="text-sm text-gray-500">{t("rahu_kaal.syncing_data")}</span>
+                                        <span className="text-sm text-gray-850">{t("rahu_kaal.syncing_data")}</span>
                                     </div> :
                 weeklyRahu.map((item, i) =>
                 <div

@@ -68,7 +68,7 @@ const getStatusColor = (status: string) => {
     case 'waiting':
       return 'bg-yellow-100 text-yellow-700';
     default:
-      return 'bg-gray-100 text-gray-700';
+      return 'bg-gray-100 text-gray-850';
   }
 };
 
@@ -213,7 +213,7 @@ export default function OrdersPage() {
               onClick={() => setActiveTab('chat')}
               className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all whitespace-nowrap ${activeTab === 'chat' ?
               'bg-yellow-400 text-black shadow-md' :
-              'bg-gray-100 text-gray-600 hover:bg-gray-200'}`
+              'bg-gray-100 text-gray-850 hover:bg-gray-200'}`
               }>
               
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -225,7 +225,7 @@ export default function OrdersPage() {
               onClick={() => setActiveTab('call')}
               className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all whitespace-nowrap ${activeTab === 'call' ?
               'bg-yellow-400 text-black shadow-md' :
-              'bg-gray-100 text-gray-600 hover:bg-gray-200'}`
+              'bg-gray-100 text-gray-850 hover:bg-gray-200'}`
               }>
               
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -237,7 +237,7 @@ export default function OrdersPage() {
               onClick={() => setActiveTab('reports')}
               className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all whitespace-nowrap ${activeTab === 'reports' ?
               'bg-yellow-400 text-black shadow-md' :
-              'bg-gray-100 text-gray-600 hover:bg-gray-200'}`
+              'bg-gray-100 text-gray-850 hover:bg-gray-200'}`
               }>
               
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -254,7 +254,7 @@ export default function OrdersPage() {
         {loading ?
         <div className="flex flex-col items-center justify-center py-16">
             <div className="h-12 w-12 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin mb-4" />
-            <p className="text-gray-600">{t("orders.loading")}{activeTab}...</p>
+            <p className="text-gray-850">{t("orders.loading")}{activeTab}...</p>
           </div> :
 
         <>
@@ -287,14 +287,14 @@ export default function OrdersPage() {
                             <h3 className="text-base font-bold text-gray-900 truncate group-hover:text-yellow-600 transition-colors">
                               {convo.astrologer?.name || t("orders.unknown_astrologer")}
                             </h3>
-                            <span className={`text-xs ${convo.unreadCount > 0 ? 'text-green-600 font-bold' : 'text-gray-400'}`}>
+                            <span className={`text-xs ${convo.unreadCount > 0 ? 'text-green-600 font-bold' : 'text-[#3a1216]'}`}>
                               {getRelativeTime(convo.updatedAt, t)}
                             </span>
                           </div>
 
                           <div className="flex justify-between items-center">
                             {/* ✅ Show Last Message Text instead of generic "Start conversation" */}
-                            <p className={`text-sm truncate pr-4 ${convo.unreadCount > 0 ? 'text-gray-900 font-medium' : 'text-gray-500'}`}>
+                            <p className={`text-sm truncate pr-4 ${convo.unreadCount > 0 ? 'text-gray-900 font-medium' : 'text-gray-850'}`}>
                               {getLastMessageText(convo.lastMessage, t)}
                             </p>
 
@@ -308,7 +308,7 @@ export default function OrdersPage() {
                         </div>
 
                         {/* Chevron */}
-                        <div className="text-gray-300 group-hover:text-yellow-500 transition-colors">
+                        <div className="text-[#3a1216] group-hover:text-yellow-500 transition-colors">
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
@@ -320,7 +320,7 @@ export default function OrdersPage() {
 
           <EmptyState
             icon={
-            <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-12 h-12 text-[#3a1216]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                     </svg>
             }
@@ -357,7 +357,7 @@ export default function OrdersPage() {
                             </span>
                           </div>
 
-                          <div className="flex items-center gap-3 text-xs text-gray-500 mb-2">
+                          <div className="flex items-center gap-3 text-xs text-gray-850 mb-2">
                             <span className="flex items-center gap-1">
                               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                               {new Date(session.createdAt).toLocaleDateString(t('common.locale_code') === 'hi' ? 'hi-IN' : 'en-IN')}
@@ -386,7 +386,7 @@ export default function OrdersPage() {
 
           <EmptyState
             icon={
-            <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-12 h-12 text-[#3a1216]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
             }
@@ -419,18 +419,18 @@ export default function OrdersPage() {
                             <h3 className="text-lg font-bold text-gray-900">
                               {item.astrologer?.name || t("orders.unknown_astrologer")}
                             </h3>
-                            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600">
+                            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-850">
 {t("orders.report_filed")}
                     </span>
                           </div>
 
                           <div className="bg-gray-50 rounded-lg p-3 mb-3 border border-gray-100">
-                            <h4 className="text-xs font-bold text-gray-500 uppercase mb-1">{t("orders.reason")}</h4>
-                            <p className="text-sm text-gray-800">"{item.reason}"</p>
+                            <h4 className="text-xs font-bold text-gray-850 uppercase mb-1">{t("orders.reason")}</h4>
+                            <p className="text-sm text-gray-850">"{item.reason}"</p>
                           </div>
 
                           <div className="flex justify-end items-center mt-2">
-                            <span className="text-xs text-gray-400">{t("orders.reported_on")}{new Date(item.blockedAt).toLocaleDateString()}</span>
+                            <span className="text-xs text-[#3a1216]">{t("orders.reported_on")}{new Date(item.blockedAt).toLocaleDateString()}</span>
                           </div>
                         </div>
                       </div>
@@ -440,7 +440,7 @@ export default function OrdersPage() {
 
           <EmptyState
             icon={
-            <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-12 h-12 text-[#3a1216]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
             }
@@ -465,7 +465,7 @@ function EmptyState({ icon, title, description }: {icon: React.ReactNode;title: 
         {icon}
       </div>
       <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
-      <p className="text-gray-600 mb-8 max-w-md mx-auto">{description}</p>
+      <p className="text-gray-850 mb-8 max-w-md mx-auto">{description}</p>
       <Link
         href="/astrologers-chat"
         className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-black font-bold px-8 py-3 rounded-full transition-colors shadow-lg hover:shadow-xl">

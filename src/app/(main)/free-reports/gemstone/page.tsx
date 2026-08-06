@@ -20,7 +20,7 @@ const GemstoneInfoSections = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-[#d6c89a]">
 {t("gemstone.what_is_gemstone")}
     </h2>
-            <div className="space-y-4 text-[15px] text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-[15px] text-gray-850 leading-relaxed">
                 <p>
 {t("gemstone.gems_or_gemstones_play_an_impo")}{' '}
                     <span className="text-[#c0392b] font-medium">{t("gemstone.vedic_astrology")}</span>{' '}
@@ -58,7 +58,7 @@ const GemstoneInfoSections = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-3 pb-2 border-b border-[#d6c89a]">
 {t("gemstone.types_of_gemstones")}
     </h2>
-            <p className="text-[15px] text-gray-700 leading-relaxed mb-6">
+            <p className="text-[15px] text-gray-850 leading-relaxed mb-6">
 {t("gemstone.as_per_quality_effects_purity")}
     </p>
 
@@ -68,7 +68,7 @@ const GemstoneInfoSections = () => {
                     <h3 className="text-xl font-bold text-gray-900 mb-3">
 {t("gemstone.precious_stones")}
         </h3>
-                    <p className="text-[14px] text-gray-700 leading-relaxed">
+                    <p className="text-[14px] text-gray-850 leading-relaxed">
 {t("gemstone.precious_gemstones_are_expensi")}{' '}
                         <span className="text-[#c0392b] font-medium">{t("gemstone.diamond")}</span>{t("gemstone.or_sapphire")}{' '}
                         <span className="text-[#c0392b] font-medium">{t("gemstone.yellow_sapphire")}</span>,{' '}
@@ -83,7 +83,7 @@ const GemstoneInfoSections = () => {
                     <h3 className="text-xl font-bold text-gray-900 mb-3">
 {t("gemstone.semi_precious_stones")}
         </h3>
-                    <p className="text-[14px] text-gray-700 leading-relaxed">
+                    <p className="text-[14px] text-gray-850 leading-relaxed">
 {t("gemstone.gemstones_that_are_not_much_ex")}{' '}
                         <span className="text-[#c0392b] font-medium">{t("gemstone.red_coral")}</span>,{' '}
                         <span className="text-[#c0392b] font-medium">{t("gemstone.pearl")}</span>,{' '}
@@ -101,7 +101,7 @@ const GemstoneInfoSections = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-3 pb-2 border-b border-[#d6c89a]">
 {t("gemstone.suitable_gemstones_for_differe")}
     </h2>
-            <p className="text-[15px] text-gray-700 leading-relaxed mb-8">
+            <p className="text-[15px] text-gray-850 leading-relaxed mb-8">
 {t("gemstone.every_ascendant_has_a_differen")}{' '}
                 <span className="text-[#c0392b] font-medium">{t("gemstone.yantra")}</span>,{' '}
                 <span className="text-[#c0392b] font-medium">{t("gemstone.rudraksha")}</span> or{' '}
@@ -200,7 +200,7 @@ const GemstoneInfoSections = () => {
                     <h3 className="text-[18px] font-bold text-gray-900 mb-1">
                         {sign}
                     </h3>
-                    <p className="text-[14px] text-gray-700 leading-relaxed">
+                    <p className="text-[14px] text-gray-850 leading-relaxed">
                         <span className="text-[#c0392b] font-medium">{ruler}</span>{' '}
 {t("gemstone.is_the_ruling_planet_of")}{sign.replace(' Ascendant', '')}. {text}{' '}
                         <span className="text-[#c0392b] font-medium">{link}</span>{' '}
@@ -215,7 +215,7 @@ const GemstoneInfoSections = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-3 pb-2 border-b border-[#d6c89a]">
 {t("gemstone.how_and_when_to_wear_a_gemston")}
     </h2>
-            <div className="space-y-4 text-[15px] text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-[15px] text-gray-850 leading-relaxed">
                 <p>
 {t("gemstone.now_when_you_came_to_know_as_t")}{' '}
                     <span className="text-[#c0392b] font-medium">{t("gemstone.muhurat")}</span>{' '}
@@ -234,7 +234,7 @@ const GemstoneInfoSections = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-3 pb-2 border-b border-[#d6c89a]">
 {t("gemstone.contradictory_or_incompatible")}
     </h2>
-            <p className="text-[15px] text-gray-700 leading-relaxed mb-8">
+            <p className="text-[15px] text-gray-850 leading-relaxed mb-8">
 {t("gemstone.now_you_may_think_about_which")}
     </p>
 
@@ -280,12 +280,12 @@ const GemstoneInfoSections = () => {
                     <h3 className="text-[17px] font-bold text-gray-900 mb-1">
                         {title}
                     </h3>
-                    <p className="text-[14px] text-gray-700 leading-relaxed">{text}</p>
+                    <p className="text-[14px] text-gray-850 leading-relaxed">{text}</p>
                 </div>
     )}
 
             {/* Closing paragraph */}
-            <div className="mt-6 space-y-4 text-[15px] text-gray-700 leading-relaxed">
+            <div className="mt-6 space-y-4 text-[15px] text-gray-850 leading-relaxed">
                 <p>
 {t("gemstone.it_is_evident_that_wearing_a_g")}
       </p>
@@ -434,7 +434,7 @@ export default function GemstonePage() {
                             <div className="p-8 text-center">
                                 <p className="text-[10px] font-black uppercase tracking-[0.22em] mb-2" style={{ color: '#b8962e' }}>{t("gemstone.vedic_gemstone_prediction")}</p>
                                 <h1 className="text-3xl font-semibold text-gray-900 mb-3">{t("gemstone.gemstone_prediction")}</h1>
-                                <p className="text-gray-700 text-[15px] max-w-xl mx-auto">{t("gemstone.personalized_gemstone_recommen")}<strong>{input.name}</strong>{t("gemstone.based_on_birth_chart_analysis")}</p>
+                                <p className="text-gray-850 text-[15px] max-w-xl mx-auto">{t("gemstone.personalized_gemstone_recommen")}<strong>{input.name}</strong>{t("gemstone.based_on_birth_chart_analysis")}</p>
                             </div>
                             {gemstones.length > 0 &&
               <div className="px-8 pb-8">
@@ -455,7 +455,7 @@ export default function GemstonePage() {
                         <div className="bg-white rounded-2xl border border-[#d6c89a] shadow-sm p-8">
                             <h2 className="text-xl font-bold text-gray-900 mb-4">{t("gemstone.what_is_gemstone")}</h2>
                             <div
-                className="text-[14px] text-gray-700 leading-relaxed rich-content"
+                className="text-[14px] text-gray-850 leading-relaxed rich-content"
                 dangerouslySetInnerHTML={{
                   __html: (gemstones.length > 0 && customSettings?.gemstones?.[gemstones[0].gemstone]?.intro && customSettings.gemstones[gemstones[0].gemstone].intro !== '<p><br></p>' && customSettings.gemstones[gemstones[0].gemstone].intro !== '<p></p>') 
                     ? customSettings.gemstones[gemstones[0].gemstone].intro 
@@ -502,14 +502,14 @@ export default function GemstonePage() {
                       </span>
                       }
                                         </div>
-                                        <div className="text-[14px] text-gray-700 leading-relaxed mb-4 rich-content"
+                                        <div className="text-[14px] text-gray-850 leading-relaxed mb-4 rich-content"
                     dangerouslySetInnerHTML={{ __html: customSettings?.gemstones?.[gem.gemstone]?.profile || description }} />
                                         {customSettings?.gemstones?.[gem.gemstone]?.benefits?.length > 0 &&
                     <div className="mb-6 space-y-2">
-                                                <p className="text-[11px] font-black uppercase tracking-widest text-gray-400">{t("gemstone.key_benefits")}</p>
+                                                <p className="text-[11px] font-black uppercase tracking-widest text-[#3a1216]">{t("gemstone.key_benefits")}</p>
                                                 <div className="flex flex-wrap gap-2">
                                                     {customSettings.gemstones[gem.gemstone].benefits.map((benefit: string, idx: number) =>
-                        <span key={idx} className="px-3 py-1 rounded-full bg-gray-50 border border-gray-100 text-[12px] text-gray-600 font-medium">{benefit}</span>
+                        <span key={idx} className="px-3 py-1 rounded-full bg-gray-50 border border-gray-100 text-[12px] text-gray-850 font-medium">{benefit}</span>
                         )}
                                                 </div>
                                             </div>
@@ -528,7 +528,7 @@ export default function GemstonePage() {
                           ['Substitute Stone', details.substitute]].
                           map(([label, val], ri) =>
                           <tr key={ri} className={ri < 6 ? 'border-b border-gray-100' : ''}>
-                                                            <td className="px-5 py-3 bg-gray-50 font-bold text-gray-700 w-2/5">{label}</td>
+                                                            <td className="px-5 py-3 bg-gray-50 font-bold text-gray-850 w-2/5">{label}</td>
                                                             <td className="px-5 py-3 font-semibold text-gray-900">
                                                                 {label === 'Wearing Instructions' ?
                               <div className="rich-content" dangerouslySetInnerHTML={{ __html: customSettings?.gemstones?.[gem.gemstone]?.wearingInstructions || `${gem.metal}, in ${gem.finger.toLowerCase()} finger` }} /> :
@@ -550,7 +550,7 @@ export default function GemstonePage() {
                                 <Info className="w-5 h-5 text-[#b8962e]" />
                                 <h2 className="text-xl font-bold text-gray-900">{t("gemstone.important_information")}</h2>
                             </div>
-                            <p className="text-[14px] text-gray-700 leading-relaxed mb-6">
+                            <p className="text-[14px] text-gray-850 leading-relaxed mb-6">
 {t("gemstone.while_wearing_a_gem_please_kee")}
               </p>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
@@ -564,7 +564,7 @@ export default function GemstonePage() {
                 map((text: string, i: number) =>
                 <div key={i} className="flex gap-3 items-start">
                                         <div className="w-5 h-5 rounded-full bg-[#fdf6e3] border border-[#d6c89a] text-[#b8962e] flex items-center justify-center flex-shrink-0 text-[10px] font-bold mt-0.5">{i + 1}</div>
-                                        <p className="text-[13px] text-gray-700 leading-relaxed">{text}</p>
+                                        <p className="text-[13px] text-gray-850 leading-relaxed">{text}</p>
                                     </div>
                 )}
                             </div>
@@ -576,7 +576,7 @@ export default function GemstonePage() {
                                     <div className="flex-1 text-center md:text-left">
                                         <p className="text-[10px] font-black uppercase tracking-widest text-[#b8962e] mb-1">{t("gemstone.vaidiktalk_store")}</p>
                                         <h3 className="text-lg font-bold text-gray-900 mb-1">{t("gemstone.buy_authentic_gemstones")}</h3>
-                                        <p className="text-[13px] text-gray-700 leading-relaxed">
+                                        <p className="text-[13px] text-gray-850 leading-relaxed">
 {t("gemstone.get_100_certified_genuine_gems")}<strong>{t("gemstone.vaidiktalk_store")}</strong>{t("gemstone._lab_tested_with_authenticity")}
                     </p>
                                     </div>
@@ -587,7 +587,7 @@ export default function GemstonePage() {
                                 </div>
                             </div>
                             <div className="flex flex-col items-center gap-4">
-                                <p className="text-gray-600 text-center max-w-2xl text-[13px]">
+                                <p className="text-gray-850 text-center max-w-2xl text-[13px]">
 {t("gemstone.need_personalized_guidance_on")}
                 </p>
                                 <div className="flex flex-wrap justify-center gap-3">
@@ -617,7 +617,7 @@ export default function GemstonePage() {
                     <Link href="/free-reports" className="text-[#b8962e] hover:text-[#7a6010] font-bold flex items-center gap-2 text-sm">
                         <ChevronLeft className="w-4 h-4" />{t("gemstone.back_to_reports")}
           </Link>
-                    <Link href="/free-reports/history" className="text-gray-500 hover:text-[#b8962e] font-bold flex items-center gap-2 text-sm transition-colors">
+                    <Link href="/free-reports/history" className="text-gray-850 hover:text-[#b8962e] font-bold flex items-center gap-2 text-sm transition-colors">
                         <Clock className="w-4 h-4" />{t("gemstone.view_history")}
           </Link>
                 </div>
@@ -627,10 +627,10 @@ export default function GemstonePage() {
                     <h1 className="text-4xl font-bold text-gray-900 mb-3">
 {t("gemstone.birthstones_and_their_effects")}
           </h1>
-                    <h2 className="text-xl text-gray-700 mb-3">
+                    <h2 className="text-xl text-gray-850 mb-3">
 {t("gemstone.find_your_lucky_stone_accordin")}
           </h2>
-                    <p className="text-[14px] text-gray-500 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-[14px] text-gray-850 max-w-3xl mx-auto leading-relaxed">
 {t("gemstone.see_how_gemstones_can_change_y")}
           </p>
                 </div>

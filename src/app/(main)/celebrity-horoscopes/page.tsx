@@ -73,7 +73,7 @@ export default function CelebrityListPage() {
           <h1 className="text-4xl md:text-6xl font-black text-white serif tracking-tight">
 {t("celebrity_horoscopes.celebrity")}<span className="text-[#b8962e]">{t("celebrity_horoscopes.horoscopes")}</span>
           </h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-base md:text-lg font-medium">
+          <p className="text-[#3a1216] max-w-2xl mx-auto text-base md:text-lg font-medium">
 {t("celebrity_horoscopes.explore_the_cosmic_blueprints")}
           </p>
         </div>
@@ -93,7 +93,7 @@ export default function CelebrityListPage() {
                 className={`px-5 py-2 rounded-lg text-sm font-bold transition-all whitespace-nowrap ${
                 activeCategory === cat ?
                 'bg-white text-[#b8962e] shadow-sm' :
-                'text-gray-500 hover:text-gray-900'}`
+                'text-gray-850 hover:text-gray-900'}`
                 }>
                 
                   {cat}
@@ -103,7 +103,7 @@ export default function CelebrityListPage() {
 
             {/* Search */}
             <div className="relative w-full md:w-80">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3a1216]" size={18} />
               <input
                 type="text"
                 suppressHydrationWarning
@@ -120,15 +120,15 @@ export default function CelebrityListPage() {
         {loading ?
         <div className="flex flex-col items-center justify-center py-20 gap-4">
             <Loader2 className="animate-spin text-amber-500" size={40} />
-            <p className="text-gray-500 font-medium">{t("celebrity_horoscopes.deciphering_star_charts")}</p>
+            <p className="text-gray-850 font-medium">{t("celebrity_horoscopes.deciphering_star_charts")}</p>
           </div> :
         filtered.length === 0 ?
         <div className="text-center py-20">
-            <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 text-gray-300">
+            <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 text-[#3a1216]">
               <Users size={32} />
             </div>
             <h3 className="text-xl font-bold text-gray-900 serif">{t("celebrity_horoscopes.no_profiles_found")}</h3>
-            <p className="text-gray-500">{t("celebrity_horoscopes.try_adjusting_your_filters_or")}</p>
+            <p className="text-gray-850">{t("celebrity_horoscopes.try_adjusting_your_filters_or")}</p>
           </div> :
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
@@ -147,7 +147,7 @@ export default function CelebrityListPage() {
                 className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" /> :
 
 
-              <div className="w-full h-full flex items-center justify-center text-gray-300">
+              <div className="w-full h-full flex items-center justify-center text-[#3a1216]">
                         <Users size={24} />
                     </div>
               }
@@ -159,17 +159,17 @@ export default function CelebrityListPage() {
                     {celebrity.name}
                   </h3>
                   {celebrity.summary &&
-              <p className="text-[10px] md:text-[11px] text-gray-400 line-clamp-1 mb-2">
+              <p className="text-[10px] md:text-[11px] text-[#3a1216] line-clamp-1 mb-2">
                        {celebrity.summary}
                     </p>
               }
                   
-                  <div className="text-[11px] md:text-xs text-gray-500 space-y-0.5">
+                  <div className="text-[11px] md:text-xs text-gray-850 space-y-0.5">
                     <p className="truncate">
                       {celebrity.birthDate ? new Date(celebrity.birthDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : 'Unknown Date'}
                       {celebrity.birthTime ? ` at ${celebrity.birthTime}` : ''}
                     </p>
-                    <p className="truncate text-gray-400">{celebrity.birthPlace || 'Unknown Location'}</p>
+                    <p className="truncate text-[#3a1216]">{celebrity.birthPlace || 'Unknown Location'}</p>
                   </div>
                 </div>
               </Link>
@@ -182,7 +182,7 @@ export default function CelebrityListPage() {
       <div className="bg-[#1a1a1a] py-12">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-4">
           <h2 className="text-2xl md:text-3xl font-bold text-white">{t("celebrity_horoscopes.the_stars_of_the_famous")}</h2>
-          <p className="text-gray-400 leading-relaxed text-sm md:text-base">
+          <p className="text-[#3a1216] leading-relaxed text-sm md:text-base">
 {t("celebrity_horoscopes.astrology_isn_t_just_for_predi")}
 
 

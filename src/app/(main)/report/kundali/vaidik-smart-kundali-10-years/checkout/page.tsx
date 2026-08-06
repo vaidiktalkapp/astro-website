@@ -260,7 +260,7 @@ export default function CheckoutPage() {
                         required={addConsultation}
                         value={consultationTime} 
                         onChange={(e) => setConsultationTime(e.target.value)} 
-                        className={`w-full border border-[#ebdcc7] rounded-md py-2.5 px-3 bg-white outline-none focus:border-[#d68636] text-[14px] ${!consultationTime ? 'text-gray-400' : 'text-[#1a1a1a]'}`} 
+                        className={`w-full border border-[#ebdcc7] rounded-md py-2.5 px-3 bg-white outline-none focus:border-[#d68636] text-[14px] ${!consultationTime ? 'text-[#3a1216]' : 'text-[#1a1a1a]'}`} 
                       >
                         <option value="" disabled hidden>HH:MM AM/PM</option>
                         <option value="10:00 AM - 10:30 AM" className="text-[#1a1a1a]">10:00 AM - 10:30 AM</option>

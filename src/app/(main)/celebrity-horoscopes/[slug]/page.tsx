@@ -95,7 +95,7 @@ export default function CelebrityDetailPage({ params }: {params: Promise<{slug: 
     return (
       <div className="min-h-screen bg-[#fdf6e3] flex flex-col items-center justify-center gap-4">
         <Loader2 className="animate-spin text-[#b8962e]" size={48} />
-        <p className="text-gray-500 font-medium serif">{t("_slug_.summoning_cosmic_records")}</p>
+        <p className="text-gray-850 font-medium serif">{t("_slug_.summoning_cosmic_records")}</p>
       </div>);
 
   }
@@ -103,11 +103,11 @@ export default function CelebrityDetailPage({ params }: {params: Promise<{slug: 
   if (!profile) {
     return (
       <div className="min-h-screen bg-[#fdf6e3] flex flex-col items-center justify-center p-10 text-center space-y-6">
-        <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center text-gray-300">
+        <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center text-[#3a1216]">
           <User size={40} />
         </div>
         <h1 className="text-2xl font-bold text-gray-900 serif">{t("_slug_.profile_not_found")}</h1>
-        <p className="text-gray-500 max-w-sm">{t("_slug_.the_star_you_are_looking_for_h")}</p>
+        <p className="text-gray-850 max-w-sm">{t("_slug_.the_star_you_are_looking_for_h")}</p>
         <Link href="/celebrity-horoscopes" className="text-[#b8962e] font-bold underline">{t("_slug_.back_to_all_celebrities")}</Link>
       </div>);
 
@@ -187,7 +187,7 @@ export default function CelebrityDetailPage({ params }: {params: Promise<{slug: 
                     }} /> :
 
 
-                  <div className="w-full h-full bg-gray-800 flex items-center justify-center text-gray-500">
+                  <div className="w-full h-full bg-gray-800 flex items-center justify-center text-gray-850">
                       <User size={48} />
                     </div>
                   }
@@ -203,7 +203,7 @@ export default function CelebrityDetailPage({ params }: {params: Promise<{slug: 
                   {profile.name}
                 </h1>
                 {profile.summary &&
-                <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-2xl">
+                <p className="text-[#3a1216] text-sm md:text-base leading-relaxed max-w-2xl">
                     {profile.summary}
                   </p>
                 }
@@ -247,7 +247,7 @@ export default function CelebrityDetailPage({ params }: {params: Promise<{slug: 
                       <fact.icon size={16} />
                    </div>
                    <div className="min-w-0">
-                      <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">{fact.label}</p>
+                      <p className="text-[10px] font-black text-[#3a1216] uppercase tracking-widest leading-none mb-1">{fact.label}</p>
                       <p className="text-sm font-bold text-gray-900 truncate">
                         {fact.value || (calculating ? '...' : '--')}
                       </p>
@@ -290,7 +290,7 @@ export default function CelebrityDetailPage({ params }: {params: Promise<{slug: 
                   
                   </div> :
 
-                <div className="h-[400px] flex flex-col items-center justify-center gap-4 text-gray-300">
+                <div className="h-[400px] flex flex-col items-center justify-center gap-4 text-[#3a1216]">
                     {!calculating &&
                   <>
                         <Info size={40} className="opacity-20" />

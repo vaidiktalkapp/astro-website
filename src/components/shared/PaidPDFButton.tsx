@@ -89,7 +89,7 @@ export default function PaidPDFButton({
   if (isLoading) {
     return (
       <div className={`flex items-center justify-center p-2 ${className}`}>
-        <Loader2 className="w-4 h-4 animate-spin text-gray-400" />
+        <Loader2 className="w-4 h-4 animate-spin text-[#3a1216]" />
       </div>
     );
   }

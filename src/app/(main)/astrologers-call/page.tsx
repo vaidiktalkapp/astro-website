@@ -191,10 +191,10 @@ export default function AstrologersPage() {
           {/* Filter button */}
           <button
             type="button"
-            className="flex items-center border border-gray-300 rounded-full px-5 py-2.5 text-sm text-gray-800 bg-white hover:bg-gray-50 shadow-sm"
+            className="flex items-center border border-gray-300 rounded-full px-5 py-2.5 text-sm text-gray-850 bg-white hover:bg-gray-50 shadow-sm"
             onClick={() => setShowSortModal(true)}>
 
-            <span className="mr-2 text-gray-600">⚙</span>
+            <span className="mr-2 text-gray-850">⚙</span>
             {t("astrologers_call.filter")}
           </button>
         </div>
@@ -223,7 +223,7 @@ export default function AstrologersPage() {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center px-5 py-2 rounded-full border text-sm whitespace-nowrap transition ${activeTab === tab.id ?
                   'bg-yellow-100 border-yellow-400 text-yellow-700 font-semibold shadow-sm' :
-                  'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'}`
+                  'bg-white border-gray-300 text-gray-850 hover:bg-gray-50'}`
               }>
 
               {tab.id === 'All' &&
@@ -240,17 +240,17 @@ export default function AstrologersPage() {
         {loading ?
           <div className="flex justify-center items-center py-12">
             <div className="h-8 w-8 border-2 border-yellow-400 border-t-transparent rounded-full animate-spin" />
-            <p className="ml-3 text-sm text-gray-600">{t("astrologers_call.loading_astrologers")}</p>
+            <p className="ml-3 text-sm text-gray-850">{t("astrologers_call.loading_astrologers")}</p>
           </div> :
           astrologers.length === 0 ?
             <div className="flex flex-col items-center justify-center py-12">
               <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-4">
-                <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-10 h-10 text-[#3a1216]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
-              <p className="text-gray-600 text-lg font-medium">{t("astrologers_call.no_astrologers_found")}</p>
-              <p className="text-gray-500 text-sm mt-1">{t("astrologers_call.try_adjusting_your_filters_or")}</p>
+              <p className="text-gray-850 text-lg font-medium">{t("astrologers_call.no_astrologers_found")}</p>
+              <p className="text-gray-850 text-sm mt-1">{t("astrologers_call.try_adjusting_your_filters_or")}</p>
             </div> :
 
             <>
@@ -281,7 +281,7 @@ export default function AstrologersPage() {
                     className={`
                       px-8 py-3 rounded-full font-semibold text-sm transition-all shadow-md
                       ${loadingMore 
-                        ? 'bg-gray-200 text-gray-400 cursor-not-allowed' 
+                        ? 'bg-gray-200 text-[#3a1216] cursor-not-allowed' 
                         : 'bg-yellow-400 text-black hover:bg-yellow-500 active:scale-95'}
                     `}
                   >
@@ -307,10 +307,10 @@ export default function AstrologersPage() {
 
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-              <h2 className="text-lg font-bold text-gray-800 tracking-wide uppercase">{t("astrologers_call.filters")}</h2>
+              <h2 className="text-lg font-bold text-gray-850 tracking-wide uppercase">{t("astrologers_call.filters")}</h2>
               <button
                 onClick={() => setShowSortModal(false)}
-                className="text-2xl text-gray-400 hover:text-gray-600 transition-colors">
+                className="text-2xl text-[#3a1216] hover:text-gray-850 transition-colors">
 
                 ✕
               </button>
@@ -360,7 +360,7 @@ export default function AstrologersPage() {
                         }
                       </div>
 
-                      <span className={`text-[15px] ${tempSortBy === opt.id ? 'text-gray-900 font-medium' : 'text-gray-600'}`}>
+                      <span className={`text-[15px] ${tempSortBy === opt.id ? 'text-gray-900 font-medium' : 'text-gray-850'}`}>
                         {opt.label}
                       </span>
                     </label>

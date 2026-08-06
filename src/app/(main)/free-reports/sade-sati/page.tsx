@@ -25,7 +25,7 @@ const SadeSatiInfoSections = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-[#d6c89a]">
 {t("sade_sati.what_is_shani_sade_sati")}
     </h2>
-            <div className="space-y-4 text-[15px] text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-[15px] text-gray-850 leading-relaxed">
                 <p>
                     <span className="text-[#c0392b] font-medium">{t("sade_sati.shani_sade_sati")}</span>{t("sade_sati.is_a_significant_7_5_year_astr")}<span className="text-[#c0392b] font-medium">{t("sade_sati.vedic_wisdom")}</span>{t("sade_sati._it_is_seen_as_a_powerful_peri")}
       </p>
@@ -40,7 +40,7 @@ const SadeSatiInfoSections = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b border-[#d6c89a]">
 {t("sade_sati.the_three_stages_charans_of_sa")}
     </h2>
-            <p className="text-[15px] text-gray-700 leading-relaxed mb-8">
+            <p className="text-[15px] text-gray-850 leading-relaxed mb-8">
 {t("sade_sati.saturn_takes_approximately_2_5")}<span className="text-gray-900 font-bold">{t("sade_sati.7_5_years_3_2_5")}</span>{t("sade_sati._these_years_are_divided_into")}
     </p>
 
@@ -50,7 +50,7 @@ const SadeSatiInfoSections = () => {
                     <h3 className="text-lg font-bold text-gray-900 mb-2">
 {t("sade_sati.1_the_rising_phase_first_chara")}
         </h3>
-                    <p className="text-[14px] text-gray-700 leading-relaxed">
+                    <p className="text-[14px] text-gray-850 leading-relaxed">
 {t("sade_sati.this_phase_begins_when_saturn")}
         </p>
                 </div>
@@ -60,7 +60,7 @@ const SadeSatiInfoSections = () => {
                     <h3 className="text-lg font-bold text-gray-900 mb-2">
 {t("sade_sati.2_the_peak_phase_second_charan")}
         </h3>
-                    <p className="text-[14px] text-gray-700 leading-relaxed">
+                    <p className="text-[14px] text-gray-850 leading-relaxed">
 {t("sade_sati.the_most_intense_stage_occurs")}<span className="text-[#c0392b] font-medium">{t("sade_sati.natal_moon")}</span>{t("sade_sati._this_influences_your_physical")}
         </p>
                 </div>
@@ -70,7 +70,7 @@ const SadeSatiInfoSections = () => {
                     <h3 className="text-lg font-bold text-gray-900 mb-2">
 {t("sade_sati.3_the_setting_phase_third_char")}
         </h3>
-                    <p className="text-[14px] text-gray-700 leading-relaxed">
+                    <p className="text-[14px] text-gray-850 leading-relaxed">
 {t("sade_sati.in_the_final_stage_saturn_move")}
         </p>
                 </div>
@@ -99,7 +99,7 @@ const SadeSatiInfoSections = () => {
           map((remedy, i) =>
           <li key={i} className="flex gap-3 items-start p-3 bg-white rounded-xl border border-gray-100 shadow-sm">
                                 <div className="w-5 h-5 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0 text-[10px] font-bold mt-0.5">✓</div>
-                                <span className="text-[13px] text-gray-700">{remedy}</span>
+                                <span className="text-[13px] text-gray-850">{remedy}</span>
                             </li>
           )}
                     </ul>
@@ -118,7 +118,7 @@ const SadeSatiInfoSections = () => {
           'Witnessing or signing formal legal agreements blindly',
           'Making impulsive career changes without deep thought'].
           map((text, i) =>
-          <li key={i} className="text-[14px] text-gray-600 flex items-center gap-2">
+          <li key={i} className="text-[14px] text-gray-850 flex items-center gap-2">
                                 <div className="w-1.5 h-1.5 rounded-full bg-red-400" /> {text}
                             </li>
           )}
@@ -128,7 +128,7 @@ const SadeSatiInfoSections = () => {
 
             {/* Closing Quote */}
             <div className="bg-gradient-to-r from-gray-900 to-indigo-950 rounded-3xl p-8 text-center border-t-4 border-[#b8962e] shadow-xl">
-                <p className="text-gray-300 text-[16px] leading-relaxed max-w-2xl mx-auto">
+                <p className="text-[#3a1216] text-[16px] leading-relaxed max-w-2xl mx-auto">
 {t("sade_sati._shani_dev_is_the_strict_judge")}
       </p>
             </div>
@@ -260,7 +260,7 @@ export default function SadeSatiPage() {
                                     <h1 className="text-3xl font-semibold text-gray-900 mb-2">
                                         {sadeSati.phase || 'No Active Phase'}
                                     </h1>
-                                    <p className="text-gray-700 text-sm leading-relaxed max-w-xl">
+                                    <p className="text-gray-850 text-sm leading-relaxed max-w-xl">
                                         {sadeSati.is_active ?
                     `Shani is currently transiting through houses influencing your Moon sign (${sadeSati.natal_moon_sign}).` :
                     `You are currently in a clear period. Shani is not directly influencing your Moon sign (${sadeSati.natal_moon_sign}).`
@@ -291,15 +291,15 @@ export default function SadeSatiPage() {
                                 <table className="w-full text-sm border-collapse">
                                     <tbody>
                                         <tr className="border-b border-gray-100">
-                                            <td className="px-6 py-4 bg-gray-50/50 font-bold text-gray-700 w-1/3">{t("sade_sati.name")}</td>
+                                            <td className="px-6 py-4 bg-gray-50/50 font-bold text-gray-850 w-1/3">{t("sade_sati.name")}</td>
                                             <td className="px-6 py-4 font-semibold text-gray-900">{input.name}</td>
                                         </tr>
                                         <tr className="border-b border-gray-100">
-                                            <td className="px-6 py-4 bg-gray-50/50 font-bold text-gray-700">{t("sade_sati.birth_date")}</td>
+                                            <td className="px-6 py-4 bg-gray-50/50 font-bold text-gray-850">{t("sade_sati.birth_date")}</td>
                                             <td className="px-6 py-4 font-semibold text-gray-900">{input.date}</td>
                                         </tr>
                                         <tr className="border-b border-gray-100 md:border-b-0">
-                                            <td className="px-6 py-4 bg-gray-50/50 font-bold text-gray-700">{t("sade_sati.place_of_birth")}</td>
+                                            <td className="px-6 py-4 bg-gray-50/50 font-bold text-gray-850">{t("sade_sati.place_of_birth")}</td>
                                             <td className="px-6 py-4 font-semibold text-gray-900">{input.place || 'Not Provided'}</td>
                                         </tr>
                                     </tbody>
@@ -307,15 +307,15 @@ export default function SadeSatiPage() {
                                 <table className="w-full text-sm border-collapse border-l border-gray-100">
                                     <tbody>
                                         <tr className="border-b border-gray-100">
-                                            <td className="px-6 py-4 bg-gray-50/50 font-bold text-gray-700 w-1/3">{t("sade_sati.birth_time")}</td>
+                                            <td className="px-6 py-4 bg-gray-50/50 font-bold text-gray-850 w-1/3">{t("sade_sati.birth_time")}</td>
                                             <td className="px-6 py-4 font-semibold text-gray-900">{input.time}</td>
                                         </tr>
                                         <tr className="border-b border-gray-100">
-                                            <td className="px-6 py-4 bg-gray-50/50 font-bold text-gray-700">{t("sade_sati.tithi")}</td>
+                                            <td className="px-6 py-4 bg-gray-50/50 font-bold text-gray-850">{t("sade_sati.tithi")}</td>
                                             <td className="px-6 py-4 font-semibold text-gray-900">{panchang?.tithi || 'N/A'}</td>
                                         </tr>
                                         <tr>
-                                            <td className="px-6 py-4 bg-gray-50/50 font-bold text-gray-700">{t("sade_sati.saturn_transit")}</td>
+                                            <td className="px-6 py-4 bg-gray-50/50 font-bold text-gray-850">{t("sade_sati.saturn_transit")}</td>
                                             <td className="px-6 py-4 font-black text-[#b8962e] uppercase">{sadeSati.transit_saturn_sign || 'N/A'}</td>
                                         </tr>
                                     </tbody>
@@ -329,10 +329,10 @@ export default function SadeSatiPage() {
                                 <div className="bg-white rounded-2xl border border-[#d6c89a] shadow-sm p-7 h-full">
                                     <div className="flex items-center gap-2 mb-4">
                                         <Info className="w-4 h-4 text-[#b8962e]" />
-                                        <span className="text-[11px] font-black uppercase tracking-[0.16em] text-gray-700">{t("sade_sati.phase_perspective")}</span>
+                                        <span className="text-[11px] font-black uppercase tracking-[0.16em] text-gray-850">{t("sade_sati.phase_perspective")}</span>
                                     </div>
                                     <div
-                    className="text-[14px] text-gray-800 leading-relaxed space-y-4 rich-content"
+                    className="text-[14px] text-gray-850 leading-relaxed space-y-4 rich-content"
                     dangerouslySetInnerHTML={{ __html: (customSettings?.sadeSati?.[currentPhaseKey || '']?.intro && customSettings.sadeSati[currentPhaseKey || ''].intro !== '<p><br></p>' && customSettings.sadeSati[currentPhaseKey || ''].intro !== '<p></p>')
                         ? customSettings.sadeSati[currentPhaseKey || ''].intro
                         : (customSettings?.sadeSatiIntro && customSettings.sadeSatiIntro !== '<p><br></p>' && customSettings.sadeSatiIntro !== '<p></p>')
@@ -391,7 +391,7 @@ export default function SadeSatiPage() {
                             <div className="bg-gray-50 px-8 py-5 border-b border-[#d6c89a] flex justify-between items-center">
                                 <div>
                                     <h2 className="text-[12px] font-black uppercase tracking-[0.2em] text-[#b8962e]">{t("sade_sati.lifetime_transit_map")}</h2>
-                                    <p className="text-[11px] text-gray-500 mt-1 font-medium">{t("sade_sati.120_years_cycle_analysis_of_sh")}</p>
+                                    <p className="text-[11px] text-gray-850 mt-1 font-medium">{t("sade_sati.120_years_cycle_analysis_of_sh")}</p>
                                 </div>
                                 <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-[#b8962e]">
                                     <Clock className="w-5 h-5" />
@@ -414,17 +414,17 @@ export default function SadeSatiPage() {
                       const isActiveTimeline = new Date().getFullYear() >= parseInt(p.start_date.split('-')[0]) && new Date().getFullYear() <= parseInt(p.end_date.split('-')[0]);
                       return (
                         <tr key={i} className={`hover:bg-amber-50/30 transition-colors ${isActiveTimeline ? 'bg-amber-50/40 relative z-10' : ''}`}>
-                                                    <td className="px-6 py-4 text-[12px] font-bold text-gray-400">{i + 1}</td>
+                                                    <td className="px-6 py-4 text-[12px] font-bold text-[#3a1216]">{i + 1}</td>
                                                     <td className="px-6 py-4 text-[13px] font-bold text-gray-900">{p.type}</td>
                                                     <td className="px-6 py-4 text-[13px] font-bold text-indigo-600">{p.shani_rashi}</td>
-                                                    <td className="px-6 py-4 text-[13px] text-gray-600">{p.start_date}</td>
-                                                    <td className="px-6 py-4 text-[13px] text-gray-600">{p.end_date}</td>
+                                                    <td className="px-6 py-4 text-[13px] text-gray-850">{p.start_date}</td>
+                                                    <td className="px-6 py-4 text-[13px] text-gray-850">{p.end_date}</td>
                                                     <td className="px-6 py-4">
                                                         <span className={`text-[10px] px-3 py-1 rounded-full font-black uppercase tracking-wider ${
                             p.phase === 'Peak' ? 'bg-rose-100 text-rose-700' :
                             p.phase === 'Rising' ? 'bg-blue-100 text-blue-700' :
                             p.phase === 'Setting' ? 'bg-emerald-100 text-emerald-700' :
-                            'bg-gray-100 text-gray-600'}`
+                            'bg-gray-100 text-gray-850'}`
                             }>
                                                             {p.phase || 'Transit'}
                                                         </span>
@@ -462,7 +462,7 @@ export default function SadeSatiPage() {
                     <Link href="/free-reports" className="text-[#b8962e] hover:text-[#7a6010] font-bold flex items-center gap-2 text-sm">
                         <ChevronLeft className="w-4 h-4" />{t("sade_sati.back_to_reports")}
           </Link>
-                    <Link href="/free-reports/history" className="text-gray-500 hover:text-[#b8962e] font-bold flex items-center gap-2 text-sm transition-colors">
+                    <Link href="/free-reports/history" className="text-gray-850 hover:text-[#b8962e] font-bold flex items-center gap-2 text-sm transition-colors">
                         <Clock className="w-4 h-4" />{t("sade_sati.view_history")}
           </Link>
                 </div>
@@ -472,10 +472,10 @@ export default function SadeSatiPage() {
                     <h1 className="text-4xl font-bold text-gray-900 mb-3">
 {t("sade_sati.shani_sade_sati_analysis_timel")}
           </h1>
-                    <h2 className="text-xl text-gray-700 mb-3">
+                    <h2 className="text-xl text-gray-850 mb-3">
 {t("sade_sati.understand_your_7_5_year_cycle")}
           </h2>
-                    <p className="text-[14px] text-gray-500 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-[14px] text-gray-850 max-w-3xl mx-auto leading-relaxed">
 {t("sade_sati.calculate_exactly_when_your_sa")}
 
           </p>

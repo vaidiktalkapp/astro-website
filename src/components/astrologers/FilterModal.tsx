@@ -105,7 +105,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
             >
               Select all
             </button>
-            <span className="text-gray-400 mx-2">-</span>
+            <span className="text-[#3a1216] mx-2">-</span>
             <button
               onClick={() => {
                 // Clear logic for this section
@@ -150,7 +150,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
       <div className="bg-white w-full max-h-[85%] rounded-t-2xl flex flex-col">
         <div className="flex justify-between items-center p-4 border-b">
           <h2 className="text-lg font-bold">Sort & Filter</h2>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+          <button onClick={onClose} className="text-gray-850 hover:text-gray-850">
             ✕
           </button>
         </div>
@@ -164,7 +164,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
                 className={`w-full text-left px-3 py-3 text-sm border-b ${
                   selectedSection === section
                     ? 'bg-yellow-100 border-l-4 border-l-yellow-400 font-semibold'
-                    : 'text-gray-600'
+                    : 'text-gray-850'
                 }`}
               >
                 <div className="flex justify-between items-center">

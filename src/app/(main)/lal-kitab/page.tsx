@@ -114,7 +114,7 @@ const LalKitabContent = () => {
                             <h2 className="text-4xl font-bold text-gray-900 mb-4 serif">
 {t("lal_kitab.generate_your")}<span className="text-[#b8962e]">{t("lal_kitab.lal_kitab")}</span>{t("lal_kitab.report")}
             </h2>
-                            <p className="text-gray-600 text-lg leading-relaxed">
+                            <p className="text-gray-850 text-lg leading-relaxed">
 {t("lal_kitab.enter_your_birth_details_below")}
             </p>
 

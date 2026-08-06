@@ -56,7 +56,7 @@ export default function LearnAstrologyHub() {
                         <h1 className="text-4xl md:text-6xl font-bold text-gray-900 serif leading-tight">
 {t("learn.how_to_learn_astrology")}
             </h1>
-                        <p className="text-base text-gray-500 max-w-2xl mx-auto font-medium leading-relaxed">
+                        <p className="text-base text-gray-850 max-w-2xl mx-auto font-medium leading-relaxed">
 {t("learn.available_in_hindi_english")}
             </p>
                     </motion.div>
@@ -68,12 +68,12 @@ export default function LearnAstrologyHub() {
             transition={{ delay: 0.1 }}
             className="bg-white rounded-2xl border border-[#e8dbb8]/50 shadow-sm p-8 mb-10">
             
-                        <p className="text-[15px] text-gray-700 leading-relaxed serif">
+                        <p className="text-[15px] text-gray-850 leading-relaxed serif">
 {t("learn.welcome_to_the_world_of")}<strong>{t("learn._no_cost_tutorial")}</strong>{t("learn.to_learn_astrology_it_means_yo")}
               <em>{t("learn._how_to_learn_astrology")}</em>{t("learn._is_a_question_in_minds_of_tho")}
 
             </p>
-                        <p className="text-[15px] text-gray-700 leading-relaxed serif mt-4">
+                        <p className="text-[15px] text-gray-850 leading-relaxed serif mt-4">
 {t("learn.here_you_can_learn_astrology_i")}
 
 
@@ -95,7 +95,7 @@ export default function LearnAstrologyHub() {
             <div className="flex items-center justify-center py-16">
                                 <div className="animate-pulse flex flex-col items-center gap-3">
                                     <BookOpen className="w-10 h-10 text-[#b8962e] opacity-20" />
-                                    <span className="text-xs text-gray-400 uppercase tracking-widest font-bold">{t("learn.loading_lessons")}</span>
+                                    <span className="text-xs text-[#3a1216] uppercase tracking-widest font-bold">{t("learn.loading_lessons")}</span>
                                 </div>
                             </div> :
 
@@ -147,12 +147,12 @@ export default function LearnAstrologyHub() {
             transition={{ delay: 0.3 }}
             className="bg-white rounded-2xl border border-[#e8dbb8]/50 shadow-sm p-8 mb-10">
             
-                        <p className="text-[14px] text-gray-600 leading-relaxed serif">
+                        <p className="text-[14px] text-gray-850 leading-relaxed serif">
 {t("learn.this_tutorial_is_only_for_the")}
 
 
             </p>
-                        <p className="text-[14px] text-gray-600 leading-relaxed serif mt-4">
+                        <p className="text-[14px] text-gray-850 leading-relaxed serif mt-4">
 {t("learn.here_in_given_series_you_ll_kn")}
               <Link href="/learn/planets" className="text-[#b8962e] font-bold hover:underline">{t("learn.zodiac_signs")}</Link>{t("learn._houses_and_about_role_of_othe")}
 
@@ -175,7 +175,7 @@ export default function LearnAstrologyHub() {
                                 </div>
                                 <div>
                                     <h3 className="text-xl font-bold serif">{t("learn.explore_the_9_grahas")}</h3>
-                                    <p className="text-sm text-gray-400 font-medium mt-1">{t("learn.detailed_profiles_of_all_nine")}</p>
+                                    <p className="text-sm text-[#3a1216] font-medium mt-1">{t("learn.detailed_profiles_of_all_nine")}</p>
                                 </div>
                             </div>
                             <ArrowRight className="w-6 h-6 text-[#b8962e] group-hover:translate-x-2 transition-transform" />

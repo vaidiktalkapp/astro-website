@@ -40,7 +40,7 @@ const RashiResult = ({ data, onReset }: RashiResultProps) => {
                 
                 {/* ── TOP ACTION BAR ── */}
                 <div className="flex justify-between items-center bg-white p-2.5 px-4 rounded-xl border border-gray-200 shadow-sm opacity-90 hover:opacity-100 transition-opacity">
-                    <div className="flex items-center gap-2 text-gray-800 font-bold text-sm uppercase tracking-wider">
+                    <div className="flex items-center gap-2 text-gray-850 font-bold text-sm uppercase tracking-wider">
                         <Sparkles className="w-4 h-4 text-[#b8962e]" />
                         <span>Vedic Rashi Report</span>
                     </div>
@@ -122,7 +122,7 @@ const RashiResult = ({ data, onReset }: RashiResultProps) => {
                                 <h2 className="text-xl font-bold text-gray-900 serif tracking-tight mb-1">
                                     Classical Interpretation
                                 </h2>
-                                <p className="text-xs text-gray-500 font-medium">{sign} Rasi according to ancient scriptures</p>
+                                <p className="text-xs text-gray-850 font-medium">{sign} Rasi according to ancient scriptures</p>
                             </div>
                             <div className="flex items-center gap-1.5 text-[#7A1F01] bg-[#7A1F01]/5 px-3 py-1.5 rounded-md text-xs font-bold uppercase tracking-widest border border-[#7A1F01]/10">
                                 <BookOpen className="w-3.5 h-3.5" />
@@ -131,7 +131,7 @@ const RashiResult = ({ data, onReset }: RashiResultProps) => {
                         </div>
 
                         {/* Detailed Analysis */}
-                        <div className="prose prose-sm max-w-none text-gray-700 leading-relaxed font-medium">
+                        <div className="prose prose-sm max-w-none text-gray-850 leading-relaxed font-medium">
                             {classicsData.classics.split('. ').filter(s => s.trim().length > 0).map((sentence, idx) => (
                                 <p key={idx} className="mb-3">
                                     {sentence.trim()}.
@@ -147,7 +147,7 @@ const RashiResult = ({ data, onReset }: RashiResultProps) => {
                                 </div>
                                 <div>
                                     <span className="block font-bold text-[11px] uppercase tracking-widest text-gray-900 mb-0.5">Strength</span>
-                                    <p className="text-[13px] text-gray-600 leading-snug font-medium">{classicsData.traits?.strength}</p>
+                                    <p className="text-[13px] text-gray-850 leading-snug font-medium">{classicsData.traits?.strength}</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-3 p-3 rounded-xl bg-gray-50 border border-gray-100 hover:border-[#e5d5b0] transition-colors group">
@@ -156,7 +156,7 @@ const RashiResult = ({ data, onReset }: RashiResultProps) => {
                                 </div>
                                 <div>
                                     <span className="block font-bold text-[11px] uppercase tracking-widest text-gray-900 mb-0.5">Power</span>
-                                    <p className="text-[13px] text-gray-600 leading-snug font-medium">{classicsData.traits?.power}</p>
+                                    <p className="text-[13px] text-gray-850 leading-snug font-medium">{classicsData.traits?.power}</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-3 p-3 rounded-xl bg-gray-50 border border-gray-100 hover:border-[#e5d5b0] transition-colors group">
@@ -165,7 +165,7 @@ const RashiResult = ({ data, onReset }: RashiResultProps) => {
                                 </div>
                                 <div>
                                     <span className="block font-bold text-[11px] uppercase tracking-widest text-gray-900 mb-0.5">Insight</span>
-                                    <p className="text-[13px] text-gray-600 leading-snug font-medium">{classicsData.traits?.insight}</p>
+                                    <p className="text-[13px] text-gray-850 leading-snug font-medium">{classicsData.traits?.insight}</p>
                                 </div>
                             </div>
                         </div>
@@ -176,7 +176,7 @@ const RashiResult = ({ data, onReset }: RashiResultProps) => {
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
                     <button
                         onClick={onReset}
-                        className="flex items-center gap-2 px-5 py-2.5 text-gray-600 font-bold rounded-xl hover:bg-white hover:text-gray-900 transition-all text-sm border border-transparent hover:border-gray-200"
+                        className="flex items-center gap-2 px-5 py-2.5 text-gray-850 font-bold rounded-xl hover:bg-white hover:text-gray-900 transition-all text-sm border border-transparent hover:border-gray-200"
                     >
                         <RotateCcw className="w-4 h-4" />
                         Recalculate

@@ -64,7 +64,7 @@ export default function ChineseHoroscopeHistoryPage() {
                             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-2 serif">
 {t("history.chinese_zodiac")}<span className="text-[#b8962e]">{t("history.history")}</span>
                             </h1>
-                            <p className="text-gray-500 text-base">
+                            <p className="text-gray-850 text-base">
 {t("history.revisit_the_ancient_wisdom_rev")}
               </p>
                         </div>
@@ -131,7 +131,7 @@ export default function ChineseHoroscopeHistoryPage() {
 
                                 {/* Card body */}
                                 <div className="px-4 py-3 space-y-2">
-                                    <div className="flex items-center gap-2 text-gray-500">
+                                    <div className="flex items-center gap-2 text-gray-850">
                                         <Calendar className="w-3.5 h-3.5 flex-shrink-0" style={{ color: '#b8962e' }} />
                                         <span className="text-[12px] font-medium">{item.date || new Date().toISOString().split('T')[0]}</span>
                                     </div>
@@ -144,10 +144,10 @@ export default function ChineseHoroscopeHistoryPage() {
 
                                 {/* Card footer */}
                                 <div className="px-4 py-2.5 border-t border-[#e9ddb8] flex items-center justify-between">
-                                    <span className="ch-card-label text-[11px] font-semibold uppercase tracking-wider text-gray-400 transition-colors">
+                                    <span className="ch-card-label text-[11px] font-semibold uppercase tracking-wider text-[#3a1216] transition-colors">
 {t("history.reveal_destiny")}
               </span>
-                                    <ChevronRight className="ch-card-arrow w-3.5 h-3.5 text-gray-300 transition-all" />
+                                    <ChevronRight className="ch-card-arrow w-3.5 h-3.5 text-[#3a1216] transition-all" />
                                 </div>
                             </motion.div>
           )}
@@ -161,7 +161,7 @@ export default function ChineseHoroscopeHistoryPage() {
                         <h3 className="text-2xl font-bold text-gray-900 mb-2 serif">
                             {searchQuery ? 'No Echoes Found' : 'Archive is Silent'}
                         </h3>
-                        <p className="text-gray-500 text-sm max-w-sm mx-auto mb-8 leading-relaxed font-medium">
+                        <p className="text-gray-850 text-sm max-w-sm mx-auto mb-8 leading-relaxed font-medium">
                             {searchQuery ?
             "No records matched your search. Try adjusting the name or animal sign." :
             "You haven't archived any lunar destinies yet. Begin your first discovery to start your archive."}

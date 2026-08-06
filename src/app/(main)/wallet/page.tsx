@@ -164,7 +164,7 @@ export default function WalletPage() {
           </div>
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">{t("wallet.login_required") || "Authentication Required"}</h2>
-            <p className="text-gray-500">{t("wallet.login_prompt_msg") || "Please login to view your wallet balance and transactions."}</p>
+            <p className="text-gray-850">{t("wallet.login_prompt_msg") || "Please login to view your wallet balance and transactions."}</p>
           </div>
           <button
             onClick={openLoginModal}
@@ -183,7 +183,7 @@ export default function WalletPage() {
       <div className="bg-white border-b border-gray-200 px-6 py-6">
         <div className="max-w-4xl mx-auto flex justify-between items-center">
           <div>
-            <p className="text-sm text-gray-600 mb-1">{t("wallet.available_balance")}</p>
+            <p className="text-sm text-gray-850 mb-1">{t("wallet.available_balance")}</p>
             <p className="text-4xl font-bold text-gray-900">
               ₹{user?.wallet?.balance?.toFixed(0) || 0}
             </p>
@@ -204,7 +204,7 @@ export default function WalletPage() {
             onClick={() => setActiveTab('transactions')}
             className={`flex-1 py-2.5 rounded-full text-sm font-semibold transition-all ${activeTab === 'transactions' ?
             'bg-yellow-400 text-black shadow-sm' :
-            'bg-white text-gray-600 border border-gray-300 hover:bg-gray-50'}`
+            'bg-white text-gray-850 border border-gray-300 hover:bg-gray-50'}`
             }>
 {t("wallet.wallet_transactions")}
 
@@ -213,7 +213,7 @@ export default function WalletPage() {
             onClick={() => setActiveTab('logs')}
             className={`flex-1 py-2.5 rounded-full text-sm font-semibold transition-all ${activeTab === 'logs' ?
             'bg-yellow-400 text-black shadow-sm' :
-            'bg-white text-gray-600 border border-gray-300 hover:bg-gray-50'}`
+            'bg-white text-gray-850 border border-gray-300 hover:bg-gray-50'}`
             }>
 {t("wallet.payment_logs")}
 
@@ -226,7 +226,7 @@ export default function WalletPage() {
         {loading ?
         <div className="flex flex-col items-center justify-center py-12">
             <div className="h-10 w-10 border-3 border-yellow-400 border-t-transparent rounded-full animate-spin" />
-            <p className="mt-4 text-sm text-gray-600">{t("wallet.loading")}</p>
+            <p className="mt-4 text-sm text-gray-850">{t("wallet.loading")}</p>
           </div> :
         activeTab === 'transactions' ?
         transactions.length > 0 ?
@@ -239,8 +239,8 @@ export default function WalletPage() {
                   <div className="flex justify-between items-start">
                     <div className="flex-1">
                       <h3 className="font-semibold text-gray-900 mb-1">{txn.title}</h3>
-                      <p className="text-sm text-gray-600">{txn.date}</p>
-                      <p className="text-xs text-gray-400 mt-1">{txn.txnId}</p>
+                      <p className="text-sm text-gray-850">{txn.date}</p>
+                      <p className="text-xs text-[#3a1216] mt-1">{txn.txnId}</p>
                     </div>
                     <div className="text-right">
                       <p
@@ -256,7 +256,7 @@ export default function WalletPage() {
             </div> :
 
         <div className="text-center py-12">
-              <p className="text-gray-500">{t("wallet.no_transactions_found")}</p>
+              <p className="text-gray-850">{t("wallet.no_transactions_found")}</p>
             </div> :
 
         paymentLogs.length > 0 ?
@@ -269,10 +269,10 @@ export default function WalletPage() {
                 <div className="flex justify-between items-start">
                   <div className="flex-1">
                     <h3 className="font-semibold text-gray-900 mb-1">{log.title}</h3>
-                    <p className="text-sm text-gray-600">{log.date}</p>
-                    <p className="text-xs text-gray-400 mt-1">{log.txnId}</p>
+                    <p className="text-sm text-gray-850">{log.date}</p>
+                    <p className="text-xs text-[#3a1216] mt-1">{log.txnId}</p>
                     {log.gateway &&
-                <p className="text-xs text-gray-500 mt-1">{t("wallet.via")}{log.gateway}</p>
+                <p className="text-xs text-gray-850 mt-1">{t("wallet.via")}{log.gateway}</p>
                 }
                   </div>
                   <div className="text-right">
@@ -298,7 +298,7 @@ export default function WalletPage() {
           </div> :
 
         <div className="text-center py-12">
-            <p className="text-gray-500">{t("wallet.no_payment_logs_available")}</p>
+            <p className="text-gray-850">{t("wallet.no_payment_logs_available")}</p>
           </div>
         }
       </div>

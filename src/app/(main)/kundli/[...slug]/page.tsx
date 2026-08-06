@@ -27,8 +27,8 @@ const AstrologicalInterpretation = ({ data }: {data: any;}) => {
             <div className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 border border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.08)' }}>
                 <Sparkles className="w-6 h-6 opacity-50" style={{ color: '#b8962e' }} />
             </div>
-            <h3 className="text-[15px] font-semibold text-gray-800 mb-1.5">{t("____slug_.interpretation_available")}</h3>
-            <p className="text-sm text-gray-400">{t("____slug_.recalculate_your_chart_to_unlo")}</p>
+            <h3 className="text-[15px] font-semibold text-gray-850 mb-1.5">{t("____slug_.interpretation_available")}</h3>
+            <p className="text-sm text-[#3a1216]">{t("____slug_.recalculate_your_chart_to_unlo")}</p>
         </motion.div>);
 
 
@@ -49,7 +49,7 @@ const AstrologicalInterpretation = ({ data }: {data: any;}) => {
             {/* Section header */}
             <div className="flex items-center gap-2 pb-3 border-b border-[#d6c89a]">
                 <Sparkles className="w-4 h-4" style={{ color: '#b8962e' }} />
-                <span className="text-[15px] font-semibold text-gray-800">{t("____slug_.astrological_interpretation")}</span>
+                <span className="text-[15px] font-semibold text-gray-850">{t("____slug_.astrological_interpretation")}</span>
             </div>
 
             {/* Primary triad */}
@@ -62,7 +62,7 @@ const AstrologicalInterpretation = ({ data }: {data: any;}) => {
           
                         <p className="text-[10px] font-semibold uppercase tracking-widest mb-1.5" style={{ color: '#b8962e' }}>{item.label}</p>
                         <h4 className="text-[15px] font-semibold text-gray-900 mb-2">{item.sign}</h4>
-                        <p className="text-[13px] text-gray-600 leading-relaxed">{item.reading}</p>
+                        <p className="text-[13px] text-gray-850 leading-relaxed">{item.reading}</p>
                     </div>
         )}
             </div>
@@ -77,7 +77,7 @@ const AstrologicalInterpretation = ({ data }: {data: any;}) => {
           
                         <p className="text-[10px] font-semibold uppercase tracking-widest mb-1.5" style={{ color: '#b8962e' }}>{item.label}</p>
                         <h4 className="text-[15px] font-semibold text-gray-900 mb-2">{item.sign}</h4>
-                        <p className="text-[13px] text-gray-600 leading-relaxed">{item.reading}</p>
+                        <p className="text-[13px] text-gray-850 leading-relaxed">{item.reading}</p>
                     </div>
         )}
             </div>
@@ -90,7 +90,7 @@ const AstrologicalInterpretation = ({ data }: {data: any;}) => {
                         {interpretations.yoga?.title || 'Yoga & Strengths'}
                     </p>
                 </div>
-                <p className="text-[13px] text-gray-700 leading-relaxed">
+                <p className="text-[13px] text-gray-850 leading-relaxed">
                     {interpretations.yoga?.reading || 'The chart shows balanced planetary energies with strong beneficial influences.'}
                 </p>
             </div>
@@ -101,7 +101,7 @@ const AstrologicalInterpretation = ({ data }: {data: any;}) => {
                     <Sparkles className="w-3.5 h-3.5" style={{ color: '#b8962e' }} />
                     <p className="text-[11px] font-semibold uppercase tracking-widest" style={{ color: '#b8962e' }}>{t("____slug_.special_combinations")}</p>
                 </div>
-                <p className="text-[13px] text-gray-700 leading-relaxed">
+                <p className="text-[13px] text-gray-850 leading-relaxed">
                     {interpretations.special_combinations || 'The chart shows balanced planetary energies across various houses.'}
                 </p>
             </div>
@@ -112,7 +112,7 @@ const AstrologicalInterpretation = ({ data }: {data: any;}) => {
                     <Info className="w-3.5 h-3.5" style={{ color: '#b8962e' }} />
                     <p className="text-[11px] font-semibold uppercase tracking-widest" style={{ color: '#b8962e' }}>{t("____slug_.life_path_insight")}</p>
                 </div>
-                <p className="text-[13px] text-gray-700 leading-relaxed border-l-2 pl-4" style={{ borderColor: '#b8962e' }}>
+                <p className="text-[13px] text-gray-850 leading-relaxed border-l-2 pl-4" style={{ borderColor: '#b8962e' }}>
                     {interpretations.life_path?.reading || 'Your journey is guided by a unique cosmic vibration that encourages growth and wisdom.'}
                 </p>
             </div>
@@ -125,7 +125,7 @@ const SectionCard = ({ icon: Icon, title, children }: {icon: any;title: string;c
 <div className="rounded-xl border border-[#d6c89a] overflow-hidden" style={{ background: '#fffdf5' }}>
         <div className="flex items-center gap-2.5 px-6 py-4 border-b border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.08)' }}>
             <Icon className="w-4 h-4" style={{ color: '#b8962e' }} />
-            <h3 className="text-[15px] font-semibold text-gray-800">{title}</h3>
+            <h3 className="text-[15px] font-semibold text-gray-850">{title}</h3>
         </div>
         <div className="p-6">{children}</div>
     </div>;
@@ -159,8 +159,8 @@ const LoadingCard = () => {
     return (
 <div className="rounded-xl border border-[#d6c89a] p-14 text-center" style={{ background: '#fffdf5' }}>
         <div className="w-10 h-10 border-2 border-t-transparent rounded-full animate-spin mx-auto mb-4" style={{ borderColor: '#b8962e', borderTopColor: 'transparent' }} />
-        <h3 className="text-[15px] font-semibold text-gray-800">{t("____slug_.synchronizing_with_stars")}</h3>
-        <p className="text-sm text-gray-400 mt-1">{t("____slug_.connecting_to_the_celestial_br")}</p>
+        <h3 className="text-[15px] font-semibold text-gray-850">{t("____slug_.synchronizing_with_stars")}</h3>
+        <p className="text-sm text-[#3a1216] mt-1">{t("____slug_.connecting_to_the_celestial_br")}</p>
     </div>
     );
 };
@@ -237,7 +237,7 @@ const KundliSubPage = () => {
                                                     </div>
                                                     <h4 className="text-[14px] font-semibold text-gray-900">{name}</h4>
                                                 </div>
-                                                <p className="text-[12px] text-gray-600 leading-relaxed">
+                                                <p className="text-[12px] text-gray-850 leading-relaxed">
                                                     {p.basic_reading || 'No reading generated.'}
                                                 </p>
                                             </div>);
@@ -284,7 +284,7 @@ const KundliSubPage = () => {
                 {/* ── Back link ── */}
                 <button
           onClick={() => router.push('/kundli')}
-          className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-[#b8962e] transition-colors mb-7">
+          className="flex items-center gap-1.5 text-sm text-gray-850 hover:text-[#b8962e] transition-colors mb-7">
           
                     <ArrowLeft className="w-4 h-4" />
 {t("____slug_.back_to_generator")}
@@ -302,7 +302,7 @@ const KundliSubPage = () => {
 {t("____slug_.kundli_insights")}
               </h1>
                             {data?.input?.name &&
-              <p className="text-gray-500 text-sm mt-1">
+              <p className="text-gray-850 text-sm mt-1">
                                     {data.input.name}{t("____slug_._accurate_vedic_calculations")}
               </p>
               }

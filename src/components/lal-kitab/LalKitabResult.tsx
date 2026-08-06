@@ -87,7 +87,7 @@ const LalKitabResult = ({ data, onBack, onNew, onHistoryClick }: LalKitabResultP
                 </div>
                 <div className="space-y-2">
                     <h3 className="text-xl font-semibold text-gray-900">{t("lal_kitab.system_upgrade")}</h3>
-                    <p className="text-gray-500 max-w-md mx-auto text-sm leading-relaxed">
+                    <p className="text-gray-850 max-w-md mx-auto text-sm leading-relaxed">
                         {t("lal_kitab.upgrade_desc")}
                     </p>
                 </div>
@@ -103,7 +103,7 @@ const LalKitabResult = ({ data, onBack, onNew, onHistoryClick }: LalKitabResultP
     }
 
     const currentPlanetData = data.planets[selectedPlanet];
-    if (!currentPlanetData) return <div className="p-20 text-center text-gray-400 text-sm">{t("lal_kitab.preparing_synthesis")}</div>;
+    if (!currentPlanetData) return <div className="p-20 text-center text-[#3a1216] text-sm">{t("lal_kitab.preparing_synthesis")}</div>;
 
     return (
         <div className="lk-wrap max-w-6xl mx-auto space-y-8 pb-24 px-4" style={{ color: '#111827' }}>
@@ -124,7 +124,7 @@ const LalKitabResult = ({ data, onBack, onNew, onHistoryClick }: LalKitabResultP
                     {onBack && (
                         <button
                             onClick={onBack}
-                            className="p-2.5 rounded-lg border border-[#d6c89a] text-gray-500 hover:text-[#b8962e] hover:bg-[#f5e9c8] transition-all"
+                            className="p-2.5 rounded-lg border border-[#d6c89a] text-gray-850 hover:text-[#b8962e] hover:bg-[#f5e9c8] transition-all"
                         >
                             <ArrowLeft className="w-4 h-4" />
                         </button>
@@ -147,13 +147,13 @@ const LalKitabResult = ({ data, onBack, onNew, onHistoryClick }: LalKitabResultP
                                 router.push('/lal-kitab/history');
                             }
                         }}
-                        className="flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[#d6c89a] text-[12px] font-medium text-gray-600 hover:bg-[#f5e9c8] transition-all"
+                        className="flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[#d6c89a] text-[12px] font-medium text-gray-850 hover:bg-[#f5e9c8] transition-all"
                     >
                         <History className="w-3.5 h-3.5" /> {t("lal_kitab.history")}
                     </button>
                     <button
                         onClick={onNew}
-                        className="px-4 py-2 rounded-lg border border-[#d6c89a] text-[12px] font-medium text-gray-600 hover:bg-[#f5e9c8] transition-all"
+                        className="px-4 py-2 rounded-lg border border-[#d6c89a] text-[12px] font-medium text-gray-850 hover:bg-[#f5e9c8] transition-all"
                     >
                         {t("lal_kitab.new_report")}
                     </button>
@@ -209,7 +209,7 @@ const LalKitabResult = ({ data, onBack, onNew, onHistoryClick }: LalKitabResultP
                         <span style={{ color: '#b8962e' }} className="opacity-40 text-lg">·</span>
                         <span className="serif text-lg md:text-xl" style={{ color: '#b8962e' }}>{planetHindi[selectedPlanet]}</span>
                     </div>
-                    <p className="text-[11px] font-medium uppercase tracking-widest text-gray-400 mt-0.5">
+                    <p className="text-[11px] font-medium uppercase tracking-widest text-[#3a1216] mt-0.5">
                         {t("lal_kitab.lbl_remedies_house")} {currentPlanetData.house}
                     </p>
                 </div>
@@ -232,7 +232,7 @@ const LalKitabResult = ({ data, onBack, onNew, onHistoryClick }: LalKitabResultP
                         </span>
                     </div>
                     <div className="h-px w-10 mb-4" style={{ background: '#b8962e' }} />
-                    <p className="text-[14px] leading-relaxed text-gray-700 font-normal">
+                    <p className="text-[14px] leading-relaxed text-gray-850 font-normal">
                         {formatText(currentPlanetData.analysis)}
                     </p>
                 </motion.div>
@@ -263,7 +263,7 @@ const LalKitabResult = ({ data, onBack, onNew, onHistoryClick }: LalKitabResultP
                                         >
                                             {idx + 1}
                                         </div>
-                                        <p className="text-[13px] text-gray-700 font-normal leading-relaxed">
+                                        <p className="text-[13px] text-gray-850 font-normal leading-relaxed">
                                             {formatText(remedy)}
                                         </p>
                                     </div>
@@ -287,7 +287,7 @@ const LalKitabResult = ({ data, onBack, onNew, onHistoryClick }: LalKitabResultP
                                             </div>
                                             <div>
                                                 <h4 className="text-[13px] font-semibold text-gray-900 mb-0.5">{area.category}</h4>
-                                                <p className="text-[11px] text-gray-500 leading-relaxed">{formatText(area.text)}</p>
+                                                <p className="text-[11px] text-gray-850 leading-relaxed">{formatText(area.text)}</p>
                                             </div>
                                         </div>
                                     );
@@ -308,7 +308,7 @@ const LalKitabResult = ({ data, onBack, onNew, onHistoryClick }: LalKitabResultP
                             </div>
                             <ul className="p-4 space-y-2">
                                 {(currentPlanetData.beneficEffects || []).map((item, i) => (
-                                    <li key={i} className="text-[12px] text-gray-600 leading-relaxed pb-2 border-b border-[#e9ddb8] last:border-0 last:pb-0 flex gap-2">
+                                    <li key={i} className="text-[12px] text-gray-850 leading-relaxed pb-2 border-b border-[#e9ddb8] last:border-0 last:pb-0 flex gap-2">
                                         <span className="text-emerald-500 flex-shrink-0">·</span>
                                         {formatText(item)}
                                     </li>
@@ -326,7 +326,7 @@ const LalKitabResult = ({ data, onBack, onNew, onHistoryClick }: LalKitabResultP
                             </div>
                             <ul className="p-4 space-y-2">
                                 {(currentPlanetData.maleficEffects || []).map((item, i) => (
-                                    <li key={i} className="text-[12px] text-gray-600 leading-relaxed pb-2 border-b border-[#e9ddb8] last:border-0 last:pb-0 flex gap-2">
+                                    <li key={i} className="text-[12px] text-gray-850 leading-relaxed pb-2 border-b border-[#e9ddb8] last:border-0 last:pb-0 flex gap-2">
                                         <span className="text-red-400 flex-shrink-0">·</span>
                                         {formatText(item)}
                                     </li>
@@ -340,7 +340,7 @@ const LalKitabResult = ({ data, onBack, onNew, onHistoryClick }: LalKitabResultP
                 <section className="rounded-xl border border-[#d6c89a] overflow-hidden" style={{ background: '#fffdf5' }}>
                     <div className="px-6 py-4 border-b border-[#d6c89a] text-center" style={{ background: 'rgba(184,150,46,0.08)' }}>
                         <p className="text-[11px] font-semibold uppercase tracking-widest mb-0.5" style={{ color: '#b8962e' }}>{t("lal_kitab.encyclopedic_guide")}</p>
-                        <p className="text-[12px] text-gray-500">{t("lal_kitab.traditional_placement_guide")} {selectedPlanet} {t("lal_kitab.across_all_houses")}</p>
+                        <p className="text-[12px] text-gray-850">{t("lal_kitab.traditional_placement_guide")} {selectedPlanet} {t("lal_kitab.across_all_houses")}</p>
                     </div>
                     <div className="p-5 grid grid-cols-2 lg:grid-cols-4 gap-3">
                         {(currentPlanetData.houseGuide || []).map((effect, i) => {
@@ -389,7 +389,7 @@ const LalKitabResult = ({ data, onBack, onNew, onHistoryClick }: LalKitabResultP
                             >
                                 {idx + 1}
                             </div>
-                            <p className="text-[12px] text-gray-600 leading-relaxed">{formatText(rule)}</p>
+                            <p className="text-[12px] text-gray-850 leading-relaxed">{formatText(rule)}</p>
                         </div>
                     ))}
                 </div>

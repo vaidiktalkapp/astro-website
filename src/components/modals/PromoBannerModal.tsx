@@ -163,7 +163,7 @@ export default function PromoBannerModal() {
             <div className={hasImage && !hasText ? 'p-6 pt-2' : ''}>
               {/* Subtitle */}
               {hasSubtitle && (
-                <p className="text-gray-700 text-lg font-bold px-4 mb-6 leading-relaxed">
+                <p className="text-gray-850 text-lg font-bold px-4 mb-6 leading-relaxed">
                   {data.subtitle}
                 </p>
               )}

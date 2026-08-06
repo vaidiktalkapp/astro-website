@@ -142,7 +142,7 @@ export default function PrivacyPolicy() {
             <p className="mb-0"><strong>Email:</strong> <a href="mailto:support@vaidiktalk.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">support@vaidiktalk.com</a></p>
           </div>
 
-          <p className="text-sm text-gray-700 mt-10 text-center border-t border-[#e8d8c0] pt-6">
+          <p className="text-sm text-gray-850 mt-10 text-center border-t border-[#e8d8c0] pt-6">
             © 2026 Vaidik Talk. All Rights Reserved.
           </p>
         </div>

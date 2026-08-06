@@ -392,7 +392,7 @@ export default function LoveCompatibilityPage() {
                     </div>
                     <div className="pt-1">
                       <h3 className="font-bold text-[16px] text-[#3a1216]">{astro.name || 'Astrologer'}</h3>
-                      <div className="text-[12px] text-gray-500 mt-0.5 truncate max-w-[120px]">
+                      <div className="text-[12px] text-gray-850 mt-0.5 truncate max-w-[120px]">
                         {astro.languages?.slice(0, 2).join(', ') || 'Hindi'} • {astro.experienceYears || 5} yrs
                       </div>
                       <div className="flex items-center gap-1 text-[12.5px] font-bold text-[#2c0d12] mt-1">
@@ -475,7 +475,7 @@ export default function LoveCompatibilityPage() {
                     </div>
                     <div className="pt-1">
                       <h3 className="font-bold text-[16px] text-[#3a1216]">{astro.name || 'AI Astrologer'}</h3>
-                      <div className="text-[12px] text-gray-500 mt-0.5 truncate max-w-[120px]">
+                      <div className="text-[12px] text-gray-850 mt-0.5 truncate max-w-[120px]">
                         {astro.languages?.slice(0, 2).join(', ') || 'Hindi'} • {astro.experienceYears || 5} yrs
                       </div>
                       <div className="flex items-center gap-1 text-[12.5px] font-bold text-[#2c0d12] mt-1">

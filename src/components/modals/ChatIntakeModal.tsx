@@ -153,7 +153,7 @@ const ChatIntakeModal = ({ isOpen, onClose, astrologer, onProceed, mode = 'chat'
                     >
                         <div className="px-6 pt-6 pb-2 border-b border-gray-100">
                             <h3 className="text-[22px] font-bold text-gray-900">Select Profile</h3>
-                            <p className="text-sm text-gray-500 mt-1 leading-relaxed pr-8">Who are you asking about?</p>
+                            <p className="text-sm text-gray-850 mt-1 leading-relaxed pr-8">Who are you asking about?</p>
                         </div>
 
                         <div className="p-6 pt-4">
@@ -185,7 +185,7 @@ const ChatIntakeModal = ({ isOpen, onClose, astrologer, onProceed, mode = 'chat'
                                                     ))}
                                                     <option value="new" className="text-[#ff7e1d] font-semibold">+ Add New Profile</option>
                                                 </select>
-                                                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                                                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#3a1216] pointer-events-none" />
                                             </div>
 
                                             {selectedProfileId !== '0' && selectedProfileId !== 'new' && (
@@ -208,7 +208,7 @@ const ChatIntakeModal = ({ isOpen, onClose, astrologer, onProceed, mode = 'chat'
                                                                 setIsEditing(true);
                                                             }
                                                         }}
-                                                        className="p-2.5 text-gray-500 hover:text-blue-600 hover:bg-blue-50 border border-gray-200 rounded-md transition-colors"
+                                                        className="p-2.5 text-gray-850 hover:text-blue-600 hover:bg-blue-50 border border-gray-200 rounded-md transition-colors"
                                                         title="Edit Profile"
                                                     >
                                                         <Edit2 className="w-4 h-4" />
@@ -233,7 +233,7 @@ const ChatIntakeModal = ({ isOpen, onClose, astrologer, onProceed, mode = 'chat'
                                                                 setLoading(false);
                                                             }
                                                         }}
-                                                        className="p-2.5 text-gray-500 hover:text-red-600 hover:bg-red-50 border border-gray-200 rounded-md transition-colors"
+                                                        className="p-2.5 text-gray-850 hover:text-red-600 hover:bg-red-50 border border-gray-200 rounded-md transition-colors"
                                                         title="Delete Profile"
                                                     >
                                                         <Trash2 className="w-4 h-4" />
@@ -248,7 +248,7 @@ const ChatIntakeModal = ({ isOpen, onClose, astrologer, onProceed, mode = 'chat'
                                 {(selectedProfileId === 'new' || isEditing) && (
                                     <div className={`space-y-4 ${isEditing ? '' : 'pt-4 border-t border-gray-100 mt-4'}`}>
                                         <div className="flex items-center justify-between">
-                                            <h4 className="text-sm font-semibold text-gray-700">
+                                            <h4 className="text-sm font-semibold text-gray-850">
                                                 {isEditing ? 'Edit Details' : 'Enter Details'}
                                             </h4>
                                             {isEditing && (
@@ -258,7 +258,7 @@ const ChatIntakeModal = ({ isOpen, onClose, astrologer, onProceed, mode = 'chat'
                                                         setIsEditing(false);
                                                         setSelectedProfileId('0');
                                                     }}
-                                                    className="text-xs text-gray-500 hover:text-gray-800 underline"
+                                                    className="text-xs text-gray-850 hover:text-gray-850 underline"
                                                 >
                                                     Cancel Edit
                                                 </button>
@@ -266,7 +266,7 @@ const ChatIntakeModal = ({ isOpen, onClose, astrologer, onProceed, mode = 'chat'
                                         </div>
                                         <div className="grid grid-cols-2 gap-4">
                                             <div>
-                                                <label className="text-xs font-semibold text-gray-700 block mb-1">Name</label>
+                                                <label className="text-xs font-semibold text-gray-850 block mb-1">Name</label>
                                                 <input
                                                     type="text"
                                                     required
@@ -277,7 +277,7 @@ const ChatIntakeModal = ({ isOpen, onClose, astrologer, onProceed, mode = 'chat'
                                                 />
                                             </div>
                                             <div>
-                                                <label className="text-xs font-semibold text-gray-700 block mb-1">Gender</label>
+                                                <label className="text-xs font-semibold text-gray-850 block mb-1">Gender</label>
                                                 <select
                                                     disabled={loading}
                                                     value={intakeData.gender}
@@ -293,7 +293,7 @@ const ChatIntakeModal = ({ isOpen, onClose, astrologer, onProceed, mode = 'chat'
 
                                         <div className="grid grid-cols-2 gap-4">
                                             <div>
-                                                <label className="text-xs font-semibold text-gray-700 block mb-1">Date of Birth</label>
+                                                <label className="text-xs font-semibold text-gray-850 block mb-1">Date of Birth</label>
                                                 <div className="relative">
                                                     <input
                                                         type="date"
@@ -303,11 +303,11 @@ const ChatIntakeModal = ({ isOpen, onClose, astrologer, onProceed, mode = 'chat'
                                                         onChange={e => setIntakeData({ ...intakeData, date: e.target.value })}
                                                         className="w-full px-3 py-2 pr-9 bg-gray-50 border border-gray-200 rounded-md text-sm focus:ring-1 focus:ring-[#ff7e1d] focus:border-[#ff7e1d] outline-none"
                                                     />
-                                                    <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400 pointer-events-none" />
+                                                    <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#3a1216] pointer-events-none" />
                                                 </div>
                                             </div>
                                             <div>
-                                                <label className="text-xs font-semibold text-gray-700 block mb-1">Time of Birth</label>
+                                                <label className="text-xs font-semibold text-gray-850 block mb-1">Time of Birth</label>
                                                 <div className="relative">
                                                     <input
                                                         type="time"
@@ -317,13 +317,13 @@ const ChatIntakeModal = ({ isOpen, onClose, astrologer, onProceed, mode = 'chat'
                                                         onChange={e => setIntakeData({ ...intakeData, time: e.target.value })}
                                                         className="w-full px-3 py-2 pr-9 bg-gray-50 border border-gray-200 rounded-md text-sm focus:ring-1 focus:ring-[#ff7e1d] focus:border-[#ff7e1d] outline-none"
                                                     />
-                                                    <Clock className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400 pointer-events-none" />
+                                                    <Clock className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#3a1216] pointer-events-none" />
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div>
-                                            <label className="text-xs font-semibold text-gray-700 block mb-1">Place of Birth</label>
+                                            <label className="text-xs font-semibold text-gray-850 block mb-1">Place of Birth</label>
                                             <div className="relative z-50">
                                                 <GeoapifyContext apiKey="47b4a8afc7734a12bd28b482d3dbff76">
                                                     <div className="w-full [&_.geoapify-autocomplete-input]:w-full [&_.geoapify-autocomplete-input]:!px-3 [&_.geoapify-autocomplete-input]:!pr-9 [&_.geoapify-autocomplete-input]:!py-2 [&_.geoapify-autocomplete-input]:!bg-gray-50 [&_.geoapify-autocomplete-input]:!border [&_.geoapify-autocomplete-input]:!border-gray-200 [&_.geoapify-autocomplete-input]:!rounded-md [&_.geoapify-autocomplete-input]:!text-sm [&_.geoapify-autocomplete-input]:!outline-none [&_.geoapify-autocomplete-input:focus]:!ring-1 [&_.geoapify-autocomplete-input:focus]:!ring-[#ff7e1d] [&_.geoapify-autocomplete-input:focus]:!border-[#ff7e1d] [&_.geoapify-close-button]:!hidden [&_.geoapify-autocomplete-items-panel]:!z-[9999]">
@@ -343,12 +343,12 @@ const ChatIntakeModal = ({ isOpen, onClose, astrologer, onProceed, mode = 'chat'
                                                         />
                                                     </div>
                                                 </GeoapifyContext>
-                                                <MapPin className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400 pointer-events-none" />
+                                                <MapPin className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#3a1216] pointer-events-none" />
                                             </div>
                                         </div>
 
                                         <div>
-                                            <label className="text-xs font-semibold text-gray-700 block mb-1">Relation</label>
+                                            <label className="text-xs font-semibold text-gray-850 block mb-1">Relation</label>
                                             <input
                                                 type="text"
                                                 placeholder="e.g. Brother, Friend"

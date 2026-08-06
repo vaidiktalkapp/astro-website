@@ -88,7 +88,7 @@ export default function PlanetDetailPage() {
                 {/* Breadcrumb */}
                 <Link
           href="/learn/planets"
-          className="inline-flex items-center gap-2 text-[11px] font-black uppercase text-gray-400 tracking-widest hover:text-[#b8962e] transition-colors mb-8">
+          className="inline-flex items-center gap-2 text-[11px] font-black uppercase text-[#3a1216] tracking-widest hover:text-[#b8962e] transition-colors mb-8">
           
                     <ArrowLeft className="w-3.5 h-3.5" />{t("_slug_.back_to_library")}
         </Link>
@@ -119,12 +119,12 @@ export default function PlanetDetailPage() {
                     {/* Quick Info Bar */}
                     <div className="flex flex-wrap gap-4 mt-6">
                         <div className="px-4 py-2 bg-white border border-[#e8dbb8]/40 rounded-xl shadow-sm">
-                            <span className="text-[9px] font-black text-gray-400 uppercase block leading-none mb-1">{t("_slug_.element")}</span>
-                            <span className="text-sm font-bold text-gray-800">{planet.element}</span>
+                            <span className="text-[9px] font-black text-[#3a1216] uppercase block leading-none mb-1">{t("_slug_.element")}</span>
+                            <span className="text-sm font-bold text-gray-850">{planet.element}</span>
                         </div>
                         <div className="px-4 py-2 bg-white border border-[#e8dbb8]/40 rounded-xl shadow-sm">
-                            <span className="text-[9px] font-black text-gray-400 uppercase block leading-none mb-1">{t("_slug_.significance")}</span>
-                            <span className="text-sm font-bold text-gray-800">{planet.significance}</span>
+                            <span className="text-[9px] font-black text-[#3a1216] uppercase block leading-none mb-1">{t("_slug_.significance")}</span>
+                            <span className="text-sm font-bold text-gray-850">{planet.significance}</span>
                         </div>
                     </div>
                 </motion.div>
@@ -134,7 +134,7 @@ export default function PlanetDetailPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="lesson-content prose prose-lg max-w-none serif text-gray-800 leading-relaxed mb-10"
+          className="lesson-content prose prose-lg max-w-none serif text-gray-850 leading-relaxed mb-10"
           dangerouslySetInnerHTML={{ __html: planet.description }} />
         
 
@@ -187,7 +187,7 @@ export default function PlanetDetailPage() {
                                 <div className="w-7 h-7 rounded-lg bg-[#fdf6e3] text-[#b8962e] border border-[#e8dbb8]/50 flex items-center justify-center shrink-0 font-bold text-[11px] shadow-sm group-hover:bg-[#b8962e] group-hover:text-white transition-all">
                                     {idx + 1}
                                 </div>
-                                <p className="text-xs font-medium text-gray-700 leading-relaxed pt-0.5">{remedy}</p>
+                                <p className="text-xs font-medium text-gray-850 leading-relaxed pt-0.5">{remedy}</p>
                             </div>
             )}
                     </div>
@@ -205,7 +205,7 @@ export default function PlanetDetailPage() {
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold serif">{t("_slug_.deepen_your_knowledge")}</h3>
-                                <p className="text-sm text-gray-400 font-medium mt-1">{t("_slug_.start_our_sequential_learning")}</p>
+                                <p className="text-sm text-[#3a1216] font-medium mt-1">{t("_slug_.start_our_sequential_learning")}</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-2 text-[#b8962e] font-bold text-xs uppercase tracking-widest">

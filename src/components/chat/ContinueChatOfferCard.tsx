@@ -28,9 +28,9 @@ export default function ContinueChatOfferCard({ astrologer, onContinue, type }: 
           </div>
           <div className="flex items-center gap-1 bg-yellow-50 px-2 py-0.5 rounded-full border border-yellow-200">
             <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-            <span className="text-[10px] font-bold text-gray-700">{astrologer?.rating || 4.5}</span>
+            <span className="text-[10px] font-bold text-gray-850">{astrologer?.rating || 4.5}</span>
           </div>
-          <span className="text-[10px] font-bold text-gray-500 uppercase tracking-tight text-center">
+          <span className="text-[10px] font-bold text-gray-850 uppercase tracking-tight text-center">
             {astrologer?.specialization?.[0] || 'Expert'}
           </span>
         </div>
@@ -41,7 +41,7 @@ export default function ContinueChatOfferCard({ astrologer, onContinue, type }: 
           </h3>
           <div className="flex items-center gap-2 mt-1">
             <span className="text-orange-600 font-extrabold text-lg md:text-xl">₹{displayRate}/min</span>
-            <span className="text-gray-400 line-through text-sm">₹{originalRate}/min</span>
+            <span className="text-[#3a1216] line-through text-sm">₹{originalRate}/min</span>
           </div>
           <p className="text-orange-700 font-black text-xs uppercase tracking-widest mt-1">
             One Time Offer

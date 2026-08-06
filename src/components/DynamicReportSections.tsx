@@ -71,7 +71,7 @@ export default function DynamicReportSections({ reportSlug }: DynamicReportSecti
   const SectionHeading = ({ title, sub }: { title: string, sub?: string }) => (
     <div className="text-center mb-8 md:mb-10 px-2">
       <h2 className="premium-serif text-[26px] md:text-[36px] font-bold text-[#5c1a1f] mb-3 md:mb-4 leading-tight">{title}</h2>
-      {sub && <p className="text-gray-800 text-[15px] md:text-[17px] max-w-[560px] mx-auto leading-relaxed">{sub}</p>}
+      {sub && <p className="text-gray-850 text-[15px] md:text-[17px] max-w-[560px] mx-auto leading-relaxed">{sub}</p>}
     </div>
   );
 
@@ -91,7 +91,7 @@ export default function DynamicReportSections({ reportSlug }: DynamicReportSecti
                  <FileText className="w-8 h-8 text-[#5c1a1f]" />
                </div>
                <h3 className="font-bold text-[#5c1a1f] text-lg mb-2">PDF Format</h3>
-               <p className="text-sm text-gray-600 mb-6">Download a high-quality PDF ready for print.</p>
+               <p className="text-sm text-gray-850 mb-6">Download a high-quality PDF ready for print.</p>
                <img src="/images/kundali-pdf-mockup.webp" alt="PDF Preview" className="w-full max-w-[200px] h-auto mx-auto rounded drop-shadow-md bg-gray-100 min-h-[150px] object-cover" onError={(e) => { e.currentTarget.src = 'https://placehold.co/400x500/f8f9fa/333333?text=PDF+Preview' }} />
             </div>
             
@@ -100,7 +100,7 @@ export default function DynamicReportSections({ reportSlug }: DynamicReportSecti
                  <svg className="w-8 h-8 text-[#5c1a1f]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
                </div>
                <h3 className="font-bold text-[#5c1a1f] text-lg mb-2">Mobile View</h3>
-               <p className="text-sm text-gray-600 mb-6">Read your report seamlessly on any smartphone.</p>
+               <p className="text-sm text-gray-850 mb-6">Read your report seamlessly on any smartphone.</p>
                <img src="/images/kundali-mobile-mockup.webp" alt="Mobile Preview" className="w-full max-w-[150px] h-auto mx-auto rounded-3xl drop-shadow-lg border-[4px] border-gray-800 bg-gray-100 min-h-[250px] object-cover" onError={(e) => { e.currentTarget.src = 'https://placehold.co/300x600/f8f9fa/333333?text=Mobile+View' }} />
             </div>
 
@@ -109,7 +109,7 @@ export default function DynamicReportSections({ reportSlug }: DynamicReportSecti
                  <svg className="w-8 h-8 text-[#5c1a1f]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                </div>
                <h3 className="font-bold text-[#5c1a1f] text-lg mb-2">Desktop View</h3>
-               <p className="text-sm text-gray-600 mb-6">Explore interactive charts on the web portal.</p>
+               <p className="text-sm text-gray-850 mb-6">Explore interactive charts on the web portal.</p>
                <img src="/images/kundali-desktop-mockup.webp" alt="Desktop Preview" className="w-full max-w-[280px] h-auto mx-auto rounded-lg drop-shadow-md border-2 border-gray-200 bg-gray-100 min-h-[160px] object-cover" onError={(e) => { e.currentTarget.src = 'https://placehold.co/600x400/f8f9fa/333333?text=Desktop+View' }} />
             </div>
           </div>
@@ -142,7 +142,7 @@ export default function DynamicReportSections({ reportSlug }: DynamicReportSecti
           {/* Screenshot Gallery */}
           <div className="text-center mb-8">
              <h3 className="text-xl font-bold text-[#5c1a1f] mb-2">A Glimpse Inside</h3>
-             <p className="text-sm text-gray-600">Swipe to view actual pages from the report.</p>
+             <p className="text-sm text-gray-850">Swipe to view actual pages from the report.</p>
           </div>
           <div className="flex overflow-x-auto gap-4 pb-8 snap-x scrollbar-hide justify-start md:justify-center">
              {screenshots.map((shot: any, idx: number) => (

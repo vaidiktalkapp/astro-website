@@ -56,7 +56,7 @@ const ZodiacResult: React.FC<ZodiacResultProps> = ({ data, onBack, onPeriodChang
                 <motion.button
                     onClick={onBack}
                     whileHover={{ x: -4 }}
-                    className="flex items-center gap-2 text-gray-400 hover:text-[#b8962e] text-[13px] font-semibold transition-all group"
+                    className="flex items-center gap-2 text-[#3a1216] hover:text-[#b8962e] text-[13px] font-semibold transition-all group"
                 >
                     <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                     <span>Back</span>
@@ -69,7 +69,7 @@ const ZodiacResult: React.FC<ZodiacResultProps> = ({ data, onBack, onPeriodChang
                         className={`px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
                             data.period.toLowerCase() === 'daily'
                                 ? 'bg-[#b8962e] text-white shadow-sm'
-                                : 'text-gray-500 hover:text-[#b8962e]'
+                                : 'text-gray-850 hover:text-[#b8962e]'
                         }`}
                     >
                         Daily
@@ -79,7 +79,7 @@ const ZodiacResult: React.FC<ZodiacResultProps> = ({ data, onBack, onPeriodChang
                         className={`px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
                             data.period.toLowerCase() === 'tomorrow'
                                 ? 'bg-[#b8962e] text-white shadow-sm'
-                                : 'text-gray-500 hover:text-[#b8962e]'
+                                : 'text-gray-850 hover:text-[#b8962e]'
                         }`}
                     >
                         Tomorrow
@@ -89,7 +89,7 @@ const ZodiacResult: React.FC<ZodiacResultProps> = ({ data, onBack, onPeriodChang
                         className={`px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
                             data.period.toLowerCase() === 'weekly'
                                 ? 'bg-[#b8962e] text-white shadow-sm'
-                                : 'text-gray-500 hover:text-[#b8962e]'
+                                : 'text-gray-850 hover:text-[#b8962e]'
                         }`}
                     >
                         Weekly
@@ -176,7 +176,7 @@ const ZodiacResult: React.FC<ZodiacResultProps> = ({ data, onBack, onPeriodChang
                                     {section.title}
                                 </h2>
                             </div>
-                            <p className="text-[14px] text-gray-600 leading-relaxed">
+                            <p className="text-[14px] text-gray-850 leading-relaxed">
                                 {section.content}
                             </p>
                         </motion.section>
@@ -195,7 +195,7 @@ const ZodiacResult: React.FC<ZodiacResultProps> = ({ data, onBack, onPeriodChang
                                 <div className="w-3.5 h-3.5 rounded-full" style={{ backgroundColor: data.luckyElements.color?.toLowerCase() }} />
                             </div>
                             <div>
-                                <p className="text-[9px] font-bold uppercase tracking-widest text-gray-400 mb-0.5">Lucky Color</p>
+                                <p className="text-[9px] font-bold uppercase tracking-widest text-[#3a1216] mb-0.5">Lucky Color</p>
                                 <p className="text-[13px] font-semibold text-gray-900">{data.luckyElements.color}</p>
                             </div>
                         </div>
@@ -205,7 +205,7 @@ const ZodiacResult: React.FC<ZodiacResultProps> = ({ data, onBack, onPeriodChang
                                 <Clock className="w-3.5 h-3.5 text-[#b8962e]" />
                             </div>
                             <div>
-                                <p className="text-[9px] font-bold uppercase tracking-widest text-gray-400 mb-0.5">Divine Timing</p>
+                                <p className="text-[9px] font-bold uppercase tracking-widest text-[#3a1216] mb-0.5">Divine Timing</p>
                                 <p className="text-[13px] font-semibold text-gray-900">{data.luckyElements.time}</p>
                             </div>
                         </div>
@@ -215,7 +215,7 @@ const ZodiacResult: React.FC<ZodiacResultProps> = ({ data, onBack, onPeriodChang
                                 <Star className="w-3.5 h-3.5 text-rose-400 fill-rose-200" />
                             </div>
                             <div>
-                                <p className="text-[9px] font-bold uppercase tracking-widest text-gray-400 mb-0.5">Destiny Number</p>
+                                <p className="text-[9px] font-bold uppercase tracking-widest text-[#3a1216] mb-0.5">Destiny Number</p>
                                 <p className="text-[13px] font-semibold text-gray-900">{data.luckyElements.number}</p>
                             </div>
                         </div>
@@ -237,13 +237,13 @@ const ZodiacResult: React.FC<ZodiacResultProps> = ({ data, onBack, onPeriodChang
                         <div className="border border-[#d6c89a] rounded-2xl p-8 md:p-10 bg-transparent transition-all">
                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                                 <div className="lg:col-span-2 space-y-6">
-                                    <p className="text-lg text-gray-700 leading-relaxed serif">
+                                    <p className="text-lg text-gray-850 leading-relaxed serif">
                                         {data.profile.lovePersonality}
                                     </p>
                                     
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-[#d6c89a]/20">
                                         <div className="space-y-4">
-                                            <h4 className="text-[11px] font-bold uppercase tracking-widest text-gray-400">Core Strengths</h4>
+                                            <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#3a1216]">Core Strengths</h4>
                                             <div className="flex flex-wrap gap-2">
                                                 {data.profile.strengths?.map(s => (
                                                     <span key={s} className="px-3 py-1 rounded-full text-emerald-700 bg-emerald-50/30 text-[10px] font-bold uppercase tracking-tighter border border-emerald-100/50">{s}</span>
@@ -251,7 +251,7 @@ const ZodiacResult: React.FC<ZodiacResultProps> = ({ data, onBack, onPeriodChang
                                             </div>
                                         </div>
                                         <div className="space-y-4">
-                                            <h4 className="text-[11px] font-bold uppercase tracking-widest text-gray-400">Shadow Traits</h4>
+                                            <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#3a1216]">Shadow Traits</h4>
                                             <div className="flex flex-wrap gap-2">
                                                 {data.profile.weaknesses?.map(w => (
                                                     <span key={w} className="px-3 py-1 rounded-full text-rose-700 bg-rose-50/30 text-[10px] font-bold uppercase tracking-tighter border border-rose-100/50">{w}</span>
@@ -266,7 +266,7 @@ const ZodiacResult: React.FC<ZodiacResultProps> = ({ data, onBack, onPeriodChang
                                         <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#b8962e] mb-4 flex items-center gap-2">
                                             <Star className="w-3 h-3" /> Celestial Essence
                                         </h4>
-                                        <p className="text-sm text-gray-600 font-medium leading-relaxed serif">
+                                        <p className="text-sm text-gray-850 font-medium leading-relaxed serif">
                                             {data.profile.elementInfo}
                                         </p>
                                     </div>
@@ -277,7 +277,7 @@ const ZodiacResult: React.FC<ZodiacResultProps> = ({ data, onBack, onPeriodChang
                                         </h4>
                                         <div className="flex flex-wrap gap-2">
                                             {data.profile.compatibility?.map(c => (
-                                                <span key={c} className="text-[11px] font-bold uppercase tracking-tighter text-gray-700 border border-[#d6c89a]/40 px-3 py-1.5 rounded-lg">{c}</span>
+                                                <span key={c} className="text-[11px] font-bold uppercase tracking-tighter text-gray-850 border border-[#d6c89a]/40 px-3 py-1.5 rounded-lg">{c}</span>
                                             ))}
                                         </div>
                                     </div>

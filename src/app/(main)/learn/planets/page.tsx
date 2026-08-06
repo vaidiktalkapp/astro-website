@@ -58,7 +58,7 @@ export default function PlanetLibrary() {
                         <h1 className="text-4xl md:text-6xl font-bold text-gray-900 serif leading-tight">
 {t("planets.the_celestial_library")}
             </h1>
-                        <p className="text-base text-gray-500 max-w-2xl mx-auto font-medium leading-relaxed opacity-80">
+                        <p className="text-base text-gray-850 max-w-2xl mx-auto font-medium leading-relaxed opacity-80">
 {t("planets._the_nine_planets_are_the_admi")}
             </p>
                     </motion.div>
@@ -70,11 +70,11 @@ export default function PlanetLibrary() {
             transition={{ delay: 0.1 }}
             className="bg-white rounded-2xl border border-[#e8dbb8]/50 shadow-sm p-8 mb-10 text-left">
             
-                        <p className="text-[15px] text-gray-700 leading-relaxed serif">
+                        <p className="text-[15px] text-gray-850 leading-relaxed serif">
 {t("planets.in_vedic_astrology_the_nine_pl")}<strong>{t("planets._navagrahas")}</strong>{t("planets.are_not_just_celestial_bodies")}
 
             </p>
-                        <p className="text-[15px] text-gray-700 leading-relaxed serif mt-4">
+                        <p className="text-[15px] text-gray-850 leading-relaxed serif mt-4">
 {t("planets.understanding_these_planets_is")}
 
             </p>
@@ -95,7 +95,7 @@ export default function PlanetLibrary() {
             <div className="flex items-center justify-center py-16">
                                 <div className="animate-pulse flex flex-col items-center gap-3">
                                     <Globe className="w-10 h-10 text-[#b8962e] opacity-20" />
-                                    <span className="text-xs text-gray-400 uppercase tracking-widest font-bold">{t("planets.summoning_cosmic_data")}</span>
+                                    <span className="text-xs text-[#3a1216] uppercase tracking-widest font-bold">{t("planets.summoning_cosmic_data")}</span>
                                 </div>
                             </div> :
 
@@ -147,11 +147,11 @@ export default function PlanetLibrary() {
             transition={{ delay: 0.3 }}
             className="bg-white rounded-2xl border border-[#e8dbb8]/50 shadow-sm p-8 mb-10">
             
-                        <p className="text-[14px] text-gray-600 leading-relaxed serif">
+                        <p className="text-[14px] text-gray-850 leading-relaxed serif">
 {t("planets.in_vedic_astrology_the_nine_pl")}<strong>{t("planets._navagrahas")}</strong>{t("planets.are_not_just_celestial_bodies")}
 
             </p>
-                        <p className="text-[14px] text-gray-600 leading-relaxed serif mt-4">
+                        <p className="text-[14px] text-gray-850 leading-relaxed serif mt-4">
 {t("planets.understanding_the_planets_is_t")}
 
             </p>
@@ -173,7 +173,7 @@ export default function PlanetLibrary() {
                                 </div>
                                 <div className="text-left">
                                     <h3 className="text-xl font-bold serif">{t("planets.back_to_astrology_lessons")}</h3>
-                                    <p className="text-sm text-gray-400 font-medium mt-1">{t("planets.continue_your_sequential_learn")}</p>
+                                    <p className="text-sm text-[#3a1216] font-medium mt-1">{t("planets.continue_your_sequential_learn")}</p>
                                 </div>
                             </div>
                             <ArrowRight className="w-6 h-6 text-[#b8962e] group-hover:translate-x-2 transition-transform" />

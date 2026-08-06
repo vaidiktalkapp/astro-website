@@ -64,7 +64,7 @@ export default function KundliHistoryPage() {
                             <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight mb-1">
 {t("history.kundali_results")}
               </h1>
-                            <p className="text-gray-500 text-sm">
+                            <p className="text-gray-850 text-sm">
 {t("history.view_and_manage_your_previousl")}
               </p>
                         </div>
@@ -132,11 +132,11 @@ export default function KundliHistoryPage() {
 
                                 {/* Card body */}
                                 <div className="px-4 py-3 space-y-2">
-                                    <div className="flex items-center gap-2 text-gray-500">
+                                    <div className="flex items-center gap-2 text-gray-850">
                                         <Calendar className="w-3.5 h-3.5 flex-shrink-0" style={{ color: '#b8962e' }} />
                                         <span className="text-[12px] font-medium">{item?.input?.date || t("history.no_date")}</span>
                                     </div>
-                                    <div className="flex items-center gap-2 text-gray-500">
+                                    <div className="flex items-center gap-2 text-gray-850">
                                         <MapPin className="w-3.5 h-3.5 flex-shrink-0" style={{ color: '#b8962e' }} />
                                         <span className="text-[12px] font-medium truncate">{item?.input?.place || t("history.no_place")}</span>
                                     </div>
@@ -144,10 +144,10 @@ export default function KundliHistoryPage() {
 
                                 {/* Card footer */}
                                 <div className="px-4 py-2.5 border-t border-[#e9ddb8] flex items-center justify-between">
-                                    <span className="kh-card-label text-[11px] font-semibold uppercase tracking-wider text-gray-400 transition-colors">
+                                    <span className="kh-card-label text-[11px] font-semibold uppercase tracking-wider text-[#3a1216] transition-colors">
 {t("history.view_detail")}
               </span>
-                                    <ChevronRight className="kh-card-arrow w-3.5 h-3.5 text-gray-300 transition-all" />
+                                    <ChevronRight className="kh-card-arrow w-3.5 h-3.5 text-[#3a1216] transition-all" />
                                 </div>
                             </motion.div>
           )}
@@ -167,7 +167,7 @@ export default function KundliHistoryPage() {
                         <h3 className="text-xl font-semibold text-gray-900 mb-2">
                             {searchQuery ? t("history.no_matching_records") : t("history.no_charts_yet")}
                         </h3>
-                        <p className="text-gray-400 text-sm max-w-sm mx-auto mb-7 leading-relaxed">
+                        <p className="text-[#3a1216] text-sm max-w-sm mx-auto mb-7 leading-relaxed">
                             {searchQuery ?
             t("history.no_results_matched_your_search") :
             t("history.you_haven_t_generated_any_birt")}

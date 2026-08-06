@@ -36,7 +36,7 @@ const KundliResult = ({ data, onBack, onNew, hideHeader = false }: KundliResultP
             <div className="flex flex-col items-center justify-center min-h-[60vh] text-center p-10 rounded-xl border border-[#d6c89a]" style={{ background: '#fffdf5' }}>
                 <div className="w-10 h-10 border-2 border-t-transparent rounded-full animate-spin mb-4" style={{ borderColor: '#b8962e', borderTopColor: 'transparent' }} />
                 <h3 className="text-[15px] font-semibold text-gray-900">Synchronizing with Stars</h3>
-                <p className="text-sm text-gray-600 font-medium mt-1">Connecting to the celestial bridge. Please wait...</p>
+                <p className="text-sm text-gray-850 font-medium mt-1">Connecting to the celestial bridge. Please wait...</p>
                 <button onClick={onBack} className="mt-6 px-6 py-2.5 rounded-lg text-white text-[13px] font-semibold" style={{ background: '#b8962e' }}>Go Back</button>
             </div>
         );
@@ -88,7 +88,7 @@ const KundliResult = ({ data, onBack, onNew, hideHeader = false }: KundliResultP
                     <div className="flex items-center gap-3">
                         <button
                             onClick={onBack}
-                            className="p-2.5 rounded-lg border border-[#d6c89a] text-gray-500 hover:text-[#b8962e] hover:bg-[#f5e9c8] transition-all"
+                            className="p-2.5 rounded-lg border border-[#d6c89a] text-gray-850 hover:text-[#b8962e] hover:bg-[#f5e9c8] transition-all"
                         >
                             <ArrowLeft className="w-4 h-4" />
                         </button>
@@ -102,13 +102,13 @@ const KundliResult = ({ data, onBack, onNew, hideHeader = false }: KundliResultP
                     <div className="flex items-center gap-2 flex-wrap">
                         <button
                             onClick={() => router.push('/kundli/history')}
-                            className="flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[#d6c89a] text-[12px] font-bold text-gray-800 hover:bg-[#f5e9c8] transition-all"
+                            className="flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[#d6c89a] text-[12px] font-bold text-gray-850 hover:bg-[#f5e9c8] transition-all"
                         >
                             <History className="w-3.5 h-3.5" /> History
                         </button>
                         <button
                             onClick={onNew}
-                            className="px-4 py-2 rounded-lg border border-[#d6c89a] text-[12px] font-bold text-gray-800 hover:bg-[#f5e9c8] transition-all"
+                            className="px-4 py-2 rounded-lg border border-[#d6c89a] text-[12px] font-bold text-gray-850 hover:bg-[#f5e9c8] transition-all"
                         >
                             New Chart
                         </button>
@@ -247,7 +247,7 @@ const KundliResult = ({ data, onBack, onNew, hideHeader = false }: KundliResultP
                                 <div className="p-5 rounded-xl border border-[#d6c89a] text-center" style={{ background: 'rgba(184,150,46,0.05)' }}>
                                     <p className="text-[10px] font-semibold uppercase tracking-widest mb-1" style={{ color: '#b8962e' }}>Current Active Dasha</p>
                                     <p className="text-[17px] font-semibold text-gray-900">{dasha?.mahadasha?.lord || 'N/A'}</p>
-                                    <p className="text-[11px] text-gray-600 font-medium mt-0.5">Recalculate to see full timeline</p>
+                                    <p className="text-[11px] text-gray-850 font-medium mt-0.5">Recalculate to see full timeline</p>
                                 </div>
                             )}
                         </div>

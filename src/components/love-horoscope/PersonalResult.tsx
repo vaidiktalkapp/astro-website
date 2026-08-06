@@ -71,7 +71,7 @@ const PersonalResult: React.FC<PersonalResultProps> = ({ data, onBack, onReset }
                 <motion.button
                     onClick={onBack}
                     whileHover={{ x: -4 }}
-                    className="flex items-center gap-2 text-gray-400 hover:text-[#b8962e] text-[13px] font-semibold transition-all group"
+                    className="flex items-center gap-2 text-[#3a1216] hover:text-[#b8962e] text-[13px] font-semibold transition-all group"
                 >
                     <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                     <span>Back</span>
@@ -79,7 +79,7 @@ const PersonalResult: React.FC<PersonalResultProps> = ({ data, onBack, onReset }
                 <div className="flex items-center gap-3">
                     <motion.button
                         onClick={onReset}
-                        className="text-[13px] font-semibold text-gray-400 hover:text-rose-500 transition-colors"
+                        className="text-[13px] font-semibold text-[#3a1216] hover:text-rose-500 transition-colors"
                     >
                         Reset Analysis
                     </motion.button>
@@ -113,7 +113,7 @@ const PersonalResult: React.FC<PersonalResultProps> = ({ data, onBack, onReset }
                     </h1>
 
                     {/* Description — normal weight, not italic, smaller */}
-                    <p className="text-[15px] text-gray-600 leading-relaxed max-w-2xl mb-8">
+                    <p className="text-[15px] text-gray-850 leading-relaxed max-w-2xl mb-8">
                         {data.romanticArchetype.description}
                     </p>
 
@@ -153,7 +153,7 @@ const PersonalResult: React.FC<PersonalResultProps> = ({ data, onBack, onReset }
                                     </h3>
                                 </div>
                                 {/* Body — plain, clear, readable */}
-                                <p className="text-[14px] text-gray-600 leading-relaxed">
+                                <p className="text-[14px] text-gray-850 leading-relaxed">
                                     {section.content}
                                 </p>
                             </motion.div>
@@ -200,7 +200,7 @@ const PersonalResult: React.FC<PersonalResultProps> = ({ data, onBack, onReset }
                                 When will union manifest?
                             </h5>
                             {/* Timing text — not italic, just a left border */}
-                            <p className="text-[13px] text-gray-600 leading-relaxed border-l-2 border-[#d6c89a] pl-3">
+                            <p className="text-[13px] text-gray-850 leading-relaxed border-l-2 border-[#d6c89a] pl-3">
                                 {data.timingInsight}
                             </p>
                         </motion.div>
@@ -210,7 +210,7 @@ const PersonalResult: React.FC<PersonalResultProps> = ({ data, onBack, onReset }
                             <p className="text-[#b8962e] text-[10px] font-bold uppercase tracking-[0.2em] mb-1.5">
                                 Primary Connection
                             </p>
-                            <p className="text-[14px] text-gray-800 font-semibold">
+                            <p className="text-[14px] text-gray-850 font-semibold">
                                 {data.loveLanguage}
                             </p>
                         </div>
@@ -233,7 +233,7 @@ function PlacementBox({ icon: Icon, label, value, sub, customSpan = "" }: any) {
     return (
         <div className={`flex flex-col items-center p-3 rounded-xl border border-[#d6c89a] bg-transparent text-center ${customSpan}`}>
             <Icon className="w-3.5 h-3.5 text-[#b8962e] mb-1.5" />
-            <p className="text-[9px] font-bold tracking-widest uppercase text-gray-400 mb-0.5">{label}</p>
+            <p className="text-[9px] font-bold tracking-widest uppercase text-[#3a1216] mb-0.5">{label}</p>
             <p className="text-[12px] font-semibold text-gray-900 leading-tight">{value}</p>
             <p className="text-[9px] font-medium text-[#b8962e]/60 uppercase tracking-wide mt-0.5">{sub}</p>
         </div>

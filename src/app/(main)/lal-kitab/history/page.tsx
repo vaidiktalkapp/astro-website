@@ -122,7 +122,7 @@ export default function LalKitabHistoryPage() {
                             <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight mb-1 text-left">
 {t("history.saved_calculations")}
               </h1>
-                            <p className="text-gray-500 text-sm text-left">
+                            <p className="text-gray-850 text-sm text-left">
 {t("history.access_your_previously_generat")}
               </p>
                         </div>
@@ -190,13 +190,13 @@ export default function LalKitabHistoryPage() {
 
                                 {/* Card body */}
                                 <div className="px-4 py-3 space-y-2 text-left">
-                                    <div className="flex items-center gap-2 text-gray-500">
+                                    <div className="flex items-center gap-2 text-gray-850">
                                         <Calendar className="w-3.5 h-3.5 flex-shrink-0" style={{ color: '#b8962e' }} />
                                         <span className="text-[12px] font-medium">
                                             {item.timestamp ? new Date(item.timestamp).toLocaleDateString() : 'Unknown Date'}
                                         </span>
                                     </div>
-                                    <div className="flex items-center gap-2 text-gray-500">
+                                    <div className="flex items-center gap-2 text-gray-850">
                                         <MapPin className="w-3.5 h-3.5 flex-shrink-0" style={{ color: '#b8962e' }} />
                                         <span className="text-[12px] font-medium truncate">
                                             {item.input?.place || 'Unknown Place'}
@@ -206,10 +206,10 @@ export default function LalKitabHistoryPage() {
 
                                 {/* Card footer */}
                                 <div className="px-4 py-2.5 border-t border-[#e9ddb8] flex items-center justify-between">
-                                    <span className="kh-card-label text-[11px] font-semibold uppercase tracking-wider text-gray-400 transition-colors">
+                                    <span className="kh-card-label text-[11px] font-semibold uppercase tracking-wider text-[#3a1216] transition-colors">
 {t("history.view_result")}
               </span>
-                                    <ChevronRight className="kh-card-arrow w-3.5 h-3.5 text-gray-300 transition-all" />
+                                    <ChevronRight className="kh-card-arrow w-3.5 h-3.5 text-[#3a1216] transition-all" />
                                 </div>
                             </motion.div>
           )}
@@ -229,7 +229,7 @@ export default function LalKitabHistoryPage() {
                         <h3 className="text-xl font-semibold text-gray-900 mb-2">
                             {searchQuery ? 'No Matching Records' : 'No Records Yet'}
                         </h3>
-                        <p className="text-gray-400 text-sm max-w-sm mx-auto mb-7 leading-relaxed font-sans">
+                        <p className="text-[#3a1216] text-sm max-w-sm mx-auto mb-7 leading-relaxed font-sans">
                             {searchQuery ?
             "No records found matching your search term. Try another name." :
             "You haven't generated any Lal Kitab reports yet. Explore ancient remedies starting with your first calculation."}

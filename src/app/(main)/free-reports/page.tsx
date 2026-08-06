@@ -58,13 +58,13 @@ export default function FreeReportsPage() {
                     <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
 {t("free_reports.free_astrology")}<span className="text-[#b8962e]">{t("free_reports.reports")}</span>
                     </h1>
-                    <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-lg text-gray-850 max-w-2xl mx-auto leading-relaxed">
 {t("free_reports.access_our_high_precision_vedi")}
           </p>
                     <div className="flex justify-center gap-4 mt-8">
                         <Link
               href="/free-reports/history"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-white text-gray-700 border border-[#d6c89a] text-[13px] font-bold hover:border-[#b8962e] hover:text-[#b8962e] transition-all shadow-sm">
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-white text-gray-850 border border-[#d6c89a] text-[13px] font-bold hover:border-[#b8962e] hover:text-[#b8962e] transition-all shadow-sm">
               
                             <Clock className="w-4 h-4" />{t("free_reports.my_reports")}
             </Link>
@@ -83,7 +83,7 @@ export default function FreeReportsPage() {
                                 <div className="p-3 rounded-xl bg-[#fdf6e3] group-hover:scale-110 transition-transform duration-300 text-[#b8962e]">
                                     {React.cloneElement(report.icon as React.ReactElement<any>, { className: 'w-6 h-6' })}
                                 </div>
-                                <span className="text-[9px] font-black uppercase tracking-widest bg-white text-gray-400 px-2.5 py-1 rounded-full border border-gray-100">
+                                <span className="text-[9px] font-black uppercase tracking-widest bg-white text-[#3a1216] px-2.5 py-1 rounded-full border border-gray-100">
                                     {report.badge}
                                 </span>
                             </div>
@@ -92,7 +92,7 @@ export default function FreeReportsPage() {
                                 {report.title}
                             </h3>
                             
-                            <p className="text-gray-500 text-[12px] leading-relaxed mb-4">
+                            <p className="text-gray-850 text-[12px] leading-relaxed mb-4">
                                 {report.description}
                             </p>
 
@@ -100,7 +100,7 @@ export default function FreeReportsPage() {
                                 {report.features.map((feature, i) =>
               <div key={i} className="flex items-center gap-2">
                                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
-                                        <span className="text-[11px] text-gray-700">{feature}</span>
+                                        <span className="text-[11px] text-gray-850">{feature}</span>
                                     </div>
               )}
                             </div>
@@ -124,7 +124,7 @@ export default function FreeReportsPage() {
                             <h2 className="text-3xl font-bold text-gray-900 serif mb-4" style={{ fontFamily: 'Roboto, sans-serif' }}>
 {t("free_reports.navigating_the_cosmic_tapestry")}
               </h2>
-                            <p className="text-gray-500 text-[15px] leading-relaxed">
+                            <p className="text-gray-850 text-[15px] leading-relaxed">
 {t("free_reports.our_professional_vedic_reports")}
               </p>
                         </div>
@@ -136,7 +136,7 @@ export default function FreeReportsPage() {
                                     <Shield className="w-6 h-6" />
                                 </div>
                                 <h3 className="text-xl font-bold text-gray-900" style={{ fontFamily: 'Roboto, sans-serif' }}>{t("free_reports.understanding_kaal_sarp")}</h3>
-                                <p className="text-[14px] text-gray-600 leading-relaxed">
+                                <p className="text-[14px] text-gray-850 leading-relaxed">
                                     <span className="text-[#c0392b] font-medium">{t("free_reports.kaal_sarp_dosha")}</span>{t("free_reports.occurs_when_all_seven_planets")}<span className="text-gray-900 font-semibold">{t("free_reports.anant")}</span> or <span className="text-gray-900 font-semibold">{t("free_reports.kulik")}</span>{t("free_reports._allows_for_targeted_remedies")}
                 </p>
                             </div>
@@ -147,7 +147,7 @@ export default function FreeReportsPage() {
                                     <Gem className="w-6 h-6" />
                                 </div>
                                 <h3 className="text-xl font-bold text-gray-900" style={{ fontFamily: 'Roboto, sans-serif' }}>{t("free_reports.the_science_of_gemstones")}</h3>
-                                <p className="text-[14px] text-gray-600 leading-relaxed">
+                                <p className="text-[14px] text-gray-850 leading-relaxed">
 {t("free_reports.every_authentic_gemstone_is_a")}<span className="text-[#c0392b] font-medium">{t("free_reports.storehouse_of_cosmic_energy")}</span>{t("free_reports._when_chosen_correctly_based_o")}<span className="text-gray-900 font-semibold">{t("free_reports.maraka")}</span>{t("free_reports._killer_house_can_be_detriment")}
                 </p>
                             </div>
@@ -158,7 +158,7 @@ export default function FreeReportsPage() {
                                     <Zap className="w-6 h-6" />
                                 </div>
                                 <h3 className="text-xl font-bold text-gray-900" style={{ fontFamily: 'Roboto, sans-serif' }}>{t("free_reports.the_mystery_of_sade_sati")}</h3>
-                                <p className="text-[14px] text-gray-600 leading-relaxed">
+                                <p className="text-[14px] text-gray-850 leading-relaxed">
 {t("free_reports.shani_saturn_is_the")}<span className="text-[#c0392b] font-medium">{t("free_reports.strict_teacher")}</span>{t("free_reports.of_the_zodiac_his_7_5_year_tra")}
                 </p>
                             </div>

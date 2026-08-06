@@ -102,7 +102,7 @@ const ChineseZodiacReading: React.FC<ChineseZodiacReadingProps> = ({ data, onBac
                             className={`px-6 py-2 rounded-lg text-[11px] font-bold uppercase tracking-wider transition-all ${
                                 data.period.toLowerCase() === p
                                     ? 'bg-[#b8962e] text-white shadow-sm'
-                                    : 'text-gray-400 hover:text-[#b8962e]'
+                                    : 'text-[#3a1216] hover:text-[#b8962e]'
                             }`}
                         >
                             {p === 'daily' ? 'Today' : p}
@@ -161,13 +161,13 @@ const ChineseZodiacReading: React.FC<ChineseZodiacReadingProps> = ({ data, onBac
                                 <div className="h-[1px] flex-1 bg-[#d6c89a]/30" />
                             </div>
 
-                            <p className="text-lg md:text-xl text-gray-700 leading-relaxed font-normal">
+                            <p className="text-lg md:text-xl text-gray-850 leading-relaxed font-normal">
                                 {data.prediction}
                             </p>
                             
                             <div className="flex items-center gap-2 pt-4 border-t border-[#d6c89a]/20">
                                 <Sparkles className="w-3.5 h-3.5 text-[#b8962e]" />
-                                <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">{data.vibeScore}% Elemental Qi Alignment</span>
+                                <span className="text-[11px] font-bold text-[#3a1216] uppercase tracking-widest">{data.vibeScore}% Elemental Qi Alignment</span>
                             </div>
                         </div>
                     </div>
@@ -182,8 +182,8 @@ const ChineseZodiacReading: React.FC<ChineseZodiacReadingProps> = ({ data, onBac
                     >
                         <div className="border border-[#d6c89a] rounded-2xl p-6 flex items-center justify-between group bg-transparent">
                              <div>
-                                <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">Lucky Color</p>
-                                <p className="text-lg font-bold text-gray-800">{data.luckyElements.color}</p>
+                                <p className="text-[10px] font-bold uppercase tracking-widest text-[#3a1216] mb-1">Lucky Color</p>
+                                <p className="text-lg font-bold text-gray-850">{data.luckyElements.color}</p>
                              </div>
                              <div className="w-10 h-10 rounded-full border border-[#d6c89a]/30" style={{ backgroundColor: data.luckyElements.color?.toLowerCase().replace(' ', '') || 'gold' }} />
                         </div>
@@ -191,16 +191,16 @@ const ChineseZodiacReading: React.FC<ChineseZodiacReadingProps> = ({ data, onBac
                         <div className="border border-[#d6c89a] rounded-2xl p-6 flex items-center gap-4 bg-transparent">
                             <div className="p-2.5 bg-amber-50/10 rounded-xl text-[#b8962e]"><Clock className="w-5 h-5" /></div>
                             <div>
-                                <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">Auspicious Hour</p>
-                                <p className="text-lg font-bold text-gray-800">{data.luckyElements.time}</p>
+                                <p className="text-[10px] font-bold uppercase tracking-widest text-[#3a1216] mb-1">Auspicious Hour</p>
+                                <p className="text-lg font-bold text-gray-850">{data.luckyElements.time}</p>
                             </div>
                         </div>
 
                         <div className="border border-[#d6c89a] rounded-2xl p-6 flex items-center gap-4 bg-transparent">
                             <div className="p-2.5 bg-amber-50/10 rounded-xl text-[#b8962e]"><Zap className="w-5 h-5" /></div>
                             <div>
-                                <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">Fortune Number</p>
-                                <p className="text-lg font-bold text-gray-800">{data.luckyElements.number}</p>
+                                <p className="text-[10px] font-bold uppercase tracking-widest text-[#3a1216] mb-1">Fortune Number</p>
+                                <p className="text-lg font-bold text-gray-850">{data.luckyElements.number}</p>
                             </div>
                         </div>
                     </motion.div>
@@ -220,13 +220,13 @@ const ChineseZodiacReading: React.FC<ChineseZodiacReadingProps> = ({ data, onBac
                     <div className="border border-[#d6c89a] rounded-2xl p-8 md:p-10 bg-transparent transition-all">
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                             <div className="lg:col-span-2 space-y-6">
-                                <p className="text-lg text-gray-700 leading-relaxed serif">
+                                <p className="text-lg text-gray-850 leading-relaxed serif">
                                     {zodiacData.personality}
                                 </p>
                                 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-[#d6c89a]/20">
                                     <div className="space-y-4">
-                                        <h4 className="text-[11px] font-bold uppercase tracking-widest text-gray-400">Core Strengths</h4>
+                                        <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#3a1216]">Core Strengths</h4>
                                         <div className="flex flex-wrap gap-2">
                                             {zodiacData.strengths.map(s => (
                                                 <span key={s} className="px-3 py-1 rounded-full text-emerald-700 bg-emerald-50/30 text-[10px] font-bold uppercase tracking-tighter border border-emerald-100/50">{s}</span>
@@ -234,7 +234,7 @@ const ChineseZodiacReading: React.FC<ChineseZodiacReadingProps> = ({ data, onBac
                                         </div>
                                     </div>
                                     <div className="space-y-4">
-                                        <h4 className="text-[11px] font-bold uppercase tracking-widest text-gray-400">Shadow Traits</h4>
+                                        <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#3a1216]">Shadow Traits</h4>
                                         <div className="flex flex-wrap gap-2">
                                             {zodiacData.weaknesses.map(w => (
                                                 <span key={w} className="px-3 py-1 rounded-full text-rose-700 bg-rose-50/30 text-[10px] font-bold uppercase tracking-tighter border border-rose-100/50">{w}</span>
@@ -249,7 +249,7 @@ const ChineseZodiacReading: React.FC<ChineseZodiacReadingProps> = ({ data, onBac
                                     <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#b8962e] mb-4 flex items-center gap-2">
                                         <Star className="w-3 h-3" /> Celestial Essence
                                     </h4>
-                                    <p className="text-sm text-gray-600 font-medium leading-relaxed serif">
+                                    <p className="text-sm text-gray-850 font-medium leading-relaxed serif">
                                         {zodiacData.elementInfo}
                                     </p>
                                 </div>
@@ -260,7 +260,7 @@ const ChineseZodiacReading: React.FC<ChineseZodiacReadingProps> = ({ data, onBac
                                     </h4>
                                     <div className="flex flex-wrap gap-2">
                                         {zodiacData.compatibility.map(c => (
-                                            <span key={c} className="text-[11px] font-bold uppercase tracking-tighter text-gray-700 border border-[#d6c89a]/40 px-3 py-1.5 rounded-lg">{c}</span>
+                                            <span key={c} className="text-[11px] font-bold uppercase tracking-tighter text-gray-850 border border-[#d6c89a]/40 px-3 py-1.5 rounded-lg">{c}</span>
                                         ))}
                                     </div>
                                 </div>

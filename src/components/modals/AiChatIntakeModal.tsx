@@ -225,7 +225,7 @@ Occupation: ${intakeData.occupation}`;
                         {/* Header */}
                         <div className="px-6 pt-6 pb-2">
                             <h3 className="text-[22px] font-bold text-gray-900">Share Birth Details</h3>
-                            <p className="text-sm text-gray-500 mt-1 leading-relaxed pr-8">To share it with your astrologer, to save time on consultation</p>
+                            <p className="text-sm text-gray-850 mt-1 leading-relaxed pr-8">To share it with your astrologer, to save time on consultation</p>
                         </div>
 
                         {/* Content */}

@@ -46,7 +46,7 @@ export default function LanguagePage() {
         </div>
         
         <h1 className="serif text-4xl font-semibold text-gray-900 mb-3">{t('language.select_title')}</h1>
-        <p className="text-gray-500 text-lg mb-12 max-w-md mx-auto">{t('language.select_desc')}</p>
+        <p className="text-gray-850 text-lg mb-12 max-w-md mx-auto">{t('language.select_desc')}</p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {langs.map((l) =>
@@ -74,7 +74,7 @@ export default function LanguagePage() {
           )}
         </div>
 
-        <div className="mt-16 flex items-center justify-center gap-2 text-gray-400 text-sm">
+        <div className="mt-16 flex items-center justify-center gap-2 text-[#3a1216] text-sm">
           <Star className="w-4 h-4 fill-amber-200 text-amber-200" />
           <p>{t("language.more_languages_coming_soon")}</p>
         </div>

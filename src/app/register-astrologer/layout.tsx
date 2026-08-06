@@ -33,7 +33,7 @@ export default function AstrologerLayout({
       </main>
 
       {/* Footer */}
-      <footer className="text-center py-6 text-gray-400 text-sm">
+      <footer className="text-center py-6 text-[#3a1216] text-sm">
         &copy; {new Date().getFullYear()} VaidikTalk. All rights reserved.
       </footer>
       

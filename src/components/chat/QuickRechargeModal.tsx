@@ -76,12 +76,12 @@ export default function QuickRechargeModal({
                 <div className="px-6 py-5 border-b border-gray-100 flex items-start justify-between">
                     <div>
                         <h2 className="text-xl font-extrabold text-[#102C57]">Recharge & Continue</h2>
-                        <p className="text-sm text-gray-500 font-medium mt-1">Session with {astrologerName}</p>
+                        <p className="text-sm text-gray-850 font-medium mt-1">Session with {astrologerName}</p>
                     </div>
                     <button
                         onClick={onClose}
                         disabled={isProcessing}
-                        className="p-2 hover:bg-gray-100 rounded-full transition-colors disabled:opacity-50 text-gray-400 hover:text-gray-600"
+                        className="p-2 hover:bg-gray-100 rounded-full transition-colors disabled:opacity-50 text-[#3a1216] hover:text-gray-850"
                     >
                         <X className="w-5 h-5" />
                     </button>
@@ -110,7 +110,7 @@ export default function QuickRechargeModal({
                                         <h3 className="text-lg font-bold text-[#102C57] mb-1">
                                             {mins} Minute{mins > 1 ? 's' : ''}
                                         </h3>
-                                        <p className="text-xs text-gray-500 font-medium">
+                                        <p className="text-xs text-gray-850 font-medium">
                                             Credits: ₹{baseAmount} + GST: ₹{gstAmount}
                                         </p>
                                     </div>
@@ -123,13 +123,13 @@ export default function QuickRechargeModal({
                         })}
                     </div>
 
-                    <p className="text-center text-xs text-gray-400 mt-5 font-medium">
+                    <p className="text-center text-xs text-[#3a1216] mt-5 font-medium">
                         *Prices include 18% GST
                     </p>
                 </div>
 
                 {/* Footer */}
-                <div className="bg-gray-50 py-4 px-6 border-t border-gray-100 flex items-center justify-center gap-2 text-gray-500">
+                <div className="bg-gray-50 py-4 px-6 border-t border-gray-100 flex items-center justify-center gap-2 text-gray-850">
                     <ShieldCheck className="w-4 h-4 text-green-600" />
                     <span className="text-xs font-semibold">Secure Payments by Razorpay</span>
                 </div>

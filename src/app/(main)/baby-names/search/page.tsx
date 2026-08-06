@@ -96,7 +96,7 @@ function SearchContent() {
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2 serif">
                 Search Results for <span className="text-[#b8962e]">&ldquo;{q}&rdquo;</span>
               </h1>
-              <p className="text-gray-500 text-sm">{total} {t("_letter_.names_found")}</p>
+              <p className="text-gray-850 text-sm">{total} {t("_letter_.names_found")}</p>
             </div>
           </div>
 
@@ -142,9 +142,9 @@ function SearchContent() {
                 </motion.div> :
               names.length === 0 ?
               <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
-                  <Baby className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                  <p className="text-gray-500 serif text-lg">{t("_letter_.no_names_found_for_this_select")}</p>
-                  <p className="text-gray-400 text-sm mt-1">Try a different search term or filter.</p>
+                  <Baby className="w-12 h-12 text-[#3a1216] mx-auto mb-4" />
+                  <p className="text-gray-850 serif text-lg">{t("_letter_.no_names_found_for_this_select")}</p>
+                  <p className="text-[#3a1216] text-sm mt-1">Try a different search term or filter.</p>
                 </motion.div> :
 
               <motion.div key="results" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -173,10 +173,10 @@ function SearchContent() {
                             <td className="px-6 py-3 font-bold text-[#b87333] border-r border-[#d6c89a]/10">
                               {item.name}
                             </td>
-                            <td className="px-6 py-3 text-gray-600 border-r border-[#d6c89a]/10">
+                            <td className="px-6 py-3 text-gray-850 border-r border-[#d6c89a]/10">
                               {item.nameLength || item.name.length}
                             </td>
-                            <td className="px-6 py-3 text-gray-600 font-bold border-r border-[#d6c89a]/10">
+                            <td className="px-6 py-3 text-gray-850 font-bold border-r border-[#d6c89a]/10">
                               {item.numerologyNumber || '—'}
                             </td>
                             <td className="px-6 py-3 border-r border-[#d6c89a]/10">
@@ -194,7 +194,7 @@ function SearchContent() {
                             <td className="px-6 py-3 border-r border-[#d6c89a]/10">
                               <span className="text-[10px] text-indigo-500 font-semibold uppercase">{item.nakshatra}</span>
                             </td>
-                            <td className="px-6 py-3 text-gray-500 max-w-xs md:max-w-md">
+                            <td className="px-6 py-3 text-gray-850 max-w-xs md:max-w-md">
                               {item.meaning}
                             </td>
                           </motion.tr>
@@ -206,7 +206,7 @@ function SearchContent() {
                   {/* Pagination */}
                   {totalPages > 1 &&
                 <div className="flex items-center justify-between mt-8 pt-6 border-t border-[#d6c89a]/20">
-                      <p className="text-xs text-gray-400 font-semibold">{t("_letter_.page")} {page} {t("common.upto") || 'of'} {totalPages}</p>
+                      <p className="text-xs text-[#3a1216] font-semibold">{t("_letter_.page")} {page} {t("common.upto") || 'of'} {totalPages}</p>
                       <div className="flex gap-2">
                         <button
                       disabled={page <= 1}

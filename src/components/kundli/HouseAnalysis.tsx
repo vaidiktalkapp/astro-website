@@ -41,7 +41,7 @@ const HouseAnalysis = ({ houses, planets }: HouseAnalysisProps) => {
                             </div>
                         </div>
                         
-                        <p className="text-[12px] font-medium text-gray-700 leading-relaxed mb-4 min-h-[2.5rem]">
+                        <p className="text-[12px] font-medium text-gray-850 leading-relaxed mb-4 min-h-[2.5rem]">
                             {data.theme}
                         </p>
 
@@ -65,7 +65,7 @@ const HouseAnalysis = ({ houses, planets }: HouseAnalysisProps) => {
                                 ))
                             ) : (
                                 <div className="py-2 px-3 bg-gray-50/50 rounded-xl border border-gray-100/50">
-                                    <span className="text-[10px] text-gray-400">This house is empty</span>
+                                    <span className="text-[10px] text-[#3a1216]">This house is empty</span>
                                 </div>
                             )}
                         </div>

@@ -43,7 +43,7 @@ export default function FestivalDetailPage() {
   if (!festival) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-[#fdfaf3]">
-                <h1 className="text-2xl font-bold text-gray-800 mb-4">{t("_slug_.festival_not_found")}</h1>
+                <h1 className="text-2xl font-bold text-gray-850 mb-4">{t("_slug_.festival_not_found")}</h1>
                 <button onClick={() => router.push('/festivals')} className="text-[#b8962e] font-semibold hover:underline flex items-center gap-2">
                     <ArrowLeft className="w-4 h-4" />{t("_slug_.back_to_festivals")}
         </button>
@@ -84,7 +84,7 @@ export default function FestivalDetailPage() {
                 }
                             </div>
                             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">{festival.name}</h1>
-                            <p className="text-lg md:text-xl font-medium text-gray-700 opacity-90 mb-2">
+                            <p className="text-lg md:text-xl font-medium text-gray-850 opacity-90 mb-2">
 {t("_slug_.honoring")}<span className="font-bold">{festival.deity}</span>
                             </p>
                         </div>
@@ -95,7 +95,7 @@ export default function FestivalDetailPage() {
                                     {festDate.getDate()}
                                 </div>
                                 <div>
-                                    <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">{t("_slug_.date")}</p>
+                                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#3a1216]">{t("_slug_.date")}</p>
                                     <p className="text-sm font-bold text-gray-900">{formattedDate}</p>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@ export default function FestivalDetailPage() {
                                     <Clock className="w-4 h-4" />
                                 </div>
                                 <div>
-                                    <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">{t("_slug_.muhurat")}</p>
+                                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#3a1216]">{t("_slug_.muhurat")}</p>
                                     <p className="text-sm font-bold text-gray-900 line-clamp-1">{festival.muhurat.split(':')[0]}</p>
                                 </div>
                             </div>
@@ -123,7 +123,7 @@ export default function FestivalDetailPage() {
                             <h2 className="text-2xl font-bold text-gray-900 mb-4 serif flex items-center gap-2">
                                 <BookOpen className="w-6 h-6 text-[#b8962e]" />{t("_slug_.significance")}
               </h2>
-                            <div className="prose prose-lg text-gray-600 font-medium leading-relaxed">
+                            <div className="prose prose-lg text-gray-850 font-medium leading-relaxed">
                                 <p>{festival.description}</p>
                                 <p className="mt-4">
 {t("_slug_.vedic_astrology_and_panchang_p")}{festival.deity}.
@@ -139,10 +139,10 @@ export default function FestivalDetailPage() {
                                 <ul className="space-y-4">
                                     {festival.rituals.map((ritual, idx) =>
                   <li key={idx} className="flex items-start gap-4">
-                                            <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-gray-100 text-sm font-bold text-gray-500 mt-0.5">
+                                            <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-gray-100 text-sm font-bold text-gray-850 mt-0.5">
                                                 {idx + 1}
                                             </div>
-                                            <p className="text-gray-700 font-medium pt-1">{ritual}</p>
+                                            <p className="text-gray-850 font-medium pt-1">{ritual}</p>
                                         </li>
                   )}
                                 </ul>
@@ -160,22 +160,22 @@ export default function FestivalDetailPage() {
                             </div>
                             <div className="p-6 space-y-6">
                                 <div>
-                                    <p className="text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-1">{t("_slug_.tithi_lunar_day")}</p>
+                                    <p className="text-[11px] font-bold uppercase tracking-wider text-[#3a1216] mb-1">{t("_slug_.tithi_lunar_day")}</p>
                                     <p className="text-base font-bold text-gray-900">{festival.tithi}</p>
                                 </div>
                                 <div>
-                                    <p className="text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-1">{t("_slug_.hindu_month")}</p>
+                                    <p className="text-[11px] font-bold uppercase tracking-wider text-[#3a1216] mb-1">{t("_slug_.hindu_month")}</p>
                                     <p className="text-base font-bold text-gray-900">{festival.month}</p>
                                 </div>
                                 <div>
-                                    <p className="text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-1">{t("_slug_.detailed_muhurat")}</p>
-                                    <p className="text-sm font-semibold text-gray-700 leading-snug">{festival.muhurat}</p>
+                                    <p className="text-[11px] font-bold uppercase tracking-wider text-[#3a1216] mb-1">{t("_slug_.detailed_muhurat")}</p>
+                                    <p className="text-sm font-semibold text-gray-850 leading-snug">{festival.muhurat}</p>
                                 </div>
                                 
                                 {festival.endDate &&
                 <div className="pt-4 border-t border-gray-100">
-                                        <p className="text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-1">{t("_slug_.concludes_on")}</p>
-                                        <p className="text-sm font-semibold text-gray-700">{new Date(festival.endDate).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</p>
+                                        <p className="text-[11px] font-bold uppercase tracking-wider text-[#3a1216] mb-1">{t("_slug_.concludes_on")}</p>
+                                        <p className="text-sm font-semibold text-gray-850">{new Date(festival.endDate).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</p>
                                     </div>
                 }
                             </div>

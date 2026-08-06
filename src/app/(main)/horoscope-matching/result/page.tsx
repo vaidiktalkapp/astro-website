@@ -84,8 +84,8 @@ export default function ResultPage() {
     return (
       <div className="min-h-screen bg-rose-50 flex flex-col items-center justify-center p-4">
                 <div className="w-16 h-16 border-4 border-rose-200 border-t-rose-500 rounded-full animate-spin mb-4"></div>
-                <h2 className="text-xl font-black uppercase tracking-widest text-gray-800">{t("result.calculating_match")}</h2>
-                <p className="text-gray-700 text-sm mt-2">{t("result.analyzing_36_gunas_and_planeta")}</p>
+                <h2 className="text-xl font-black uppercase tracking-widest text-gray-850">{t("result.calculating_match")}</h2>
+                <p className="text-gray-850 text-sm mt-2">{t("result.analyzing_36_gunas_and_planeta")}</p>
             </div>);
 
   }
@@ -98,7 +98,7 @@ export default function ResultPage() {
                         <AlertCircle className="w-8 h-8 text-red-500" />
                     </div>
                     <h2 className="text-xl font-bold text-gray-900 mb-2">{t("result.calculation_failed")}</h2>
-                    <p className="text-gray-700 mb-6">{error}</p>
+                    <p className="text-gray-850 mb-6">{error}</p>
                     <button onClick={() => router.push('/horoscope-matching')} className="px-6 py-2 bg-rose-500 text-white rounded-xl font-bold">{t("result.try_again")}</button>
                 </div>
             </div>);
@@ -200,7 +200,7 @@ export default function ResultPage() {
                         <h2 className="text-lg font-bold text-amber-900">{t("result.birth_details_of_boy_and_girl")}</h2>
                     </div>
                     <div className="overflow-x-auto">
-                        <table className="w-full text-left text-sm text-gray-700 font-medium whitespace-nowrap">
+                        <table className="w-full text-left text-sm text-gray-850 font-medium whitespace-nowrap">
                             <thead className="bg-white border-b border-gray-100 text-amber-900">
                                 <tr>
                                     <th className="px-6 py-4"></th>
@@ -212,7 +212,7 @@ export default function ResultPage() {
                                     <th className="px-6 py-4">{t("result.time_zone")}</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-gray-50 text-gray-800">
+                            <tbody className="divide-y divide-gray-50 text-gray-850">
                                 <tr className="border-b border-gray-50 hover:bg-orange-50/20">
                                     <td className="px-6 py-4 font-black text-gray-900">{t("result.boy")}</td>
                                     <td className="px-6 py-4">{boy.name}</td>
@@ -244,7 +244,7 @@ export default function ResultPage() {
                         </h2>
                     </div>
                     <div className="overflow-x-auto">
-                        <table className="w-full text-left text-sm text-gray-700 font-medium whitespace-nowrap">
+                        <table className="w-full text-left text-sm text-gray-850 font-medium whitespace-nowrap">
                             <thead className="bg-white border-b border-gray-100 text-amber-900">
                                 <tr>
                                     <th className="px-6 py-4">{t("result.guna")}</th>
@@ -255,7 +255,7 @@ export default function ResultPage() {
                                     <th className="px-6 py-4">{t("result.area_of_life")}</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-gray-50 text-gray-800">
+                            <tbody className="divide-y divide-gray-50 text-gray-850">
                                 {kootData.map((row) =>
                 <tr key={row.name} className="hover:bg-orange-50/20">
                                         <td className="px-6 py-3 font-bold text-rose-600">{row.name}</td>
@@ -287,7 +287,7 @@ export default function ResultPage() {
                     <div className="md:col-span-3 bg-white rounded-3xl shadow-sm border border-orange-100 p-8 space-y-4">
                         <h3 className="text-xl font-black text-amber-900 mb-6">{t("result.match_conclusion")}</h3>
                         
-                        <div className="space-y-3 font-medium text-gray-700">
+                        <div className="space-y-3 font-medium text-gray-850">
                             <p className="flex items-start gap-3">
                                 <span className="w-1.5 h-1.5 rounded-full bg-rose-500 mt-2"></span>
                                 <span>{isSouth ? "Dashakoot" : "Ashtakoot"}{t("result.matching_between")}<b>{boy.name}</b>{t("result.and")}<b>{girl.name}</b>{t("result.scored_exactly")}<strong className="text-xl text-rose-600">{total} / 36</strong>{t("result.points")}</span>

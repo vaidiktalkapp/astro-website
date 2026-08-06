@@ -304,7 +304,7 @@ export default function NumerologyPage() {
                         <Crown className="w-4 h-4" />
                     </motion.div>
                     <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{t("numerology.numerology_calculator")}</h1>
-                    <p className="text-gray-500 text-base max-w-xl mx-auto font-medium leading-relaxed">{t("numerology.discover_the_vibrational_secre")}</p>
+                    <p className="text-gray-850 text-base max-w-xl mx-auto font-medium leading-relaxed">{t("numerology.discover_the_vibrational_secre")}</p>
                 </div>
 
                 {/* Input Form */}
@@ -385,7 +385,7 @@ export default function NumerologyPage() {
               <div key={i} className="bg-white border border-gray-100 rounded-xl p-6 text-center shadow-sm relative overflow-hidden">
                                         <div className="absolute top-0 left-0 w-full h-1" style={{ backgroundColor: box.color }} />
                                         <div className="text-5xl font-bold mb-2" style={{ color: box.color }}>{box.num}</div>
-                                        <div className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">{box.title}</div>
+                                        <div className="text-[11px] font-bold text-[#3a1216] uppercase tracking-widest">{box.title}</div>
                                     </div>
               )}
                             </div>
@@ -407,13 +407,13 @@ export default function NumerologyPage() {
               { label: 'Fast', value: NUM_DATA[result.moolaank]?.fast, color: 'text-gray-900' }].
               map((item, i) =>
               <div key={i} className="bg-white p-6 flex flex-col justify-center">
-                                        <p className="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400 mb-1">{item.label}</p>
+                                        <p className="text-[10px] font-black uppercase tracking-[0.15em] text-[#3a1216] mb-1">{item.label}</p>
                                         <p className={`text-lg font-bold ${item.color} leading-tight`}>{item.value}</p>
                                     </div>
               )}
                                 {/* Full Width Bottom Row */}
                                 <div className="bg-white p-6 md:col-span-2 border-t border-gray-100">
-                                    <p className="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400 mb-1">{t("numerology.favourable_date_s")}</p>
+                                    <p className="text-[10px] font-black uppercase tracking-[0.15em] text-[#3a1216] mb-1">{t("numerology.favourable_date_s")}</p>
                                     <p className="text-lg font-bold text-gray-900">{NUM_DATA[result.moolaank]?.dates}</p>
                                 </div>
                             </div>
@@ -431,7 +431,7 @@ export default function NumerologyPage() {
                                         </div>
                                         <div className="flex-1 text-center md:text-left">
                                             <h3 className="text-xl font-bold text-gray-900 mb-2">{sec.title}</h3>
-                                            <p className="text-gray-500 leading-relaxed text-base font-medium">
+                                            <p className="text-gray-850 leading-relaxed text-base font-medium">
                                                 {sec.desc}
                                             </p>
                                         </div>
@@ -442,7 +442,7 @@ export default function NumerologyPage() {
 
                             {/* Reset Button */}
                             <div className="text-center pt-8">
-                                <button onClick={() => setResult(null)} className="inline-flex items-center gap-2 text-gray-400 hover:text-[#b8962e] font-semibold transition-all group" suppressHydrationWarning>
+                                <button onClick={() => setResult(null)} className="inline-flex items-center gap-2 text-[#3a1216] hover:text-[#b8962e] font-semibold transition-all group" suppressHydrationWarning>
                                     <RotateCcw className="w-5 h-5 group-hover:rotate-180 transition-transform duration-500" />
                                     {t("numerology.calculate_again")}
                                 </button>

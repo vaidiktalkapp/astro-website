@@ -200,7 +200,7 @@ function ResultsContent() {
 
               {/* Popular Expertise Links */}
               <div className="mt-8 pt-6 border-t border-[#f5e9c8]">
-                 <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">{T("results.quick_browse")}</h3>
+                 <h3 className="text-[10px] font-black text-[#3a1216] uppercase tracking-widest mb-4">{T("results.quick_browse")}</h3>
                  <div className="space-y-1">
                     {dirSettings.expertise.slice(0, 8).map((exp) =>
                   <Link
@@ -302,12 +302,12 @@ function ResultsContent() {
                                 {astro.specializations.join(' • ')}
                           </p>
 
-                          <div className="flex items-center gap-4 text-xs font-bold text-gray-600 mb-4">
+                          <div className="flex items-center gap-4 text-xs font-bold text-gray-850 mb-4">
                                 <div className="flex items-center gap-1.5 text-[#6b5535]"><MapPin size={14} /> {astro.city || 'Location Pending'}</div>
                                 <div className="flex items-center gap-1.5 text-[#6b5535]"><Heart size={14} />{T("results.98_happy_souls")}</div>
                           </div>
 
-                          <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 opacity-80 mb-6 bg-[#fdf6e3]/50 p-2 rounded-lg border border-[#f5e9c8]/50">
+                          <p className="text-xs text-gray-850 leading-relaxed line-clamp-2 opacity-80 mb-6 bg-[#fdf6e3]/50 p-2 rounded-lg border border-[#f5e9c8]/50">
                              "{astro.bio || 'Highly intuitive and experienced practitioner helping souls navigate their life paths with ancient wisdom.'}"
                           </p>
 
@@ -315,7 +315,7 @@ function ResultsContent() {
                              <div className="flex items-baseline gap-1">
                                 <p className="text-[10px] font-black text-[#9a7d52] uppercase tracking-[0.1em] mr-2">{T("results.consultation")}</p>
                                 <p className="text-xl font-black text-gray-900">₹{astro.pricing?.chat || 0}</p>
-                                <p className="text-[10px] text-gray-400 font-bold tracking-widest">{T("results._min")}</p>
+                                <p className="text-[10px] text-[#3a1216] font-bold tracking-widest">{T("results._min")}</p>
                              </div>
                              <div className="flex items-center gap-3 w-full sm:w-auto">
                                 <Link

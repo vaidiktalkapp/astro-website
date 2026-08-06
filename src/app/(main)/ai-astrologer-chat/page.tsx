@@ -307,7 +307,7 @@ const AstrologerListing = () => {
           <div className="flex items-center gap-2 md:gap-3 flex-1 min-w-0">
             <button
               onClick={() => router.back()}
-              className="text-gray-600 hover:text-gray-900 flex-shrink-0">
+              className="text-gray-850 hover:text-gray-900 flex-shrink-0">
               
               <ChevronRight className="w-5 h-5 md:w-6 md:h-6 rotate-180" />
             </button>
@@ -341,9 +341,9 @@ const AstrologerListing = () => {
 
             <button
               onClick={() => setShowSortModal(true)}
-              className="flex items-center border border-gray-300 rounded-full px-5 py-2.5 text-sm text-gray-800 bg-white hover:bg-gray-50 shadow-sm transition-all shrink-0 cursor-pointer">
+              className="flex items-center border border-gray-300 rounded-full px-5 py-2.5 text-sm text-gray-850 bg-white hover:bg-gray-50 shadow-sm transition-all shrink-0 cursor-pointer">
               
-              <Filter className="w-4 h-4 text-gray-600 mr-2" />
+              <Filter className="w-4 h-4 text-gray-850 mr-2" />
               <span>{t("ai_astrologer_chat.filter")}</span>
             </button>
           </div>
@@ -373,7 +373,7 @@ const AstrologerListing = () => {
             onClick={() => setSelectedSpecialization(tab.id)}
             className={`flex items-center px-5 py-2 rounded-full border text-sm whitespace-nowrap transition ${selectedSpecialization === tab.id ?
             'bg-yellow-100 border-yellow-400 text-yellow-700 font-semibold shadow-sm' :
-            'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'}`
+            'bg-white border-gray-300 text-gray-850 hover:bg-gray-50'}`
             }>
             
               {tab.label}
@@ -462,7 +462,7 @@ const AstrologerListing = () => {
 
         {/* Results Count with Spiritual Touch */}
         <div className="mb-6 flex flex-col xs:flex-row items-start xs:items-center justify-between gap-3 xs:gap-2">
-          <p className="text-xs md:text-sm text-gray-600 flex items-center gap-1.5">
+          <p className="text-xs md:text-sm text-gray-850 flex items-center gap-1.5">
             <span className="text-saffron-500">🔮</span>
             <span>{t("ai_astrologer_chat.showing")} <span className="font-bold text-gray-900">{filteredAstrologers.length}</span> {t("ai_astrologer_chat.divine_astrologers")}</span>
           </p>
@@ -482,7 +482,7 @@ const AstrologerListing = () => {
               className={`flex items-center gap-2 px-8 py-3 rounded-full text-sm font-bold transition-all ${
                 serviceMode === 'chat'
                   ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md'
-                  : 'text-gray-600 hover:bg-gray-50'
+                  : 'text-gray-850 hover:bg-gray-50'
               }`}
             >
               <MessageSquare className="w-4 h-4" />
@@ -493,7 +493,7 @@ const AstrologerListing = () => {
               className={`flex items-center gap-2 px-8 py-3 rounded-full text-sm font-bold transition-all ${
                 serviceMode === 'call'
                   ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md'
-                  : 'text-gray-600 hover:bg-gray-50'
+                  : 'text-gray-850 hover:bg-gray-50'
               }`}
             >
               <Phone className="w-4 h-4" />
@@ -538,7 +538,7 @@ const AstrologerListing = () => {
                       <span>⭐</span>
                       <span>{astrologer.rating?.toFixed(1) || '4.5'}</span>
                     </div>
-                    {/* <div className="text-[10px] text-gray-400 mt-0.5">
+                    {/* <div className="text-[10px] text-[#3a1216] mt-0.5">
                       {astrologer.totalChats || 0} orders
                     </div> */}
                   </div>
@@ -556,7 +556,7 @@ const AstrologerListing = () => {
                     </span>
                   </div>
 
-                  <div className="text-[12px] text-gray-500 space-y-0.5">
+                  <div className="text-[12px] text-gray-850 space-y-0.5">
                     <p className="truncate">{(astrologer.specialization || []).filter(s => s.toLowerCase() !== 'palmistry').slice(0, 2).join(', ') || 'Vedic'}</p>
                     <p>Exp: {astrologer.experienceYears || 5} Years</p>
                   </div>
@@ -571,12 +571,12 @@ const AstrologerListing = () => {
                       <>
                         {serviceMode === 'chat' ? (
                           <>
-                            <span className="text-[12px] text-gray-400 line-through">₹{Math.round((astrologer.chatRate || 10) * 1.5)}</span>
+                            <span className="text-[12px] text-[#3a1216] line-through">₹{Math.round((astrologer.chatRate || 10) * 1.5)}</span>
                             <span className="text-[14px] font-bold text-red-600">₹{astrologer.chatRate || 0}/min</span>
                           </>
                         ) : (
                           <>
-                            <span className="text-[12px] text-gray-400 line-through">₹{Math.round((astrologer.voiceRate || 10) * 1.5)}</span>
+                            <span className="text-[12px] text-[#3a1216] line-through">₹{Math.round((astrologer.voiceRate || 10) * 1.5)}</span>
                             <span className="text-[14px] font-bold text-red-600">₹{astrologer.voiceRate || 0}/min</span>
                           </>
                         )}
@@ -629,10 +629,10 @@ const AstrologerListing = () => {
               <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-saffron-100 to-amber-100 rounded-full mb-6 shadow-lg">
                 <span className="text-4xl">🔮</span>
               </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-3 bg-gradient-to-r from-saffron-700 to-amber-600 bg-clip-text text-transparent">
+              <h3 className="text-3xl font-bold text-gray-850 mb-3 bg-gradient-to-r from-saffron-700 to-amber-600 bg-clip-text text-transparent">
 {t("ai_astrologer_chat.seeking_cosmic_guidance")}
             </h3>
-              <p className="text-gray-600 mb-8 max-w-md mx-auto text-lg">
+              <p className="text-gray-850 mb-8 max-w-md mx-auto text-lg">
 {t("ai_astrologer_chat.the_stars_will_align_soon_try")}
             </p>
               <button
@@ -659,22 +659,22 @@ const AstrologerListing = () => {
         {/* Spiritual Guidance Footer */}
         <div className="mt-12 pt-8 border-t border-saffron-200 text-center">
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-gray-850">
               <span className="text-saffron-500">🛡️</span>
               <span className="font-bold">{t("ai_astrologer_chat.100_privacy_protected")}</span>
             </div>
             <div className="w-2 h-2 bg-saffron-300 rounded-full" />
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-gray-850">
               <span className="text-saffron-500">⭐</span>
               <span className="font-bold">{t("ai_astrologer_chat.certified_vedic_astrologers")}</span>
             </div>
             <div className="w-2 h-2 bg-saffron-300 rounded-full" />
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-gray-850">
               <span className="text-saffron-500">⚡</span>
               <span className="font-bold">{t("ai_astrologer_chat.instant_divine_guidance")}</span>
             </div>
           </div>
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-850 text-sm">
 {t("ai_astrologer_chat._as_above_so_below_connect_wit")}
             <span className="block mt-2 text-saffron-400">{t("ai_astrologer_chat._ancient_vedic_wisdom")}</span>
           </p>
@@ -737,8 +737,8 @@ const AstrologerListing = () => {
       <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
           <div className="bg-white w-full max-w-lg rounded-xl shadow-2xl flex flex-col overflow-hidden max-h-[85vh]">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-              <h2 className="text-lg font-bold text-gray-800 tracking-wide uppercase">{t("ai_astrologer_chat.filters_sorting")}</h2>
-              <button onClick={() => setShowSortModal(false)} className="p-2 text-gray-400 hover:text-gray-600 transition-colors">
+              <h2 className="text-lg font-bold text-gray-850 tracking-wide uppercase">{t("ai_astrologer_chat.filters_sorting")}</h2>
+              <button onClick={() => setShowSortModal(false)} className="p-2 text-[#3a1216] hover:text-gray-850 transition-colors">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -749,14 +749,14 @@ const AstrologerListing = () => {
                 className={`w-full text-left relative py-4 px-5 transition-colors ${activeFilterTab === 'sorting' ? 'bg-white' : 'hover:bg-gray-100'}`}>
                 
                   {activeFilterTab === 'sorting' && <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-teal-700"></div>}
-                  <span className={`text-sm font-semibold ${activeFilterTab === 'sorting' ? 'text-gray-900' : 'text-gray-500'}`}>{t("ai_astrologer_chat.sorting")}</span>
+                  <span className={`text-sm font-semibold ${activeFilterTab === 'sorting' ? 'text-gray-900' : 'text-gray-850'}`}>{t("ai_astrologer_chat.sorting")}</span>
                 </button>
                 <button
                 onClick={() => setActiveFilterTab('filters')}
                 className={`w-full text-left relative py-4 px-5 transition-colors ${activeFilterTab === 'filters' ? 'bg-white' : 'hover:bg-gray-100'}`}>
                 
                   {activeFilterTab === 'filters' && <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-teal-700"></div>}
-                  <span className={`text-sm font-semibold ${activeFilterTab === 'filters' ? 'text-gray-900' : 'text-gray-500'}`}>{t("ai_astrologer_chat.refine")}</span>
+                  <span className={`text-sm font-semibold ${activeFilterTab === 'filters' ? 'text-gray-900' : 'text-gray-850'}`}>{t("ai_astrologer_chat.refine")}</span>
                 </button>
               </div>
 
@@ -778,7 +778,7 @@ const AstrologerListing = () => {
                     <div className="w-2.5 h-2.5 bg-teal-600 rounded-full" />
                     }
                         </div>
-                        <span className={`text-[16px] ${tempSortBy === opt.id ? 'text-gray-900 font-semibold' : 'text-gray-600 group-hover:text-gray-900'}`}>{opt.label}</span>
+                        <span className={`text-[16px] ${tempSortBy === opt.id ? 'text-gray-900 font-semibold' : 'text-gray-850 group-hover:text-gray-900'}`}>{opt.label}</span>
                       </label>
                 )}
                   </div> :
@@ -794,7 +794,7 @@ const AstrologerListing = () => {
                       onClick={() => setTempFilters({ ...tempFilters, minRating: rating })}
                       className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-all ${tempFilters.minRating === rating ?
                       'bg-saffron-100 border-saffron-600 text-saffron-700 shadow-sm' :
-                      'bg-white border-gray-200 text-gray-600 hover:border-saffron-300'}`
+                      'bg-white border-gray-200 text-gray-850 hover:border-saffron-300'}`
                       }>
                       
                             {rating === 0 ? 'Any' : `${rating}+ ⭐`}
@@ -816,7 +816,7 @@ const AstrologerListing = () => {
                       onChange={(e) => setTempFilters({ ...tempFilters, maxRate: parseInt(e.target.value) })}
                       className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-saffron-600" />
                     
-                        <div className="flex justify-between mt-2 text-[10px] font-bold text-gray-500 uppercase">
+                        <div className="flex justify-between mt-2 text-[10px] font-bold text-gray-850 uppercase">
                           <span>₹0</span>
                           <span className="text-saffron-600 text-sm">₹{tempFilters.maxRate}</span>
                           <span>₹200+</span>
@@ -834,7 +834,7 @@ const AstrologerListing = () => {
                       onClick={() => setTempFilters({ ...tempFilters, availability: status })}
                       className={`px-4 py-2 rounded-lg text-xs font-bold border transition-all ${tempFilters.availability === status ?
                       'bg-teal-50 border-teal-600 text-teal-700 shadow-sm' :
-                      'bg-white border-gray-200 text-gray-600 hover:border-teal-300'}`
+                      'bg-white border-gray-200 text-gray-850 hover:border-teal-300'}`
                       }>
                       
                             {status === 'all' ? 'All' : 'Online Now'}
@@ -860,7 +860,7 @@ const AstrologerListing = () => {
                         }}
                         className="w-4 h-4 rounded text-saffron-600 focus:ring-saffron-500 border-gray-300" />
                       
-                            <span className="text-xs font-medium text-gray-700">{spec}</span>
+                            <span className="text-xs font-medium text-gray-850">{spec}</span>
                           </label>
                     )}
                       </div>

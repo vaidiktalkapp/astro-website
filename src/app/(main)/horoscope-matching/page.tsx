@@ -390,7 +390,7 @@ export default function HoroscopeMatchingPage() {
                     className={`px-5 py-2 rounded-lg font-semibold text-sm transition-all ${
                     matchSystem === 'north_indian' ?
                     'bg-[#b8962e] text-white shadow-sm' :
-                    'text-gray-500 hover:text-gray-700'}`
+                    'text-gray-850 hover:text-gray-850'}`
                     }>
 {t("horoscope_matching.north_indian_ashtakoot")}
 
@@ -402,7 +402,7 @@ export default function HoroscopeMatchingPage() {
                     className={`px-5 py-2 rounded-lg font-semibold text-sm transition-all ${
                     matchSystem === 'south_indian' ?
                     'bg-[#b8962e] text-white shadow-sm' :
-                    'text-gray-500 hover:text-gray-700'}`
+                    'text-gray-850 hover:text-gray-850'}`
                     }>
 {t("horoscope_matching.south_indian_dashakoot")}
 
@@ -419,7 +419,7 @@ export default function HoroscopeMatchingPage() {
                                      <div className="flex items-center justify-between gap-2 pb-3 border-b border-[#d6c89a]">
                                         <div className="flex items-center gap-2">
                                             <User className="w-4 h-4 text-[#b8962e]" />
-                                            <span className="text-[15px] font-semibold text-gray-800">{t("horoscope_matching.boy_s_details")}</span>
+                                            <span className="text-[15px] font-semibold text-gray-850">{t("horoscope_matching.boy_s_details")}</span>
                                         </div>
                                         {isAuthenticated && (
                                             <button 
@@ -432,14 +432,14 @@ export default function HoroscopeMatchingPage() {
                                         )}
                                     </div>
                                         <div>
-                                            <label className="block text-[15px] font-semibold text-gray-800 mb-2.5">{t("horoscope_matching.name")}</label>
+                                            <label className="block text-[15px] font-semibold text-gray-850 mb-2.5">{t("horoscope_matching.name")}</label>
                                             <input type="text" required value={boyData.name}
                       onChange={(e) => setBoyData({ ...boyData, name: e.target.value })}
                       placeholder="Boy's Full Name" className={inputClass} suppressHydrationWarning />
                                         </div>
                                         <div className="grid grid-cols-2 gap-4">
                                             <div>
-                                                <label className="block text-[15px] font-semibold text-gray-800 mb-2.5 flex items-center gap-1.5">
+                                                <label className="block text-[15px] font-semibold text-gray-850 mb-2.5 flex items-center gap-1.5">
                                                     <Calendar className="w-3.5 h-3.5 text-[#b8962e]" />{t("horoscope_matching.date")}
                         </label>
                                                 <input type="date" required value={boyData.date}
@@ -447,7 +447,7 @@ export default function HoroscopeMatchingPage() {
                         className={inputClass} suppressHydrationWarning />
                                             </div>
                                             <div>
-                                                <label className="block text-[15px] font-semibold text-gray-800 mb-2.5 flex items-center gap-1.5">
+                                                <label className="block text-[15px] font-semibold text-gray-850 mb-2.5 flex items-center gap-1.5">
                                                     <Clock className="w-3.5 h-3.5 text-[#b8962e]" />{t("horoscope_matching.time")}
                         </label>
                                                 <input type="time" required value={boyData.time}
@@ -456,7 +456,7 @@ export default function HoroscopeMatchingPage() {
                                             </div>
                                         </div>
                                         <div>
-                                            <label className="block text-[15px] font-semibold text-gray-800 mb-2.5 flex items-center gap-1.5">
+                                            <label className="block text-[15px] font-semibold text-gray-850 mb-2.5 flex items-center gap-1.5">
                                                 <MapPin className="w-3.5 h-3.5 text-[#b8962e]" />{t("horoscope_matching.birth_city")}
                       </label>
                                             <div className="relative boy-geo z-[100]">
@@ -481,7 +481,7 @@ export default function HoroscopeMatchingPage() {
                                      <div className="flex items-center justify-between gap-2 pb-3 border-b border-[#d6c89a]">
                                         <div className="flex items-center gap-2">
                                             <User className="w-4 h-4 text-[#b8962e]" />
-                                            <span className="text-[15px] font-semibold text-gray-800">{t("horoscope_matching.girl_s_details")}</span>
+                                            <span className="text-[15px] font-semibold text-gray-850">{t("horoscope_matching.girl_s_details")}</span>
                                         </div>
                                         {isAuthenticated && (
                                             <button 
@@ -494,14 +494,14 @@ export default function HoroscopeMatchingPage() {
                                         )}
                                     </div>
                                         <div>
-                                            <label className="block text-[15px] font-semibold text-gray-800 mb-2.5">{t("horoscope_matching.name")}</label>
+                                            <label className="block text-[15px] font-semibold text-gray-850 mb-2.5">{t("horoscope_matching.name")}</label>
                                             <input type="text" required value={girlData.name}
                       onChange={(e) => setGirlData({ ...girlData, name: e.target.value })}
                       placeholder="Girl's Full Name" className={inputClass} suppressHydrationWarning />
                                         </div>
                                         <div className="grid grid-cols-2 gap-4">
                                             <div>
-                                                <label className="block text-[15px] font-semibold text-gray-800 mb-2.5 flex items-center gap-1.5">
+                                                <label className="block text-[15px] font-semibold text-gray-850 mb-2.5 flex items-center gap-1.5">
                                                     <Calendar className="w-3.5 h-3.5 text-[#b8962e]" />{t("horoscope_matching.date")}
                         </label>
                                                 <input type="date" required value={girlData.date}
@@ -509,7 +509,7 @@ export default function HoroscopeMatchingPage() {
                         className={inputClass} suppressHydrationWarning />
                                             </div>
                                             <div>
-                                                <label className="block text-[15px] font-semibold text-gray-800 mb-2.5 flex items-center gap-1.5">
+                                                <label className="block text-[15px] font-semibold text-gray-850 mb-2.5 flex items-center gap-1.5">
                                                     <Clock className="w-3.5 h-3.5 text-[#b8962e]" />{t("horoscope_matching.time")}
                         </label>
                                                 <input type="time" required value={girlData.time}
@@ -518,7 +518,7 @@ export default function HoroscopeMatchingPage() {
                                             </div>
                                         </div>
                                         <div>
-                                            <label className="block text-[15px] font-semibold text-gray-800 mb-2.5 flex items-center gap-1.5">
+                                            <label className="block text-[15px] font-semibold text-gray-850 mb-2.5 flex items-center gap-1.5">
                                                 <MapPin className="w-3.5 h-3.5 text-[#b8962e]" />{t("horoscope_matching.birth_city")}
                       </label>
                                             <div className="relative girl-geo z-[90]">

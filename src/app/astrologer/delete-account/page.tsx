@@ -117,7 +117,7 @@ export default function AstrologerDeleteAccountPage() {
       <div className="absolute top-6 left-6">
         <button 
           onClick={() => router.push('/')}
-          className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors font-medium"
+          className="flex items-center gap-2 text-gray-850 hover:text-gray-900 transition-colors font-medium"
         >
           <ArrowLeft size={20} />
           Back to Home
@@ -132,7 +132,7 @@ export default function AstrologerDeleteAccountPage() {
              <ShieldAlert size={32} />
           </div>
           <h1 className="text-xl font-bold text-gray-900">Delete Astrologer Account</h1>
-          <p className="text-sm text-gray-500 mt-1">Permanent removal request</p>
+          <p className="text-sm text-gray-850 mt-1">Permanent removal request</p>
         </div>
 
         <div className="p-8">
@@ -141,9 +141,9 @@ export default function AstrologerDeleteAccountPage() {
           {step === 'phone' && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-gray-700">Registered Phone Number</label>
+                <label className="text-sm font-semibold text-gray-850">Registered Phone Number</label>
                 <div className="flex rounded-xl border border-gray-300 overflow-hidden focus-within:ring-2 focus-within:ring-red-500 focus-within:border-transparent transition-all">
-                  <div className="bg-gray-50 px-4 py-3 border-r border-gray-300 text-gray-600 font-medium">
+                  <div className="bg-gray-50 px-4 py-3 border-r border-gray-300 text-gray-850 font-medium">
                     +{countryCode}
                   </div>
                   <input
@@ -155,7 +155,7 @@ export default function AstrologerDeleteAccountPage() {
                     autoFocus
                   />
                 </div>
-                <p className="text-xs text-gray-500">We'll send a verification OTP to this number.</p>
+                <p className="text-xs text-gray-850">We'll send a verification OTP to this number.</p>
               </div>
 
               <button
@@ -173,7 +173,7 @@ export default function AstrologerDeleteAccountPage() {
             <div className="space-y-6 text-gray-900">
               <div className="text-center space-y-1">
                 <p className="text-sm font-medium text-gray-900">Enter Verification Code</p>
-                <p className="text-sm text-gray-500">Sent to +{countryCode} {phoneNumber}</p>
+                <p className="text-sm text-gray-850">Sent to +{countryCode} {phoneNumber}</p>
               </div>
 
               <input
@@ -196,7 +196,7 @@ export default function AstrologerDeleteAccountPage() {
                 </button>
                 <button 
                   onClick={() => setStep('phone')}
-                  className="text-sm text-gray-500 hover:text-gray-800 transition-colors"
+                  className="text-sm text-gray-850 hover:text-gray-850 transition-colors"
                 >
                   Change Phone Number
                 </button>
@@ -231,7 +231,7 @@ export default function AstrologerDeleteAccountPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-gray-700">Reason for leaving</label>
+                <label className="text-sm font-semibold text-gray-850">Reason for leaving</label>
                 <textarea
                   value={reason}
                   onChange={(e) => setReason(e.target.value)}

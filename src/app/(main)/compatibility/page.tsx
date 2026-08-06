@@ -585,7 +585,7 @@ export default function CompatibilityToolsPage() {
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <motion.span className={`${scoreFontSize} font-bold text-gray-900 leading-none`} initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5, type: 'spring' }}>{score}%</motion.span>
-                    {label && <span className={`${labelFontSize} font-bold uppercase tracking-wider text-gray-400 mt-0.5`}>{label}</span>}
+                    {label && <span className={`${labelFontSize} font-bold uppercase tracking-wider text-[#3a1216] mt-0.5`}>{label}</span>}
                 </div>
             </div>
         );
@@ -594,8 +594,8 @@ export default function CompatibilityToolsPage() {
     const MiniBar = ({ label, value, icon: Icon, color }: { label: string; value: number; icon: any; color: string }) => (
         <div className="space-y-1">
             <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1.5"><Icon className="w-3.5 h-3.5" style={{ color }} /><span className="text-[11px] font-semibold uppercase tracking-wider text-gray-500">{label}</span></div>
-                <span className="text-[12px] font-bold text-gray-800">{value}%</span>
+                <div className="flex items-center gap-1.5"><Icon className="w-3.5 h-3.5" style={{ color }} /><span className="text-[11px] font-semibold uppercase tracking-wider text-gray-850">{label}</span></div>
+                <span className="text-[12px] font-bold text-gray-850">{value}%</span>
             </div>
             <div className="h-1.5 rounded-full bg-gray-100 overflow-hidden">
                 <motion.div className="h-full rounded-full" style={{ background: color }} initial={{ width: 0 }} animate={{ width: `${value}%` }} transition={{ duration: 1, ease: 'easeOut', delay: 0.3 }} />
@@ -616,7 +616,7 @@ export default function CompatibilityToolsPage() {
             <div className="w-10 h-10 rounded-lg flex items-center justify-center text-xl font-bold mb-1" style={{ background: selected ? 'linear-gradient(135deg,rgba(184,150,46,0.18),rgba(184,150,46,0.08))' : 'linear-gradient(135deg,rgba(107,83,53,0.1),rgba(107,83,53,0.05))', color: selected ? '#b8962e' : ELEMENT_COLORS[sign.element], border: selected ? '1.5px solid #b8962e40' : '1px solid rgba(107,83,53,0.12)' }}>
                 {sign.symbol}
             </div>
-            <span className="text-[10px] font-semibold text-gray-700 leading-tight text-center">{sign.name}</span>
+            <span className="text-[10px] font-semibold text-gray-850 leading-tight text-center">{sign.name}</span>
         </button>
     );
 
@@ -660,14 +660,14 @@ export default function CompatibilityToolsPage() {
                         </button>
                     </div>
                     <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight mb-3">{t('compatibility.title')}</h1>
-                    <p className="text-gray-500 text-[15px] max-w-xl">{t('compatibility.desc')}</p>
+                    <p className="text-gray-850 text-[15px] max-w-xl">{t('compatibility.desc')}</p>
                 </div>
 
                 {/* Mode Toggle */}
                 <div className="flex justify-center mb-10">
                     <div className="inline-flex p-1 rounded-xl border border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.05)' }}>
-                        <button onClick={() => setMode('love')} className={`px-7 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${mode === 'love' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-500 hover:text-[#b8962e]'}`}><Heart className="w-4 h-4" /> {t('nav.compatibility')}</button>
-                        <button onClick={() => setMode('name')} className={`px-7 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${mode === 'name' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-500 hover:text-[#b8962e]'}`}><Type className="w-4 h-4" /> Name Matching</button>
+                        <button onClick={() => setMode('love')} className={`px-7 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${mode === 'love' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-850 hover:text-[#b8962e]'}`}><Heart className="w-4 h-4" /> {t('nav.compatibility')}</button>
+                        <button onClick={() => setMode('name')} className={`px-7 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${mode === 'name' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-850 hover:text-[#b8962e]'}`}><Type className="w-4 h-4" /> Name Matching</button>
                     </div>
                 </div>
 
@@ -678,12 +678,12 @@ export default function CompatibilityToolsPage() {
                         <motion.div key="love-input" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
                             <div className="text-center mb-6">
                                 <h2 className="serif text-2xl font-semibold text-gray-900 mb-1">Select Your Zodiac Signs</h2>
-                                <p className="text-gray-500 text-sm">Choose your sign and your partner's sign for instant compatibility results.</p>
+                                <p className="text-gray-850 text-sm">Choose your sign and your partner's sign for instant compatibility results.</p>
                             </div>
                             <div className="flex justify-center mb-8">
                                 <div className="inline-flex p-1 rounded-xl border border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.04)' }}>
-                                    <button onClick={() => setLoveInputMode('sign')} className={`flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold transition-all ${loveInputMode === 'sign' ? 'bg-[#2d1a6e] text-white shadow-sm' : 'text-gray-500 hover:text-gray-800'}`}><Star className="w-3.5 h-3.5" /> {t('compatibility.by_sign')}</button>
-                                    <button onClick={() => setLoveInputMode('date')} className={`flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold transition-all ${loveInputMode === 'date' ? 'bg-[#2d1a6e] text-white shadow-sm' : 'text-gray-500 hover:text-gray-800'}`}><Calendar className="w-3.5 h-3.5" /> {t('compatibility.by_date')}</button>
+                                    <button onClick={() => setLoveInputMode('sign')} className={`flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold transition-all ${loveInputMode === 'sign' ? 'bg-[#2d1a6e] text-white shadow-sm' : 'text-gray-850 hover:text-gray-850'}`}><Star className="w-3.5 h-3.5" /> {t('compatibility.by_sign')}</button>
+                                    <button onClick={() => setLoveInputMode('date')} className={`flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold transition-all ${loveInputMode === 'date' ? 'bg-[#2d1a6e] text-white shadow-sm' : 'text-gray-850 hover:text-gray-850'}`}><Calendar className="w-3.5 h-3.5" /> {t('compatibility.by_date')}</button>
                                 </div>
                             </div>
 
@@ -693,10 +693,10 @@ export default function CompatibilityToolsPage() {
                                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                                             {[{ label: 'Your Sign', name: name1, setName: setName1, ph: 'Your name (optional)', idx: sign1Idx, setIdx: setSign1Idx }, { label: "Partner's Sign", name: name2, setName: setName2, ph: "Partner's name (optional)", idx: sign2Idx, setIdx: setSign2Idx }].map((p, pi) => (
                                                 <div key={pi} className="rounded-xl border border-[#d6c89a] p-5" style={{ background: '#fffdf5' }}>
-                                                    <div className="flex items-center gap-2 mb-4"><div className="w-8 h-8 rounded-full flex items-center justify-center text-white" style={{ background: '#2d1a6e' }}><User className="w-4 h-4" /></div><span className="text-[14px] font-bold text-gray-800">{p.label}</span></div>
+                                                    <div className="flex items-center gap-2 mb-4"><div className="w-8 h-8 rounded-full flex items-center justify-center text-white" style={{ background: '#2d1a6e' }}><User className="w-4 h-4" /></div><span className="text-[14px] font-bold text-gray-850">{p.label}</span></div>
                                                     <input type="text" value={p.name} onChange={e => p.setName(e.target.value)} placeholder={p.ph} className={`${inputClass} mb-4`} />
                                                     <div className="grid grid-cols-4 gap-2">{ZODIAC_SIGNS.map((z, i) => (<ZodiacBtn key={z.name} sign={z} selected={p.idx === i} onClick={() => p.setIdx(i)} />))}</div>
-                                                    {p.idx !== null && (<div className="mt-3 text-center text-[12px] text-gray-400">{ZODIAC_SIGNS[p.idx].symbol} {ZODIAC_SIGNS[p.idx].name} · {ZODIAC_SIGNS[p.idx].dateRange}</div>)}
+                                                    {p.idx !== null && (<div className="mt-3 text-center text-[12px] text-[#3a1216]">{ZODIAC_SIGNS[p.idx].symbol} {ZODIAC_SIGNS[p.idx].name} · {ZODIAC_SIGNS[p.idx].dateRange}</div>)}
                                                 </div>
                                             ))}
                                         </div>
@@ -717,11 +717,11 @@ export default function CompatibilityToolsPage() {
                                                 const di = p.date ? getZodiacFromDate(p.date) : -1;
                                                 return (
                                                     <div key={pi} className="rounded-xl border border-[#d6c89a] p-5 space-y-4" style={{ background: '#fffdf5' }}>
-                                                        <div className="flex items-center gap-2"><div className="w-8 h-8 rounded-full flex items-center justify-center text-white" style={{ background: '#2d1a6e' }}><User className="w-4 h-4" /></div><span className="text-[14px] font-bold text-gray-800">{p.label}</span></div>
-                                                        <div><label className="block text-[12px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Name</label><input type="text" value={p.name} onChange={e => p.setName(e.target.value)} placeholder={p.ph} className={inputClass} /></div>
-                                                        <div><label className="block text-[12px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1"><Calendar className="w-3 h-3" /> Date of Birth</label><input type="date" value={p.date} onChange={e => p.setDate(e.target.value)} className={inputClass} /></div>
-                                                        <div><label className="block text-[12px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1"><Clock className="w-3 h-3" /> Time <span className="text-gray-400 normal-case font-normal">(optional)</span></label><input type="time" value={p.time} onChange={e => p.setTime(e.target.value)} className={inputClass} /></div>
-                                                        {di >= 0 && (<div className="flex items-center gap-2 p-3 rounded-lg border border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.05)' }}><span className="text-xl" style={{ color: ELEMENT_COLORS[ZODIAC_SIGNS[di].element] }}>{ZODIAC_SIGNS[di].symbol}</span><div><p className="text-[12px] font-bold text-gray-800">{ZODIAC_SIGNS[di].name}</p><p className="text-[11px] text-gray-400">{ZODIAC_SIGNS[di].element} Sign · {ZODIAC_SIGNS[di].ruling}</p></div></div>)}
+                                                        <div className="flex items-center gap-2"><div className="w-8 h-8 rounded-full flex items-center justify-center text-white" style={{ background: '#2d1a6e' }}><User className="w-4 h-4" /></div><span className="text-[14px] font-bold text-gray-850">{p.label}</span></div>
+                                                        <div><label className="block text-[12px] font-semibold text-gray-850 uppercase tracking-wider mb-1.5">Name</label><input type="text" value={p.name} onChange={e => p.setName(e.target.value)} placeholder={p.ph} className={inputClass} /></div>
+                                                        <div><label className="block text-[12px] font-semibold text-gray-850 uppercase tracking-wider mb-1.5 flex items-center gap-1"><Calendar className="w-3 h-3" /> Date of Birth</label><input type="date" value={p.date} onChange={e => p.setDate(e.target.value)} className={inputClass} /></div>
+                                                        <div><label className="block text-[12px] font-semibold text-gray-850 uppercase tracking-wider mb-1.5 flex items-center gap-1"><Clock className="w-3 h-3" /> Time <span className="text-[#3a1216] normal-case font-normal">(optional)</span></label><input type="time" value={p.time} onChange={e => p.setTime(e.target.value)} className={inputClass} /></div>
+                                                        {di >= 0 && (<div className="flex items-center gap-2 p-3 rounded-lg border border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.05)' }}><span className="text-xl" style={{ color: ELEMENT_COLORS[ZODIAC_SIGNS[di].element] }}>{ZODIAC_SIGNS[di].symbol}</span><div><p className="text-[12px] font-bold text-gray-850">{ZODIAC_SIGNS[di].name}</p><p className="text-[11px] text-[#3a1216]">{ZODIAC_SIGNS[di].element} Sign · {ZODIAC_SIGNS[di].ruling}</p></div></div>)}
                                                     </div>
                                                 );
                                             })}
@@ -771,17 +771,17 @@ export default function CompatibilityToolsPage() {
                                         <div className="flex flex-col items-center gap-2">
                                             <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl font-bold shadow-md relative group" style={{ background: p.grad, color: 'white', border: '2px solid rgba(255,255,255,0.15)' }}>
                                                 {p.sign.symbol}
-                                                <div className="absolute -bottom-2 px-2 py-0.5 rounded bg-white/90 backdrop-blur shadow-sm border border-[#d6c89a] text-[9px] font-bold text-gray-800 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                <div className="absolute -bottom-2 px-2 py-0.5 rounded bg-white/90 backdrop-blur shadow-sm border border-[#d6c89a] text-[9px] font-bold text-gray-850 opacity-0 group-hover:opacity-100 transition-opacity">
                                                     {p.sign.dateRange}
                                                 </div>
                                             </div>
                                             <div className="text-center">
-                                                <span className="text-sm font-bold text-gray-800 block">{p.sign.name}</span>
-                                                <span className="text-[11px] font-medium text-gray-400 block -mt-0.5">{p.sign.sanskritName}</span>
+                                                <span className="text-sm font-bold text-gray-850 block">{p.sign.name}</span>
+                                                <span className="text-[11px] font-medium text-[#3a1216] block -mt-0.5">{p.sign.sanskritName}</span>
                                             </div>
                                             {p.name && p.name !== `Person ${i + 1}` && <span className="text-[11px] text-[#b8962e] font-semibold">"{p.name}"</span>}
                                             <span className="text-[10px] px-2 py-0.5 rounded-full font-semibold" style={{ background: `${ELEMENT_COLORS[p.sign.element]}12`, color: ELEMENT_COLORS[p.sign.element] }}>{p.sign.element} · {p.sign.quality}</span>
-                                            <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mt-0.5">Ruled by {p.sign.ruling}</span>
+                                            <span className="text-[10px] font-bold text-gray-850 uppercase tracking-widest mt-0.5">Ruled by {p.sign.ruling}</span>
                                         </div>
                                         {i === 0 && (<div className="flex flex-col items-center gap-1.5"><div className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform rotate-12" style={{ background: loveResult.levelColor }}><Heart className="w-6 h-6 text-white fill-white" /></div><span className="text-[10px] font-black uppercase tracking-widest" style={{ color: loveResult.levelColor }}>Connects</span></div>)}
                                     </React.Fragment>
@@ -804,7 +804,7 @@ export default function CompatibilityToolsPage() {
                                         <MiniBar label={t('compatibility.spiritual')} value={loveResult.spiritual} icon={Moon} color="#6366f1" />
                                     </div>
                                     <div className="w-full mt-5 pt-4 border-t border-[#e9ddb8] grid grid-cols-2 gap-2 text-center">
-                                        {[{ sign: loveResult.sign1 }, { sign: loveResult.sign2 }].map((p, i) => (<div key={i}><p className="text-[10px] font-bold uppercase tracking-wider text-[#b8962e]">Ruling</p><p className="text-[13px] font-semibold text-gray-700 mt-0.5">{p.sign.ruling}</p><p className="text-[11px] text-gray-400">{p.sign.name}</p></div>))}
+                                        {[{ sign: loveResult.sign1 }, { sign: loveResult.sign2 }].map((p, i) => (<div key={i}><p className="text-[10px] font-bold uppercase tracking-wider text-[#b8962e]">Ruling</p><p className="text-[13px] font-semibold text-gray-850 mt-0.5">{p.sign.ruling}</p><p className="text-[11px] text-[#3a1216]">{p.sign.name}</p></div>))}
                                     </div>
                                 </div>
 
@@ -827,7 +827,7 @@ export default function CompatibilityToolsPage() {
                                             <motion.p
                                                 initial={{ opacity: 0 }}
                                                 animate={{ opacity: 1 }}
-                                                className="text-[14px] text-gray-700 leading-relaxed font-medium"
+                                                className="text-[14px] text-gray-850 leading-relaxed font-medium"
                                             >
                                                 {aiReport?.deepInsight || loveResult.pairInsight}
                                             </motion.p>
@@ -836,12 +836,12 @@ export default function CompatibilityToolsPage() {
                                     {/* Chemistry */}
                                     <div className="rounded-xl border border-rose-200 p-5" style={{ background: 'rgba(244,63,94,0.03)' }}>
                                         <div className="flex items-center gap-2 mb-2"><Heart className="w-4 h-4 text-rose-500" /><p className="text-[11px] font-bold uppercase tracking-[0.15em] text-rose-600">Romantic Chemistry</p></div>
-                                        <p className="text-[14px] text-gray-700 leading-relaxed">{aiReport?.chemistry || loveResult.chemistry}</p>
+                                        <p className="text-[14px] text-gray-850 leading-relaxed">{aiReport?.chemistry || loveResult.chemistry}</p>
                                     </div>
                                     {/* Daily dynamic */}
                                     <div className="rounded-xl border border-[#d6c89a] p-5" style={{ background: '#fffdf5' }}>
                                         <div className="flex items-center gap-2 mb-2"><Star className="w-4 h-4 text-amber-500" /><p className="text-[11px] font-bold uppercase tracking-[0.15em] text-amber-700">Day-to-Day Dynamic</p></div>
-                                        <p className="text-[14px] text-gray-700 leading-relaxed">{aiReport?.dynamic || loveResult.daily}</p>
+                                        <p className="text-[14px] text-gray-850 leading-relaxed">{aiReport?.dynamic || loveResult.daily}</p>
                                     </div>
                                     {/* Strengths + Challenges */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -851,7 +851,7 @@ export default function CompatibilityToolsPage() {
                                                 {(aiReport?.strengths || loveResult.strengths).map((s: string, i: number) => (
                                                     <div key={i} className="flex items-start gap-2">
                                                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0 mt-1.5" />
-                                                        <span className="text-[12px] text-gray-700">{s}</span>
+                                                        <span className="text-[12px] text-gray-850">{s}</span>
                                                     </div>
                                                 ))}
                                             </div>
@@ -862,7 +862,7 @@ export default function CompatibilityToolsPage() {
                                                 {(aiReport?.challenges || loveResult.challenges).map((c: string, i: number) => (
                                                     <div key={i} className="flex items-start gap-2">
                                                         <div className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0 mt-1.5" />
-                                                        <span className="text-[12px] text-gray-700">{c}</span>
+                                                        <span className="text-[12px] text-gray-850">{c}</span>
                                                     </div>
                                                 ))}
                                             </div>
@@ -871,7 +871,7 @@ export default function CompatibilityToolsPage() {
                                     {/* Cosmic advice */}
                                     <div className="rounded-xl border border-[#d6c89a] p-4" style={{ background: 'rgba(184,150,46,0.04)' }}>
                                         <div className="flex items-center gap-2 mb-2"><Shield className="w-4 h-4 text-[#b8962e]" /><p className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#b8962e]">Cosmic Advice</p></div>
-                                        <p className="text-[13px] text-gray-700 leading-relaxed">{aiReport?.advice || loveResult.advice}</p>
+                                        <p className="text-[13px] text-gray-850 leading-relaxed">{aiReport?.advice || loveResult.advice}</p>
                                     </div>
                                 </div>
                             </div>
@@ -880,7 +880,7 @@ export default function CompatibilityToolsPage() {
                             <div className="rounded-xl border border-purple-200 p-5 flex items-center justify-between mb-6" style={{ background: 'linear-gradient(135deg,rgba(45,26,110,0.04),rgba(74,47,160,0.06))' }}>
                                 <div>
                                     <p className="text-[13px] font-bold text-[#2d1a6e] mb-0.5">Want a deeper Vedic analysis?</p>
-                                    <p className="text-[12px] text-gray-500">Get Guna Milan (36 points), Nadi, Bhakoot, Moon sign & full Kundli matching</p>
+                                    <p className="text-[12px] text-gray-850">Get Guna Milan (36 points), Nadi, Bhakoot, Moon sign & full Kundli matching</p>
                                 </div>
                                 <a href="/horoscope-matching" className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-[12px] font-semibold text-white flex-shrink-0 ml-4" style={{ background: '#2d1a6e' }}>
                                     Horoscope Matching <ExternalLink className="w-3 h-3" />
@@ -899,19 +899,19 @@ export default function CompatibilityToolsPage() {
                             <div className="max-w-lg mx-auto">
                                 <div className="text-center mb-8">
                                     <h2 className="serif text-2xl font-semibold text-gray-900 mb-2">Name Compatibility</h2>
-                                    <p className="text-gray-500 text-sm">Enter two names to discover their numerological vibration and compatibility</p>
+                                    <p className="text-gray-850 text-sm">Enter two names to discover their numerological vibration and compatibility</p>
                                 </div>
                                 <div className="rounded-xl border border-[#d6c89a] p-6 space-y-5" style={{ background: '#fffdf5' }}>
-                                    <div><label className="block text-[13px] font-semibold text-gray-700 uppercase tracking-wider mb-2">Your Name</label><input type="text" value={nameA} onChange={e => setNameA(e.target.value)} placeholder="Enter first name..." className="w-full px-4 py-3.5 rounded-lg border border-[#d6c89a] bg-transparent text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#b8962e] focus:ring-2 focus:ring-[#b8962e]/15 text-[15px] transition-all" /></div>
+                                    <div><label className="block text-[13px] font-semibold text-gray-850 uppercase tracking-wider mb-2">Your Name</label><input type="text" value={nameA} onChange={e => setNameA(e.target.value)} placeholder="Enter first name..." className="w-full px-4 py-3.5 rounded-lg border border-[#d6c89a] bg-transparent text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#b8962e] focus:ring-2 focus:ring-[#b8962e]/15 text-[15px] transition-all" /></div>
                                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><div style={{ width: 40, height: 40, borderRadius: '50%', border: '1px solid #d6c89a', background: 'rgba(184,150,46,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Heart style={{ width: 16, height: 16, color: '#b8962e' }} /></div></div>
-                                    <div><label className="block text-[13px] font-semibold text-gray-700 uppercase tracking-wider mb-2">Partner's Name</label><input type="text" value={nameB} onChange={e => setNameB(e.target.value)} placeholder="Enter second name..." className="w-full px-4 py-3.5 rounded-lg border border-[#d6c89a] bg-transparent text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#b8962e] focus:ring-2 focus:ring-[#b8962e]/15 text-[15px] transition-all" /></div>
+                                    <div><label className="block text-[13px] font-semibold text-gray-850 uppercase tracking-wider mb-2">Partner's Name</label><input type="text" value={nameB} onChange={e => setNameB(e.target.value)} placeholder="Enter second name..." className="w-full px-4 py-3.5 rounded-lg border border-[#d6c89a] bg-transparent text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#b8962e] focus:ring-2 focus:ring-[#b8962e]/15 text-[15px] transition-all" /></div>
                                     <motion.button whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} onClick={handleNameCalculate} disabled={!nameA.trim() || !nameB.trim() || calculating} className="w-full flex items-center justify-center gap-3 py-4 rounded-xl text-[15px] font-semibold text-white disabled:opacity-40" style={{ background: 'linear-gradient(135deg,#b8962e 0%,#a07c1e 100%)', boxShadow: '0 8px 24px rgba(184,150,46,0.25)' }}>
                                         <Sparkles className="w-5 h-5" /> Calculate Compatibility
                                     </motion.button>
                                 </div>
                                 <div className="mt-6 p-4 rounded-xl border border-dashed border-[#d6c89a] text-center" style={{ background: 'rgba(184,150,46,0.03)' }}>
                                     <p className="text-[11px] font-semibold uppercase tracking-wider text-[#b8962e] mb-1">Chaldean Numerology</p>
-                                    <p className="text-[12px] text-gray-500 leading-relaxed">The ancient Babylonian system used in Vedic tradition. Each letter carries a sacred vibration (1–8, as 9 is divine). We calculate your Name Number, Heart's Desire, and planetary archetype to reveal your unique cosmic compatibility.</p>
+                                    <p className="text-[12px] text-gray-850 leading-relaxed">The ancient Babylonian system used in Vedic tradition. Each letter carries a sacred vibration (1–8, as 9 is divine). We calculate your Name Number, Heart's Desire, and planetary archetype to reveal your unique cosmic compatibility.</p>
                                 </div>
                             </div>
                         </motion.div>
@@ -998,7 +998,7 @@ export default function CompatibilityToolsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Person 1 */}
           <div className="p-5 rounded-2xl border bg-white" style={{ border: '1px solid #f0e8e8' }}>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">{nameResult.name1}</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-[#3a1216] mb-2">{nameResult.name1}</p>
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center text-lg font-black text-orange-600 border border-orange-100">{nameResult.num1}</div>
               <div>
@@ -1010,14 +1010,14 @@ export default function CompatibilityToolsPage() {
             <div className="space-y-4">
               <div>
                 <p className="text-[10px] font-black uppercase tracking-widest text-[#b8962e] mb-1.5 flex items-center gap-1.5"><Zap size={12}/> Personality Profile</p>
-                <p className="text-[13px] text-gray-600 leading-relaxed">
+                <p className="text-[13px] text-gray-850 leading-relaxed">
                   {nameResult.archetype1.description || `${nameResult.name1} carries the powerful vibration of Number ${nameResult.num1}. This energy gift them with unique strengths and a distinctive approach to life's journey.`}
                 </p>
               </div>
               {nameResult.archetype1.inLove && (
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-widest text-rose-500 mb-1.5 flex items-center gap-1.5"><Heart size={12} className="fill-rose-500"/> In Relationships</p>
-                  <p className="text-[13px] text-gray-600 leading-relaxed">
+                  <p className="text-[13px] text-gray-850 leading-relaxed">
                     "{nameResult.archetype1.inLove}"
                   </p>
                 </div>
@@ -1027,7 +1027,7 @@ export default function CompatibilityToolsPage() {
 
           {/* Person 2 */}
           <div className="p-5 rounded-2xl border bg-white" style={{ border: '1px solid #f0e8e8' }}>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">{nameResult.name2}</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-[#3a1216] mb-2">{nameResult.name2}</p>
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center text-lg font-black text-purple-600 border border-purple-100">{nameResult.num2}</div>
               <div>
@@ -1039,14 +1039,14 @@ export default function CompatibilityToolsPage() {
             <div className="space-y-4">
               <div>
                 <p className="text-[10px] font-black uppercase tracking-widest text-[#b8962e] mb-1.5 flex items-center gap-1.5"><Zap size={12}/> Personality Profile</p>
-                <p className="text-[13px] text-gray-600 leading-relaxed">
+                <p className="text-[13px] text-gray-850 leading-relaxed">
                   {nameResult.archetype2.description || `${nameResult.name2} carries the powerful vibration of Number ${nameResult.num2}. This energy gift them with unique strengths and a distinctive approach to life's journey.`}
                 </p>
               </div>
               {nameResult.archetype2.inLove && (
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-widest text-rose-500 mb-1.5 flex items-center gap-1.5"><Heart size={12} className="fill-rose-500"/> In Relationships</p>
-                  <p className="text-[13px] text-gray-600 leading-relaxed">
+                  <p className="text-[13px] text-gray-850 leading-relaxed">
                     "{nameResult.archetype2.inLove}"
                   </p>
                 </div>
@@ -1058,7 +1058,7 @@ export default function CompatibilityToolsPage() {
 
       {/* Insight */}
       <div className="px-6 py-5" style={{ borderTop: '1px solid #f0e8e8', background: '#f8f8f8' }}>
-        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-center mb-3 text-gray-400">Sacred Connection Insight</p>
+        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-center mb-3 text-[#3a1216]">Sacred Connection Insight</p>
         <p className="text-[14px] leading-relaxed text-center font-medium px-4" style={{ color: '#1a1a1a', margin: 0 }}>
           {/* Priority: 1. Admin Override, 2. Live AI Report, 3. Hardcoded Professional Default */}
           {compSettings?.numerologyPairInsights?.[`${Math.min(nameResult.num1, nameResult.num2)}-${Math.max(nameResult.num1, nameResult.num2)}`] 

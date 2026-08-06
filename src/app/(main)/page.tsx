@@ -337,7 +337,7 @@ export default function HomePage() {
                           {astrologer.name || 'Astrologer'}
                           <svg className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#22c55e]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z" /></svg>
                         </h3>
-                        <p className="text-[11px] md:text-[11.5px] text-gray-600 mt-0.5 truncate max-w-[130px]">
+                        <p className="text-[11px] md:text-[11.5px] text-gray-850 mt-0.5 truncate max-w-[130px]">
                           {astrologer.experienceYears || 1} yrs exp • {astrologer.languages?.slice(0, 2).join(', ') || 'Hindi'}
                         </p>
                       </div>
@@ -479,7 +479,7 @@ export default function HomePage() {
                           {astro.name || 'AI Astrologer'}
                           <svg className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#22c55e]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z" /></svg>
                         </h3>
-                        <p className="text-[11px] md:text-[11.5px] text-gray-600 mt-0.5 truncate max-w-[130px]">
+                        <p className="text-[11px] md:text-[11.5px] text-gray-850 mt-0.5 truncate max-w-[130px]">
                           {astro.experienceYears || 5} yrs exp • {astro.languages?.slice(0, 2).join(', ') || 'Hindi'}
                         </p>
                       </div>
@@ -533,7 +533,7 @@ export default function HomePage() {
               </Link>
             ))
           ) : (
-            <p className="text-center text-gray-500 col-span-full">No AI Astrologers available.</p>
+            <p className="text-center text-gray-850 col-span-full">No AI Astrologers available.</p>
           )}
         </div>
         <div className="mt-8 flex justify-center md:hidden">
@@ -1006,7 +1006,7 @@ export default function HomePage() {
               )
             })
           ) : (
-            <p className="text-gray-500 col-span-full">No testimonials available at the moment.</p>
+            <p className="text-gray-850 col-span-full">No testimonials available at the moment.</p>
           )}
         </div>
       </div>
@@ -1045,7 +1045,7 @@ export default function HomePage() {
               </div>
             ))
           ) : (
-            <p className="text-gray-500 w-full text-center">No FAQs available.</p>
+            <p className="text-gray-850 w-full text-center">No FAQs available.</p>
           )}
         </div>
       </div>
@@ -1115,7 +1115,7 @@ export default function HomePage() {
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="flex-1 bg-transparent px-4 py-2 text-[14px] text-gray-800 focus:outline-none"
+                className="flex-1 bg-transparent px-4 py-2 text-[14px] text-gray-850 focus:outline-none"
               />
               <button className="bg-[#e64a19] hover:bg-[#d84315] text-white font-semibold text-[14px] px-6 py-2.5 rounded-lg transition-colors shadow-sm">
                 Subscribe

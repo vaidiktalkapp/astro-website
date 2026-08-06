@@ -272,7 +272,7 @@ function MuhuratForm() {
 {t("muhurat.auspicious_moment_finder")}
             </h1>
                         <div className="flex flex-wrap items-center gap-4">
-                            <p className="text-gray-600 text-lg leading-relaxed max-w-2xl serif">
+                            <p className="text-gray-850 text-lg leading-relaxed max-w-2xl serif">
 {t("muhurat._timing_is_everything_ensure_s")}
               </p>
                             <div className="flex flex-wrap gap-3 mt-2">
@@ -321,7 +321,7 @@ function MuhuratForm() {
                                         <div className="flex-1 min-w-0 pr-5">
                                             <h3 className="font-bold text-gray-900 text-[13px] leading-tight mb-0.5 truncate">{cat.label}</h3>
                                             <p className="text-[10px] font-semibold text-[#b8962e] uppercase tracking-wider mb-1 truncate">{cat.subtitle}</p>
-                                            <p className="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">{cat.description}</p>
+                                            <p className="text-[11px] text-gray-850 line-clamp-2 leading-relaxed">{cat.description}</p>
                                         </div>
                                         {isActive &&
                     <motion.div
@@ -358,12 +358,12 @@ function MuhuratForm() {
                         <div className="space-y-6">
                             <div className="flex items-center gap-2 pb-3 border-b border-[#d6c89a]">
                                 <Calendar className="w-4 h-4 text-[#b8962e]" />
-                                <span className="text-[15px] font-semibold text-gray-800">{t("muhurat.date_range_location")}</span>
+                                <span className="text-[15px] font-semibold text-gray-850">{t("muhurat.date_range_location")}</span>
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-[15px] font-semibold text-gray-800 mb-2.5 flex items-center gap-1.5">
+                                    <label className="block text-[15px] font-semibold text-gray-850 mb-2.5 flex items-center gap-1.5">
                                         <Calendar className="w-3.5 h-3.5 text-[#b8962e]" />{t("muhurat.start_date")}
                   </label>
                                     <input
@@ -376,7 +376,7 @@ function MuhuratForm() {
                   
                                 </div>
                                 <div>
-                                    <label className="block text-[15px] font-semibold text-gray-800 mb-2.5 flex items-center gap-1.5">
+                                    <label className="block text-[15px] font-semibold text-gray-850 mb-2.5 flex items-center gap-1.5">
                                         <Calendar className="w-3.5 h-3.5 text-[#b8962e]" />{t("muhurat.end_date")}
                   </label>
                                     <input
@@ -391,7 +391,7 @@ function MuhuratForm() {
                             </div>
 
                             <div>
-                                <label className="block text-[15px] font-semibold text-gray-800 mb-2.5 flex items-center gap-1.5">
+                                <label className="block text-[15px] font-semibold text-gray-850 mb-2.5 flex items-center gap-1.5">
                                     <MapPin className="w-3.5 h-3.5 text-[#b8962e]" />{t("muhurat.your_city")}
                 </label>
                                 <div className="relative mh-geo z-[100]">

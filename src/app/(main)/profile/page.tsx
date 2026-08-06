@@ -213,7 +213,7 @@ export default function ProfilePage() {
           </div>
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">{t("profile.login_required") || "Authentication Required"}</h2>
-            <p className="text-gray-500">{t("profile.login_prompt_msg") || "Please login to access your profile settings and details."}</p>
+            <p className="text-gray-850">{t("profile.login_prompt_msg") || "Please login to access your profile settings and details."}</p>
           </div>
           <button
             onClick={openLoginModal}
@@ -258,7 +258,7 @@ export default function ProfilePage() {
                   <>
                     <button
                       onClick={handleCancel}
-                      className="px-4 py-2 rounded-xl text-gray-600 font-medium hover:bg-gray-100 transition-colors flex items-center gap-2">
+                      className="px-4 py-2 rounded-xl text-gray-850 font-medium hover:bg-gray-100 transition-colors flex items-center gap-2">
 
                       <X size={18} />{t("profile.cancel")}
                     </button>
@@ -284,7 +284,7 @@ export default function ProfilePage() {
 
             <div>
               <h1 className="text-2xl font-bold text-gray-900">{user.name || 'User'}</h1>
-              <p className="text-gray-500 font-medium">
+              <p className="text-gray-850 font-medium">
                 {user.phoneNumber?.startsWith('+') ? user.phoneNumber : `+91 ${user.phoneNumber || ''}`}
               </p>
             </div>
@@ -295,8 +295,8 @@ export default function ProfilePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
           {/* PERSONAL DETAILS */}
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-6 text-gray-800">
-            <h2 className="text-lg font-bold text-gray-800 flex items-center gap-2 border-b pb-3">
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-6 text-gray-850">
+            <h2 className="text-lg font-bold text-gray-850 flex items-center gap-2 border-b pb-3">
               <User className="text-yellow-500" size={20} />{t("profile.personal_details")}
             </h2>
 
@@ -353,8 +353,8 @@ export default function ProfilePage() {
           </div>
 
           {/* ADDRESS DETAILS */}
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-6 text-gray-800">
-            <h2 className="text-lg font-bold text-gray-800 flex items-center gap-2 border-b pb-3">
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-6 text-gray-850">
+            <h2 className="text-lg font-bold text-gray-850 flex items-center gap-2 border-b pb-3">
               <MapPin className="text-yellow-500" size={20} />{t("profile.address_details")}
             </h2>
 
@@ -409,18 +409,18 @@ export default function ProfilePage() {
         {/* --- FOOTER --- */}
         {isEditing &&
           <div className="text-center pt-4 pb-8 opacity-50">
-            <p className="text-xs text-gray-400">{t("profile.ensure_all_details_are_correct")}</p>
+            <p className="text-xs text-[#3a1216]">{t("profile.ensure_all_details_are_correct")}</p>
           </div>
         }
 
         {/* --- DANGER ZONE --- */}
         <div className="mt-8 pt-8 border-t border-gray-200">
-          <h3 className="text-lg font-bold text-gray-800 mb-4">{t("profile.account_settings")}</h3>
+          <h3 className="text-lg font-bold text-gray-850 mb-4">{t("profile.account_settings")}</h3>
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-between">
             <div>
               <h4 className="font-semibold text-gray-900">{t("profile.delete_account")}</h4>
-              <p className="text-sm text-gray-500">{t("profile.permanently_remove_your_accoun")}</p>
+              <p className="text-sm text-gray-850">{t("profile.permanently_remove_your_accoun")}</p>
             </div>
             <Link
               href="/delete-account"
@@ -451,9 +451,9 @@ function InputField({
   if (!isEditing) {
     return (
       <div className="space-y-1">
-        <label className="text-xs font-bold text-gray-400 uppercase tracking-wide">{label}</label>
-        <div className="text-gray-800 font-medium text-base min-h-6 flex items-center gap-2 border-b border-gray-50 pb-1">
-          {icon} {value || <span className="text-gray-300 font-normal">{t("profile.not_set")}</span>}
+        <label className="text-xs font-bold text-[#3a1216] uppercase tracking-wide">{label}</label>
+        <div className="text-gray-850 font-medium text-base min-h-6 flex items-center gap-2 border-b border-gray-50 pb-1">
+          {icon} {value || <span className="text-[#3a1216] font-normal">{t("profile.not_set")}</span>}
         </div>
       </div>);
 
@@ -462,7 +462,7 @@ function InputField({
   // EDIT MODE
   return (
     <div className="space-y-1">
-      <label className="text-xs font-bold text-gray-500 uppercase tracking-wide">{label}</label>
+      <label className="text-xs font-bold text-gray-850 uppercase tracking-wide">{label}</label>
       {type === 'select' ?
         <select
           name={name}

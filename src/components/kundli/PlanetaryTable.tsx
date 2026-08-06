@@ -35,7 +35,7 @@ const PlanetaryTable = ({ planets }: PlanetaryTableProps) => {
                                 <span className="text-orange-500 font-normal">{PLANET_SYMBOLS[name] || ''}</span>
                                 {name}
                                 {data.is_retrograde && <span title="Planet is in Retrograde motion" className="bg-red-50 text-red-600 border border-red-100 font-bold text-[10px] px-1.5 py-0.5 rounded-md ml-1 leading-none shadow-sm">(R)</span>}
-                                {data.is_combust && <span title="Planet is Combust (Asta - too close to Sun)" className="bg-gray-100 text-gray-500 border border-gray-200 font-bold text-[10px] px-1.5 py-0.5 rounded-md ml-1 leading-none shadow-sm">(C)</span>}
+                                {data.is_combust && <span title="Planet is Combust (Asta - too close to Sun)" className="bg-gray-100 text-gray-850 border border-gray-200 font-bold text-[10px] px-1.5 py-0.5 rounded-md ml-1 leading-none shadow-sm">(C)</span>}
                             </td>
                             <td className="px-4 py-3 text-sm text-gray-900 font-semibold">{data.sign}</td>
                             <td className="px-4 py-3 text-sm text-indigo-800 font-bold">{data.navamsa_sign}</td>
@@ -50,7 +50,7 @@ const PlanetaryTable = ({ planets }: PlanetaryTableProps) => {
                                     data.relation === 'Mooltrikona' ? 'bg-amber-50 text-amber-700 border border-amber-100' :
                                     data.relation === 'Friendly' ? 'bg-blue-50 text-blue-800 border border-blue-100' :
                                     data.relation === 'Enemy' ? 'bg-rose-50 text-rose-700 border border-rose-100' :
-                                    'bg-gray-50 text-gray-700 border border-gray-200'
+                                    'bg-gray-50 text-gray-850 border border-gray-200'
                                 }`}>
                                     {data.relation || 'Neutral'}
                                 </span>

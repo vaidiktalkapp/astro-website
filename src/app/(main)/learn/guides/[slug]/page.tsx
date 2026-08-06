@@ -76,7 +76,7 @@ export default function LessonDetailPage() {
       <div className="min-h-screen bg-[#fffdf5] flex flex-col items-center justify-center p-6 text-center">
                 <AlertCircle className="w-16 h-16 text-red-400 mb-4" />
                 <h1 className="text-3xl font-bold text-gray-900 serif mb-2">{t("_slug_.lesson_not_found")}</h1>
-                <p className="text-gray-600 mb-8 max-w-sm">{t("_slug_.this_lesson_might_have_been_ar")}</p>
+                <p className="text-gray-850 mb-8 max-w-sm">{t("_slug_.this_lesson_might_have_been_ar")}</p>
                 <Link href="/learn" className="bg-[#b8962e] text-white px-8 py-3 rounded-2xl font-bold text-sm">{t("_slug_.return_to_lessons")}</Link>
             </div>);
 
@@ -105,7 +105,7 @@ export default function LessonDetailPage() {
                 {/* Breadcrumb */}
                 <Link
           href="/learn"
-          className="inline-flex items-center gap-2 text-[11px] font-black uppercase text-gray-400 tracking-widest hover:text-[#b8962e] transition-colors mb-8">
+          className="inline-flex items-center gap-2 text-[11px] font-black uppercase text-[#3a1216] tracking-widest hover:text-[#b8962e] transition-colors mb-8">
           
                     <ArrowLeft className="w-3.5 h-3.5" />{t("_slug_.back_to_all_lessons")}
         </Link>
@@ -131,7 +131,7 @@ export default function LessonDetailPage() {
                                 {lesson.title}
                             </h1>
                             {lesson.shortDescription &&
-              <p className="text-[17px] text-gray-500 serif leading-relaxed opacity-80">{lesson.shortDescription}</p>
+              <p className="text-[17px] text-gray-850 serif leading-relaxed opacity-80">{lesson.shortDescription}</p>
               }
                         </div>
                     </div>
@@ -170,7 +170,7 @@ export default function LessonDetailPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="lesson-content prose prose-sm md:prose-base lg:prose-lg max-w-none serif text-gray-800 leading-relaxed overflow-hidden break-words"
+          className="lesson-content prose prose-sm md:prose-base lg:prose-lg max-w-none serif text-gray-850 leading-relaxed overflow-hidden break-words"
           dangerouslySetInnerHTML={{ __html: lesson.content }} />
         
 
@@ -185,7 +185,7 @@ export default function LessonDetailPage() {
               
                                 <ChevronLeft className="w-5 h-5 text-[#b8962e] group-hover:-translate-x-1 transition-transform" />
                                 <div>
-                                    <span className="text-[10px] font-black uppercase text-gray-400 tracking-widest block">{t("_slug_._previous")}</span>
+                                    <span className="text-[10px] font-black uppercase text-[#3a1216] tracking-widest block">{t("_slug_._previous")}</span>
                                     <span className="text-sm font-bold text-gray-900 serif">{t("_slug_.part")}{lesson.previousLesson.partNumber}: {lesson.previousLesson.title}</span>
                                 </div>
                             </Link> :
@@ -208,7 +208,7 @@ export default function LessonDetailPage() {
               className="group flex items-center gap-3 bg-white border border-[#e8dbb8]/50 rounded-2xl px-6 py-4 hover:shadow-lg hover:border-[#b8962e]/30 transition-all flex-1 max-w-xs text-right">
               
                                 <div className="flex-1">
-                                    <span className="text-[10px] font-black uppercase text-gray-400 tracking-widest block">{t("_slug_.next")}</span>
+                                    <span className="text-[10px] font-black uppercase text-[#3a1216] tracking-widest block">{t("_slug_.next")}</span>
                                     <span className="text-sm font-bold text-gray-900 serif">{t("_slug_.part")}{lesson.nextLesson.partNumber}: {lesson.nextLesson.title}</span>
                                 </div>
                                 <ChevronRight className="w-5 h-5 text-[#b8962e] group-hover:translate-x-1 transition-transform" />

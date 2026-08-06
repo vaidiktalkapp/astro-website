@@ -15,7 +15,7 @@ export default function StatusScreen({ data }: { data: any }) {
     <div className="p-8 h-full flex flex-col items-center justify-center bg-gray-50">
       <div className="w-full bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
         <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-bold text-gray-800">Registration Status</h2>
+            <h2 className="text-xl font-bold text-gray-850">Registration Status</h2>
             <span className={`px-3 py-1 rounded-full text-sm font-bold capitalize ${getStatusColor(data.status)}`}>
                 {data.status.replace(/_/g, ' ')}
             </span>
@@ -23,11 +23,11 @@ export default function StatusScreen({ data }: { data: any }) {
 
         <div className="space-y-4 text-sm">
             <div className="flex justify-between border-b pb-2">
-                <span className="text-gray-500">Name</span>
+                <span className="text-gray-850">Name</span>
                 <span className="font-semibold">{data.name}</span>
             </div>
             <div className="flex justify-between border-b pb-2">
-                <span className="text-gray-500">Ticket</span>
+                <span className="text-gray-850">Ticket</span>
                 <span className="font-mono text-[#5b2b84] font-bold">{data.ticketNumber}</span>
             </div>
         </div>

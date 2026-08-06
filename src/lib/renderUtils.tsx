@@ -53,7 +53,7 @@ const renderInlineFormatting = (text: string) => {
     if (matchText.startsWith('**') && matchText.endsWith('**')) {
       const innerContent = matchText.substring(2, matchText.length - 2);
       parts.push(
-        <strong key={`bold-${match.index}`} className="font-bold text-gray-800">
+        <strong key={`bold-${match.index}`} className="font-bold text-gray-850">
           **{renderInlineFormatting(innerContent)}**
         </strong>
       );

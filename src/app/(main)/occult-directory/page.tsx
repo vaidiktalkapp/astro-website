@@ -196,7 +196,7 @@ const OccultDirectoryLandingPage = () => {
                   ) :
 
                   <div className="col-span-full text-center py-8">
-                                <p className="text-sm text-gray-400">{t("occult_directory.no_expertise_data_found")}{selectedCity ? ` for ${selectedCity}` : ''}.</p>
+                                <p className="text-sm text-[#3a1216]">{t("occult_directory.no_expertise_data_found")}{selectedCity ? ` for ${selectedCity}` : ''}.</p>
                             </div>
                   }
                         </AnimatePresence>
@@ -225,7 +225,7 @@ const OccultDirectoryLandingPage = () => {
                 ) :
 
                 <div className="col-span-full text-center py-8">
-                            <p className="text-sm text-gray-400">{t("occult_directory.no_popular_cities_added_yet_co")}</p>
+                            <p className="text-sm text-[#3a1216]">{t("occult_directory.no_popular_cities_added_yet_co")}</p>
                         </div>
                 }
                     </div>

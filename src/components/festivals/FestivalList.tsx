@@ -40,21 +40,21 @@ export default function FestivalList({ festivals }: FestivalListProps) {
                                 </div>
                                 <div className="flex-grow pt-1">
                                     <h3 className="text-lg font-bold text-gray-900 leading-tight mb-1 group-hover:text-[#b8962e] transition-colors">{fest.name}</h3>
-                                    <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">{fest.deity !== 'None' ? fest.deity : 'Cultural Festival'}</span>
+                                    <span className="text-[11px] font-semibold text-gray-850 uppercase tracking-wider">{fest.deity !== 'None' ? fest.deity : 'Cultural Festival'}</span>
                                 </div>
                             </div>
                             
                             {/* Description */}
-                            <p className="text-sm text-gray-600 leading-relaxed mb-6 line-clamp-3 flex-grow">
+                            <p className="text-sm text-gray-850 leading-relaxed mb-6 line-clamp-3 flex-grow">
                                 {fest.description}
                             </p>
                             
                             {/* Info Badges */}
                             <div className="space-y-2 mb-6">
-                                <div className="flex items-center gap-2 text-xs font-medium text-gray-500">
+                                <div className="flex items-center gap-2 text-xs font-medium text-gray-850">
                                     <Calendar className="w-3.5 h-3.5 text-[#b8962e]" /> Tithi: {fest.month} {fest.tithi}
                                 </div>
-                                <div className="flex items-center gap-2 text-xs font-medium text-gray-500">
+                                <div className="flex items-center gap-2 text-xs font-medium text-gray-850">
                                     <Clock className="w-3.5 h-3.5 text-[#b8962e]" /> {fest.muhurat?.length > 40 ? fest.muhurat.substring(0, 40) + '…' : fest.muhurat}
                                 </div>
                             </div>

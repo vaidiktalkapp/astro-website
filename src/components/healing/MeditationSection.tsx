@@ -17,24 +17,24 @@ export default function MeditationSection({ items }: { items: any[] }) {
         <div className="flex flex-col lg:flex-row items-center gap-12 relative z-10">
           <div className="flex-1 text-center lg:text-left">
             <h2 className="text-3xl font-black text-gray-900 mb-4 tracking-tight">Active Breathing</h2>
-            <p className="text-gray-500 mb-8 max-w-lg">
+            <p className="text-gray-850 mb-8 max-w-lg">
               Follow the visual guide to balance your breath. Proper focus on breathing 
               can instantly lower cortisol levels and calm the nervous system.
             </p>
             <div className="flex flex-wrap gap-6 justify-center lg:justify-start">
               <div className="flex flex-col">
                 <span className="text-xs font-black uppercase tracking-widest text-indigo-400 mb-1">Inhale</span>
-                <span className="text-2xl font-black text-gray-800">4 Seconds</span>
+                <span className="text-2xl font-black text-gray-850">4 Seconds</span>
               </div>
               <div className="w-px h-10 bg-gray-100 hidden sm:block" />
               <div className="flex flex-col">
                 <span className="text-xs font-black uppercase tracking-widest text-emerald-400 mb-1">Hold</span>
-                <span className="text-2xl font-black text-gray-800">4 Seconds</span>
+                <span className="text-2xl font-black text-gray-850">4 Seconds</span>
               </div>
               <div className="w-px h-10 bg-gray-100 hidden sm:block" />
               <div className="flex flex-col">
                 <span className="text-xs font-black uppercase tracking-widest text-rose-400 mb-1">Exhale</span>
-                <span className="text-2xl font-black text-gray-800">4 Seconds</span>
+                <span className="text-2xl font-black text-gray-850">4 Seconds</span>
               </div>
             </div>
           </div>
@@ -75,21 +75,21 @@ export default function MeditationSection({ items }: { items: any[] }) {
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-600 px-3 py-1 rounded-full bg-indigo-50">
                     {m.focus || 'Wellness'}
                   </span>
-                  <span className="flex items-center gap-1.5 text-xs font-bold text-gray-400">
+                  <span className="flex items-center gap-1.5 text-xs font-bold text-[#3a1216]">
                     <Clock size={14} />
                     {m.duration || '5-10 min'}
                   </span>
                 </div>
 
                 <h4 className="text-xl font-black text-gray-900 mb-2 truncate">{session.title}</h4>
-                <p className="text-sm text-gray-500 mb-6 line-clamp-2 leading-relaxed font-medium">
+                <p className="text-sm text-gray-850 mb-6 line-clamp-2 leading-relaxed font-medium">
                   "{session.shortDescription || 'No description available.'}"
                 </p>
 
                 <div className="flex items-center justify-between mt-auto">
                     <div className="space-y-1">
                         {m.benefits?.slice(0, 2).map((benefit: string, bIdx: number) => (
-                            <div key={bIdx} className="flex items-center gap-2 text-[10px] font-semibold text-gray-600">
+                            <div key={bIdx} className="flex items-center gap-2 text-[10px] font-semibold text-gray-850">
                                 <div className="w-1 h-1 rounded-full bg-indigo-400" />
                                 {benefit}
                             </div>
@@ -145,7 +145,7 @@ function BreathingCircle() {
         transition={{ duration: 4, ease: "easeInOut" }}
         className="w-48 h-48 rounded-full border-2 border-dashed flex flex-col items-center justify-center bg-white shadow-2xl z-10"
       >
-        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 mb-2">Cycle Focus</span>
+        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#3a1216] mb-2">Cycle Focus</span>
         <motion.span 
           key={phase}
           initial={{ opacity: 0, y: 5 }}

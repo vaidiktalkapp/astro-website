@@ -86,7 +86,7 @@ function PaymentContent() {
       <div className="max-w-3xl mx-auto px-6 py-8">
         {/* Main Amount Display */}
         <div className="text-center mb-8">
-          <p className="text-sm text-gray-600 mb-2">{t("payment.you_are_paying")}</p>
+          <p className="text-sm text-gray-850 mb-2">{t("payment.you_are_paying")}</p>
           <p className="text-5xl font-bold text-gray-900 mb-3">
             ₹{totalPayable.toFixed(2)}
           </p>
@@ -105,14 +105,14 @@ function PaymentContent() {
         <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-6 shadow-sm">
           <div className="space-y-4">
             <div className="flex justify-between items-center">
-              <span className="text-gray-700">{t("payment.recharge_amount")}</span>
+              <span className="text-gray-850">{t("payment.recharge_amount")}</span>
               <span className="font-semibold text-gray-900">
                 ₹{baseAmount.toFixed(2)}
               </span>
             </div>
 
             <div className="flex justify-between items-center">
-              <span className="text-gray-700">{t("payment.gst")}{GST_RATE}%)</span>
+              <span className="text-gray-850">{t("payment.gst")}{GST_RATE}%)</span>
               <span className="font-semibold text-gray-900">
                 + ₹{gstAmount.toFixed(2)}
               </span>
@@ -169,7 +169,7 @@ function PaymentContent() {
           }
         </button>
 
-        <p className="text-center text-xs text-gray-500 mt-4">
+        <p className="text-center text-xs text-gray-850 mt-4">
 {t("payment.payments_are_100_safe_and_secu")}
         </p>
       </div>

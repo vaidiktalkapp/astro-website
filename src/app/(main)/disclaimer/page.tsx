@@ -51,7 +51,7 @@ export default function Disclaimer() {
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">USER ACCEPTANCE</h3>
           <p>By accessing or using the Vaidik Talk Website or its services, the User confirms that they have read, understood, and agreed to this Disclaimer in full. Continued use of the Website constitutes acceptance of these terms and limitations.</p>
 
-          <p className="text-sm text-gray-700 mt-10 text-center border-t border-[#e8d8c0] pt-6">
+          <p className="text-sm text-gray-850 mt-10 text-center border-t border-[#e8d8c0] pt-6">
             © 2026 Vaidik Talk. All Rights Reserved.
           </p>
         </div>

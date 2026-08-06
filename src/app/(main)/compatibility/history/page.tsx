@@ -71,7 +71,7 @@ export default function CompatibilityHistoryPage() {
                             <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight mb-1">
 {t("history.compatibility_history")}
               </h1>
-                            <p className="text-gray-500 text-sm">
+                            <p className="text-gray-850 text-sm">
 {t("history.revisit_your_past_name_and_lov")}
               </p>
                         </div>
@@ -92,7 +92,7 @@ export default function CompatibilityHistoryPage() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
-              className={`px-4 py-2 rounded-lg text-[13px] font-semibold transition-all ${activeTab === tab.id ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-500 hover:text-gray-800'}`}>
+              className={`px-4 py-2 rounded-lg text-[13px] font-semibold transition-all ${activeTab === tab.id ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-850 hover:text-gray-850'}`}>
               
                                 {tab.label}
                             </button>
@@ -124,7 +124,7 @@ export default function CompatibilityHistoryPage() {
                                             <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md" style={{ background: item.type === 'name' ? '#b8962e15' : '#2d1a6e15', color: item.type === 'name' ? '#b8962e' : '#2d1a6e' }}>
                                                 {item.type === 'name' ? t("history.name_vibration") : t("history.love_compatibility")}
                                             </span>
-                                            <span className="text-[12px] font-bold text-gray-800">{item.result?.result?.score || 0}{t("history._match")}</span>
+                                            <span className="text-[12px] font-bold text-gray-850">{item.result?.result?.score || 0}{t("history._match")}</span>
                                         </div>
                                         <div className="flex items-center gap-3">
                                             <div className="flex -space-x-2">
@@ -137,25 +137,25 @@ export default function CompatibilityHistoryPage() {
                                             </div>
                                             <div className="min-w-0">
                                                 <p className="font-semibold text-gray-900 text-[14px] truncate">{item.input.nameA || item.input.name1 || item.input.sign1?.name}</p>
-                                                <p className="text-[11px] text-gray-500 font-medium">&</p>
+                                                <p className="text-[11px] text-gray-850 font-medium">&</p>
                                                 <p className="font-semibold text-gray-900 text-[14px] truncate">{item.input.nameB || item.input.name2 || item.input.sign2?.name}</p>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div className="px-5 py-3 flex flex-col gap-2">
-                                        <div className="flex items-center gap-2 text-gray-500">
+                                        <div className="flex items-center gap-2 text-gray-850">
                                             <Calendar className="w-3.5 h-3.5" style={{ color: item.type === 'name' ? '#b8962e' : '#2d1a6e' }} />
                                             <span className="text-[12px] font-medium">{new Date(item.timestamp || item.createdAt).toLocaleDateString(t('common.locale_code') === 'hi' ? 'hi-IN' : 'en-IN')}</span>
                                         </div>
-                                        <p className="text-[12px] text-gray-700 font-medium truncate" style={{ color: item.type === 'name' ? '#b8962e' : '#2d1a6e' }}>
+                                        <p className="text-[12px] text-gray-850 font-medium truncate" style={{ color: item.type === 'name' ? '#b8962e' : '#2d1a6e' }}>
 {t("history.level")}{item.result?.result?.level || 'Unknown'}
                                         </p>
                                     </div>
 
                                     <div className="px-5 py-3 border-t border-[#e9ddb8] flex items-center justify-between" style={{ background: 'rgba(255,255,255,0.5)' }}>
-                                        <span className="ch-card-label text-[11px] font-bold uppercase tracking-wider text-gray-400">{t("history.view_full_cosmic_report")}</span>
-                                        <ChevronRight className="ch-card-arrow w-4 h-4 text-gray-300" />
+                                        <span className="ch-card-label text-[11px] font-bold uppercase tracking-wider text-[#3a1216]">{t("history.view_full_cosmic_report")}</span>
+                                        <ChevronRight className="ch-card-arrow w-4 h-4 text-[#3a1216]" />
                                     </div>
                                 </motion.div>
             )}
@@ -168,7 +168,7 @@ export default function CompatibilityHistoryPage() {
                             <History className="w-7 h-7 opacity-40" style={{ color: '#b8962e' }} />
                         </div>
                         <h3 className="text-xl font-semibold text-gray-900 mb-2">{searchQuery ? t("history.no_matching_records") : t("history.no_cosmic_matches_yet")}</h3>
-                        <p className="text-gray-400 text-sm max-w-sm mx-auto mb-7 leading-relaxed">
+                        <p className="text-[#3a1216] text-sm max-w-sm mx-auto mb-7 leading-relaxed">
                             {searchQuery ? t("history.no_matching_names_desc") : t("history.no_compat_generated_desc")}
                         </p>
                         {!searchQuery &&

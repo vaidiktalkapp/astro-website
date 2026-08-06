@@ -60,7 +60,7 @@ export default function FestivalsHubPage() {
                     </motion.div>
                     
                     <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{t("festivals.auspicious_festivals")}</h1>
-                    <p className="text-gray-500 text-base max-w-2xl mx-auto font-medium leading-relaxed">
+                    <p className="text-gray-850 text-base max-w-2xl mx-auto font-medium leading-relaxed">
 {t("festivals.discover_exact_dates_shubh_muh")}
           </p>
                 </div>
@@ -81,7 +81,7 @@ export default function FestivalsHubPage() {
                         <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left">
                             <span className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: upcomingFestival.color }}>{t("festivals.upcoming_next")}</span>
                             <h2 className="text-3xl font-bold text-gray-900 mb-1">{upcomingFestival.name}</h2>
-                            <p className="text-sm font-semibold text-gray-600">{new Date(upcomingFestival.date).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} • {upcomingFestival.tithi}</p>
+                            <p className="text-sm font-semibold text-gray-850">{new Date(upcomingFestival.date).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} • {upcomingFestival.tithi}</p>
                         </div>
                         <div className="relative z-10">
                             <a href={`/festivals/${upcomingFestival.slug}`} className="px-6 py-3 rounded-xl text-sm font-bold text-white transition-transform hover:scale-105 shadow-md flex items-center gap-2" style={{ backgroundColor: upcomingFestival.color }}>
@@ -98,19 +98,19 @@ export default function FestivalsHubPage() {
                     <div className="inline-flex p-1 rounded-xl border border-[#d6c89a]/50 bg-white shadow-sm">
                         <button
               onClick={() => setView('month')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${view === 'month' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-500 hover:text-gray-800 hover:bg-gray-50'}`}>
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${view === 'month' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-850 hover:text-gray-850 hover:bg-gray-50'}`}>
               
                             <TableProperties className="w-4 h-4" />{t("festivals.month")}
             </button>
                         <button
               onClick={() => setView('list')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${view === 'list' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-500 hover:text-gray-800 hover:bg-gray-50'}`}>
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${view === 'list' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-850 hover:text-gray-850 hover:bg-gray-50'}`}>
               
                             <LayoutList className="w-4 h-4" />{t("festivals.cards")}
             </button>
                         <button
               onClick={() => setView('calendar')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${view === 'calendar' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-500 hover:text-gray-800 hover:bg-gray-50'}`}>
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${view === 'calendar' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-850 hover:text-gray-850 hover:bg-gray-50'}`}>
               
                             <CalendarIcon className="w-4 h-4" />{t("festivals.calendar")}
             </button>

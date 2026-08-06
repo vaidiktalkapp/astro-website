@@ -25,7 +25,7 @@ const PanchangDetails = ({ panchang }: PanchangDetailsProps) => {
                         <item.icon className="w-5 h-5" />
                     </div>
                     <div>
-                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-400">{item.label}</p>
+                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-[#3a1216]">{item.label}</p>
                         <p className={`text-sm font-bold ${item.color.replace('text-', 'text-gray-900')}`}>{item.value}</p>
                     </div>
                 </div>

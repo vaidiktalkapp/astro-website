@@ -51,14 +51,14 @@ export default function FestivalCalendar({ festivals }: FestivalCalendarProps) {
                 {/* Month Navigator Bar */}
                 <div className="flex items-center justify-between pb-4">
                     <div className="flex items-center gap-1 px-1 py-1 rounded-lg border border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.05)' }}>
-                        <button onClick={prevMonth} className="p-1.5 rounded-md hover:bg-[#f5e9c8] transition-all text-gray-600 hover:text-[#7a6010] active:scale-95">
+                        <button onClick={prevMonth} className="p-1.5 rounded-md hover:bg-[#f5e9c8] transition-all text-gray-850 hover:text-[#7a6010] active:scale-95">
                             <ChevronLeft className="w-4 h-4" />
                         </button>
                         <div className="px-4 text-center min-w-[130px]">
                             <div className="text-[10px] font-semibold uppercase tracking-widest text-[#b8962e]">{currentYear}</div>
                             <div className="text-base font-semibold text-gray-900 leading-none">{MONTH_NAMES[currentMonth]}</div>
                         </div>
-                        <button onClick={nextMonth} className="p-1.5 rounded-md hover:bg-[#f5e9c8] transition-all text-gray-600 hover:text-[#7a6010] active:scale-95">
+                        <button onClick={nextMonth} className="p-1.5 rounded-md hover:bg-[#f5e9c8] transition-all text-gray-850 hover:text-[#7a6010] active:scale-95">
                             <ChevronRight className="w-4 h-4" />
                         </button>
                         <div className="w-px h-6 mx-1" style={{ background: '#d6c89a' }} />
@@ -83,7 +83,7 @@ export default function FestivalCalendar({ festivals }: FestivalCalendarProps) {
                         {/* Prev month filler */}
                         {prevDays.map(day => (
                             <div key={`prev-${day}`} className="aspect-square p-2 flex flex-col items-start border-r border-b border-[#e9ddb8] opacity-30" style={{ background: 'rgba(184,150,46,0.02)' }}>
-                                <span className="text-[10px] font-medium text-gray-400 self-end">{day}</span>
+                                <span className="text-[10px] font-medium text-[#3a1216] self-end">{day}</span>
                             </div>
                         ))}
 
@@ -134,7 +134,7 @@ export default function FestivalCalendar({ festivals }: FestivalCalendarProps) {
                                                 )}
                                             </>
                                         ) : (
-                                            <div className="text-[9px] text-gray-300 font-medium">—</div>
+                                            <div className="text-[9px] text-[#3a1216] font-medium">—</div>
                                         )}
                                     </div>
 
@@ -152,7 +152,7 @@ export default function FestivalCalendar({ festivals }: FestivalCalendarProps) {
                         {/* Next month filler */}
                         {nextDays.map(day => (
                             <div key={`next-${day}`} className="aspect-square p-2 flex flex-col items-start border-r border-b border-[#e9ddb8] opacity-30" style={{ background: 'rgba(184,150,46,0.02)' }}>
-                                <span className="text-[10px] font-medium text-gray-400 self-end">{day}</span>
+                                <span className="text-[10px] font-medium text-[#3a1216] self-end">{day}</span>
                             </div>
                         ))}
                     </div>
@@ -162,15 +162,15 @@ export default function FestivalCalendar({ festivals }: FestivalCalendarProps) {
                 <div className="flex flex-wrap items-center gap-5 py-3 px-5 rounded-lg border border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.04)' }}>
                     <div className="flex items-center gap-2">
                         <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
-                        <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-600">Major Festival</span>
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-850">Major Festival</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full" style={{ background: '#b8962e' }} />
-                        <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-600">Today</span>
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-850">Today</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-blue-500" />
-                        <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-600">Festival Day</span>
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-850">Festival Day</span>
                     </div>
                 </div>
             </div>
@@ -190,9 +190,9 @@ export default function FestivalCalendar({ festivals }: FestivalCalendarProps) {
                             <div className="px-5 py-4 border-b border-[#d6c89a]" style={{ background: 'rgba(184,150,46,0.08)' }}>
                                 <div className="flex items-center gap-2 mb-0.5">
                                     <CalendarIcon className="w-4 h-4 text-[#b8962e]" />
-                                    <span className="text-[13px] font-semibold text-gray-800">Festival Details</span>
+                                    <span className="text-[13px] font-semibold text-gray-850">Festival Details</span>
                                 </div>
-                                <p className="text-[11px] text-gray-500">
+                                <p className="text-[11px] text-gray-850">
                                     {selectedDate?.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
                                 </p>
                             </div>
@@ -205,7 +205,7 @@ export default function FestivalCalendar({ festivals }: FestivalCalendarProps) {
                                             <div className="w-3 h-8 rounded-full flex-shrink-0" style={{ backgroundColor: fest.color }} />
                                             <div>
                                                 <h4 className="text-base font-bold text-gray-900 leading-tight">{fest.name}</h4>
-                                                <span className="text-[11px] text-gray-500">{fest.deity}</span>
+                                                <span className="text-[11px] text-gray-850">{fest.deity}</span>
                                             </div>
                                             {fest.isMajor && (
                                                 <span className="ml-auto text-[9px] font-bold bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full uppercase tracking-wider">Major</span>
@@ -233,7 +233,7 @@ export default function FestivalCalendar({ festivals }: FestivalCalendarProps) {
                                         </div>
 
                                         {/* Description */}
-                                        <p className="text-[12px] text-gray-600 leading-relaxed mt-3 mb-3">{fest.description}</p>
+                                        <p className="text-[12px] text-gray-850 leading-relaxed mt-3 mb-3">{fest.description}</p>
 
                                         {/* CTA */}
                                         <Link
@@ -261,8 +261,8 @@ export default function FestivalCalendar({ festivals }: FestivalCalendarProps) {
                             >
                                 <CalendarIcon className="w-6 h-6 text-[#b8962e] opacity-50" />
                             </div>
-                            <h3 className="text-[15px] font-semibold text-gray-700 mb-1">Select a Festival Day</h3>
-                            <p className="text-[13px] text-gray-400">Click any highlighted date to view festival details</p>
+                            <h3 className="text-[15px] font-semibold text-gray-850 mb-1">Select a Festival Day</h3>
+                            <p className="text-[13px] text-[#3a1216]">Click any highlighted date to view festival details</p>
                         </motion.div>
                     )}
                 </AnimatePresence>

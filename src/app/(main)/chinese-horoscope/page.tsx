@@ -133,7 +133,7 @@ const FIVE_ELEMENTS = [
   years: 'Years ending in 0 or 1',
   quality: 'Strength, determination, precision',
   animals: 'Monkey, Rooster',
-  color: 'bg-gray-100 border-gray-300 text-gray-800',
+  color: 'bg-gray-100 border-gray-300 text-gray-850',
   dot: 'bg-gray-500'
 },
 {
@@ -313,9 +313,9 @@ function ChineseHoroscopeContent() {
                                 <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 leading-tight mb-4">
 {t("chinese_horoscope.what_is_my_chinese_horoscope")}
               </h2>
-                                <p className="text-gray-600 text-base leading-relaxed max-w-xl">
+                                <p className="text-gray-850 text-base leading-relaxed max-w-xl">
 {t("chinese_horoscope.select_your_celestial_animal_t")}{' '}
-                                    <span className="text-gray-700">{t("chinese_horoscope.journey")}</span>{t("chinese_horoscope.today")}
+                                    <span className="text-gray-850">{t("chinese_horoscope.journey")}</span>{t("chinese_horoscope.today")}
               </p>
                             </div>
 
@@ -343,11 +343,11 @@ function ChineseHoroscopeContent() {
                   }
                                         </div>
 
-                                        <span className="text-[13px] font-semibold text-gray-800 group-hover:text-gray-900 transition-colors tracking-wide">
+                                        <span className="text-[13px] font-semibold text-gray-850 group-hover:text-gray-900 transition-colors tracking-wide">
                                             {animal.name}
                                         </span>
 
-                                        <span className="text-[10px] text-gray-400 mt-1 group-hover:text-[#b8962e] transition-colors leading-tight">
+                                        <span className="text-[10px] text-[#3a1216] mt-1 group-hover:text-[#b8962e] transition-colors leading-tight">
                                             {CHINESE_ZODIAC_YEARS[animal.name] ?? ''}
                                         </span>
                                     </motion.button>
@@ -356,7 +356,7 @@ function ChineseHoroscopeContent() {
 
                             {/* Footer quote */}
                             <div className="mt-10 p-7 border border-[#d6c89a] rounded-2xl text-center bg-transparent">
-                                <p className="text-gray-600 text-[15px] max-w-2xl mx-auto leading-relaxed">
+                                <p className="text-gray-850 text-[15px] max-w-2xl mx-auto leading-relaxed">
 {t("chinese_horoscope._the_lunar_cycle_reveals_the_w")}{' '}
                                     <span className="text-[#b8962e] font-semibold">{t("chinese_horoscope.ancient_stars")}</span>{' '}
 {t("chinese_horoscope.hold_for_you_today")}
@@ -369,7 +369,7 @@ function ChineseHoroscopeContent() {
                                 {/* What is Chinese Horoscope */}
                                 <section className="border-t border-[#d6c89a]/50 pt-10">
                                     <h2 className="text-3xl font-semibold text-gray-900 mb-4">{t("chinese_horoscope.chinese_horoscope_what_is_it")}</h2>
-                                    <div className="space-y-4 text-gray-600 leading-relaxed text-[15px]">
+                                    <div className="space-y-4 text-gray-850 leading-relaxed text-[15px]">
                                         <p>
 {t("chinese_horoscope.the_chinese_horoscope_is_one_o")}
                   </p>
@@ -385,7 +385,7 @@ function ChineseHoroscopeContent() {
                                 {/* The Five Elements */}
                                 <section className="border-t border-[#d6c89a]/50 pt-10">
                                     <h2 className="text-3xl font-semibold text-gray-900 mb-4">{t("chinese_horoscope.the_five_elements_in_chinese_a")}</h2>
-                                    <div className="space-y-4 text-gray-600 leading-relaxed text-[15px] mb-6">
+                                    <div className="space-y-4 text-gray-850 leading-relaxed text-[15px] mb-6">
                                         <p>
 {t("chinese_horoscope.in_addition_to_the_12_year_ani")}
                   </p>
@@ -411,17 +411,17 @@ function ChineseHoroscopeContent() {
                                 {/* Animal Profiles Table */}
                                 <section className="border-t border-[#d6c89a]/50 pt-10">
                                     <h2 className="text-3xl font-semibold text-gray-900 mb-2">{t("chinese_horoscope.the_12_chinese_zodiac_animals")}</h2>
-                                    <p className="text-gray-600 text-[15px] leading-relaxed mb-6">
+                                    <p className="text-gray-850 text-[15px] leading-relaxed mb-6">
 {t("chinese_horoscope.each_of_the_12_animals_carries")}
                 </p>
                                     <div className="overflow-x-auto rounded-2xl border border-[#d6c89a]/60 bg-transparent">
                                         <table className="w-full text-left border-collapse">
                                             <thead>
                                                 <tr className="border-b border-[#d6c89a]/60 bg-[#fdf6e3]/40">
-                                                    <th className="p-4 text-[12px] font-black text-gray-400 uppercase tracking-wider">{t("chinese_horoscope.animal")}</th>
-                                                    <th className="p-4 text-[12px] font-black text-gray-400 uppercase tracking-wider">{t("chinese_horoscope.element")}</th>
-                                                    <th className="p-4 text-[12px] font-black text-gray-400 uppercase tracking-wider">{t("chinese_horoscope.yin_yang")}</th>
-                                                    <th className="p-4 text-[12px] font-black text-gray-400 uppercase tracking-wider">{t("chinese_horoscope.key_traits")}</th>
+                                                    <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">{t("chinese_horoscope.animal")}</th>
+                                                    <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">{t("chinese_horoscope.element")}</th>
+                                                    <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">{t("chinese_horoscope.yin_yang")}</th>
+                                                    <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">{t("chinese_horoscope.key_traits")}</th>
                                                 </tr>
                                             </thead>
                                             <tbody className="divide-y divide-[#d6c89a]/30">
@@ -431,10 +431,10 @@ function ChineseHoroscopeContent() {
                         className="hover:bg-[#fdf6e3]/30 transition-colors cursor-pointer"
                         onClick={() => fetchSignReading(a.name)}>
                         
-                                                        <td className="p-4 font-semibold text-gray-800 text-[14px] whitespace-nowrap">{a.name}</td>
-                                                        <td className="p-4 text-[14px] text-gray-600">{a.element}</td>
-                                                        <td className="p-4 text-[14px] text-gray-600">{a.yin_yang}</td>
-                                                        <td className="p-4 text-[13px] text-gray-600 leading-relaxed">{a.traits}</td>
+                                                        <td className="p-4 font-semibold text-gray-850 text-[14px] whitespace-nowrap">{a.name}</td>
+                                                        <td className="p-4 text-[14px] text-gray-850">{a.element}</td>
+                                                        <td className="p-4 text-[14px] text-gray-850">{a.yin_yang}</td>
+                                                        <td className="p-4 text-[13px] text-gray-850 leading-relaxed">{a.traits}</td>
                                                     </tr>
                       )}
                                             </tbody>
@@ -445,7 +445,7 @@ function ChineseHoroscopeContent() {
                                 {/* How to Read Your Chinese Horoscope */}
                                 <section className="border-t border-[#d6c89a]/50 pt-10">
                                     <h2 className="text-3xl font-semibold text-gray-900 mb-4">{t("chinese_horoscope.how_to_read_your_chinese_horos")}</h2>
-                                    <div className="space-y-4 text-gray-600 leading-relaxed text-[15px] mb-6">
+                                    <div className="space-y-4 text-gray-850 leading-relaxed text-[15px] mb-6">
                                         <p>
 {t("chinese_horoscope.a_chinese_horoscope_reading_dr")}
                   </p>
@@ -474,8 +474,8 @@ function ChineseHoroscopeContent() {
                                                     {i + 1}
                                                 </div>
                                                 <div>
-                                                    <p className="font-semibold text-gray-800 text-[14px] mb-1">{tip.title}</p>
-                                                    <p className="text-[13px] text-gray-600 leading-relaxed">{tip.desc}</p>
+                                                    <p className="font-semibold text-gray-850 text-[14px] mb-1">{tip.title}</p>
+                                                    <p className="text-[13px] text-gray-850 leading-relaxed">{tip.desc}</p>
                                                 </div>
                                             </div>
                   )}

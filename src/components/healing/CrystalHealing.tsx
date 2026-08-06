@@ -15,7 +15,7 @@ export default function CrystalHealing({ items }: { items: any[] }) {
         <div className="flex flex-col md:flex-row items-center justify-between gap-10 relative z-10">
           <div className="flex-1">
             <h2 className="text-3xl font-black text-gray-900 mb-2 tracking-tight">Vibrational Wisdom</h2>
-            <p className="text-gray-500 max-w-lg mb-8">
+            <p className="text-gray-850 max-w-lg mb-8">
               Every stone carries a unique frequency. Use the energy of the Earth to 
               amplify your intentions, protect your aura, and balance your chakras.
             </p>
@@ -68,11 +68,11 @@ export default function CrystalHealing({ items }: { items: any[] }) {
 
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-2 h-2 rounded-full bg-violet-400" />
-                <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">{m.color || 'Prismatic'}</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-[#3a1216]">{m.color || 'Prismatic'}</span>
               </div>
               
               <h3 className="text-xl font-black text-gray-900 mb-1 leading-tight">{crystal.title}</h3>
-              <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed h-8 font-medium">
+              <p className="text-xs text-gray-850 line-clamp-2 leading-relaxed h-8 font-medium">
                 {crystal.shortDescription || 'No description available.'}
               </p>
             </motion.div>
@@ -116,35 +116,35 @@ export default function CrystalHealing({ items }: { items: any[] }) {
                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-violet-600 px-4 py-1.5 rounded-full bg-violet-50 border border-violet-100">
                       {selectedCrystal.metadata?.element || 'Aether'} Element
                     </span>
-                    <div className="flex items-center gap-1.5 text-xs font-bold text-gray-400">
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-[#3a1216]">
                       <Zap size={14} className="text-amber-400" />
                       Very High Vibration
                     </div>
                   </div>
                   <h3 className="text-3xl font-black text-gray-900 mb-2">{selectedCrystal.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed font-medium">
+                  <p className="text-sm text-gray-850 leading-relaxed font-medium">
                     "{selectedCrystal.shortDescription || 'Experience the resonance of this sacred geometry.'}"
                   </p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="p-4 rounded-2xl bg-gray-50 border border-gray-100">
-                    <h5 className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">Chakra</h5>
+                    <h5 className="text-[10px] font-black uppercase tracking-widest text-[#3a1216] mb-1">Chakra</h5>
                     <p className="text-sm font-bold text-gray-900">{selectedCrystal.metadata?.chakra || 'Crown'}</p>
                   </div>
                   <div className="p-4 rounded-2xl bg-gray-50 border border-gray-100">
-                    <h5 className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">Color</h5>
+                    <h5 className="text-[10px] font-black uppercase tracking-widest text-[#3a1216] mb-1">Color</h5>
                     <p className="text-sm font-bold text-gray-900">{selectedCrystal.metadata?.color || 'Prismatic'}</p>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <h5 className="text-[10px] font-black uppercase tracking-widest text-gray-400 flex items-center gap-2">
+                  <h5 className="text-[10px] font-black uppercase tracking-widest text-[#3a1216] flex items-center gap-2">
                     <Info size={14} /> Sacred Properties
                   </h5>
                   <div className="space-y-3">
                     {(selectedCrystal.metadata?.benefits || []).map((benefit: string, i: number) => (
-                      <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-violet-50/50 text-xs font-bold text-gray-700">
+                      <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-violet-50/50 text-xs font-bold text-gray-850">
                         <div className="w-1.5 h-1.5 rounded-full bg-violet-400" />
                         {benefit}
                       </div>
@@ -171,7 +171,7 @@ function InfoItem({ icon, label, value }: any) {
   return (
     <div className="p-4 rounded-3xl bg-gray-50 border border-gray-100">
       <div className="text-violet-500 mb-2">{icon}</div>
-      <p className="text-[9px] font-black uppercase tracking-widest text-gray-400 mb-0.5">{label}</p>
+      <p className="text-[9px] font-black uppercase tracking-widest text-[#3a1216] mb-0.5">{label}</p>
       <p className="text-[13px] font-black text-gray-900">{value}</p>
     </div>
   );

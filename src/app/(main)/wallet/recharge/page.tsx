@@ -229,7 +229,7 @@ export default function RechargePage() {
                       <p className="text-[11px] font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded-full border border-orange-200 mt-1 animate-pulse uppercase tracking-wider">
                         GET ₹{pack.welcomeBonusAmount}
                       </p>
-                      {/* <p className="text-[9px] text-gray-400 mt-1">No GST on ₹1</p> */}
+                      {/* <p className="text-[9px] text-[#3a1216] mt-1">No GST on ₹1</p> */}
                     </div>
                   ) : (
                     <>
@@ -242,7 +242,7 @@ export default function RechargePage() {
                           {pack.bonusPercentage}{t("recharge._extra")}
                     </p> :
 
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-gray-850">
                           {pack.bonusPercentage > 0 ? 'Bonus Claimed' : 'Standard Pack'}
                         </p>
                     }
