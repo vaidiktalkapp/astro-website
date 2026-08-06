@@ -1,0 +1,12 @@
+const fs = require('fs');
+let content = fs.readFileSync('src/app/(main)/marriage-relationship/page.tsx', 'utf8');
+content = content.replace(/MarriageRelationshipPage/g, 'CareerJobPage');
+content = content.replace(/Consult Marriage/g, 'Consult Career & Job');
+content = content.replace(/\/images\/marriage-hero\.png/g, '/Astrology image.png');
+content = content.replace(/Marriage & Relationship/g, 'Career & Job');
+content = content.replace(/Whether you're facing delays, confused about Manglik Dosh, unsure of compatibility, or navigating relationship conflicts/g, "Whether you're facing job instability, looking for career growth, confused about business vs job, or awaiting promotion");
+content = content.replace(/Marriage Astrology/g, 'Career Astrology');
+content = content.replace(/\['Marriage', 'Kundali'\]/g, "['Career', 'Business']");
+content = content.replace(/Astrology image.png"[\s\S]*?alt="Career Astrology/g, 'Astrology image.png"\n            alt="Career Astrology');
+fs.writeFileSync('src/app/(main)/career-job/page.tsx', content);
+console.log('Done');

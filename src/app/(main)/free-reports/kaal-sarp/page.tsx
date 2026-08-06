@@ -673,10 +673,10 @@ export default function KaalSarpPage() {
                     <h1 className="text-4xl font-bold text-gray-900 mb-3" style={{ fontFamily: 'Roboto, sans-serif' }}>
 {t("kaal_sarp.kaal_sarp_dosh_and_its_effects")}
           </h1>
-                    <h2 className="text-xl text-gray-700 mb-3">
+                    <h2 className="text-xl text-gray-850 mb-3">
 {t("kaal_sarp.find_your_specific_kaal_sarp_y")}
           </h2>
-                    <p className="text-[14px] text-gray-500 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-[#3a1216] max-w-3xl mx-auto leading-relaxed">
 {t("kaal_sarp.kaal_sarp_dosh_is_formed_when")}
 
           </p>

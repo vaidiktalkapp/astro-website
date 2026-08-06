@@ -63,7 +63,7 @@ const KundliPage = () => {
     place: '',
     lat: '',
     lon: '',
-    tzone: 5.5
+    tzone: 5.5 as number
   });
 
   useEffect(() => {
@@ -77,13 +77,13 @@ const KundliPage = () => {
     const globalStored = birthDetailsStore.get();
     if (globalStored) {
       setFormData({
-        name: globalStored.name,
-        date: globalStored.date,
-        time: globalStored.time,
-        place: globalStored.place,
-        lat: String(globalStored.lat),
-        lon: String(globalStored.lon),
-        tzone: globalStored.tzone
+        name: globalStored.name || '',
+        date: globalStored.date || '',
+        time: globalStored.time || '',
+        place: globalStored.place || '',
+        lat: globalStored.lat ? String(globalStored.lat) : '',
+        lon: globalStored.lon ? String(globalStored.lon) : '',
+        tzone: globalStored.tzone || 5.5
       });
     }
 
@@ -190,10 +190,12 @@ const KundliPage = () => {
         ...prev,
         name: profile.name || prev.name,
         date: profile.date || prev.date,
-        time: profile.time || prev.time,
-        place: profile.place || prev.place,
+        time: profile.time || '',
+        // Birth place intentionally NOT auto-filled — user must search and select city
       }));
-      toast.success('Details loaded from profile');
+      toast.success('Name, date & time loaded from profile');
+    } else {
+      toast.error('No profile details found. Please update your profile.');
     }
   };
 
@@ -288,7 +290,7 @@ const KundliPage = () => {
                                     <h1 className="text-4xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight">
 {t("kundli.janam_kundli")}<span className="text-[#b8962e]">{t("kundli.generator")}</span>
                                     </h1>
-                                    <p className="text-gray-600 text-[17px] leading-relaxed max-w-xl mx-auto mb-8 font-medium">
+                                    <p className="text-gray-800 text-[17px] leading-relaxed max-w-xl mx-auto mb-8 font-medium">
 {t("kundli.unlock_the_secrets_of_your_lif")}
                 </p>
 
@@ -329,7 +331,7 @@ const KundliPage = () => {
                                     {/* What is Janam Kundli */}
                                     <section className="border-t border-[#d6c89a]/50 pt-10">
                                         <h2 className="text-3xl font-semibold text-gray-900 mb-4">{t("kundli.what_is_a_janam_kundli")}</h2>
-                                        <div className="space-y-4 text-gray-600 leading-relaxed text-[15px]">
+                                        <div className="space-y-4 text-gray-900 leading-relaxed text-[15px]">
                                             <p>
 {t("kundli.a_janam_kundli_also_known_as_a")}
                     </p>
@@ -345,7 +347,7 @@ const KundliPage = () => {
                                     {/* The 12 Houses */}
                                     <section className="border-t border-[#d6c89a]/50 pt-10">
                                         <h2 className="text-3xl font-semibold text-gray-900 mb-4">{t("kundli.the_12_houses_of_the_kundli")}</h2>
-                                        <div className="space-y-4 text-gray-600 leading-relaxed text-[15px] mb-6">
+                                        <div className="space-y-4 text-gray-900 leading-relaxed text-[15px] mb-6">
                                             <p>
 {t("kundli.the_kundli_is_divided_into_12")}
                     </p>
@@ -354,15 +356,15 @@ const KundliPage = () => {
                                             <table className="w-full text-left border-collapse">
                                                 <thead>
                                                     <tr className="border-b border-[#d6c89a]/60 bg-[#fdf6e3]/40">
-                                                        <th className="p-4 text-[12px] font-black text-gray-400 uppercase tracking-wider">{t("kundli.house")}</th>
-                                                        <th className="p-4 text-[12px] font-black text-gray-400 uppercase tracking-wider">{t("kundli.area_of_life")}</th>
+                                                        <th className="p-4 text-[12px] font-black text-gray-800 uppercase tracking-wider">{t("kundli.house")}</th>
+                                                        <th className="p-4 text-[12px] font-black text-gray-800 uppercase tracking-wider">{t("kundli.area_of_life")}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody className="divide-y divide-[#d6c89a]/30">
                                                     {KUNDLI_HOUSES.map((h, i) =>
                         <tr key={i} className="hover:bg-[#fdf6e3]/30 transition-colors">
                                                             <td className="p-4 font-semibold text-gray-800 text-[14px] whitespace-nowrap">{h.house}</td>
-                                                            <td className="p-4 text-[13px] text-gray-600 leading-relaxed">{h.rules}</td>
+                                                            <td className="p-4 text-[13px] text-gray-800 leading-relaxed">{h.rules}</td>
                                                         </tr>
                         )}
                                                 </tbody>
@@ -373,7 +375,7 @@ const KundliPage = () => {
                                     {/* The 9 Planets */}
                                     <section className="border-t border-[#d6c89a]/50 pt-10">
                                         <h2 className="text-3xl font-semibold text-gray-900 mb-4">{t("kundli.the_navagrahas_nine_planets_in")}</h2>
-                                        <div className="space-y-4 text-gray-600 leading-relaxed text-[15px] mb-6">
+                                        <div className="space-y-4 text-gray-900 leading-relaxed text-[15px] mb-6">
                                             <p>
 {t("kundli.vedic_astrology_recognises_nin")}
                     </p>
@@ -382,7 +384,7 @@ const KundliPage = () => {
                                             {NAVAGRAHAS.map((g, i) =>
                     <div key={i} className="p-5 rounded-2xl border border-[#d6c89a]/60">
                                                     <p className="font-bold text-[#b8962e] text-[14px] mb-1.5">{g.planet}</p>
-                                                    <p className="text-[13px] text-gray-600 leading-relaxed">{g.rules}</p>
+                                                    <p className="text-[13px] text-gray-900 leading-relaxed">{g.rules}</p>
                                                 </div>
                     )}
                                         </div>
@@ -391,7 +393,7 @@ const KundliPage = () => {
                                     {/* How to Read Your Kundli */}
                                     <section className="border-t border-[#d6c89a]/50 pt-10">
                                         <h2 className="text-3xl font-semibold text-gray-900 mb-4">{t("kundli.how_to_read_your_janam_kundli")}</h2>
-                                        <div className="space-y-4 text-gray-600 leading-relaxed text-[15px] mb-6">
+                                        <div className="space-y-4 text-gray-900 leading-relaxed text-[15px] mb-6">
                                             <p>
 {t("kundli.reading_a_kundli_involves_unde")}
                     </p>
@@ -421,7 +423,7 @@ const KundliPage = () => {
                                                     </div>
                                                     <div>
                                                         <p className="font-semibold text-gray-800 text-[14px] mb-1">{tip.title}</p>
-                                                        <p className="text-[13px] text-gray-600 leading-relaxed">{tip.desc}</p>
+                                                        <p className="text-[13px] text-gray-800 leading-relaxed">{tip.desc}</p>
                                                     </div>
                                                 </div>
                     )}
@@ -438,7 +440,7 @@ const KundliPage = () => {
                                             <span>{t("kundli.birth_chart_calculator")}</span>
                                         </div>
                                         <h2 className="text-3xl font-semibold text-gray-900 mb-2">{t("kundli.generate_your_janam_kundli")}</h2>
-                                        <p className="text-gray-600 text-[15px] leading-relaxed">
+                                        <p className="text-gray-900 text-[15px] leading-relaxed">
 {t("kundli.enter_your_birth_details_below")}
                   </p>
                                     </div>
@@ -448,8 +450,12 @@ const KundliPage = () => {
                     e.preventDefault();
                     const isInvalidCoord = !formData.lat || !formData.lon ||
                     formData.lat === 'undefined' || formData.lon === 'undefined';
-                    if (isInvalidCoord || !formData.place) {
-                      toast.error('Please search and select your birth city from the list.');
+                    if (!formData.place) {
+                      toast.error('Please enter your birth city.');
+                      return;
+                    }
+                    if (isInvalidCoord) {
+                      toast.error('Please search and select your birth city from the dropdown list to confirm location.');
                       return;
                     }
                     handleGenerate(formData);
@@ -544,7 +550,9 @@ const KundliPage = () => {
                             setFormData({ ...formData, place: '', lat: '', lon: '' });
                           }
                         }} />
-                      
+                        {formData.place && !formData.lat && (
+                          <p className="text-[11px] text-amber-600 font-semibold mt-1.5">⚠️ Please select your city from the dropdown to confirm location.</p>
+                        )}
                                             </div>
                                         </div>
 
@@ -587,26 +595,26 @@ const KundliPage = () => {
                                                 <Moon className="w-4 h-4 text-[#b8962e]" />
                                                 <span className="text-[14px] font-semibold text-gray-800">{t("kundli.janam_kundli")}</span>
                                             </div>
-                                            <p className="text-[13px] text-gray-500 leading-relaxed">{t("kundli.complete_birth_chart_with_all")}</p>
+                                            <p className="text-[13px] text-gray-850 leading-relaxed">{t("kundli.complete_birth_chart_with_all")}</p>
                                         </div>
                                         <div>
                                             <div className="flex items-center gap-2 mb-1.5">
                                                 <Star className="w-4 h-4 text-[#b8962e]" />
                                                 <span className="text-[14px] font-semibold text-gray-800">{t("kundli.planetary_positions")}</span>
                                             </div>
-                                            <p className="text-[13px] text-gray-500 leading-relaxed">{t("kundli.graha_positions_dashas_and_tra")}</p>
+                                            <p className="text-[13px] text-gray-850 leading-relaxed">{t("kundli.graha_positions_dashas_and_tra")}</p>
                                         </div>
                                         <div>
                                             <div className="flex items-center gap-2 mb-1.5">
                                                 <Compass className="w-4 h-4 text-[#b8962e]" />
                                                 <span className="text-[14px] font-semibold text-gray-800">{t("kundli.ascendant_nakshatra")}</span>
                                             </div>
-                                            <p className="text-[13px] text-gray-500 leading-relaxed">{t("kundli.lagna_birth_star_and_rashi_det")}</p>
+                                            <p className="text-[13px] text-gray-850 leading-relaxed">{t("kundli.lagna_birth_star_and_rashi_det")}</p>
                                         </div>
                                     </div>
 
                                     {/* Footer Note */}
-                                    <p className="text-center text-xs text-gray-400 mt-10">
+                                    <p className="text-center text-xs text-gray-800 mt-10">
 {t("kundli._your_kundli_is_calculated_usi")}
                 </p>
                                 </div>

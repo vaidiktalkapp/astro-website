@@ -343,7 +343,7 @@ export default function OrdersPage() {
                       <div className="flex items-start gap-4">
                         <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-200 shrink-0">
                           <img
-                    src={session.astrologerId?.profilePicture || session.astrologerId?.image || '/vaidiktalklogo.png'}
+                    src={session.astrologerId?.profilePicture || session.astrologerId?.image || '/vaidiktalklogo.webp'}
                     alt={session.astrologerId.name}
                     className="w-full h-full object-cover" />
                   

@@ -21,7 +21,7 @@ export default function AstrologerLayout({
           <div className="flex items-center gap-2">
             <Link href="https://vaidiktalk.com">
             {/* Replace with your Logo */}
-            <Image src="/Vaidik-talk1.png" alt="VaidikTalk Logo" width={200} height={200} />
+            <Image src="/Vaidik-talk1.webp" alt="VaidikTalk Logo" width={200} height={200} />
             </Link>
           </div>
         </div>

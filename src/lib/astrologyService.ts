@@ -43,9 +43,33 @@ export const astrologyService = {
     const response = await apiClient.post('/astrology/moon-sign', sanitize(data));
     return response.data;
   },
+
+  getTodayPanchang: async (data: { lat?: string; lon?: string; tzone?: number; date?: string } = {}) => {
+    // Default to New Delhi if not provided
+    const payload = {
+      lat: data.lat || '28.6139',
+      lon: data.lon || '77.2090',
+      tzone: data.tzone || 5.5,
+      date: data.date || new Date().toISOString().split('T')[0]
+    };
+    const response = await apiClient.post('/astrology/today', payload);
+    return response.data;
+  },
   calculateLoveHoroscope: async (data: AstrologyCalculationRequest) => {
     const response = await apiClient.post('/astrology/love-horoscope', sanitize(data));
     return response.data;
+  },
+  getDailyHoroscopeAllSigns: async (period: string = 'today', language: string = 'English') => {
+    const response = await apiClient.get('/astrology/daily-horoscope', { params: { period, language } });
+    return response.data;
+  },
+  getFaqs: async (category: string) => {
+    try {
+      const response = await apiClient.get('/faqs', { params: { category, status: 'active' } });
+      return response.data;
+    } catch (e) {
+      return { data: [] };
+    }
   },
   calculateZodiacLove: async (sign: string, period: string = 'daily', language: string = 'English') => {
     const response = await apiClient.post('/astrology/zodiac-love', { sign, period, language });

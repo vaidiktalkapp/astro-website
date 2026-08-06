@@ -1,9 +1,8 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-import { useState, useEffect, Suspense } from 'react';
+import { Suspense } from 'react';
 import Header from '../../components/layout/Header';
-import Sidebar from '../../components/layout/Sidebar';
+import Footer from '../../components/layout/Footer';
 import { RealTimeProvider } from '../../context/RealTimeContext';
 import ChatWaitingModal from '../../components/modals/ChatWaitingModal';
 import CallWaitingModal from '../../components/modals/CallWaitingModal';
@@ -14,72 +13,23 @@ export default function MainLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [isMounted, setIsMounted] = useState(false);
-  const pathname = usePathname();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Define routes where sidebar should be hidden by default (full width for chat/call interfaces)
-  const isChatRoute = pathname?.startsWith('/chat/') ||
-                      pathname?.startsWith('/call/') ||
-                      pathname?.startsWith('/ai-chat/');
-
-  // Sidebar is persistent on all pages EXCEPT home, chat routes, (and never on mobile)
-  const isPersistent = isMounted && !isMobile && pathname !== '/' && !isChatRoute;
-
-  useEffect(() => {
-    setIsMounted(true);
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // Ensure sidebar closes on mobile/overlay routes when navigating
-  useEffect(() => {
-    if (isMounted && (isMobile || !isPersistent)) {
-      setIsSidebarOpen(false);
-    }
-  }, [pathname, isPersistent, isMobile, isMounted]);
-
   return (
-    // overflow-x-hidden contains any stray child without relying only on body
-    <div className="min-h-screen bg-gray-50 flex flex-col overflow-x-hidden">
-      {/* min-w-0 lets the row's children shrink instead of forcing the page wide */}
-      <div className="flex flex-1 min-w-0">
-        {/* Sidebar - Handles its own fixed/overlay modes internally */}
-        <Suspense fallback={null}>
-          <Sidebar
-            isOpen={isSidebarOpen}
-            onClose={() => setIsSidebarOpen(false)}
-            isPersistent={isPersistent}
-          />
-        </Suspense>
-
-        {/* Content Area containing Header and Main
-            min-w-0 + w-full = the critical fix. Without min-w-0 a flex item keeps
-            min-width:auto and refuses to shrink below its content, pushing the
-            header's right controls off-screen (where overflow-x:hidden clips them). */}
-        <div
-          className={`flex-1 min-w-0 w-full flex flex-col transition-[margin] duration-500 ${
-            isPersistent ? 'md:ml-[240px]' : ''
-          }`}
-        >
-          <Header
-            isSidebarOpen={isSidebarOpen}
-            setIsSidebarOpen={setIsSidebarOpen}
-            isPersistent={isPersistent}
-          />
-
-          <RealTimeProvider>
-            <main className="flex-1 min-w-0">
-              {children}
-              <ChatWaitingModal />
-              <CallWaitingModal />
-              <PromoBannerModal />
-            </main>
-          </RealTimeProvider>
-        </div>
+    <div className="min-h-screen bg-[#fffdf9] flex flex-col overflow-x-clip text-[#3a1216] font-sans relative">
+      {/* Global Spiritual Sprinkles Pattern */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-19" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='140' height='140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20l2-8 2 8 8 2-8 2-2 8-2-8-8-2z' fill='%23d97706' fill-opacity='0.4'/%3E%3Ccircle cx='70' cy='40' r='1.5' fill='%23ee6c1e' fill-opacity='0.7'/%3E%3Ccircle cx='110' cy='100' r='2.5' fill='%23d97706' fill-opacity='0.5'/%3E%3Cpath d='M90 110l1.5-5 1.5 5 5 1.5-5 1.5-1.5 5-1.5-5-5-1.5z' fill='%23ee6c1e' fill-opacity='0.3'/%3E%3Ccircle cx='40' cy='90' r='1' fill='%23d97706' fill-opacity='0.4'/%3E%3Ccircle cx='120' cy='30' r='1.5' fill='%23ee6c1e' fill-opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '140px 140px' }}></div>
+      <div className="flex flex-1 min-w-0 flex-col">
+        <Header />
+        
+        <RealTimeProvider>
+          <main className="flex-1 min-w-0 w-full flex flex-col">
+            {children}
+            <ChatWaitingModal />
+            <CallWaitingModal />
+            <PromoBannerModal />
+            
+            <Footer />
+          </main>
+        </RealTimeProvider>
       </div>
     </div>
   );

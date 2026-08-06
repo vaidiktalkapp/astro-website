@@ -56,12 +56,12 @@ export default function HoroscopeMatchingPage() {
         const stored = birthDetailsStore.get();
         if (stored) {
             setBoyData({
-                name: stored.name,
-                date: stored.date,
-                time: stored.time,
-                place: stored.place,
-                lat: String(stored.lat),
-                lon: String(stored.lon),
+                name: stored.name || '',
+                date: stored.date || '',
+                time: stored.time || '',
+                place: stored.place || '',
+                lat: stored.lat ? String(stored.lat) : '',
+                lon: stored.lon ? String(stored.lon) : '',
                 tzone: stored.tzone || tz
             });
         }

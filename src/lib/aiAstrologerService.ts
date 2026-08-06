@@ -646,10 +646,12 @@ class AiAstrologerService {
      */
     async getReviews(id: string, page: number = 1, limit: number = 10): Promise<any> {
         try {
-            const response = await apiClient.get(`/astrologers/${id}/reviews`, {
-                params: { page, limit }
-            });
-            return response.data;
+            // AI Astrologer reviews are returned from the main profile endpoint
+            const response = await apiClient.get(`/ai-astrologers/${id}`);
+            return {
+                reviews: response.data.reviews || [],
+                pagination: response.data.reviewsPagination || { totalReviews: 0 }
+            };
         } catch (error) {
             console.error(`❌ [AI Astrologer Service] Failed to fetch reviews for ${id}:`, error);
             return { reviews: [], pagination: { totalReviews: 0 } };
@@ -661,8 +663,28 @@ class AiAstrologerService {
      */
     async getReviewStats(id: string): Promise<any> {
         try {
-            const response = await apiClient.get(`/astrologers/${id}/reviews/stats`);
-            return response.data.data || response.data;
+            const response = await apiClient.get(`/ai-astrologers/${id}`);
+            const reviews = response.data.reviews || [];
+            
+            if (reviews.length === 0) return null;
+
+            let totalRating = 0;
+            const ratingBreakdown: Record<number, number> = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+            
+            reviews.forEach((r: any) => {
+                totalRating += r.rating || 0;
+                if (r.rating >= 1 && r.rating <= 5) {
+                    ratingBreakdown[Math.floor(r.rating)] += 1;
+                }
+            });
+            
+            const averageRating = (totalRating / reviews.length).toFixed(1);
+            
+            return {
+                averageRating: Number(averageRating),
+                totalReviews: reviews.length,
+                ratingBreakdown
+            };
         } catch (error) {
             console.error(`❌ [AI Astrologer Service] Failed to fetch review stats for ${id}:`, error);
             return null;

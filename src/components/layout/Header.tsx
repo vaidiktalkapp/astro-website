@@ -4,98 +4,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useAuth } from '../../context/AuthContext';
 import { useTranslation } from '../../context/LanguageContext';
+import axios from 'axios';
 import LoginModal from './LoginModal';
-import Sidebar from './Sidebar';
-
-
-// Icons
-const UserIcon = () => (
-  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-  </svg>
-);
-
-const WalletIcon = () => (
-  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-  </svg>
-);
-
-const OrderIcon = () => (
-  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-  </svg>
-);
-
-const LogoutIcon = () => (
-  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-  </svg>
-);
-
-const ChevronDownIcon = () => (
-  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-  </svg>
-);
-
-const ChatIcon = () => (
-  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-  </svg>
-);
-
-const PhoneIcon = () => (
-  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-  </svg>
-);
-
-const SparklesIcon = () => (
-  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4M4 19h4m9-15v4m-2-2h4m-5 15v4m-2-2h4m-7-4l2-2 2 2-2 2-2-2z" />
-  </svg>
-);
-
-const MoreVerticalIcon = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-  </svg>
-);
-
-const GlobeIcon = () => (
-  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-  </svg>
-);
 
 const LANGUAGES = [
   { code: 'en', name: 'English', short: 'EN' },
   { code: 'hi', name: 'हिन्दी', short: 'HI' },
-  /*
-  { code: 'mr', name: 'मराठी', short: 'MR' },
-  { code: 'gu', name: 'ગુજરાતી', short: 'GU' },
-  { code: 'bn', name: 'বাংলা', short: 'BN' },
-  { code: 'ta', name: 'தமிழ்', short: 'TA' },
-  { code: 'te', name: 'తెలుగు', short: 'TE' },
-  { code: 'kn', name: 'ಕನ್ನಡ', short: 'KN' },
-  { code: 'ml', name: 'മലയാളം', short: 'ML' },
-  { code: 'pa', name: 'ਪੰਜਾਬੀ', short: 'PA' }
-  */
 ];
 
-interface HeaderProps {
-  isSidebarOpen?: boolean;
-  setIsSidebarOpen?: (isOpen: boolean) => void;
-  isPersistent?: boolean;
-}
-
-export default function Header({ 
-  isSidebarOpen = false, 
-  setIsSidebarOpen = () => {}, 
-  isPersistent = false 
-}: HeaderProps = {}) {
-
+export default function Header() {
   const {
     user,
     isAuthenticated,
@@ -106,302 +23,516 @@ export default function Header({
   } = useAuth();
   const { t, locale, setLocale } = useTranslation();
 
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
-  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
+  const [navPujas, setNavPujas] = useState<any[]>([]);
   const languageMenuRef = useRef<HTMLDivElement>(null);
-  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleProfileClick = () => {
-    setIsProfileDropdownOpen(!isProfileDropdownOpen);
+  useEffect(() => {
+    const fetchNavPujas = async () => {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+        const response = await axios.get(`${apiUrl}/pujas?status=active&limit=12`);
+        setNavPujas(response.data.data || []);
+      } catch (error) {
+        console.error('Failed to load nav pujas', error);
+      }
+    };
+    fetchNavPujas();
+  }, []);
+
+  const toggleAccordion = (menu: string) => {
+    setExpandedMenu(expandedMenu === menu ? null : menu);
   };
 
   useEffect(() => {
-    setMounted(true);
     const handleClickOutside = (event: MouseEvent) => {
-      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
-        setIsMobileMenuOpen(false);
-      }
       if (languageMenuRef.current && !languageMenuRef.current.contains(event.target as Node)) {
         setIsLanguageMenuOpen(false);
       }
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsProfileDropdownOpen(false);
-      }
     };
     document.addEventListener('mousedown', handleClickOutside);
+    
+    // Close mobile menu on desktop resize
+    const handleResize = () => {
+      if (window.innerWidth >= 1280) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      if (hoverTimeoutRef.current) {
-        clearTimeout(hoverTimeoutRef.current);
-      }
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
-  const handleLogout = async () => {
-    await logout();
-    if (!isPersistent) setIsSidebarOpen(false);
-  };
-
   return (
     <>
-      <header className="bg-white shadow-sm sticky top-0 z-40 border-b border-gray-100 w-full">
-
-        {/* min-w-0 + overflow-x-clip on the bar prevents children from forcing horizontal overflow */}
-        <div className="w-full max-w-[1440px] mx-auto px-3 sm:px-6 h-[64px] sm:h-[72px] flex items-center justify-between gap-2 overflow-x-clip">
-
-          {/* Left: Hamburger + Logo
-              flex-1 + min-w-0 lets this side SHRINK on small screens so it never
-              pushes the right-hand controls off the edge of the viewport. */}
-          <div className="flex items-center gap-1 sm:gap-2 min-w-0 flex-1 lg:flex-none">
-            {!isPersistent && (
-              <button
-                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                className="p-1.5 text-gray-600 hover:bg-gray-100 rounded-full transition-colors focus:outline-none shrink-0"
-                aria-label="Open sidebar menu"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            )}
-            <Link href="https://vaidiktalk.com" className="flex items-center min-w-0 transition-opacity hover:opacity-80">
-              <img
-                src="/Vaidik-talk1.png"
-                alt="Vaidik Talk Logo"
-                className="h-8 sm:h-12 w-auto max-w-[110px] sm:max-w-[160px] lg:max-w-none object-contain"
-              />
-            </Link>
+      <header className="w-full sticky top-0 z-50 flex flex-col shadow-sm">
+        {/* Top Tier */}
+        <div className="flex justify-between items-center bg-[#5c1420] text-[#f4d9c0] px-4 md:px-10 py-1.5 md:py-2 text-[11px] md:text-[12px] font-medium">
+          <div className="flex gap-4 md:gap-7 items-center whitespace-nowrap overflow-x-auto no-scrollbar flex-1 pr-4">
+            <span className="flex items-center gap-1.5 text-[#ffcf9c]">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" className="shrink-0">
+                <path d="M12 3l1.8 6.2L20 11l-6.2 1.8L12 19l-1.8-6.2L4 11l6.2-1.8z" />
+              </svg>
+              Talk to India&apos;s Verified Astrologers
+            </span>
+            <span className="hidden sm:inline">68,00,000+ Happy &amp; Secure</span>
+            <span className="hidden md:inline">100% Safe &amp; Support</span>
           </div>
-
-          {/* Center: Desktop Navigation */}
-          <nav className="hidden lg:flex flex-1 justify-center items-center gap-1 xl:gap-2 px-4">
-            <Link href="/astrologers-chat" className="flex items-center gap-2 px-5 py-2.5 text-[15px] font-semibold text-gray-700 hover:text-yellow-600 hover:bg-yellow-50 rounded-xl transition-all whitespace-nowrap border border-transparent hover:border-yellow-200">
-              {t('nav.chat_astro')}
-            </Link>
-            <Link href="/astrologers-call" className="flex items-center gap-2 px-5 py-2.5 text-[15px] font-semibold text-gray-700 hover:text-yellow-600 hover:bg-yellow-50 rounded-xl transition-all whitespace-nowrap border border-transparent hover:border-yellow-200">
-              {t('nav.call_astro')}
-            </Link>
-            <Link href="/ai-astrologer-chat" className="flex items-center gap-2 px-5 py-2.5 text-[15px] font-semibold text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-xl transition-all whitespace-nowrap border border-transparent hover:border-orange-200 group">
-              <div className="relative flex items-center justify-center">
-                <div className="w-2.5 h-2.5 bg-orange-500 rounded-full"></div>
-                <div className="absolute w-2.5 h-2.5 bg-orange-500 rounded-full animate-ping opacity-75"></div>
+          {/* 
+          <div className="flex gap-5 items-center relative shrink-0" ref={languageMenuRef}>
+            <button
+              onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
+              className="flex items-center gap-1 hover:text-white transition-colors"
+            >
+              {LANGUAGES.find(l => l.code === locale)?.name || 'English'} ▾
+            </button>
+            {isLanguageMenuOpen && (
+              <div className="absolute top-6 right-0 bg-white text-gray-800 rounded-md shadow-lg border border-gray-100 py-1 z-50 min-w-[100px]">
+                {LANGUAGES.map(lang => (
+                  <button
+                    key={lang.code}
+                    onClick={() => { setLocale(lang.code as any); setIsLanguageMenuOpen(false); }}
+                    className="w-full text-left px-3 py-1.5 hover:bg-gray-100 text-[13px]"
+                  >
+                    {lang.name}
+                  </button>
+                ))}
               </div>
-              {t('nav.ai_astro')}
-            </Link>
+            )}
+          </div>
+          */}
+        </div>
+
+        {/* Main Tier */}
+        <div className="flex items-center justify-between gap-2 xl:gap-4 px-3 md:px-5 lg:px-6 py-[12px] bg-white border-b border-[#f0ddc0] w-full max-w-full">
+          {/* Logo (Reverted to old logo image) */}
+          <Link href="/" className="flex items-center shrink-0">
+            <img
+              src="/Vaidik-talk1.webp"
+              alt="VaidikTalk Logo"
+              className="h-8 sm:h-10 w-[120px] lg:w-[140px] xl:w-[150px] 2xl:w-[170px] object-contain object-left -translate-y-1"
+            />
+          </Link>
+
+          {/* Desktop Nav */}
+          <nav className="hidden xl:flex gap-2 xl:gap-[12px] 2xl:gap-[20px] items-center text-[12px] 2xl:text-[14px] font-medium text-[#3a1216] whitespace-nowrap flex-1 justify-center shrink">
+            <Link href="/" className="hover:text-[#ee6c1e] transition-colors py-4">Home</Link>
+
+            {/* Kundli & Reports Dropdown */}
+            <div className="relative group cursor-pointer">
+              <Link href="/kundli" className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
+                Kundli &amp; Reports
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+              </Link>
+              <div className="absolute top-full left-0 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg min-w-[480px] p-3 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
+                <div className="grid grid-cols-2 gap-x-2">
+                  <div className="flex flex-col border-r border-gray-100 pr-2">
+                    <div className="px-4 py-1.5 text-[11px] font-bold text-[#ee6c1e] uppercase tracking-wider mb-1">Premium Reports</div>
+                    <Link href="/report/kundali/vaidik-smart-kundali-10-years" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Vaidik Smart Kundali</Link>
+                    <Link href="/report/kundali/kundali-matching" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Kundali Matching</Link>
+                    <Link href="/report/kundali/personalized-lal-kitab" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Personalized Lal Kitab</Link>
+                    <Link href="/report/kundali/hastlikhit-kundali" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Hastlikhit Kundali</Link>
+                    <div className="px-4 py-1.5 text-[11px] font-bold text-[#ee6c1e] uppercase tracking-wider mt-2 mb-1">Premium Numerology</div>
+                    <Link href="/report/numerology/fortune-numerology" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Fortune Numerology</Link>
+                    <Link href="/report/numerology/name-mobile-number-numerology" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Name & Mobile Numerology</Link>
+                  </div>
+                  <div className="flex flex-col pl-2">
+                    <div className="px-4 py-1.5 text-[11px] font-bold text-[#ee6c1e] uppercase tracking-wider flex items-center gap-1.5 mb-1">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                      Free Reports
+                    </div>
+                    <Link href="/free-reports/kaal-sarp" className="flex items-center justify-between px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">
+                      Kaal Sarp Dosh <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-2">Free</span>
+                    </Link>
+                    <Link href="/free-reports/gemstone" className="flex items-center justify-between px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">
+                      Gemstone Suggestion <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-2">Free</span>
+                    </Link>
+                    <Link href="/free-reports/sade-sati" className="flex items-center justify-between px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">
+                      Sade Sati Check <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-2">Free</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Free Astrology Tools Dropdown */}
+            <div className="relative group cursor-pointer">
+              <Link href="/astrology-calculators" className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
+                Free Astrology Tools
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+              </Link>
+              <div className="absolute top-full left-0 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg min-w-[400px] p-3 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
+                <div className="grid grid-cols-2 gap-x-2">
+                  <div className="flex flex-col">
+                    <Link href="/kundli" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Kundli Generation</Link>
+                    <Link href="/horoscope-matching" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Horoscope Matching</Link>
+                    <Link href="/moon-signs" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Moon Signs</Link>
+                    <Link href="/rashi-calculator" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Rashi Calculator</Link>
+                    <Link href="/numerology" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Numerology</Link>
+                    <Link href="/compatibility" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Love Compatibility</Link>
+                    <Link href="/lal-kitab" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Lal Kitab Reading</Link>
+                    <Link href="/atlas" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Atlas / Location Finder</Link>
+                  </div>
+                  <div className="flex flex-col">
+                    <Link href="/panchang" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Panchang Today</Link>
+                    <Link href="/rahu-kaal" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Rahu Kaal Today</Link>
+                    <Link href="/muhurat" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Muhurat Finder</Link>
+                    <Link href="/baby-names" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Baby Names</Link>
+                    <Link href="/chinese-horoscope" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Chinese Horoscope</Link>
+                    <Link href="/festivals" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Festivals Calendar</Link>
+                    <Link href="/calendar" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Astrology Calendar</Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Horoscope Dropdown */}
+            <div className="relative group cursor-pointer">
+              <Link href="/horoscope" className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
+                Horoscope
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+              </Link>
+              <div className="absolute top-full left-0 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg min-w-[460px] p-3 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
+                <div className="grid grid-cols-2 gap-x-2">
+                  <div className="flex flex-col border-r border-gray-100 pr-2">
+                    <div className="px-4 py-1.5 text-[11px] font-bold text-[#ee6c1e] uppercase tracking-wider mb-1">Time-Based Forecasts</div>
+                    <Link href="/daily-horoscope" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Daily Horoscope</Link>
+                    <Link href="/horoscope/tomorrow" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Tomorrow&apos;s Horoscope</Link>
+                    <Link href="/horoscope/weekly" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Weekly Horoscope</Link>
+                    <Link href="/horoscope/monthly" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Monthly Horoscope</Link>
+                    <Link href="/horoscope/yearly" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Yearly Horoscope</Link>
+                  </div>
+                  <div className="flex flex-col pl-2">
+                    <div className="px-4 py-1.5 text-[11px] font-bold text-[#ee6c1e] uppercase tracking-wider mb-1">Specialty Horoscopes</div>
+                    <Link href="/horoscope-matching" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Horoscope Matching</Link>
+                    <Link href="/love-horoscope" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Love Horoscope</Link>
+                    <Link href="/chinese-horoscope" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Chinese Horoscope</Link>
+                    <Link href="/celebrity-horoscopes" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Celebrity Horoscope</Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Consult Astrologer Dropdown */}
+            <div className="relative group cursor-pointer flex items-center py-4">
+              <Link href="/astrologers-chat" className="bg-[#8a1c2a] text-white px-3 2xl:px-4 py-[7px] 2xl:py-[8px] rounded-md hover:bg-[#721522] transition-colors font-semibold flex items-center gap-1.5">
+                Consult an Astrologer
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+              </Link>
+              <div className="absolute top-[calc(100%-8px)] right-0 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg min-w-[220px] py-2 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
+                <Link href="/astrologers-chat" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Chat with Astrologer</Link>
+                <Link href="/astrologers-call" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Talk with Astrologer</Link>
+                <Link href="/ai-astrologer-chat" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Chat with AI Astrologer</Link>
+                <Link href="/ai-astrologer-chat" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Talk with AI Astrologer</Link>
+              </div>
+            </div>
+
+            {/* Pujas Dropdown */}
+            <div className="relative group cursor-pointer">
+              <Link href="/book-a-puja" className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
+                Book a Remedy Puja
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+              </Link>
+              <div className="absolute top-full left-0 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg min-w-[480px] p-3 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
+                <div className="grid grid-cols-2 gap-x-2">
+                  <div className="flex flex-col">
+                    <Link href="/book-a-puja" className="block px-4 py-2 text-sm text-[#8a1c2a] font-bold hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">View All Pujas →</Link>
+                    {navPujas.slice(0, Math.ceil(navPujas.length / 2)).map(puja => (
+                      <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md truncate" title={puja.title}>
+                        {puja.title}
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="flex flex-col mt-9">
+                    {navPujas.slice(Math.ceil(navPujas.length / 2)).map(puja => (
+                      <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md truncate" title={puja.title}>
+                        {puja.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Knowledge Center Dropdown */}
+            <div className="relative group cursor-pointer">
+              <Link href="/learn" className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
+                Knowledge Center
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+              </Link>
+              <div className="absolute top-full right-0 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg min-w-[240px] py-2 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
+                <Link href="/blog" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Blogs / Insights</Link>
+                <Link href="/faq" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">FAQ</Link>
+                <Link href="/muhurat/directory" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Muhurat Directory 2026</Link>
+                <Link href="/festivals" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Festivals Calendar</Link>
+                <Link href="/celebrity-horoscopes" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Celebrity Horoscope</Link>
+                <Link href="/healing" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Healings</Link>
+                <Link href="/matrimony" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Matrimony</Link>
+                <Link href="/learn" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Learn Astrology</Link>
+              </div>
+            </div>
+            <Link href="/about-us" className="hover:text-[#ee6c1e] transition-colors">About Us</Link>
           </nav>
 
-          {/* Right: Auth Button / Profile
-              shrink-0 keeps this cluster ALWAYS visible; left side shrinks instead. */}
-          <div className="flex shrink-0 items-center justify-end gap-1 sm:gap-3 lg:gap-4">
-
-            {/* Language Selector */}
-            <div className="relative shrink-0" ref={languageMenuRef}>
-              <button 
-                onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
-                className="flex items-center gap-1 px-2 sm:px-3 py-2 rounded-full hover:bg-gray-50 transition-colors text-gray-700 font-semibold"
-                aria-label="Select Language"
-              >
-                <GlobeIcon />
-                <span className="hidden sm:block text-sm">
-                  {LANGUAGES.find(l => l.code === locale)?.short || 'EN'}
-                </span>
-                <span className="hidden sm:inline"><ChevronDownIcon /></span>
-              </button>
-              
-              {isLanguageMenuOpen && (
-                <div className="absolute top-12 right-0 w-36 bg-white rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] border border-gray-100 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200 overflow-hidden">
-                  <div className="px-4 py-1.5 mb-1 border-b border-gray-50"></div>
-                  {LANGUAGES.map(lang => (
-                    <button
-                      key={lang.code}
-                      onClick={() => { setLocale(lang.code as any); setIsLanguageMenuOpen(false); }}
-                      className={`w-full text-left px-4 py-2.5 text-sm font-semibold transition-colors flex items-center justify-between
-                        ${locale === lang.code ? 'bg-yellow-50 text-yellow-700' : 'text-gray-700 hover:bg-gray-50 hover:text-yellow-600'}
-                      `}
-                    >
-                      {lang.name}
-                      {locale === lang.code && (
-                        <div className="w-1.5 h-1.5 rounded-full bg-yellow-500 shadow-[0_0_8px_rgba(234,179,8,0.5)]"></div>
-                      )}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Mobile Menu Toggle (Three Dots) — hidden on lg+ */}
-            <div className="lg:hidden relative shrink-0" ref={mobileMenuRef}>
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-1.5 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
-                aria-label="Mobile menu"
-              >
-                <MoreVerticalIcon />
-              </button>
-
-              {isMobileMenuOpen && (
-                <div className="absolute right-0 mt-3 w-64 max-w-[calc(100vw-24px)] bg-white rounded-2xl shadow-2xl border border-gray-100 py-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                  <Link 
-                    href="/astrologers-chat" 
-                    className="flex items-center gap-3 px-6 py-4 text-[14px] font-semibold text-gray-700 hover:bg-yellow-50 hover:text-yellow-600 transition-all border-b border-gray-50"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <ChatIcon /> {t('nav.chat_astro')}
-                  </Link>
-                  <Link 
-                    href="/astrologers-call" 
-                    className="flex items-center gap-3 px-6 py-4 text-[14px] font-semibold text-gray-700 hover:bg-yellow-50 hover:text-yellow-600 transition-all border-b border-gray-50"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <PhoneIcon /> {t('nav.call_astro')}
-                  </Link>
-                  <Link 
-                    href="/ai-astrologer-chat" 
-                    className="flex items-center gap-3 px-6 py-4 text-[14px] font-semibold text-orange-600 hover:bg-orange-50 transition-all border-b border-gray-50"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <div className="relative flex items-center justify-center mr-1">
-                      <div className="w-3 h-3 bg-orange-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.6)]"></div>
-                      <div className="absolute w-3 h-3 bg-orange-500 rounded-full animate-ping opacity-75"></div>
-                    </div>
-                    {t('nav.ai_astro')}
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* Auth: Login Button or Profile Dropdown */}
-            {!mounted || !isAuthenticated ? (
-              <button
-                onClick={openLoginModal}
-                suppressHydrationWarning
-                className="bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 text-black font-bold px-3 py-2 sm:px-6 sm:py-2.5 rounded-full transition-all flex items-center gap-1.5 shadow-sm hover:shadow-md text-sm sm:text-base whitespace-nowrap shrink-0"
-              >
-                <UserIcon />
-                <span className="hidden sm:inline">{t('nav.login')}</span>
+          {/* Right Actions */}
+          <div className="flex items-center gap-2 xl:gap-5 text-[12px] 2xl:text-[13px] font-medium text-[#3a1216] whitespace-nowrap shrink-0 ml-auto">
+            {!isAuthenticated ? (
+              <button onClick={openLoginModal} className="hidden lg:flex items-center gap-1.5 bg-[#8a1c2a] text-white px-5 py-2.5 rounded-lg hover:bg-[#721522] transition-colors font-semibold shadow-sm cursor-pointer">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M4 21a8 8 0 0 1 16 0" />
+                </svg>
+                Login / Sign Up
               </button>
             ) : (
-              <div className="relative shrink-0" ref={dropdownRef}>
-                <div 
-                  className="flex items-center gap-1 sm:gap-2 px-1 sm:px-2 py-1 rounded-full hover:bg-gray-50 transition-colors cursor-pointer"
-                  onClick={handleProfileClick}
-                >
-                  <span className="hidden md:block text-sm font-semibold text-gray-800 max-w-[120px] truncate">
-                    {user?.name || 'User'}
+              <div className="hidden lg:flex relative group cursor-pointer items-center py-2">
+                <div className="flex items-center gap-2 bg-gray-50 hover:bg-orange-50 border border-gray-200 hover:border-orange-200 px-2 py-1.5 rounded-full transition-all duration-200 group-hover:bg-orange-50 group-hover:border-orange-200">
+                  <div className="w-7 h-7 rounded-full bg-[#8a1c2a] text-[#ffcf9c] flex items-center justify-center font-bold text-[13px] shadow-sm">
+                    {user?.name ? user.name.charAt(0).toUpperCase() : 'U'}
+                  </div>
+                  <span className="font-bold text-[#8a1c2a] text-[13px] pr-1">
+                    {user?.name ? user.name.split(' ')[0] : 'My Account'}
                   </span>
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-black shadow-sm overflow-hidden shrink-0">
-                    <img
-                      src={user?.profileImage || `https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.name || 'user'}`}
-                      alt={user?.name || 'User'}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <span className="hidden sm:inline"><ChevronDownIcon /></span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#8a1c2a] mr-1 group-hover:rotate-180 transition-transform duration-200"><path d="M6 9l6 6 6-6" /></svg>
                 </div>
-
-                {/* Profile Dropdown Menu */}
-                {isProfileDropdownOpen && (
-                  <div className="absolute top-[60px] right-0 w-72 max-w-[calc(100vw-24px)] bg-white rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100 py-3 z-[100] animate-in fade-in slide-in-from-top-3 duration-300 overflow-hidden max-h-[calc(100vh-100px)] flex flex-col">
-                    <div className="overflow-y-auto custom-scrollbar flex-1">
-                      {/* User Info Header */}
-                      <div className="px-6 py-4 border-b border-gray-50 bg-gray-50/50 mb-2">
-                        <div className="flex items-center gap-3">
-                          <div className="w-12 h-12 rounded-full border-2 border-yellow-400 p-0.5 overflow-hidden shadow-sm shrink-0">
-                            <img
-                              src={user?.profileImage || `https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.name || 'user'}`}
-                              alt={user?.name || 'User'}
-                              className="w-full h-full object-cover rounded-full"
-                            />
-                          </div>
-                          <div className="flex flex-col min-w-0">
-                            <span className="text-[16px] font-bold text-gray-900 leading-tight truncate">
-                              {user?.name || 'User'}
-                            </span>
-                            <span className="text-[12px] font-medium text-gray-500 mt-0.5 truncate">
-                              {user?.phoneNumber || 'Premium User'}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Menu Items */}
-                      <div className="px-2 space-y-1">
-                        <Link 
-                          href="/profile"
-                          onClick={() => setIsProfileDropdownOpen(false)}
-                          className="flex items-center gap-3 px-4 py-3 text-[14px] font-bold text-gray-700 hover:bg-yellow-50 hover:text-yellow-700 rounded-xl transition-all group"
-                        >
-                          <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover:bg-yellow-100 transition-colors shrink-0">
-                            <UserIcon />
-                          </div>
-                          {t('nav.profile')}
-                        </Link>
-
-                        <Link 
-                          href="/wallet"
-                          onClick={() => setIsProfileDropdownOpen(false)}
-                          className="flex items-center gap-3 px-4 py-3 text-[14px] font-bold text-gray-700 hover:bg-yellow-50 hover:text-yellow-700 rounded-xl transition-all group"
-                        >
-                          <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover:bg-yellow-100 transition-colors shrink-0">
-                            <WalletIcon />
-                          </div>
-                          {t('nav.wallet')}
-                        </Link>
-
-                        <Link 
-                          href="/ai-chat-history"
-                          onClick={() => setIsProfileDropdownOpen(false)}
-                          className="flex items-center gap-3 px-4 py-3 text-[14px] font-bold text-gray-700 hover:bg-yellow-50 hover:text-yellow-700 rounded-xl transition-all group"
-                        >
-                          <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover:bg-yellow-100 transition-colors shrink-0">
-                            <ChatIcon />
-                          </div>
-                          {t('nav.ai_history')}
-                        </Link>
-
-                        <Link 
-                          href="/orders"
-                          onClick={() => setIsProfileDropdownOpen(false)}
-                          className="flex items-center gap-3 px-4 py-3 text-[14px] font-bold text-gray-700 hover:bg-yellow-50 hover:text-yellow-700 rounded-xl transition-all group"
-                        >
-                          <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover:bg-yellow-100 transition-colors shrink-0">
-                            <OrderIcon />
-                          </div>
-                          {t('nav.orders')}
-                        </Link>
-
-                        <div className="pt-2 mt-2 border-t border-gray-50">
-                          <button 
-                            onClick={handleLogout}
-                            className="w-full flex items-center gap-3 px-4 py-3 text-[14px] font-bold text-red-500 hover:bg-red-50 rounded-xl transition-all group"
-                          >
-                            <div className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center group-hover:bg-red-100 transition-colors shrink-0">
-                              <LogoutIcon />
-                            </div>
-                            {t('common.logout')}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+                <div className="absolute top-full right-0 mt-1 bg-white text-gray-800 shadow-[0_10px_40px_rgba(0,0,0,0.15)] rounded-lg min-w-[220px] py-2 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
+                  <div className="px-5 py-3 border-b border-gray-100 mb-1 bg-gray-50/50 rounded-t-lg">
+                    <p className="font-bold text-[#8a1c2a] text-sm truncate">{user?.name || 'Vaidik User'}</p>
+                    <p className="text-[11px] text-gray-500 font-medium truncate mt-0.5">{user?.phoneNumber || ''}</p>
                   </div>
-                )}
+                  <Link href="/profile" className="flex items-center gap-2 px-5 py-2.5 text-[13px] font-medium hover:bg-orange-50 hover:text-[#ee6c1e]">
+                    My Profile
+                  </Link>
+                  <Link href="/wallet" className="flex items-center gap-2 px-5 py-2.5 text-[13px] font-medium hover:bg-orange-50 hover:text-[#ee6c1e]">
+                    Wallet Balance
+                  </Link>
+                  <Link href="/orders" className="flex items-center gap-2 px-5 py-2.5 text-[13px] font-medium hover:bg-orange-50 hover:text-[#ee6c1e]">
+                    Order History
+                  </Link>
+                  <Link href="/ai-chat-history" className="flex items-center gap-2 px-5 py-2.5 text-[13px] font-medium hover:bg-orange-50 hover:text-[#ee6c1e]">
+                    AI Chat History
+                  </Link>
+                  <div className="h-px bg-gray-100 my-1 mx-2"></div>
+                  <button onClick={logout} className="w-full text-left px-5 py-2.5 text-[13px] text-red-600 hover:bg-red-50 font-bold">
+                    Logout
+                  </button>
+                </div>
+              </div>
+            )}
+            
+            <button 
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="xl:hidden text-[#8a1c2a] font-bold cursor-pointer hover:text-[#ee6c1e] border border-[#8a1c2a] px-3 py-1.5 rounded-md flex items-center gap-1 bg-red-50/50"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+              Menu
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Drawer Overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 z-[90] xl:hidden backdrop-blur-sm"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile Sidebar Drawer */}
+      <div className={`fixed top-0 right-0 w-[85%] max-w-[340px] h-full bg-white z-[100] transform transition-transform duration-300 ease-in-out xl:hidden flex flex-col overflow-y-auto ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'} shadow-2xl`}>
+        {/* Drawer Header */}
+        <div className="bg-[#8a1c2a] p-5 flex items-center justify-between sticky top-0 z-10">
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-lg">
+             <img src="/Vaidik-talk1.webp" alt="VaidikTalk" className="h-6 object-contain" />
+          </Link>
+          <button onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-[#ffcf9c] transition-colors bg-black/20 p-2 rounded-full">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        {/* Auth Section in Mobile */}
+        <div className="p-5 border-b border-gray-100 bg-gray-50/50">
+          {!isAuthenticated ? (
+            <div className="flex flex-col gap-3">
+              <p className="text-sm font-medium text-gray-600">Login to access your profile</p>
+              <button 
+                onClick={() => { setIsMobileMenuOpen(false); openLoginModal(); }}
+                className="w-full bg-[#8a1c2a] text-white py-3 rounded-lg font-bold shadow-md hover:bg-[#721522] transition-colors flex justify-center items-center gap-2 cursor-pointer"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+                Login / Sign Up
+              </button>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-[#8a1c2a] flex items-center justify-center text-[#ffcf9c] text-xl font-bold border-2 border-white shadow-md">
+                   {user?.name ? user.name.charAt(0).toUpperCase() : 'U'}
+                </div>
+                <div>
+                  <h3 className="font-bold text-[#8a1c2a] text-lg leading-tight">{user?.name || 'Vaidik User'}</h3>
+                  <p className="text-sm text-gray-500 font-medium">{user?.phoneNumber || ''}</p>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-2 mt-2">
+                 <Link href="/profile" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-2 px-3 bg-white border border-gray-200 rounded-md text-sm font-semibold hover:bg-orange-50 hover:text-[#ee6c1e]">My Profile</Link>
+                 <Link href="/wallet" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-2 px-3 bg-white border border-gray-200 rounded-md text-sm font-semibold hover:bg-orange-50 hover:text-[#ee6c1e]">Wallet</Link>
+                 <Link href="/orders" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-2 px-3 bg-white border border-gray-200 rounded-md text-sm font-semibold hover:bg-orange-50 hover:text-[#ee6c1e]">Orders</Link>
+                 <button onClick={() => { setIsMobileMenuOpen(false); logout(); }} className="text-center py-2 px-3 bg-white border border-red-200 text-red-600 rounded-md text-sm font-semibold hover:bg-red-50">Logout</button>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Mobile Navigation Links */}
+        <div className="flex-1 overflow-y-auto p-4 space-y-1">
+          {/* Consult Accordion */}
+          <div>
+            <button onClick={() => toggleAccordion('consult')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 text-[#8a1c2a] font-bold">
+              <span className="flex items-center gap-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                Consult an Astrologer
+              </span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'consult' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            {expandedMenu === 'consult' && (
+              <div className="pl-9 py-2 space-y-2 border-l-2 border-orange-100 ml-5">
+                <Link href="/astrologers-chat" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Chat with Astrologer</Link>
+                <Link href="/astrologers-call" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Talk with Astrologer</Link>
+                <Link href="/ai-astrologer-chat" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Chat with AI Astrologer</Link>
+                <Link href="/ai-astrologer-chat" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Talk with AI Astrologer</Link>
               </div>
             )}
           </div>
-          {/* END Right Section */}
+          
+          <div className="h-px bg-gray-100 my-2 mx-3"></div>
 
+          {/* Kundli Accordion */}
+          <div>
+            <button onClick={() => toggleAccordion('kundli')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-800">
+              Kundli &amp; Reports
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'kundli' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            {expandedMenu === 'kundli' && (
+              <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4">
+                <p className="text-[10px] font-semibold text-[#ee6c1e] uppercase tracking-wider">Premium Reports</p>
+                <Link href="/report/kundali/vaidik-smart-kundali-10-years" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Vaidik Smart Kundali</Link>
+                <Link href="/report/kundali/kundali-matching" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Kundali Matching</Link>
+                <Link href="/report/kundali/personalized-lal-kitab" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Personalized Lal Kitab</Link>
+                <Link href="/report/kundali/hastlikhit-kundali" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Hastlikhit Kundali</Link>
+                <p className="text-[10px] font-semibold text-[#ee6c1e] uppercase tracking-wider mt-4">Premium Numerology</p>
+                <Link href="/report/numerology/fortune-numerology" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Fortune Numerology</Link>
+                <Link href="/report/numerology/name-mobile-number-numerology" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Name & Mobile Numerology</Link>
+                <p className="text-[10px] font-semibold text-[#ee6c1e] uppercase tracking-wider mt-4">Free Reports</p>
+                <Link href="/free-reports/kaal-sarp" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Kaal Sarp Dosh</Link>
+                <Link href="/free-reports/gemstone" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Gemstone Suggestion</Link>
+                <Link href="/free-reports/sade-sati" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Sade Sati Check</Link>
+              </div>
+            )}
+          </div>
+
+          {/* Tools Accordion */}
+          <div>
+            <button onClick={() => toggleAccordion('tools')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-800">
+              Free Astrology Tools
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'tools' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            {expandedMenu === 'tools' && (
+              <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4">
+                <Link href="/kundli" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Kundli Generation</Link>
+                <Link href="/horoscope-matching" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Horoscope Matching</Link>
+                <Link href="/moon-signs" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Moon Signs</Link>
+                <Link href="/rashi-calculator" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Rashi Calculator</Link>
+                <Link href="/numerology" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Numerology</Link>
+                <Link href="/compatibility" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Love Compatibility</Link>
+                <Link href="/lal-kitab" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Lal Kitab Reading</Link>
+                <Link href="/atlas" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Atlas / Location Finder</Link>
+                <Link href="/panchang" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Panchang Today</Link>
+                <Link href="/rahu-kaal" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Rahu Kaal Today</Link>
+                <Link href="/muhurat" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Muhurat Finder</Link>
+                <Link href="/baby-names" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Baby Names</Link>
+                <Link href="/chinese-horoscope" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Chinese Horoscope</Link>
+                <Link href="/festivals" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Festivals Calendar</Link>
+                <Link href="/calendar" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Astrology Calendar</Link>
+              </div>
+            )}
+          </div>
+
+          {/* Horoscope Accordion */}
+          <div>
+            <button onClick={() => toggleAccordion('horoscope')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-800">
+              Horoscope
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'horoscope' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            {expandedMenu === 'horoscope' && (
+              <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4">
+                <p className="text-[10px] font-semibold text-[#ee6c1e] uppercase tracking-wider">Time-Based</p>
+                <Link href="/daily-horoscope" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Daily Horoscope</Link>
+                <Link href="/horoscope/tomorrow" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Tomorrow&apos;s Horoscope</Link>
+                <Link href="/horoscope/weekly" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Weekly Horoscope</Link>
+                <Link href="/horoscope/monthly" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Monthly Horoscope</Link>
+                <Link href="/horoscope/yearly" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Yearly Horoscope</Link>
+                <p className="text-[10px] font-semibold text-[#ee6c1e] uppercase tracking-wider mt-4">Specialty</p>
+                <Link href="/horoscope-matching" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Horoscope Matching</Link>
+                <Link href="/love-horoscope" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Love Horoscope</Link>
+                <Link href="/chinese-horoscope" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Chinese Horoscope</Link>
+                <Link href="/celebrity-horoscopes" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Celebrity Horoscope</Link>
+              </div>
+            )}
+          </div>
+
+          {/* Pujas Accordion */}
+          <div>
+            <button onClick={() => toggleAccordion('pujas')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-800">
+              Book a Remedy Puja
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'pujas' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            {expandedMenu === 'pujas' && (
+              <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4 max-h-[300px] overflow-y-auto">
+                <Link href="/book-a-puja" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-bold text-[#8a1c2a] py-1.5 hover:text-[#ee6c1e]">View All Pujas →</Link>
+                {navPujas.map(puja => (
+                  <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e] truncate">
+                    {puja.title}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Knowledge Accordion */}
+          <div>
+            <button onClick={() => toggleAccordion('knowledge')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-800">
+              Knowledge Center
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'knowledge' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            {expandedMenu === 'knowledge' && (
+              <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4">
+                <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Blogs / Insights</Link>
+                <Link href="/faq" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">FAQ</Link>
+                <Link href="/muhurat/directory" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Muhurat Directory 2026</Link>
+                <Link href="/festivals" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Festivals Calendar</Link>
+                <Link href="/celebrity-horoscopes" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Celebrity Horoscope</Link>
+                <Link href="/healing" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Healings</Link>
+                <Link href="/matrimony" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Matrimony</Link>
+                <Link href="/learn" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Learn Astrology</Link>
+              </div>
+            )}
+          </div>
+
+          <Link href="/about-us" onClick={() => setIsMobileMenuOpen(false)} className="block p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-800">About Us</Link>
         </div>
-      </header>
+      </div>
 
       <LoginModal
         isOpen={isLoginModalOpen}
         onClose={closeLoginModal}
       />
-      {/* Sidebar rendered in Layout */}
     </>
   );
 }

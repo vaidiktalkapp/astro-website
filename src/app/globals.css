@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
+.premium-serif {
+  font-family: 'Playfair Display', serif !important;
+}
 
 :root {
   --background: #ffffff;
@@ -12,16 +17,18 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --breakpoint-xs: 23.75rem; /* 380px */
+  --breakpoint-xs: 23.75rem;
+  /* 380px */
 }
 
 html,
 body {
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   background: var(--background);
   color: var(--foreground);
   font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
 }
 
 @keyframes slide-up {
@@ -29,6 +36,7 @@ body {
     transform: translateX(-50%) translateY(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(-50%) translateY(0);
     opacity: 1;
@@ -75,7 +83,8 @@ body {
   cursor: pointer !important;
 }
 
-.geoapify-autocomplete-item:hover, .geoapify-autocomplete-item.active {
+.geoapify-autocomplete-item:hover,
+.geoapify-autocomplete-item.active {
   background-color: #fff7ed !important;
   color: #ea580c !important;
 }
@@ -110,7 +119,9 @@ body {
   color: #111827;
 }
 
-.rich-content h1, .rich-content h2, .rich-content h3 {
+.rich-content h1,
+.rich-content h2,
+.rich-content h3 {
   font-family: inherit;
   font-weight: 700;
   margin-top: 1.5rem;
@@ -123,4 +134,37 @@ body {
   height: auto;
   border-radius: 0.75rem;
   margin: 1rem 0;
+}
+
+.rich-content * {
+  background-color: transparent !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
