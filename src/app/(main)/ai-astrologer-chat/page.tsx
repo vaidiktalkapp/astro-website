@@ -1,7 +1,7 @@
 'use client';
 import { useTranslation } from '@/context/LanguageContext';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import aiAstrologerService, { AiAstrologer } from '@/lib/aiAstrologerService';
 import { useAuth } from '@/context/AuthContext';
@@ -68,7 +68,7 @@ const COSMIC_QUOTES = [
 
 
 
-const AstrologerListing = () => {
+const AstrologerListingContent = () => {
     const { t } = useTranslation();
 
   const router = useRouter();
@@ -921,6 +921,18 @@ const AstrologerListing = () => {
       )}
     </div>);
 
+};
+
+const AstrologerListing = () => {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center min-h-screen bg-orange-50">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-600"></div>
+      </div>
+    }>
+      <AstrologerListingContent />
+    </Suspense>
+  );
 };
 
 export default AstrologerListing;
