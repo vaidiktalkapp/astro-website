@@ -50,6 +50,7 @@ export default function RahuKaalPage() {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [isRahuNow, setIsRahuNow] = useState(false);
   const [timeToNext, setTimeToNext] = useState<string | null>(null);
+  const [progress, setProgress] = useState(0);
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://vaidik-server.onrender.com';
   const tzone = 5.5;
@@ -163,6 +164,10 @@ export default function RahuKaalPage() {
       const mins = Math.floor(diff / 60000);
       const secs = Math.floor(diff % 60000 / 1000);
       setTimeToNext(`${mins}m ${secs}s ${t("rahu_kaal.left")}`);
+
+      const totalDuration = endTime.getTime() - startTime.getTime();
+      const passedDuration = now.getTime() - startTime.getTime();
+      setProgress((passedDuration / totalDuration) * 100);
     } else {
       setIsRahuNow(false);
       if (now < startTime) {
@@ -170,7 +175,11 @@ export default function RahuKaalPage() {
         const hrs = Math.floor(diff / 3600000);
         const mins = Math.floor(diff % 3600000 / 60000);
         setTimeToNext(`${t("rahu_kaal.starts_in")} ${hrs}h ${mins}m`);
-      } else {setTimeToNext(t("rahu_kaal.cycles_complete"));}
+        setProgress(0);
+      } else {
+        setTimeToNext(t("rahu_kaal.cycles_complete"));
+        setProgress(100);
+      }
     }
   }, [rahuToday, currentTime]);
 
@@ -339,10 +348,10 @@ export default function RahuKaalPage() {
                       
                                             <motion.div
                         initial={{ width: 0 }}
-                        animate={{ width: isRahuNow ? '100%' : '30%' }}
+                        animate={{ width: `${progress}%` }}
                         transition={{ duration: 1.5, ease: "easeOut" }}
                         className="h-full rounded-full"
-                        style={{ background: isRahuNow ? '#b8441e' : '#b8962e' }} />
+                        style={{ background: isRahuNow ? '#b8441e' : (progress === 100 ? '#15803d' : '#b8962e') }} />
                       
                                         </div>
                                     </div>
