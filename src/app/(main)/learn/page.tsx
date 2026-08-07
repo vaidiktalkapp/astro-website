@@ -175,7 +175,7 @@ export default function LearnAstrologyHub() {
                                 </div>
                                 <div>
                                     <h3 className="text-xl font-bold serif">{t("learn.explore_the_9_grahas")}</h3>
-                                    <p className="text-sm text-[#3a1216] font-medium mt-1">{t("learn.detailed_profiles_of_all_nine")}</p>
+                                    <p className="text-sm text-white font-medium mt-1">{t("learn.detailed_profiles_of_all_nine")}</p>
                                 </div>
                             </div>
                             <ArrowRight className="w-6 h-6 text-[#b8962e] group-hover:translate-x-2 transition-transform" />

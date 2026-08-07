@@ -479,10 +479,10 @@ export default function VishnuSahasranamamPujaPage() {
             </div>
             <div className="overflow-hidden relative w-full mb-8"><div className="flex w-max animate-marquee gap-5 pb-4 hover:pause">
               {(dynamicData?.videoTestimonials?.length > 0 ? dynamicData.videoTestimonials : [
-                { id: 'qMmn1uLuNbs', title: 'Devotee Review — Rudrabhishek Experience' },
-                { id: 'qMmn1uLuNbs', title: 'Devotee Review — Puja Transformation Story' },
-                { id: 'qMmn1uLuNbs', title: 'Devotee Review — Online Puja Experience' },
-              , { id: "qMmn1uLuNbs", title: "Devotee Review � Rudrabhishek Experience" }, { id: "qMmn1uLuNbs", title: "Devotee Review � Puja Transformation Story" }, { id: "qMmn1uLuNbs", title: "Devotee Review � Online Puja Experience" }].filter((item: any) => item)).reduce((acc: any[], _: any, __: number, arr: any[]) => acc.length === 0 ? [...arr, ...arr, ...arr, ...arr] : acc, []).map((v: any, idx: number) => (
+                { id: 'https://youtube.com/shorts/_h8Ln2nRAxY?si=zSpUu9Rx6Ux2GbYt', title: 'Devotee Review' },
+                { id: 'https://youtube.com/shorts/gbWzyzNObU0?si=ThiR5LLCh5m6_Yb1', title: 'Vaidiktalk' },
+                { id: 'https://youtube.com/shorts/0LI8vBrIUf8?si=qyrHk_sx4lMhbuw2', title: 'Vaidiktalk' }
+              ].filter((item: any) => item)).reduce((acc: any[], _: any, __: number, arr: any[]) => acc.length === 0 ? [...arr, ...arr, ...arr, ...arr] : acc, []).map((v: any, idx: number) => (
                 <div key={idx} className="w-[85vw] sm:w-[320px] md:w-[350px] shrink-0 snap-center rounded-2xl overflow-hidden shadow-md border border-[#f0ddc0] bg-[#111] aspect-video group">
                                     <div className="relative w-full h-full cursor-pointer group-hover:opacity-90 transition-opacity">
                     <img loading="lazy" src={`https://img.youtube.com/vi/${getYoutubeId(v.youtubeId || v.id || 'aCg32i0vQTo')}/hqdefault.jpg`} onError={(e: any) => { e.currentTarget.src = 'https://img.youtube.com/vi/aCg32i0vQTo/hqdefault.jpg'; }} alt={v.title || 'Testimonial'} className="w-full h-full object-cover" />

@@ -147,7 +147,7 @@ export default function HealingGuideDetail() {
                                 {m.element}{t("_slug_.element")}
           </span>
           }
-                        {m.color &&
+                        {m.color && !m.color.startsWith('bg-') &&
           <span className="text-[10px] font-bold uppercase tracking-widest text-[#b8962e] bg-[#b8962e]/5 px-4 py-2 rounded-xl border border-[#b8962e]/10">
                                 {m.color}
                             </span>
