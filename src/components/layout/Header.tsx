@@ -227,8 +227,8 @@ export default function Header() {
               <div className="absolute top-[calc(100%-8px)] right-0 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg min-w-[220px] py-2 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
                 <Link href="/astrologers-chat" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Chat with Astrologer</Link>
                 <Link href="/astrologers-call" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Talk with Astrologer</Link>
-                <Link href="/ai-astrologer-chat" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Chat with AI Astrologer</Link>
-                <Link href="/ai-astrologer-chat" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Talk with AI Astrologer</Link>
+                <Link href="/ai-astrologer-chat?mode=chat" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Chat with AI Astrologer</Link>
+                <Link href="/ai-astrologer-chat?mode=call" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Talk with AI Astrologer</Link>
               </div>
             </div>
 
@@ -405,8 +405,8 @@ export default function Header() {
               <div className="pl-9 py-2 space-y-2 border-l-2 border-orange-100 ml-5">
                 <Link href="/astrologers-chat" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Chat with Astrologer</Link>
                 <Link href="/astrologers-call" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Talk with Astrologer</Link>
-                <Link href="/ai-astrologer-chat" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Chat with AI Astrologer</Link>
-                <Link href="/ai-astrologer-chat" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Talk with AI Astrologer</Link>
+                <Link href="/ai-astrologer-chat?mode=chat" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Chat with AI Astrologer</Link>
+                <Link href="/ai-astrologer-chat?mode=call" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Talk with AI Astrologer</Link>
               </div>
             )}
           </div>

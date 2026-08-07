@@ -2,7 +2,7 @@
 import { useTranslation } from '@/context/LanguageContext';
 
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import aiAstrologerService, { AiAstrologer } from '@/lib/aiAstrologerService';
 import { useAuth } from '@/context/AuthContext';
 import {
@@ -72,6 +72,7 @@ const AstrologerListing = () => {
     const { t } = useTranslation();
 
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { user, isAuthenticated, openLoginModal } = useAuth();
   const [astrologers, setAstrologers] = useState<AiAstrologer[]>([]);
   const [loading, setLoading] = useState(true);
@@ -98,6 +99,13 @@ const AstrologerListing = () => {
   const [activeFilterTab, setActiveFilterTab] = useState('sorting');
   const [tempFilters, setTempFilters] = useState(filters);
   const [serviceMode, setServiceMode] = useState<'chat' | 'call'>('chat');
+
+  useEffect(() => {
+    const mode = searchParams.get('mode');
+    if (mode === 'call' || mode === 'chat') {
+      setServiceMode(mode);
+    }
+  }, [searchParams]);
 
   const [mounted, setMounted] = useState(false);
 

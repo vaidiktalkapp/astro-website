@@ -828,16 +828,16 @@ Occupation: ${intakeData.occupation || 'Employee'}`;
 
   if (loading && messages.length === 0) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-saffron-50">
+      <div className="flex items-center justify-center min-h-screen bg-orange-50 z-[100] relative">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-600"></div>
       </div>);
 
   }
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-saffron-50 via-amber-50 to-orange-50 p-0 md:p-4 flex items-center justify-center overflow-hidden z-50 font-outfit">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm p-0 md:p-4 flex items-center justify-center overflow-hidden z-[100] font-outfit">
       {/* Main Chat Box */}
-      <div className="relative flex flex-col bg-gradient-to-br from-saffron-50 via-white to-amber-50 w-full md:max-w-4xl rounded-none md:rounded-3xl overflow-hidden shadow-3xl border-0 md:border-2 border-orange-200 h-full md:h-[95vh] z-10 mx-auto">
+      <div className="relative flex flex-col bg-gradient-to-br from-orange-50 via-white to-amber-50 w-full md:max-w-4xl rounded-none md:rounded-3xl overflow-hidden shadow-2xl border-0 md:border-2 border-orange-200 h-full md:h-[95vh] z-10 mx-auto">
         {/* Spiritual Background Patterns */}
         <div className="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjI0MCIgdmlld0JveD0iMCAwIDI0MCAyNDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEyMCAyMEMxNjYuMiAyMCAyMDQgNTcuOCAyMDQgMTA0QzIwNCAxNTAuMiAxNjYuMiAxODggMTIwIDE4OEM3My44IDE4OCAzNiAxNTAuMiAzNiAxMDRDMzYgNTcuOCA3My44IDIwIDEyMCAyMFoiIGZpbGw9IiNGRjlDMzYiLz48Y2lyY2xlIGN4PSIxMjAiIGN5PSIxMDQiIHI9IjQwIiBmaWxsPSIjRkZGIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI4IiBmaWxsPSIjRkY5QzM2Ij7FtTwvdGV4dD48L3N2Zz4=')] bg-repeat" />
 
