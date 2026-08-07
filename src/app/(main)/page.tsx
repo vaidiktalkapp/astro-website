@@ -9,6 +9,7 @@ import { getImageUrl } from '@/lib/imageUtils';
 import { format } from 'date-fns';
 import HeroBanner from '@/components/home/HeroBanner';
 import DailyHoroscope from '@/components/home/DailyHoroscope';
+import CountUp from '@/components/ui/CountUp';
 
 export default function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -772,8 +773,12 @@ export default function HomePage() {
 
         {/* Banner */}
         <div className="rounded-t-xl overflow-hidden grid grid-cols-1 md:grid-cols-[1fr_1.6fr] bg-[#fdfaf5] border border-[#f0ddc0]/80 border-b-0 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-          <div className="h-[250px] md:h-auto border-r border-[#f0ddc0]/50">
-            <img loading="lazy" src="/founder.webp" alt="Founder Shri Jitendra Kumar Mishra" className="w-full h-full object-cover object-top" />
+          <div className="h-[250px] md:h-auto border-r border-[#f0ddc0]/50 flex flex-col bg-white relative">
+            <img loading="lazy" src="/founder.webp" alt="Founder Shri Jitendra Kumar Mishra" className="w-full h-full md:flex-1 object-cover object-top" />
+            <div className="bg-[#5c1420] text-center py-3 px-4 shrink-0 absolute bottom-0 w-full md:relative">
+              <div className="font-bold text-[15px] md:text-[16px] text-white">Shri Jitendra Kumar Mishra</div>
+              <div className="text-[12px] md:text-[13px] text-[#fbe7d3]">Founder, VaidikTalk</div>
+            </div>
           </div>
           <div className="p-7 md:p-9 text-[#6E2F37] flex flex-col justify-center">
             <div className="font-serif font-bold text-xl md:text-[25px] leading-tight text-[#5c1420] mb-2">
@@ -801,13 +806,15 @@ export default function HomePage() {
         {/* Stats */}
         <div className="bg-[#f7e6d6] flex flex-wrap py-4.5 rounded-b-xl border border-[#f0ddc0]/80">
           {[
-            { stat: '68,000+', label: 'Happy Customers' },
-            { stat: '4.8/5', label: 'Google Rating' },
-            { stat: '15+ Years', label: 'Experience' },
-            { stat: '10,000+', label: 'Astrologers' }
+            { to: 68000, suffix: '+', label: 'Happy Customers' },
+            { to: 4.8, isDecimal: true, suffix: '/5', label: 'Google Rating' },
+            { to: 15, suffix: '+ Years', label: 'Experience' },
+            { to: 10000, suffix: '+', label: 'Astrologers' }
           ].map((item, i) => (
             <div key={i} className={`flex-1 text-center text-[#5c1420] ${i > 0 ? 'border-l border-[#e8cba8]' : ''} min-w-[120px] py-2`}>
-              <div className="font-extrabold text-base">{item.stat}</div>
+              <div className="font-extrabold text-base">
+                <CountUp to={item.to} isDecimal={item.isDecimal} suffix={item.suffix} />
+              </div>
               <div className="text-[11px] text-[#6E2F37]">{item.label}</div>
             </div>
           ))}

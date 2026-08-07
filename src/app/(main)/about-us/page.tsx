@@ -84,6 +84,10 @@ export default function AboutPage() {
              className="h-full w-full object-cover md:w-[70%] lg:w-[60%] object-center lg:object-right mix-blend-multiply opacity-95"
              style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 25%, black 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 25%, black 100%)' }}
            />
+           <div className="absolute bottom-6 right-8 md:right-12 lg:right-[10%] bg-[#5c1420] text-center py-3 px-6 rounded-xl shadow-lg pointer-events-auto">
+             <div className="font-bold text-[16px] md:text-[18px] text-white">Shri Jitendra Kumar Mishra</div>
+             <div className="text-[13px] md:text-[14px] text-[#fbe7d3]">Founder, VaidikTalk</div>
+           </div>
         </div>
 
         {/* Text Content */}
@@ -120,13 +124,17 @@ export default function AboutPage() {
         </div>
 
         {/* Mobile-only image */}
-        <div className="w-full relative mt-10 md:hidden flex justify-center pb-0 pointer-events-none">
+        <div className="w-full relative mt-10 md:hidden flex flex-col items-center justify-center pb-0 pointer-events-none">
            <img 
              src="/founder.webp" 
              alt="Shri Jitendra Kumar Mishra" 
              className="w-full max-w-[500px] h-auto object-cover object-top mix-blend-multiply opacity-95"
-             style={{ maskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 100%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 100%)' }}
+             style={{ maskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)' }}
            />
+           <div className="w-full bg-[#5c1420] text-center py-3 px-4 shadow-lg z-10 pointer-events-auto">
+             <div className="font-bold text-[16px] text-white">Shri Jitendra Kumar Mishra</div>
+             <div className="text-[13px] text-[#fbe7d3]">Founder, VaidikTalk</div>
+           </div>
         </div>
       </section>
 

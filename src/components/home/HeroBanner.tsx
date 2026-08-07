@@ -1,7 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+
+import CountUp from '@/components/ui/CountUp';
 
 const DEFAULT_HERO = {
   badgeText: "India's Most Trusted Vedic Guidance Platform",
@@ -129,19 +131,19 @@ const HeroBanner = () => {
 
           <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-x-10 gap-y-6">
             <div>
-              <div className="font-bold text-[18px] text-[#5c1420]">68,000+</div>
+              <div className="font-bold text-[18px] text-[#5c1420]"><CountUp to={68000} suffix="+" /></div>
               <div className="text-[13px] font-medium text-[#5e4339]">Happy Customers</div>
             </div>
             <div>
-              <div className="font-bold text-[18px] text-[#5c1420]">4.8/5</div>
+              <div className="font-bold text-[18px] text-[#5c1420]"><CountUp to={4.8} isDecimal={true} suffix="/5" /></div>
               <div className="text-[13px] font-medium text-[#5e4339]">Google Rating</div>
             </div>
             <div>
-              <div className="font-bold text-[18px] text-[#5c1420]">100%</div>
+              <div className="font-bold text-[18px] text-[#5c1420]"><CountUp to={100} suffix="%" /></div>
               <div className="text-[13px] font-medium text-[#5e4339]">Privacy Protected</div>
             </div>
             <div>
-              <div className="font-bold text-[18px] text-[#5c1420]">24x7</div>
+              <div className="font-bold text-[18px] text-[#5c1420]"><CountUp to={24} suffix="x7" /></div>
               <div className="text-[13px] font-medium text-[#5e4339]">Support</div>
             </div>
           </div>
