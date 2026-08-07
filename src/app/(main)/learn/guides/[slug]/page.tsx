@@ -127,11 +127,11 @@ export default function LessonDetailPage() {
                                 <Sparkles className="w-3 h-3" />
                                 <span>{lesson.seriesTitle || 'Astrology Series'}{t("_slug_._part")}{lesson.partNumber}</span>
                             </div>
-                            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 serif leading-[1.2] mb-5 break-words">
+                            <h1 className="text-3xl md:text-4xl font-bold text-[#3a1216] serif leading-[1.2] mb-5 break-words">
                                 {lesson.title}
                             </h1>
                             {lesson.shortDescription &&
-              <p className="text-[17px] text-gray-850 serif leading-relaxed opacity-80">{lesson.shortDescription}</p>
+              <p className="text-[17px] text-[#3a1216] serif leading-relaxed opacity-80">{lesson.shortDescription}</p>
               }
                         </div>
                     </div>
@@ -170,7 +170,7 @@ export default function LessonDetailPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="lesson-content prose prose-sm md:prose-base lg:prose-lg max-w-none serif text-gray-850 leading-relaxed overflow-hidden break-words"
+          className="lesson-content prose prose-sm md:prose-base lg:prose-lg max-w-none serif text-[#3a1216] leading-relaxed overflow-hidden break-words text-justify"
           dangerouslySetInnerHTML={{ __html: lesson.content }} />
         
 
@@ -232,26 +232,26 @@ export default function LessonDetailPage() {
             {/* Style for rich HTML content */}
             <style jsx global>{`
                 .lesson-content { word-break: break-word; overflow-wrap: break-word; }
-                .lesson-content h1 { font-size: 1.6rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #1a1a1a; line-height: 1.2; }
-                .lesson-content h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; color: #1a1a1a; border-bottom: 1px solid #e8dbb8; padding-bottom: 0.75rem; line-height: 1.3; }
-                .lesson-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #333; line-height: 1.4; }
+                .lesson-content h1 { font-size: 1.6rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #3a1216; line-height: 1.2; }
+                .lesson-content h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; color: #3a1216; border-bottom: 1px solid #e8dbb8; padding-bottom: 0.75rem; line-height: 1.3; }
+                .lesson-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #3a1216; line-height: 1.4; }
                 @media (min-width: 768px) {
                     .lesson-content h1 { font-size: 2rem; }
                     .lesson-content h2 { font-size: 1.6rem; }
                     .lesson-content h3 { font-size: 1.3rem; }
                 }
-                .lesson-content p { margin-bottom: 1.5rem; line-height: 1.85; font-size: 17px; color: #374151; }
-                .lesson-content ul, .lesson-content ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
-                .lesson-content li { margin-bottom: 0.75rem; line-height: 1.75; font-size: 17px; color: #374151; }
+                .lesson-content p { margin-bottom: 1.5rem; line-height: 1.85; font-size: 17px; color: #3a1216; }
+                .lesson-content ul, .lesson-content ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #3a1216; }
+                .lesson-content li { margin-bottom: 0.75rem; line-height: 1.75; font-size: 17px; color: #3a1216; }
                 .lesson-content table { width: 100%; border-collapse: collapse; margin: 2rem 0; border-radius: 12px; border: 1px solid #e8dbb8; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; box-sizing: border-box; }
-                .lesson-content th { background-color: #f5e6c8; padding: 14px 18px; text-align: left; font-weight: 700; font-size: 14px; color: #1a1a1a; border: 1px solid #e8dbb8; white-space: nowrap; }
-                .lesson-content td { padding: 12px 18px; border: 1px solid #e8dbb8; font-size: 14px; color: #4b5563; }
+                .lesson-content th { background-color: #f5e6c8; padding: 14px 18px; text-align: left; font-weight: 700; font-size: 14px; color: #3a1216; border: 1px solid #e8dbb8; white-space: nowrap; }
+                .lesson-content td { padding: 12px 18px; border: 1px solid #e8dbb8; font-size: 14px; color: #3a1216; }
                 .lesson-content tr:nth-child(even) { background-color: #fdfaf0; }
                 .lesson-content tr:hover { background-color: #fdf6e3; }
-                .lesson-content blockquote { border-left: 4px solid #b8962e; padding: 1.25rem 1.75rem; margin: 2rem 0; background: #fdf6e3; border-radius: 0 12px 12px 0; font-style: normal; color: #4b5563; }
+                .lesson-content blockquote { border-left: 4px solid #b8962e; padding: 1.25rem 1.75rem; margin: 2rem 0; background: #fdf6e3; border-radius: 0 12px 12px 0; font-style: normal; color: #3a1216; }
                 .lesson-content a { color: #b8962e; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
                 .lesson-content a:hover { color: #967a26; }
-                .lesson-content strong { font-weight: 700; color: #111827; }
+                .lesson-content strong { font-weight: 700; color: #3a1216; }
                 .lesson-content img { max-width: 100% !important; height: auto !important; border-radius: 16px; margin: 2rem 0; border: 1px solid #e8dbb8; box-sizing: border-box; }
                 .lesson-content iframe { max-width: 100%; border-radius: 16px; margin: 2rem 0; display: block; box-sizing: border-box; }
             `}</style>

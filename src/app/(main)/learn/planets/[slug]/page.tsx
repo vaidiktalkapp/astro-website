@@ -108,7 +108,7 @@ export default function PlanetDetailPage() {
                         <div>
                             <div className="flex items-center gap-3 mb-1">
                                 <span className="text-[#b8962e] text-3xl font-bold serif">{planet.symbol}</span>
-                                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 serif leading-tight">
+                                <h1 className="text-4xl lg:text-5xl font-bold text-[#3a1216] serif leading-tight">
                                     {planet.name}
                                 </h1>
                             </div>
@@ -120,11 +120,11 @@ export default function PlanetDetailPage() {
                     <div className="flex flex-wrap gap-4 mt-6">
                         <div className="px-4 py-2 bg-white border border-[#e8dbb8]/40 rounded-xl shadow-sm">
                             <span className="text-[9px] font-black text-[#3a1216] uppercase block leading-none mb-1">{t("_slug_.element")}</span>
-                            <span className="text-sm font-bold text-gray-850">{planet.element}</span>
+                            <span className="text-sm font-bold text-[#3a1216]">{planet.element}</span>
                         </div>
                         <div className="px-4 py-2 bg-white border border-[#e8dbb8]/40 rounded-xl shadow-sm">
                             <span className="text-[9px] font-black text-[#3a1216] uppercase block leading-none mb-1">{t("_slug_.significance")}</span>
-                            <span className="text-sm font-bold text-gray-850">{planet.significance}</span>
+                            <span className="text-sm font-bold text-[#3a1216]">{planet.significance}</span>
                         </div>
                     </div>
                 </motion.div>
@@ -134,7 +134,7 @@ export default function PlanetDetailPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="lesson-content prose prose-lg max-w-none serif text-gray-850 leading-relaxed mb-10"
+          className="lesson-content prose prose-lg max-w-none serif text-[#3a1216] leading-relaxed mb-10 text-justify"
           dangerouslySetInnerHTML={{ __html: planet.description }} />
         
 
@@ -187,7 +187,7 @@ export default function PlanetDetailPage() {
                                 <div className="w-7 h-7 rounded-lg bg-[#fdf6e3] text-[#b8962e] border border-[#e8dbb8]/50 flex items-center justify-center shrink-0 font-bold text-[11px] shadow-sm group-hover:bg-[#b8962e] group-hover:text-white transition-all">
                                     {idx + 1}
                                 </div>
-                                <p className="text-xs font-medium text-gray-850 leading-relaxed pt-0.5">{remedy}</p>
+                                <p className="text-xs font-medium text-[#3a1216] leading-relaxed pt-0.5">{remedy}</p>
                             </div>
             )}
                     </div>
@@ -197,19 +197,19 @@ export default function PlanetDetailPage() {
                 <div className="pt-8 border-t border-[#e8dbb8]/30">
                     <Link
             href="/learn"
-            className="group flex items-center justify-between bg-gradient-to-r from-[#1a1a1a] to-[#2d2d2d] rounded-2xl p-8 text-white hover:shadow-2xl transition-all">
+            className="group flex items-center justify-between bg-[#1a1a1a] rounded-xl p-6 md:p-8 text-white hover:bg-[#222] transition-colors border border-transparent hover:border-[#b8962e]/30">
             
                         <div className="flex items-center gap-5">
-                            <div className="w-14 h-14 rounded-2xl bg-[#b8962e]/20 flex items-center justify-center">
-                                <Star className="w-7 h-7 text-[#b8962e]" />
+                            <div className="w-12 h-12 rounded-lg bg-[#b8962e]/10 border border-[#b8962e]/20 flex items-center justify-center group-hover:bg-[#b8962e]/20 transition-colors">
+                                <Star className="w-6 h-6 text-[#b8962e]" />
                             </div>
                             <div>
-                                <h3 className="text-xl font-bold serif">{t("_slug_.deepen_your_knowledge")}</h3>
-                                <p className="text-sm text-[#3a1216] font-medium mt-1">{t("_slug_.start_our_sequential_learning")}</p>
+                                <h3 className="text-xl font-bold serif text-[#e8dbb8]">{t("_slug_.deepen_your_knowledge")}</h3>
+                                <p className="text-sm text-gray-400 font-medium mt-1">{t("_slug_.start_our_sequential_learning")}</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-2 text-[#b8962e] font-bold text-xs uppercase tracking-widest">
-{t("_slug_.go_to_part_1")}<MoveRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+{t("_slug_.go_to_part_1")}<MoveRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                         </div>
                     </Link>
                 </div>
@@ -217,21 +217,21 @@ export default function PlanetDetailPage() {
 
             {/* Same premium global styles as LessonDetailPage */}
             <style jsx global>{`
-                .lesson-content h1 { font-size: 2rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: #1a1a1a; }
-                .lesson-content h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1a1a1a; border-bottom: 2px solid #e8dbb8; padding-bottom: 0.5rem; }
-                .lesson-content h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #333; }
-                .lesson-content p { margin-bottom: 1rem; line-height: 1.8; }
-                .lesson-content ul, .lesson-content ol { margin-bottom: 1rem; padding-left: 1.5rem; }
-                .lesson-content li { margin-bottom: 0.5rem; line-height: 1.7; }
+                .lesson-content h1 { font-size: 2rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: #3a1216; }
+                .lesson-content h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #3a1216; border-bottom: 2px solid #e8dbb8; padding-bottom: 0.5rem; }
+                .lesson-content h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #3a1216; }
+                .lesson-content p { margin-bottom: 1rem; line-height: 1.8; color: #3a1216; font-size: 17px; }
+                .lesson-content ul, .lesson-content ol { margin-bottom: 1rem; padding-left: 1.5rem; color: #3a1216; }
+                .lesson-content li { margin-bottom: 0.5rem; line-height: 1.7; color: #3a1216; font-size: 17px; }
                 .lesson-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border-radius: 12px; overflow: hidden; border: 1px solid #e8dbb8; }
-                .lesson-content th { background-color: #f5e6c8; padding: 12px 16px; text-align: left; font-weight: 700; font-size: 14px; color: #333; border: 1px solid #e8dbb8; }
-                .lesson-content td { padding: 10px 16px; border: 1px solid #e8dbb8; font-size: 14px; }
+                .lesson-content th { background-color: #f5e6c8; padding: 12px 16px; text-align: left; font-weight: 700; font-size: 14px; color: #3a1216; border: 1px solid #e8dbb8; }
+                .lesson-content td { padding: 10px 16px; border: 1px solid #e8dbb8; font-size: 14px; color: #3a1216; }
                 .lesson-content tr:nth-child(even) { background-color: #fdfaf0; }
                 .lesson-content tr:hover { background-color: #fdf6e3; }
-                .lesson-content blockquote { border-left: 4px solid #b8962e; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #fdf6e3; border-radius: 0 12px 12px 0; font-style: normal; color: #666; }
+                .lesson-content blockquote { border-left: 4px solid #b8962e; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #fdf6e3; border-radius: 0 12px 12px 0; font-style: normal; color: #3a1216; }
                 .lesson-content a { color: #b8962e; font-weight: 600; text-decoration: underline; }
                 .lesson-content a:hover { color: #967a26; }
-                .lesson-content strong { font-weight: 700; color: #1a1a1a; }
+                .lesson-content strong { font-weight: 700; color: #3a1216; }
                 .lesson-content img { max-width: 100%; height: auto; border-radius: 12px; margin: 1.5rem 0; border: 1px solid #e8dbb8; }
             `}</style>
         </div>);
