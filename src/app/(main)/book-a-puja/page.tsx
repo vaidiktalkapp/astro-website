@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import { ShieldCheck, UserCheck, Leaf, Lock, Sparkles, Star, ChevronDown, Clock, Search, Flame, SlidersHorizontal, X } from 'lucide-react';
+import { getImageUrl } from '@/lib/imageUtils';
 
 const CAROUSEL_PUJAS = [
   { title: 'Rudrabhishek Puja', subtitle: 'For Health & Peace', img: '/pooja/Rudraabhishek.webp', link: '/book-a-puja/rudrabhishek' },
@@ -212,7 +213,7 @@ export default function BookAPujaPage() {
       id: puja.slug,
       title: puja.title,
       desc: puja.shortDesc,
-      image: puja.image || '/pooja/Rudraabhishek.webp',
+      image: puja.image ? (puja.image.startsWith('/pooja') ? puja.image : getImageUrl(puja.image, puja.title)) : '/pooja/Rudraabhishek.webp',
       link: `/book-a-puja/${puja.slug}`,
       popular: puja.popular || false,
       price: puja.price || 1599,

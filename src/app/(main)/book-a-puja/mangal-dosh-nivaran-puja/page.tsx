@@ -482,7 +482,7 @@ export default function MangalDoshNivaranPage() {
             </div>
           </div>
           <p className="text-center mt-8">
-            <a href="https://www.youtube.com/@VaidikTalk" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-[#5c1a1f] hover:text-[#d97706] transition-colors">
+            <a href="https://www.youtube.com/channel/UC9R0W5yvEFM7BavR85woAFQ" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-[#5c1a1f] hover:text-[#d97706] transition-colors">
                 View all testimonials on YouTube
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>

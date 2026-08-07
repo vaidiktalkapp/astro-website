@@ -4,6 +4,7 @@ import { useParams, notFound } from 'next/navigation';
 import axios from 'axios';
 import { Sparkles, ShieldCheck, UserCheck, Leaf, Lock, ChevronDown, CheckCircle2, MapPin, Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { getImageUrl } from '@/lib/imageUtils';
 import { usePujaBooking } from '../../../../hooks/usePujaBooking';
 
 const getYoutubeId = (url: string) => {
@@ -93,7 +94,7 @@ export default function DynamicPujaPage() {
       <div className="relative w-full min-h-[500px] md:min-h-[600px] py-12 md:py-0 flex items-center bg-black overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={puja.image || "/pooja/Rudraabhishek.webp"}
+            src={puja.image ? (puja.image.startsWith('/pooja') ? puja.image : getImageUrl(puja.image, puja.title)) : "/pooja/Rudraabhishek.webp"}
             alt={puja.title}
             className="w-full h-full object-cover opacity-90 object-center"
           />
@@ -181,7 +182,7 @@ export default function DynamicPujaPage() {
 
           <div className="lg:col-span-5 xl:col-span-4 flex flex-col gap-10 lg:sticky lg:top-24">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img src={puja.image || "/pooja/Rudraabhishek.webp"} alt={puja.title} className="w-full h-full object-cover object-center aspect-square md:aspect-[4/3]" />
+              <img src={puja.image ? (puja.image.startsWith('/pooja') ? puja.image : getImageUrl(puja.image, puja.title)) : "/pooja/Rudraabhishek.webp"} alt={puja.title} className="w-full h-full object-cover object-center aspect-square md:aspect-[4/3]" />
               <div className="absolute inset-0 border-4 border-[#d4af37]/30 rounded-2xl pointer-events-none" />
             </div>
 
@@ -607,9 +608,9 @@ export default function DynamicPujaPage() {
                 <div
                   key={idx}
                   className="relative rounded-2xl overflow-hidden shadow-sm border border-[#e8d8c0] group aspect-[4/3] cursor-pointer"
-                  onClick={() => setSelectedImage(img)}
+                  onClick={() => setSelectedImage(img ? (img.startsWith('/pooja') ? img : getImageUrl(img)) : '')}
                 >
-                  <img loading="lazy" src={img} alt={`${puja.title} - Photo ${idx + 1}`} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
+                  <img loading="lazy" src={img ? (img.startsWith('/pooja') ? img : getImageUrl(img)) : ''} alt={`${puja.title} - Photo ${idx + 1}`} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-transparent group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
                     <svg className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
                   </div>
@@ -634,7 +635,7 @@ export default function DynamicPujaPage() {
               {puja.relatedPujas.map((r: any, idx: number) => (
                 <Link key={idx} href={`/book-a-puja/${r.slug}`} className="group rounded-2xl overflow-hidden border border-[#f0ddc0] hover:border-[#d4af37]/60 hover:shadow-lg transition-all duration-300 bg-white flex flex-col">
                   <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-100">
-                    <img src={r.img} alt={r.title} className="w-full h-full object-contain bg-[#0d0505] group-hover:scale-105 transition-transform duration-700" />
+                    <img src={r.img ? (r.img.startsWith('/pooja') ? r.img : getImageUrl(r.img, r.title)) : "/pooja/Rudraabhishek.webp"} alt={r.title} className="w-full h-full object-contain bg-[#0d0505] group-hover:scale-105 transition-transform duration-700" />
                   </div>
                   <div className="p-4 flex flex-col gap-1.5 flex-grow">
                     <span className="text-[#d97706] text-[10px] font-bold tracking-wider uppercase">{r.tag}</span>
