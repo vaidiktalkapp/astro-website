@@ -8,17 +8,43 @@ import Link from 'next/link';
 
 interface FestivalCalendarProps {
     festivals: Festival[];
+    selectedMonth?: string;
+    onMonthChange?: (month: string) => void;
 }
 
 const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-export default function FestivalCalendar({ festivals }: FestivalCalendarProps) {
+export default function FestivalCalendar({ festivals, selectedMonth, onMonthChange }: FestivalCalendarProps) {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [selectedDay, setSelectedDay] = useState<number | null>(null);
 
-    const nextMonth = () => { setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)); setSelectedDay(null); };
-    const prevMonth = () => { setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1)); setSelectedDay(null); };
-    const jumpToToday = () => { const now = new Date(); setCurrentDate(now); setSelectedDay(now.getDate()); };
+    React.useEffect(() => {
+        if (selectedMonth && selectedMonth !== 'All') {
+            const mIndex = MONTH_NAMES.indexOf(selectedMonth);
+            if (mIndex !== -1 && mIndex !== currentDate.getMonth()) {
+                setCurrentDate(new Date(currentDate.getFullYear(), mIndex, 1));
+            }
+        }
+    }, [selectedMonth]);
+
+    const nextMonth = () => { 
+        const next = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
+        setCurrentDate(next); 
+        setSelectedDay(null); 
+        if (onMonthChange) onMonthChange(MONTH_NAMES[next.getMonth()]);
+    };
+    const prevMonth = () => { 
+        const prev = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
+        setCurrentDate(prev); 
+        setSelectedDay(null); 
+        if (onMonthChange) onMonthChange(MONTH_NAMES[prev.getMonth()]);
+    };
+    const jumpToToday = () => { 
+        const now = new Date(); 
+        setCurrentDate(now); 
+        setSelectedDay(now.getDate()); 
+        if (onMonthChange) onMonthChange(MONTH_NAMES[now.getMonth()]);
+    };
 
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();

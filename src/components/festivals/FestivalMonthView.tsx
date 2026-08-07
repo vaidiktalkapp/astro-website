@@ -82,7 +82,7 @@ export default function FestivalMonthView({ festivals }: FestivalMonthViewProps)
                                         <div className="px-6 py-3.5 flex items-center gap-3 flex-wrap">
                                             <Link href={`/festivals/${fest.slug}`} className="flex items-center gap-2 group/link">
                                                 <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: fest.color }} />
-                                                <span className="text-sm font-bold group-hover/link:underline transition-all" style={{ color: fest.color }}>
+                                                <span className="text-sm font-medium text-gray-850 group-hover/link:text-[#b8962e] transition-all">
                                                     {fest.name}
                                                 </span>
                                             </Link>

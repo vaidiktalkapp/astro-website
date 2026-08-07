@@ -61,7 +61,7 @@ export default function FestivalDetailPage() {
             `}</style>
 
             {/* Hero Header Area */}
-            <div className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 border-b overflow-hidden" style={{ borderColor: `${festival.color}30`, backgroundColor: `${festival.color}08` }}>
+            <div className="relative pt-10 pb-16 px-4 sm:px-6 lg:px-8 border-b overflow-hidden" style={{ borderColor: `${festival.color}30`, backgroundColor: `${festival.color}08` }}>
                 <div className="absolute top-0 right-0 p-8 opacity-10 blur-[2px]">
                     <svg width="300" height="300" viewBox="0 0 24 24" fill="none" stroke={festival.color} strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20 M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
                 </div>
@@ -105,7 +105,7 @@ export default function FestivalDetailPage() {
                                 </div>
                                 <div>
                                     <p className="text-[10px] font-bold uppercase tracking-wider text-[#3a1216]">{t("_slug_.muhurat")}</p>
-                                    <p className="text-sm font-bold text-gray-900 line-clamp-1">{festival.muhurat.split(':')[0]}</p>
+                                    <p className="text-sm font-bold text-gray-900 line-clamp-1">{festival.muhurat ? festival.muhurat.split(':')[0] : 'All Day'}</p>
                                 </div>
                             </div>
                         </div>
@@ -137,14 +137,18 @@ export default function FestivalDetailPage() {
               </h2>
                             <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 md:p-8">
                                 <ul className="space-y-4">
-                                    {festival.rituals.map((ritual, idx) =>
+                                    {(festival.rituals || []).length > 0 ? (
+                                        (festival.rituals || []).map((ritual, idx) =>
                   <li key={idx} className="flex items-start gap-4">
                                             <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-gray-100 text-sm font-bold text-gray-850 mt-0.5">
                                                 {idx + 1}
                                             </div>
                                             <p className="text-gray-850 font-medium pt-1">{ritual}</p>
                                         </li>
-                  )}
+                  )
+                                    ) : (
+                                        <p className="text-gray-700 italic">Devotees observe traditional fasting, prayers, and temple visits on this auspicious day.</p>
+                                    )}
                                 </ul>
                             </div>
                         </motion.section>
@@ -161,7 +165,7 @@ export default function FestivalDetailPage() {
                             <div className="p-6 space-y-6">
                                 <div>
                                     <p className="text-[11px] font-bold uppercase tracking-wider text-[#3a1216] mb-1">{t("_slug_.tithi_lunar_day")}</p>
-                                    <p className="text-base font-bold text-gray-900">{festival.tithi}</p>
+                                    <p className="text-base font-bold text-gray-900">{festival.tithi || 'Calculated as per Panchang'}</p>
                                 </div>
                                 <div>
                                     <p className="text-[11px] font-bold uppercase tracking-wider text-[#3a1216] mb-1">{t("_slug_.hindu_month")}</p>
@@ -169,7 +173,7 @@ export default function FestivalDetailPage() {
                                 </div>
                                 <div>
                                     <p className="text-[11px] font-bold uppercase tracking-wider text-[#3a1216] mb-1">{t("_slug_.detailed_muhurat")}</p>
-                                    <p className="text-sm font-semibold text-gray-850 leading-snug">{festival.muhurat}</p>
+                                    <p className="text-sm font-semibold text-gray-850 leading-snug">{festival.muhurat || 'Please check local Panchang for precise timings.'}</p>
                                 </div>
                                 
                                 {festival.endDate &&

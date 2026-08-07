@@ -15,10 +15,18 @@ export default function FestivalsHubPage() {
     const { t } = useTranslation();
 
   const [view, setView] = useState<'calendar' | 'list' | 'month'>('list');
+  const [selectedMonth, setSelectedMonth] = useState<string>('All');
   const [festivals, setFestivals] = useState<Festival[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const MONTHS = ["All", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  
+  const filteredFestivals = selectedMonth === 'All' 
+    ? festivals 
+    : festivals.filter(f => f.month === selectedMonth);
+
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
     const loadFestivals = async () => {
       try {
         const data = await festivalService.getAllFestivals();
@@ -50,7 +58,7 @@ export default function FestivalsHubPage() {
                 .festivals-wrap { font-family: 'Inter', sans-serif !important; }
             `}</style>
 
-            <div className="max-w-6xl mx-auto pt-12 md:pt-20 festivals-wrap">
+            <div className="max-w-6xl mx-auto pt-6 md:pt-10 festivals-wrap">
                 {/* Header Sub-Nav & Titles */}
                 <div className="text-center mb-10">
                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex items-center justify-center gap-2 text-[#b8962e] text-sm font-semibold mb-3 tracking-widest uppercase">
@@ -92,29 +100,46 @@ export default function FestivalsHubPage() {
         }
 
                 {/* View Toggles & Controls */}
-                <div className="flex flex-col sm:flex-row items-center justify-between mb-8 pb-4 border-b border-[#d6c89a]/50">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4 sm:mb-0">{t("festivals.2026_calendar")}</h3>
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 pb-4 border-b border-[#d6c89a]/50">
+                    <h3 className="text-2xl font-bold text-gray-900">{t("festivals.2026_calendar")}</h3>
                     
-                    <div className="inline-flex p-1 rounded-xl border border-[#d6c89a]/50 bg-white shadow-sm">
+                    <div className="inline-flex p-1 rounded-xl border border-[#d6c89a]/50 bg-white shadow-sm w-full sm:w-auto overflow-x-auto hide-scrollbar">
                         <button
               onClick={() => setView('month')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${view === 'month' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-850 hover:text-gray-850 hover:bg-gray-50'}`}>
+              className={`flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${view === 'month' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-850 hover:text-gray-850 hover:bg-gray-50'}`}>
               
                             <TableProperties className="w-4 h-4" />{t("festivals.month")}
             </button>
                         <button
               onClick={() => setView('list')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${view === 'list' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-850 hover:text-gray-850 hover:bg-gray-50'}`}>
+              className={`flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${view === 'list' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-850 hover:text-gray-850 hover:bg-gray-50'}`}>
               
                             <LayoutList className="w-4 h-4" />{t("festivals.cards")}
             </button>
                         <button
               onClick={() => setView('calendar')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${view === 'calendar' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-850 hover:text-gray-850 hover:bg-gray-50'}`}>
+              className={`flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${view === 'calendar' ? 'bg-[#b8962e] text-white shadow-sm' : 'text-gray-850 hover:text-gray-850 hover:bg-gray-50'}`}>
               
                             <CalendarIcon className="w-4 h-4" />{t("festivals.calendar")}
             </button>
                     </div>
+                </div>
+
+                {/* Month Filter */}
+                <div className="flex overflow-x-auto gap-2 pb-6 mb-2 hide-scrollbar w-full" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                    {MONTHS.map(m => (
+                        <button
+                            key={m}
+                            onClick={() => setSelectedMonth(m)}
+                            className={`flex-shrink-0 px-5 py-2 rounded-full text-sm font-semibold transition-colors ${
+                                selectedMonth === m 
+                                ? 'bg-[#b8962e] text-white shadow-sm border border-[#b8962e]' 
+                                : 'bg-white border border-[#d6c89a]/50 text-gray-850 hover:bg-[#fdfaf3]'
+                            }`}
+                        >
+                            {m}
+                        </button>
+                    ))}
                 </div>
 
                 {/* Active View Container */}
@@ -128,7 +153,7 @@ export default function FestivalsHubPage() {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}>
               
-                                <FestivalMonthView festivals={festivals} />
+                                <FestivalMonthView festivals={filteredFestivals} />
                             </motion.div>
             }
                         {view === 'list' &&
@@ -139,7 +164,7 @@ export default function FestivalsHubPage() {
               exit={{ opacity: 0, x: 20 }}
               transition={{ duration: 0.3 }}>
               
-                                <FestivalList festivals={festivals} />
+                                <FestivalList festivals={filteredFestivals} />
                             </motion.div>
             }
                         {view === 'calendar' &&
@@ -150,7 +175,11 @@ export default function FestivalsHubPage() {
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.3 }}>
               
-                                <FestivalCalendar festivals={festivals} />
+                                <FestivalCalendar 
+                                    festivals={festivals} 
+                                    selectedMonth={selectedMonth} 
+                                    onMonthChange={setSelectedMonth} 
+                                />
                             </motion.div>
             }
                     </AnimatePresence>
