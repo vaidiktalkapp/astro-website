@@ -68,7 +68,7 @@ export default function MangalDoshNivaranPage() {
           <h1 className="premium-serif text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight max-w-3xl">
             Mangal Dosh Nivaran <span className="text-[#f5d08b]">Puja</span>
           </h1>
-          <p className="text-[#3a1216] text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light">
+          <p className="text-gray-200 text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light">
             Our vedic mangaldosh nivaran puja brings peace and protection. Strengthen your destiny with blessings from the divine.
           </p>
 

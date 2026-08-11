@@ -106,7 +106,7 @@ export default function DynamicPujaPage() {
             {puja.title?.split(' ').slice(0, -1).join(' ')}{' '}
             <span className="text-[#d4af37]">{puja.title?.split(' ').slice(-1)}</span>
           </h1>
-          <p className="text-[#3a1216] text-lg md:text-xl max-w-xl leading-relaxed mb-8">
+          <p className="text-gray-200 text-lg md:text-xl max-w-xl leading-relaxed mb-8">
             {puja.shortDesc}
           </p>
           <div className="flex items-center gap-6">

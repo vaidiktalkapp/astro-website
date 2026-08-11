@@ -800,7 +800,7 @@ export default function LalKitabPage() {
                   ></iframe>
                 ) : (
                   <>
-                    <img src={video.thumbnail && video.thumbnail !== '/images/kundali-video-thumb.jpg' ? video.thumbnail : (getYoutubeVideoId(video.url) ? `https://img.youtube.com/vi/${getYoutubeVideoId(video.url)}/hqdefault.jpg` : video.thumbnail)} alt="Video Thumbnail" className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" onError={(e) => { e.currentTarget.src = 'https://placehold.co/800x450/1a1a1a/ffffff?text=Video+Thumbnail' }} />
+                    <img src={video.thumbnail && video.thumbnail !== '/images/kundali-video-thumb.jpg' ? video.thumbnail : (getYoutubeVideoId(video.url) ? `https://img.youtube.com/vi/${getYoutubeVideoId(video.url)}/hqdefault.jpg` : (video.thumbnail || undefined))} alt="Video Thumbnail" className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" onError={(e) => { e.currentTarget.src = 'https://placehold.co/800x450/1a1a1a/ffffff?text=Video+Thumbnail' }} />
                     <div className="absolute inset-0 flex items-center justify-center">
                        <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center group-hover:scale-110 transition-transform">
                           <svg className="w-8 h-8 text-[#3a1216] ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -864,24 +864,52 @@ export default function LalKitabPage() {
         <SectionHeading title="Name & Mobile Number Numerology FAQs" />
         <div className="max-w-[1200px] mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-12 border-t border-[#ebdcc7] items-start">
-            {(settings?.faqs?.length ? settings.faqs : faqData).map((faq: any, i: number) => (
-              <div key={i} className="border-b border-[#ebdcc7]">
-                <button
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex items-start md:items-center justify-between py-5 md:py-6 text-left font-bold text-[#5c1a1f] text-[15.5px] md:text-[17px] hover:text-[#761e27] transition-colors gap-4"
-                >
-                  <span className="leading-snug">{faq.q}</span>
-                  <ChevronDown className={`w-5 h-5 text-[#d4af37] transition-transform duration-200 flex-shrink-0 mt-0.5 md:mt-0 ${openFaq === i ? 'rotate-180' : ''}`} />
-                </button>
-                <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-[1400px] pb-5 md:pb-6' : 'max-h-0'}`}>
-                                    {faq.a ? (
-                    <div className="text-gray-850 text-[15px] md:text-[16px] leading-relaxed whitespace-pre-wrap">{faq.a}</div>
-                  ) : (
-                    <ContentBlocks blocks={faq.content} />
-                  )}
-                </div>
-              </div>
-            ))}
+            <div className="flex flex-col">
+              {(settings?.faqs?.length ? settings.faqs : faqData).filter((_: any, i: number) => i % 2 === 0).map((faq: any, idx: number) => {
+                const i = idx * 2; // Original index for state
+                return (
+                  <div key={i} className="border-b border-[#ebdcc7]">
+                    <button
+                      onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                      className="w-full flex items-start md:items-center justify-between py-5 md:py-6 text-left font-bold text-[#5c1a1f] text-[15.5px] md:text-[17px] hover:text-[#761e27] transition-colors gap-4"
+                    >
+                      <span className="leading-snug">{faq.q}</span>
+                      <ChevronDown className={`w-5 h-5 text-[#d4af37] transition-transform duration-200 flex-shrink-0 mt-0.5 md:mt-0 ${openFaq === i ? 'rotate-180' : ''}`} />
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-[1400px] pb-5 md:pb-6' : 'max-h-0'}`}>
+                      {faq.a ? (
+                        <div className="text-gray-850 text-[15px] md:text-[16px] leading-relaxed whitespace-pre-wrap">{faq.a}</div>
+                      ) : (
+                        <ContentBlocks blocks={faq.content} />
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="flex flex-col">
+              {(settings?.faqs?.length ? settings.faqs : faqData).filter((_: any, i: number) => i % 2 !== 0).map((faq: any, idx: number) => {
+                const i = idx * 2 + 1; // Original index for state
+                return (
+                  <div key={i} className="border-b border-[#ebdcc7]">
+                    <button
+                      onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                      className="w-full flex items-start md:items-center justify-between py-5 md:py-6 text-left font-bold text-[#5c1a1f] text-[15.5px] md:text-[17px] hover:text-[#761e27] transition-colors gap-4"
+                    >
+                      <span className="leading-snug">{faq.q}</span>
+                      <ChevronDown className={`w-5 h-5 text-[#d4af37] transition-transform duration-200 flex-shrink-0 mt-0.5 md:mt-0 ${openFaq === i ? 'rotate-180' : ''}`} />
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-[1400px] pb-5 md:pb-6' : 'max-h-0'}`}>
+                      {faq.a ? (
+                        <div className="text-gray-850 text-[15px] md:text-[16px] leading-relaxed whitespace-pre-wrap">{faq.a}</div>
+                      ) : (
+                        <ContentBlocks blocks={faq.content} />
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

@@ -68,7 +68,7 @@ export default function LoveHealingPage() {
           <h1 className="premium-serif text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight max-w-3xl">
             Love / Marriage <br/><span className="text-[#f5d08b]">Healing</span>
           </h1>
-          <p className="text-[#3a1216] text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light">
+          <p className="text-gray-200 text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light">
             Heal Emotional Wounds, Restore Trust, and Reignite Divine Love.
           </p>
 

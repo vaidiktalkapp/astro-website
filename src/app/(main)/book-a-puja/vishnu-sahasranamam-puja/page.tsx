@@ -68,7 +68,7 @@ export default function VishnuSahasranamamPujaPage() {
           <h1 className="premium-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-3xl">
             Vishnu Sahasranamam <span className="text-[#f5d08b]">Puja</span>
           </h1>
-          <p className="text-[#3a1216] text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light">
+          <p className="text-gray-200 text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light">
             Vishnu Sahasranamam Puja helps cleanse Karmas and uplift the Soul. Celebrate the glory of the preserver.
           </p>
 

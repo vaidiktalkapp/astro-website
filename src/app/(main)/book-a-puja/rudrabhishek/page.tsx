@@ -68,7 +68,7 @@ export default function RudrabhishekPage() {
           <h1 className="premium-serif text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight max-w-3xl">
             Rudrabhishek <span className="text-[#f5d08b]">Pooja</span>
           </h1>
-          <p className="text-[#3a1216] text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light">
+          <p className="text-gray-200 text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light">
             Invoke the Fierce Grace of Lord Shiva for Protection, Healing, and Transformation.
           </p>
 

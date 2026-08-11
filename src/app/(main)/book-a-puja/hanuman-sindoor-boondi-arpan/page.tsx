@@ -68,7 +68,7 @@ export default function HanumanSindoorBoondiArpanPage() {
           <h1 className="premium-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-3xl">
             Hanuman Sindoor / <span className="text-[#f5d08b]">Boondi Arpan</span>
           </h1>
-          <p className="text-[#3a1216] text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light">
+          <p className="text-gray-200 text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light">
             Sindoor and boondi arpan puja for strength, stability, and success. Let Hanuman's blessings guard your life and destroy all negativity.
           </p>
 

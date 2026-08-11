@@ -1045,8 +1045,8 @@ export default function HomePage() {
                 </div>
                 <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <div
-                    className="prose prose-sm md:prose-base prose-slate text-[#6E2F37] max-w-none [&_a]:!text-[#ee6c1e] [&_a]:underline hover:[&_a]:!text-[#c2410c] [&_a]:font-bold"
-                    dangerouslySetInnerHTML={{ __html: faq.answer }}
+                    className="prose prose-sm md:prose-base prose-slate text-[#6E2F37] w-full max-w-full overflow-wrap-anywhere [&_*]:!whitespace-pre-wrap [&_*]:!max-w-full [&_a]:!text-[#ee6c1e] [&_a]:underline hover:[&_a]:!text-[#c2410c] [&_a]:font-bold"
+                    dangerouslySetInnerHTML={{ __html: faq.answer ? faq.answer.replace(/&nbsp;/g, ' ') : '' }}
                   />
                 </div>
               </div>
@@ -1118,16 +1118,46 @@ export default function HomePage() {
           </div>
 
           <div className="flex-1 w-full max-w-md z-10 relative">
-            <div className="flex items-center bg-white rounded-xl p-1.5 shadow-sm border border-gray-200 focus-within:border-[#ee6c1e] focus-within:ring-1 focus-within:ring-[#ee6c1e] transition-all">
+            <form onSubmit={async (e) => {
+              e.preventDefault();
+              const form = e.target as HTMLFormElement;
+              const emailInput = form.elements.namedItem('email') as HTMLInputElement;
+              const email = emailInput.value;
+              if (!email) return;
+              
+              const btn = form.querySelector('button');
+              if (btn) btn.disabled = true;
+              
+              try {
+                const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+                const res = await fetch(`${apiUrl}/subscribers`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ email })
+                });
+                if (res.ok) {
+                  alert('Thank you for subscribing!');
+                  emailInput.value = '';
+                } else {
+                  alert('Failed to subscribe. Please try again.');
+                }
+              } catch (error) {
+                alert('Something went wrong.');
+              } finally {
+                if (btn) btn.disabled = false;
+              }
+            }} className="flex items-center bg-white rounded-xl p-1.5 shadow-sm border border-gray-200 focus-within:border-[#ee6c1e] focus-within:ring-1 focus-within:ring-[#ee6c1e] transition-all">
               <input
                 type="email"
+                name="email"
+                required
                 placeholder="Enter your email address"
                 className="flex-1 bg-transparent px-4 py-2 text-[14px] text-gray-850 focus:outline-none"
               />
-              <button className="bg-[#e64a19] hover:bg-[#d84315] text-white font-semibold text-[14px] px-6 py-2.5 rounded-lg transition-colors shadow-sm">
+              <button type="submit" className="bg-[#e64a19] hover:bg-[#d84315] disabled:opacity-50 text-white font-semibold text-[14px] px-6 py-2.5 rounded-lg transition-colors shadow-sm">
                 Subscribe
               </button>
-            </div>
+            </form>
           </div>
 
           <div className="hidden lg:flex w-32 shrink-0 z-10 relative items-center justify-center">
