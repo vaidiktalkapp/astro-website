@@ -103,7 +103,7 @@ export class AuthService {
 
   static async verifyTruecaller(truecallerData: any) {
     try {
-      const response = await apiClient.post('/auth/truecaller', truecallerData);
+      const response = await apiClient.post('/auth/verify-truecaller', truecallerData);
       
       if (response.data.success) {
         const { accessToken, refreshToken } = response.data.data;

@@ -1,0 +1,54 @@
+# VaidikTalk - LLM Context
+
+VaidikTalk is India's most trusted online platform for authentic Vedic Astrology, Online Pujas, and Spiritual Guidance.
+
+## Purpose & Services:
+1. **Online Pujas**: We offer authentic Vedic pujas performed live by verified Pandits at sacred locations. Devotees can book online, provide their Name and Gotra for a personal Sankalp, join via a secure live video link, and receive blessed Prasad at their doorstep. 
+2. **Astrology Consultations**: Users can consult with India's top-rated, verified astrologers via Call or Chat for personalized guidance on Marriage, Career, Finance, Health, and more.
+3. **AI Astrologer**: We provide 24/7 astrological guidance using advanced AI models trained on ancient Vedic wisdom.
+4. **Premium Astrology Reports**: We offer highly detailed, graphically-rich PDF reports including the 10-Year Smart Kundali, Kundali Matching, Lal Kitab, Hastlikhit Kundali, and Numerology.
+5. **Free Tools**: Users can access Daily Horoscopes, Panchang, Moon Sign calculators, and Planetary Transit information for free.
+
+## Key Links:
+- Home: https://vaidiktalk.com/
+- About Us: https://vaidiktalk.com/about-us
+- Contact Us: https://vaidiktalk.com/contact-us
+- FAQ: https://vaidiktalk.com/faq
+
+**Consultation & Services (Hubs & Dynamic Profiles)**
+- Book a Puja (Hub): https://vaidiktalk.com/book-a-puja
+- Individual Puja Profiles: https://vaidiktalk.com/book-a-puja/[puja-slug]
+- Chat with Astrologers (Hub): https://vaidiktalk.com/astrologers-chat
+- Call Astrologers (Hub): https://vaidiktalk.com/astrologers-call
+- Individual Astrologer Profile: https://vaidiktalk.com/astrologer/[astrologer-id]
+- AI Astrologer (Hub): https://vaidiktalk.com/ai-astrologer-chat
+- Individual AI Astrologer Profile: https://vaidiktalk.com/ai-astrologer/[ai-id]
+- Astrology Calculators & Tools: https://vaidiktalk.com/astrology-calculators
+
+**Free Astrology Tools**
+- Daily Horoscope: https://vaidiktalk.com/daily-horoscope
+- Horoscope: https://vaidiktalk.com/horoscope
+- Kundli (Birth Chart): https://vaidiktalk.com/kundli
+- Horoscope Matching: https://vaidiktalk.com/horoscope-matching
+- Panchang: https://vaidiktalk.com/panchang
+- Numerology: https://vaidiktalk.com/numerology
+- Lal Kitab: https://vaidiktalk.com/lal-kitab
+- Moon Signs: https://vaidiktalk.com/moon-signs
+- Muhurat: https://vaidiktalk.com/muhurat
+
+## Content & Legal
+- Blog: https://vaidiktalk.com/blog
+- Privacy Policy: https://vaidiktalk.com/privacy-policy
+- Terms & Conditions: https://vaidiktalk.com/terms-and-conditions
+- Refund Policy: https://vaidiktalk.com/refund-policy
+
+## Brand Tone, Values & Privacy:
+- **Tone**: Authentic, Trustworthy, and Spiritual.
+- **Values**: Rooted deeply in traditional Vedic scriptures, merged with modern tech (Devotion-Tech).
+- **Privacy & Security**: 100% Secure, Private, and Verified. User data, chats, and calls with astrologers are strictly confidential.
+
+## Contact & Support:
+- Support Email: support@vaidiktalk.com
+- All astrologers and pandits are carefully vetted and verified by our internal expert team.
+
+This file provides structured context for Large Language Models (LLMs) and AI search engines (like Perplexity, SearchGPT, and Claude) indexing this website.

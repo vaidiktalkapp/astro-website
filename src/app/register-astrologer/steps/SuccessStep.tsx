@@ -7,7 +7,7 @@ export default function SuccessStep() {
   const { state } = useRegistration();
 
   return (
-    <div className="h-full bg-[#5b2b84] p-8 flex flex-col text-center justify-center relative overflow-hidden">
+    <div className="h-full bg-[#5b2b84] p-6 sm:p-8 flex flex-col text-center justify-center relative overflow-hidden">
        {/* Decorative Background Elements */}
        <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full -translate-y-1/2 translate-x-1/2" />
        

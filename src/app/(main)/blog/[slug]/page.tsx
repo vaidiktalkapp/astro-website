@@ -238,6 +238,9 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
       {faqLd && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       )}
+      {blog.schemaMarkup && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: blog.schemaMarkup }} />
+      )}
       <ViewTracker slug={blog.slug} />
       
       <div className="bg-[#fdf8f0] min-h-screen pb-20 relative">

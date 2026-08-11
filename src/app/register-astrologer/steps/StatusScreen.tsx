@@ -12,7 +12,7 @@ const getStatusColor = (status: string) => {
 
 export default function StatusScreen({ data }: { data: any }) {
   return (
-    <div className="p-8 h-full flex flex-col items-center justify-center bg-gray-50">
+    <div className="p-6 sm:p-8 h-full flex flex-col items-center justify-center bg-gray-50">
       <div className="w-full bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
         <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold text-gray-850">Registration Status</h2>

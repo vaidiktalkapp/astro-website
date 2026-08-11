@@ -1,0 +1,92 @@
+import { Metadata } from 'next';
+import Script from 'next/script';
+import { getImageUrl } from '@/lib/imageUtils';
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+
+async function fetchPuja(slug: string) {
+  try {
+    const res = await fetch(`${API_URL}/pujas/${slug}`, { next: { revalidate: 60 } });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (error) {
+    return null;
+  }
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const puja = await fetchPuja(params.slug);
+  if (!puja) return {};
+  
+  const title = puja.seoTitle || `${puja.title} - Book Online | VaidikTalk`;
+  const description = puja.seoDescription || puja.shortDesc || `Book ${puja.title} online with verified Vedic Pandits at VaidikTalk.`;
+  const keywords = puja.seoKeywords || `${puja.title}, Book Puja Online, VaidikTalk`;
+  const url = `https://vaidiktalk.com/book-a-puja/${params.slug}`;
+  const image = puja.image ? (puja.image.startsWith('/pooja') ? `https://vaidiktalk.com${puja.image}` : getImageUrl(puja.image, puja.title)) : 'https://vaidiktalk.com/pooja/Rudraabhishek.webp';
+
+  return {
+    title,
+    description,
+    keywords,
+    authors: [{ name: 'VaidikTalk', url: 'https://vaidiktalk.com/' }],
+    alternates: {
+      canonical: url,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: 'VaidikTalk',
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: title,
+          type: 'image/jpeg',
+        },
+      ],
+      locale: 'en_IN',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [image],
+    },
+  };
+}
+
+export default async function Layout({ children, params }: { children: React.ReactNode, params: { slug: string } }) {
+  const puja = await fetchPuja(params.slug);
+
+  const faqLd = puja?.faqs?.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: puja.faqs.map((faq: any) => ({
+      '@type': 'Question',
+      name: faq.q || faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a || faq.answer
+      }
+    }))
+  } : null;
+
+  return (
+    <>
+      {puja?.schemaMarkup && (
+        <Script id="schema-markup" type="application/ld+json" dangerouslySetInnerHTML={{ __html: puja.schemaMarkup }} />
+      )}
+      {faqLd && (
+        <Script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      )}
+      {children}
+    </>
+  );
+}

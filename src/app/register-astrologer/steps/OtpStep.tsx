@@ -33,7 +33,7 @@ export default function OtpStep() {
   };
 
   return (
-    <div className="p-8">
+    <div className="p-6 sm:p-8">
       <button onClick={() => window.location.reload()} className="text-sm text-gray-850 mb-6">← Change Number</button>
       <h2 className="text-2xl font-bold text-[#5b2b84] mb-2">Verify OTP</h2>
       <p className="text-gray-850 mb-8">Sent to +{state.countryCode} {state.phoneNumber}</p>

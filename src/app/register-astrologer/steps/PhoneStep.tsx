@@ -21,7 +21,7 @@ export default function PhoneStep() {
   };
 
   return (
-    <div className="p-8 flex flex-col ">
+    <div className="p-6 sm:p-8 flex flex-col ">
       <h1 className="text-3xl font-extrabold text-[#5b2b84] mb-2">Welcome to VaidikTalk</h1>
       <p className="text-gray-850 mb-8">Register as Astrologer</p>
 
@@ -39,7 +39,7 @@ export default function PhoneStep() {
           </select>
           <input 
             type="tel"
-            className="flex-1 bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-lg focus:border-[#5b2b84] outline-none transition-colors"
+            className="flex-1 min-w-0 w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-lg focus:border-[#5b2b84] outline-none transition-colors"
             placeholder="Enter mobile number"
             value={phone}
             onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}

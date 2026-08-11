@@ -593,7 +593,11 @@ export default function LalKitabPage() {
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-[12px] font-bold text-[#3a1216] tracking-[0.5px] uppercase">Date of Birth *</label>
-                  <input required type="date" name="dob" value={formData.dob} onChange={handleChange} className="w-full border-b-[1.5px] border-[#ebdcc7] py-2.5 px-1 bg-transparent outline-none focus:border-[#761e27] text-[15px] transition-colors" />
+                  <input required type="date" name="dob" value={formData.dob} onChange={handleChange} onClick={(e) => e.currentTarget.showPicker && e.currentTarget.showPicker()} className="w-full border-b-[1.5px] border-[#ebdcc7] py-2.5 px-1 bg-transparent outline-none focus:border-[#761e27] text-[15px] transition-colors cursor-pointer" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-[12px] font-bold text-[#3a1216] tracking-[0.5px] uppercase">Time of Birth *</label>
+                  <input required type="time" name="tob" value={formData.tob} onChange={handleChange} onClick={(e) => e.currentTarget.showPicker && e.currentTarget.showPicker()} className="w-full border-b-[1.5px] border-[#ebdcc7] py-2.5 px-1 bg-transparent outline-none focus:border-[#761e27] text-[15px] transition-colors cursor-pointer" />
                 </div>
 
                 <div className="flex flex-col gap-2">

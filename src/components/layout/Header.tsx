@@ -53,7 +53,7 @@ export default function Header() {
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
-    
+
     // Close mobile menu on desktop resize
     const handleResize = () => {
       if (window.innerWidth >= 1280) {
@@ -61,7 +61,7 @@ export default function Header() {
       }
     };
     window.addEventListener('resize', handleResize);
-    
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       window.removeEventListener('resize', handleResize);
@@ -143,7 +143,7 @@ export default function Header() {
                   </div>
                   <div className="flex flex-col pl-2">
                     <div className="px-4 py-1.5 text-[11px] font-bold text-[#ee6c1e] uppercase tracking-wider flex items-center gap-1.5 mb-1">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
                       Free Reports
                     </div>
                     <Link href="/free-reports/kaal-sarp" className="flex items-center justify-between px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">
@@ -276,7 +276,10 @@ export default function Header() {
                 <Link href="/learn" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Learn Astrology</Link>
               </div>
             </div>
-            <Link href="/about-us" className="hover:text-[#ee6c1e] transition-colors">About Us</Link>
+            <a href="https://vaidiktalk.store/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-[#ee6c1e] text-white px-3.5 py-2 rounded-md font-bold hover:bg-[#d65f17] transition-colors shadow-sm ml-1">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
+              Shop
+            </a>
           </nav>
 
           {/* Right Actions */}
@@ -324,8 +327,8 @@ export default function Header() {
                 </div>
               </div>
             )}
-            
-            <button 
+
+            <button
               onClick={() => setIsMobileMenuOpen(true)}
               className="xl:hidden text-[#8a1c2a] font-bold cursor-pointer hover:text-[#ee6c1e] border border-[#8a1c2a] px-3 py-1.5 rounded-md flex items-center gap-1 bg-red-50/50"
             >
@@ -338,7 +341,7 @@ export default function Header() {
 
       {/* Mobile Drawer Overlay */}
       {isMobileMenuOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/60 z-[90] xl:hidden backdrop-blur-sm"
           onClick={() => setIsMobileMenuOpen(false)}
         />
@@ -349,7 +352,7 @@ export default function Header() {
         {/* Drawer Header */}
         <div className="bg-[#8a1c2a] p-5 flex items-center justify-between sticky top-0 z-10">
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-lg">
-             <img src="/Vaidik-talk1.webp" alt="VaidikTalk" className="h-6 object-contain" />
+            <img src="/Vaidik-talk1.webp" alt="VaidikTalk" className="h-6 object-contain" />
           </Link>
           <button onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-[#ffcf9c] transition-colors bg-black/20 p-2 rounded-full">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -361,11 +364,11 @@ export default function Header() {
           {!isAuthenticated ? (
             <div className="flex flex-col gap-3">
               <p className="text-sm font-medium text-gray-850">Login to access your profile</p>
-              <button 
+              <button
                 onClick={() => { setIsMobileMenuOpen(false); openLoginModal(); }}
                 className="w-full bg-[#8a1c2a] text-white py-3 rounded-lg font-bold shadow-md hover:bg-[#721522] transition-colors flex justify-center items-center gap-2 cursor-pointer"
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></svg>
                 Login / Sign Up
               </button>
             </div>
@@ -373,7 +376,7 @@ export default function Header() {
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-[#8a1c2a] flex items-center justify-center text-[#ffcf9c] text-xl font-bold border-2 border-white shadow-md">
-                   {user?.name ? user.name.charAt(0).toUpperCase() : 'U'}
+                  {user?.name ? user.name.charAt(0).toUpperCase() : 'U'}
                 </div>
                 <div>
                   <h3 className="font-bold text-[#8a1c2a] text-lg leading-tight">{user?.name || 'Vaidik User'}</h3>
@@ -381,10 +384,10 @@ export default function Header() {
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-2 mt-2">
-                 <Link href="/profile" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-2 px-3 bg-white border border-gray-200 rounded-md text-sm font-semibold hover:bg-orange-50 hover:text-[#ee6c1e]">My Profile</Link>
-                 <Link href="/wallet" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-2 px-3 bg-white border border-gray-200 rounded-md text-sm font-semibold hover:bg-orange-50 hover:text-[#ee6c1e]">Wallet</Link>
-                 <Link href="/orders" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-2 px-3 bg-white border border-gray-200 rounded-md text-sm font-semibold hover:bg-orange-50 hover:text-[#ee6c1e]">Orders</Link>
-                 <button onClick={() => { setIsMobileMenuOpen(false); logout(); }} className="text-center py-2 px-3 bg-white border border-red-200 text-red-600 rounded-md text-sm font-semibold hover:bg-red-50">Logout</button>
+                <Link href="/profile" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-2 px-3 bg-white border border-gray-200 rounded-md text-sm font-semibold hover:bg-orange-50 hover:text-[#ee6c1e]">My Profile</Link>
+                <Link href="/wallet" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-2 px-3 bg-white border border-gray-200 rounded-md text-sm font-semibold hover:bg-orange-50 hover:text-[#ee6c1e]">Wallet</Link>
+                <Link href="/orders" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-2 px-3 bg-white border border-gray-200 rounded-md text-sm font-semibold hover:bg-orange-50 hover:text-[#ee6c1e]">Orders</Link>
+                <button onClick={() => { setIsMobileMenuOpen(false); logout(); }} className="text-center py-2 px-3 bg-white border border-red-200 text-red-600 rounded-md text-sm font-semibold hover:bg-red-50">Logout</button>
               </div>
             </div>
           )}
@@ -399,7 +402,7 @@ export default function Header() {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                 Consult an Astrologer
               </span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'consult' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'consult' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
             </button>
             {expandedMenu === 'consult' && (
               <div className="pl-9 py-2 space-y-2 border-l-2 border-orange-100 ml-5">
@@ -410,14 +413,14 @@ export default function Header() {
               </div>
             )}
           </div>
-          
+
           <div className="h-px bg-gray-100 my-2 mx-3"></div>
 
           {/* Kundli Accordion */}
           <div>
             <button onClick={() => toggleAccordion('kundli')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
               Kundli &amp; Reports
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'kundli' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'kundli' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
             </button>
             {expandedMenu === 'kundli' && (
               <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4">
@@ -441,7 +444,7 @@ export default function Header() {
           <div>
             <button onClick={() => toggleAccordion('tools')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
               Free Astrology Tools
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'tools' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'tools' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
             </button>
             {expandedMenu === 'tools' && (
               <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4">
@@ -468,7 +471,7 @@ export default function Header() {
           <div>
             <button onClick={() => toggleAccordion('horoscope')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
               Horoscope
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'horoscope' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'horoscope' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
             </button>
             {expandedMenu === 'horoscope' && (
               <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4">
@@ -491,7 +494,7 @@ export default function Header() {
           <div>
             <button onClick={() => toggleAccordion('pujas')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
               Book a Remedy Puja
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'pujas' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'pujas' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
             </button>
             {expandedMenu === 'pujas' && (
               <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4 max-h-[300px] overflow-y-auto">
@@ -509,7 +512,7 @@ export default function Header() {
           <div>
             <button onClick={() => toggleAccordion('knowledge')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
               Knowledge Center
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'knowledge' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'knowledge' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
             </button>
             {expandedMenu === 'knowledge' && (
               <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4">
@@ -525,7 +528,10 @@ export default function Header() {
             )}
           </div>
 
-          <Link href="/about-us" onClick={() => setIsMobileMenuOpen(false)} className="block p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">About Us</Link>
+          <a href="https://vaidiktalk.store/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 mx-3 mb-4 p-3 rounded-lg bg-[#ee6c1e] text-white font-bold hover:bg-[#d65f17] shadow-sm transition-colors">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
+            Shop Vaidik Store
+          </a>
         </div>
       </div>
 

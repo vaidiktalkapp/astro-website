@@ -19,13 +19,10 @@ export default function Footer() {
       <div className="max-w-[1400px] mx-auto">
         {/* Intro Section */}
         <div className="mb-12 lg:mb-16 w-full max-w-[1200px]">
-          <div className="flex items-center gap-4 lg:gap-5 mb-6">
-            <img src="/vaidiktalklogo.webp" alt="VaidikTalk" className="h-16 lg:h-[72px] w-auto object-contain" />
-            <div className="flex flex-col gap-0.5 mt-1">
-              <h2 className="text-[32px] lg:text-[40px] font-bold text-[#5c1420] tracking-tight leading-none">Vaidik <span className="text-[#ee6c1e]">Talk</span></h2>
-              <div className="text-[#ee6c1e] text-[15px] lg:text-[16px] font-bold flex items-center gap-1.5 ml-0.5">
-                <span className="text-[17px] leading-none mb-0.5">🙏</span> 68k+ Happy Customers
-              </div>
+          <div className="flex flex-col items-start gap-2 mb-6">
+            <img src="/Vaidik-talk1.webp" alt="VaidikTalk" className="h-14 lg:h-[64px] w-[200px] lg:w-[240px] object-contain object-left -ml-1" />
+            <div className="text-[#ee6c1e] text-[15px] lg:text-[16px] font-bold flex items-center gap-1.5 ml-1 mt-1">
+              <span className="text-[17px] leading-none mb-0.5">🙏</span> 68k+ Happy Customers
             </div>
           </div>
           <p className="text-[16px] lg:text-[17px] text-[#412a1e] leading-[1.8] font-medium text-left">
@@ -79,27 +76,27 @@ export default function Footer() {
           <div className="col-span-2 lg:col-span-3 lg:col-start-3 lg:row-start-1 lg:row-span-2">
             <FooterSection title="Shop Our Products">
               <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-3.5 lg:gap-y-4 pb-2 lg:pb-0">
-                  <li><a href="https://vaidiktalk.store/collections/rudraksha" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Rudraksha</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/siddh-rudraksha" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Siddh Rudraksha</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/siddh-yantra" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Yantras</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/frames" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Frames</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/karungali" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Karungali</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/our-combos" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Our Combos</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/pyrite" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Pyrite</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/kavach" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Kavach</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/siddh-range" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Siddh Range</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/pyramid" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Pyramid</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/tower-tumbles" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Tower &amp; Tumbles</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/premium-rudraksha" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Premium Rudraksha</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/evil-eye" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Evil Eye</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/gifting" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Gifting</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/crystal-tree" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Crystal Trees</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/mala" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Mala</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/pendants" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Pendants</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/parad" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Parad</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/bracelets-1" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Bracelets</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/woman-anklet" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Woman Anklet</a></li>
-                  <li><a href="https://vaidiktalk.store/collections/women-bracelet-1" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Women Bracelet</a></li>
+                <li><a href="https://vaidiktalk.store/collections/rudraksha" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Rudraksha</a></li>
+                <li><a href="https://vaidiktalk.store/collections/siddh-rudraksha" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Siddh Rudraksha</a></li>
+                <li><a href="https://vaidiktalk.store/collections/siddh-yantra" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Yantras</a></li>
+                <li><a href="https://vaidiktalk.store/collections/frames" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Frames</a></li>
+                <li><a href="https://vaidiktalk.store/collections/karungali" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Karungali</a></li>
+                <li><a href="https://vaidiktalk.store/collections/our-combos" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Our Combos</a></li>
+                <li><a href="https://vaidiktalk.store/collections/pyrite" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Pyrite</a></li>
+                <li><a href="https://vaidiktalk.store/collections/kavach" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Kavach</a></li>
+                <li><a href="https://vaidiktalk.store/collections/siddh-range" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Siddh Range</a></li>
+                <li><a href="https://vaidiktalk.store/collections/pyramid" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Pyramid</a></li>
+                <li><a href="https://vaidiktalk.store/collections/tower-tumbles" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Tower &amp; Tumbles</a></li>
+                <li><a href="https://vaidiktalk.store/collections/premium-rudraksha" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Premium Rudraksha</a></li>
+                <li><a href="https://vaidiktalk.store/collections/evil-eye" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Evil Eye</a></li>
+                <li><a href="https://vaidiktalk.store/collections/gifting" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Gifting</a></li>
+                <li><a href="https://vaidiktalk.store/collections/crystal-tree" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Crystal Trees</a></li>
+                <li><a href="https://vaidiktalk.store/collections/mala" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Mala</a></li>
+                <li><a href="https://vaidiktalk.store/collections/pendants" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Pendants</a></li>
+                <li><a href="https://vaidiktalk.store/collections/parad" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Parad</a></li>
+                <li><a href="https://vaidiktalk.store/collections/bracelets-1" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Bracelets</a></li>
+                <li><a href="https://vaidiktalk.store/collections/woman-anklet" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Woman Anklet</a></li>
+                <li><a href="https://vaidiktalk.store/collections/women-bracelet-1" target="_blank" rel="noopener noreferrer" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Women Bracelet</a></li>
               </ul>
             </FooterSection>
           </div>
@@ -199,9 +196,9 @@ export default function Footer() {
 
           <div className="flex flex-col lg:flex-row items-center gap-4 text-center lg:text-left">
             {/* Logo */}
-            <img src="/vaidiktalklogo.webp" alt="VaidikTalk Logo" className="h-10 w-auto object-contain" />
+            <img src="/Vaidik-talk1.webp" alt="VaidikTalk Logo" className="h-10 w-auto object-contain" />
             <div className="text-[13px] text-[#412a1e] font-medium">
-© 2026 At Vaidik Talk Powered By CATALYST SOURCING PRIVATE LIMITED All rights reserved.            </div>
+              © 2026 At Vaidik Talk Powered By CATALYST SOURCING PRIVATE LIMITED All rights reserved.            </div>
           </div>
 
           <div className="flex items-center gap-2 text-[13px] text-[#412a1e] font-medium">

@@ -627,7 +627,7 @@ export default function FormWizard() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="w-full max-w-md mx-auto p-6 sm:p-8">
       {/* Header with Back Button */}
       <div className="flex items-center justify-between mb-6">
         {currentStep > 1 ? (
