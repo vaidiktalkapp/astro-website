@@ -85,12 +85,80 @@ async function fetchTestimonials() {
   }
 }
 
+async function fetchTopAstrologers() {
+  try {
+    const res = await fetch(`${API_URL}/astrologers/search?limit=10&isOnline=true`, { next: { revalidate: 60 } });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data?.data?.astrologers || [];
+  } catch (error) {
+    return [];
+  }
+}
+
+async function fetchAiAstrologers() {
+  try {
+    const res = await fetch(`${API_URL}/ai-astrologers`, { next: { revalidate: 60 } });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.data || [];
+  } catch (error) {
+    return [];
+  }
+}
+
+async function fetchDailyPanchang() {
+  try {
+    const payload = {
+      lat: '28.6139',
+      lon: '77.2090',
+      tzone: 5.5,
+      date: new Date().toISOString().split('T')[0]
+    };
+    const res = await fetch(`${API_URL}/astrology/today`, { 
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      next: { revalidate: 3600 } 
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data || null;
+  } catch (error) {
+    return null;
+  }
+}
+
+async function fetchDailyHoroscope() {
+  try {
+    const res = await fetch(`${API_URL}/astrology/daily-horoscope?period=Today&language=English`, { next: { revalidate: 3600 } });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.data || [];
+  } catch (error) {
+    return [];
+  }
+}
+
 export default async function HomePage() {
-  const [settings, initialFaqs, initialBlogs, initialTestimonials] = await Promise.all([
+  const [
+    settings, 
+    initialFaqs, 
+    initialBlogs, 
+    initialTestimonials,
+    initialTopAstrologers,
+    initialAiAstrologers,
+    initialDailyPanchang,
+    initialDailyHoroscopes
+  ] = await Promise.all([
     fetchHeroSettings(),
     fetchFeaturedFaqs(),
     fetchRecentBlogs(),
-    fetchTestimonials()
+    fetchTestimonials(),
+    fetchTopAstrologers(),
+    fetchAiAstrologers(),
+    fetchDailyPanchang(),
+    fetchDailyHoroscope()
   ]);
 
   return (
@@ -99,9 +167,14 @@ export default async function HomePage() {
         <Script id="schema-markup-home" type="application/ld+json" dangerouslySetInnerHTML={{ __html: settings.schemaMarkup }} />
       )}
       <HomePageClient 
+        initialSettings={settings}
         initialFaqs={initialFaqs} 
         initialBlogs={initialBlogs} 
         initialTestimonials={initialTestimonials} 
+        initialTopAstrologers={initialTopAstrologers}
+        initialAiAstrologers={initialAiAstrologers}
+        initialDailyPanchang={initialDailyPanchang}
+        initialDailyHoroscopes={initialDailyHoroscopes}
       />
     </>
   );

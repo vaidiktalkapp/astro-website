@@ -13,7 +13,7 @@ const DEFAULT_HERO = {
   subheading: "Chat, call, or consult with India's best astrologers and get accurate solutions to your life's challenges.",
 };
 
-const HeroBanner = () => {
+const HeroBanner = ({ initialSettings }: { initialSettings?: any }) => {
   const [heroBanners, setHeroBanners] = useState<any[]>([{
     _id: 'default',
     title: 'Default Hero',
@@ -23,7 +23,14 @@ const HeroBanner = () => {
     isActive: true
   }]);
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
-  const [heroText, setHeroText] = useState(DEFAULT_HERO);
+  
+  const [heroText, setHeroText] = useState({
+    badgeText: initialSettings?.badgeText || DEFAULT_HERO.badgeText,
+    headingPrefix: initialSettings?.headingPrefix || DEFAULT_HERO.headingPrefix,
+    headingHighlight: initialSettings?.headingHighlight || DEFAULT_HERO.headingHighlight,
+    headingSuffix: initialSettings?.headingSuffix || DEFAULT_HERO.headingSuffix,
+    subheading: initialSettings?.subheading || DEFAULT_HERO.subheading,
+  });
 
   useEffect(() => {
     const fetchHeroBanner = async () => {
@@ -64,6 +71,7 @@ const HeroBanner = () => {
     };
 
     const fetchHeroText = async () => {
+      if (initialSettings) return;
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
         const response = await fetch(`${apiUrl}/hero-settings`);

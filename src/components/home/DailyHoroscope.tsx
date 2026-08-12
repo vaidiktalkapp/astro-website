@@ -81,15 +81,19 @@ const ZODIACS = [
 ];
 
 
-const DailyHoroscope = () => {
+const DailyHoroscope = ({ initialDailyHoroscopes = [] }: { initialDailyHoroscopes?: any[] }) => {
   const [timeframe, setTimeframe] = useState('Today');
   const [activeZodiac, setActiveZodiac] = useState('aries');
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [dailyHoroscopes, setDailyHoroscopes] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [dailyHoroscopes, setDailyHoroscopes] = useState<any[]>(initialDailyHoroscopes);
+  const [isLoading, setIsLoading] = useState(initialDailyHoroscopes.length === 0);
 
   useEffect(() => {
     const fetchDailyHoroscopes = async () => {
+      if (timeframe === 'Today' && initialDailyHoroscopes.length > 0 && dailyHoroscopes === initialDailyHoroscopes) {
+        setIsLoading(false);
+        return;
+      }
       setIsLoading(true);
       try {
         const response = await astrologyService.getDailyHoroscopeAllSigns(timeframe, 'English');

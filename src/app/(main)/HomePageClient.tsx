@@ -12,22 +12,36 @@ import DailyHoroscope from '@/components/home/DailyHoroscope';
 import CountUp from '@/components/ui/CountUp';
 
 interface HomePageClientProps {
+  initialSettings?: any;
   initialFaqs?: any[];
   initialBlogs?: any[];
   initialTestimonials?: any[];
+  initialTopAstrologers?: any[];
+  initialAiAstrologers?: any[];
+  initialDailyPanchang?: any;
+  initialDailyHoroscopes?: any[];
 }
 
 export default function HomePage({ 
+  initialSettings = null,
   initialFaqs = [], 
   initialBlogs = [], 
-  initialTestimonials = [] 
+  initialTestimonials = [],
+  initialTopAstrologers = [],
+  initialAiAstrologers = [],
+  initialDailyPanchang = null,
+  initialDailyHoroscopes = []
 }: HomePageClientProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [topAstrologers, setTopAstrologers] = useState<any[]>([]);
-  const [loadingAstros, setLoadingAstros] = useState(true);
-  const [aiAstrologers, setAiAstrologers] = useState<any[]>([]);
-  const [loadingAiAstros, setLoadingAiAstros] = useState(true);
-  const [dailyPanchang, setDailyPanchang] = useState<any>(null);
+  
+  // Use SSR data
+  const [topAstrologers, setTopAstrologers] = useState<any[]>(initialTopAstrologers);
+  const [loadingAstros, setLoadingAstros] = useState(initialTopAstrologers.length === 0);
+  
+  const [aiAstrologers, setAiAstrologers] = useState<any[]>(initialAiAstrologers);
+  const [loadingAiAstros, setLoadingAiAstros] = useState(initialAiAstrologers.length === 0);
+  
+  const [dailyPanchang, setDailyPanchang] = useState<any>(initialDailyPanchang);
   
   // Use SSR data to prevent empty initial render in source code
   const [testimonials, setTestimonials] = useState<any[]>(initialTestimonials);
@@ -55,6 +69,7 @@ export default function HomePage({
 
   useEffect(() => {
     const fetchTopAstrologers = async () => {
+      if (initialTopAstrologers.length > 0) return;
       try {
         const response = await astrologerService.searchAstrologers({ limit: 10, isOnline: true });
         setTopAstrologers(response.data || []);
@@ -66,6 +81,7 @@ export default function HomePage({
     };
 
     const fetchAiAstrologers = async () => {
+      if (initialAiAstrologers.length > 0) return;
       try {
         const data = await aiAstrologerService.getAllAiAstrologers();
         setAiAstrologers(data || []);
@@ -77,6 +93,7 @@ export default function HomePage({
     };
 
     const fetchDailyData = async () => {
+      if (initialDailyPanchang) return;
       try {
         const response = await astrologyService.getTodayPanchang();
         if (response?.data) {
@@ -155,7 +172,14 @@ export default function HomePage({
     fetchTestimonials();
     fetchRecentBlogs();
     fetchFeaturedFaqs();
-  }, [initialBlogs.length, initialFaqs.length, initialTestimonials.length]);
+  }, [
+    initialBlogs.length, 
+    initialFaqs.length, 
+    initialTestimonials.length,
+    initialTopAstrologers.length,
+    initialAiAstrologers.length,
+    initialDailyPanchang
+  ]);
 
 
   const toggleFaq = (index: number) => {
@@ -171,7 +195,7 @@ export default function HomePage({
       <div className="absolute bottom-[30%] left-[-20%] w-[900px] h-[900px] bg-[#f8e2c9] rounded-full mix-blend-multiply filter blur-[150px] opacity-15 pointer-events-none z-0"></div>
       <div className="absolute top-[60%] right-[10%] w-[600px] h-[600px] bg-[#fdf0e0] rounded-full mix-blend-multiply filter blur-[100px] opacity-25 pointer-events-none z-0"></div>
 
-      <HeroBanner />
+      <HeroBanner initialSettings={initialSettings} />
 
       <div className="px-6 md:px-10 py-12">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -778,7 +802,7 @@ export default function HomePage({
         </div>
       </div>
 
-      <DailyHoroscope />
+      <DailyHoroscope initialDailyHoroscopes={initialDailyHoroscopes} />
 
       {/* Founder Section */}
       <div className="mx-6 md:mx-10 mt-16 mb-2">
