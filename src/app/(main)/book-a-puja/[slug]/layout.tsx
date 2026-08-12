@@ -14,14 +14,15 @@ async function fetchPuja(slug: string) {
   }
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const puja = await fetchPuja(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const puja = await fetchPuja(slug);
   if (!puja) return {};
   
   const title = puja.seoTitle || `${puja.title} - Book Online | VaidikTalk`;
   const description = puja.seoDescription || puja.shortDesc || `Book ${puja.title} online with verified Vedic Pandits at VaidikTalk.`;
   const keywords = puja.seoKeywords || `${puja.title}, Book Puja Online, VaidikTalk`;
-  const url = `https://vaidiktalk.com/book-a-puja/${params.slug}`;
+  const url = `https://vaidiktalk.com/book-a-puja/${slug}`;
   const image = puja.image ? (puja.image.startsWith('/pooja') ? `https://vaidiktalk.com${puja.image}` : getImageUrl(puja.image, puja.title)) : 'https://vaidiktalk.com/pooja/Rudraabhishek.webp';
 
   return {
@@ -62,8 +63,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function Layout({ children, params }: { children: React.ReactNode, params: { slug: string } }) {
-  const puja = await fetchPuja(params.slug);
+export default async function Layout({ children, params }: { children: React.ReactNode, params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const puja = await fetchPuja(slug);
 
   const faqLd = puja?.faqs?.length > 0 ? {
     '@context': 'https://schema.org',
