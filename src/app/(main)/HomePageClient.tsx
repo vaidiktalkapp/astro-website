@@ -11,20 +11,35 @@ import HeroBanner from '@/components/home/HeroBanner';
 import DailyHoroscope from '@/components/home/DailyHoroscope';
 import CountUp from '@/components/ui/CountUp';
 
-export default function HomePage() {
+interface HomePageClientProps {
+  initialFaqs?: any[];
+  initialBlogs?: any[];
+  initialTestimonials?: any[];
+}
+
+export default function HomePage({ 
+  initialFaqs = [], 
+  initialBlogs = [], 
+  initialTestimonials = [] 
+}: HomePageClientProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [topAstrologers, setTopAstrologers] = useState<any[]>([]);
   const [loadingAstros, setLoadingAstros] = useState(true);
   const [aiAstrologers, setAiAstrologers] = useState<any[]>([]);
   const [loadingAiAstros, setLoadingAiAstros] = useState(true);
   const [dailyPanchang, setDailyPanchang] = useState<any>(null);
-  const [testimonials, setTestimonials] = useState<any[]>([]);
-  const [loadingTestimonials, setLoadingTestimonials] = useState(true);
+  
+  // Use SSR data to prevent empty initial render in source code
+  const [testimonials, setTestimonials] = useState<any[]>(initialTestimonials);
+  const [loadingTestimonials, setLoadingTestimonials] = useState(initialTestimonials.length === 0);
+  
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
-  const [recentBlogs, setRecentBlogs] = useState<any[]>([]);
-  const [loadingBlogs, setLoadingBlogs] = useState(true);
-  const [faqs, setFaqs] = useState<any[]>([]);
-  const [loadingFaqs, setLoadingFaqs] = useState(true);
+  
+  const [recentBlogs, setRecentBlogs] = useState<any[]>(initialBlogs);
+  const [loadingBlogs, setLoadingBlogs] = useState(initialBlogs.length === 0);
+  
+  const [faqs, setFaqs] = useState<any[]>(initialFaqs);
+  const [loadingFaqs, setLoadingFaqs] = useState(initialFaqs.length === 0);
 
   // Refs for horizontal scrolling
   const astroRef = React.useRef<HTMLDivElement>(null);
@@ -74,6 +89,7 @@ export default function HomePage() {
 
 
     const fetchTestimonials = async () => {
+      if (initialTestimonials.length > 0) return;
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
         const response = await fetch(`${apiUrl}/testimonials`);
@@ -89,6 +105,7 @@ export default function HomePage() {
     };
 
     const fetchRecentBlogs = async () => {
+      if (initialBlogs.length > 0) return;
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
         let response = await fetch(`${apiUrl}/blogs?status=published&limit=8&isFeatured=true`);
@@ -97,13 +114,11 @@ export default function HomePage() {
           let data = await response.json();
           let blogs = data.data || [];
 
-          // If there are less than 5 featured blogs, fill the rest with latest blogs
           if (blogs.length < 5) {
             const fallbackRes = await fetch(`${apiUrl}/blogs?status=published&limit=${8}`);
             const fallbackData = await fallbackRes.json();
             const fallbackBlogs = fallbackData.data || [];
             
-            // Merge and avoid duplicates
             const existingIds = new Set(blogs.map((b: any) => b._id));
             const additionalBlogs = fallbackBlogs.filter((b: any) => !existingIds.has(b._id));
             
@@ -119,6 +134,7 @@ export default function HomePage() {
     };
 
     const fetchFeaturedFaqs = async () => {
+      if (initialFaqs.length > 0) return;
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
         const response = await fetch(`${apiUrl}/faqs?status=active&isFeatured=true&limit=6`);
@@ -133,14 +149,13 @@ export default function HomePage() {
       }
     };
 
-
     fetchTopAstrologers();
     fetchAiAstrologers();
     fetchDailyData();
     fetchTestimonials();
     fetchRecentBlogs();
     fetchFeaturedFaqs();
-  }, []);
+  }, [initialBlogs.length, initialFaqs.length, initialTestimonials.length]);
 
 
   const toggleFaq = (index: number) => {
