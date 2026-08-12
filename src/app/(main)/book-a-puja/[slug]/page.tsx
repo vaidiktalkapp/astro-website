@@ -96,7 +96,7 @@ export default function DynamicPujaPage() {
           <img
             src={puja.image ? (puja.image.startsWith('/pooja') ? puja.image : getImageUrl(puja.image, puja.title)) : "/pooja/Rudraabhishek.webp"}
             alt={puja.title}
-            className="w-full h-full object-cover opacity-90 object-center"
+            className="w-full h-full object-cover opacity-100 object-center"
           />
           <div className="absolute inset-0 bg-black/60 md:bg-transparent md:bg-gradient-to-r md:from-black/90 md:via-black/50 md:to-transparent" />
         </div>
@@ -120,7 +120,7 @@ export default function DynamicPujaPage() {
               <div className="text-white">
                 <span className="text-sm opacity-80 block">Starting from</span>
                 <div className="flex items-center gap-3">
-                  {puja.discountedPrice && <span className="text-[#3a1216] line-through text-lg">₹{puja.price}</span>}
+                  {puja.discountedPrice && <span className="text-gray-400 line-through text-lg">₹{puja.price}</span>}
                   <span className="text-2xl font-bold text-[#f5d08b]">₹{puja.discountedPrice || puja.price}</span>
                 </div>
               </div>
@@ -395,11 +395,11 @@ export default function DynamicPujaPage() {
 
                 <div className="space-y-4 mb-6 relative z-10">
                   <div className="flex justify-between items-start gap-4">
-                    <span className="text-[#3a1216] text-sm">Pooja Name</span>
+                    <span className="text-[#f0ddc0] text-sm">Pooja Name</span>
                     <span className="font-bold text-right text-[15px]">{puja.title}</span>
                   </div>
                   <div className="flex justify-between items-start gap-4">
-                    <span className="text-[#3a1216] text-sm">Includes</span>
+                    <span className="text-[#f0ddc0] text-sm">Includes</span>
                     <span className="text-right text-[14px]">Samagri & Dakshina</span>
                   </div>
                 </div>
@@ -408,7 +408,7 @@ export default function DynamicPujaPage() {
                   <span className="block text-xs md:text-sm text-[#f5d08b] uppercase tracking-wide font-bold mb-2">Total Offering</span>
                   <div className="flex items-end gap-3">
                     <span className="text-4xl font-bold text-white">₹{puja.discountedPrice || puja.price}</span>
-                    {puja.discountedPrice && <span className="text-lg text-[#3a1216] line-through mb-1">₹{puja.price}</span>}
+                    {puja.discountedPrice && <span className="text-lg text-white/60 line-through mb-1">₹{puja.price}</span>}
                   </div>
                 </div>
 
@@ -419,7 +419,7 @@ export default function DynamicPujaPage() {
                 >
                   <Lock className="w-5 h-5" /> Proceed to Pay
                 </button>
-                <p className="text-center text-xs text-[#3a1216] mt-4 flex items-center justify-center gap-1 relative z-10">
+                <p className="text-center text-xs text-[#f0ddc0] mt-4 flex items-center justify-center gap-1 relative z-10">
                   <ShieldCheck className="w-4 h-4 text-[#f5d08b]" /> 100% Secure & Authentic
                 </p>
               </div>
@@ -729,7 +729,7 @@ export default function DynamicPujaPage() {
             <div key={idx} className="flex flex-col items-center">
               <div className="mb-4">{feature.icon}</div>
               <h4 className="font-bold text-white text-lg mb-1">{feature.title}</h4>
-              <p className="text-sm text-[#3a1216]">{feature.desc}</p>
+              <p className="text-sm text-[#f0ddc0]">{feature.desc}</p>
             </div>
           ))}
         </div>

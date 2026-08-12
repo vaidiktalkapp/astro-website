@@ -1,16 +1,18 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { ShieldCheck, 
-  Droplet, 
-  Flame, 
-  Heart, 
-  Sparkles, 
-  Star, 
-  CheckCircle2, 
-  Clock, 
+import {
+  ShieldCheck,
+  Droplet,
+  Flame,
+  Heart,
+  Sparkles,
+  Star,
+  CheckCircle2,
+  Clock,
   MapPin,
   Calendar,
-  ChevronDown, UserCheck, Leaf, Lock } from 'lucide-react';
+  ChevronDown, UserCheck, Leaf, Lock
+} from 'lucide-react';
 import Link from 'next/link';
 import { usePujaBooking } from '../../../../hooks/usePujaBooking';
 
@@ -41,22 +43,22 @@ export default function RudrabhishekPage() {
   }, []);
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  
 
-  
 
-  
+
+
+
 
   return (
     <div className="w-full bg-[#fcf5eb] font-sans">
-      
+
       {/* 1. HERO SECTION */}
       <div className="relative w-full min-h-[500px] md:min-h-[600px] py-12 md:py-0 flex items-center bg-black overflow-hidden">
         <div className="absolute inset-0">
-          <img 
-            src="/pooja/Rudraabhishek.webp" 
-            alt="Rudrabhishek Background" 
-            className="w-full h-full object-cover opacity-95 object-center"
+          <img
+            src="/pooja/Rudraabhishek.webp"
+            alt="Rudrabhishek Background"
+            className="w-full h-full object-cover opacity-100 object-center"
           />
           <div className="absolute inset-0 bg-black/60 md:bg-transparent md:bg-gradient-to-r md:from-black/90 md:via-black/50 md:to-transparent" />
         </div>
@@ -72,7 +74,7 @@ export default function RudrabhishekPage() {
             Invoke the Fierce Grace of Lord Shiva for Protection, Healing, and Transformation.
           </p>
 
-          <a 
+          <a
             href="#booking-section"
             className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#d4af37] hover:bg-[#c29f2f] text-[#5c1a1f] rounded-lg font-bold text-lg transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:-translate-y-1"
           >
@@ -86,7 +88,7 @@ export default function RudrabhishekPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div>
             <h2 className="premium-serif text-3xl md:text-5xl font-bold text-[#5c1a1f] mb-6">
-              The Divine Power of <br/><span className="text-[#d4af37]">Rudrabhishek</span>
+              The Divine Power of <br /><span className="text-[#d4af37]">Rudrabhishek</span>
             </h2>
             <div className="w-20 h-1 bg-[#d4af37] mb-8" />
             <p className="text-gray-900 text-lg leading-relaxed mb-6">
@@ -110,7 +112,7 @@ export default function RudrabhishekPage() {
               ))}
             </ul>
           </div>
-          
+
           <div className="flex flex-col gap-10">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img src="/pooja/Rudraabhishek.webp" alt="Shiva Lingam" className="w-full h-full object-cover object-right-top aspect-square md:aspect-[4/3]" />
@@ -123,8 +125,8 @@ export default function RudrabhishekPage() {
                 <Sparkles className="w-5 h-5 text-[#d4af37]" /> Spiritual Significance
               </h4>
               <p className="text-gray-850 leading-relaxed text-sm">
-                Lord Shiva, the destroyer of ego and illusions, is easily pleased by sincere devotion. Rudrabhishek is the highest form of spiritual surrender, where one washes away karma and seeks inner transformation. The vibrations from the Rudram chanting purify the environment, awaken higher consciousness, and bring deep calm to the soul. 
-                <br/><br/>
+                Lord Shiva, the destroyer of ego and illusions, is easily pleased by sincere devotion. Rudrabhishek is the highest form of spiritual surrender, where one washes away karma and seeks inner transformation. The vibrations from the Rudram chanting purify the environment, awaken higher consciousness, and bring deep calm to the soul.
+                <br /><br />
                 <strong className="text-[#5c1a1f]">Auspicious Days:</strong> Mondays, Maha Shivratri, Shravan Maas, Pradosh, and Masik Shivratri.
               </p>
             </div>
@@ -136,7 +138,7 @@ export default function RudrabhishekPage() {
       <div className="w-full py-16 md:py-20 px-6 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#5c1a1f 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-10">
             <h2 className="premium-serif text-3xl md:text-5xl font-bold text-[#5c1a1f] mb-4">Types of <span className="text-[#d4af37]">Offerings</span></h2>
@@ -193,7 +195,7 @@ export default function RudrabhishekPage() {
         {/* Why choose us */}
         <div>
           <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#5c1a1f] mb-4">Why Choose Vaidik Talk for Rudrabhishek?</h2>
-          
+
           <ul className="space-y-3 mb-10">
             {[
               "Performed by authentic Shaiva Pandits from sacred places like Kashi, Ujjain, Rameswaram, and Kedarnath",
@@ -233,27 +235,27 @@ export default function RudrabhishekPage() {
         </div>
       </div>
 
-            {/* BOOKING FORM SECTION */}
+      {/* BOOKING FORM SECTION */}
       <div id="booking-section" className="w-full bg-[#fdfaf6] py-20 px-6 border-y border-[#e8d8c0]">
         <div className="max-w-6xl mx-auto">
-          
+
           <div className="text-center mb-10 md:mb-14">
             <h2 className="premium-serif text-3xl md:text-5xl font-bold text-[#5c1a1f] mb-4">Complete Your Booking</h2>
             <p className="text-gray-850 text-base md:text-lg max-w-2xl mx-auto">Please provide your details below. This information will be used by our Purohits for your personalized Sankalp.</p>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-8 items-start relative pb-24 lg:pb-0">
-            
+
             {/* Left Form (Devotee Details) */}
             <div className="w-full lg:w-2/3 bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-[#e8d8c0]/50 relative overflow-hidden">
               <div className="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
                 <Sparkles className="w-40 h-40 text-[#5c1a1f]" />
               </div>
-              
+
               <h3 className="text-xl md:text-2xl font-bold text-[#5c1a1f] mb-6 flex items-center gap-2">
                 <UserCheck className="w-6 h-6 text-[#d4af37]" /> Devotee Information
               </h3>
-              
+
               <form id="booking-form" onSubmit={handleSubmit} className="space-y-5 md:space-y-6 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
                   <div>
@@ -292,11 +294,11 @@ export default function RudrabhishekPage() {
                   <label className="block text-sm font-semibold text-gray-850 mb-1.5">Additional Message / Intentions</label>
                   <textarea rows={3} name="message" value={formData.message} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all resize-none text-gray-850 bg-gray-50/50" placeholder="Any specific issues or wishes?"></textarea>
                 </div>
-                
+
                 {/* Mobile Standard Submit Button (Inside Form) */}
                 <div className="lg:hidden pt-4">
-                  <button 
-                    type="submit" disabled={isProcessing} 
+                  <button
+                    type="submit" disabled={isProcessing}
                     className="w-full py-4 bg-gradient-to-r from-[#d4af37] to-[#f5d08b] text-[#5c1a1f] rounded-xl font-bold text-lg shadow-lg flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     <Lock className="w-5 h-5" /> Proceed to Pay ₹1599
@@ -311,18 +313,18 @@ export default function RudrabhishekPage() {
                 <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
                   <ShieldCheck className="w-32 h-32" />
                 </div>
-                
+
                 <h3 className="premium-serif text-2xl font-bold mb-6 border-b border-white/20 pb-4 flex items-center gap-2">
                   Order Summary
                 </h3>
-                
+
                 <div className="space-y-4 mb-6 relative z-10">
                   <div className="flex justify-between items-start gap-4">
-                    <span className="text-[#3a1216] text-sm">Pooja Name</span>
+                    <span className="text-[#f0ddc0] text-sm">Pooja Name</span>
                     <span className="font-bold text-right text-[15px]">Rudrabhishek Pooja</span>
                   </div>
                   <div className="flex justify-between items-start gap-4">
-                    <span className="text-[#3a1216] text-sm">Includes</span>
+                    <span className="text-[#f0ddc0] text-sm">Includes</span>
                     <span className="text-right text-[14px]">Samagri & Dakshina</span>
                   </div>
                 </div>
@@ -334,14 +336,14 @@ export default function RudrabhishekPage() {
                   </div>
                 </div>
 
-                <button 
-                  type="submit" disabled={isProcessing} 
+                <button
+                  type="submit" disabled={isProcessing}
                   form="booking-form"
                   className="w-full py-4 bg-gradient-to-r from-[#d4af37] to-[#f5d08b] hover:from-[#c29f2f] hover:to-[#e3bd75] text-[#5c1a1f] rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 relative z-10 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   <Lock className="w-5 h-5" /> Proceed to Pay
                 </button>
-                <p className="text-center text-xs text-[#3a1216] mt-4 flex items-center justify-center gap-1 relative z-10">
+                <p className="text-center text-xs text-[#f0ddc0] mt-4 flex items-center justify-center gap-1 relative z-10">
                   <ShieldCheck className="w-4 h-4 text-[#f5d08b]" /> 100% Secure & Authentic
                 </p>
               </div>
@@ -350,7 +352,7 @@ export default function RudrabhishekPage() {
           </div>
         </div>
       </div>
-      
+
       {/* Mobile Sticky Bottom Pay Bar */}
       <div className="lg:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 shadow-[0_-10px_25px_rgba(0,0,0,0.1)] z-[100] flex justify-between items-center">
         <div className="flex flex-col">
@@ -359,12 +361,12 @@ export default function RudrabhishekPage() {
             <span className="text-xl font-black text-[#5c1a1f]">₹1599</span>
           </div>
         </div>
-        <button 
+        <button
           form="booking-form"
-          type="submit" disabled={isProcessing} 
+          type="submit" disabled={isProcessing}
           className="px-6 py-3 bg-gradient-to-r from-[#d4af37] to-[#f5d08b] text-[#5c1a1f] rounded-lg font-bold shadow-md flex items-center gap-2 active:scale-95 transition-transform disabled:opacity-70 disabled:cursor-not-allowed"
         >
-           Proceed <Lock className="w-4 h-4" />
+          Proceed <Lock className="w-4 h-4" />
         </button>
       </div>
 
@@ -375,11 +377,11 @@ export default function RudrabhishekPage() {
           <div className="flex flex-col lg:flex-row gap-14 items-start">
             <div className="lg:w-1/3 lg:sticky lg:top-32">
               <p className="text-[#d97706] text-[11px] font-bold tracking-[0.2em] uppercase mb-4">Simple & Transparent</p>
-              <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#1a0a0b] mb-5 leading-tight">Book Your Puja<br/>in Minutes</h2>
+              <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#1a0a0b] mb-5 leading-tight">Book Your Puja<br />in Minutes</h2>
               <p className="text-gray-850 text-sm leading-relaxed mb-8">A seamless process from your home to divine blessings — our pandits handle everything.</p>
               <a href="#booking-section" className="inline-flex items-center gap-2 px-6 py-3 bg-[#5c1a1f] text-white rounded-xl font-bold text-sm hover:bg-[#4a1519] transition-all shadow-sm">
                 Book Now
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </a>
             </div>
             <div className="lg:w-2/3 flex flex-col">
@@ -405,7 +407,7 @@ export default function RudrabhishekPage() {
                       <div className="flex flex-col items-center">
                         <div className="w-px h-4 bg-[#d97706]/25" />
                         <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
-                          <path d="M1 1.5l7 7 7-7" stroke="#d97706" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.45"/>
+                          <path d="M1 1.5l7 7 7-7" stroke="#d97706" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.45" />
                         </svg>
                       </div>
                     </div>
@@ -423,7 +425,7 @@ export default function RudrabhishekPage() {
           <div className="flex flex-col md:flex-row items-start justify-between gap-10">
             <div className="md:w-1/3">
               <p className="text-[#d97706] text-[11px] font-bold tracking-[0.2em] uppercase mb-3">Our Promise</p>
-              <h2 className="premium-serif text-2xl md:text-3xl font-bold text-[#5c1a1f] mb-3 leading-tight">Every Booking.<br/>Every Ritual.<br/>Guaranteed.</h2>
+              <h2 className="premium-serif text-2xl md:text-3xl font-bold text-[#5c1a1f] mb-3 leading-tight">Every Booking.<br />Every Ritual.<br />Guaranteed.</h2>
               <p className="text-gray-850 text-sm leading-relaxed">We stand by the authenticity, quality, and results of every puja we perform.</p>
             </div>
             <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -457,7 +459,7 @@ export default function RudrabhishekPage() {
             <p className="text-[#d97706] text-[11px] font-bold tracking-[0.2em] uppercase mb-4">What They Say</p>
             <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#1a0a0b] mb-4">Trusted by 50,000+ Devotees</h2>
             <div className="flex items-center justify-center gap-2 flex-wrap">
-              <div className="flex">{[1,2,3,4,5].map(s => <span key={s} className="text-[#f59e0b] text-lg">★</span>)}</div>
+              <div className="flex">{[1, 2, 3, 4, 5].map(s => <span key={s} className="text-[#f59e0b] text-lg">★</span>)}</div>
               <span className="text-[#111827] font-bold text-sm">4.9 out of 5</span>
               <span className="text-[#D1D5DB] mx-1">|</span>
               <span className="text-gray-850 text-sm">5,000+ verified reviews</span>
@@ -469,23 +471,23 @@ export default function RudrabhishekPage() {
               { name: 'Priya Sharma', city: 'New Delhi', date: 'July 2025', review: 'The puja was absolutely divine. The pandit was deeply knowledgeable and performed every ritual with precision. I joined via live video and felt immense spiritual energy. The prasad arrived beautifully packed within 4 days. Highly recommend Vaidik Talk.', initial: 'P', color: '#5c1a1f' },
               { name: 'Rajesh Gupta', city: 'Mumbai', date: 'June 2025', review: 'Skeptical at first, but this completely changed my view of online pujas. The sankalp was taken in my name and gotra. I received HD photos the same evening. The whole process was seamless and the results were visible within a week. Truly professional.', initial: 'R', color: '#1e3a5f' },
               { name: 'Anita Verma', city: 'Bengaluru', date: 'May 2025', review: "Booked this puja for my mother's health. The muhurat was perfectly auspicious, the pandit spent over 2 hours performing every ritual with dedication. The difference was palpable. Will always trust Vaidik Talk for my spiritual needs.", initial: 'A', color: '#1a4731' },
-            , { name: "Priya Sharma", city: "New Delhi", date: "July 2025", review: "The puja was absolutely divine. The pandit was deeply knowledgeable and performed every ritual with precision. I joined via live video and felt immense spiritual energy. The prasad arrived beautifully packed within 4 days. Highly recommend Vaidik Talk.", initial: "P", color: "#5c1a1f" }, { name: "Rajesh Gupta", city: "Mumbai", date: "June 2025", review: "Skeptical at first, but this completely changed my view of online pujas. The sankalp was taken in my name and gotra. I received HD photos the same evening. The whole process was seamless and the results were visible within a week. Truly professional.", initial: "R", color: "#1e3a5f" }, { name: "Anita Verma", city: "Bengaluru", date: "May 2025", review: "Booked this puja for my mother's health. The muhurat was perfectly auspicious, the pandit spent over 2 hours performing every ritual with dedication. The difference was palpable. Will always trust Vaidik Talk for my spiritual needs.", initial: "A", color: "#1a4731" }].filter((item: any) => item)).reduce((acc: any[], _: any, __: number, arr: any[]) => acc.length === 0 ? [...arr, ...arr, ...arr, ...arr] : acc, []).map((t: any, idx: number) => (
-              <div key={idx} className="w-[85vw] sm:w-[320px] md:w-[350px] shrink-0 snap-center bg-[#fdfaf6] rounded-2xl p-7 border border-[#f0ddc0] flex flex-col hover:shadow-md transition-shadow">
-                <div className="flex justify-between items-start mb-5">
-                  <div className="flex gap-0.5">{[1,2,3,4,5].map(s => <span key={s} className="text-[#f59e0b] text-[15px]">★</span>)}</div>
-                  <svg width="22" height="18" viewBox="0 0 32 24" fill="#e8d8c0"><path d="M0 24V14.4C0 6.4 4.8 1.6 14.4 0l1.6 2.4C10.4 3.6 7.6 6.4 6.4 11.2H12V24H0zm20 0V14.4C20 6.4 24.8 1.6 34.4 0L36 2.4C30.4 3.6 27.6 6.4 26.4 11.2H32V24H20z"/></svg>
-                </div>
-                <p className="text-gray-850 text-[13.5px] leading-[1.85] flex-grow mb-6">{t.review}</p>
-                <div className="flex items-center gap-3 pt-5 border-t border-[#f0ddc0]">
-                  <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-black shrink-0" style={{backgroundColor: t.color}}>{t.initial}</div>
-                  <div className="flex-1">
-                    <p className="font-bold text-[#111827] text-[13px] leading-none mb-1">{t.name}</p>
-                    <p className="text-[#9CA3AF] text-[11px]">{t.city} · {t.date}</p>
+              , { name: "Priya Sharma", city: "New Delhi", date: "July 2025", review: "The puja was absolutely divine. The pandit was deeply knowledgeable and performed every ritual with precision. I joined via live video and felt immense spiritual energy. The prasad arrived beautifully packed within 4 days. Highly recommend Vaidik Talk.", initial: "P", color: "#5c1a1f" }, { name: "Rajesh Gupta", city: "Mumbai", date: "June 2025", review: "Skeptical at first, but this completely changed my view of online pujas. The sankalp was taken in my name and gotra. I received HD photos the same evening. The whole process was seamless and the results were visible within a week. Truly professional.", initial: "R", color: "#1e3a5f" }, { name: "Anita Verma", city: "Bengaluru", date: "May 2025", review: "Booked this puja for my mother's health. The muhurat was perfectly auspicious, the pandit spent over 2 hours performing every ritual with dedication. The difference was palpable. Will always trust Vaidik Talk for my spiritual needs.", initial: "A", color: "#1a4731" }].filter((item: any) => item)).reduce((acc: any[], _: any, __: number, arr: any[]) => acc.length === 0 ? [...arr, ...arr, ...arr, ...arr] : acc, []).map((t: any, idx: number) => (
+                <div key={idx} className="w-[85vw] sm:w-[320px] md:w-[350px] shrink-0 snap-center bg-[#fdfaf6] rounded-2xl p-7 border border-[#f0ddc0] flex flex-col hover:shadow-md transition-shadow">
+                  <div className="flex justify-between items-start mb-5">
+                    <div className="flex gap-0.5">{[1, 2, 3, 4, 5].map(s => <span key={s} className="text-[#f59e0b] text-[15px]">★</span>)}</div>
+                    <svg width="22" height="18" viewBox="0 0 32 24" fill="#e8d8c0"><path d="M0 24V14.4C0 6.4 4.8 1.6 14.4 0l1.6 2.4C10.4 3.6 7.6 6.4 6.4 11.2H12V24H0zm20 0V14.4C20 6.4 24.8 1.6 34.4 0L36 2.4C30.4 3.6 27.6 6.4 26.4 11.2H32V24H20z" /></svg>
                   </div>
-                  <span className="text-[10px] font-bold text-[#16a34a] bg-green-50 border border-green-100 rounded-full px-2 py-1">✓ Verified</span>
+                  <p className="text-gray-850 text-[13.5px] leading-[1.85] flex-grow mb-6">{t.review}</p>
+                  <div className="flex items-center gap-3 pt-5 border-t border-[#f0ddc0]">
+                    <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-black shrink-0" style={{ backgroundColor: t.color }}>{t.initial}</div>
+                    <div className="flex-1">
+                      <p className="font-bold text-[#111827] text-[13px] leading-none mb-1">{t.name}</p>
+                      <p className="text-[#9CA3AF] text-[11px]">{t.city} · {t.date}</p>
+                    </div>
+                    <span className="text-[10px] font-bold text-[#16a34a] bg-green-50 border border-green-100 rounded-full px-2 py-1">✓ Verified</span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
           </div>
 
@@ -503,7 +505,7 @@ export default function RudrabhishekPage() {
                 { id: 'https://youtube.com/shorts/0LI8vBrIUf8?si=qyrHk_sx4lMhbuw2', title: 'Vaidiktalk' }
               ].filter((item: any) => item)).reduce((acc: any[], _: any, __: number, arr: any[]) => acc.length === 0 ? [...arr, ...arr, ...arr, ...arr] : acc, []).map((v: any, idx: number) => (
                 <div key={idx} className="w-[85vw] sm:w-[320px] md:w-[350px] shrink-0 snap-center rounded-2xl overflow-hidden shadow-md border border-[#f0ddc0] bg-[#111] aspect-video group">
-                                    <div className="relative w-full h-full cursor-pointer group-hover:opacity-90 transition-opacity">
+                  <div className="relative w-full h-full cursor-pointer group-hover:opacity-90 transition-opacity">
                     <img loading="lazy" src={`https://img.youtube.com/vi/${getYoutubeId(v.youtubeId || v.id || 'aCg32i0vQTo')}/hqdefault.jpg`} onError={(e: any) => { e.currentTarget.src = 'https://img.youtube.com/vi/aCg32i0vQTo/hqdefault.jpg'; }} alt={v.title || 'Testimonial'} className="w-full h-full object-cover" />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-14 h-14 bg-black/60 rounded-full flex items-center justify-center border border-white/30 backdrop-blur-sm shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-transform group-hover:scale-110">
@@ -514,23 +516,23 @@ export default function RudrabhishekPage() {
                 </div>
               ))}
             </div>
-          </div>
-          <p className="text-center mt-8">
-            <a href="https://www.youtube.com/channel/UC9R0W5yvEFM7BavR85woAFQ" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-[#5c1a1f] hover:text-[#d97706] transition-colors">
+            </div>
+            <p className="text-center mt-8">
+              <a href="https://www.youtube.com/channel/UC9R0W5yvEFM7BavR85woAFQ" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-[#5c1a1f] hover:text-[#d97706] transition-colors">
                 View all testimonials on YouTube
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </a>
             </p>
           </div>
         </div>
       </div>
 
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       {/* 6.5 PHOTO GALLERY */}
       <div className="w-full bg-[#fcf5eb] py-20 px-6 border-t border-[#e8d8c0]">
         <div className="max-w-6xl mx-auto">
@@ -539,7 +541,7 @@ export default function RudrabhishekPage() {
             <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#1a0a0b] mb-3">Divine Photo Gallery</h2>
             <p className="text-gray-850 text-base md:text-lg max-w-2xl mx-auto">Experience the divine energy through authentic moments captured during our Vedic rituals.</p>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {(dynamicData?.gallery?.length > 0 ? dynamicData.gallery : [
               '/pooja/Rudraabhishek.webp',
@@ -549,12 +551,12 @@ export default function RudrabhishekPage() {
               '/pooja/Mangal Dosh Nivaran Puja.webp',
               '/pooja/Ganesh Ji Ko Laddoo Arpan.webp'
             ]).map((img: string, idx: number) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className="relative rounded-2xl overflow-hidden shadow-sm border border-[#e8d8c0] group aspect-[4/3] cursor-pointer"
                 onClick={() => setSelectedImage(img)}
               >
-                <img loading="lazy" src={img} alt={`Gallery Photo ${idx+1}`} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
+                <img loading="lazy" src={img} alt={`Gallery Photo ${idx + 1}`} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-transparent group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
                   <svg className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
                 </div>
@@ -566,12 +568,12 @@ export default function RudrabhishekPage() {
 
       {/* LIGHTBOX MODAL */}
       {selectedImage && (
-        <div 
+        <div
           className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 backdrop-blur-sm"
           onClick={() => setSelectedImage(null)}
         >
           <div className="relative max-w-5xl w-full mx-auto flex items-center justify-center">
-            <button 
+            <button
               className="absolute -top-12 right-0 text-white hover:text-[#d4af37] transition-colors p-2"
               onClick={() => setSelectedImage(null)}
             >
@@ -592,7 +594,7 @@ export default function RudrabhishekPage() {
             </div>
             <Link href="/book-a-puja" className="text-sm font-bold text-[#5c1a1f] hover:text-[#d97706] transition-colors flex items-center gap-1.5 shrink-0">
               View all pujas
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -634,10 +636,10 @@ export default function RudrabhishekPage() {
           </div>
           <div className="space-y-3">
             {(dynamicData?.faqs?.length > 0 ? dynamicData.faqs : [
-    { q: "Who should perform Rudrabhishek?", a: "Anyone seeking peace, removal of obstacles, healing from illnesses, or relief from planetary doshas (like Shani Sade Sati or Rahu-Ketu dosha) can perform this pooja." },
-    { q: "Can I perform this pooja online?", a: "Yes, our Pandits can perform the pooja on your behalf with your personalized Sankalp. You can join via a live video link to witness the rituals." },
-    { q: "What is the best day for Rudrabhishek?", a: "Mondays, Maha Shivratri, Shravan Maas, Pradosh, and Masik Shivratri are considered highly auspicious, though it can be performed on any day depending on your astrological need." },
-    { q: "Do I need to arrange any Samagri?", a: "No, if you book through Vaidik Talk, our Pandits will arrange all the pure and authentic Samagri required for the ritual." }
+              { q: "Who should perform Rudrabhishek?", a: "Anyone seeking peace, removal of obstacles, healing from illnesses, or relief from planetary doshas (like Shani Sade Sati or Rahu-Ketu dosha) can perform this pooja." },
+              { q: "Can I perform this pooja online?", a: "Yes, our Pandits can perform the pooja on your behalf with your personalized Sankalp. You can join via a live video link to witness the rituals." },
+              { q: "What is the best day for Rudrabhishek?", a: "Mondays, Maha Shivratri, Shravan Maas, Pradosh, and Masik Shivratri are considered highly auspicious, though it can be performed on any day depending on your astrological need." },
+              { q: "Do I need to arrange any Samagri?", a: "No, if you book through Vaidik Talk, our Pandits will arrange all the pure and authentic Samagri required for the ritual." }
             ]).map((faq: any, idx: number) => (
               <details key={idx} className="group bg-white border border-[#f0ddc0]/80 rounded-2xl shadow-sm overflow-hidden">
                 <summary className="flex items-center justify-between cursor-pointer px-6 py-5 list-none hover:bg-[#fcf5eb]/50 transition-colors">
@@ -655,7 +657,7 @@ export default function RudrabhishekPage() {
         </div>
       </div>
 
-      
+
       {/* FINAL CTA BANNER */}
       <div className="w-full bg-gradient-to-br from-[#fff5eb] to-[#fdfaf6] border-y border-[#f0ddc0] py-16 md:py-20 relative z-10">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -668,7 +670,7 @@ export default function RudrabhishekPage() {
           <p className="text-gray-850 mb-8 max-w-2xl mx-auto text-[15px] md:text-[17px] leading-relaxed">
             Experience divine blessings with our expert purohits. Secure your slot now to bring peace, prosperity, and success to your life.
           </p>
-          <button 
+          <button
             onClick={() => {
               const el = document.getElementById('booking-section') || document.getElementById('pricing-plans');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -683,18 +685,18 @@ export default function RudrabhishekPage() {
       {/* TRUST BANNER */}
       <div className="w-full bg-[#5c1a1f] py-10 relative z-10">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-           {[
-              { icon: <ShieldCheck className="w-8 h-8 text-[#f5d08b]" />, title: 'Authentic Rituals', desc: 'Vedic Scriptures' },
-              { icon: <UserCheck className="w-8 h-8 text-[#f5d08b]" />, title: 'Expert Purohits', desc: 'Verified Pandits' },
-              { icon: <Leaf className="w-8 h-8 text-[#f5d08b]" />, title: 'Pure Samagri', desc: 'Sattvik items' },
-              { icon: <Lock className="w-8 h-8 text-[#f5d08b]" />, title: 'Secure Booking', desc: '100% Safe' },
-            ].map((feature, idx) => (
-              <div key={idx} className="flex flex-col items-center">
-                <div className="mb-4">{feature.icon}</div>
-                <h4 className="font-bold text-white text-lg mb-1">{feature.title}</h4>
-                <p className="text-sm text-[#3a1216]">{feature.desc}</p>
-              </div>
-            ))}
+          {[
+            { icon: <ShieldCheck className="w-8 h-8 text-[#f5d08b]" />, title: 'Authentic Rituals', desc: 'Vedic Scriptures' },
+            { icon: <UserCheck className="w-8 h-8 text-[#f5d08b]" />, title: 'Expert Purohits', desc: 'Verified Pandits' },
+            { icon: <Leaf className="w-8 h-8 text-[#f5d08b]" />, title: 'Pure Samagri', desc: 'Sattvik items' },
+            { icon: <Lock className="w-8 h-8 text-[#f5d08b]" />, title: 'Secure Booking', desc: '100% Safe' },
+          ].map((feature, idx) => (
+            <div key={idx} className="flex flex-col items-center">
+              <div className="mb-4">{feature.icon}</div>
+              <h4 className="font-bold text-white text-lg mb-1">{feature.title}</h4>
+              <p className="text-sm text-[#f0ddc0]">{feature.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

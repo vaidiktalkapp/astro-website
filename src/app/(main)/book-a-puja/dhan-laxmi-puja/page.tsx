@@ -56,7 +56,7 @@ export default function MoneyAttractPage() {
           <img 
             src="/pooja/Money Attract Puja (Dhan Laxmi Puja).webp" 
             alt="Money Attract Puja (Dhan Laxmi Puja)" 
-            className="w-full h-full object-cover opacity-95 object-center"
+            className="w-full h-full object-cover opacity-100 object-center"
           />
           <div className="absolute inset-0 bg-black/60 md:bg-transparent md:bg-gradient-to-r md:from-black/90 md:via-black/50 md:to-transparent" />
         </div>
@@ -66,7 +66,7 @@ export default function MoneyAttractPage() {
             Premium Vedic Ritual
           </div>
           <h1 className="premium-serif text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight max-w-3xl">
-            Money Attract <br/><span className="text-[#f5d08b]">Puja</span> <span className="text-2xl md:text-4xl text-[#3a1216] block mt-2">(Dhan Laxmi Puja)</span>
+            Money Attract <br/><span className="text-[#f5d08b]">Puja</span> <span className="text-2xl md:text-4xl text-[#f0ddc0] block mt-2">(Dhan Laxmi Puja)</span>
           </h1>
           <p className="text-gray-200 text-lg md:text-2xl max-w-2xl leading-relaxed mb-10 font-light">
             Invoke Abundance, Dissolve Financial Blockages, and Align with Wealth Energy.
@@ -287,11 +287,11 @@ export default function MoneyAttractPage() {
                 
                 <div className="space-y-4 mb-6 relative z-10">
                   <div className="flex justify-between items-start gap-4">
-                    <span className="text-[#3a1216] text-sm">Pooja Name</span>
+                    <span className="text-[#f0ddc0] text-sm">Pooja Name</span>
                     <span className="font-bold text-right text-[15px]">Dhan Laxmi Pooja</span>
                   </div>
                   <div className="flex justify-between items-start gap-4">
-                    <span className="text-[#3a1216] text-sm">Includes</span>
+                    <span className="text-[#f0ddc0] text-sm">Includes</span>
                     <span className="text-right text-[14px]">Samagri & Dakshina</span>
                   </div>
                 </div>
@@ -310,7 +310,7 @@ export default function MoneyAttractPage() {
                 >
                   <Lock className="w-5 h-5" /> Proceed to Pay
                 </button>
-                <p className="text-center text-xs text-[#3a1216] mt-4 flex items-center justify-center gap-1 relative z-10">
+                <p className="text-center text-xs text-[#f0ddc0] mt-4 flex items-center justify-center gap-1 relative z-10">
                   <ShieldCheck className="w-4 h-4 text-[#f5d08b]" /> 100% Secure & Authentic
                 </p>
               </div>
@@ -661,7 +661,7 @@ export default function MoneyAttractPage() {
               <div key={idx} className="flex flex-col items-center">
                 <div className="mb-4">{feature.icon}</div>
                 <h4 className="font-bold text-white text-lg mb-1">{feature.title}</h4>
-                <p className="text-sm text-[#3a1216]">{feature.desc}</p>
+                <p className="text-sm text-[#f0ddc0]">{feature.desc}</p>
               </div>
             ))}
         </div>

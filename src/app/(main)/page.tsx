@@ -123,7 +123,7 @@ async function fetchDailyPanchang() {
     });
     if (!res.ok) return null;
     const data = await res.json();
-    return data || null;
+    return data?.data || null;
   } catch (error) {
     return null;
   }

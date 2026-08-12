@@ -267,7 +267,7 @@ export default function HealthAstrologyClient({
             <img
               src={banner?.url || "/images/health-wellness-hero.webp?v=2"}
               alt="Health & Wellness Astrology"
-              className="w-full h-[320px] object-cover object-[95%_top] opacity-95 mix-blend-multiply"
+              className="w-full h-[320px] object-cover object-right-top scale-[1.15] origin-right opacity-95 mix-blend-multiply"
               style={{ maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)' }}
             />
           </motion.div>

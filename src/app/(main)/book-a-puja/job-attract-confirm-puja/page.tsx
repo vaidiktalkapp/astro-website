@@ -56,7 +56,7 @@ export default function JobAttractPage() {
           <img 
             src="/pooja/Job Attract & Confirm Puja.webp" 
             alt="Job Attract & Confirm Puja" 
-            className="w-full h-full object-cover opacity-95 object-center"
+            className="w-full h-full object-cover opacity-100 object-center"
           />
           <div className="absolute inset-0 bg-black/60 md:bg-transparent md:bg-gradient-to-r md:from-black/90 md:via-black/50 md:to-transparent" />
         </div>
@@ -286,11 +286,11 @@ export default function JobAttractPage() {
                 
                 <div className="space-y-4 mb-6 relative z-10">
                   <div className="flex justify-between items-start gap-4">
-                    <span className="text-[#3a1216] text-sm">Pooja Name</span>
+                    <span className="text-[#f0ddc0] text-sm">Pooja Name</span>
                     <span className="font-bold text-right text-[15px]">Job Attract Pooja</span>
                   </div>
                   <div className="flex justify-between items-start gap-4">
-                    <span className="text-[#3a1216] text-sm">Includes</span>
+                    <span className="text-[#f0ddc0] text-sm">Includes</span>
                     <span className="text-right text-[14px]">Samagri & Dakshina</span>
                   </div>
                 </div>
@@ -309,7 +309,7 @@ export default function JobAttractPage() {
                 >
                   <Lock className="w-5 h-5" /> Proceed to Pay
                 </button>
-                <p className="text-center text-xs text-[#3a1216] mt-4 flex items-center justify-center gap-1 relative z-10">
+                <p className="text-center text-xs text-[#f0ddc0] mt-4 flex items-center justify-center gap-1 relative z-10">
                   <ShieldCheck className="w-4 h-4 text-[#f5d08b]" /> 100% Secure & Authentic
                 </p>
               </div>
@@ -660,7 +660,7 @@ export default function JobAttractPage() {
               <div key={idx} className="flex flex-col items-center">
                 <div className="mb-4">{feature.icon}</div>
                 <h4 className="font-bold text-white text-lg mb-1">{feature.title}</h4>
-                <p className="text-sm text-[#3a1216]">{feature.desc}</p>
+                <p className="text-sm text-[#f0ddc0]">{feature.desc}</p>
               </div>
             ))}
         </div>
