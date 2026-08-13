@@ -2,6 +2,8 @@ import React from 'react';
 import { Metadata } from 'next';
 import HoroscopeDetailClient from '@/components/horoscope/HoroscopeDetailClient';
 import { fetchHoroscopeData } from '@/lib/fetchHoroscopeData';
+import { fetchPageSeo, generatePageMetadata } from '@/lib/fetchPageSeo';
+import PageSeoProvider from '@/components/shared/PageSeoProvider';
 
 // Generates static params for all 12 signs so Next.js can prerender or handle routing cleanly
 export function generateStaticParams() {
@@ -12,18 +14,25 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ sign: string }> }): Promise<Metadata> {
   const { sign } = await params;
   const signName = sign.charAt(0).toUpperCase() + sign.slice(1);
-  return {
+  const slug = `daily-horoscope/${sign.toLowerCase()}`;
+  
+  const defaultMeta = {
     title: `Today's ${signName} Horoscope | VaidikTalk`,
     description: `Read your daily ${signName} horoscope on VaidikTalk. Get deep Vedic astrological insights into your love, career, and health for today.`,
   };
+
+  const seoData = await fetchPageSeo(slug);
+  return generatePageMetadata(seoData, defaultMeta);
 }
 
 export default async function DailyHoroscopePage({ params }: { params: Promise<{ sign: string }> }) {
   const { sign } = await params;
+  const slug = `daily-horoscope/${sign.toLowerCase()}`;
   const { initialDailyData, initialFaqs } = await fetchHoroscopeData('today', sign);
   
   return (
     <div className="bg-[#fff9f0] min-h-screen">
+      <PageSeoProvider slug={slug} />
       <HoroscopeDetailClient 
         initialSign={sign} 
         period="today" 

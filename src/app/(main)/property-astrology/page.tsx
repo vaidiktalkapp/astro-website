@@ -1,6 +1,20 @@
 import PropertyVehicleAstrologyClient from './PropertyVehicleAstrologyClient';
+import { fetchPageSeo, generatePageMetadata } from '@/lib/fetchPageSeo';
+import PageSeoProvider from '@/components/shared/PageSeoProvider';
+import { Metadata } from 'next';
 
 export const revalidate = 60; // ISR cache for 60 seconds
+
+export async function generateMetadata(): Promise<Metadata> {
+  const slug = 'property-astrology';
+  const defaultMeta = {
+    title: "Property & Vehicle Astrology | VaidikTalk",
+    description: "Get astrological insights and remedies for property and vehicle purchase using Vedic astrology.",
+  };
+
+  const seoData = await fetchPageSeo(slug);
+  return generatePageMetadata(seoData, defaultMeta);
+}
 
 async function fetchInitialData() {
   try {
@@ -38,12 +52,16 @@ export default async function Page() {
   const data = await fetchInitialData();
   
   return (
-    <PropertyVehicleAstrologyClient 
-      initialAstrologers={data.astrologers}
-      initialAiAstrologers={data.aiAstrologers}
-      initialFaqs={data.settings?.faqs}
-      initialSuccessStories={data.settings?.successStories}
-      initialBanner={data.settings?.banner}
-    />
+    <>
+      <PageSeoProvider slug="property-astrology" />
+      <PropertyVehicleAstrologyClient 
+        initialAstrologers={data.astrologers}
+        initialAiAstrologers={data.aiAstrologers}
+        initialFaqs={data.settings?.faqs}
+        initialSuccessStories={data.settings?.successStories}
+        initialBanner={data.settings?.banner}
+      />
+    </>
   );
 }
+

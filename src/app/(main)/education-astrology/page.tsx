@@ -1,6 +1,21 @@
+import { fetchPageSeo, generatePageMetadata } from '@/lib/fetchPageSeo';
+import PageSeoProvider from '@/components/shared/PageSeoProvider';
+import { Metadata } from 'next';
 import EducationAstrologyClient from './EducationAstrologyClient';
 
 export const revalidate = 60; // ISR cache for 60 seconds
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  const slug = 'education-astrology';
+  const defaultMeta = {
+    title: "Education Astrology & Studies | VaidikTalk",
+    description: "Find out the best field of study and overcome educational hurdles with Vedic astrology predictions.",
+  };
+
+  const seoData = await fetchPageSeo(slug);
+  return generatePageMetadata(seoData, defaultMeta);
+}
 
 async function fetchInitialData() {
   try {
@@ -38,12 +53,16 @@ export default async function Page() {
   const data = await fetchInitialData();
   
   return (
-    <EducationAstrologyClient 
+    <>
+      <PageSeoProvider slug="education-astrology" />
+      <EducationAstrologyClient 
       initialAstrologers={data.astrologers}
       initialAiAstrologers={data.aiAstrologers}
       initialFaqs={data.settings?.faqs}
       initialSuccessStories={data.settings?.successStories}
       initialBanner={data.settings?.banner}
     />
+    </>
   );
 }
+

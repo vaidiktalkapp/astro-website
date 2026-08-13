@@ -1,6 +1,21 @@
+import { Metadata } from 'next';
+import { fetchPageSeo, generatePageMetadata } from '@/lib/fetchPageSeo';
+import PageSeoProvider from '@/components/shared/PageSeoProvider';
 import LoveCompatibilityClient from './LoveCompatibilityClient';
 
 export const revalidate = 60; // ISR cache for 60 seconds
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  const slug = 'love-astrology';
+  const defaultMeta = {
+    title: "Love Astrology & Relationship Predictions | VaidikTalk",
+    description: "Find your true love, predict marriage timing, and resolve relationship issues with Love Astrology.",
+  };
+
+  const seoData = await fetchPageSeo(slug);
+  return generatePageMetadata(seoData, defaultMeta);
+}
 
 async function fetchInitialData() {
   try {
@@ -38,12 +53,13 @@ export default async function Page() {
   const data = await fetchInitialData();
   
   return (
-    <LoveCompatibilityClient 
+    <><PageSeoProvider slug="love-astrology" /><LoveCompatibilityClient 
       initialAstrologers={data.astrologers}
       initialAiAstrologers={data.aiAstrologers}
       initialFaqs={data.settings?.faqs}
       initialSuccessStories={data.settings?.successStories}
       initialBanner={data.settings?.banner}
-    />
+    /></>
   );
 }
+
