@@ -11,6 +11,7 @@ export interface ReportFormData {
   language: string;
   email: string;
   phone: string;
+  partnerDetails?: any;
 }
 
 const initialFormData: ReportFormData = {
@@ -50,8 +51,8 @@ export const useReportBooking = (reportDetails: {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent, overrideData?: Partial<ReportFormData>) => {
+    if (e) e.preventDefault();
     setIsProcessing(true);
 
     try {
@@ -64,23 +65,26 @@ export const useReportBooking = (reportDetails: {
 
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
 
+      const finalData = { ...formData, ...overrideData };
+
       const orderResponse = await fetch(`${apiUrl}/report-bookings/create-order`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           reportName: reportDetails.name,
           reportSlug: reportDetails.slug,
-          customerName: formData.name,
-          gender: formData.gender,
-          dob: formData.dob,
-          tob: formData.tob,
-          pob: formData.pob,
-          country: formData.country || '',
-          state: formData.state || '',
-          language: formData.language || 'English',
-          phone: formData.phone,
-          email: formData.email,
+          customerName: finalData.name,
+          gender: finalData.gender,
+          dob: finalData.dob,
+          tob: finalData.tob,
+          pob: finalData.pob,
+          country: finalData.country || '',
+          state: finalData.state || '',
+          language: finalData.language || 'English',
+          phone: finalData.phone,
+          email: finalData.email,
           amount: reportDetails.amount,
+          partnerDetails: finalData.partnerDetails,
         }),
       });
 
@@ -129,9 +133,9 @@ export const useReportBooking = (reportDetails: {
           }
         },
         prefill: {
-          name: formData.name,
-          email: formData.email,
-          contact: formData.phone,
+          name: finalData.name,
+          email: finalData.email,
+          contact: finalData.phone,
         },
         theme: { color: '#761e27' },
         modal: {

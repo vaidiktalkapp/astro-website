@@ -1,158 +1,40 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import apiClient from '@/lib/api';
-import { useReportBooking } from '../../../../../hooks/useReportBooking';
-import LocationInput from '@/components/ui/LocationInput';
+import Link from 'next/link';
 import {
-  Calendar,
-  BarChart3,
-  ShieldCheck,
-  User,
-  Briefcase,
-  GraduationCap,
-  Heart,
-  Activity,
-  ArrowRight,
-  Star,
-  Compass,
-  Check,
-  Gift,
-  X,
-  Clock,
-  BookOpen,
-  Feather,
-  Sparkles,
-  Users,
-  FileText,
-  Layers,
-  ChevronDown
+  CheckCircle2, Plus, Minus, Star, PlayCircle, BookOpen, FileText, Check, ShieldCheck, Heart, Briefcase, Activity, Flower2, X
 } from 'lucide-react';
 
-type ContentBlock =
+type FaqBlock =
   | { type: 'p'; text: string }
   | { type: 'list'; items: string[] }
   | { type: 'table'; headers: string[]; rows: string[][] };
 
 interface FaqItem {
   q: string;
-  content: ContentBlock[];
+  content: FaqBlock[];
 }
-
-interface ReportSection {
-  heading: string;
-  blocks: ContentBlock[];
-}
-
-const reportSections: ReportSection[] = [
-  {
-    heading: 'Overview',
-    blocks: [
-      { type: 'p', text: 'The process to prepare kundli online involves a structured method which enables users to check compatibility without doing manual calculations or needing to handle physical documents. The process creates charts which show planetary positions at the time of birth based on three birth details which include date, time and place.' },
-      { type: 'p', text: 'The comparison between these charts is then conducted through recognized compatibility parameters. The evaluation process requires all parameters to be assessed together to establish whether the planetary forces provide beneficial support for a relationship which maintains equilibrium. The comparison seeks to discover shared understanding potential which exists beyond emotional connections and decision-making patterns lifestyle choices between different life sectors.' }
-    ]
-  },
-  {
-    heading: 'Compatibility Evaluation',
-    blocks: [
-      { type: 'p', text: "The evaluation process uses a comparison of natal charts which both parties created through their birth information. The evaluation process uses planetary positions which are thought to shape people's personality traits, their communication habits and emotional stability decision-making processes." },
-      { type: 'p', text: 'The evaluation of compatibility establishes relationships between different life domains through which people can experience harmony. It also establishes relationships between different life domains through which people can experience harmony.' },
-      { type: 'p', text: 'The goal of the research study does not involve forecasting results because the researchers want to discover possible relationships which might affect how partners interact with each other.' }
-    ]
-  },
-  {
-    heading: 'Marriage Compatibility Evaluation',
-    blocks: [
-      { type: 'p', text: 'The process of online kundali match for marriage uses astrological rules to assess compatibility between partners. The established criteria show how planetary movements affect various elements of married life.' },
-      { type: 'p', text: 'The evaluation process assesses three main areas which include emotional stability, teamwork abilities and shared goals between partners. The evaluation of planetary positions helps determine whether their current alignment will support long-lasting relationships.' },
-      { type: 'p', text: 'The evaluation serves as an astrological compatibility assessment which shows relationship potential without predicting specific results. People use this evaluation to determine their upcoming obligations according to their existing commitments.' }
-    ]
-  },
-  {
-    heading: 'Digital Matching Framework',
-    blocks: [
-      { type: 'p', text: 'Online kundali matching provides a streamlined method for conducting compatibility analysis through digital systems. The process removes the need for manual chart preparation while maintaining calculation accuracy.' },
-      { type: 'p', text: 'The reports which get produced contain compatibility scores which testers calculate through their analysis of planetary positions. The scores show how much two charts agree with each other.' },
-      { type: 'p', text: 'The structured presentation of results assists individuals in understanding compatibility levels without requiring extensive knowledge of astrological principles. The method enables users to access specific observational details which scientists have documented in their research.' }
-    ]
-  },
-  {
-    heading: 'Life Planning Considerations',
-    blocks: [
-      { type: 'p', text: 'The evaluation of partnership compatibility assesses both partnership compatibility and the assessment of common lifestyle practices. The observed patterns occur during shared duties between partners who handle financial matters, family obligations and work commitments.' },
-      { type: 'p', text: 'The report helps users identify their life planning needs through its matching service. The process requires users to comprehend how they handle changing environments and how they participate in team decision-making.' },
-      { type: 'p', text: 'The structured assessment process identifies specific areas where partners need to develop their mutual understanding which requires both active effort and planned activities.' }
-    ]
-  },
-  {
-    heading: 'Practical Usage',
-    blocks: [
-      { type: 'p', text: 'The report functions as a reference document which enables discussion about long-term agreements between two parties. Compatibility information helps in examination before a couple enter into formal relationships and develop joint work plans.' },
-      { type: 'p', text: 'The report requires no particular procedures which need to be followed for its access. The process requires birth information to be submitted through secure digital channels.' },
-      { type: 'p', text: 'The system enables compatibility evaluation to take place in an organized process which consists of multiple established methods.' }
-    ]
-  },
-  {
-    heading: 'Structured Reporting',
-    blocks: [
-      { type: 'p', text: 'The organization of the compatibility report presents essential data through a structured system which shows the main planetary comparison results. The presentation enables users to understand compatibility elements through direct interpretation.' },
-      { type: 'p', text: 'The report includes:' },
-      { type: 'list', items: ['Comparative planetary positions', 'Compatibility parameters', 'Alignment indicators', 'Observational notes'] },
-      { type: 'p', text: 'The system enables users to assess compatibility at different levels without needing special skills to understand the results.' }
-    ]
-  },
-  {
-    heading: 'Why Choose This Report',
-    blocks: [
-      { type: 'p', text: 'The majority of people utilize Kundali to assess partner compatibility because it presents them with an organized methodology. The online service permits users to access compatibility results from any location because it functions entirely through internet-based systems.' },
-      { type: 'p', text: 'People who establish relationships need personal interaction for development but some people need extra analysis through planetary alignment assessment. Our work planning process uses the organized assessment system to deliver compatibility results because it establishes a fundamental basis for work planning.' }
-    ]
-  },
-  {
-    heading: 'General Benefits',
-    blocks: [
-      { type: 'p', text: 'The main associations of compatibility analysis establish their core relationship with:' },
-      { type: 'list', items: ['Clarity in shared expectations', 'Structured life planning', 'Improved communication awareness', 'Understanding adaptability', 'Recognizing coordination patterns'] },
-      { type: 'p', text: 'The study findings provide partners with insights that help them achieve their shared long-term aspirations.' }
-    ]
-  },
-  {
-    heading: 'Considerations',
-    blocks: [
-      { type: 'p', text: 'Families who want structured analysis during marriage planning share compatibility reports with their members. The users can access the document through its digital format which enables them to complete document review and storage.' },
-      { type: 'p', text: 'Assessment offers extra options for execution in the current set of people side by side with interpersonal interaction and shared understandings.' }
-    ]
-  },
-  {
-    heading: 'Access Instructions',
-    blocks: [
-      { type: 'p', text: 'The designated online form allows users to submit their birth details. The system processes compatibility analysis through astrological calculations which automatically proceed after users submit their information. The final report builds the content through chart comparison and correlation parameters.' },
-      { type: 'p', text: 'Visit our website for expert Kundali matching services and assess marriage compatibility to optimize your future relationship development.' }
-    ]
-  }
-];
 
 const faqData: FaqItem[] = [
   {
     q: 'What is Kundali Matching?',
     content: [
-      { type: 'p', text: 'Kundali Matching, also known as Kundali Milan or Gun Milan, is the Vedic process of analysing the compatibility between two individuals based on their birth charts (Janma Kundalis) before marriage. It compares the astrological positions of planets, the Moon, and other celestial factors to determine emotional, mental, and spiritual harmony between the prospective bride and groom.' },
-      { type: 'p', text: 'This traditional system, deeply rooted in Vedic astrology, evaluates whether two people are destined to share a balanced and prosperous marital life, ensuring physical, emotional, and karmic alignment.' }
+      { type: 'p', text: 'Kundali Matching, also known as Kundali Milan or Gun Milan, is the Vedic process of analysing the compatibility between two individuals based on their birth charts (Janma Kundalis) before marriage. It compares the astrological positions of planets, the Moon, and other celestial factors to determine emotional, mental, and spiritual harmony between the prospective bride and groom.' }
     ]
   },
   {
     q: 'Why is Kundali Matching important before marriage?',
     content: [
       { type: 'p', text: 'Kundali Matching holds immense importance in Indian culture because it helps assess compatibility, harmony, and long-term relationship success. It predicts various dimensions of marital life, including:' },
-      { type: 'list', items: ['Emotional and mental compatibility', 'Physical attraction and health harmony', 'Financial stability and family well-being', 'Longevity of the relationship', 'Fertility and progeny', 'Mutual respect and understanding'] },
-      { type: 'p', text: 'By analysing these factors, astrology helps families ensure that the union is auspicious and minimises chances of conflict or misfortune in married life. It is not merely a ritual but a scientific and spiritual process meant to bless the couple with peace, prosperity, and affection.' }
+      { type: 'list', items: ['Emotional and mental compatibility', 'Physical attraction and health harmony', 'Financial stability and family well-being', 'Longevity of the relationship', 'Fertility and progeny', 'Mutual respect and understanding'] }
     ]
   },
   {
     q: 'What details are required for Kundali Matching?',
     content: [
       { type: 'p', text: 'For accurate Kundali Matching, the following birth details of both the bride and groom are essential:' },
-      { type: 'list', items: ['Full Name', 'Date of Birth (DD/MM/YYYY)', 'Exact Time of Birth', 'Place of Birth (City, State, Country)'] },
-      { type: 'p', text: "These details are used to prepare each individual's Janma Kundali, from which the planetary positions and Nakshatras (constellations) are derived for compatibility analysis." }
+      { type: 'list', items: ['Full Name', 'Date of Birth (DD/MM/YYYY)', 'Exact Time of Birth', 'Place of Birth (City, State, Country)'] }
     ]
   },
   {
@@ -172,16 +54,14 @@ const faqData: FaqItem[] = [
           ['7. Bhakut', 'Family, health, prosperity', '7'],
           ['8. Nadi', 'Genetic and health factors', '8']
         ]
-      },
-      { type: 'p', text: 'The total of 36 Gunas determines overall compatibility. A higher score indicates a stronger and more balanced union.' }
+      }
     ]
   },
   {
     q: 'What is considered a good Kundali Matching score?',
     content: [
       { type: 'p', text: 'The total score of Guna Milan ranges from 0 to 36. The general compatibility guidelines are:' },
-      { type: 'list', items: ['Above 30 Gunas: Excellent match, highly compatible couple.', '25\u201330 Gunas: Good match, prosperous marriage.', '18\u201324 Gunas: Average match, acceptable with minor remedies.', 'Below 18 Gunas: Not recommended, may lead to disharmony.'] },
-      { type: 'p', text: 'However, Guna score is not the only factor; astrologers also examine Manglik Dosha, Graha Dosha, and planetary strengths before making a final judgment.' }
+      { type: 'list', items: ['Above 30 Gunas: Excellent match, highly compatible couple.', '25–30 Gunas: Good match, prosperous marriage.', '18–24 Gunas: Average match, acceptable with minor remedies.', 'Below 18 Gunas: Not recommended, may lead to disharmony.'] }
     ]
   },
   {
@@ -189,87 +69,15 @@ const faqData: FaqItem[] = [
     content: [
       { type: 'p', text: "Manglik Dosha (Mangal Dosha) occurs when Mars (Mangal) is positioned in certain houses (1st, 2nd, 4th, 7th, 8th, or 12th) in a person's horoscope. It can create challenges in marital life such as conflicts or instability." },
       { type: 'p', text: 'Remedies include:' },
-      { type: 'list', items: ['Manglik Dosha Nivaran Puja', 'Kumbh Vivah (symbolic ritual)', 'Recitation of Hanuman Chalisa or Mangal Mantra', 'Wearing of gemstones like Red Coral'] },
-      { type: 'p', text: 'With proper remedies and planetary balance, Manglik Dosha can be neutralised.' }
-    ]
-  },
-  {
-    q: 'Can a marriage succeed even if Kundalis do not match well?',
-    content: [
-      { type: 'p', text: 'Yes. While astrology provides guidance, marriage success depends on love, respect, understanding, and effort. Many couples with low Guna scores live happily because of emotional maturity and commitment.' },
-      { type: 'p', text: 'Astrologers often suggest remedies to balance planetary influences. Kundali Matching should be viewed as a guiding tool, not an absolute rule.' }
-    ]
-  },
-  {
-    q: 'What happens if Nadi Dosha or Bhakut Dosha is found during matching?',
-    content: [
-      { type: 'p', text: 'Nadi Dosha and Bhakut Dosha are among the most significant mismatches in Kundali Milan.' },
-      { type: 'list', items: ['Nadi Dosha: Related to health and heredity. Remedies include Nadi Dosh Nivaran Puja or matching through Charan (Nakshatra divisions).', 'Bhakut Dosha: Linked with emotional and financial harmony. It can be pacified through planetary remedies and rituals.'] },
-      { type: 'p', text: 'Sometimes strong planetary positions automatically nullify these Doshas, so a full Kundali analysis is always essential.' }
-    ]
-  },
-  {
-    q: 'Can Kundali Matching predict the success of a relationship?',
-    content: [
-      { type: 'p', text: 'Kundali Matching indicates the potential compatibility and challenges in a relationship. It shows how planetary energies interact, highlighting harmony or conflict areas.' },
-      { type: 'p', text: 'While it cannot predict exact outcomes, it helps couples understand tendencies, improving communication and emotional balance.' }
-    ]
-  },
-  {
-    q: 'Where can one get accurate and reliable Kundali Matching done?',
-    content: [
-      { type: 'p', text: 'For accurate and reliable results, consult experienced Vedic astrologers or trusted platforms such as Vaidik Talk, which offer:' },
-      { type: 'list', items: ['Authentic Kundali Matching based on Ashtakoota and Dashakoota systems', 'Detailed compatibility reports with remedies', 'Assessment of Manglik, Bhakut, and Nadi Doshas', 'Personalised guidance for marriage decisions'] },
-      { type: 'p', text: 'Vaidik Talk blends ancient astrological knowledge with modern interpretation to help you make informed and harmonious marriage choices.' }
-    ]
-  },
-  {
-    q: 'What details are required for compatibility evaluation?',
-    content: [
-      { type: 'p', text: 'The date, time, and place of birth are required for the two participants.' }
-    ]
-  },
-  {
-    q: 'Is the compatibility report generated online?',
-    content: [
-      { type: 'p', text: 'Yes, the report is produced by comparing digital graphs.' }
-    ]
-  },
-  {
-    q: 'Can this service be used before marriage planning?',
-    content: [
-      { type: 'p', text: 'Yes, it often precedes decisions on commitment to long-term relationships.' }
-    ]
-  },
-  {
-    q: 'Is manual chart preparation necessary?',
-    content: [
-      { type: 'p', text: 'No, the system automatically evaluates compatibility when the particulars are provided' }
+      { type: 'list', items: ['Manglik Dosha Nivaran Puja', 'Kumbh Vivah (symbolic ritual)', 'Recitation of Hanuman Chalisa or Mangal Mantra', 'Wearing of gemstones like Red Coral'] }
     ]
   }
 ];
 
 export default function KundaliMatchingPage() {
-  const [settings, setSettings] = useState<any>(null);
-  const [boyData, setBoyData] = useState({ name: '', dob: '', tob: '', pob: '', country: '', state: '', email: '', phone: '' });
-  const [girlData, setGirlData] = useState({ name: '', dob: '', tob: '', pob: '', country: '', state: '', email: '', phone: '' });
-  const [language, setLanguage] = useState('');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [settings, setSettings] = useState<any>(null);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const { isProcessing, handleSubmit: razorpaySubmit } = useReportBooking({
-    name: 'Kundali Matching',
-    slug: 'kundali-matching',
-    amount: settings?.price || settings?.discountedPrice || 499,
-  });
-
-  const handleKundaliMatchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Merge both partner data into hook formData compatible fields and trigger payment
-    const syntheticEvent = { ...e };
-    razorpaySubmit(syntheticEvent as React.FormEvent);
-  };
 
   const getYoutubeVideoId = (url: string) => {
     if (!url) return null;
@@ -290,30 +98,29 @@ export default function KundaliMatchingPage() {
     fetchSettings();
   }, []);
 
-  // Fallback default values
   const defaultTestimonials = [
     {
-      name: "Rahul Verma",
+      name: "Ramesh & Priya",
       city: "Delhi",
       date: "October 2025",
-      review: "The 10-year Kundali gave me exactly what I needed—clarity. The predictions regarding my career switch and timing were incredibly accurate. Highly recommend it to anyone feeling stuck.",
+      review: "We were confused about our Gun Milan score because of Nadi Dosha. The detailed report from VaidikTalk explained exactly what the dosha meant for us and the remedies have brought us so much peace of mind.",
       initial: "R",
       color: "#5c1a1f"
     },
     {
-      name: "Sneha Patel",
-      city: "Ahmedabad",
+      name: "Sneha & Amit",
+      city: "Mumbai",
       date: "September 2025",
-      review: "I was looking for something more than just basic astrology. The Smart Kundali provided a year-by-year breakdown of my finance and health. It’s beautifully designed and very easy to understand.",
+      review: "I loved how detailed the compatibility analysis was. It didn't just give a score, it told us about our financial alignment and emotional harmony. Truly a modern yet authentic approach.",
       initial: "S",
       color: "#d97706"
     },
     {
-      name: "Ankit Sharma",
+      name: "Karan Verma",
       city: "Pune",
       date: "August 2025",
-      review: "The dosha analysis and personalized remedies were an eye-opener. I downloaded the PDF and read it on my phone. The 30-page report is detailed and authentic.",
-      initial: "A",
+      review: "I got this for my son's marriage. The Manglik dosha analysis was very clear and the astrologer consultation add-on was the best decision. We got proper guidance.",
+      initial: "K",
       color: "#1a0a0b"
     }
   ];
@@ -323,36 +130,13 @@ export default function KundaliMatchingPage() {
   const screenshots = validScreenshots.length > 0 ? validScreenshots : [
     { url: '/images/kundali-page-1.jpg' },
     { url: '/images/kundali-page-2.jpg' },
-    { url: '/images/kundali-page-3.jpg' },
-    { url: '/images/kundali-page-4.jpg' },
-    { url: '/images/kundali-page-5.jpg' }
+    { url: '/images/kundali-page-3.jpg' }
   ];
   const video = settings?.video || { url: '', thumbnail: '/images/kundali-video-thumb.jpg' };
   const samplePdf = settings?.samplePdf;
 
-
-  const handleBoyChange = (e: any) => setBoyData({ ...boyData, [e.target.name]: e.target.value });
-  const handleGirlChange = (e: any) => setGirlData({ ...girlData, [e.target.name]: e.target.value });
-
-
-
-  const Kicker = ({ text }: { text: string }) => (
-    <div className="flex items-center justify-center gap-3 mb-3">
-      <div className="w-2 h-2 bg-[#d4af37] rotate-45"></div>
-      <span className="text-[11.5px] tracking-[2.5px] uppercase text-[#761e27] font-bold">{text}</span>
-      <div className="w-2 h-2 bg-[#d4af37] rotate-45"></div>
-    </div>
-  );
-
-  const SectionHeading = ({ title, sub }: { title: string; sub?: string }) => (
-    <div className="text-center mb-8 md:mb-10 px-2">
-      <h2 className="premium-serif text-[26px] md:text-[36px] font-bold text-[#5c1a1f] mb-3 md:mb-4 leading-tight">{title}</h2>
-      {sub && <p className="text-gray-850 text-[15px] md:text-[17px] max-w-[560px] mx-auto leading-relaxed">{sub}</p>}
-    </div>
-  );
-
-  const ContentBlocks = ({ blocks }: { blocks: ContentBlock[] }) => (
-    <div className="text-gray-850 text-[14.5px] md:text-[15.5px] leading-relaxed space-y-4">
+  const FaqAnswer = ({ blocks }: { blocks: FaqBlock[] }) => (
+    <div className="text-gray-850 text-[15px] leading-relaxed space-y-4 font-medium">
       {blocks.map((block, i) => {
         if (block.type === 'p') {
           return <p key={i}>{block.text}</p>;
@@ -362,7 +146,7 @@ export default function KundaliMatchingPage() {
             <ul key={i} className="space-y-2">
               {block.items.map((item, j) => (
                 <li key={j} className="flex gap-2.5 items-start">
-                  <span className="text-[#d4af37] font-bold flex-shrink-0 mt-[1px]">—</span>
+                  <span className="text-[#d68636] font-bold flex-shrink-0 mt-[2px]">•</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -372,11 +156,11 @@ export default function KundaliMatchingPage() {
         if (block.type === 'table') {
           return (
             <div key={i} className="overflow-x-auto border border-[#ebdcc7] rounded-md">
-              <table className="w-full text-left border-collapse min-w-[420px]">
+              <table className="w-full text-left border-collapse min-w-[480px]">
                 <thead>
-                  <tr className="bg-[#5c1a1f]">
+                  <tr className="bg-[#fdfaf6]">
                     {block.headers.map((h, hi) => (
-                      <th key={hi} className="text-[#d4af37] text-[11.5px] md:text-[12.5px] font-bold uppercase tracking-wide px-3 py-2.5 whitespace-nowrap">
+                      <th key={hi} className="text-[#5c1a1f] text-[13px] font-bold uppercase tracking-wide px-4 py-3 whitespace-nowrap border-b border-[#ebdcc7]">
                         {h}
                       </th>
                     ))}
@@ -384,11 +168,11 @@ export default function KundaliMatchingPage() {
                 </thead>
                 <tbody>
                   {block.rows.map((row, ri) => (
-                    <tr key={ri} className={ri % 2 === 0 ? 'bg-white' : 'bg-[#fffdf8]'}>
+                    <tr key={ri} className="bg-white">
                       {row.map((cell, ci) => (
                         <td
                           key={ci}
-                          className={`px-3 py-2.5 text-[13px] md:text-[13.5px] border-t border-[#ebdcc7] ${ci === 0 ? 'font-bold text-[#5c1a1f] whitespace-nowrap' : ''}`}
+                          className={`px-4 py-3 text-[14px] border-b border-[#ebdcc7] ${ci === 0 ? 'font-bold text-[#5c1a1f] whitespace-nowrap' : ''}`}
                         >
                           {cell}
                         </td>
@@ -405,537 +189,381 @@ export default function KundaliMatchingPage() {
     </div>
   );
 
-  const PersonFormFields = ({ data, onChange, prefix }: { data: any; onChange: any; prefix: string }) => (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
-      <div className="flex flex-col gap-2">
-        <label className="text-[12px] font-bold text-[#3a1216] tracking-[0.5px] uppercase">Full Name *</label>
-        <input required type="text" name="name" value={data.name} onChange={onChange} className="w-full border-b-[1.5px] border-[#ebdcc7] py-2.5 px-1 bg-transparent outline-none focus:border-[#761e27] text-[15px] transition-colors" placeholder="Full Name" />
-      </div>
-      <div className="flex flex-col gap-2">
-        <label className="text-[12px] font-bold text-[#3a1216] tracking-[0.5px] uppercase">Date of Birth *</label>
-        <input required type="date" name="dob" value={data.dob} onChange={onChange} className="w-full border-b-[1.5px] border-[#ebdcc7] py-2.5 px-1 bg-transparent outline-none focus:border-[#761e27] text-[15px] transition-colors" />
-      </div>
-      <div className="flex flex-col gap-2">
-        <label className="text-[12px] font-bold text-[#3a1216] tracking-[0.5px] uppercase">Time of Birth *</label>
-        <input required type="time" name="tob" value={data.tob} onChange={onChange} className="w-full border-b-[1.5px] border-[#ebdcc7] py-2.5 px-1 bg-transparent outline-none focus:border-[#761e27] text-[15px] transition-colors" />
-      </div>
-      <div className="flex flex-col gap-2">
-        <label className="text-[12px] font-bold text-[#3a1216] tracking-[0.5px] uppercase">Place of Birth *</label>
-        <LocationInput required name="pob" value={data.pob} onChange={onChange} className="w-full border-b-[1.5px] border-[#ebdcc7] py-2.5 px-1 bg-transparent outline-none focus:border-[#761e27] text-[15px] transition-colors" placeholder="Place Of Birth" />
-      </div>
-      <div className="flex flex-col gap-2">
-        <label className="text-[12px] font-bold text-[#3a1216] tracking-[0.5px] uppercase">Country of Birth *</label>
-        <input required type="text" name="country" value={data.country} onChange={onChange} className="w-full border-b-[1.5px] border-[#ebdcc7] py-2.5 px-1 bg-transparent outline-none focus:border-[#761e27] text-[15px] transition-colors" placeholder="Country Of Birth" />
-      </div>
-      <div className="flex flex-col gap-2">
-        <label className="text-[12px] font-bold text-[#3a1216] tracking-[0.5px] uppercase">State of Birth *</label>
-        <input required type="text" name="state" value={data.state} onChange={onChange} className="w-full border-b-[1.5px] border-[#ebdcc7] py-2.5 px-1 bg-transparent outline-none focus:border-[#761e27] text-[15px] transition-colors" placeholder="State Of Birth" />
-      </div>
-      <div className="flex flex-col gap-2">
-        <label className="text-[12px] font-bold text-[#3a1216] tracking-[0.5px] uppercase">Email *</label>
-        <input required type="email" name="email" value={data.email} onChange={onChange} className="w-full border-b-[1.5px] border-[#ebdcc7] py-2.5 px-1 bg-transparent outline-none focus:border-[#761e27] text-[15px] transition-colors" placeholder="Email" />
-      </div>
-      <div className="flex flex-col gap-2">
-        <label className="text-[12px] font-bold text-[#3a1216] tracking-[0.5px] uppercase">Phone No. *</label>
-        <input required type="tel" maxLength={10} pattern="[0-9]{10}" onKeyPress={(e) => { if (!/[0-9]/.test(e.key)) e.preventDefault(); }} name="phone" value={data.phone} onChange={onChange} className="w-full border-b-[1.5px] border-[#ebdcc7] py-2.5 px-1 bg-transparent outline-none focus:border-[#761e27] text-[15px] transition-colors" placeholder="Phone No." />
-      </div>
-    </div>
-  );
-
   return (
-    <div className="w-full min-h-screen bg-transparent font-sans text-gray-850 relative selection:bg-[#ee6c1e] selection:text-white">
+    <div className="w-full min-h-screen bg-[#fdfaf6] font-sans text-gray-850 relative">
+
+      {/* Lightbox */}
+      {lightboxImg && (
+        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={() => setLightboxImg(null)}>
+          <button className="absolute top-6 right-6 text-white bg-white/20 rounded-full p-2 hover:bg-white/40"><X className="w-6 h-6" /></button>
+          <img src={lightboxImg} className="max-w-full max-h-full object-contain rounded-lg" alt="Preview" />
+        </div>
+      )}
 
       {/* ============ HERO ============ */}
-      <section className="relative w-full min-h-[550px] lg:min-h-[600px] flex flex-col md:flex-row md:items-center overflow-hidden pt-12 md:py-20 z-10">
-        <div className="absolute inset-0 z-0 hidden lg:flex justify-end pointer-events-none">
-          <img
-            src={settings?.banner?.url || "/images/kundali-matching.webp"}
-            alt="Kundali Matching"
-            className="h-full lg:w-[52%] object-cover object-center mix-blend-multiply opacity-95 lg:translate-x-8"
-            style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 25%, black 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 25%, black 100%)' }}
-          />
+      <section className="relative w-full pt-10 pb-20 overflow-hidden bg-[#7a4b3a]">
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0 bg-[#4c2918]">
+          {settings?.banner?.url && (settings.banner.url.endsWith('.mp4') || settings.banner.url.endsWith('.webm') || settings.banner.url.endsWith('.mov')) ? (
+            <video autoPlay loop muted playsInline className="w-full h-full object-cover object-center opacity-100">
+              <source src={settings.banner.url} type="video/mp4" />
+            </video>
+          ) : settings?.banner?.url ? (
+            <img src={settings.banner.url} alt="Kundali Matching" className="w-full h-full object-cover object-center opacity-100" />
+          ) : (
+            <video autoPlay loop muted playsInline className="w-full h-full object-cover object-center opacity-100">
+              <source src="/smart%20kundali.mp4" type="video/mp4" />
+            </video>
+          )}
+          {/* Gradient dark overlay for perfect text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/10 pointer-events-none"></div>
         </div>
 
-        <div className="relative z-20 w-full px-5 md:px-10 mx-auto max-w-[1300px] flex-shrink-0 md:-mt-8 lg:-mt-12">
-          <div className="max-w-[650px] lg:max-w-[750px]">
-            <div className="inline-block bg-[#f6e2c8] text-[#8a4410] text-[10px] md:text-xs font-bold px-3 py-1.5 rounded-full mb-4 md:mb-5 shadow-sm uppercase tracking-wider">
-              What Is Kundali Matching?
-            </div>
-            <h1 className="premium-serif font-bold text-[#5c1420] text-[32px] sm:text-[40px] lg:text-[52px] leading-[1.2] mb-4 md:mb-6 relative z-10 whitespace-normal">
-              More Than Love — It's Alignment of Two Destinies
-            </h1>
-            <p className="text-[15.5px] sm:text-[17px] md:text-[19px] text-[#412a1e] font-medium leading-[1.6] mb-6 md:mb-8 max-w-[560px]">
-              Marriage is not just a union of two people — it's a merging of energies, karmas, and life paths. Our Kundali Matching Report helps you see what truly lies ahead in a relationship, beyond appearances or emotions. This matching kundali insight can help you better understand compatibility and alignment. Whether it's an arranged match or a love relationship, this report is designed for those who want to make informed, mindful decisions about their future partner.
-            </p>
+        <div className="relative z-10 max-w-[1200px] mx-auto px-4 text-center mt-2">
+          <h1 className="text-[36px] md:text-[50px] lg:text-[60px] font-bold mb-3 font-serif leading-tight text-white drop-shadow-md">More Than Love — It's Alignment of Two Destinies</h1>
+          <p className="text-[17px] md:text-[20px] text-white/100 mb-6 max-w-2xl mx-auto font-semibold drop-shadow-sm">Premium Kundali Matching Report by India's Most Trusted Astrologer</p>
 
-            <div className="flex items-center gap-3 md:gap-4 mb-6 md:mb-7 flex-wrap">
-              <div className="flex items-baseline gap-2 md:gap-3">
-                <span className="premium-serif text-[36px] md:text-[42px] font-bold text-[#5c1420]">₹{settings?.discountedPrice || 649}</span>
-                {settings?.price > 0 && <span className="text-[16px] md:text-[18px] text-[#8a4410] opacity-70 line-through">₹{settings.price}</span>}
-              </div>
-              {settings?.price > 0 && settings?.discountedPrice > 0 && (
-                <span className="text-[10px] md:text-[11.5px] border border-[#d97706] text-[#d97706] px-2 md:px-3 py-1 font-bold tracking-wider uppercase bg-[#d97706]/10 rounded">
-                  SAVE {Math.round(((settings.price - settings.discountedPrice) / settings.price) * 100)}%
-                </span>
-              )}
-            </div>
+          <Link href="/report/kundali/kundali-matching/checkout" className="inline-block bg-white text-[#b06126] font-bold text-[16px] md:text-[18px] px-10 py-3.5 md:py-4 rounded-xl shadow-lg hover:scale-105 transition-transform mb-6">
+            Get Your Matching Report @ <span className="line-through text-[#3a1216] mx-1">₹{settings?.price || 1299}</span> ₹{settings?.discountedPrice || 649}
+          </Link>
 
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
-              <a href="#order-form" className="inline-flex justify-center items-center gap-2 bg-[#8a1c2a] text-white font-semibold text-[15.5px] px-8 py-3.5 md:py-4 rounded-xl shadow-md hover:bg-[#721522] transition-colors w-full sm:w-auto">
-                Book Now <ArrowRight className="w-4 h-4" />
-              </a>
-              <a href="#faqSection" className="inline-flex justify-center items-center gap-2 bg-white/90 backdrop-blur-sm text-[#8a1c2a] border-[1.5px] border-[#8a1c2a] font-semibold text-[15.5px] px-8 py-3.5 md:py-4 rounded-xl shadow-sm hover:bg-white transition-colors w-full sm:w-auto">
-                Read FAQs
-              </a>
+          {/* Happy Customers Avatars */}
+          <div className="flex items-center justify-center gap-3">
+            <div className="flex -space-x-3">
+              <img className="w-8 h-8 rounded-full border-2 border-[#4c2918] object-cover" src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" />
+              <img className="w-8 h-8 rounded-full border-2 border-[#4c2918] object-cover" src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" />
+              <img className="w-8 h-8 rounded-full border-2 border-[#4c2918] object-cover" src="https://randomuser.me/api/portraits/women/68.jpg" alt="User" />
+              <img className="w-8 h-8 rounded-full border-2 border-[#4c2918] object-cover" src="https://randomuser.me/api/portraits/men/46.jpg" alt="User" />
+            </div>
+            <span className="text-white text-[13px] font-bold tracking-wide drop-shadow-sm">10 Lakh+ Happy Couples</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ OVERLAPPING CARDS (MINIMAL/FLAT) ============ */}
+      <div className="max-w-[1200px] mx-auto px-4 relative z-20 -mt-10 mb-16">
+        <div className="flex flex-wrap gap-4 justify-center">
+
+          <div className="bg-white rounded-[14px] shadow-sm px-5 py-3 lg:py-3.5 flex items-center gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+              <rect x="2" y="2" width="20" height="20" stroke="#f97316" strokeWidth="1.5" />
+              <circle cx="12" cy="12" r="6" stroke="#ef4444" strokeWidth="1.5" />
+              <path d="M12 2L12 22M2 12L22 12" stroke="#f97316" strokeWidth="1.5" />
+              <circle cx="12" cy="12" r="2" fill="#ef4444" />
+            </svg>
+            <span className="text-[#5c1a1f] font-bold text-[14.5px]">Ashtakoota Milan</span>
+          </div>
+
+          <div className="bg-white rounded-[14px] shadow-sm px-5 py-3 lg:py-3.5 flex items-center gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+              <path d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12" stroke="#ec4899" strokeWidth="2" strokeLinecap="round" />
+              <circle cx="12" cy="17" r="2" fill="#ec4899" />
+              <circle cx="12" cy="8" r="3" stroke="#f472b6" strokeWidth="1.5" />
+              <path d="M7 10C7 7 9 5 12 5C15 5 17 7 17 10" stroke="#f472b6" strokeWidth="1.5" />
+              <path d="M5 14L8 12M19 14L16 12" stroke="#ec4899" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+            <span className="text-[#5c1a1f] font-bold text-[14.5px]">Manglik Dosha Check</span>
+          </div>
+
+          <div className="bg-white rounded-[14px] shadow-sm px-5 py-3 lg:py-3.5 flex items-center gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+              <path d="M6 6V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V6" stroke="#f59e0b" strokeWidth="1.5" />
+              <path d="M6 6C6 4.89543 6.89543 4 8 4H16C17.1046 4 18 4.89543 18 6" fill="#fcd34d" stroke="#f59e0b" strokeWidth="1.5" />
+              <path d="M9 10H15M9 14H13" stroke="#f59e0b" strokeWidth="1.5" strokeLinecap="round" />
+              <circle cx="12" cy="6" r="1.5" fill="#b45309" />
+            </svg>
+            <span className="text-[#5c1a1f] font-bold text-[14.5px]">Detailed Remedies</span>
+          </div>
+
+          <div className="bg-white rounded-[14px] shadow-sm px-5 py-3 lg:py-3.5 flex items-center gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+              <circle cx="12" cy="10" r="7" fill="#e9d5ff" stroke="#a855f7" strokeWidth="1.5" />
+              <path d="M8 20H16" stroke="#a855f7" strokeWidth="2" strokeLinecap="round" />
+              <path d="M10 17L9 20M14 17L15 20" stroke="#a855f7" strokeWidth="1.5" strokeLinecap="round" />
+              <path d="M11 7L12 8M13 11L14 10" stroke="#a855f7" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+            <span className="text-[#5c1a1f] font-bold text-[14.5px]">Financial Alignment</span>
+          </div>
+
+          <div className="bg-white rounded-[14px] shadow-sm px-5 py-3 lg:py-3.5 flex items-center gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+              <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" />
+              <circle cx="12" cy="12" r="4" fill="#fcd34d" stroke="#f59e0b" strokeWidth="1.5" />
+              <circle cx="19" cy="9" r="1.5" fill="#3b82f6" />
+              <circle cx="4" cy="16" r="2" fill="#ef4444" />
+            </svg>
+            <span className="text-[#5c1a1f] font-bold text-[14.5px]">Mutual Harmony</span>
+          </div>
+
+        </div>
+      </div>
+
+      {/* ============ EVERYTHING YOU NEED ============ */}
+      <section className="pb-12 md:pb-16 bg-[#fdfaf6]">
+        <div className="max-w-[1000px] mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
+
+          {/* Astrologer Profile */}
+          <div className="flex flex-col items-center shrink-0">
+            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-[4px] border-white shadow-md mb-2 bg-white flex items-center justify-center">
+              <img src="/vaidiktalklogo.webp" alt="Vaidik Talk" className="w-[85%] h-[85%] object-contain" onError={(e) => { e.currentTarget.src = 'https://ui-avatars.com/api/?name=Vaidik+Talk&background=fff&color=1e293b&size=200' }} />
+            </div>
+            <span className="font-bold text-[#1a1a1a] text-[14px]">Vaidik Talk</span>
+          </div>
+
+          {/* Content & Tags */}
+          <div className="text-center md:text-left flex-1">
+            <h2 className="text-[22px] md:text-[26px] font-bold text-[#6b3112] mb-1">Everything You Need For A Happy Union</h2>
+            <p className="text-[14px] md:text-[15px] text-[#6b3112]/80 font-medium mb-4">Deep insights into compatibility beyond just a 36-point score.</p>
+
+            <div className="flex flex-wrap justify-center md:justify-start gap-2.5">
+              {[
+                { label: 'Marriage', icon: Heart },
+                { label: 'Doshas', icon: ShieldCheck },
+                { label: 'Remedies', icon: Flower2 },
+                { label: 'Longevity', icon: Plus },
+                { label: 'Prosperity', icon: Star },
+                { label: 'Understanding', icon: BookOpen },
+                { label: 'Varna', icon: Briefcase },
+                { label: 'Nadi Check', icon: Activity },
+                { label: 'Mutual Trust', icon: CheckCircle2 },
+              ].map((item, i) => (
+                <div key={i} className="bg-[#f26522] text-white px-4 py-1.5 rounded-full font-bold text-[13px] flex items-center gap-1.5 shadow-sm">
+                  <item.icon className="w-3.5 h-3.5" strokeWidth={2.5} />
+                  {item.label}
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="block lg:hidden mt-12 mb-4">
-            <img
-              src="/images/kundali-matching.webp"
-              alt="Kundali Matching"
-              className="w-full max-w-[500px] mx-auto h-auto object-contain drop-shadow-xl rounded-2xl"
+        </div>
+      </section>
+
+      {/* ============ SECTION 2: BOOK MOCKUP ============ */}
+      <section className="py-12 md:py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12 md:gap-20">
+          <div className="md:w-1/2 flex justify-center order-2 md:order-1">
+            <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} alt="Premium Kundali Matching" className="w-full max-w-[470px] rounded-xl mix-blend-multiply" onError={(e) => { e.currentTarget.src = 'https://placehold.co/400x550/f8f9fa/5c3a21?text=Kundali+Mockup' }} />
+          </div>
+          <div className="md:w-1/2 order-1 md:order-2">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#5c1a1f] mb-3">Premium Kundali Matching Report</h2>
+
+            <p className="text-[#5c1a1f] text-[15px] leading-relaxed mb-6 font-medium">
+              A comprehensive compatibility analysis focusing on the 8 Kootas, Manglik dosha presence, planetary friendships, and karmic alignment for a successful marriage.
+            </p>
+
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-8">
+              <li className="flex items-start gap-2.5 text-[#5c1a1f] text-[14px] font-bold">
+                <Check className="text-[#d68636] w-4 h-4 shrink-0 mt-0.5" strokeWidth={3} /> Detailed Gun Milan
+              </li>
+              <li className="flex items-start gap-2.5 text-[#5c1a1f] text-[14px] font-bold">
+                <Check className="text-[#d68636] w-4 h-4 shrink-0 mt-0.5" strokeWidth={3} /> In-depth Dosha Analysis
+              </li>
+              <li className="flex items-start gap-2.5 text-[#5c1a1f] text-[14px] font-bold">
+                <Check className="text-[#d68636] w-4 h-4 shrink-0 mt-0.5" strokeWidth={3} /> Financial Compatibility
+              </li>
+              <li className="flex items-start gap-2.5 text-[#5c1a1f] text-[14px] font-bold">
+                <Check className="text-[#d68636] w-4 h-4 shrink-0 mt-0.5" strokeWidth={3} /> Practical Remedies
+              </li>
+              <li className="flex items-start gap-2.5 text-[#5c1a1f] text-[14px] font-bold sm:col-span-2">
+                <Check className="text-[#d68636] w-4 h-4 shrink-0 mt-0.5" strokeWidth={3} /> Available in English, Hindi & More.
+              </li>
+            </ul>
+
+            <div className="flex items-center gap-3 mb-8">
+              <span className="text-[32px] md:text-[40px] font-bold text-[#5c1a1f]">₹{settings?.discountedPrice || 649}</span>
+              <span className="text-lg text-[#3a1216] line-through font-medium">₹{settings?.price || 1299}</span>
+              <span className="bg-[#e8ffd6] text-[#2e7d32] text-[11px] font-bold px-2 py-1 rounded border border-[#a5d6a7] uppercase tracking-wide ml-2">SPECIAL</span>
+            </div>
+
+            <Link href="/report/kundali/kundali-matching/checkout" className="inline-block bg-[#d68636] text-white font-bold text-[16px] px-10 py-4 rounded-lg shadow-lg hover:bg-[#b06126] transition-colors w-full md:w-auto text-center">
+              Get Your Matching Report →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ STATS ROW ============ */}
+      <section className="border-y border-[#ebdcc7] py-10 bg-[#fdfaf6]">
+        <div className="max-w-5xl mx-auto px-4 flex flex-wrap justify-center md:justify-between items-center text-center gap-8 md:gap-4">
+          <div className="flex flex-col items-center">
+            <div className="flex items-center gap-2 text-[22px] md:text-[26px] font-bold text-[#b07d54] mb-1">
+              <ShieldCheck className="w-6 h-6" /> 10 Lakh+
+            </div>
+            <div className="text-[12px] text-gray-850 font-bold uppercase tracking-wider">Couples Guided</div>
+          </div>
+          <div className="hidden md:block w-px h-12 bg-[#ebdcc7]"></div>
+          <div className="flex flex-col items-center">
+            <div className="flex items-center gap-2 text-[22px] md:text-[26px] font-bold text-[#b07d54] mb-1">
+              <BookOpen className="w-6 h-6" /> 50+ Pages
+            </div>
+            <div className="text-[12px] text-gray-850 font-bold uppercase tracking-wider">Detailed Analysis</div>
+          </div>
+          <div className="hidden md:block w-px h-12 bg-[#ebdcc7]"></div>
+          <div className="flex flex-col items-center">
+            <div className="flex items-center gap-2 text-[22px] md:text-[26px] font-bold text-[#b07d54] mb-1">
+              <Star className="w-6 h-6 fill-current" /> 4.9/5
+            </div>
+            <div className="text-[12px] text-gray-850 font-bold uppercase tracking-wider">Average Rating</div>
+          </div>
+          <div className="hidden md:block w-px h-12 bg-[#ebdcc7]"></div>
+          <div className="flex flex-col items-center">
+            <div className="flex items-center gap-2 text-[22px] md:text-[26px] font-bold text-[#b07d54] mb-1">
+              <Heart className="w-6 h-6" /> Vedic
+            </div>
+            <div className="text-[12px] text-gray-850 font-bold uppercase tracking-wider">Authentic Method</div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ WHAT IT REVEALS ============ */}
+      <section className="py-16 md:py-24 bg-[#fdfaf6]">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12 lg:gap-16">
+          <div className="md:w-[45%] lg:w-[40%] xl:-ml-6">
+            <video
+              src={settings?.video?.url || "/vaidik video.mp4"}
+              autoPlay loop muted playsInline
+              className="w-full rounded-[2rem] shadow-lg object-cover aspect-square md:aspect-[4/4.5]"
             />
           </div>
-        </div>
-      </section>
+          <div className="md:w-[55%] lg:w-[60%] md:pl-6 lg:pl-10">
+            <h2 className="text-[28px] md:text-[32px] lg:text-[38px] xl:text-[42px] font-serif font-bold text-[#5c1a1f] mb-10 leading-tight xl:whitespace-nowrap">What Your Matching Report Reveals</h2>
 
-      {/* ============ INTRO ============ */}
-      <section className="py-16 md:py-24 bg-transparent">
-        <div className="max-w-[1140px] mx-auto px-6 flex flex-col md:flex-row gap-6 md:gap-12 items-start">
-          <div className="premium-serif text-[70px] md:text-[100px] leading-none font-bold text-[#d4af37] opacity-30 flex-shrink-0 md:w-[140px]">
-            01
-          </div>
-          <div className="flex-1">
-            <h2 className="premium-serif text-[26px] md:text-[36px] font-bold text-[#5c1a1f] mb-4 md:mb-6">
-              What Is Kundali Matching?
-            </h2>
-            <div className="space-y-4 text-gray-850 text-[15.5px] md:text-[17px] leading-relaxed">
-              <p>
-                The traditional process of Kundali matching serves as a required assessment method which helps determine whether two people will enter into a marriage relationship. The compatibility assessment process uses established methods to assess different astrological factors which affect relationship harmony and partner temperament through conducting detailed compatibility assessments.
-              </p>
-              <p>
-                Kundali provides a systematic framework which enables researchers to study compatibility before important life decisions are made. The method is used to identify how two people communicate, understand emotions and work together. The process reveals personality traits through birth planetary position analysis which shows how people will interact with each other throughout their lives.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ REPORT SECTIONS (Overview through Access Instructions) ============ */}
-      <section className="py-16 md:py-24 bg-[#fffdf8] border-y border-[#ebdcc7]">
-        <Kicker text="Understanding The Report" />
-        <SectionHeading title="How Kundali Matching Works" />
-        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-start">
-            {reportSections.map((section, i) => (
-              <div
-                key={i}
-                className={`group bg-white rounded-2xl border border-[#ebdcc7] p-6 md:p-8 hover:shadow-[0_15px_40px_rgba(0,0,0,0.06)] hover:border-[#d4af37] transition-all duration-300 relative overflow-hidden flex flex-col h-full ${i === reportSections.length - 1 ? 'lg:col-span-2' : ''}`}
-              >
-                {/* Decorative background element on hover */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#fffdf8] to-transparent border-l border-b border-[#ebdcc7]/30 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-
-                <div className="flex gap-4 md:gap-5 mb-5 md:mb-6 relative z-10">
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#fffdf8] border border-[#d4af37] text-[#8a1c2a] flex items-center justify-center font-bold text-[16px] md:text-[18px] premium-serif shadow-sm shrink-0 group-hover:bg-[#8a1c2a] group-hover:text-white transition-colors duration-300">
-                    {String(i + 1).padStart(2, '0')}
-                  </div>
-                  <h3 className="text-[18px] md:text-[22px] font-bold text-[#5c1a1f] leading-tight pt-1 md:pt-2">{section.heading}</h3>
+            <div className="space-y-6 mb-12">
+              {[
+                { t: 'Gun Milan & Ashtakoota Score Breakdown' },
+                { t: 'Manglik, Nadi, & Bhakut Dosha Check' },
+                { t: 'Emotional, Physical & Spiritual Harmony' },
+                { t: 'Financial Luck After Marriage' },
+                { t: 'Behavioral Traits & Compatibility' },
+                { t: 'Remedies for a Peaceful & Happy Union' }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4 items-center">
+                  <Check className="text-[#b06126] w-5 h-5 shrink-0" strokeWidth={3} />
+                  <h4 className="font-medium text-[#5c1a1f] text-[16px] md:text-[18px]">{item.t}</h4>
                 </div>
-
-                <div className="relative z-10">
-                  <ContentBlocks blocks={section.blocks} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ HOW IT WORKS (PROCESS) ============ */}
-      <section className="py-16 md:py-24">
-        <Kicker text="Process" />
-        <SectionHeading title="How it works" />
-        <div className="max-w-[1140px] mx-auto px-6 mt-8 md:mt-12">
-          <div className="relative grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 md:gap-4">
-            <div className="hidden md:block absolute top-[28px] left-[10%] right-[10%] h-[1px] bg-[#ebdcc7] z-0"></div>
-            {[
-              { step: 1, title: 'Fill the Form', desc: 'Submit all the required details carefully through the online form.' },
-              { step: 2, title: 'Make Payment', desc: 'Complete payment securely using our trusted payment gateway.' },
-              { step: 3, title: 'Receive Report', desc: 'Your handwritten Kundali is prepared and delivered to you.' },
-              { step: 4, title: 'Implement Remedies', desc: 'Follow the suggested remedies for positive life transformation.' },
-            ].map((item, i) => (
-              <div key={i} className="text-center relative z-10">
-                <div className="premium-serif w-[45px] h-[45px] md:w-[60px] md:h-[60px] rounded-full bg-[#fffdf8] border-[2px] border-[#761e27] text-[#761e27] flex items-center justify-center mx-auto mb-3 md:mb-5 text-[18px] md:text-[24px] font-bold shadow-sm">
-                  {item.step}
-                </div>
-                <h4 className="text-[15.5px] md:text-[18px] font-bold text-[#5c1a1f] mb-1.5 md:mb-3">{item.title}</h4>
-                <p className="text-gray-850 text-[13.5px] md:text-[15px] max-w-[220px] mx-auto leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ FORM SHELL ============ */}
-      <section className="py-16 md:py-24 bg-[#fffdf8] border-y border-[#ebdcc7]" id="order-form">
-        <div className="max-w-[1140px] mx-auto px-4 md:px-6">
-          <div className="bg-white max-w-[900px] mx-auto p-6 md:p-12 border border-[#ebdcc7] border-t-[4px] border-t-[#d4af37] shadow-[0_10px_40px_rgba(0,0,0,0.05)] rounded-lg">
-            <Kicker text="Get Started" />
-            <h2 className="premium-serif text-center text-[28px] md:text-[34px] font-bold text-[#5c1a1f] mb-2 md:mb-3 leading-tight">Enter Both Partners' Details</h2>
-            <p className="text-center text-gray-850 text-[15px] md:text-[16px] mb-8 md:mb-12">Kindly provide accurate information for more precise calculations.</p>
-
-            <form onSubmit={handleKundaliMatchSubmit} className="space-y-12">
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <User className="w-5 h-5 text-[#8a1c2a]" />
-                  <h3 className="text-[18px] md:text-[20px] font-bold text-[#5c1a1f]">Enter Boy's Details</h3>
-                </div>
-                <PersonFormFields data={boyData} onChange={handleBoyChange} prefix="boy" />
-              </div>
-
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <User className="w-5 h-5 text-[#8a1c2a]" />
-                  <h3 className="text-[18px] md:text-[20px] font-bold text-[#5c1a1f]">Enter Girl's Details</h3>
-                </div>
-                <PersonFormFields data={girlData} onChange={handleGirlChange} prefix="girl" />
-              </div>
-
-              <div className="flex flex-col gap-2 max-w-[320px]">
-                <label className="text-[12px] font-bold text-[#3a1216] tracking-[0.5px] uppercase">Report Language *</label>
-                <input required type="text" name="language" value={language} onChange={(e) => setLanguage(e.target.value)} className="w-full border-b-[1.5px] border-[#ebdcc7] py-2.5 px-1 bg-transparent outline-none focus:border-[#761e27] text-[15px] transition-colors" placeholder="Report Language" />
-              </div>
-
-              <div>
-                <button type="submit" disabled={isProcessing} className="w-full bg-[#d4af37] hover:bg-[#c29f2f] text-[#3a1216] font-bold text-[17px] py-4 rounded-md transition-colors shadow-sm disabled:opacity-70 disabled:cursor-not-allowed">
-                  {isProcessing ? 'Processing...' : `Submit & Proceed to Payment — ₹${settings?.discountedPrice || 499}`}
-                </button>
-                <p className="text-center text-[13.5px] text-gray-850 mt-5">
-                  Your details are used only to prepare your Kundali Matching report and are kept confidential.
-                </p>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ COMPARISON ============ */}
-      <section className="py-16 md:py-24">
-        <Kicker text="The Difference" />
-        <SectionHeading title="Why VaidikTalk Kundali Matching Is More Accurate?" />
-        <div className="max-w-[1140px] mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-[#ebdcc7]">
-
-            <div className="bg-[#fffdf8]">
-              <div className="p-6 md:p-8 border-b border-[#ebdcc7]">
-                <strong className="premium-serif block text-[22px] md:text-[24px] font-bold text-[#5c1a1f] mb-1">Old Matching</strong>
-                <span className="text-[13px] md:text-[14px] text-gray-850">Problems With Free Kundali Matching Tools</span>
-              </div>
-              <ul className="p-6 md:p-8 space-y-4 md:space-y-5">
-                {[
-                  'Only Basic Gun Milan (36 Points)',
-                  'No Manglik Dosha Analysis',
-                  'Ignores Planetary Strength',
-                  'No Remedies for Low Score'
-                ].map((item, i) => (
-                  <li key={i} className="flex gap-3 md:gap-4 text-[15px] md:text-[16px] text-gray-850 items-start">
-                    <X className="w-4 h-4 md:w-5 md:h-5 text-red-700 flex-shrink-0 mt-0.5 md:mt-1" />
-                    <span className="leading-snug">{item}</span>
-                  </li>
-                ))}
-              </ul>
+              ))}
             </div>
 
-            <div className="bg-white border-t md:border-t-0 md:border-l border-[#ebdcc7]">
-              <div className="p-6 md:p-8 border-b border-[#ebdcc7] bg-[#5c1a1f]">
-                <strong className="premium-serif block text-[22px] md:text-[24px] font-bold text-[#d4af37] mb-1">VaidikTalk Matching</strong>
-                <span className="text-[13px] md:text-[14px] text-[#e8d8c0]">VaidikTalk's Kundali Matching Report</span>
-              </div>
-              <ul className="p-6 md:p-8 space-y-4 md:space-y-5">
-                {[
-                  'Detailed Compatibility Check',
-                  'Manglik, Nadi, Bhakut & Dasha Matching',
-                  'Remedies For Low Compatibility',
-                  'Guidance From Expert Astrologers'
-                ].map((item, i) => (
-                  <li key={i} className="flex gap-3 md:gap-4 text-[15px] md:text-[16px] text-gray-850 font-medium items-start">
-                    <Check className="w-4 h-4 md:w-5 md:h-5 text-green-700 flex-shrink-0 mt-0.5 md:mt-1" />
-                    <span className="leading-snug">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ============ WHY CHOOSE + HARMONIOUS UNION ============ */}
-      <section className="py-16 md:py-24 bg-[#fffdf8] border-y border-[#ebdcc7]">
-        <Kicker text="Good to Know" />
-        <SectionHeading title="Trusted guidance for a lasting union" />
-        <div className="max-w-[1140px] mx-auto px-6">
-          <div className="flex flex-col md:flex-row gap-[1px] bg-[#ebdcc7] border border-[#ebdcc7]">
-
-            <div className="flex-1 bg-white p-6 md:p-10">
-              <Sparkles className="w-7 h-7 md:w-8 md:h-8 text-[#d4af37] mb-4 md:mb-5" strokeWidth={1.5} />
-              <h3 className="text-[18px] md:text-[20px] font-bold text-[#5c1a1f] mb-3 md:mb-4">💖 Why Choose VaidikTalk's Kundali Matching Report?</h3>
-              <ul className="space-y-2 md:space-y-3 text-gray-850 text-[15px] md:text-[16px]">
-                <li className="relative pl-5 md:pl-6 before:content-['—'] before:absolute before:left-0 before:text-[#d4af37] leading-relaxed">In-depth compatibility analysis based on traditional Vedic astrology</li>
-                <li className="relative pl-5 md:pl-6 before:content-['—'] before:absolute before:left-0 before:text-[#d4af37] leading-relaxed">Detailed matching of Guna Milan, Manglik Dosha, and planetary alignments</li>
-                <li className="relative pl-5 md:pl-6 before:content-['—'] before:absolute before:left-0 before:text-[#d4af37] leading-relaxed">Personalized insights tailored to both partners' birth charts</li>
-                <li className="relative pl-5 md:pl-6 before:content-['—'] before:absolute before:left-0 before:text-[#d4af37] leading-relaxed">Clear, easy-to-understand format with expert explanations</li>
-                <li className="relative pl-5 md:pl-6 before:content-['—'] before:absolute before:left-0 before:text-[#d4af37] leading-relaxed">Trusted by couples and families for accurate marital guidance</li>
-              </ul>
-            </div>
-
-            <div className="flex-1 bg-white p-6 md:p-10">
-              <Heart className="w-7 h-7 md:w-8 md:h-8 text-[#d4af37] mb-4 md:mb-5" strokeWidth={1.5} />
-              <h3 className="text-[18px] md:text-[20px] font-bold text-[#5c1a1f] mb-2 md:mb-3">🔮 Ensure a Harmonious and Happy Union</h3>
-              <p className="text-gray-850 text-[15px] md:text-[16px] leading-relaxed mb-3">
-                Marriage is a sacred bond, and aligning astrological energies ensures a smoother journey together. With our Kundali Matching Report, you gain deeper insights into emotional, physical, and spiritual compatibility—helping you make informed decisions.
-              </p>
-              <p className="text-gray-850 text-[15px] md:text-[16px] leading-relaxed">
-                Choose VaidikTalk's Kundali Matching Report for guidance that's rooted in tradition and refined by expert astrologers. Begin your marital journey with clarity, confidence, and cosmic support.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-
-      {/* ============ SAMPLE REPORT PREVIEW & MOCKUPS ============ */}
-      <section className="py-16 md:py-24 bg-white">
-        <Kicker text="Report Preview" />
-        <SectionHeading title="See what you're getting" sub="Explore a sample of the report before you purchase. Available beautifully on all your devices." />
-
-        <div className="max-w-[1140px] mx-auto px-6 mt-8 md:mt-12">
-
-          {/* Mockups Row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
-            <div onClick={() => samplePdf?.url && window.open(samplePdf.url, '_blank')} className={`bg-[#fffdf8] border border-[#ebdcc7] rounded-xl p-6 text-center shadow-sm flex flex-col items-center transition-all group ${samplePdf?.url ? 'cursor-pointer hover:border-[#5c1a1f] hover:shadow-md hover:-translate-y-1' : ''}`}>
-              <div className="w-16 h-16 rounded-full bg-[#5c1a1f]/5 flex items-center justify-center mb-4 group-hover:bg-[#5c1a1f]/10 transition-colors">
-                <FileText className="w-8 h-8 text-[#5c1a1f]" />
-              </div>
-              <h3 className="font-bold text-[#5c1a1f] text-lg mb-2">PDF Format</h3>
-              <p className="text-sm text-gray-850 mb-6">Download a high-quality PDF ready for print.</p>
-              <div className="relative w-full mb-4 flex-1">
-                <img src={settings?.mockups?.pdf || "/images/kundali-pdf-mockup.webp"} alt="PDF Preview" className="w-full max-w-[200px] h-auto mx-auto rounded drop-shadow-md bg-gray-100 min-h-[150px] object-cover group-hover:scale-105 transition-transform duration-300" onError={(e) => { e.currentTarget.src = 'https://placehold.co/400x500/f8f9fa/333333?text=PDF+Preview' }} />
-              </div>
-              {samplePdf?.url ? (
-                <div className="bg-[#5c1a1f] text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg group-hover:bg-[#761e27] transition-colors flex items-center justify-center gap-2 mt-auto w-full max-w-[200px] mx-auto">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                  View Sample PDF
-                </div>
-              ) : (
-                <div className="mt-auto opacity-50 bg-gray-200 text-gray-850 px-6 py-2.5 rounded-full text-sm font-bold flex items-center justify-center gap-2 cursor-not-allowed w-full max-w-[200px] mx-auto">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                  View Sample PDF
-                </div>
-              )}
-            </div>
-
-            <div onClick={() => samplePdf?.url && window.open(samplePdf.url, '_blank')} className={`bg-[#fffdf8] border border-[#ebdcc7] rounded-xl p-6 text-center shadow-sm flex flex-col items-center transition-all group ${samplePdf?.url ? 'cursor-pointer hover:border-[#5c1a1f] hover:shadow-md hover:-translate-y-1' : ''}`}>
-              <div className="w-16 h-16 rounded-full bg-[#5c1a1f]/5 flex items-center justify-center mb-4 group-hover:bg-[#5c1a1f]/10 transition-colors">
-                <svg className="w-8 h-8 text-[#5c1a1f]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
-              </div>
-              <h3 className="font-bold text-[#5c1a1f] text-lg mb-2">Mobile View</h3>
-              <p className="text-sm text-gray-850 mb-6">Read your report seamlessly on any smartphone.</p>
-              <img src={settings?.mockups?.mobile || "/images/kundali-mobile-mockup.webp"} alt="Mobile Preview" className="w-full max-w-[150px] h-auto mx-auto rounded-3xl drop-shadow-lg border-[4px] border-gray-800 bg-gray-100 min-h-[250px] object-cover group-hover:scale-105 transition-transform duration-300" onError={(e) => { e.currentTarget.src = 'https://placehold.co/300x600/f8f9fa/333333?text=Mobile+View' }} />
-            </div>
-
-            <div onClick={() => samplePdf?.url && window.open(samplePdf.url, '_blank')} className={`bg-[#fffdf8] border border-[#ebdcc7] rounded-xl p-6 text-center shadow-sm flex flex-col items-center transition-all group ${samplePdf?.url ? 'cursor-pointer hover:border-[#5c1a1f] hover:shadow-md hover:-translate-y-1' : ''}`}>
-              <div className="w-16 h-16 rounded-full bg-[#5c1a1f]/5 flex items-center justify-center mb-4 group-hover:bg-[#5c1a1f]/10 transition-colors">
-                <svg className="w-8 h-8 text-[#5c1a1f]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-              </div>
-              <h3 className="font-bold text-[#5c1a1f] text-lg mb-2">Desktop View</h3>
-              <p className="text-sm text-gray-850 mb-6">Explore interactive charts on the web portal.</p>
-              <img src={settings?.mockups?.desktop || "/images/kundali-desktop-mockup.webp"} alt="Desktop Preview" className="w-full max-w-[280px] h-auto mx-auto rounded-lg drop-shadow-md border-2 border-gray-200 bg-gray-100 min-h-[160px] object-cover group-hover:scale-105 transition-transform duration-300" onError={(e) => { e.currentTarget.src = 'https://placehold.co/600x400/f8f9fa/333333?text=Desktop+View' }} />
-            </div>
-          </div>
-
-          {/* Video Section */}
-          <div className="bg-[#5c1a1f] rounded-2xl overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center mb-16">
-            <div className="p-8 md:p-12 lg:w-1/2">
-              <h3 className="premium-serif text-3xl font-bold text-[#d4af37] mb-4">Watch Sample Report</h3>
-              <p className="text-white/80 text-[15px] mb-8 leading-relaxed">Take a quick 30-second tour of what exactly you will receive. See the level of detail, the planetary charts, and the predictive breakdowns.</p>
-              {video.url ? (
-                <button onClick={() => setIsPlaying(true)} className="inline-flex items-center gap-3 bg-[#d4af37] text-[#3a1216] px-6 py-3 rounded-full font-bold hover:bg-white transition-colors">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg> Play Video
-                </button>
-              ) : (
-                <button className="flex items-center gap-3 bg-[#d4af37] text-[#3a1216] px-6 py-3 rounded-full font-bold hover:bg-white transition-colors cursor-not-allowed">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg> Play Video
-                </button>
-              )}
-            </div>
-            <div className="lg:w-1/2 w-full aspect-video bg-black relative group cursor-pointer" onClick={() => video.url && setIsPlaying(true)}>
-              {isPlaying && video.url && getYoutubeVideoId(video.url) ? (
-                <iframe
-                  className="absolute inset-0 w-full h-full"
-                  src={`https://www.youtube.com/embed/${getYoutubeVideoId(video.url)}?autoplay=1`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              ) : (
-                <>
-                  <img src={video.thumbnail && video.thumbnail !== '/images/kundali-video-thumb.jpg' ? video.thumbnail : (getYoutubeVideoId(video.url) ? `https://img.youtube.com/vi/${getYoutubeVideoId(video.url)}/hqdefault.jpg` : (video.thumbnail || undefined))} alt="Video Thumbnail" className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" onError={(e) => { e.currentTarget.src = 'https://placehold.co/800x450/1a1a1a/ffffff?text=Video+Thumbnail' }} />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <svg className="w-8 h-8 text-[#3a1216] ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>
-          </div>
-
-          {/* Screenshot Gallery */}
-          <SectionHeading title="A Glimpse Inside" sub="Swipe to view actual pages from the report." />
-          <div className={`flex overflow-x-auto gap-4 pb-8 snap-x scrollbar-hide items-center ${screenshots.filter((s: any) => s.url).length <= 3 ? 'justify-center' : 'justify-start md:px-4 px-2'}`}>
-            {screenshots.map((shot: any, idx: number) => (
-              <div key={idx} onClick={() => setLightboxImg(shot.url)} className="w-[80%] sm:w-[280px] md:w-[320px] h-[350px] md:h-[450px] flex-shrink-0 snap-center rounded-xl overflow-hidden shadow-md bg-white border border-[#ebdcc7] cursor-pointer group relative flex items-center justify-center p-2">
-                <div className="absolute inset-0 bg-[#5c1a1f]/0 group-hover:bg-[#5c1a1f]/5 transition-colors z-10 flex items-center justify-center pointer-events-none"><div className="opacity-0 group-hover:opacity-100 bg-[#5c1a1f] text-white p-3 rounded-full shadow-lg transform scale-75 group-hover:scale-100 transition-all duration-300"><svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg></div></div><img src={shot.url} alt={`Sample Page ${idx + 1}`} className="max-w-full max-h-full w-auto h-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 relative z-0" onError={(e) => { e.currentTarget.src = `https://placehold.co/400x550/f8f9fa/5c1a1f?text=Image+${idx + 1}` }} />
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* ============ TESTIMONIALS & TRUST ============ */}
-      <section className="py-16 md:py-24 bg-[#fffdf8] border-b border-[#ebdcc7]">
-        <div className="max-w-[1140px] mx-auto px-6">
-          <div className="text-center mb-12">
-            <p className="text-[#d97706] text-[11px] font-bold tracking-[0.2em] uppercase mb-4">Trusted by 68,000+ Users</p>
-            <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#1a0a0b] mb-4">Life-Changing Insights</h2>
-            <div className="flex items-center justify-center gap-2 flex-wrap">
-              <div className="flex">{[1, 2, 3, 4, 5].map(s => <span key={s} className="text-[#f59e0b] text-lg">★</span>)}</div>
-              <span className="text-[#111827] font-bold text-sm">4.8 out of 5</span>
-              <span className="text-[#D1D5DB] mx-1">|</span>
-              <span className="text-[#374151] text-sm">68,000+ Reports Delivered</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((t: any, idx: number) => (
-              <div key={idx} className="bg-white rounded-2xl p-7 border border-[#ebdcc7] flex flex-col hover:shadow-md transition-shadow">
-                <div className="flex justify-between items-start mb-5">
-                  <div className="flex gap-0.5">{[1, 2, 3, 4, 5].map(s => <span key={s} className="text-[#f59e0b] text-[15px]">★</span>)}</div>
-                </div>
-                <p className="text-[#374151] text-[13.5px] leading-[1.85] flex-grow mb-6">"{t.review}"</p>
-                <div className="flex items-center gap-3 pt-5 border-t border-[#ebdcc7]">
-                  <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-black shrink-0" style={{ backgroundColor: t.color }}>{t.initial}</div>
-                  <div className="flex-1">
-                    <p className="font-bold text-[#111827] text-[13px] leading-none mb-1">{t.name}</p>
-                    <p className="text-[#9CA3AF] text-[11px]">{t.city} · {t.date}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ FAQ ============ */}
-      <section className="py-16 md:py-24" id="faqSection">
-        <Kicker text="FAQs" />
-        <SectionHeading title="Kundali Matching FAQs" />
-        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-12 border-t border-[#ebdcc7] items-start">
-            <div className="flex flex-col">
-              {(settings?.faqs?.length ? settings.faqs : faqData).filter((_: any, i: number) => i % 2 === 0).map((faq: any, idx: number) => {
-                const i = idx * 2;
-                return (
-                  <div key={i} className="border-b border-[#ebdcc7]">
-                    <button
-                      onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                      className="w-full flex items-start md:items-center justify-between py-5 md:py-6 text-left font-bold text-[#5c1a1f] text-[15.5px] md:text-[17px] hover:text-[#761e27] transition-colors gap-4"
-                    >
-                      <span className="leading-snug">{faq.q}</span>
-                      <ChevronDown className={`w-5 h-5 text-[#d4af37] transition-transform duration-200 flex-shrink-0 mt-0.5 md:mt-0 ${openFaq === i ? 'rotate-180' : ''}`} />
-                    </button>
-                    <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-[1400px] pb-5 md:pb-6' : 'max-h-0'}`}>
-                      {faq.a ? (
-                        <div className="text-gray-850 text-[15px] md:text-[16px] leading-relaxed whitespace-pre-wrap">{faq.a}</div>
-                      ) : (
-                        <ContentBlocks blocks={faq.content} />
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="flex flex-col">
-              {(settings?.faqs?.length ? settings.faqs : faqData).filter((_: any, i: number) => i % 2 !== 0).map((faq: any, idx: number) => {
-                const i = idx * 2 + 1; // Original index for state
-                return (
-                  <div key={i} className="border-b border-[#ebdcc7]">
-                    <button
-                      onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                      className="w-full flex items-start md:items-center justify-between py-5 md:py-6 text-left font-bold text-[#5c1a1f] text-[15.5px] md:text-[17px] hover:text-[#761e27] transition-colors gap-4"
-                    >
-                      <span className="leading-snug">{faq.q}</span>
-                      <ChevronDown className={`w-5 h-5 text-[#d4af37] transition-transform duration-200 flex-shrink-0 mt-0.5 md:mt-0 ${openFaq === i ? 'rotate-180' : ''}`} />
-                    </button>
-                    <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-[1400px] pb-5 md:pb-6' : 'max-h-0'}`}>
-                      {faq.a ? (
-                        <div className="text-gray-850 text-[15px] md:text-[16px] leading-relaxed whitespace-pre-wrap">{faq.a}</div>
-                      ) : (
-                        <ContentBlocks blocks={faq.content} />
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ FINAL CTA ============ */}
-      <section className="py-16 md:py-24 relative overflow-hidden">
-        <div className="max-w-[900px] mx-auto px-4 md:px-6">
-          <div className="bg-[#fffdf8] border border-[#ebdcc7] shadow-[0_15px_40px_rgba(0,0,0,0.05)] rounded-2xl p-8 md:p-16 text-center relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-[4px] bg-[#d4af37]"></div>
-            <h2 className="premium-serif text-[28px] md:text-[42px] font-bold text-[#5c1a1f] mb-3 md:mb-4 leading-tight relative z-10">
-              Begin your marital journey<br />with clarity and confidence
-            </h2>
-            <p className="text-gray-850 text-[14.5px] md:text-[16px] mb-6 md:mb-8 relative z-10 max-w-[500px] mx-auto leading-relaxed">
-              Visit our website for expert Kundali matching services and assess marriage compatibility to optimize your future relationship development.
-            </p>
-            <a href="#order-form" className="inline-flex justify-center w-full sm:w-auto items-center gap-2 bg-[#d4af37] hover:bg-[#c29f2f] text-[#3a1216] font-bold text-[16px] md:text-[17px] px-8 md:px-10 py-4 rounded-md transition-colors shadow-md relative z-10">
-              Book Now @ ₹649 <ArrowRight className="w-5 h-5" />
+            <a href="/report/kundali/kundali-matching/checkout" className="inline-block bg-[#d68636] text-white font-bold text-[16px] px-10 py-4 rounded-xl shadow-md hover:bg-[#8c4d1e] transition-colors w-full md:w-auto text-center">
+              Get Your Matching Report →
             </a>
           </div>
         </div>
       </section>
 
-      {/* Lightbox Modal */}
-      {lightboxImg && (
-        <div
-          id="lightbox"
-          className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4 sm:p-8"
-          onClick={() => setLightboxImg(null)}
-        >
-          <button
-            className="absolute top-4 right-4 sm:top-8 sm:right-8 text-white bg-white/10 hover:bg-[#5c1a1f] rounded-full p-2 transition-colors z-[10000]"
-            onClick={() => setLightboxImg(null)}
-          >
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-          </button>
-          <img
-            src={lightboxImg}
-            alt="Preview"
-            className="max-w-full max-h-[90vh] object-contain rounded-md shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
+      {/* ============ IN THE SPOTLIGHT & TESTIMONIALS CSS ============ */}
+      <style>{`
+        @keyframes scrollLeft {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+          animation: scrollLeft 30s linear infinite;
+          display: flex;
+          width: max-content;
+        }
+        .animate-scroll:hover {
+          animation-play-state: paused;
+        }
+        .hide-scroll::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scroll {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
+
+      {/* ============ IN THE SPOTLIGHT ============ */}
+      {settings?.videos && settings.videos.length > 0 && (
+        <section className="py-16 md:py-24 bg-[#fdfaf6] border-y border-[#ebdcc7] overflow-hidden">
+          <div className="max-w-[1400px] mx-auto px-4 text-center">
+            <h2 className="text-[28px] md:text-[36px] font-serif font-bold text-[#5c1a1f] mb-12">Watch Matching Insights</h2>
+
+            <div className="relative overflow-hidden w-full group py-2">
+              <div className="animate-scroll gap-6 md:gap-8 flex px-4">
+                {[...settings.videos, ...settings.videos, ...settings.videos, ...settings.videos].map((v: any, i: number) => {
+                  const ytId = getYoutubeVideoId(v.url);
+                  return (
+                    <div key={i} className="w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px] aspect-video bg-black rounded-2xl overflow-hidden relative shadow-xl snap-center flex-shrink-0 border-[3px] border-white">
+                      {ytId ? (
+                        <iframe className="w-full h-full pointer-events-auto" src={`https://www.youtube.com/embed/${ytId}`} allowFullScreen></iframe>
+                      ) : (
+                        <video className="w-full h-full object-cover pointer-events-auto" src={v.url} controls playsInline></video>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
       )}
+
+      {/* ============ TESTIMONIALS ============ */}
+      <section className="py-16 md:py-24 bg-[#f4ece3] overflow-hidden">
+        <div className="max-w-[1400px] mx-auto">
+          <p className="text-center text-[#d68636] text-[11px] font-bold uppercase tracking-[0.2em] mb-3">REVIEWS</p>
+          <h2 className="text-[28px] md:text-[36px] font-serif font-bold text-[#5c1a1f] mb-12 text-center">Happy Couples</h2>
+
+          <div className="relative overflow-hidden w-full group">
+            <div className="animate-scroll gap-6 md:gap-8 flex pl-6">
+              {[...testimonials, ...testimonials, ...testimonials, ...testimonials].map((t: any, i: number) => (
+                <div key={i} className="bg-white p-8 rounded-2xl shadow-sm border border-transparent hover:border-[#ebdcc7] transition-all flex flex-col w-[300px] md:w-[350px] shrink-0">
+                  <div className="flex gap-1 mb-5 text-[#d68636]">
+                    {[...Array(5)].map((_, idx) => <Star key={idx} className="w-4 h-4 fill-current" />)}
+                  </div>
+                  <p className="text-gray-850 text-[14px] leading-relaxed mb-8 flex-1 italic">"{t.review}"</p>
+                  <div className="flex items-center gap-4 border-t border-gray-100 pt-5">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shrink-0" style={{ backgroundColor: t.color || '#5c1a1f' }}>{t.initial}</div>
+                    <div>
+                      <h4 className="font-bold text-[#5c1a1f] text-[14px] leading-none mb-1">{t.name}</h4>
+                      {t.city && <p className="text-[12px] text-gray-850">{t.city}</p>}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ FAQS ============ */}
+      <section className="py-16 md:py-24 bg-white" id="faqSection">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-[28px] md:text-[36px] font-serif font-bold text-[#5c1a1f] mb-12 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {(settings?.faqs?.length > 0 ? settings.faqs.map((f: any) => ({ q: f.q, content: [{ type: 'p', text: f.a }] })) : faqData).map((faq: any, i: number) => (
+              <div key={i} className="border border-[#ebdcc7] rounded-xl overflow-hidden bg-[#fdfaf6]">
+                <button
+                  className="w-full px-6 py-5 text-left flex justify-between items-center font-bold text-[#5c1a1f] hover:bg-[#f4ece3] transition-colors text-[16px]"
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                >
+                  <span className="pr-4">{faq.q}</span>
+                  {openFaq === i ? <Minus className="w-5 h-5 flex-shrink-0 text-[#d68636]" /> : <Plus className="w-5 h-5 flex-shrink-0 text-[#d68636]" />}
+                </button>
+                {openFaq === i && (
+                  <div className="px-6 pb-6 pt-2 bg-[#fdfaf6]">
+                    <FaqAnswer blocks={faq.content} />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ CTA / GET IT NOW ============ */}
+      <section className="py-16 md:py-24 bg-[#fdfaf6] border-t border-[#ebdcc7]">
+        <div className="max-w-[800px] mx-auto px-4 text-center">
+          <h2 className="premium-serif text-center text-[28px] md:text-[36px] font-bold text-[#5c1a1f] mb-4 leading-tight">Ready to Find Your Cosmic Match?</h2>
+          <p className="text-center text-[#3a1216] text-[15px] md:text-[16px] mb-10 max-w-[600px] mx-auto">Get your Premium Kundali Matching Report today and understand the spiritual, emotional, and physical alignment with your partner.</p>
+          <Link href="/report/kundali/kundali-matching/checkout" className="inline-block bg-[#d68636] text-white font-bold text-[18px] px-12 py-4 rounded-xl shadow-[0_8px_20px_rgba(214,134,54,0.3)] hover:bg-[#b06126] transition-all hover:scale-105">
+            Check Compatibility Now
+          </Link>
+        </div>
+      </section>
 
     </div>
   );
 }
-

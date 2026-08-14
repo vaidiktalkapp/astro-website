@@ -13,13 +13,18 @@ export default async function PageSeoProvider({ slug }: Props) {
 
   const faqLd = generateFaqSchema(seoData.faqs);
 
+  // Strip <script> tags if admin accidentally includes them
+  const cleanSchemaMarkup = seoData.schemaMarkup
+    ? seoData.schemaMarkup.replace(/<script[^>]*>/gi, '').replace(/<\/script>/gi, '').trim()
+    : '';
+
   return (
     <>
-      {seoData.schemaMarkup && (
+      {cleanSchemaMarkup && (
         <Script 
           id={`custom-schema-${slug}`} 
           type="application/ld+json" 
-          dangerouslySetInnerHTML={{ __html: seoData.schemaMarkup }} 
+          dangerouslySetInnerHTML={{ __html: cleanSchemaMarkup }} 
         />
       )}
       {faqLd && (

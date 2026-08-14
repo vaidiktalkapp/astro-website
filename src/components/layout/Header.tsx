@@ -27,19 +27,30 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
   const [navPujas, setNavPujas] = useState<any[]>([]);
+  const [navMenus, setNavMenus] = useState<any[]>([]);
   const languageMenuRef = useRef<HTMLDivElement>(null);
 
+  const topLevelMenus = navMenus.filter(m => m.isTopLevel).sort((a,b) => (a.order || 0) - (b.order || 0));
+  const subMenus = navMenus.filter(m => !m.isTopLevel);
+
   useEffect(() => {
-    const fetchNavPujas = async () => {
+    const fetchNavData = async () => {
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
-        const response = await axios.get(`${apiUrl}/pujas?status=active&limit=12`);
-        setNavPujas(response.data.data || []);
+        const [pujasRes, menusRes] = await Promise.all([
+          axios.get(`${apiUrl}/pujas?status=active&limit=12`).catch(() => ({ data: { data: [] } })),
+          axios.get(`${apiUrl}/menus`).catch(() => ({ data: [] }))
+        ]);
+        setNavPujas(pujasRes.data.data || []);
+        
+        // Filter out inactive menus for the frontend
+        const activeMenus = (menusRes.data || []).filter((m: any) => m.isActive);
+        setNavMenus(activeMenus);
       } catch (error) {
-        console.error('Failed to load nav pujas', error);
+        console.error('Failed to load nav data', error);
       }
     };
-    fetchNavPujas();
+    fetchNavData();
   }, []);
 
   const toggleAccordion = (menu: string) => {
@@ -121,166 +132,106 @@ export default function Header() {
 
           {/* Desktop Nav */}
           <nav className="hidden xl:flex gap-2 xl:gap-[12px] 2xl:gap-[20px] items-center text-[12px] 2xl:text-[14px] font-medium text-[#3a1216] whitespace-nowrap flex-1 justify-center shrink">
-            <Link href="/" className="hover:text-[#ee6c1e] transition-colors py-4">Home</Link>
+            {topLevelMenus.map(topMenu => {
+  const mySubMenus = subMenus.filter(m => m.category === topMenu.category);
+  
+  // 1. Direct Links (No Submenus & Not Special)
+  if (mySubMenus.length === 0 && topMenu.category !== 'pujas' && topMenu.category !== 'shop') {
+    return (
+      <Link key={topMenu._id} href={topMenu.url || '/'} className={topMenu.category === 'consult' ? 'bg-[#8a1c2a] text-white px-3 py-[7px] rounded-md hover:bg-[#721522] transition-colors font-semibold' : 'hover:text-[#ee6c1e] transition-colors py-4'}>
+        {topMenu.title}
+      </Link>
+    );
+  }
 
-            {/* Kundli & Reports Dropdown */}
-            <div className="relative group cursor-pointer">
-              <Link href="/kundli" className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
-                Kundli &amp; Reports
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
-              </Link>
-              <div className="absolute top-full left-0 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg min-w-[480px] p-3 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
-                <div className="grid grid-cols-2 gap-x-2">
-                  <div className="flex flex-col border-r border-gray-100 pr-2">
-                    <div className="px-4 py-1.5 text-[11px] font-bold text-[#ee6c1e] uppercase tracking-wider mb-1">Premium Reports</div>
-                    <Link href="/report/kundali/vaidik-smart-kundali-10-years" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Vaidik Smart Kundali</Link>
-                    <Link href="/report/kundali/kundali-matching" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Kundali Matching</Link>
-                    <Link href="/report/kundali/personalized-lal-kitab" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Personalized Lal Kitab</Link>
-                    <Link href="/report/kundali/hastlikhit-kundali" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Hastlikhit Kundali</Link>
-                    <div className="px-4 py-1.5 text-[11px] font-bold text-[#ee6c1e] uppercase tracking-wider mt-2 mb-1">Premium Numerology</div>
-                    <Link href="/report/numerology/fortune-numerology" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Fortune Numerology</Link>
-                    <Link href="/report/numerology/name-mobile-number-numerology" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Name & Mobile Numerology</Link>
-                  </div>
-                  <div className="flex flex-col pl-2">
-                    <div className="px-4 py-1.5 text-[11px] font-bold text-[#ee6c1e] uppercase tracking-wider flex items-center gap-1.5 mb-1">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                      Free Reports
-                    </div>
-                    <Link href="/free-reports/kaal-sarp" className="flex items-center justify-between px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">
-                      Kaal Sarp Dosh <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-2">Free</span>
+  // 2. Special Case: Pujas Dropdown
+  if (topMenu.category === 'pujas') {
+    return (
+      <div key={topMenu._id} className="relative group cursor-pointer">
+        <Link href={topMenu.url || '/book-a-puja'} className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
+          {topMenu.title}
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+        </Link>
+        <div className="absolute top-full left-0 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg min-w-[480px] p-3 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
+          <div className="grid grid-cols-2 gap-x-2">
+            <div className="flex flex-col">
+              <Link href="/book-a-puja" className="block px-4 py-2 text-sm text-[#8a1c2a] font-bold hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">View All Pujas →</Link>
+              {navPujas.slice(0, Math.ceil(navPujas.length / 2)).map(puja => (
+                <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md truncate" title={puja.title}>
+                  {puja.title}
+                </Link>
+              ))}
+            </div>
+            <div className="flex flex-col mt-9">
+              {navPujas.slice(Math.ceil(navPujas.length / 2)).map(puja => (
+                <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md truncate" title={puja.title}>
+                  {puja.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // 3. Special Case: Shop
+  if (topMenu.category === 'shop') {
+    return (
+      <a key={topMenu._id} href={topMenu.url || 'https://vaidiktalk.store/'} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-[#ee6c1e] text-white px-3.5 py-2 rounded-md font-bold hover:bg-[#d65f17] transition-colors shadow-sm ml-1">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
+        {topMenu.title}
+      </a>
+    );
+  }
+
+  // 4. Standard Dropdowns (Generic or Kundli etc.)
+  const uniqueGroups = Array.from(new Set(mySubMenus.map(m => m.group || 'General')));
+  const isMultiColumn = uniqueGroups.length > 1 || mySubMenus.length > 7;
+
+  return (
+    <div key={topMenu._id} className={`relative group cursor-pointer ${topMenu.category === 'consult' ? 'flex items-center py-4' : ''}`}>
+      <Link href={topMenu.url || '#'} className={topMenu.category === 'consult' ? "bg-[#8a1c2a] text-white px-3 2xl:px-4 py-[7px] 2xl:py-[8px] rounded-md hover:bg-[#721522] transition-colors font-semibold flex items-center gap-1.5" : "hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4"}>
+        {topMenu.title}
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+      </Link>
+      
+      <div className={`absolute ${topMenu.category === 'consult' ? 'top-[calc(100%-8px)] right-0 min-w-[220px]' : topMenu.category === 'knowledge' ? 'top-full right-0 min-w-[240px]' : isMultiColumn ? 'top-full left-0 min-w-[480px]' : 'top-full left-0 min-w-[240px]'} bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg ${topMenu.category === 'consult' || topMenu.category === 'knowledge' ? 'py-2' : 'p-3'} border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50`}>
+        <div className={isMultiColumn ? "columns-2 gap-x-4 [column-rule:1px_solid_#f3f4f6]" : "flex flex-col"}>
+          {uniqueGroups.map((grp, idx) => {
+            const groupLinks = mySubMenus.filter(m => (m.group || 'General') === grp);
+
+            if (grp === 'General') {
+              return (
+                <React.Fragment key={grp}>
+                  {groupLinks.map(menu => (
+                    <Link key={menu._id} href={menu.url} className="flex items-center justify-between px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md break-inside-avoid">
+                      {menu.title}
+                      {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-2">{menu.badge}</span>}
                     </Link>
-                    <Link href="/free-reports/gemstone" className="flex items-center justify-between px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">
-                      Gemstone Suggestion <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-2">Free</span>
-                    </Link>
-                    <Link href="/free-reports/sade-sati" className="flex items-center justify-between px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">
-                      Sade Sati Check <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-2">Free</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  ))}
+                </React.Fragment>
+              );
+            }
 
-            {/* Free Astrology Tools Dropdown */}
-            <div className="relative group cursor-pointer">
-              <Link href="/astrology-calculators" className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
-                Free Astrology Tools
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
-              </Link>
-              <div className="absolute top-full left-0 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg min-w-[400px] p-3 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
-                <div className="grid grid-cols-2 gap-x-2">
-                  <div className="flex flex-col">
-                    <Link href="/kundli" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Kundli Generation</Link>
-                    <Link href="/horoscope-matching" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Horoscope Matching</Link>
-                    <Link href="/moon-signs" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Moon Signs</Link>
-                    <Link href="/rashi-calculator" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Rashi Calculator</Link>
-                    <Link href="/numerology" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Numerology</Link>
-                    <Link href="/compatibility" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Love Compatibility</Link>
-                    <Link href="/lal-kitab" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Lal Kitab Reading</Link>
-                    <Link href="/atlas" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Atlas / Location Finder</Link>
-                  </div>
-                  <div className="flex flex-col">
-                    <Link href="/panchang" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Panchang Today</Link>
-                    <Link href="/rahu-kaal" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Rahu Kaal Today</Link>
-                    <Link href="/muhurat" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Muhurat Finder</Link>
-                    <Link href="/baby-names" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Baby Names</Link>
-                    <Link href="/chinese-horoscope" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Chinese Horoscope</Link>
-                    <Link href="/festivals" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Festivals Calendar</Link>
-                    <Link href="/calendar" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Astrology Calendar</Link>
-                  </div>
-                </div>
+            return (
+              <div key={grp} className={`break-inside-avoid flex flex-col ${idx !== uniqueGroups.length - 1 ? 'mb-2' : ''}`}>
+                <div className="px-4 py-1.5 text-[11px] font-bold text-[#ee6c1e] uppercase tracking-wider mb-1 mt-1">{grp}</div>
+                {groupLinks.map(menu => (
+                  <Link key={menu._id} href={menu.url} className="flex items-center justify-between px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">
+                    {menu.title}
+                    {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-2">{menu.badge}</span>}
+                  </Link>
+                ))}
               </div>
-            </div>
-
-            {/* Horoscope Dropdown */}
-            <div className="relative group cursor-pointer">
-              <Link href="/horoscope" className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
-                Horoscope
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
-              </Link>
-              <div className="absolute top-full left-0 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg min-w-[460px] p-3 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
-                <div className="grid grid-cols-2 gap-x-2">
-                  <div className="flex flex-col border-r border-gray-100 pr-2">
-                    <div className="px-4 py-1.5 text-[11px] font-bold text-[#ee6c1e] uppercase tracking-wider mb-1">Time-Based Forecasts</div>
-                    <Link href="/daily-horoscope" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Daily Horoscope</Link>
-                    <Link href="/horoscope/tomorrow" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Tomorrow&apos;s Horoscope</Link>
-                    <Link href="/horoscope/weekly" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Weekly Horoscope</Link>
-                    <Link href="/horoscope/monthly" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Monthly Horoscope</Link>
-                    <Link href="/horoscope/yearly" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Yearly Horoscope</Link>
-                  </div>
-                  <div className="flex flex-col pl-2">
-                    <div className="px-4 py-1.5 text-[11px] font-bold text-[#ee6c1e] uppercase tracking-wider mb-1">Specialty Horoscopes</div>
-                    <Link href="/horoscope-matching" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Horoscope Matching</Link>
-                    <Link href="/love-horoscope" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Love Horoscope</Link>
-                    <Link href="/chinese-horoscope" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Chinese Horoscope</Link>
-                    <Link href="/celebrity-horoscopes" className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">Celebrity Horoscope</Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Consult Astrologer Dropdown */}
-            <div className="relative group cursor-pointer flex items-center py-4">
-              <Link href="/astrologers-chat" className="bg-[#8a1c2a] text-white px-3 2xl:px-4 py-[7px] 2xl:py-[8px] rounded-md hover:bg-[#721522] transition-colors font-semibold flex items-center gap-1.5">
-                Consult an Astrologer
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
-              </Link>
-              <div className="absolute top-[calc(100%-8px)] right-0 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg min-w-[220px] py-2 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
-                <Link href="/astrologers-chat" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Chat with Astrologer</Link>
-                <Link href="/astrologers-call" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Talk with Astrologer</Link>
-                <Link href="/ai-astrologer-chat?mode=chat" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Chat with AI Astrologer</Link>
-                <Link href="/ai-astrologer-chat?mode=call" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Talk with AI Astrologer</Link>
-              </div>
-            </div>
-
-            {/* Pujas Dropdown */}
-            <div className="relative group cursor-pointer">
-              <Link href="/book-a-puja" className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
-                Book a Remedy Puja
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
-              </Link>
-              <div className="absolute top-full left-0 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg min-w-[480px] p-3 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
-                <div className="grid grid-cols-2 gap-x-2">
-                  <div className="flex flex-col">
-                    <Link href="/book-a-puja" className="block px-4 py-2 text-sm text-[#8a1c2a] font-bold hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">View All Pujas →</Link>
-                    {navPujas.slice(0, Math.ceil(navPujas.length / 2)).map(puja => (
-                      <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md truncate" title={puja.title}>
-                        {puja.title}
-                      </Link>
-                    ))}
-                  </div>
-                  <div className="flex flex-col mt-9">
-                    {navPujas.slice(Math.ceil(navPujas.length / 2)).map(puja => (
-                      <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md truncate" title={puja.title}>
-                        {puja.title}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Knowledge Center Dropdown */}
-            <div className="relative group cursor-pointer">
-              <Link href="/learn" className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
-                Knowledge Center
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
-              </Link>
-              <div className="absolute top-full right-0 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg min-w-[240px] py-2 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
-                <Link href="/blog" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Blogs / Insights</Link>
-                <Link href="/faq" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">FAQ</Link>
-                <Link href="/muhurat/directory" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Muhurat Directory 2026</Link>
-                <Link href="/festivals" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Festivals Calendar</Link>
-                <Link href="/celebrity-horoscopes" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Celebrity Horoscope</Link>
-                <Link href="/healing" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Healings</Link>
-                <Link href="/matrimony" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Matrimony</Link>
-                <Link href="/learn" className="block px-5 py-2.5 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e]">Learn Astrology</Link>
-              </div>
-            </div>
-            <a href="https://vaidiktalk.store/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-[#ee6c1e] text-white px-3.5 py-2 rounded-md font-bold hover:bg-[#d65f17] transition-colors shadow-sm ml-1">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
-              Shop
-            </a>
-          </nav>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+})}
+</nav>
 
           {/* Right Actions */}
           <div className="flex items-center gap-2 xl:gap-5 text-[12px] 2xl:text-[13px] font-medium text-[#3a1216] whitespace-nowrap shrink-0 ml-auto">
@@ -395,143 +346,102 @@ export default function Header() {
 
         {/* Mobile Navigation Links */}
         <div className="flex-1 overflow-y-auto p-4 space-y-1">
-          {/* Consult Accordion */}
-          <div>
-            <button onClick={() => toggleAccordion('consult')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 text-[#8a1c2a] font-bold">
-              <span className="flex items-center gap-2">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                Consult an Astrologer
-              </span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'consult' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
-            </button>
-            {expandedMenu === 'consult' && (
-              <div className="pl-9 py-2 space-y-2 border-l-2 border-orange-100 ml-5">
-                <Link href="/astrologers-chat" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Chat with Astrologer</Link>
-                <Link href="/astrologers-call" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Talk with Astrologer</Link>
-                <Link href="/ai-astrologer-chat?mode=chat" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Chat with AI Astrologer</Link>
-                <Link href="/ai-astrologer-chat?mode=call" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Talk with AI Astrologer</Link>
-              </div>
-            )}
-          </div>
+          {topLevelMenus.map(topMenu => {
+            const mySubMenus = subMenus.filter(m => m.category === topMenu.category);
 
-          <div className="h-px bg-gray-100 my-2 mx-3"></div>
-
-          {/* Kundli Accordion */}
-          <div>
-            <button onClick={() => toggleAccordion('kundli')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
-              Kundli &amp; Reports
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'kundli' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
-            </button>
-            {expandedMenu === 'kundli' && (
-              <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4">
-                <p className="text-[10px] font-semibold text-[#ee6c1e] uppercase tracking-wider">Premium Reports</p>
-                <Link href="/report/kundali/vaidik-smart-kundali-10-years" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Vaidik Smart Kundali</Link>
-                <Link href="/report/kundali/kundali-matching" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Kundali Matching</Link>
-                <Link href="/report/kundali/personalized-lal-kitab" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Personalized Lal Kitab</Link>
-                <Link href="/report/kundali/hastlikhit-kundali" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Hastlikhit Kundali</Link>
-                <p className="text-[10px] font-semibold text-[#ee6c1e] uppercase tracking-wider mt-4">Premium Numerology</p>
-                <Link href="/report/numerology/fortune-numerology" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Fortune Numerology</Link>
-                <Link href="/report/numerology/name-mobile-number-numerology" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Name & Mobile Numerology</Link>
-                <p className="text-[10px] font-semibold text-[#ee6c1e] uppercase tracking-wider mt-4">Free Reports</p>
-                <Link href="/free-reports/kaal-sarp" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Kaal Sarp Dosh</Link>
-                <Link href="/free-reports/gemstone" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Gemstone Suggestion</Link>
-                <Link href="/free-reports/sade-sati" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Sade Sati Check</Link>
-              </div>
-            )}
-          </div>
-
-          {/* Tools Accordion */}
-          <div>
-            <button onClick={() => toggleAccordion('tools')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
-              Free Astrology Tools
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'tools' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
-            </button>
-            {expandedMenu === 'tools' && (
-              <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4">
-                <Link href="/kundli" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Kundli Generation</Link>
-                <Link href="/horoscope-matching" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Horoscope Matching</Link>
-                <Link href="/moon-signs" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Moon Signs</Link>
-                <Link href="/rashi-calculator" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Rashi Calculator</Link>
-                <Link href="/numerology" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Numerology</Link>
-                <Link href="/compatibility" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Love Compatibility</Link>
-                <Link href="/lal-kitab" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Lal Kitab Reading</Link>
-                <Link href="/atlas" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Atlas / Location Finder</Link>
-                <Link href="/panchang" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Panchang Today</Link>
-                <Link href="/rahu-kaal" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Rahu Kaal Today</Link>
-                <Link href="/muhurat" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Muhurat Finder</Link>
-                <Link href="/baby-names" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Baby Names</Link>
-                <Link href="/chinese-horoscope" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Chinese Horoscope</Link>
-                <Link href="/festivals" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Festivals Calendar</Link>
-                <Link href="/calendar" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Astrology Calendar</Link>
-              </div>
-            )}
-          </div>
-
-          {/* Horoscope Accordion */}
-          <div>
-            <button onClick={() => toggleAccordion('horoscope')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
-              Horoscope
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'horoscope' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
-            </button>
-            {expandedMenu === 'horoscope' && (
-              <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4">
-                <p className="text-[10px] font-semibold text-[#ee6c1e] uppercase tracking-wider">Time-Based</p>
-                <Link href="/daily-horoscope" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Daily Horoscope</Link>
-                <Link href="/horoscope/tomorrow" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Tomorrow&apos;s Horoscope</Link>
-                <Link href="/horoscope/weekly" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Weekly Horoscope</Link>
-                <Link href="/horoscope/monthly" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Monthly Horoscope</Link>
-                <Link href="/horoscope/yearly" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Yearly Horoscope</Link>
-                <p className="text-[10px] font-semibold text-[#ee6c1e] uppercase tracking-wider mt-4">Specialty</p>
-                <Link href="/horoscope-matching" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Horoscope Matching</Link>
-                <Link href="/love-horoscope" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Love Horoscope</Link>
-                <Link href="/chinese-horoscope" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Chinese Horoscope</Link>
-                <Link href="/celebrity-horoscopes" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Celebrity Horoscope</Link>
-              </div>
-            )}
-          </div>
-
-          {/* Pujas Accordion */}
-          <div>
-            <button onClick={() => toggleAccordion('pujas')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
-              Book a Remedy Puja
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'pujas' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
-            </button>
-            {expandedMenu === 'pujas' && (
-              <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4 max-h-[300px] overflow-y-auto">
-                <Link href="/book-a-puja" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-bold text-[#8a1c2a] py-1.5 hover:text-[#ee6c1e]">View All Pujas →</Link>
-                {navPujas.map(puja => (
-                  <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e] truncate">
-                    {puja.title}
+            // Direct Links
+            if (mySubMenus.length === 0 && topMenu.category !== 'pujas' && topMenu.category !== 'shop') {
+              return (
+                <div key={topMenu._id}>
+                  <Link href={topMenu.url || '/'} onClick={() => setIsMobileMenuOpen(false)} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
+                    {topMenu.title}
                   </Link>
-                ))}
-              </div>
-            )}
-          </div>
+                </div>
+              );
+            }
 
-          {/* Knowledge Accordion */}
-          <div>
-            <button onClick={() => toggleAccordion('knowledge')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
-              Knowledge Center
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'knowledge' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
-            </button>
-            {expandedMenu === 'knowledge' && (
-              <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4">
-                <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Blogs / Insights</Link>
-                <Link href="/faq" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">FAQ</Link>
-                <Link href="/muhurat/directory" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Muhurat Directory 2026</Link>
-                <Link href="/festivals" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Festivals Calendar</Link>
-                <Link href="/celebrity-horoscopes" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Celebrity Horoscope</Link>
-                <Link href="/healing" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Healings</Link>
-                <Link href="/matrimony" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Matrimony</Link>
-                <Link href="/learn" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">Learn Astrology</Link>
-              </div>
-            )}
-          </div>
+            // Shop Link
+            if (topMenu.category === 'shop') {
+              return (
+                <a key={topMenu._id} href={topMenu.url || 'https://vaidiktalk.store/'} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 mx-3 mt-4 mb-4 p-3 rounded-lg bg-[#ee6c1e] text-white font-bold hover:bg-[#d65f17] shadow-sm transition-colors">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
+                  {topMenu.title}
+                </a>
+              );
+            }
 
-          <a href="https://vaidiktalk.store/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 mx-3 mb-4 p-3 rounded-lg bg-[#ee6c1e] text-white font-bold hover:bg-[#d65f17] shadow-sm transition-colors">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
-            Shop Vaidik Store
-          </a>
+            // Pujas Special Case
+            if (topMenu.category === 'pujas') {
+              return (
+                <div key={topMenu._id}>
+                  <button onClick={() => toggleAccordion('pujas')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
+                    {topMenu.title}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'pujas' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
+                  </button>
+                  {expandedMenu === 'pujas' && (
+                    <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4 max-h-[300px] overflow-y-auto">
+                      <Link href="/book-a-puja" onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-bold text-[#8a1c2a] py-1.5 hover:text-[#ee6c1e]">View All Pujas →</Link>
+                      {navPujas.map(puja => (
+                        <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e] truncate">
+                          {puja.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            // Consult Special Case (Red Button Text)
+            if (topMenu.category === 'consult') {
+              return (
+                <div key={topMenu._id}>
+                  <button onClick={() => toggleAccordion('consult')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 text-[#8a1c2a] font-bold">
+                    <span className="flex items-center gap-2">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                      {topMenu.title}
+                    </span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === 'consult' ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
+                  </button>
+                  {expandedMenu === 'consult' && (
+                    <div className="pl-9 py-2 space-y-2 border-l-2 border-orange-100 ml-5">
+                      {mySubMenus.map(menu => (
+                        <Link key={menu._id} href={menu.url} onClick={() => setIsMobileMenuOpen(false)} className="block text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">{menu.title}</Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            // Generic Dropdowns
+            const uniqueGroups = Array.from(new Set(mySubMenus.map(m => m.group || 'General')));
+
+            return (
+              <div key={topMenu._id}>
+                <button onClick={() => toggleAccordion(topMenu.category)} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
+                  {topMenu.title}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === topMenu.category ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
+                </button>
+                {expandedMenu === topMenu.category && (
+                  <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4">
+                    {uniqueGroups.map((grp, idx) => (
+                      <div key={grp}>
+                        {grp !== 'General' && (
+                          <p className={`text-[10px] font-semibold text-[#ee6c1e] uppercase tracking-wider ${idx > 0 ? 'mt-4' : ''}`}>{grp}</p>
+                        )}
+                        {mySubMenus.filter(m => (m.group || 'General') === grp).map(menu => (
+                          <Link key={menu._id} href={menu.url} onClick={() => setIsMobileMenuOpen(false)} className="flex items-center text-[15px] font-medium text-[#3a1216] py-1.5 hover:text-[#ee6c1e]">
+                            {menu.title} {menu.badge && <span className="ml-2 bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">{menu.badge}</span>}
+                          </Link>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
 
