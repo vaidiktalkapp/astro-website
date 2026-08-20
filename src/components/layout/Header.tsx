@@ -152,19 +152,21 @@ export default function Header() {
           {topMenu.title}
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
         </Link>
-        <div className="absolute top-full left-0 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg min-w-[480px] p-3 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
-          <div className="grid grid-cols-2 gap-x-2">
-            <div className="flex flex-col">
-              <Link href="/book-a-puja" className="block px-4 py-2 text-sm text-[#8a1c2a] font-bold hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">View All Pujas →</Link>
+        <div className="absolute top-full left-0 bg-white shadow-[0_15px_50px_rgba(0,0,0,0.1)] rounded-xl min-w-[600px] p-4 border border-[#f0ddc0]/60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-1">
+            <div className="col-span-2 mb-2 pb-2 border-b border-[#f0ddc0]/40">
+              <Link href="/book-a-puja" className="inline-block px-3 py-2 text-[14px] text-[#8a1c2a] font-bold hover:bg-[#fdf8f0] hover:text-[#ee6c1e] rounded-lg transition-colors">View All Pujas →</Link>
+            </div>
+            <div className="flex flex-col space-y-1">
               {navPujas.slice(0, Math.ceil(navPujas.length / 2)).map(puja => (
-                <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md truncate" title={puja.title}>
+                <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="block px-3 py-2.5 text-[14px] font-medium text-[#3a1216] hover:bg-[#fdf8f0] hover:text-[#ee6c1e] rounded-lg truncate transition-colors" title={puja.title}>
                   {puja.title}
                 </Link>
               ))}
             </div>
-            <div className="flex flex-col mt-9">
+            <div className="flex flex-col space-y-1">
               {navPujas.slice(Math.ceil(navPujas.length / 2)).map(puja => (
-                <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="block px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md truncate" title={puja.title}>
+                <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="block px-3 py-2.5 text-[14px] font-medium text-[#3a1216] hover:bg-[#fdf8f0] hover:text-[#ee6c1e] rounded-lg truncate transition-colors" title={puja.title}>
                   {puja.title}
                 </Link>
               ))}
@@ -196,8 +198,14 @@ export default function Header() {
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
       </Link>
       
-      <div className={`absolute ${topMenu.category === 'consult' ? 'top-[calc(100%-8px)] right-0 min-w-[220px]' : topMenu.category === 'knowledge' ? 'top-full right-0 min-w-[240px]' : isMultiColumn ? 'top-full left-0 min-w-[480px]' : 'top-full left-0 min-w-[240px]'} bg-white shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-lg ${topMenu.category === 'consult' || topMenu.category === 'knowledge' ? 'py-2' : 'p-3'} border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50`}>
-        <div className={isMultiColumn ? "columns-2 gap-x-4 [column-rule:1px_solid_#f3f4f6]" : "flex flex-col"}>
+      <div className={`absolute ${
+        topMenu.category === 'consult' 
+          ? 'top-[calc(100%-8px)] right-0 min-w-[240px]' 
+          : topMenu.category === 'knowledge' 
+            ? `top-full right-[-50px] xl:right-[-100px] 2xl:right-[-150px] ${isMultiColumn ? 'min-w-[560px]' : 'min-w-[280px]'}`
+            : `top-full left-0 ${isMultiColumn ? 'min-w-[560px]' : 'min-w-[280px]'}`
+      } bg-white shadow-[0_15px_50px_rgba(0,0,0,0.1)] rounded-xl p-3 md:p-4 border border-[#f0ddc0]/60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4`}>
+        <div className={isMultiColumn ? "columns-2 gap-x-6" : "flex flex-col space-y-1"}>
           {uniqueGroups.map((grp, idx) => {
             const groupLinks = mySubMenus.filter(m => (m.group || 'General') === grp);
 
@@ -205,7 +213,7 @@ export default function Header() {
               return (
                 <React.Fragment key={grp}>
                   {groupLinks.map(menu => (
-                    <Link key={menu._id} href={menu.url} className="flex items-center justify-between px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md break-inside-avoid">
+                    <Link key={menu._id} href={menu.url} className="flex items-center justify-between px-3 py-2 text-[14px] font-medium text-[#3a1216] hover:bg-[#fdf8f0] hover:text-[#ee6c1e] rounded-lg transition-colors break-inside-avoid mb-1">
                       {menu.title}
                       {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-2">{menu.badge}</span>}
                     </Link>
@@ -215,10 +223,10 @@ export default function Header() {
             }
 
             return (
-              <div key={grp} className={`break-inside-avoid flex flex-col ${idx !== uniqueGroups.length - 1 ? 'mb-2' : ''}`}>
-                <div className="px-4 py-1.5 text-[11px] font-bold text-[#ee6c1e] uppercase tracking-wider mb-1 mt-1">{grp}</div>
+              <div key={grp} className={`flex flex-col space-y-1 break-inside-avoid ${idx !== uniqueGroups.length - 1 ? 'mb-3' : ''}`}>
+                <div className="px-3 py-1.5 text-[11px] font-bold text-[#d97706] uppercase tracking-wider mb-1 mt-1 border-b border-[#f0ddc0]/30">{grp}</div>
                 {groupLinks.map(menu => (
-                  <Link key={menu._id} href={menu.url} className="flex items-center justify-between px-4 py-2 text-sm text-[#3a1216] hover:bg-orange-50 hover:text-[#ee6c1e] rounded-md">
+                  <Link key={menu._id} href={menu.url} className="flex items-center justify-between px-3 py-2 text-[14px] font-medium text-[#3a1216] hover:bg-[#fdf8f0] hover:text-[#ee6c1e] rounded-lg transition-colors">
                     {menu.title}
                     {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-2">{menu.badge}</span>}
                   </Link>

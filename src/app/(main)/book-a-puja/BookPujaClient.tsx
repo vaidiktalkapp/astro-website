@@ -142,21 +142,9 @@ function PujaCarousel({ items = CAROUSEL_PUJAS }: { items?: any[] }) {
   );
 }
 
-export default function BookAPujaPage() {
-  const [dynamicData, setDynamicData] = useState<any>(null);
-
-  useEffect(() => {
-    import('axios').then(axios => {
-      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
-      
-      // Fetch Puja Landing Page info (if exists)
-      axios.default.get(`${baseUrl}/pujas/book-a-puja`)
-        .then(res => setDynamicData(res.data))
-        .catch(err => console.log('Dynamic data not found yet'));
-    });
-  }, []);
-
-  const [dynamicPujas, setDynamicPujas] = useState<any[]>([]);
+export default function BookAPujaPage({ initialDynamicData = null, initialDynamicPujas = [] }: { initialDynamicData?: any, initialDynamicPujas?: any[] }) {
+  const [dynamicData, setDynamicData] = useState<any>(initialDynamicData);
+  const [dynamicPujas, setDynamicPujas] = useState<any[]>(initialDynamicPujas);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -183,19 +171,6 @@ export default function BookAPujaPage() {
   const clearFilters = () => {
     setFilters({ pujaFor: [], benefits: [], deity: [] });
   };
-
-  useEffect(() => {
-    const fetchPujas = async () => {
-      try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
-        const response = await axios.get(`${apiUrl}/pujas?status=active`);
-        setDynamicPujas(response.data.data || []);
-      } catch (error) {
-        console.error('Failed to load dynamic pujas:', error);
-      }
-    };
-    fetchPujas();
-  }, []);
 
   // Format and sort dynamic pujas
   const allPujas = [...dynamicPujas]
