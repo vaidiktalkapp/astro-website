@@ -1,5 +1,5 @@
 import DynamicPujaPage from '@/components/Puja/DynamicPujaPage';
 
-export default function RudrabhishekPage() {
+export default function Page() {
   return <DynamicPujaPage propSlug="rudrabhishek" />;
 }

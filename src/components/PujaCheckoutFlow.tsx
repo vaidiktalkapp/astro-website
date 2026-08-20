@@ -15,10 +15,9 @@ export function PujaCheckoutFlow({ pujaTitle, pujaSlug, defaultPrice, offeringsL
   const router = useRouter();
   const searchParams = useSearchParams();
   const pkg = searchParams.get('package');
+  const urlPrice = searchParams.get('price');
   
-  // Package logic is only used if prices were passed in URL or if we are rudrabhishek. Since we only want fixed price, we use defaultPrice.
-  // Wait, if it's Rudrabhishek, we still need package logic!
-  const basePrice = pkg && pkg === 'single' ? 1599 : (pkg === 'couple' ? 2599 : (pkg === 'family' ? 3599 : defaultPrice));
+  const basePrice = urlPrice ? Number(urlPrice) : defaultPrice;
 
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({

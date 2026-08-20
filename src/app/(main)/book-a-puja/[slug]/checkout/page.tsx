@@ -4,7 +4,7 @@ import { useParams, notFound } from 'next/navigation';
 import axios from 'axios';
 import { PujaCheckoutFlow } from '@/components/PujaCheckoutFlow';
 
-const offeringsList = [
+const DEFAULT_OFFERINGS = [
   { id: 'gau_sewa', title: 'Gau Sewa', desc: 'A Sacred Service for Peace and Prosperity', price: 151, img: '/pooja/gau-sewa.png' },
   { id: 'anna_sewa', title: 'Anna Sewa', desc: 'For Blessings of Debt Relief', price: 151, img: '/pooja/anna-sewa.png' },
   { id: 'brahman_dakshina', title: 'Brahamn Dakshina', desc: 'For the Completion of Rituals and Anushthans', price: 101, img: '/pooja/brahman-dakshina.png' },
@@ -42,6 +42,11 @@ function DynamicCheckoutContent() {
   if (!puja) {
     notFound();
   }
+
+  // Use offerings from DB if available, else fall back to defaults
+  const offeringsList = puja.offerings && puja.offerings.length > 0
+    ? puja.offerings
+    : DEFAULT_OFFERINGS;
 
   return (
     <PujaCheckoutFlow 

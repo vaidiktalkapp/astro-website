@@ -66,7 +66,8 @@ export default function FinanceAstrologyClient({
   initialAiAstrologers = [], 
   initialFaqs = null, 
   initialSuccessStories = null, 
-  initialBanner = null 
+  initialBanner = null,
+  initialExtraContent = ''
 }: any) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [astrologers, setAstrologers] = useState<any[]>(Array.isArray(initialAstrologers) ? initialAstrologers : []);
@@ -77,6 +78,7 @@ export default function FinanceAstrologyClient({
   const [faqs, setFaqs] = useState<{q: string; a: string}[]>(initialFaqs || defaultFaqs);
   const [successStories, setSuccessStories] = useState<{name: string; before: string; after: string}[]>(initialSuccessStories || defaultSuccessStories);
   const [banner, setBanner] = useState(initialBanner || { url: '' });
+  const [extraContent, setExtraContent] = useState(initialExtraContent || '');
 
   const astroRef = React.useRef<HTMLDivElement>(null);
   const aiAstroRef = React.useRef<HTMLDivElement>(null);
@@ -136,13 +138,14 @@ export default function FinanceAstrologyClient({
       }
     };
     const fetchSettings = async () => {
-      if (initialFaqs || initialSuccessStories || initialBanner) return;
+      if ((initialFaqs && initialFaqs.length > 0) && (initialSuccessStories && initialSuccessStories.length > 0) && (initialBanner && initialBanner.url)) return;
       try {
         const response = await apiClient.get('/smart-kundali-settings/finance-astrology');
         if (response.data) {
           if (response.data.faqs?.length) setFaqs(response.data.faqs);
           if (response.data.successStories?.length) setSuccessStories(response.data.successStories);
-          if (response.data.banner) setBanner(response.data.banner);
+          if (response.data.banner?.url) setBanner(response.data.banner);
+          if (response.data.extraContent !== undefined) setExtraContent(response.data.extraContent);
         }
       } catch (error) {
         console.error('Failed to fetch settings:', error);
@@ -750,6 +753,17 @@ export default function FinanceAstrologyClient({
           </div>
         </div>
       </section>
+
+      {/* Extra Content (Admin Controlled Rich Text) */}
+      {extraContent && (
+        <section className="px-6 md:px-10 py-12 md:py-16 bg-white border-t border-[#f0ddc0]/50">
+          <div className="max-w-[1000px] mx-auto prose prose-sm md:prose-base prose-[#5e4339] max-w-none 
+            prose-headings:font-serif prose-headings:text-[#3a1216] prose-a:text-[#d97706] 
+            prose-strong:text-[#3a1216]"
+            dangerouslySetInnerHTML={{ __html: extraContent }}
+          />
+        </section>
+      )}
 
       {/* Success Stories Section */}
       <section className="px-6 md:px-10 py-16 md:py-20 bg-[#fdfaf7] border-t border-[#f0ddc0]/50 overflow-hidden">

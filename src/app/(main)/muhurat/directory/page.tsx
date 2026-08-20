@@ -129,7 +129,8 @@ function MonthTable({ monthIdx, category, location }: {monthIdx: number;category
           endDate,
           lat: location.lat,
           lon: location.lon,
-          tzone: location.tzone
+          tzone: location.tzone,
+          isDirectory: true
         })
       });
       const data = await res.json();

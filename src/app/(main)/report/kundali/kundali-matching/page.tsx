@@ -451,6 +451,25 @@ export default function KundaliMatchingPage() {
         </div>
       </section>
 
+      {/* ============ EXTRA CONTENT (RICH TEXT) ============ */}
+      {settings?.extraContent && (
+        <section className="py-12 bg-white border-t border-[#ebdcc7]">
+          <div className="max-w-[1000px] mx-auto px-4">
+            <div
+              className="rich-content prose prose-lg prose-slate w-full max-w-none text-[#3a1216] text-[16px] leading-[1.8] break-words text-justify
+                prose-headings:font-bold prose-headings:text-[#5c1a1f]
+                prose-h2:text-[28px] prose-h2:mb-4
+                prose-h3:text-[22px] prose-h3:text-[#d68636] prose-h3:mb-3
+                prose-a:!text-[#d68636] prose-a:underline hover:prose-a:text-[#b06126]
+                prose-img:rounded-xl prose-img:shadow-sm
+                prose-strong:text-[#5c1a1f] prose-strong:font-bold
+                prose-ul:list-disc prose-ol:list-decimal prose-li:my-1"
+              dangerouslySetInnerHTML={{ __html: settings.extraContent }}
+            />
+          </div>
+        </section>
+      )}
+
       {/* ============ IN THE SPOTLIGHT & TESTIMONIALS CSS ============ */}
       <style>{`
         @keyframes scrollLeft {

@@ -60,6 +60,7 @@ export default async function Page() {
         initialFaqs={data.settings?.faqs}
         initialSuccessStories={data.settings?.successStories}
         initialBanner={data.settings?.banner}
+        initialExtraContent={data.settings?.extraContent}
       />
     </>
   );

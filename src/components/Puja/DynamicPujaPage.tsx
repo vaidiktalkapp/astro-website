@@ -5,6 +5,15 @@ import Link from 'next/link';
 import { notFound, useParams } from 'next/navigation';
 import { getImageUrl } from '@/lib/imageUtils';
 
+interface PujaPackage {
+  Icon: () => React.ReactElement;
+  name: string;
+  sub: string;
+  perks: string[];
+  price: number;
+  orig: number;
+}
+
 /* ─── Image Carousel ─────────────────────────────────────── */
 const ImageCarousel = ({ images }: { images: string[] }) => {
   const [idx, setIdx] = useState(0);
@@ -185,7 +194,16 @@ export default function DynamicPujaPage({ propSlug }: { propSlug?: string }) {
   const CoupleIcon = () => <img src="/pooja/couple-icon.png" alt="Couple Devotees" className="w-full h-full object-cover rounded-lg" />;
   const FamilyIcon = () => <img src="/pooja/family-icon.png" alt="Family Devotees" className="w-full h-full object-cover rounded-lg" />;
 
-  const packages = [
+  const customPackages = puja?.packages?.length > 0 ? puja.packages.map((p: any, i: number) => ({
+    Icon: i === 0 ? SingleIcon : i === 1 ? CoupleIcon : i === 2 ? FamilyIcon : SingleIcon,
+    name: p.name,
+    sub: p.sub,
+    perks: p.perks,
+    price: p.price,
+    orig: p.orig,
+  })) : null;
+
+  const packages = customPackages || [
     {
       Icon: SingleIcon,
       name: "Single",
@@ -310,11 +328,10 @@ export default function DynamicPujaPage({ propSlug }: { propSlug?: string }) {
           <div className="flex gap-6 flex-wrap items-start">
             <img src={primaryImage} alt={puja?.title} className="w-full max-w-[420px] rounded-[12px] object-cover aspect-[4/3]" />
             <div className="flex-1 min-w-[250px] space-y-4">
-              {puja?.description ? (
-                <div 
-                  className="text-[#3a1216] text-[16px] leading-[1.8] space-y-4 [&>p]:m-0"
-                  dangerouslySetInnerHTML={{ __html: puja.description }} 
-                />
+              {puja?.extraContent ? (
+                <div className="text-[#3a1216] text-[16px] leading-[1.8] space-y-4 whitespace-pre-line break-words text-justify">
+                  {puja.extraContent}
+                </div>
               ) : (
                 <>
                   <p className="m-0 text-[#3a1216] text-[16px] leading-[1.8]">
@@ -336,7 +353,7 @@ export default function DynamicPujaPage({ propSlug }: { propSlug?: string }) {
         <section className="py-8 border-t border-[#e5e0d8]">
           <h2 className="text-[25px] font-bold text-[#3a1216] mb-4">Choose Your Puja Package</h2>
           <div className="flex gap-4 flex-wrap">
-            {packages.map((pkg, i) => {
+            {packages.map((pkg: PujaPackage, i: number) => {
               const isActive = selectedPkg === i;
               return (
                 <div
@@ -448,12 +465,34 @@ export default function DynamicPujaPage({ propSlug }: { propSlug?: string }) {
         <section className="py-8 border-t border-[#e5e0d8]">
           <h2 className="text-[25px] font-bold text-[#3a1216] mb-3">Why Vaidik Talk?</h2>
           <p className="text-[#3a1216] m-0 mb-4 text-[16px] leading-[1.8]">
-            Vaidik Talk is a dedicated puja platform connecting professionals with verified Pandits for authentic Vedic rituals. Every puja is performed with a real Sankalp taken in your name and intention — so you can receive divine blessings from anywhere in India or abroad.
+            {puja?.whyChooseUs && puja.whyChooseUs.length > 0 
+              ? (Array.isArray(puja.whyChooseUs) 
+                  ? puja.whyChooseUs.join(' ') 
+                  : (typeof puja.whyChooseUs === 'string' ? puja.whyChooseUs.replace(/\n/g, ' ') : puja.whyChooseUs))
+              : "Vaidik Talk is a dedicated puja platform connecting professionals with verified Pandits for authentic Vedic rituals. Every puja is performed with a real Sankalp taken in your name and intention — so you can receive divine blessings from anywhere in India or abroad."}
           </p>
           <p className="font-bold text-[#9c5c0f] m-0">🛡 Guided by 40+ Years of Combined Vedic Expertise</p>
         </section>
 
+        {/* ── EXTRA CONTENT (RICH TEXT) ── */}
+        {puja?.description && puja.description.trim() && (
+          <section className="py-8 border-t border-[#e5e0d8]">
+            <div 
+              className="rich-content prose prose-lg prose-slate w-full max-w-none text-[#3a1216] text-[16px] leading-[1.8] break-words text-justify
+                prose-headings:font-bold prose-headings:text-[#3a1216]
+                prose-h2:text-[25px] prose-h2:mb-4
+                prose-h3:text-[20px] prose-h3:text-[#d97706] prose-h3:mb-3
+                prose-a:!text-[#d97706] prose-a:underline hover:prose-a:text-[#b56003]
+                prose-img:rounded-xl prose-img:shadow-sm
+                prose-strong:text-[#3a1216] prose-strong:font-bold
+                prose-ul:list-disc prose-ol:list-decimal prose-li:my-1"
+              dangerouslySetInnerHTML={{ __html: puja.description }} 
+            />
+          </section>
+        )}
+
         {/* ── SUPPORT BOX ── */}
+
         <section className="py-8 border-t border-[#e5e0d8]">
           <div className="flex flex-wrap gap-4 items-center justify-between border border-[#e5e0d8] rounded-[16px] p-5 bg-[#faf6ee]">
             <div>
