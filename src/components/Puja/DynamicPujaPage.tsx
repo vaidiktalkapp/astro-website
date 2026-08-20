@@ -478,15 +478,16 @@ export default function DynamicPujaPage({ propSlug }: { propSlug?: string }) {
         {puja?.description && puja.description.trim() && (
           <section className="py-8 border-t border-[#e5e0d8]">
             <div 
-              className="rich-content prose prose-lg prose-slate w-full max-w-none text-[#3a1216] text-[16px] leading-[1.8] break-words text-justify
-                prose-headings:font-bold prose-headings:text-[#3a1216]
+              className="rich-content prose prose-lg prose-slate w-full max-w-none text-[#3a1216] text-[16px] leading-[1.8] break-words
+                prose-p:text-justify
+                prose-headings:font-bold prose-headings:text-[#3a1216] prose-headings:text-left
                 prose-h2:text-[25px] prose-h2:mb-4
-                prose-h3:text-[20px] prose-h3:text-[#d97706] prose-h3:mb-3
+                prose-h3:text-[22px] prose-h3:text-[#d97706] prose-h3:mb-3 prose-h3:leading-snug
                 prose-a:!text-[#d97706] prose-a:underline hover:prose-a:text-[#b56003]
                 prose-img:rounded-xl prose-img:shadow-sm
                 prose-strong:text-[#3a1216] prose-strong:font-bold
                 prose-ul:list-disc prose-ol:list-decimal prose-li:my-1"
-              dangerouslySetInnerHTML={{ __html: puja.description }} 
+              dangerouslySetInnerHTML={{ __html: puja.description.replace(/&nbsp;/g, ' ') }} 
             />
           </section>
         )}

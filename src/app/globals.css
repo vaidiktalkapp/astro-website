@@ -138,10 +138,15 @@ body {
 
 .rich-content * {
   background-color: transparent !important;
-  word-wrap: break-word !important;
-  overflow-wrap: break-word !important;
-  word-break: normal !important;
 }
+
+/* Quill Editor Format Overrides */
+.rich-content .ql-size-small { font-size: 0.875rem !important; } /* 14px */
+.rich-content .ql-size-large { font-size: 1.25rem !important; }  /* 20px */
+.rich-content .ql-size-huge { font-size: 1.875rem !important; }  /* 30px */
+.rich-content .ql-align-center { text-align: center !important; }
+.rich-content .ql-align-right { text-align: right !important; }
+.rich-content .ql-align-justify { text-align: justify !important; }
 
 @keyframes fade-in-up {
   from {

@@ -729,10 +729,10 @@ export default function PropertyVehicleAstrologyClient({
       {/* Extra Content (Admin Controlled Rich Text) */}
       {extraContent && (
         <section className="px-6 md:px-10 py-12 md:py-16 bg-white border-t border-[#f0ddc0]/50">
-          <div className="max-w-[1000px] mx-auto prose prose-sm md:prose-base prose-[#5e4339] max-w-none 
+          <div className="rich-content break-words max-w-[1000px] mx-auto prose prose-sm md:prose-base prose-[#5e4339] max-w-none 
             prose-headings:font-serif prose-headings:text-[#3a1216] prose-a:text-[#d97706] 
             prose-strong:text-[#3a1216]"
-            dangerouslySetInnerHTML={{ __html: extraContent }}
+            dangerouslySetInnerHTML={{ __html: extraContent.replace(/&nbsp;/g, ' ') }}
           />
         </section>
       )}
