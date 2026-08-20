@@ -1,69 +1,147 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { useParams, notFound } from 'next/navigation';
 import axios from 'axios';
-import { Sparkles, ShieldCheck, UserCheck, Leaf, Lock, ChevronDown, CheckCircle2, MapPin, Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { notFound, useParams } from 'next/navigation';
 import { getImageUrl } from '@/lib/imageUtils';
-import { usePujaBooking } from '../../../../hooks/usePujaBooking';
 
-const getYoutubeId = (url: string) => {
-  if (!url) return '';
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|shorts\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-  const match = url.match(regExp);
-  return (match && match[2].length === 11) ? match[2] : url;
+/* ─── Image Carousel ─────────────────────────────────────── */
+const ImageCarousel = ({ images }: { images: string[] }) => {
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    if (!images || images.length <= 1) return;
+    const t = setInterval(() => setIdx(p => (p + 1) % images.length), 4000);
+    return () => clearInterval(t);
+  }, [images]);
+  if (!images?.length) return null;
+  return (
+    <div className="relative w-full aspect-[4/3] overflow-hidden rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.10)] group">
+      <div className="flex h-full w-full transition-transform duration-500 ease-out" style={{ transform: `translateX(-${idx * 100}%)` }}>
+        {images.map((src, i) => <img key={i} src={src} className="w-full h-full object-cover shrink-0" alt={`Slide ${i + 1}`} />)}
+      </div>
+      {images.length > 1 && <>
+        <button onClick={() => setIdx(i => i === 0 ? images.length - 1 : i - 1)} className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/90 hover:bg-white text-gray-800 rounded-full flex items-center justify-center transition-all shadow-md opacity-0 group-hover:opacity-100">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
+        </button>
+        <button onClick={() => setIdx(i => (i + 1) % images.length)} className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/90 hover:bg-white text-gray-800 rounded-full flex items-center justify-center transition-all shadow-md opacity-0 group-hover:opacity-100">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+        </button>
+        <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5">
+          {images.map((_, i) => <button key={i} onClick={() => setIdx(i)} className={`h-1.5 rounded-full transition-all ${idx === i ? 'bg-[#ea580c] w-5' : 'w-1.5 bg-white/80 hover:bg-white'}`} />)}
+        </div>
+      </>}
+    </div>
+  );
 };
 
-export default function DynamicPujaPage() {
-  const [dynamicData, setDynamicData] = useState<any>(null);
-  useEffect(() => {
-    import('axios').then(axios => {
-      const url = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1') + '/pujas/[slug]';
-      axios.default.get(url)
-        .then(res => setDynamicData(res.data))
-        .catch(err => console.log('Dynamic data not found yet'));
-    });
-  }, []);
+/* ─── 24-hour Countdown Timer ────────────────────────────── */
+const CountdownTimer = ({ timerKey }: { timerKey: string }) => {
+  const getSecondsLeft = () => {
+    const now = Date.now();
+    const stored = typeof window !== 'undefined' ? localStorage.getItem(timerKey) : null;
+    const start = stored ? parseInt(stored) : now;
+    if (!stored && typeof window !== 'undefined') localStorage.setItem(timerKey, String(now));
+    const elapsed = Math.floor((now - start) / 1000);
+    const cycle = 6 * 3600;
+    return cycle - (elapsed % cycle);
+  };
 
+  const [secs, setSecs] = useState(getSecondsLeft);
+
+  useEffect(() => {
+    const t = setInterval(() => setSecs(getSecondsLeft()), 1000);
+    return () => clearInterval(t);
+  }, [timerKey]);
+
+  const h = Math.floor(secs / 3600);
+  const m = Math.floor((secs % 3600) / 60);
+  const s = secs % 60;
+  const pad = (n: number) => String(n).padStart(2, '0');
+
+  return (
+    <div className="flex items-center gap-3 my-3 bg-[#fff4e0] border border-[#fcd9a0] rounded-[10px] px-4 py-[10px] w-fit">
+      <span className="text-[15px] font-bold text-[#9c5c0f]">⏰ Offer ends in</span>
+      <div className="flex items-center gap-[5px]">
+        {[pad(h), pad(m), pad(s)].map((val, i) => (
+          <React.Fragment key={i}>
+            <span className="bg-[#d97706] text-white text-[16px] font-bold px-[10px] py-[5px] rounded-[7px] tabular-nums min-w-[36px] text-center shadow-sm">{val}</span>
+            {i < 2 && <span className="text-[#9c5c0f] font-black text-[18px]">:</span>}
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+/* ─── FAQ Item ───────────────────────────────────────────── */
+const FAQItem = ({ q, a }: { q: string; a: string }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-t border-[#e5e0d8] py-4">
+      <button onClick={() => setOpen(o => !o)} className="w-full flex items-center justify-between text-left gap-4 cursor-pointer bg-transparent border-none p-0">
+        <span className="text-[15px] font-bold text-[#3a1216]">{q}</span>
+        <span className={`text-[#9c5c0f] text-[20px] font-bold transition-transform duration-200 shrink-0 ${open ? 'rotate-45' : ''}`}>+</span>
+      </button>
+      {open && <p className="mt-3 mb-0 text-[#3a1216] text-[15px] leading-relaxed">{a}</p>}
+    </div>
+  );
+};
+
+/* ─── Mobile Sticky Booking Bar ─────────────────────────── */
+const MobileStickyBar = ({ price, slug, timerKey }: { price: number, slug: string, timerKey: string }) => {
+  const getSecondsLeft = () => {
+    const now = Date.now();
+    const stored = typeof window !== 'undefined' ? localStorage.getItem(timerKey) : null;
+    const start = stored ? parseInt(stored) : now;
+    if (!stored && typeof window !== 'undefined') localStorage.setItem(timerKey, String(now));
+    const elapsed = Math.floor((now - start) / 1000);
+    const cycle = 6 * 3600;
+    return cycle - (elapsed % cycle);
+  };
+
+  const [secs, setSecs] = useState(getSecondsLeft);
+
+  useEffect(() => {
+    const t = setInterval(() => setSecs(getSecondsLeft()), 1000);
+    return () => clearInterval(t);
+  }, [timerKey]);
+
+  const h = Math.floor(secs / 3600);
+  const m = Math.floor((secs % 3600) / 60);
+  const s = secs % 60;
+
+  return (
+    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-[0_-4px_15px_rgba(0,0,0,0.06)] z-50 px-4 py-3 pb-4 border-t border-[#f3f4f6]">
+      <div className="text-center text-[#ea580c] text-[13px] font-semibold mb-3">
+        Booking closes in <span className="text-[#db2777] font-bold">{h}h {m}m {s}s</span>
+      </div>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2.5">
+          <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 border border-gray-200">
+            <img src="/vaidiktalklogo.webp" alt="Vaidik Talk" className="w-full h-full object-contain" />
+          </div>
+          <div>
+            <div className="text-[10px] text-gray-500 font-medium leading-tight">Guided by</div>
+            <div className="text-[12px] font-bold text-[#374151] leading-tight">Vaidik Talk</div>
+          </div>
+        </div>
+        <Link href={`/book-a-puja/${slug}/checkout`} className="bg-[#ea580c] text-white px-8 py-2.5 rounded-xl font-bold text-[15px] active:scale-95 transition-transform shrink-0">
+          Book Puja
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+/* ─── Main Page ──────────────────────────────────────────── */
+export default function DynamicPujaPage() {
   const params = useParams();
   const slug = params?.slug as string;
   const [puja, setPuja] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-  const { formData, setFormData, handleChange, handleSubmit, isProcessing } = usePujaBooking({
-    title: puja?.title || '',
-    slug: puja?.slug || slug,
-    amount: puja?.discountedPrice || puja?.price || 0
-  });
-
-  const [locationSuggestions, setLocationSuggestions] = useState<any[]>([]);
-  const [isSearchingLocation, setIsSearchingLocation] = useState(false);
-  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [selectedPkg, setSelectedPkg] = useState(0);
 
   useEffect(() => {
-    const delayDebounceFn = setTimeout(async () => {
-      if (formData.location && formData.location.length > 2 && showSuggestions) {
-        setIsSearchingLocation(true);
-        try {
-          const res = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(formData.location)}&limit=5`);
-          const data = await res.json();
-          setLocationSuggestions(data.features || []);
-        } catch (err) {
-          console.error(err);
-        } finally {
-          setIsSearchingLocation(false);
-        }
-      } else {
-        setLocationSuggestions([]);
-      }
-    }, 500);
-
-    return () => clearTimeout(delayDebounceFn);
-  }, [formData.location, showSuggestions]);
-
-  useEffect(() => {
-    if (!slug) return;
     const fetchPuja = async () => {
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
@@ -71,687 +149,329 @@ export default function DynamicPujaPage() {
         setPuja(response.data);
       } catch (error) {
         console.error('Error fetching puja:', error);
-        setPuja(null);
       } finally {
         setLoading(false);
-        setTimeout(() => window.scrollTo(0, 0), 100);
       }
     };
     fetchPuja();
   }, [slug]);
 
-  if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
-  }
+  if (loading) return <div className="min-h-screen flex items-center justify-center text-[#3a1216]/50 font-semibold">Loading...</div>;
+  if (!puja) notFound();
 
-  if (!puja) {
-    notFound();
-  }
+  const primaryImage = puja?.image ? (puja.image.startsWith('/pooja') ? puja.image : getImageUrl(puja.image, puja.title)) : '/pooja/Rudraabhishek.webp';
+  const defaultImages = [primaryImage];
+  const galleryImages = puja?.gallery?.length > 0 ? puja.gallery : defaultImages;
+  
+  const price = puja?.discountedPrice || puja?.price || 1599;
+  const origPrice = Math.round(price * 1.28);
+
+  const defaultTestimonials = [
+    { name: 'Priya Sharma', city: 'New Delhi', review: 'The puja was absolutely divine. The pandit was deeply knowledgeable and performed every ritual with precision. I joined via live video and felt immense spiritual energy. The prasad arrived beautifully packed within 4 days. Highly recommend Vaidik Talk.', initial: 'P' },
+    { name: 'Rajesh Gupta', city: 'Mumbai', review: 'Skeptical at first, but this completely changed my view of online pujas. The sankalp was taken in my name and gotra. I received HD photos the same evening. The whole process was seamless and the results were visible within a week. Truly professional.', initial: 'R' },
+    { name: 'Anita Verma', city: 'Bengaluru', review: "Booked this puja for my mother's health. The muhurat was perfectly auspicious, the pandit spent over 2 hours performing every ritual with dedication. The difference was palpable. Will always trust Vaidik Talk for my spiritual needs.", initial: 'A' },
+  ];
+  const testimonials = puja?.testimonials?.length > 0 ? puja.testimonials : defaultTestimonials;
+
+  const steps = [
+    { title: "Select your Puja package", desc: "Choose the package that best matches your intention and purpose." },
+    { title: "Enter your sankalp details", desc: "Add your Name, Gotra & intention. The pandit will personalize the Sankalp." },
+    { title: "Complete secure payment", desc: "Pay via UPI, cards, net banking — all methods accepted." },
+    { title: "Puja performed by verified Pandits", desc: "A verified pandit performs the puja with your sankalp on the chosen date." },
+    { title: "Receive updates & prasad", desc: "Get photos, videos on WhatsApp and prasad delivered to your door." },
+  ];
+
+  const SingleIcon = () => <img src="/pooja/single-icon.png" alt="Single Devotee" className="w-full h-full object-cover rounded-lg" />;
+  const CoupleIcon = () => <img src="/pooja/couple-icon.png" alt="Couple Devotees" className="w-full h-full object-cover rounded-lg" />;
+  const FamilyIcon = () => <img src="/pooja/family-icon.png" alt="Family Devotees" className="w-full h-full object-cover rounded-lg" />;
+
+  const packages = [
+    {
+      Icon: SingleIcon,
+      name: "Single",
+      sub: "For 1 Person",
+      perks: ["Live updates on WhatsApp", "HD sankalp video + photos", "Prasad couriered to your door"],
+      price: price,
+      orig: origPrice,
+    },
+    {
+      Icon: CoupleIcon,
+      name: "Couple",
+      sub: "For 1 + Spouse / Partner",
+      perks: ["Live updates on WhatsApp", "HD sankalp video + photos", "Prasad couriered to your door"],
+      price: Math.round(price * 1.8),
+      orig: Math.round(price * 2.4),
+    },
+    {
+      Icon: FamilyIcon,
+      name: "Family",
+      sub: "Family Blessing",
+      perks: ["Live updates on WhatsApp", "HD sankalp video + photos", "Prasad couriered to your door"],
+      price: Math.round(price * 2.8),
+      orig: Math.round(price * 3.8),
+    },
+  ];
+
+  const defaultFaqs = [
+    { q: `Who should book the ${puja?.title || 'Puja'}?`, a: `Anyone seeking divine blessings, peace, and spiritual upliftment should book this puja. It is beneficial for removing obstacles and inviting positive energies.` },
+    { q: "How soon can I expect results?", a: "Many devotees report feeling a shift in positive energy and mental clarity shortly after the puja. Tangible results depend on individual karmic factors but are often noticed within a few weeks." },
+    { q: "Is the puja performed using my name and gotra?", a: "Yes. A personal Sankalp is taken in your name, gotra, and specific intention before the ritual begins, making the puja spiritually personalized to your goal." },
+    { q: "Will I receive Prasad after the Puja?", a: "Yes, blessed prasad along with energized items (if applicable to the package) will be securely packed and couriered to your registered address." },
+  ];
+  const faqs = puja?.faqs?.length > 0 ? puja.faqs : defaultFaqs;
+
+  const defaultBenefits = [
+    "Clears obstacles that may be hindering progress",
+    "Offers protection from negative energies and influences",
+    "Enhances clarity and insight for confident decision-making",
+    "Supports physical and mental well-being",
+    "Fosters peace and harmony in personal and spiritual life"
+  ];
+  const benefits = puja?.benefits?.length > 0 ? puja.benefits : defaultBenefits;
 
   return (
-    <div className="w-full bg-[#fdfaf6] font-sans min-h-screen">
-      {/* 1. HERO SECTION */}
-      <div className="relative w-full min-h-[500px] md:min-h-[600px] py-12 md:py-0 flex items-center bg-black overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={puja.image ? (puja.image.startsWith('/pooja') ? puja.image : getImageUrl(puja.image, puja.title)) : "/pooja/Rudraabhishek.webp"}
-            alt={puja.title}
-            className="w-full h-full object-cover opacity-100 object-center"
-          />
-          <div className="absolute inset-0 bg-black/60 md:bg-transparent md:bg-gradient-to-r md:from-black/90 md:via-black/50 md:to-transparent" />
-        </div>
+    <div className="w-full bg-white text-[#3a1216]" style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}>
+      <style>{`
+        @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-track { display: flex; width: max-content; animation: marqueeScroll 30s linear infinite; }
+        .marquee-track:hover { animation-play-state: paused; }
+      `}</style>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pt-10">
-          <h1 className="premium-serif text-4xl md:text-6xl font-bold text-white mb-6 leading-tight max-w-2xl">
-            {puja.title?.split(' ').slice(0, -1).join(' ')}{' '}
-            <span className="text-[#d4af37]">{puja.title?.split(' ').slice(-1)}</span>
-          </h1>
-          <p className="text-gray-200 text-lg md:text-xl max-w-xl leading-relaxed mb-8">
-            {puja.shortDesc}
-          </p>
-          <div className="flex items-center gap-6">
-            <a
-              href="#booking-section"
-              className="px-8 py-3 bg-[#d4af37] text-[#5c1a1f] font-bold rounded-lg hover:bg-[#c29f2f] transition-all flex items-center gap-2"
-            >
-              <Sparkles className="w-5 h-5" /> Proceed to Book
-            </a>
-            {puja.price && (
-              <div className="text-white">
-                <span className="text-sm opacity-80 block">Starting from</span>
-                <div className="flex items-center gap-3">
-                  {puja.discountedPrice && <span className="text-gray-400 line-through text-lg">₹{puja.price}</span>}
-                  <span className="text-2xl font-bold text-[#f5d08b]">₹{puja.discountedPrice || puja.price}</span>
-                </div>
-              </div>
-            )}
+      <div className="max-w-[1140px] mx-auto px-5 pb-16">
+        <p className="text-[18px] text-[#3a1216]/55 my-4 pt-4">
+          <Link href="/book-a-puja" className="text-[#3a1216] hover:text-[#9c5c0f] transition-colors">Home</Link>
+          {' '}&gt;{' '}{puja?.title || 'Premium Vedic Ritual'}
+        </p>
+
+        {/* ── HERO ── */}
+        <div className="flex flex-col md:flex-row gap-8 py-2 pb-6">
+          <div className="w-full md:w-[45%] lg:w-[526px] shrink-0">
+            <ImageCarousel images={galleryImages} />
           </div>
-        </div>
-      </div>
-
-      {/* 2. MAIN CONTENT */}
-      <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
-        <style dangerouslySetInnerHTML={{
-          __html: `
-          .premium-rich-text ul { list-style: none; padding-left: 0; margin-bottom: 2rem; }
-          .premium-rich-text ul li { position: relative; padding-left: 2.25rem; margin-bottom: 1rem; color: #1f2937; font-weight: 500; font-size: 1.125rem; }
-          .premium-rich-text ul li::before {
-            content: ''; position: absolute; left: 0; top: 0.15rem; width: 1.5rem; height: 1.5rem;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23d4af37' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /%3E%3C/svg%3E");
-            background-repeat: no-repeat; background-position: center; background-size: contain;
-          }
-          .premium-rich-text h2 { color: #5c1a1f; font-family: var(--font-serif), Georgia, serif; font-weight: 700; font-size: 1.75rem; margin-top: 2.5rem; margin-bottom: 1.25rem; }
-          .premium-rich-text h3 { color: #5c1a1f; font-family: var(--font-serif), Georgia, serif; font-weight: 700; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 1rem; }
-          .premium-rich-text p { margin-bottom: 1.5rem; line-height: 1.8; color: #374151; font-size: 1.125rem; }
-          .premium-rich-text p:first-of-type { color: #111827; font-size: 1.25rem; }
-          .premium-rich-text blockquote {
-            border-left: 4px solid #d4af37; background-color: #ffffff; padding: 1.5rem 2rem; border-radius: 0.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #f0ddc0; border-left-width: 4px; margin: 2.5rem 0; font-style: normal; position: relative; overflow: hidden;
-          }
-          .premium-rich-text blockquote p { color: #4b5563; font-size: 0.875rem; margin-bottom: 0; }
-          .premium-rich-text img { border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); margin: 2rem 0; border: 1px solid #f0ddc0; }
-          .premium-rich-text a { color: #ee6c1e; text-decoration: underline; text-decoration-color: rgba(238,108,30,0.5); font-weight: 700; transition: color 0.2s; }
-          .premium-rich-text a:hover { color: #c2410c; text-decoration-color: #ee6c1e; }
-        `}} />
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div className="lg:col-span-7 xl:col-span-8">
-            <h2 className="premium-serif text-3xl md:text-5xl font-bold text-[#5c1a1f] mb-6">
-              The Divine Power of <br className="hidden md:block" /><span className="text-[#d4af37]">{puja.title}</span>
-            </h2>
-            <div className="w-20 h-1 bg-[#d4af37] mb-8" />
-
-            <div
-              className="premium-rich-text break-words w-full"
-              dangerouslySetInnerHTML={{ __html: (puja.description || '').replace(/&nbsp;/g, ' ').replace(/\u00A0/g, ' ').replace(/\sstyle="[^"]*"/gi, '').replace(/\swidth="[^"]*"/gi, '') }}
-            />
-            {puja.benefits && puja.benefits.length > 0 && (
-              <>
-                <h3 className="font-bold text-[#5c1a1f] text-xl mt-8 mb-4">Key Benefits of this Puja:</h3>
-                <ul className="space-y-4">
-                  {puja.benefits.map((item: string, i: number) => (
-                    <li key={i} className="flex items-start gap-3 text-gray-850 font-medium">
-                      <CheckCircle2 className="w-6 h-6 text-[#d4af37] shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
-          </div>
-
-          <div className="lg:col-span-5 xl:col-span-4 flex flex-col gap-10 lg:sticky lg:top-24">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img src={puja.image ? (puja.image.startsWith('/pooja') ? puja.image : getImageUrl(puja.image, puja.title)) : "/pooja/Rudraabhishek.webp"} alt={puja.title} className="w-full h-full object-cover object-center aspect-square md:aspect-[4/3]" />
-              <div className="absolute inset-0 border-4 border-[#d4af37]/30 rounded-2xl pointer-events-none" />
-            </div>
-
-            <div className="p-6 md:p-8 bg-white border border-[#f0ddc0] rounded-2xl shadow-sm relative overflow-hidden group hover:border-[#d4af37]/50 transition-colors">
-              <div className="absolute top-0 left-0 w-1 h-full bg-[#d4af37]" />
-              <h4 className="text-xl font-bold text-[#5c1a1f] mb-3 flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-[#d4af37]" /> {puja.wisdomCardTitle || "Spiritual Wisdom"}
-              </h4>
-              <p className="text-gray-850 leading-relaxed text-sm">
-                {puja.wisdomCardText || "Our Vedic rituals tap into ancient energies, karmic alignment, and precise celestial timings to bring peace, prosperity, and divine blessings into your life. Every mantra chanted creates a powerful vibration to manifest your deepest intentions."}
+          <div className="flex-1 min-w-[280px]">
+            <h1 className="text-[30px] md:text-[34px] font-bold text-[#3a1216] m-0 mb-2 leading-tight">
+              {puja?.title || 'Premium Vedic Ritual'}
+            </h1>
+            <p className="text-[#9c5c0f] font-semibold m-0 mb-4 text-[17px]">
+              {puja?.shortDesc || puja?.description?.replace(/<[^>]+>/g, '').slice(0, 150) || 'Invite divine blessings, clear life obstacles, and manifest success and peace into your life through authentic Vedic rituals.'}
+            </p>
+            <div className="space-y-[8px] mb-4">
+              <p className="flex items-center gap-2 text-[#3a1216] text-[14px] m-0 font-medium">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z" /></svg>
+                Book Online — from anywhere in the world
+              </p>
+              <p className="flex items-center gap-2 text-[#3a1216] text-[14px] m-0 font-medium">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
+                Vedic ritual on Auspicious Muhurat
+              </p>
+              <p className="flex items-center gap-2 text-[#3a1216] text-[14px] m-0 font-medium">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+                Sankalp with your Name, Gotra &amp; Intention
               </p>
             </div>
-          </div>
-        </div>
-      </div>
 
-      {/* HOW IT WORKS & WHY CHOOSE US */}
-      <div className="py-20 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
-        {/* How it works */}
-        <div>
-          <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#5c1a1f] mb-10">How Does The Process Work?</h2>
-          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-6 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-[#d4af37] before:to-transparent">
-            {(puja.processSteps?.length > 0 ? puja.processSteps : [
-              "Easily book the Anushthan via our platform.",
-              "Share your name, gotra, birth details, and financial intentions through the form below.",
-              "Your details will be included in the sacred Sankalp, performed at the beginning of the ritual by our expert Pandits.",
-              "On the day of the Anushthan, be seated with a calm and focused mind—cover your head with a clean cloth and listen with devotion.",
-              "The energy of wealth and divine prosperity will be invoked on your behalf through powerful mantras, havan, and yantra activation."
-            ]).map((step: string, idx: number) => (
-              <div key={idx} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-[#fcf5eb] bg-[#d4af37] text-[#5c1a1f] font-bold text-lg shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-                  {idx + 1}
-                </div>
-                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-white p-5 rounded-xl shadow-sm border border-[#f0ddc0]">
-                  <p className="text-gray-850 font-medium">{step}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+            <CountdownTimer timerKey={`timer_${slug}`} />
 
-        {/* Why choose us */}
-        <div>
-          <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#5c1a1f] mb-4">Why Book with Vaidik Talk?</h2>
-          
-          <ul className="space-y-3 mb-10">
-            {(puja.whyChooseUs?.length > 0 ? puja.whyChooseUs : [
-              "India's most trusted Devotion-Tech platform with thousands of transformative rituals delivered",
-              "Authentic Vedic Anushthans led by Pandits from Char Dham, Kashi, Puri, Ujjain, and more",
-              "Personalized Sankalp and live-streamed ceremonies for full transparency and involvement",
-              "Graphically designed Kundalis with specific insights and astrological remedies",
-              "Over 40 years of combined expertise guiding your destiny with precision and devotion"
-            ]).map((item: string, i: number) => (
-              <li key={i} className="flex items-start gap-3 text-gray-850 font-medium text-sm md:text-base">
-                <CheckCircle2 className="w-5 h-5 text-[#d4af37] shrink-0 mt-0.5" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-
-          <h2 className="premium-serif text-2xl md:text-3xl font-bold text-[#5c1a1f] mb-4">Our Unique Approach: Why We're Different</h2>
-          <p className="text-gray-850 mb-8 leading-relaxed">
-            We are honored to have highly experienced and spiritually enlightened Panditjis from the sacred Char Dham and other renowned pilgrimage sites, including <strong className="text-[#5c1a1f]">Varanasi, Bodh Gaya, Deoghar, Ujjain, Puri, Badrinath, Rameswaram, and Dwarka</strong>.
-          </p>
-
-          <div className="space-y-4">
-            {[
-              { title: "Graphical Kundali Representation", desc: "Understand your life's ups and downs at a glance with our visual reports." },
-              { title: "No Need for an Astrologer", desc: "Our detailed reports are so clear, you can read and understand them yourself." },
-              { title: "Powerful Remedies", desc: "We provide actionable, spiritually potent solutions alongside astrological insights." },
-              { title: "40+ Years of Combined Expertise", desc: "Our team brings decades of spiritual and astrological knowledge to your service." }
-            ].map((feature, idx) => (
-              <div key={idx} className="flex gap-4 p-5 bg-white rounded-xl shadow-sm border border-[#f0ddc0] hover:border-[#d4af37] transition-colors">
-                <div className="mt-1"><ShieldCheck className="w-6 h-6 text-[#d4af37]" /></div>
-                <div>
-                  <h4 className="text-base font-bold text-[#5c1a1f] mb-1">{feature.title}</h4>
-                  <p className="text-gray-850 text-sm leading-relaxed">{feature.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* 3. BOOKING FORM SECTION */}
-      <div id="booking-section" className="w-full bg-[#fdfaf6] py-20 px-6 border-y border-[#e8d8c0]">
-        <div className="max-w-6xl mx-auto">
-
-          <div className="text-center mb-10 md:mb-14">
-            <h2 className="premium-serif text-3xl md:text-5xl font-bold text-[#5c1a1f] mb-4">Complete Your Booking</h2>
-            <p className="text-gray-850 text-base md:text-lg max-w-2xl mx-auto">Please provide your details below. This information will be used by our Purohits for your personalized Sankalp.</p>
-          </div>
-
-          <div className="flex flex-col lg:flex-row gap-8 items-start relative pb-24 lg:pb-0">
-
-            {/* Left Form (Devotee Details) */}
-            <div className="w-full lg:w-2/3 bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-[#e8d8c0]/50 relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
-                <Sparkles className="w-40 h-40 text-[#5c1a1f]" />
-              </div>
-
-              <h3 className="text-xl md:text-2xl font-bold text-[#5c1a1f] mb-6 flex items-center gap-2">
-                <UserCheck className="w-6 h-6 text-[#d4af37]" /> Devotee Information
-              </h3>
-
-              <form id="booking-form" onSubmit={handleSubmit} className="space-y-5 md:space-y-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-850 mb-1.5">Full Name *</label>
-                    <input required type="text" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-850 bg-gray-50/50" placeholder="Enter Full Name" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-850 mb-1.5">Gotra (Optional)</label>
-                    <input type="text" name="gotra" value={formData.gotra} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-850 bg-gray-50/50" placeholder="Enter Gotra" />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-850 mb-1.5">Phone No. *</label>
-                    <input required type="tel" maxLength={10} pattern="[0-9]{10}" onKeyPress={(e) => { if (!/[0-9]/.test(e.key)) e.preventDefault(); }} name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-850 bg-gray-50/50" placeholder="Phone Number" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-850 mb-1.5">Email *</label>
-                    <input required type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-850 bg-gray-50/50" placeholder="Email Address" />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-                  <div className="relative">
-                    <label className="block text-sm font-semibold text-gray-850 mb-1.5">City / Location *</label>
-                    <div className="relative">
-                      <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#3a1216]" />
-                      <input 
-                        required 
-                        type="text" 
-                        name="location" 
-                        value={formData.location} 
-                        onChange={(e) => {
-                          handleChange(e);
-                          setShowSuggestions(true);
-                        }} 
-                        onFocus={() => setShowSuggestions(true)}
-                        onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-                        className="w-full px-4 py-3 pl-9 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-850 bg-gray-50/50" 
-                        placeholder="Your City" 
-                        autoComplete="off"
-                      />
-                      {isSearchingLocation && (
-                        <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 animate-spin text-[#d4af37]" />
-                      )}
-                    </div>
-                    {/* Autocomplete Dropdown */}
-                    {showSuggestions && locationSuggestions.length > 0 && (
-                      <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-[#e8d8c0] rounded-md shadow-lg z-50 max-h-60 overflow-y-auto">
-                        {locationSuggestions.map((suggestion, idx) => {
-                          const { name, state, country } = suggestion.properties;
-                          const displayName = [name, state, country].filter(Boolean).join(', ');
-                          return (
-                            <div 
-                              key={idx}
-                              className="px-4 py-2.5 hover:bg-[#fcf5eb] cursor-pointer border-b border-gray-50 last:border-0 text-[13px] text-gray-850 flex items-start gap-2"
-                              onClick={() => {
-                                setFormData(prev => ({ ...prev, location: displayName }));
-                                setShowSuggestions(false);
-                              }}
-                            >
-                              <MapPin className="w-4 h-4 text-[#d4af37] shrink-0 mt-0.5" />
-                              <span>{displayName}</span>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-850 mb-1.5">Preferred Pooja Date *</label>
-                    <input required type="date" name="date" value={formData.date} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all text-gray-850 bg-gray-50/50" />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-850 mb-1.5">Additional Message / Intentions</label>
-                  <textarea rows={3} name="message" value={formData.message} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] outline-none transition-all resize-none text-gray-850 bg-gray-50/50" placeholder="Any specific issues or wishes?"></textarea>
-                </div>
-
-                {/* Mobile Standard Submit Button (Inside Form) */}
-                <div className="lg:hidden pt-4">
-                  <button
-                    type="submit"
-                    disabled={isProcessing}
-                    className="w-full py-4 bg-gradient-to-r from-[#d4af37] to-[#f5d08b] text-[#5c1a1f] rounded-xl font-bold text-lg shadow-lg flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
-                  >
-                    <Lock className="w-5 h-5" /> {isProcessing ? 'Processing...' : `Proceed to Pay ₹${puja.discountedPrice || puja.price}`}
-                  </button>
-                </div>
-              </form>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between my-3 gap-1 sm:gap-0 text-[15px] text-[#3a1216] font-medium">
+              <span>{Math.floor(Math.random() * 5 + 5)}K+ devotees booked this puja</span>
+              <span className="text-[#9c5c0f] font-bold text-[14px]">★ 4.9 ({Math.floor(Math.random() * 2 + 3)}.{Math.floor(Math.random() * 9)}K Reviews)</span>
             </div>
-
-            {/* Right Sidebar (Order Summary) - Hidden on Mobile to avoid scroll fatigue */}
-            <div className="hidden lg:block w-full lg:w-1/3 lg:sticky lg:top-24">
-              <div className="bg-[#5c1a1f] p-6 md:p-8 rounded-2xl shadow-2xl text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
-                  <ShieldCheck className="w-32 h-32" />
-                </div>
-
-                <h3 className="premium-serif text-2xl font-bold mb-6 border-b border-white/20 pb-4 flex items-center gap-2">
-                  Order Summary
-                </h3>
-
-                <div className="space-y-4 mb-6 relative z-10">
-                  <div className="flex justify-between items-start gap-4">
-                    <span className="text-[#f0ddc0] text-sm">Pooja Name</span>
-                    <span className="font-bold text-right text-[15px]">{puja.title}</span>
-                  </div>
-                  <div className="flex justify-between items-start gap-4">
-                    <span className="text-[#f0ddc0] text-sm">Includes</span>
-                    <span className="text-right text-[14px]">Samagri & Dakshina</span>
-                  </div>
-                </div>
-
-                <div className="bg-white/10 p-5 rounded-xl border border-white/20 mb-6 backdrop-blur-md relative z-10">
-                  <span className="block text-xs md:text-sm text-[#f5d08b] uppercase tracking-wide font-bold mb-2">Total Offering</span>
-                  <div className="flex items-end gap-3">
-                    <span className="text-4xl font-bold text-white">₹{puja.discountedPrice || puja.price}</span>
-                    {puja.discountedPrice && <span className="text-lg text-white/60 line-through mb-1">₹{puja.price}</span>}
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  form="booking-form"
-                  className="w-full py-4 bg-gradient-to-r from-[#d4af37] to-[#f5d08b] hover:from-[#c29f2f] hover:to-[#e3bd75] text-[#5c1a1f] rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 relative z-10"
-                >
-                  <Lock className="w-5 h-5" /> Proceed to Pay
-                </button>
-                <p className="text-center text-xs text-[#f0ddc0] mt-4 flex items-center justify-center gap-1 relative z-10">
-                  <ShieldCheck className="w-4 h-4 text-[#f5d08b]" /> 100% Secure & Authentic
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Sticky Bottom Pay Bar */}
-      <div className="lg:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 shadow-[0_-10px_25px_rgba(0,0,0,0.1)] z-[100] flex justify-between items-center">
-        <div className="flex flex-col">
-          <span className="text-[10px] text-gray-850 font-bold uppercase tracking-wider mb-0.5">Total Offering</span>
-          <div className="flex items-end gap-1.5">
-            <span className="text-xl font-black text-[#5c1a1f]">₹{puja.discountedPrice || puja.price}</span>
-            {puja.discountedPrice && <span className="text-xs text-[#3a1216] line-through mb-0.5">₹{puja.price}</span>}
-          </div>
-        </div>
-        <button
-          form="booking-form"
-          type="submit"
-          className="px-6 py-3 bg-gradient-to-r from-[#d4af37] to-[#f5d08b] text-[#5c1a1f] rounded-lg font-bold shadow-md flex items-center gap-2 active:scale-95 transition-transform"
-        >
-          Proceed <Lock className="w-4 h-4" />
-        </button>
-      </div>
-
-
-
-      {/* HOW IT WORKS */}
-      <div className="w-full bg-[#fdfaf6] py-20 px-6 border-t border-[#e8d8c0]">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col lg:flex-row gap-14 items-start">
-            <div className="lg:w-1/3 lg:sticky lg:top-32">
-              <p className="text-[#d97706] text-[11px] font-bold tracking-[0.2em] uppercase mb-4">Simple & Transparent</p>
-              <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#1a0a0b] mb-5 leading-tight">Book Your Puja<br />in Minutes</h2>
-              <p className="text-gray-850 text-sm leading-relaxed mb-8">A seamless process from your home to divine blessings — our pandits handle everything.</p>
-              <a href="#booking-section" className="inline-flex items-center gap-2 px-6 py-3 bg-[#5c1a1f] text-white rounded-xl font-bold text-sm hover:bg-[#4a1519] transition-all shadow-sm">
-                Book Now
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-              </a>
-            </div>
-            <div className="lg:w-2/3 flex flex-col">
-              {[
-                { n: '01', label: 'Book Online', desc: 'Choose your puja, fill in your devotee details (name, gotra, intentions), and complete secure online payment in minutes.' },
-                { n: '02', label: 'Pandit Assigned', desc: 'Within hours, a verified and experienced Vedic pandit is personally assigned to your booking.' },
-                { n: '03', label: 'Muhurat Confirmed', desc: 'Our pandits calculate the most auspicious date and time for your puja and share it with you on WhatsApp.' },
-                { n: '04', label: 'Puja Performed Live', desc: 'Join via a live video link and witness every ritual — with the Sankalp read aloud in your name.' },
-                { n: '05', label: 'Prasad at Your Door', desc: 'Blessed prasad, HD photos, and a video recording of the puja are sent directly to your home.' },
-              ].map((item, idx) => (
-                <div key={idx}>
-                  <div className="flex items-start gap-5 bg-white border border-[#f0ddc0] rounded-2xl p-6 hover:border-[#d4af37]/60 hover:shadow-md transition-all group">
-                    <div className="shrink-0 w-10 h-10 rounded-xl bg-[#d97706] flex items-center justify-center shadow-sm group-hover:bg-[#5c1a1f] transition-colors">
-                      <span className="text-white font-black text-xs group-hover:text-[#d4af37] transition-colors">{item.n}</span>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-[#1a0a0b] text-[15px] mb-1.5">{item.label}</h4>
-                      <p className="text-gray-850 text-[13px] leading-relaxed">{item.desc}</p>
-                    </div>
-                  </div>
-                  {idx < 4 && (
-                    <div className="flex items-center justify-center py-1">
-                      <div className="flex flex-col items-center">
-                        <div className="w-px h-4 bg-[#d97706]/25" />
-                        <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
-                          <path d="M1 1.5l7 7 7-7" stroke="#d97706" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.45" />
-                        </svg>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* TRUST & GUARANTEE — light theme */}
-      <div className="w-full bg-[#fcf5eb] py-16 px-6 border-t border-[#e8d8c0]">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-start justify-between gap-10">
-            <div className="md:w-1/3">
-              <p className="text-[#d97706] text-[11px] font-bold tracking-[0.2em] uppercase mb-3">Our Promise</p>
-              <h2 className="premium-serif text-2xl md:text-3xl font-bold text-[#5c1a1f] mb-3 leading-tight">Every Booking.<br />Every Ritual.<br />Guaranteed.</h2>
-              <p className="text-gray-850 text-sm leading-relaxed">We stand by the authenticity, quality, and results of every puja we perform.</p>
-            </div>
-            <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {[
-                { label: '100% Verified Pandits', desc: 'Every pandit is screened, background-checked, and trained in Vedic scriptures' },
-                { label: 'HD Photos & Video', desc: 'Full documentation of your puja ritual — shared within 24 hours' },
-                { label: 'Live Streaming', desc: 'Watch your puja in real-time via a dedicated video link' },
-                { label: 'Sankalp in Your Name', desc: 'Your name, gotra, and intention are read aloud at the start of every ritual' },
-                { label: 'Prasad Delivered', desc: 'Blessed prasad packed and couriered to your address after the puja' },
-                { label: 'Money-Back Guarantee', desc: 'Full refund if the puja cannot be performed as booked' },
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-[#f0ddc0] hover:border-[#d4af37]/60 hover:shadow-sm transition-all">
-                  <div className="shrink-0 w-5 h-5 rounded-full bg-[#d97706] flex items-center justify-center mt-0.5">
-                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  </div>
-                  <div>
-                    <p className="text-[#1a0a0b] text-[13px] font-bold mb-0.5">{item.label}</p>
-                    <p className="text-gray-850 text-[11px] leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      {/* 6. TESTIMONIALS (Dynamic) */}
-      {puja.testimonials && puja.testimonials.length > 0 && (
-        <div className="w-full bg-white py-20 px-6 border-t border-[#e8d8c0]">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-14">
-              <p className="text-[#d97706] text-[11px] font-bold tracking-[0.2em] uppercase mb-4">What They Say</p>
-              <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#1a0a0b] mb-4">Trusted by 50,000+ Devotees</h2>
-              <div className="flex items-center justify-center gap-2 flex-wrap">
-                <div className="flex">{[1, 2, 3, 4, 5].map(s => <span key={s} className="text-[#f59e0b] text-lg">★</span>)}</div>
-                <span className="text-[#111827] font-bold text-sm">{puja.rating || "4.9"} out of 5</span>
-                <span className="text-[#D1D5DB] mx-1">|</span>
-                <span className="text-gray-850 text-sm">{puja.reviews || "5,000+"} verified reviews</span>
-              </div>
-            </div>
-
-            <div className="overflow-hidden relative w-full mb-16"><div className="flex w-max animate-marquee gap-6 pb-4 hover:pause">
-              {[...(puja.testimonials || []), ...(puja.testimonials || []), ...(puja.testimonials || []), ...(puja.testimonials || [])].map((t: any, idx: number) => (
-                <div key={idx} className="w-[85vw] sm:w-[320px] md:w-[350px] shrink-0 snap-center bg-[#fdfaf6] rounded-2xl p-7 border border-[#f0ddc0] flex flex-col hover:shadow-md transition-shadow">
-                  <div className="flex justify-between items-start mb-5">
-                    <div className="flex gap-0.5">{[1, 2, 3, 4, 5].map(s => <span key={s} className="text-[#f59e0b] text-[15px]">★</span>)}</div>
-                  </div>
-                  <p className="text-gray-850 text-[13.5px] leading-[1.85] flex-grow mb-6">{t.review}</p>
-                  <div className="flex items-center gap-3 pt-5 border-t border-[#f0ddc0]">
-                    <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-black shrink-0" style={{ backgroundColor: t.color || '#5c1a1f' }}>{t.initial || t.name?.[0]}</div>
-                    <div className="flex-1">
-                      <p className="font-bold text-[#111827] text-[13px] leading-none mb-1">{t.name}</p>
-                      <p className="text-[#9CA3AF] text-[11px]">{t.city} · {t.date}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Video Testimonials (Dynamic) */}
-            {puja.videoTestimonials && puja.videoTestimonials.length > 0 && (
-              <div className="border-t border-[#e8d8c0] pt-12">
-                <div className="text-center mb-10">
-                  <p className="text-[#d97706] text-[11px] font-bold tracking-[0.2em] uppercase mb-3">Video Testimonials</p>
-                  <h3 className="premium-serif text-3xl md:text-4xl font-bold text-[#1a0a0b] mb-3">Real Devotees. Real Experiences.</h3>
-                </div>
-                <div className="overflow-hidden relative w-full mb-8"><div className="flex w-max animate-marquee gap-5 pb-4 hover:pause">
-                  {[...(puja.videoTestimonials || []), ...(puja.videoTestimonials || []), ...(puja.videoTestimonials || []), ...(puja.videoTestimonials || [])].map((v: any, idx: number) => (
-                    <div key={idx} className="w-[85vw] sm:w-[320px] md:w-[350px] shrink-0 snap-center rounded-2xl overflow-hidden shadow-md border border-[#f0ddc0] bg-[#111] aspect-video group">
-                                        <div className="relative w-full h-full cursor-pointer group-hover:opacity-90 transition-opacity">
-                    <img loading="lazy" src={`https://img.youtube.com/vi/${getYoutubeId(v.youtubeId || v.id || 'aCg32i0vQTo')}/hqdefault.jpg`} onError={(e: any) => { e.currentTarget.src = 'https://img.youtube.com/vi/aCg32i0vQTo/hqdefault.jpg'; }} alt={v.title || 'Testimonial'} className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-14 h-14 bg-black/60 rounded-full flex items-center justify-center border border-white/30 backdrop-blur-sm shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-transform group-hover:scale-110">
-                        <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-                      </div>
-                    </div>
-                  </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-          </div>
-        </div>
-      )}
-
-      {/* 6.5 PHOTO GALLERY (Dynamic) */}
-      {puja.gallery && puja.gallery.length > 0 && (
-        <div className="w-full bg-[#fcf5eb] py-20 px-6 border-t border-[#e8d8c0]">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <p className="text-[#d97706] text-[11px] font-bold tracking-[0.2em] uppercase mb-3">Puja Glimpses</p>
-              <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#1a0a0b] mb-3">Divine Photo Gallery</h2>
-              <p className="text-gray-850 text-base md:text-lg max-w-2xl mx-auto">Experience the divine energy through authentic moments captured during our Vedic rituals.</p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {puja.gallery.slice(0, 6).map((img: string, idx: number) => (
-                <div
-                  key={idx}
-                  className="relative rounded-2xl overflow-hidden shadow-sm border border-[#e8d8c0] group aspect-[4/3] cursor-pointer"
-                  onClick={() => setSelectedImage(img ? (img.startsWith('/pooja') ? img : getImageUrl(img)) : '')}
-                >
-                  <img loading="lazy" src={img ? (img.startsWith('/pooja') ? img : getImageUrl(img)) : ''} alt={`${puja.title} - Photo ${idx + 1}`} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-transparent group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
-                    <svg className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* 7. RELATED PUJAS (Dynamic) */}
-      {puja.relatedPujas && puja.relatedPujas.length > 0 && (
-        <div className="w-full bg-[#fdfaf6] py-20 px-6 border-t border-[#e8d8c0]">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+            <div className="flex items-end justify-between mt-5 pt-4 border-t border-[#e5e0d8]">
               <div>
-                <p className="text-[#d97706] text-[11px] font-bold tracking-[0.2em] uppercase mb-3">Related Pujas</p>
-                <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#1a0a0b]">People Also Booked</h2>
+                <div className="text-[#3a1216]/55 text-[13px] mb-[2px]">Starting at from</div>
+                <div className="text-[28px] font-bold text-[#3a1216]">₹{price}</div>
               </div>
+              <Link href={`/book-a-puja/${slug}/checkout`} className="bg-[#d97706] hover:bg-[#b56003] text-white py-[13px] px-[30px] rounded-[10px] font-bold text-[16px] no-underline inline-block transition-colors mb-0">
+                Book Puja
+              </Link>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {puja.relatedPujas.map((r: any, idx: number) => (
-                <Link key={idx} href={`/book-a-puja/${r.slug}`} className="group rounded-2xl overflow-hidden border border-[#f0ddc0] hover:border-[#d4af37]/60 hover:shadow-lg transition-all duration-300 bg-white flex flex-col">
-                  <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-100">
-                    <img src={r.img ? (r.img.startsWith('/pooja') ? r.img : getImageUrl(r.img, r.title)) : "/pooja/Rudraabhishek.webp"} alt={r.title} className="w-full h-full object-contain bg-[#0d0505] group-hover:scale-105 transition-transform duration-700" />
+          </div>
+        </div>
+
+        {/* ── BENEFITS ── */}
+        <section className="py-12 border-t border-[#e5e0d8] mt-6">
+          <h2 className="text-[28px] font-bold text-center text-[#222] mb-8">Benefits of Puja</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {benefits.map((b: string, i: number) => (
+              <div key={i} className="bg-[#f4f7fc] rounded-[12px] py-4 px-5 flex items-center gap-3">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#ea580c" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+                  <path d="M12 2.5C12.5 4.5 14.5 6 16.5 6C16.5 6 16.5 6.5 19 6C18.5 8 18 9.5 20 11C20 11 20 11 21.5 12C20 13 18 14.5 19 16.5C16.5 16 16.5 16 16.5 16C14.5 16.5 12.5 18 12 20C11.5 18 9.5 16.5 7.5 16.5C7.5 16.5 7.5 16 5 16.5C5.5 14.5 6 13 4 11.5C4 11.5 4 11.5 2.5 10.5C4 9.5 6 8 5 6C7.5 6.5 7.5 6.5 7.5 6.5C9.5 6 11.5 4.5 12 2.5Z" />
+                  <circle cx="12" cy="11.5" r="3" fill="#fff" />
+                </svg>
+                <span className="text-[#333] text-[14px] font-medium">{b}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── ABOUT THIS PUJA ── */}
+        <section className="py-8 border-t border-[#e5e0d8]">
+          <h2 className="text-[25px] font-bold text-[#3a1216] mb-4">About this Puja</h2>
+          <div className="flex gap-6 flex-wrap items-start">
+            <img src={primaryImage} alt={puja?.title} className="w-full max-w-[420px] rounded-[12px] object-cover aspect-[4/3]" />
+            <div className="flex-1 min-w-[250px] space-y-4">
+              {puja?.description ? (
+                <div 
+                  className="text-[#3a1216] text-[16px] leading-[1.8] space-y-4 [&>p]:m-0"
+                  dangerouslySetInnerHTML={{ __html: puja.description }} 
+                />
+              ) : (
+                <>
+                  <p className="m-0 text-[#3a1216] text-[16px] leading-[1.8]">
+                    The {puja?.title || 'Puja'} is a powerful Vedic ritual performed to invite divine blessings into your life. It is performed with a personalized Sankalp to remove planetary blocks and manifest peace and prosperity.
+                  </p>
+                  <p className="m-0 text-[#3a1216] text-[16px] leading-[1.8]">
+                    This puja is highly recommended for anyone seeking spiritual growth, facing life challenges, or seeking divine intervention. The ritual is performed on auspicious Muhurat days by experienced Pandits, ensuring maximum spiritual benefit.
+                  </p>
+                  <p className="m-0 text-[#3a1216] text-[16px] leading-[1.8]">
+                    Join via a live video link from anywhere in the world and witness the powerful Vedic mantras transforming your journey into one of success, peace, and abundance.
+                  </p>
+                </>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* ── PACKAGES ── */}
+        <section className="py-8 border-t border-[#e5e0d8]">
+          <h2 className="text-[25px] font-bold text-[#3a1216] mb-4">Choose Your Puja Package</h2>
+          <div className="flex gap-4 flex-wrap">
+            {packages.map((pkg, i) => {
+              const isActive = selectedPkg === i;
+              return (
+                <div
+                  key={i}
+                  onClick={() => setSelectedPkg(i)}
+                  className={`rounded-[16px] p-5 flex-1 min-w-[240px] cursor-pointer transition-all ${isActive
+                      ? 'border-2 border-[#d97706] bg-[rgba(217,119,6,0.05)] shadow-[0_4px_16px_rgba(217,119,6,0.18)]'
+                      : 'border-2 border-[#e5e0d8] hover:border-[#d97706]/60 hover:bg-[#faf6ee]'
+                    }`}
+                >
+                  <div className={`mb-3 w-[56px] h-[56px] rounded-[14px] flex items-center justify-center overflow-hidden border-2 ${isActive ? 'border-[#d97706]' : 'border-transparent'}`}>
+                    <pkg.Icon />
                   </div>
-                  <div className="p-4 flex flex-col gap-1.5 flex-grow">
-                    <span className="text-[#d97706] text-[10px] font-bold tracking-wider uppercase">{r.tag}</span>
-                    <h4 className="font-bold text-[#1a0a0b] text-[13px] leading-snug group-hover:text-[#5c1a1f] transition-colors">{r.title}</h4>
-                    <span className="font-black text-[#ee6c1e] text-[15px]">{r.price}</span>
+                  <h3 className="m-0 mb-[2px] text-[18px] font-bold text-[#3a1216]">{pkg.name}</h3>
+                  <p className="text-[14px] text-[#3a1216] m-0 mb-4 font-medium">{pkg.sub}</p>
+                  <ul className="list-none p-0 m-0 space-y-[10px] mb-4">
+                    {pkg.perks.map((p, j) => (
+                      <li key={j} className="text-[15px] text-[#3a1216] flex items-start gap-2">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-[3px]"><polyline points="20 6 9 17 4 12" /></svg>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex items-baseline gap-2 border-t border-[#e5e0d8] pt-3">
+                    <span className="text-[22px] font-bold text-[#3a1216]">₹{pkg.price}</span>
+                    <span className="line-through text-[#3a1216]/40 text-[14px]">₹{pkg.orig}</span>
+                    {isActive && <span className="ml-auto text-[12px] font-bold text-[#d97706] bg-[#fff4e0] px-2 py-[2px] rounded-full">Selected</span>}
                   </div>
-                </Link>
+                  <Link
+                    href={`/book-a-puja/${slug}/checkout?package=${pkg.name.toLowerCase()}&price=${pkg.price}`}
+                    className={`mt-3 block text-center py-[11px] rounded-[10px] font-bold text-[15px] no-underline transition-colors ${isActive
+                        ? 'bg-[#d97706] hover:bg-[#b56003] text-white shadow-[0_4px_12px_rgba(217,119,6,0.25)]'
+                        : 'bg-white border border-[#e5e0d8] hover:bg-[#d97706] hover:text-white hover:border-[#d97706] text-[#3a1216]'
+                      }`}
+                    onClick={e => e.stopPropagation()}
+                  >
+                    {isActive ? 'Book This Package' : 'Select Package'}
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* ── HOW IT WORKS ── */}
+        <section className="py-8 border-t border-[#e5e0d8]">
+          <h2 className="text-[25px] font-bold text-[#3a1216] mb-1">How it works?</h2>
+          <p className="text-[#3a1216] mb-8 text-[16px]">Simple, transparent, and performed with care.</p>
+          <div className="flex flex-col md:flex-row items-start md:items-stretch gap-0">
+            {steps.map((step, i) => (
+              <div key={i} className="flex flex-col md:flex-row items-start md:items-stretch flex-1 w-full">
+                <div className="flex flex-row md:flex-col items-start md:items-center flex-1 gap-4 md:gap-0 mb-6 md:mb-0 relative">
+                  {i < steps.length - 1 && (
+                    <div className="absolute left-[15px] top-8 w-[2px] h-[calc(100%+8px)] bg-gradient-to-b from-[#d97706] to-[#d97706]/30 md:hidden z-0" />
+                  )}
+                  <div className="w-8 h-8 rounded-full bg-[#d97706] text-white flex items-center justify-center font-bold text-[14px] shrink-0 shadow-[0_2px_8px_rgba(217,119,6,0.3)] mt-0 md:mt-0 relative z-10">
+                    {i + 1}
+                  </div>
+                  <div className="md:mt-3 text-left md:text-center md:px-2 flex-1">
+                    <h3 className="text-[15px] font-bold text-[#3a1216] m-0 mb-1">{step.title}</h3>
+                    <p className="text-[14px] text-[#3a1216] m-0 leading-[1.6]">{step.desc}</p>
+                  </div>
+                </div>
+                {i < steps.length - 1 && (
+                  <div className="hidden md:flex items-start pt-4 shrink-0 w-8">
+                    <div className="w-full h-[2px] bg-gradient-to-r from-[#d97706] to-[#d97706]/30 mt-0" />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── TESTIMONIALS (Marquee) ── */}
+        <section className="py-8 border-t border-[#e5e0d8] overflow-hidden">
+          <h2 className="text-[25px] font-bold text-[#3a1216] mb-5">What they&apos;re saying?</h2>
+          <div className="overflow-hidden relative w-full">
+            <div className="marquee-track gap-4">
+              {[...testimonials, ...testimonials].map((t: any, i: number) => (
+                <div key={i} className="min-w-[280px] max-w-[300px] border border-[#e5e0d8] rounded-[16px] p-4 shadow-[0_0_8px_rgba(0,0,0,0.06)] mx-2 bg-white">
+                  <div className="text-[#d97706] text-[15px] mb-2">★★★★★</div>
+                  <blockquote className="m-0 mb-3 text-[14px] text-[#3a1216] leading-relaxed">
+                    &ldquo;{t.review || t.comment}&rdquo;
+                  </blockquote>
+                  <footer className="flex items-center gap-2">
+                    <span className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-[12px] text-white shrink-0 bg-[#9c5c0f]">
+                      {t.initial || t.name?.charAt(0) || 'U'}
+                    </span>
+                    <div>
+                      <p className="font-bold text-[14px] text-[#3a1216] m-0">{t.name}</p>
+                      <p className="text-[11px] text-[#3a1216]/50 m-0">{t.city}</p>
+                    </div>
+                  </footer>
+                </div>
               ))}
             </div>
           </div>
-        </div>
-      )}
+        </section>
 
-      {/* FAQS */}
-      <div className="w-full bg-[#fdfaf7] py-16 md:py-20 px-6 border-t border-[#f0ddc0]/50">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#5c1a1f] mb-4">
-              Frequently Asked <span className="text-[#d97706]">Questions</span>
-            </h2>
-            <p className="text-gray-850 text-sm md:text-base max-w-xl mx-auto">Everything you need to know about this puja and how we deliver it.</p>
+        {/* ── FAQ ── */}
+        <section className="py-8 border-t border-[#e5e0d8]">
+          <h2 className="text-[28px] font-bold text-[#3a1216] mb-2">Frequently Asked Questions</h2>
+          <div>
+            {faqs.map((faq: any, i: number) => <FAQItem key={i} q={faq.q || faq.question} a={faq.a || faq.answer} />)}
           </div>
-          <div className="space-y-3">
-            {(puja.faqs && puja.faqs.length > 0 ? puja.faqs : [
-              {
-                q: "Who should perform this pooja?",
-                a: "Anyone seeking peace, removal of obstacles, healing, or relief from planetary doshas can perform this pooja."
-              },
-              {
-                q: "Can I perform this pooja online?",
-                a: "Yes, our Pandits can perform the pooja on your behalf with your personalized Sankalp. You can join via a live video link to witness the rituals."
-              },
-              {
-                q: "What is the best day for this pooja?",
-                a: "Our expert astrologers and pandits will determine the most auspicious day based on your Kundali and planetary positions."
-              },
-              {
-                q: "Do I need to arrange any Samagri?",
-                a: "No, if you book through Vaidik Talk, our Pandits will arrange all the pure and authentic Samagri required for the ritual."
-              }
-            ]).map((faq: any, idx: number) => (
-              <details key={idx} className="group bg-white border border-[#f0ddc0]/80 rounded-2xl shadow-sm overflow-hidden">
-                <summary className="flex items-center justify-between cursor-pointer px-6 py-5 list-none hover:bg-[#fcf5eb]/50 transition-colors">
-                  <h3 className="font-bold text-[#5c1a1f] text-[15px] pr-4">{faq.question || faq.q}</h3>
-                  <div className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center border border-[#f0ddc0] text-[#8a1c2a] group-open:border-[#d97706] group-open:bg-[#d97706] group-open:text-white transition-all duration-300">
-                    <ChevronDown className="w-4 h-4 transition-transform duration-300 group-open:rotate-180" />
-                  </div>
-                </summary>
-                <div className="px-6 pb-6 pt-2">
-                  <p className="text-gray-850 text-[14.5px] leading-relaxed border-t border-gray-100 pt-4">{faq.answer || faq.a}</p>
-                </div>
-              </details>
-            ))}
-          </div>
-        </div>
-      </div>
+        </section>
 
-      {/* FINAL CTA BANNER */}
-      <div className="w-full bg-gradient-to-br from-[#fff5eb] to-[#fdfaf6] border-y border-[#f0ddc0] py-16 md:py-20 relative z-10">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-orange-100 text-orange-600 mb-6 shadow-sm">
-            <Sparkles className="w-8 h-8" />
-          </div>
-          <h3 className="premium-serif text-3xl md:text-5xl font-bold text-[#5c1a1f] mb-4 leading-tight">
-            Ready to book your <br className="md:hidden" /> {puja.title}?
-          </h3>
-          <p className="text-gray-850 mb-8 max-w-2xl mx-auto text-[15px] md:text-[17px] leading-relaxed">
-            Experience divine blessings with our expert purohits. Secure your slot now to bring peace, prosperity, and success to your life.
+        {/* ── WHY VAIDIK TALK ── */}
+        <section className="py-8 border-t border-[#e5e0d8]">
+          <h2 className="text-[25px] font-bold text-[#3a1216] mb-3">Why Vaidik Talk?</h2>
+          <p className="text-[#3a1216] m-0 mb-4 text-[16px] leading-[1.8]">
+            Vaidik Talk is a dedicated puja platform connecting professionals with verified Pandits for authentic Vedic rituals. Every puja is performed with a real Sankalp taken in your name and intention — so you can receive divine blessings from anywhere in India or abroad.
           </p>
-          <button 
-            onClick={() => {
-              const el = document.getElementById('pricing-plans');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full bg-gradient-to-r from-[#ea580c] to-[#c2410c] text-white font-bold text-[16px] hover:shadow-xl hover:scale-105 transition-all shadow-md"
-          >
-            Book This Puja Now
-          </button>
-        </div>
-      </div>
+          <p className="font-bold text-[#9c5c0f] m-0">🛡 Guided by 40+ Years of Combined Vedic Expertise</p>
+        </section>
 
-      {/* TRUST BANNER */}
-      <div className="w-full bg-[#5c1a1f] py-10 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {[
-            { icon: <ShieldCheck className="w-8 h-8 text-[#f5d08b]" />, title: 'Authentic Rituals', desc: 'Vedic Scriptures' },
-            { icon: <UserCheck className="w-8 h-8 text-[#f5d08b]" />, title: 'Expert Purohits', desc: 'Verified Pandits' },
-            { icon: <Leaf className="w-8 h-8 text-[#f5d08b]" />, title: 'Pure Samagri', desc: 'Sattvik items' },
-            { icon: <Lock className="w-8 h-8 text-[#f5d08b]" />, title: 'Secure Booking', desc: '100% Safe' },
-          ].map((feature, idx) => (
-            <div key={idx} className="flex flex-col items-center">
-              <div className="mb-4">{feature.icon}</div>
-              <h4 className="font-bold text-white text-lg mb-1">{feature.title}</h4>
-              <p className="text-sm text-[#f0ddc0]">{feature.desc}</p>
+        {/* ── SUPPORT BOX ── */}
+        <section className="py-8 border-t border-[#e5e0d8]">
+          <div className="flex flex-wrap gap-4 items-center justify-between border border-[#e5e0d8] rounded-[16px] p-5 bg-[#faf6ee]">
+            <div>
+              <h2 className="text-[20px] font-bold text-[#3a1216] m-0">Need help booking this Puja?</h2>
+              <p className="text-[#3a1216] text-[15px] mt-1 mb-0">Our team is here to help you with any questions about your booking.</p>
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* LIGHTBOX MODAL */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 backdrop-blur-sm"
-          onClick={() => setSelectedImage(null)}
-        >
-          <div className="relative max-w-5xl w-full mx-auto flex items-center justify-center">
-            <button
-              className="absolute -top-12 right-0 text-white hover:text-[#d4af37] transition-colors p-2"
-              onClick={() => setSelectedImage(null)}
-            >
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-            </button>
-            <img src={selectedImage} alt="Enlarged View" className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl border border-white/10" />
+            <div className="text-center">
+              <a href={`https://wa.me/919818999037?text=Hi%2C+I+want+to+book+${encodeURIComponent(puja?.title || 'a Puja')}`} target="_blank" rel="noopener noreferrer" className="inline-block bg-[#25d366] hover:bg-[#1da851] text-white py-[14px] px-[32px] rounded-[12px] font-bold text-[15px] no-underline transition-colors">
+                Chat on WhatsApp
+              </a>
+              <p className="text-[12px] text-[#3a1216]/50 mt-2 mb-0">24/7 support available</p>
+            </div>
           </div>
-        </div>
-      )}
+        </section>
+
+        {/* Sticky Mobile Bar */}
+        <MobileStickyBar price={price} slug={slug} timerKey={`timer_${slug}`} />
+      </div>
     </div>
   );
 }

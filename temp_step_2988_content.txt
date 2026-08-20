@@ -1,0 +1,18 @@
+<USER_REQUEST>
+Explain what this problem is and help me fix it: 'process' is possibly 'undefined'. @[d:\server-vaidik\web-vaidik-main\src\components\PujaLandingTemplate.tsx:L42]
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-08-19T15:40:45+05:30.
+
+The user's current state is as follows:
+Active Document: d:\server-vaidik\web-vaidik-main\src\components\PujaLandingTemplate.tsx (LANGUAGE_TSX)
+Cursor is on line: 1
+Other open documents:
+- d:\server-vaidik\web-vaidik-main\src\app\(main)\book-a-puja\rudrabhishek\checkout\page.tsx (LANGUAGE_TSX)
+- d:\server-vaidik\web-vaidik-main\src\hooks\usePujaBooking.ts (LANGUAGE_TYPESCRIPT)
+- d:\server-vaidik\web-vaidik-main\src\app\(main)\book-a-puja\dhan-laxmi-puja\page.tsx (LANGUAGE_TSX)
+- d:\server-vaidik\web-vaidik-main\src\components\PujaLandingTemplate.tsx (LANGUAGE_TSX)
+- d:\server-vaidik\web-vaidik-main\src\app\(main)\book-a-puja\[slug]\page.tsx (LANGUAGE_TSX)
+No browser pages are currently open.
+Running terminal commands:
+<truncated 261 bytes>

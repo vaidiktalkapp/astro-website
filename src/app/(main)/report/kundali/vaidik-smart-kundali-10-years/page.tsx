@@ -234,8 +234,10 @@ export default function SmartKundaliPage() {
           );
         }
         if (block.type === 'table') {
-          return (
-            <div key={i} className="overflow-x-auto border border-[#ebdcc7] rounded-md">
+          const validVideos = (settings?.videos || []).filter((v: any) => v.url);
+
+  return (
+    <div key={i} className="overflow-x-auto border border-[#ebdcc7] rounded-md">
               <table className="w-full text-left border-collapse min-w-[480px]">
                 <thead>
                   <tr className="bg-[#fdfaf6]">
@@ -269,6 +271,8 @@ export default function SmartKundaliPage() {
     </div>
   );
 
+  const validVideos = (settings?.videos || []).filter((v: any) => v.url);
+
   return (
     <div className="w-full min-h-screen bg-[#fdfaf6] font-sans text-gray-850 relative">
 
@@ -284,16 +288,12 @@ export default function SmartKundaliPage() {
       <section className="relative w-full pt-10 pb-20 overflow-hidden bg-[#7a4b3a]">
         {/* Video Background */}
         <div className="absolute inset-0 z-0 bg-[#4c2918]">
-          {settings?.banner?.url && (settings.banner.url.endsWith('.mp4') || settings.banner.url.endsWith('.webm') || settings.banner.url.endsWith('.mov')) ? (
-            <video autoPlay loop muted playsInline className="w-full h-full object-cover object-center opacity-100">
-              <source src={settings.banner.url} type="video/mp4" />
-            </video>
+          {settings?.banner?.url && /\.(mp4|webm|mov)(\?.*)?$/i.test(settings.banner.url) ? (
+            <video autoPlay loop muted playsInline className="w-full h-full object-cover object-center opacity-100" src={settings.banner.url} />
           ) : settings?.banner?.url ? (
             <img src={settings.banner.url} alt="Vaidik Smart Kundali" className="w-full h-full object-cover object-center opacity-100" />
           ) : (
-            <video autoPlay loop muted playsInline className="w-full h-full object-cover object-center opacity-100">
-              <source src="/smart%20kundali.mp4" type="video/mp4" />
-            </video>
+            <video autoPlay loop muted playsInline className="w-full h-full object-cover object-center opacity-100" src="/smart%20kundali.mp4" />
           )}
           {/* Gradient dark overlay for perfect text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/15 to-black/5 pointer-events-none"></div>
@@ -555,17 +555,19 @@ export default function SmartKundaliPage() {
       `}</style>
 
       {/* ============ IN THE SPOTLIGHT ============ */}
-      {settings?.videos && settings.videos.length > 0 && (
+      {validVideos.length > 0 && (
         <section className="py-16 md:py-24 bg-[#fdfaf6] border-y border-[#ebdcc7] overflow-hidden">
           <div className="max-w-[1400px] mx-auto px-4 text-center">
             <h2 className="text-[28px] md:text-[36px] font-serif font-bold text-[#5c1a1f] mb-12">Watch Kundali Insights</h2>
 
             <div className="relative overflow-hidden w-full group py-2">
               <div className="animate-scroll gap-6 md:gap-8 flex px-4">
-                {[...settings.videos, ...settings.videos, ...settings.videos, ...settings.videos].map((v: any, i: number) => {
+                {[...validVideos, ...validVideos, ...validVideos, ...validVideos].map((v: any, i: number) => {
                   const ytId = getYoutubeVideoId(v.url);
-                  return (
-                    <div key={i} className="w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px] aspect-video bg-black rounded-2xl overflow-hidden relative shadow-xl snap-center flex-shrink-0 border-[3px] border-white">
+                  const validVideos = (settings?.videos || []).filter((v: any) => v.url);
+
+  return (
+    <div key={i} className="w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px] aspect-video bg-black rounded-2xl overflow-hidden relative shadow-xl snap-center flex-shrink-0 border-[3px] border-white">
                       {ytId ? (
                         <iframe className="w-full h-full pointer-events-auto" src={`https://www.youtube.com/embed/${ytId}`} allowFullScreen></iframe>
                       ) : (

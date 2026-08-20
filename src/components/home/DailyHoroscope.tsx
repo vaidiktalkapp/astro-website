@@ -96,7 +96,10 @@ const DailyHoroscope = ({ initialDailyHoroscopes = [] }: { initialDailyHoroscope
       }
       setIsLoading(true);
       try {
-        const response = await astrologyService.getDailyHoroscopeAllSigns(timeframe, 'English');
+        let apiPeriod = timeframe.toLowerCase();
+        if (timeframe === 'Week') apiPeriod = 'weekly';
+        if (timeframe === 'Month') apiPeriod = 'monthly';
+        const response = await astrologyService.getDailyHoroscopeAllSigns(apiPeriod, 'English');
         if (response?.success && Array.isArray(response.data)) {
           setDailyHoroscopes(response.data);
         }

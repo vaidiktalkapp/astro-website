@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const usePujaBooking = (pujaDetails: { title: string; slug: string; amount: number }) => {
+export const usePujaBooking = (pujaDetails: { title: string; slug: string; amount: number; onSuccess?: () => void }) => {
   const [formData, setFormData] = useState({
     name: '',
     gotra: '',
@@ -31,9 +31,11 @@ export const usePujaBooking = (pujaDetails: { title: string; slug: string; amoun
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent, customData?: any) => {
     e.preventDefault();
     setIsProcessing(true);
+    
+    const dataToSubmit = customData || formData;
     
     try {
       const res = await loadRazorpayScript();
@@ -51,13 +53,13 @@ export const usePujaBooking = (pujaDetails: { title: string; slug: string; amoun
         body: JSON.stringify({
           pujaName: pujaDetails.title,
           pujaSlug: pujaDetails.slug,
-          customerName: formData.name,
-          gotra: formData.gotra || '',
-          phone: formData.phone,
-          email: formData.email,
-          location: formData.location,
-          preferredDate: formData.date,
-          message: formData.message || '',
+          customerName: dataToSubmit.name,
+          gotra: dataToSubmit.gotra || '',
+          phone: dataToSubmit.phone,
+          email: dataToSubmit.email,
+          location: dataToSubmit.location,
+          preferredDate: dataToSubmit.date,
+          message: dataToSubmit.message || '',
           amount: pujaDetails.amount
         })
       });
@@ -91,8 +93,12 @@ export const usePujaBooking = (pujaDetails: { title: string; slug: string; amoun
             const verifyData = await verifyRes.json();
             
             if (verifyData.success) {
-              alert('Payment successful! Your booking is confirmed.');
               setFormData({ name: '', gotra: '', phone: '', email: '', location: '', date: '', message: '' });
+              if (pujaDetails.onSuccess) {
+                pujaDetails.onSuccess();
+              } else {
+                alert('Payment successful! Your booking is confirmed.');
+              }
             } else {
               alert('Payment verification failed. Please contact support.');
             }
@@ -103,9 +109,9 @@ export const usePujaBooking = (pujaDetails: { title: string; slug: string; amoun
           }
         },
         prefill: {
-          name: formData.name,
-          email: formData.email,
-          contact: formData.phone
+          name: dataToSubmit.name,
+          email: dataToSubmit.email,
+          contact: dataToSubmit.phone
         },
         theme: {
           color: '#d4af37'
