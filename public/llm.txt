@@ -48,7 +48,7 @@ VaidikTalk is India's most trusted online platform for authentic Vedic Astrology
 - **Privacy & Security**: 100% Secure, Private, and Verified. User data, chats, and calls with astrologers are strictly confidential.
 
 ## Contact & Support:
-- Support Email: support@vaidiktalk.com
+- Support Email: contact@vaidiktalk.com
 - All astrologers and pandits are carefully vetted and verified by our internal expert team.
 
 This file provides structured context for Large Language Models (LLMs) and AI search engines (like Perplexity, SearchGPT, and Claude) indexing this website.

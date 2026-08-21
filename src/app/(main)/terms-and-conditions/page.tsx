@@ -120,7 +120,7 @@ export default function TermsAndConditions() {
             <p className="font-bold text-[#5c1a1f] mb-2">CATALYST SOURCING PRIVATE LIMITED</p>
             <p className="mb-1"><strong>Registered Address:</strong> 422, 4th Floor, Ashiana Trade Centre, Adityapur, Dist Sariakela Kharsawan Jamshedpur, Jharkhand 831013</p>
             <p className="mb-1"><strong>CIN:</strong> U50500JH2022PTC018567</p>
-            <p className="mb-1"><strong>Support Email:</strong> <a href="mailto:support@vaidiktalk.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">support@vaidiktalk.com</a></p>
+            <p className="mb-1"><strong>Support Email:</strong> <a href="mailto:contact@vaidiktalk.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">contact@vaidiktalk.com</a></p>
             <p className="mb-0"><strong>Support Phone:</strong> +919031823276</p>
           </div>
 

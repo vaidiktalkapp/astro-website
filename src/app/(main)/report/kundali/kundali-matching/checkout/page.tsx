@@ -234,7 +234,7 @@ export default function CheckoutPage() {
             </div>
             <input required type="tel" maxLength={10} pattern="[0-9]{10}" onKeyPress={(e) => { if (!/[0-9]/.test(e.key)) e.preventDefault(); }} value={data.phone} onChange={(e) => setData({ ...data, phone: e.target.value })} className="w-full border border-[#ebdcc7] rounded-r-md py-2.5 px-3 bg-[#fdfaf6] outline-none focus:border-[#d68636] text-[14px]" placeholder="9874589698" />
           </div>
-          {!isPartner && <p className="text-[11px] text-[#3a1216]/80 italic mt-0.5">Your Kundli report will be sent on this number</p>}
+          {!isPartner && <p className="text-[11px] text-[#3a1216]/80 italic mt-0.5"></p>}
         </div>
 
       </div>
@@ -244,6 +244,15 @@ export default function CheckoutPage() {
   return (
     <div className="min-h-screen bg-[#fdfaf6] pb-32">
       <style>{`footer { display: none !important; }`}</style>
+            <div className="bg-white border-b border-[#ebdcc7] sticky top-0 z-50 mb-4">
+        <div className="max-w-[900px] mx-auto px-4 py-3 flex items-center">
+          <button onClick={() => router.back()} type="button" className="flex items-center gap-2 text-[#5c1a1f] font-bold text-[14px] hover:text-[#d68636] transition-colors">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
+            Back
+          </button>
+        </div>
+      </div>
+
       <div className="max-w-[900px] mx-auto px-4 pt-2 pb-8 md:pt-4 md:pb-12 space-y-6">
 
         {/* Addon 1: Consultation */}

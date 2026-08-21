@@ -46,10 +46,15 @@ export const usePujaBooking = (pujaDetails: { title: string; slug: string; amoun
       }
 
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
-      
+      const token = typeof window !== 'undefined' ? localStorage.getItem('accessToken') : null;
+      const headers: HeadersInit = { 'Content-Type': 'application/json' };
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const orderResponse = await fetch(`${apiUrl}/puja-bookings/create-order`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({
           pujaName: pujaDetails.title,
           pujaSlug: pujaDetails.slug,

@@ -5,39 +5,37 @@ import Link from 'next/link';
 import { ShieldCheck, UserCheck, Leaf, Lock, Sparkles, Star, ChevronDown, Clock, Search, Flame, SlidersHorizontal, X } from 'lucide-react';
 import { getImageUrl } from '@/lib/imageUtils';
 
-const CAROUSEL_PUJAS = [
-  { title: 'Rudrabhishek Puja', subtitle: 'For Health & Peace', img: '/pooja/Rudraabhishek.webp', link: '/book-a-puja/rudrabhishek' },
-  { title: 'Rahu Ketu Shanti', subtitle: 'Dosh Nivaran Puja', img: '/pooja/Rahu Ketu Grah Shanti Puja.webp', link: '/book-a-puja/rahu-ketu-grah-shanti-puja' },
-  { title: 'Hanuman Puja', subtitle: 'Strength & Protection', img: '/pooja/Hanuman Sindoor  Boondi Puja.webp', link: '/book-a-puja/hanuman-sindoor-boondi-arpan' },
-  { title: 'Mangal Dosh Nivaran', subtitle: 'Mangal Shanti Puja', img: '/pooja/Mangal Dosh Nivaran Puja.webp', link: '/book-a-puja/mangal-dosh-nivaran-puja' },
-  { title: 'Vishnu Sahasranamam', subtitle: 'Peace & Prosperity', img: '/pooja/Vishnu Sahasranamam.webp', link: '/book-a-puja/vishnu-sahasranamam-puja' },
-  { title: 'Ganesh Laddoo Arpan', subtitle: 'Remove Obstacles', img: '/pooja/Ganesh Ji Ko Laddoo Arpan.webp', link: '/book-a-puja/ganesh-ji-ko-laddoo-arpan' },
-];
+// Carousel pujas are now fetched dynamically from the admin panel
 
-function PujaCarousel({ items = CAROUSEL_PUJAS }: { items?: any[] }) {
+function PujaCarousel({ items = [] }: { items?: any[] }) {
   const [active, setActive] = React.useState(0);
   const total = items.length;
 
-  const CARD_W = 340;
-  const CARD_H = 240;
-  const OFFSET = 200;
+  if (total === 0) return null; // Safe guard for empty items
+
+  const CARD_W = 520;
+  const CARD_H = 410;
+  const OFFSET = 480; // Adjusted for smaller scale
+
+  const [isMounted, setIsMounted] = React.useState(false);
 
   React.useEffect(() => {
+    setIsMounted(true);
     const t = setInterval(() => setActive(p => (p + 1) % total), 4000);
     return () => clearInterval(t);
   }, [total]);
 
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 260, width: '100%', userSelect: 'none', position: 'relative' }}>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', minHeight: 460, width: '100%', userSelect: 'none', position: 'relative', overflow: 'visible', marginTop: '-70px' }}>
       <div style={{
         position: 'relative',
-        width: '100%',
-        height: CARD_H,
+        width: '140%', // Makes container wider than the flex column so side cards aren't clipped
+        height: CARD_H + 40,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)',
-        maskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to right, transparent 0px, black 60px, black calc(100% - 60px), transparent 100%)',
+        maskImage: 'linear-gradient(to right, transparent 0px, black 60px, black calc(100% - 60px), transparent 100%)',
       }}>
         {items.map((puja, idx) => {
           const diff = ((idx - active) % total + total) % total;
@@ -47,13 +45,22 @@ function PujaCarousel({ items = CAROUSEL_PUJAS }: { items?: any[] }) {
           const isFarRight = diff === 2;
           const isFarLeft = diff === total - 2;
 
-          let zIndex = 5, opacity = 0, translateX = 0, scale = 0.85;
+          let zIndex = 5, opacity = 0, translateX = 0, scale = 0.72;
 
           if (isCenter) { zIndex = 30; opacity = 1; translateX = 0; scale = 1; }
-          else if (isRight) { zIndex = 20; opacity = 1; translateX = OFFSET; }
-          else if (isLeft) { zIndex = 20; opacity = 1; translateX = -OFFSET; }
+          else if (isRight) { zIndex = 20; opacity = 0.85; translateX = OFFSET; }
+          else if (isLeft) { zIndex = 20; opacity = 0.85; translateX = -OFFSET; }
           else if (isFarRight) { zIndex = 10; opacity = 0; translateX = OFFSET * 2; }
           else if (isFarLeft) { zIndex = 10; opacity = 0; translateX = -OFFSET * 2; }
+          else {
+            // completely invisible and out of bounds
+            zIndex = 5; opacity = 0;
+            // position it on the side it's about to come from to avoid flying across screen
+            translateX = diff > total / 2 ? -OFFSET * 2.5 : OFFSET * 2.5;
+          }
+
+          // Disable transition on initial load or when moving completely offscreen
+          const hasTransition = isMounted && (opacity > 0 || isFarRight || isFarLeft);
 
           return (
             <div
@@ -61,11 +68,16 @@ function PujaCarousel({ items = CAROUSEL_PUJAS }: { items?: any[] }) {
               onClick={() => { if (!isCenter) setActive(idx); }}
               style={{
                 position: 'absolute',
-                borderRadius: 16,
+                borderRadius: 14,
                 overflow: 'hidden',
                 cursor: isCenter ? 'default' : 'pointer',
-                transition: 'transform 0.8s ease-in-out, opacity 0.8s ease-in-out, box-shadow 0.8s ease-in-out',
-                boxShadow: isCenter ? '0 10px 25px rgba(0,0,0,0.15)' : '0 4px 10px rgba(0,0,0,0.05)',
+                transition: hasTransition ? 'transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.8s cubic-bezier(0.25, 1, 0.5, 1)' : 'none',
+                boxShadow: isCenter ? '0 10px 25px rgba(0,0,0,0.08)' : 'none',
+                backgroundColor: '#341111ff', // Dark background to prevent white flash before image loads
+                backgroundImage: 'url(/vaidiktalklogo.webp)',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: '150px',
                 width: CARD_W,
                 height: CARD_H,
                 zIndex,
@@ -77,24 +89,23 @@ function PujaCarousel({ items = CAROUSEL_PUJAS }: { items?: any[] }) {
               <img
                 src={puja.img}
                 alt={puja.title}
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right', display: 'block' }}
+                loading={isCenter ? "eager" : "lazy"}
+                fetchPriority={isCenter ? "high" : "auto"}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
               />
               {/* Brand Logo Top Right */}
-              <div className="absolute top-0 right-0 z-20 bg-white px-3 py-1.5 rounded-bl-[14px] flex items-center gap-1.5 shadow-sm border-l border-b border-gray-100">
-                <img src="/vaidiktalklogo.webp" alt="Vaidik Logo" className="h-[18px] object-contain" />
-                <span className="font-extrabold text-[#5c1a1f] text-[11px] uppercase tracking-wide">Vaidik Talk</span>
+              <div className="absolute top-0 right-0 z-20 bg-white px-4 py-2 rounded-bl-[12px] flex items-center gap-2 shadow-sm border-l border-b border-gray-100">
+                <img src="/vaidiktalklogo.webp" alt="Vaidik Logo" className="h-[20px] object-contain" />
+                <span className="font-extrabold text-[#5c1a1f] text-[12px] uppercase tracking-wide">Vaidik Talk</span>
               </div>
+
+              {/* Dark gradient for text visibility (only on center card) */}
               <div style={{
                 position: 'absolute', inset: 0,
-                backgroundColor: 'rgba(0,0,0,0.3)',
-                opacity: isCenter ? 0 : 1,
-                transition: 'opacity 0.8s ease-in-out'
-              }} />
-              <div style={{
-                position: 'absolute', inset: 0,
-                background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)',
+                background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)',
                 opacity: isCenter ? 1 : 0,
-                transition: 'opacity 0.8s ease-in-out'
+                transition: 'opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1)',
+                zIndex: 2
               }} />
 
               {/* Full card clickable link when centered */}
@@ -107,14 +118,15 @@ function PujaCarousel({ items = CAROUSEL_PUJAS }: { items?: any[] }) {
               )}
 
               <div style={{
-                position: 'absolute', bottom: 0, left: 0, right: 0, padding: '14px 18px',
+                position: 'absolute', bottom: 0, left: 0, right: 0, padding: '20px 24px',
                 opacity: isCenter ? 1 : 0,
-                transition: 'opacity 0.8s ease-in-out',
-                pointerEvents: 'none' // Link overlay handles the click
+                transition: 'opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1)',
+                pointerEvents: 'none',
+                zIndex: 3
               }}>
-                <p style={{ color: '#fff', fontWeight: 700, fontSize: 17, lineHeight: 1.3, margin: 0 }}>{puja.title}</p>
-                <p style={{ color: '#f5d08b', fontSize: 13, margin: '4px 0 0' }}>{puja.subtitle}</p>
-                <div style={{ display: 'inline-block', marginTop: 10, background: '#d97706', color: '#fff', fontSize: 13, fontWeight: 700, padding: '6px 14px', borderRadius: 99 }}>
+                <p style={{ color: '#fff', fontWeight: 800, fontSize: 22, lineHeight: 1.3, margin: 0, textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>{puja.title}</p>
+                <p style={{ color: '#f5d08b', fontSize: 15, margin: '4px 0 0', fontWeight: 500, textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>{puja.subtitle}</p>
+                <div style={{ display: 'inline-block', marginTop: 14, background: '#d97706', color: '#fff', fontSize: 14, fontWeight: 700, padding: '10px 22px', borderRadius: 99, boxShadow: '0 4px 10px rgba(217, 119, 6, 0.3)' }}>
                   Book Now →
                 </div>
               </div>
@@ -248,18 +260,13 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
     return matchesSearch && matchesPujaFor && matchesBenefits && matchesDeity;
   });
 
-  // Combine static and dynamic for the carousel, avoiding duplicates
-  const carouselItems = [...CAROUSEL_PUJAS];
-  allPujas.forEach(p => {
-    if (!carouselItems.find(c => c.link === p.link)) {
-      carouselItems.push({
-        title: p.title,
-        subtitle: (p.benefits && p.benefits.length > 0) ? p.benefits.slice(0, 2).join(' & ') : 'Book Now',
-        img: p.image,
-        link: p.link
-      });
-    }
-  });
+  // Use only dynamic pujas from the admin panel
+  const carouselItems = allPujas.map(p => ({
+    title: p.title,
+    subtitle: (p.benefits && p.benefits.length > 0) ? p.benefits.slice(0, 2).join(' & ') : 'Book Now',
+    img: p.image,
+    link: p.link
+  }));
 
   return (
     <div className="w-full bg-transparent font-sans">
@@ -291,7 +298,7 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
 
           <div className="flex flex-col md:flex-row items-center gap-8 lg:gap-2">
             {/* LEFT - Text */}
-            <div className="w-full lg:w-[45%] flex-shrink-0 pr-2 md:pr-4">
+            <div className="w-full lg:w-[45%] flex-shrink-0 pr-2 md:pr-4 -mt-12">
               <h1 className="premium-serif text-3xl md:text-[36px] lg:text-[42px] font-bold leading-[1.2] mb-5">
                 <span className="text-[#d97706]">Book Vedic Pujas</span>
                 <br />
@@ -430,6 +437,7 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
                   <img
                     src={puja.image}
                     alt={puja.title}
+                    loading="lazy"
                     className="w-full h-full object-cover object-right hover:scale-105 transition-transform duration-700"
                   />
                   {/* Dark gradient overlay */}

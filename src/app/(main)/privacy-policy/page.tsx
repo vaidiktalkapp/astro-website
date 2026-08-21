@@ -120,7 +120,7 @@ export default function PrivacyPolicy() {
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">12. CUSTOMER SUPPORT & GRIEVANCE</h3>
           <ul className="list-disc pl-5 space-y-2">
-            <li><strong>Email:</strong> support@vaidiktalk.com</li>
+            <li><strong>Email:</strong> conatct@vaidiktalk.com</li>
             <li><strong>Privacy:</strong> admin@vaidiktalk.com</li>
             <li><strong>Response Time:</strong> Within 24 hours</li>
             <li><strong>Resolution:</strong> Within 30 days</li>
@@ -139,7 +139,7 @@ export default function PrivacyPolicy() {
             <p className="mb-1"><strong>CIN:</strong> U50500JH2022PTC018567</p>
             <p className="mb-1"><strong>Support Phone:</strong> +919031823276</p>
             <p className="mb-1"><strong>Website:</strong> <a href="https://www.vaidiktalk.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">https://www.vaidiktalk.com</a></p>
-            <p className="mb-0"><strong>Email:</strong> <a href="mailto:support@vaidiktalk.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">support@vaidiktalk.com</a></p>
+            <p className="mb-0"><strong>Email:</strong> <a href="mailto:contact@vaidiktalk.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">contact@vaidiktalk.com</a></p>
           </div>
 
           <p className="text-sm text-gray-850 mt-10 text-center border-t border-[#e8d8c0] pt-6">

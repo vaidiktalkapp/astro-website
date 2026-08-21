@@ -152,24 +152,36 @@ export default function Header() {
           {topMenu.title}
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
         </Link>
-        <div className="absolute top-full left-0 bg-white shadow-[0_15px_50px_rgba(0,0,0,0.1)] rounded-xl min-w-[600px] p-4 border border-[#f0ddc0]/60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4">
-          <div className="grid grid-cols-2 gap-x-6 gap-y-1">
-            <div className="col-span-2 mb-2 pb-2 border-b border-[#f0ddc0]/40">
-              <Link href="/book-a-puja" className="inline-block px-3 py-2 text-[14px] text-[#8a1c2a] font-bold hover:bg-[#fdf8f0] hover:text-[#ee6c1e] rounded-lg transition-colors">View All Pujas →</Link>
+        <div className="absolute top-full right-[-50px] xl:right-[-100px] 2xl:right-[-150px] bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-2xl min-w-[640px] p-5 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-1">
+            <div className="col-span-2 mb-3 pb-3 border-b-2 border-dashed border-[#f0ddc0]/50 text-center">
+              <span className="text-[12px] font-extrabold text-[#8a1c2a] uppercase tracking-wider">Top Verified Pujas</span>
             </div>
             <div className="flex flex-col space-y-1">
               {navPujas.slice(0, Math.ceil(navPujas.length / 2)).map(puja => (
-                <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="block px-3 py-2.5 text-[14px] font-medium text-[#3a1216] hover:bg-[#fdf8f0] hover:text-[#ee6c1e] rounded-lg truncate transition-colors" title={puja.title}>
-                  {puja.title}
+                <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="group/item flex items-center px-3.5 py-2.5 text-[13.5px] font-medium text-[#4a1c22] hover:bg-gradient-to-r hover:from-[#fdf8f0] hover:to-white hover:text-[#d97706] hover:shadow-[0_2px_10px_rgba(217,119,6,0.06)] rounded-xl transition-all duration-300 border border-transparent hover:border-[#f0ddc0]/50" title={puja.title}>
+                  <div className="flex items-center gap-2.5 w-full truncate">
+                     <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]/70 group-hover/item:bg-[#d97706] group-hover/item:scale-150 group-hover/item:shadow-[0_0_8px_rgba(217,119,6,0.6)] transition-all duration-300 shrink-0" />
+                     <span className="group-hover/item:translate-x-1 transition-transform duration-300 truncate">{puja.title}</span>
+                  </div>
                 </Link>
               ))}
             </div>
             <div className="flex flex-col space-y-1">
               {navPujas.slice(Math.ceil(navPujas.length / 2)).map(puja => (
-                <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="block px-3 py-2.5 text-[14px] font-medium text-[#3a1216] hover:bg-[#fdf8f0] hover:text-[#ee6c1e] rounded-lg truncate transition-colors" title={puja.title}>
-                  {puja.title}
+                <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="group/item flex items-center px-3.5 py-2.5 text-[13.5px] font-medium text-[#4a1c22] hover:bg-gradient-to-r hover:from-[#fdf8f0] hover:to-white hover:text-[#d97706] hover:shadow-[0_2px_10px_rgba(217,119,6,0.06)] rounded-xl transition-all duration-300 border border-transparent hover:border-[#f0ddc0]/50" title={puja.title}>
+                  <div className="flex items-center gap-2.5 w-full truncate">
+                     <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]/70 group-hover/item:bg-[#d97706] group-hover/item:scale-150 group-hover/item:shadow-[0_0_8px_rgba(217,119,6,0.6)] transition-all duration-300 shrink-0" />
+                     <span className="group-hover/item:translate-x-1 transition-transform duration-300 truncate">{puja.title}</span>
+                  </div>
                 </Link>
               ))}
+            </div>
+            <div className="col-span-2 mt-4 pt-4 border-t-2 border-dashed border-[#f0ddc0]/50">
+              <Link href="/book-a-puja" className="flex items-center justify-center gap-1.5 w-full py-3 text-[14px] text-white bg-gradient-to-r from-[#d97706] to-[#b45309] font-bold rounded-xl hover:shadow-lg transition-all hover:-translate-y-0.5 shadow-md group/btn">
+                View All Pujas 
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="group-hover/btn:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </Link>
             </div>
           </div>
         </div>
@@ -193,19 +205,19 @@ export default function Header() {
 
   return (
     <div key={topMenu._id} className={`relative group cursor-pointer ${topMenu.category === 'consult' ? 'flex items-center py-4' : ''}`}>
-      <Link href={topMenu.url || '#'} className={topMenu.category === 'consult' ? "bg-[#8a1c2a] text-white px-3 2xl:px-4 py-[7px] 2xl:py-[8px] rounded-md hover:bg-[#721522] transition-colors font-semibold flex items-center gap-1.5" : "hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4"}>
+      <Link href={topMenu.url || '#'} className={topMenu.category === 'consult' ? "bg-gradient-to-r from-[#8a1c2a] to-[#721522] text-white px-4 py-[8px] rounded-lg hover:shadow-lg transition-all font-semibold flex items-center gap-1.5 border border-[#8a1c2a]" : "hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4"}>
         {topMenu.title}
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
       </Link>
       
       <div className={`absolute ${
         topMenu.category === 'consult' 
-          ? 'top-[calc(100%-8px)] right-0 min-w-[240px]' 
+          ? 'top-[calc(100%-8px)] right-0 min-w-[260px]' 
           : topMenu.category === 'knowledge' 
-            ? `top-full right-[-50px] xl:right-[-100px] 2xl:right-[-150px] ${isMultiColumn ? 'min-w-[560px]' : 'min-w-[280px]'}`
-            : `top-full left-0 ${isMultiColumn ? 'min-w-[560px]' : 'min-w-[280px]'}`
-      } bg-white shadow-[0_15px_50px_rgba(0,0,0,0.1)] rounded-xl p-3 md:p-4 border border-[#f0ddc0]/60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4`}>
-        <div className={isMultiColumn ? "columns-2 gap-x-6" : "flex flex-col space-y-1"}>
+            ? `top-full right-[-50px] xl:right-[-100px] 2xl:right-[-150px] ${isMultiColumn ? 'min-w-[600px]' : 'min-w-[300px]'}`
+            : `top-full left-0 ${isMultiColumn ? 'min-w-[600px]' : 'min-w-[300px]'}`
+      } bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-2xl p-4 md:p-5 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4`}>
+        <div className={isMultiColumn ? "columns-2 gap-x-8" : "flex flex-col space-y-1"}>
           {uniqueGroups.map((grp, idx) => {
             const groupLinks = mySubMenus.filter(m => (m.group || 'General') === grp);
 
@@ -213,8 +225,11 @@ export default function Header() {
               return (
                 <React.Fragment key={grp}>
                   {groupLinks.map(menu => (
-                    <Link key={menu._id} href={menu.url} className="flex items-center justify-between px-3 py-2 text-[14px] font-medium text-[#3a1216] hover:bg-[#fdf8f0] hover:text-[#ee6c1e] rounded-lg transition-colors break-inside-avoid mb-1">
-                      {menu.title}
+                    <Link key={menu._id} href={menu.url} className="group/item flex items-center justify-between px-3.5 py-2.5 text-[13.5px] font-medium text-[#4a1c22] hover:bg-gradient-to-r hover:from-[#fdf8f0] hover:to-white hover:text-[#d97706] hover:shadow-[0_2px_10px_rgba(217,119,6,0.06)] rounded-xl transition-all duration-300 break-inside-avoid mb-1 border border-transparent hover:border-[#f0ddc0]/50">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]/70 group-hover/item:bg-[#d97706] group-hover/item:scale-150 group-hover/item:shadow-[0_0_8px_rgba(217,119,6,0.6)] transition-all duration-300" />
+                        <span className="group-hover/item:translate-x-1 transition-transform duration-300">{menu.title}</span>
+                      </div>
                       {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-2">{menu.badge}</span>}
                     </Link>
                   ))}
@@ -223,11 +238,17 @@ export default function Header() {
             }
 
             return (
-              <div key={grp} className={`flex flex-col space-y-1 break-inside-avoid ${idx !== uniqueGroups.length - 1 ? 'mb-3' : ''}`}>
-                <div className="px-3 py-1.5 text-[11px] font-bold text-[#d97706] uppercase tracking-wider mb-1 mt-1 border-b border-[#f0ddc0]/30">{grp}</div>
+              <div key={grp} className={`flex flex-col space-y-1 break-inside-avoid ${idx !== uniqueGroups.length - 1 ? 'mb-4' : ''}`}>
+                <div className="px-3.5 py-1.5 text-[11px] font-extrabold text-[#d97706] uppercase tracking-wider mb-2 mt-1 border-b-2 border-dashed border-[#f0ddc0]/50 pb-2 flex items-center gap-2">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  {grp}
+                </div>
                 {groupLinks.map(menu => (
-                  <Link key={menu._id} href={menu.url} className="flex items-center justify-between px-3 py-2 text-[14px] font-medium text-[#3a1216] hover:bg-[#fdf8f0] hover:text-[#ee6c1e] rounded-lg transition-colors">
-                    {menu.title}
+                  <Link key={menu._id} href={menu.url} className="group/item flex items-center justify-between px-3.5 py-2.5 text-[13.5px] font-medium text-[#4a1c22] hover:bg-gradient-to-r hover:from-[#fdf8f0] hover:to-white hover:text-[#d97706] hover:shadow-[0_2px_10px_rgba(217,119,6,0.06)] rounded-xl transition-all duration-300 border border-transparent hover:border-[#f0ddc0]/50 mb-1">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]/70 group-hover/item:bg-[#d97706] group-hover/item:scale-150 group-hover/item:shadow-[0_0_8px_rgba(217,119,6,0.6)] transition-all duration-300" />
+                      <span className="group-hover/item:translate-x-1 transition-transform duration-300">{menu.title}</span>
+                    </div>
                     {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-2">{menu.badge}</span>}
                   </Link>
                 ))}
@@ -235,6 +256,16 @@ export default function Header() {
             );
           })}
         </div>
+
+        {/* View All Free Calculators Button */}
+        {topMenu.title === 'Free Astrology Tools' && (
+          <div className="mt-4 pt-4 border-t-2 border-dashed border-[#f0ddc0]/50 block clear-both">
+            <Link href="/astrology-calculators" className="flex items-center justify-center gap-1.5 w-full py-3 text-[14px] text-white bg-gradient-to-r from-[#d97706] to-[#b45309] font-bold rounded-xl hover:shadow-lg transition-all hover:-translate-y-0.5 shadow-md group/btn">
+              View All Free Calculators
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="group-hover/btn:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

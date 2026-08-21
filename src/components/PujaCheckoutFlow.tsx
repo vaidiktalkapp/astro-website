@@ -43,13 +43,13 @@ export function PujaCheckoutFlow({ pujaTitle, pujaSlug, defaultPrice, offeringsL
     amount: finalTotal,
     onSuccess: () => {
       setStep(5);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
     }
   });
 
   const handleNext = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
     setStep(step + 1);
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
   };
 
   const handlePayment = async (e: any) => {
@@ -313,17 +313,54 @@ export function PujaCheckoutFlow({ pujaTitle, pujaSlug, defaultPrice, offeringsL
 
         {/* STEP 5: COMPLETE */}
         {step === 5 && (
-          <div className="bg-white rounded-[16px] p-8 md:p-12 text-center shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-[#f0ebe1] mb-6 animate-fade-in-up">
-            <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-green-100">
-              <Check className="w-10 h-10 text-green-600" />
+          <div className="bg-white rounded-[24px] p-0 text-center shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-[#f0ebe1] mb-6 animate-fade-in-up overflow-hidden relative">
+            {/* Top decorative pattern/gradient */}
+            <div className="h-20 bg-linear-to-r from-yellow-400 via-orange-400 to-[#d97706] relative">
+              <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
             </div>
-            <h2 className="text-[28px] font-black text-[#3a1216] mb-3">Booking Confirmed!</h2>
-            <p className="text-[#666] mb-8 text-[15px] leading-relaxed max-w-md mx-auto">
-              Thank you for booking the {pujaTitle}. Panditji will contact you soon on your WhatsApp number with further details.
-            </p>
-            <button onClick={() => router.push('/')} className="px-8 py-3.5 bg-[#d97706] text-white rounded-xl font-bold hover:bg-[#c26a05] transition-colors shadow-lg">
-              Return to Home
-            </button>
+            
+            <div className="relative px-6 pb-8">
+              {/* Icon */}
+              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto -mt-10 mb-5 border-4 border-white shadow-[0_8px_30px_rgba(217,119,6,0.2)] relative z-10">
+                <div className="w-12 h-12 bg-linear-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center animate-pulse">
+                  <Check className="w-6 h-6 text-white" strokeWidth={3} />
+                </div>
+              </div>
+              
+              <h2 className="text-[28px] font-black text-[#3a1216] mb-2">Booking Confirmed!</h2>
+              <p className="text-[#666] mb-8 text-[15px] leading-relaxed max-w-sm mx-auto">
+                Thank you for booking the <strong className="text-[#3a1216]">{pujaTitle}</strong>. Panditji will contact you soon on WhatsApp.
+              </p>
+
+              {/* Receipt Summary */}
+              <div className="bg-[#faf8f5] rounded-xl p-5 mb-8 max-w-md mx-auto border border-[#e5e0d8] text-left">
+                <div className="flex justify-between items-center py-2 border-b border-[#e5e0d8]">
+                  <span className="text-[13px] text-[#888] font-bold uppercase tracking-wide">Puja Details</span>
+                  <span className="text-[14px] font-bold text-[#3a1216] text-right">{pujaTitle}</span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-[#e5e0d8]">
+                  <span className="text-[13px] text-[#888] font-bold uppercase tracking-wide">Sankalp Name</span>
+                  <span className="text-[14px] font-bold text-[#3a1216]">{formData.name}</span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-[#e5e0d8]">
+                  <span className="text-[13px] text-[#888] font-bold uppercase tracking-wide">Date</span>
+                  <span className="text-[14px] font-bold text-[#3a1216]">{new Date(formData.date || new Date()).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                </div>
+                <div className="flex justify-between items-center pt-3 pb-1">
+                  <span className="text-[13px] text-[#888] font-bold uppercase tracking-wide">Amount Paid</span>
+                  <span className="text-[20px] font-black text-green-600">₹{finalTotal}</span>
+                </div>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onClick={() => router.push('/orders')} className="w-full sm:w-auto px-8 py-3.5 bg-white text-[#d97706] border-2 border-[#d97706] rounded-xl font-bold hover:bg-[#fffbeb] transition-colors">
+                  View My Bookings
+                </button>
+                <button onClick={() => router.push('/')} className="w-full sm:w-auto px-8 py-3.5 bg-linear-to-r from-yellow-500 to-[#d97706] text-white rounded-xl font-bold hover:from-yellow-400 hover:to-[#c26a05] transition-colors shadow-lg shadow-orange-500/30">
+                  Return to Home
+                </button>
+              </div>
+            </div>
           </div>
         )}
 

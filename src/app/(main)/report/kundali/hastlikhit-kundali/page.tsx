@@ -279,7 +279,7 @@ export default function FortuneNumerologyPage() {
       )}
 
       {/* ============ HERO ============ */}
-      <section className="relative w-full pt-8 pb-15 overflow-hidden bg-[#7a4b3a]">
+      <section className="relative w-full pt-6 pb-12 overflow-hidden bg-[#7a4b3a]">
         {/* Video Background */}
         <div className="absolute inset-0 z-0 bg-[#4c2918]">
           {settings?.banner?.url && /\.(mp4|webm|mov)(\?.*)?$/i.test(settings.banner.url) ? (
@@ -294,11 +294,11 @@ export default function FortuneNumerologyPage() {
         </div>
 
         <div className="relative z-10 max-w-[1200px] mx-auto px-4 text-center mt-2">
-          <h1 className="text-[36px] md:text-[50px] lg:text-[60px] font-bold mb-3 font-serif leading-tight text-white drop-shadow-md">
+          <h1 className="text-[28px] md:text-[48px] lg:text-[58px] font-bold mb-3 font-serif leading-tight text-white drop-shadow-md">
             Hastlikhit Kundali: Discover the Blueprint of Your Destiny
 
           </h1>
-          <p className="text-[17px] md:text-[20px] text-white/100 mb-6 max-w-2xl mx-auto font-semibold drop-shadow-sm">
+          <p className="text-[16px] md:text-[20px] text-white/100 mb-6 max-w-2xl mx-auto font-semibold drop-shadow-sm">
             Unlock Your True Potential with Ancient Wisdom
           </p>
 
@@ -320,42 +320,74 @@ export default function FortuneNumerologyPage() {
       </section>
 
       {/* ============ OVERLAPPING CARDS (MINIMAL/FLAT) ============ */}
-      <div className="max-w-[1200px] mx-auto px-4 relative z-20 -mt-10 mb-16">
-        <div className="flex flex-wrap gap-2 lg:gap-3 justify-center">
+      <div className="max-w-[1200px] mx-auto relative z-20 -mt-6 md:-mt-10 mb-8 md:mb-12 overflow-hidden">
+        
+        {/* Mobile Marquee */}
+        <div className="md:hidden flex w-max animate-scroll gap-3 px-4 py-2 hover:[animation-play-state:paused]">
+          {[1, 2].map((loop) => (
+            <React.Fragment key={loop}>
+              <div className="bg-white rounded-[10px] shadow-sm px-4  py-2.5  flex items-center gap-2 shrink-0 border border-[#ebdcc7]/50">
+            <Hash className="w-5 h-5 text-[#d68636]" />
+            <span className="text-[#5c1a1f] font-bold text-[13px] ">Deep Name Analysis</span>
+          </div>
 
+          
+              <div className="bg-white rounded-[10px] shadow-sm px-4  py-2.5  flex items-center gap-2 shrink-0 border border-[#ebdcc7]/50">
+            <Star className="w-5 h-5 text-[#d68636]" />
+            <span className="text-[#5c1a1f] font-bold text-[13px] ">Lucky Numbers</span>
+          </div>
+
+          
+              <div className="bg-white rounded-[10px] shadow-sm px-4  py-2.5  flex items-center gap-2 shrink-0 border border-[#ebdcc7]/50">
+            <Briefcase className="w-5 h-5 text-[#d68636]" />
+            <span className="text-[#5c1a1f] font-bold text-[13px] ">Career Guidance</span>
+          </div>
+
+          
+              <div className="bg-white rounded-[10px] shadow-sm px-4  py-2.5  flex items-center gap-2 shrink-0 border border-[#ebdcc7]/50">
+            <ShieldCheck className="w-5 h-5 text-[#d68636]" />
+            <span className="text-[#5c1a1f] font-bold text-[13px] ">Remedies & Solutions</span>
+  </div>
+            </React.Fragment>
+          ))}
+        </div>
+
+        {/* Desktop Normal Grid */}
+        <div className="hidden md:flex flex-wrap gap-4 justify-center px-4">
           <div className="bg-white rounded-[12px] shadow-sm px-3 lg:px-4 py-2.5 lg:py-3 flex items-center gap-2">
             <Hash className="w-5 h-5 text-[#d68636]" />
             <span className="text-[#5c1a1f] font-bold text-[13px] xl:text-[14px]">Deep Name Analysis</span>
           </div>
 
+          
           <div className="bg-white rounded-[12px] shadow-sm px-3 lg:px-4 py-2.5 lg:py-3 flex items-center gap-2">
             <Star className="w-5 h-5 text-[#d68636]" />
             <span className="text-[#5c1a1f] font-bold text-[13px] xl:text-[14px]">Lucky Numbers</span>
           </div>
 
+          
           <div className="bg-white rounded-[12px] shadow-sm px-3 lg:px-4 py-2.5 lg:py-3 flex items-center gap-2">
             <Briefcase className="w-5 h-5 text-[#d68636]" />
             <span className="text-[#5c1a1f] font-bold text-[13px] xl:text-[14px]">Career Guidance</span>
           </div>
 
+          
           <div className="bg-white rounded-[12px] shadow-sm px-3 lg:px-4 py-2.5 lg:py-3 flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-[#d68636]" />
             <span className="text-[#5c1a1f] font-bold text-[13px] xl:text-[14px]">Remedies & Solutions</span>
-          </div>
-
         </div>
       </div>
+      </div>
 
-      {/* ============ EVERYTHING YOU NEED ============ */}
       <section className="pb-12 md:pb-16 bg-[#fdfaf6]">
-        <div className="max-w-[1000px] mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
+        <div className="max-w-[1000px] mx-auto px-4 flex flex-row items-start justify-center gap-6 md:gap-10">
 
           {/* Astrologer Profile */}
           <div className="flex flex-col items-center shrink-0">
-            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-[4px] border-white shadow-md mb-2 bg-white flex items-center justify-center">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-[4px] border-white shadow-md mb-2 bg-white flex items-center justify-center">
               <img src="/vaidiktalklogo.webp" alt="Vaidik Talk" className="w-[85%] h-[85%] object-contain" onError={(e) => { e.currentTarget.src = 'https://ui-avatars.com/api/?name=Vaidik+Talk&background=fff&color=1e293b&size=200' }} />
             </div>
-            <span className="font-bold text-[#1a1a1a] text-[14px]">Vaidik Talk</span>
+            <span className="hidden md:block font-bold text-[#1a1a1a] text-[14px]">Vaidik Talk</span>
           </div>
 
           {/* Content & Tags */}
@@ -363,7 +395,7 @@ export default function FortuneNumerologyPage() {
             <h2 className="text-[22px] md:text-[26px] font-bold text-[#5c1a1f] mb-1">Empower your life journey with numerical alignment</h2>
             <p className="text-[14px] md:text-[15px] text-[#5c1a1f]/80 font-medium mb-4">Understand the karmic impact of your birth numbers and name vibration to remove blocks.</p>
 
-            <div className="flex flex-wrap justify-center md:justify-start gap-2.5">
+            <div className="grid grid-cols-3 md:flex md:flex-wrap gap-1.5 md:gap-2.5 w-full">
               {[
                 { label: 'Name Correction', icon: CheckCircle2 },
                 { label: 'Birth Date Analysis', icon: ShieldCheck },
@@ -372,9 +404,9 @@ export default function FortuneNumerologyPage() {
                 { label: 'Karmic Debt', icon: Star },
                 { label: 'Wealth Numbers', icon: BookOpen }
               ].map((item, i) => (
-                <div key={i} className="bg-[#fdfaf6] text-[#b06126] border border-[#ebdcc7] px-4 py-1.5 rounded-full font-bold text-[13px] flex items-center gap-1.5 shadow-sm">
+                <div key={i} className="bg-[#fdfaf6] text-[#b06126] border border-[#ebdcc7] px-1 md:px-4 py-1 md:py-1.5 rounded-md md:rounded-full font-bold text-[8.5px] sm:text-[10px] md:text-[13px] flex items-center justify-center md:justify-start gap-1 md:gap-1.5 shadow-sm overflow-hidden text-center">
                   <item.icon className="w-3.5 h-3.5 text-[#c57636]" strokeWidth={2.5} />
-                  {item.label}
+                  <span className="truncate whitespace-nowrap">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -385,12 +417,23 @@ export default function FortuneNumerologyPage() {
 
       {/* ============ SECTION 2: BOOK MOCKUP ============ */}
       <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12 md:gap-20">
-          <div className="md:w-1/2 flex justify-center order-2 md:order-1">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-20">
+          
+          {/* Desktop Image (Hidden on mobile) */}
+          <div className="hidden md:flex md:w-1/2 justify-center">
             <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} alt="Premium Hastlikhit Kundali" className="w-full max-w-[470px] rounded-xl mix-blend-multiply" onError={(e) => { e.currentTarget.src = 'https://placehold.co/400x550/f8f9fa/0f3b43?text=Numerology+Report' }} />
           </div>
-          <div className="md:w-1/2 order-1 md:order-2">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#5c1a1f] mb-3">Premium Hastlikhit Kundali</h2>
+          
+          {/* Content */}
+          <div className="w-full md:w-1/2 flex flex-col">
+            
+            {/* Mobile Title & Thumbnail Row */}
+            <div className="flex items-center gap-4 mb-4 md:mb-3">
+              <div className="md:hidden shrink-0 w-[85px] sm:w-[100px] flex items-center justify-center">
+                <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} alt="Premium Hastlikhit Kundali" className="w-full h-auto object-contain drop-shadow-md rounded-sm mix-blend-multiply" onError={(e) => { e.currentTarget.src = 'https://placehold.co/400x550/f8f9fa/0f3b43?text=Numerology+Report' }} />
+              </div>
+              <h2 className="text-[22px] sm:text-3xl md:text-4xl font-serif font-bold text-[#5c1a1f] leading-tight">Premium Hastlikhit Kundali</h2>
+            </div>
 
             <p className="text-[#3a1216]/90 text-[15px] leading-relaxed mb-6 font-medium">
               A small energetic shift — a letter change, a new number, or vibration correction — can change the entire course of your life. Your name and numbers are not fixed; they are keys to your transformation.
@@ -467,7 +510,6 @@ export default function FortuneNumerologyPage() {
         }
         .animate-scroll {
           animation: scrollLeft 30s linear infinite;
-          display: flex;
           width: max-content;
         }
         .animate-scroll:hover {

@@ -24,7 +24,15 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
   }, [images]);
   if (!images?.length) return null;
   return (
-    <div className="relative w-full aspect-[4/3] overflow-hidden rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.10)] group">
+    <div 
+      className="relative w-full aspect-[4/3] overflow-hidden rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.10)] group bg-[#3a1216]"
+      style={{
+        backgroundImage: 'url(/vaidiktalklogo.webp)',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: '150px'
+      }}
+    >
       <div className="flex h-full w-full transition-transform duration-500 ease-out" style={{ transform: `translateX(-${idx * 100}%)` }}>
         {images.map((src, i) => <img key={i} src={src} className="w-full h-full object-cover shrink-0" alt={`Slide ${i + 1}`} />)}
       </div>
@@ -272,8 +280,8 @@ export default function DynamicPujaClient({ initialPuja, slug }: { initialPuja: 
             <CountdownTimer timerKey={`timer_${slug}`} />
 
             <div className="flex flex-col sm:flex-row sm:items-center justify-between my-3 gap-1 sm:gap-0 text-[15px] text-[#3a1216] font-medium">
-              <span>{Math.floor(Math.random() * 5 + 5)}K+ devotees booked this puja</span>
-              <span className="text-[#9c5c0f] font-bold text-[14px]">★ 4.9 ({Math.floor(Math.random() * 2 + 3)}.{Math.floor(Math.random() * 9)}K Reviews)</span>
+              <span suppressHydrationWarning>{Math.floor(Math.random() * 5 + 5)}K+ devotees booked this puja</span>
+              <span suppressHydrationWarning className="text-[#9c5c0f] font-bold text-[14px]">★ 4.9 ({Math.floor(Math.random() * 2 + 3)}.{Math.floor(Math.random() * 9)}K Reviews)</span>
             </div>
             <div className="flex items-end justify-between mt-5 pt-4 border-t border-[#e5e0d8]">
               <div>

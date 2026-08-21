@@ -155,7 +155,7 @@ export default function RefundPolicy() {
           <h3 className="text-xl font-bold mt-10 mb-4 text-[#5c1a1f]">CONTACT & SUPPORT</h3>
           <p>For any refund or return issues:</p>
           <div className="bg-[#fcf8f2] p-6 rounded-xl border border-[#f0ddc0] mt-4">
-            <p className="mb-1"><strong>Email:</strong> <a href="mailto:support@vaidiktalk.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">support@vaidiktalk.com</a></p>
+            <p className="mb-1"><strong>Email:</strong> <a href="mailto:contact@vaidiktalk.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">contact@vaidiktalk.com</a></p>
             <p className="mb-1"><strong>In-App:</strong> Help & Support Section</p>
             <p className="mb-0"><strong>Phone:</strong> +919031823276</p>
           </div>

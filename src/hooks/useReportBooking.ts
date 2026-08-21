@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { apiClient } from '../lib/api';
 
 export interface ReportFormData {
   name: string;
@@ -9,6 +10,7 @@ export interface ReportFormData {
   country: string;
   state: string;
   language: string;
+  chartStyle: string;
   email: string;
   phone: string;
   partnerDetails?: any;
@@ -22,7 +24,8 @@ const initialFormData: ReportFormData = {
   pob: '',
   country: '',
   state: '',
-  language: '',
+  language: 'en',
+  chartStyle: 'NORTH_INDIAN',
   email: '',
   phone: '',
 };
@@ -31,7 +34,7 @@ export const useReportBooking = (reportDetails: {
   name: string;
   slug: string;
   amount: number;
-  onSuccess?: () => void;
+  onSuccess?: (bookingId: string) => void;
 }) => {
   const [formData, setFormData] = useState<ReportFormData>(initialFormData);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -63,32 +66,27 @@ export const useReportBooking = (reportDetails: {
         return;
       }
 
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
-
       const finalData = { ...formData, ...overrideData };
 
-      const orderResponse = await fetch(`${apiUrl}/report-bookings/create-order`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          reportName: reportDetails.name,
-          reportSlug: reportDetails.slug,
-          customerName: finalData.name,
-          gender: finalData.gender,
-          dob: finalData.dob,
-          tob: finalData.tob,
-          pob: finalData.pob,
-          country: finalData.country || '',
-          state: finalData.state || '',
-          language: finalData.language || 'English',
-          phone: finalData.phone,
-          email: finalData.email,
-          amount: reportDetails.amount,
-          partnerDetails: finalData.partnerDetails,
-        }),
+      const orderResponse = await apiClient.post('/report-bookings/create-order', {
+        reportName: reportDetails.name,
+        reportSlug: reportDetails.slug,
+        customerName: finalData.name,
+        gender: finalData.gender,
+        dob: finalData.dob,
+        tob: finalData.tob,
+        pob: finalData.pob,
+        country: finalData.country || '',
+        state: finalData.state || '',
+        language: finalData.language || 'English',
+        chartStyle: finalData.chartStyle || 'NORTH_INDIAN',
+        phone: finalData.phone,
+        email: finalData.email,
+        amount: reportDetails.amount,
+        partnerDetails: finalData.partnerDetails,
       });
 
-      const orderData = await orderResponse.json();
+      const orderData = orderResponse.data;
 
       if (!orderData.success) {
         alert(orderData.message || 'Failed to create order. Please try again.');
@@ -105,21 +103,16 @@ export const useReportBooking = (reportDetails: {
         order_id: orderData.razorpayOrderId,
         handler: async function (response: any) {
           try {
-            const verifyRes = await fetch(`${apiUrl}/report-bookings/verify-payment`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                razorpay_order_id: response.razorpay_order_id,
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_signature: response.razorpay_signature,
-              }),
+            const verifyRes = await apiClient.post('/report-bookings/verify-payment', {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
             });
-            const verifyData = await verifyRes.json();
+            const verifyData = verifyRes.data;
             if (verifyData.success) {
-              alert(`Payment successful! Your ${reportDetails.name} order is confirmed. You will receive your report shortly.`);
               setFormData(initialFormData);
               if (reportDetails.onSuccess) {
-                reportDetails.onSuccess();
+                reportDetails.onSuccess(verifyData.bookingId || orderData.bookingId);
               } else {
                 window.location.href = '/';
               }

@@ -130,7 +130,7 @@ export default function Footer() {
               <ul className="space-y-3.5 pb-2 lg:pb-0">
                 <li><Link href="/contact-us" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Contact Support Team</Link></li>
                 <li className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium">Available 24x7 on chat support</li>
-                <li className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium">Email: support@vaidiktalk.com</li>
+                <li className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium">Email: contact@vaidiktalk.com</li>
               </ul>
             </FooterSection>
           </div>

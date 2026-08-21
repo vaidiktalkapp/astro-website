@@ -444,7 +444,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                       onClick={() => setShowCountryDropdown(!showCountryDropdown)}
                       className="px-4 py-3.5 bg-yellow-50 hover:bg-yellow-100 border-r-2 border-gray-200 text-gray-850 flex items-center gap-2 font-semibold transition-colors"
                     >
-                      <span className="text-lg">{selectedCountry.flag}</span>
+                      <img src={`https://flagcdn.com/w20/${selectedCountry.code.toLowerCase()}.png`} width="20" alt={selectedCountry.name} className="rounded-sm" />
                       <span>+{selectedCountry.dialCode}</span>
                       <svg className={`w-4 h-4 transition-transform ${showCountryDropdown ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                     </button>
@@ -456,7 +456,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                             onClick={() => { setSelectedCountry(country); setShowCountryDropdown(false); phoneInputRef.current?.focus(); }}
                             className={`w-full px-4 py-3 flex items-center gap-3 hover:bg-yellow-50 transition-colors ${selectedCountry.code === country.code ? 'bg-yellow-100' : ''}`}
                           >
-                            <span className="text-2xl">{country.flag}</span>
+                            <img src={`https://flagcdn.com/w40/${country.code.toLowerCase()}.png`} width="24" alt={country.name} className="rounded-sm shadow-sm" />
                             <div className="flex-1 text-left">
                               <p className="font-semibold text-gray-900">{country.name}</p>
                               <p className="text-sm text-gray-850">+{country.dialCode}</p>
@@ -502,7 +502,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <label className="block text-sm font-semibold text-gray-850">Enter OTP</label>
-                  <span className="text-sm text-gray-850 font-medium bg-yellow-50 px-3 py-1 rounded-full">{selectedCountry.flag} +{selectedCountry.dialCode} {phoneNumber}</span>
+                  <span className="text-sm text-gray-850 font-medium bg-yellow-50 px-3 py-1 rounded-full inline-flex items-center gap-1.5"><img src={`https://flagcdn.com/w20/${selectedCountry.code.toLowerCase()}.png`} width="16" alt={selectedCountry.name} className="rounded-sm" /> +{selectedCountry.dialCode} {phoneNumber}</span>
                 </div>
                 <input
                   ref={otpInputRef}

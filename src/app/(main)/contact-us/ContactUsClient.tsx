@@ -143,7 +143,7 @@ export default function ContactUsPage() {
                     <Mail className="text-[#d97706] mt-1 shrink-0" size={20} />
                     <div>
                       <div className="text-[12px] font-semibold text-[#f4ddbf] uppercase tracking-wider mb-1">Email Us</div>
-                      <div className="font-medium text-[15px] text-white">support@vaidiktalk.com</div>
+                      <div className="font-medium text-[15px] text-white">contact@vaidiktalk.com</div>
                     </div>
                   </div>
 
@@ -170,7 +170,7 @@ export default function ContactUsPage() {
                 <h3 className="font-serif font-bold text-[#5c1420] text-[20px]">Need Immediate Support?</h3>
               </div>
               <p className="text-[14.5px] text-[#5e4339] leading-relaxed mb-4">
-                If you need urgent guidance regarding a puja, gemstone order, or consultation, you can directly email us at <strong className="text-[#8a1c2a]">support@vaidiktalk.com</strong>.
+                If you need urgent guidance regarding a puja, gemstone order, or consultation, you can directly email us at <strong className="text-[#8a1c2a]">contact@vaidiktalk.com</strong>.
               </p>
               <p className="font-medium text-[#5c1420] italic text-sm">
                 We are always ready to help you in your spiritual journey.

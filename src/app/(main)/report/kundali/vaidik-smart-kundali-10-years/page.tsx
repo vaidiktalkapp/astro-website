@@ -285,7 +285,7 @@ export default function SmartKundaliPage() {
       )}
 
       {/* ============ HERO ============ */}
-      <section className="relative w-full pt-10 pb-20 overflow-hidden bg-[#7a4b3a]">
+      <section className="relative w-full pt-6 pb-16 overflow-hidden bg-[#7a4b3a]">
         {/* Video Background */}
         <div className="absolute inset-0 z-0 bg-[#4c2918]">
           {settings?.banner?.url && /\.(mp4|webm|mov)(\?.*)?$/i.test(settings.banner.url) ? (
@@ -300,8 +300,8 @@ export default function SmartKundaliPage() {
         </div>
 
         <div className="relative z-10 max-w-[1200px] mx-auto px-4 text-center mt-2">
-          <h1 className="text-[36px] md:text-[50px] lg:text-[60px] font-bold mb-3 font-serif leading-tight text-white drop-shadow-md">Unlock the Secrets of Your Future</h1>
-          <p className="text-[17px] md:text-[20px] text-white/100 mb-6 max-w-2xl mx-auto font-semibold drop-shadow-sm">Premium Personalized Kundli by India's Most Trusted Astrologer</p>
+          <h1 className="text-[28px] md:text-[48px] lg:text-[58px] font-bold mb-3 font-serif leading-tight text-white drop-shadow-md">Unlock the Secrets of Your Future</h1>
+          <p className="text-[16px] md:text-[20px] text-white/100 mb-6 max-w-2xl mx-auto font-semibold drop-shadow-sm">Premium Personalized Kundli by India's Most Trusted Astrologer</p>
 
           <Link href="/report/kundali/vaidik-smart-kundali-10-years/checkout" className="inline-block bg-white text-[#b06126] font-bold text-[16px] md:text-[18px] px-10 py-3.5 md:py-4 rounded-xl shadow-lg hover:scale-105 transition-transform mb-6">
             Get Your Kundali Now @ <span className="line-through text-[#3a1216] mx-1">₹1799</span> ₹649
@@ -321,9 +321,72 @@ export default function SmartKundaliPage() {
       </section>
 
       {/* ============ OVERLAPPING CARDS (MINIMAL/FLAT) ============ */}
-      <div className="max-w-[1200px] mx-auto px-4 relative z-20 -mt-10 mb-16">
-        <div className="flex flex-wrap gap-4 justify-center">
+      <div className="max-w-[1200px] mx-auto relative z-20 -mt-6 md:-mt-10 mb-8 md:mb-12 overflow-hidden">
+        
+        {/* Mobile Marquee */}
+        <div className="md:hidden flex w-max animate-scroll gap-3 px-4 py-2 hover:[animation-play-state:paused]">
+          {[1, 2].map((loop) => (
+            <React.Fragment key={loop}>
+              <div className="bg-white rounded-[14px] shadow-sm px-5 py-3 .5 flex items-center gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+              <rect x="2" y="2" width="20" height="20" stroke="#f97316" strokeWidth="1.5" />
+              <circle cx="12" cy="12" r="6" stroke="#ef4444" strokeWidth="1.5" />
+              <path d="M12 2L12 22M2 12L22 12" stroke="#f97316" strokeWidth="1.5" />
+              <circle cx="12" cy="12" r="2" fill="#ef4444" />
+            </svg>
+            <span className="text-[#5c1a1f] font-bold text-[14.5px]">Doshas & Their Impact</span>
+          </div>
 
+          
+              <div className="bg-white rounded-[14px] shadow-sm px-5 py-3 .5 flex items-center gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+              <path d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12" stroke="#ec4899" strokeWidth="2" strokeLinecap="round" />
+              <circle cx="12" cy="17" r="2" fill="#ec4899" />
+              <circle cx="12" cy="8" r="3" stroke="#f472b6" strokeWidth="1.5" />
+              <path d="M7 10C7 7 9 5 12 5C15 5 17 7 17 10" stroke="#f472b6" strokeWidth="1.5" />
+              <path d="M5 14L8 12M19 14L16 12" stroke="#ec4899" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+            <span className="text-[#5c1a1f] font-bold text-[14.5px]">Remedies</span>
+          </div>
+
+          
+              <div className="bg-white rounded-[14px] shadow-sm px-5 py-3 .5 flex items-center gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+              <path d="M6 6V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V6" stroke="#f59e0b" strokeWidth="1.5" />
+              <path d="M6 6C6 4.89543 6.89543 4 8 4H16C17.1046 4 18 4.89543 18 6" fill="#fcd34d" stroke="#f59e0b" strokeWidth="1.5" />
+              <path d="M9 10H15M9 14H13" stroke="#f59e0b" strokeWidth="1.5" strokeLinecap="round" />
+              <circle cx="12" cy="6" r="1.5" fill="#b45309" />
+            </svg>
+            <span className="text-[#5c1a1f] font-bold text-[14.5px]">250+ Page Kundli Report</span>
+          </div>
+
+          
+              <div className="bg-white rounded-[14px] shadow-sm px-5 py-3 .5 flex items-center gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+              <circle cx="12" cy="10" r="7" fill="#e9d5ff" stroke="#a855f7" strokeWidth="1.5" />
+              <path d="M8 20H16" stroke="#a855f7" strokeWidth="2" strokeLinecap="round" />
+              <path d="M10 17L9 20M14 17L15 20" stroke="#a855f7" strokeWidth="1.5" strokeLinecap="round" />
+              <path d="M11 7L12 8M13 11L14 10" stroke="#a855f7" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+            <span className="text-[#5c1a1f] font-bold text-[14.5px]">Personalized Insights</span>
+          </div>
+
+          
+              <div className="bg-white rounded-[14px] shadow-sm px-5 py-3 .5 flex items-center gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+              <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" />
+              <circle cx="12" cy="12" r="4" fill="#fcd34d" stroke="#f59e0b" strokeWidth="1.5" />
+              <circle cx="19" cy="9" r="1.5" fill="#3b82f6" />
+              <circle cx="4" cy="16" r="2" fill="#ef4444" />
+            </svg>
+            <span className="text-[#5c1a1f] font-bold text-[14.5px]">Planetary Transits</span>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+
+        {/* Desktop Normal Grid */}
+        <div className="hidden md:flex flex-wrap gap-4 justify-center px-4">
           <div className="bg-white rounded-[14px] shadow-sm px-5 py-3 lg:py-3.5 flex items-center gap-3">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
               <rect x="2" y="2" width="20" height="20" stroke="#f97316" strokeWidth="1.5" />
@@ -334,6 +397,7 @@ export default function SmartKundaliPage() {
             <span className="text-[#5c1a1f] font-bold text-[14.5px]">Doshas & Their Impact</span>
           </div>
 
+          
           <div className="bg-white rounded-[14px] shadow-sm px-5 py-3 lg:py-3.5 flex items-center gap-3">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
               <path d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12" stroke="#ec4899" strokeWidth="2" strokeLinecap="round" />
@@ -345,6 +409,7 @@ export default function SmartKundaliPage() {
             <span className="text-[#5c1a1f] font-bold text-[14.5px]">Remedies</span>
           </div>
 
+          
           <div className="bg-white rounded-[14px] shadow-sm px-5 py-3 lg:py-3.5 flex items-center gap-3">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
               <path d="M6 6V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V6" stroke="#f59e0b" strokeWidth="1.5" />
@@ -355,6 +420,7 @@ export default function SmartKundaliPage() {
             <span className="text-[#5c1a1f] font-bold text-[14.5px]">250+ Page Kundli Report</span>
           </div>
 
+          
           <div className="bg-white rounded-[14px] shadow-sm px-5 py-3 lg:py-3.5 flex items-center gap-3">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
               <circle cx="12" cy="10" r="7" fill="#e9d5ff" stroke="#a855f7" strokeWidth="1.5" />
@@ -365,6 +431,7 @@ export default function SmartKundaliPage() {
             <span className="text-[#5c1a1f] font-bold text-[14.5px]">Personalized Insights</span>
           </div>
 
+          
           <div className="bg-white rounded-[14px] shadow-sm px-5 py-3 lg:py-3.5 flex items-center gap-3">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
               <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" />
@@ -373,21 +440,19 @@ export default function SmartKundaliPage() {
               <circle cx="4" cy="16" r="2" fill="#ef4444" />
             </svg>
             <span className="text-[#5c1a1f] font-bold text-[14.5px]">Planetary Transits</span>
-          </div>
-
         </div>
       </div>
+      </div>
 
-      {/* ============ EVERYTHING YOU NEED ============ */}
       <section className="pb-12 md:pb-16 bg-[#fdfaf6]">
-        <div className="max-w-[1000px] mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
+        <div className="max-w-[1000px] mx-auto px-4 flex flex-row items-start justify-center gap-6 md:gap-10">
 
           {/* Astrologer Profile */}
           <div className="flex flex-col items-center shrink-0">
-            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-[4px] border-white shadow-md mb-2 bg-white flex items-center justify-center">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-[4px] border-white shadow-md mb-2 bg-white flex items-center justify-center">
               <img src="/vaidiktalklogo.webp" alt="Vaidik Talk" className="w-[85%] h-[85%] object-contain" onError={(e) => { e.currentTarget.src = 'https://ui-avatars.com/api/?name=Vaidik+Talk&background=fff&color=1e293b&size=200' }} />
             </div>
-            <span className="font-bold text-[#1a1a1a] text-[14px]">Vaidik Talk</span>
+            <span className="hidden md:block font-bold text-[#1a1a1a] text-[14px]">Vaidik Talk</span>
           </div>
 
           {/* Content & Tags */}
@@ -395,7 +460,7 @@ export default function SmartKundaliPage() {
             <h2 className="text-[22px] md:text-[26px] font-bold text-[#6b3112] mb-1">Everything You Need, In One Report</h2>
             <p className="text-[14px] md:text-[15px] text-[#6b3112]/80 font-medium mb-4">Get personalized insights across all areas of your life</p>
 
-            <div className="flex flex-wrap justify-center md:justify-start gap-2.5">
+            <div className="grid grid-cols-3 md:flex md:flex-wrap gap-1.5 md:gap-2.5 w-full">
               {[
                 { label: 'Marriage', icon: Heart },
                 { label: 'Career', icon: Briefcase },
@@ -407,9 +472,9 @@ export default function SmartKundaliPage() {
                 { label: 'Remedies', icon: Flower2 },
                 { label: 'Lucky Years', icon: CheckCircle2 },
               ].map((item, i) => (
-                <div key={i} className="bg-[#f26522] text-white px-4 py-1.5 rounded-full font-bold text-[13px] flex items-center gap-1.5 shadow-sm">
+                <div key={i} className="bg-[#f26522] text-white px-1 md:px-4 py-1 md:py-1.5 rounded-md md:rounded-full font-bold text-[8.5px] sm:text-[10px] md:text-[13px] flex items-center justify-center md:justify-start gap-1 md:gap-1.5 shadow-sm overflow-hidden text-center">
                   <item.icon className="w-3.5 h-3.5" strokeWidth={2.5} />
-                  {item.label}
+                  <span className="truncate whitespace-nowrap">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -420,12 +485,23 @@ export default function SmartKundaliPage() {
 
       {/* ============ SECTION 2: BOOK MOCKUP ============ */}
       <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12 md:gap-20">
-          <div className="md:w-1/2 flex justify-center order-2 md:order-1">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-20">
+          
+          {/* Desktop Image (Hidden on mobile) */}
+          <div className="hidden md:flex md:w-1/2 justify-center">
             <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} alt="Premium Personalised VaidikTalk Kundli" className="w-full max-w-[470px]  rounded-xl mix-blend-multiply" onError={(e) => { e.currentTarget.src = 'https://placehold.co/400x550/f8f9fa/5c3a21?text=Kundali+Mockup' }} />
           </div>
-          <div className="md:w-1/2 order-1 md:order-2">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#5c1a1f] mb-3">Vaidik Smart Kundali (10 Years)</h2>
+          
+          {/* Content */}
+          <div className="w-full md:w-1/2 flex flex-col">
+            
+            {/* Mobile Title & Thumbnail Row */}
+            <div className="flex items-center gap-4 mb-4 md:mb-3">
+              <div className="md:hidden shrink-0 w-[85px] sm:w-[100px] flex items-center justify-center">
+                <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} alt="Premium Personalised VaidikTalk Kundli" className="w-full max-w-[470px]  rounded-xl mix-blend-multiply" onError={(e) => { e.currentTarget.src = 'https://placehold.co/400x550/f8f9fa/5c3a21?text=Kundali+Mockup' }} />
+              </div>
+              <h2 className="text-[22px] sm:text-3xl md:text-4xl font-serif font-bold text-[#5c1a1f] leading-tight">Vaidik Smart Kundali (10 Years)</h2>
+            </div>
 
             <p className="text-[#5c1a1f] text-[15px] leading-relaxed mb-6 font-medium">
               Explore your important life phases, planetary influences, and potential upcoming events over an extended 10-year period using traditional Vedic calculation techniques.
@@ -539,7 +615,6 @@ export default function SmartKundaliPage() {
         }
         .animate-scroll {
           animation: scrollLeft 30s linear infinite;
-          display: flex;
           width: max-content;
         }
         .animate-scroll:hover {
@@ -636,7 +711,7 @@ export default function SmartKundaliPage() {
       </section>
 
       {/* ============ CTA / GET IT NOW ============ */}
-      <section className="py-16 md:py-24 bg-[#fdfaf6] border-t border-[#ebdcc7]">
+      <section className="pt-16 pb-28 md:py-24 bg-[#fdfaf6] border-t border-[#ebdcc7]">
         <div className="max-w-[800px] mx-auto px-4 text-center">
           <h2 className="premium-serif text-center text-[28px] md:text-[36px] font-bold text-[#5c1a1f] mb-4 leading-tight">Ready to Reveal Your Future?</h2>
           <p className="text-center text-[#3a1216] text-[15px] md:text-[16px] mb-10 max-w-[600px] mx-auto">Get your Premium Personalized 10-Year Vaidik Kundali today and gain crystal clear insights into your career, marriage, and wealth.</p>
@@ -645,6 +720,13 @@ export default function SmartKundaliPage() {
           </Link>
         </div>
       </section>
+
+      {/* ============ MOBILE STICKY BOTTOM CTA ============ */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 z-[60] shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+        <Link href="/report/kundali/vaidik-smart-kundali-10-years/checkout" className="flex items-center justify-center bg-[#b06126] text-white font-bold text-[16px] py-3.5 rounded-lg shadow-sm hover:bg-[#8c481c] transition-colors w-full">
+          Get Your Report →
+        </Link>
+      </div>
 
     </div>
   );

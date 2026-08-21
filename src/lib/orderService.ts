@@ -159,6 +159,35 @@ export const orderService = {
       throw error;
     }
   },
+
+  // Get User Puja Bookings
+  async getPujaBookings(userId: string) {
+    try {
+      console.log('Sending userId to getPujaBookings:', userId);
+      const response = await apiClient.get('/puja-bookings', {
+        params: { userId }
+      });
+      console.log('Response from getPujaBookings:', response.data);
+      return response.data;
+    } catch (error: any) {
+      console.error('❌ Get puja bookings error:', error);
+      throw error;
+    }
+  },
+
+  // Get User Report Bookings (Kundali, etc.)
+  async getReportBookings(userId: string) {
+    try {
+      console.log('Sending userId to getReportBookings:', userId);
+      const response = await apiClient.get('/report-bookings', {
+        params: { userId }
+      });
+      return response.data;
+    } catch (error: any) {
+      console.error('❌ Get report bookings error:', error);
+      throw error;
+    }
+  },
 };
 
 export default orderService;

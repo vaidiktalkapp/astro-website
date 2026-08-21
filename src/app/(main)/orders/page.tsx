@@ -49,12 +49,13 @@ interface CallSession {
   createdAt: string;
 }
 
-type TabType = 'chat' | 'call' | 'reports';
+type TabType = 'chat' | 'call' | 'reports' | 'pujas' | 'kundali';
 
 const getStatusColor = (status: string) => {
   switch (status) {
     case 'completed':
     case 'delivered':
+    case 'paid':
       return 'bg-green-100 text-green-700';
     case 'ongoing':
     case 'in_progress':
@@ -130,6 +131,8 @@ export default function OrdersPage() {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [callSession, setcallSession] = useState<CallSession[]>([]);
   const [reports, setReports] = useState<BlockedAstrologer[]>([]);
+  const [pujaBookings, setPujaBookings] = useState<any[]>([]);
+  const [reportBookings, setReportBookings] = useState<any[]>([]);
 
   const [loading, setLoading] = useState(true);
 
@@ -141,8 +144,39 @@ export default function OrdersPage() {
       loadcallSession();
     } else if (activeTab === 'reports') {
       loadReports();
+    } else if (activeTab === 'pujas') {
+      loadPujas();
+    } else if (activeTab === 'kundali') {
+      loadReportBookings();
     }
   }, [activeTab]);
+
+  const loadReportBookings = async () => {
+    try {
+      if (!user?._id && !user?.id) return;
+      const userId = user._id || user.id;
+      const data = await orderService.getReportBookings(userId as string);
+      setReportBookings(Array.isArray(data) ? data : []);
+    } catch (error) {
+      console.error('Failed to load report bookings:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const loadPujas = async () => {
+    try {
+      console.log('OrdersPage loadPujas, user:', user);
+      if (!user?._id && !user?.id) return;
+      const userId = user._id || user.id;
+      const data = await orderService.getPujaBookings(userId as string);
+      setPujaBookings(Array.isArray(data) ? data : []);
+    } catch (error) {
+      console.error('Failed to load pujas:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const loadConversations = async () => {
     try {
@@ -243,7 +277,30 @@ export default function OrdersPage() {
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
-{t("orders.reports")}
+Complaints
+            </button>
+            <button
+              onClick={() => setActiveTab('kundali')}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all whitespace-nowrap ${activeTab === 'kundali' ?
+              'bg-yellow-400 text-black shadow-md' :
+              'bg-gray-100 text-gray-850 hover:bg-gray-200'}`
+              }>
+              
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+Kundali & Reports
+            </button>
+            <button
+              onClick={() => setActiveTab('pujas')}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all whitespace-nowrap ${activeTab === 'pujas' ?
+              'bg-yellow-400 text-black shadow-md' :
+              'bg-gray-100 text-gray-850 hover:bg-gray-200'}`
+              }>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+              Pujas
             </button>
           </div>
         </div>
@@ -449,6 +506,169 @@ export default function OrdersPage() {
 
 
           }
+
+            {/* --- PUJAS TAB --- */}
+            {activeTab === 'pujas' && (
+              pujaBookings.length > 0 ? (
+                <div className="space-y-4">
+                  {pujaBookings.map((booking) => (
+                    <div
+                      key={booking._id}
+                      className="block bg-white rounded-xl border border-gray-200 p-5 hover:shadow-lg transition-shadow">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between mb-1">
+                            <h3 className="font-bold text-gray-900 text-lg">{booking.pujaName || booking.title || 'Vedic Puja'}</h3>
+                            <span className="text-sm font-semibold text-gray-900 bg-gray-50 px-2 py-1 rounded">
+                              ₹{booking.amount}
+                            </span>
+                          </div>
+                          
+                          <div className="bg-gray-50 rounded-lg p-4 my-3 border border-gray-100 text-sm text-gray-850 space-y-2">
+                            {booking.package && <p><span className="font-semibold text-gray-900">Package:</span> {booking.package}</p>}
+                            <p><span className="font-semibold text-gray-900">Sankalp Name:</span> {booking.customerName || booking.name}</p>
+                            {booking.gotra && <p><span className="font-semibold text-gray-900">Gotra:</span> {booking.gotra}</p>}
+                            {booking.bookingId && <p><span className="font-semibold text-gray-900">Booking ID:</span> <span className="font-mono text-xs bg-gray-200 px-1 rounded">{booking.bookingId}</span></p>}
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 pt-2 border-t border-gray-200">
+                              <p><span className="font-semibold text-gray-900">Date of Birth:</span> {new Date(booking.preferredDate).toLocaleDateString()}</p>
+                              <p className="truncate"><span className="font-semibold text-gray-900">Birth Place:</span> {booking.location}</p>
+                            </div>
+
+                            {(() => {
+                              const msg = booking.message || '';
+                              const match = msg.match(/\[Offerings:\s*(.+?)\]/);
+                              const offeringsStr = match ? match[1] : '';
+                              const pureMessage = msg.replace(/\[Offerings:.*?\]/, '').trim();
+                              
+                              return (
+                                <>
+                                  {pureMessage && (
+                                    <div className="pt-2 border-t border-gray-200">
+                                      <p><span className="font-semibold text-gray-900">Sankalp Request:</span> {pureMessage}</p>
+                                    </div>
+                                  )}
+                                  {offeringsStr && (
+                                    <div className="pt-2 border-t border-gray-200">
+                                      <span className="font-semibold text-gray-900 block mb-1">Add-ons (Offerings):</span>
+                                      <div className="flex flex-wrap gap-1.5">
+                                        {offeringsStr.split(',').map((off: string, i: number) => {
+                                          const readable = off.trim().replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+                                          return (
+                                            <span key={i} className="px-2 py-0.5 bg-yellow-100 text-yellow-800 text-xs font-semibold rounded border border-yellow-200">
+                                              {readable}
+                                            </span>
+                                          );
+                                        })}
+                                      </div>
+                                    </div>
+                                  )}
+                                </>
+                              );
+                            })()}
+                          </div>
+
+                          <div className="flex items-center justify-between mt-2">
+                            <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide ${getStatusColor(booking.status)}`}>
+                              {booking.status}
+                            </span>
+                            <span className="text-xs text-gray-500 font-medium">
+                              {new Date(booking.createdAt).toLocaleDateString()}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <EmptyState
+                  icon={
+                    <svg className="w-12 h-12 text-[#3a1216]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                  }
+                  title="No Puja Bookings"
+                  description="You haven't booked any online pujas yet."
+                  ctaText="Book a Puja"
+                  ctaLink="/book-a-puja"
+                />
+              )
+            )}
+            {/* --- KUNDALI & REPORTS TAB --- */}
+            {activeTab === 'kundali' && (
+              reportBookings.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {reportBookings.map((booking) => (
+                    <div
+                      key={booking._id}
+                      className="block bg-white rounded-xl border border-gray-200 p-5 hover:shadow-lg transition-shadow">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-lg bg-orange-50 flex items-center justify-center shrink-0 border border-orange-100">
+                          <svg className="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between mb-1">
+                            <h3 className="font-bold text-gray-900 text-lg truncate">
+                              {booking.reportSlug === 'vaidik-smart-kundali-10-years' ? 'Smart Kundali 10-Years' : booking.reportSlug}
+                            </h3>
+                            <span className="text-sm font-semibold text-gray-900 bg-gray-50 px-2 py-1 rounded">
+                              ₹{booking.amount}
+                            </span>
+                          </div>
+                          
+                          <div className="text-sm text-gray-850 space-y-1 mb-3">
+                            <p><span className="font-semibold">Name:</span> {booking.customerName}</p>
+                            <p><span className="font-semibold">DOB:</span> {booking.dob}</p>
+                            <p className="truncate"><span className="font-semibold">Place:</span> {booking.pob}</p>
+                          </div>
+
+                          <div className="flex flex-col gap-2">
+                            <div className="flex items-center justify-between">
+                              <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide ${getStatusColor(booking.status)}`}>
+                                {booking.status}
+                              </span>
+                              <span className="text-xs text-gray-500 font-medium">
+                                {new Date(booking.createdAt).toLocaleDateString()}
+                              </span>
+                            </div>
+                            
+                            {booking.status === 'paid' && booking.pdfUrl && (
+                              <a 
+                                href={`/api/download?url=${encodeURIComponent(booking.pdfUrl)}`}
+                                className="mt-2 flex items-center justify-center gap-2 w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm"
+                              >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                                Download PDF
+                              </a>
+                            )}
+                            {booking.status === 'paid' && (!booking.pdfUrl || booking.pdfStatus === 'failed') && (
+                              <p className="mt-2 text-xs text-red-500 font-medium bg-red-50 p-2 rounded border border-red-100">
+                                Generation failed. Please contact support to receive your PDF.
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <EmptyState
+                  icon={
+                    <svg className="w-12 h-12 text-[#3a1216]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  }
+                  title="No Reports Found"
+                  description="You haven't purchased any Kundali or Astrological reports yet."
+                  ctaText="Browse Reports"
+                  ctaLink="/report/kundali/vaidik-smart-kundali-10-years"
+                />
+              )
+            )}
           </>
         }
       </div>
@@ -457,7 +677,7 @@ export default function OrdersPage() {
 }
 
 // Empty State Component
-function EmptyState({ icon, title, description }: {icon: React.ReactNode;title: string;description: string;}) {
+function EmptyState({ icon, title, description, ctaText, ctaLink }: {icon: React.ReactNode;title: string;description: string;ctaText?: string;ctaLink?: string;}) {
     const { t } = useTranslation();
   return (
     <div className="text-center py-16">
@@ -467,9 +687,9 @@ function EmptyState({ icon, title, description }: {icon: React.ReactNode;title: 
       <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
       <p className="text-gray-850 mb-8 max-w-md mx-auto">{description}</p>
       <Link
-        href="/astrologers-chat"
+        href={ctaLink || "/astrologers-chat"}
         className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-black font-bold px-8 py-3 rounded-full transition-colors shadow-lg hover:shadow-xl">
-{t("orders.browse_astrologers")}
+{ctaText || t("orders.browse_astrologers")}
 
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
