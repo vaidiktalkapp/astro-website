@@ -108,6 +108,14 @@ const getNavLineColor = (title: string) => {
   return 'bg-violet-400';
 };
 
+const renderIcon = (iconVal: any, title: string) => {
+  const finalIcon = iconVal || getNavIcon(title);
+  if (typeof finalIcon === 'string' && finalIcon.trim().startsWith('<svg')) {
+    return <span dangerouslySetInnerHTML={{ __html: finalIcon }} className="inline-flex items-center justify-center" />;
+  }
+  return finalIcon;
+};
+
 export default function Header() {
   const {
     user,
@@ -236,7 +244,7 @@ export default function Header() {
                 <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300 mb-1" title={puja.title}>
                   <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
                     <div className={`w-[3px] h-6 ${getNavLineColor(puja.title)} rounded-full shrink-0`} />
-                    <div className="text-[18px] shrink-0 leading-none">{getNavIcon(puja.title)}</div>
+                    <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(puja.icon, puja.title)}</div>
                     <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{puja.title}</span>
                   </div>
                   <div className="flex items-center shrink-0">
@@ -250,7 +258,7 @@ export default function Header() {
                 <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300 mb-1" title={puja.title}>
                   <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
                     <div className={`w-[3px] h-6 ${getNavLineColor(puja.title)} rounded-full shrink-0`} />
-                    <div className="text-[18px] shrink-0 leading-none">{getNavIcon(puja.title)}</div>
+                    <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(puja.icon, puja.title)}</div>
                     <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{puja.title}</span>
                   </div>
                   <div className="flex items-center shrink-0">
@@ -297,7 +305,7 @@ export default function Header() {
                 <Link key={menu._id} href={menu.url} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300">
                   <div className="flex items-center gap-3 w-full">
                     <div className={`w-[3px] h-6 ${getNavLineColor(menu.title)} rounded-full shrink-0`} />
-                    <div className="text-[18px] shrink-0 leading-none">{getNavIcon(menu.title)}</div>
+                    <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(menu.icon, menu.title)}</div>
                     <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{menu.title}</span>
                   </div>
                   <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all shrink-0 ml-2">→</span>
@@ -346,7 +354,7 @@ export default function Header() {
                     <Link key={menu._id} href={menu.url} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300 mb-1">
                       <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
                         <div className={`w-[3px] h-6 ${getNavLineColor(menu.title)} rounded-full shrink-0`} />
-                        <div className="text-[18px] shrink-0 leading-none">{getNavIcon(menu.title)}</div>
+                        <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(menu.icon, menu.title)}</div>
                         <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{menu.title}</span>
                         {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-1">{menu.badge}</span>}
                       </div>
@@ -369,7 +377,7 @@ export default function Header() {
                   <Link key={menu._id} href={menu.url} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300 mb-2">
                     <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
                       <div className={`w-[3px] h-6 ${getNavLineColor(menu.title)} rounded-full shrink-0`} />
-                      <div className="text-[18px] shrink-0 leading-none">{getNavIcon(menu.title)}</div>
+                      <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(menu.icon, menu.title)}</div>
                       <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{menu.title}</span>
                       {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-1">{menu.badge}</span>}
                     </div>
