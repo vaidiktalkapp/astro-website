@@ -1,10 +1,20 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import apiClient from '@/lib/api';
+import React from 'react';
 import Link from 'next/link';
+import LazyVideo from '@/components/LazyVideo';
+import { FaqSection } from '@/components/ReportPageClient';
 import {
-  CheckCircle2, Plus, Minus, Star, PlayCircle, BookOpen, FileText, Check, ShieldCheck, Heart, Briefcase, Activity, Flower2, X
+  CheckCircle2, Plus, Star, BookOpen, FileText, Check, ShieldCheck, Heart, Briefcase, Activity, Flower2
 } from 'lucide-react';
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+
+async function fetchSettings() {
+  try {
+    const res = await fetch(`${API_URL}/smart-kundali-settings/kundali-matching`, { next: { revalidate: 60 } });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch { return null; }
+}
 
 type FaqBlock =
   | { type: 'p'; text: string }
@@ -74,10 +84,8 @@ const faqData: FaqItem[] = [
   }
 ];
 
-export default function KundaliMatchingPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [settings, setSettings] = useState<any>(null);
-  const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+export default async function KundaliMatchingPage() {
+  const settings = await fetchSettings();
 
   const getYoutubeVideoId = (url: string) => {
     if (!url) return null;
@@ -85,18 +93,6 @@ export default function KundaliMatchingPage() {
     const match = url.match(regExp);
     return (match && match[2].length === 11) ? match[2] : null;
   };
-
-  useEffect(() => {
-    const fetchSettings = async () => {
-      try {
-        const res = await apiClient.get('/smart-kundali-settings/kundali-matching');
-        if (res.data) setSettings(res.data);
-      } catch (err) {
-        console.error('Failed to load settings:', err);
-      }
-    };
-    fetchSettings();
-  }, []);
 
   const defaultTestimonials = [
     {
@@ -132,94 +128,32 @@ export default function KundaliMatchingPage() {
     { url: '/images/kundali-page-2.jpg' },
     { url: '/images/kundali-page-3.jpg' }
   ];
-  const video = settings?.video || { url: '', thumbnail: '/images/kundali-video-thumb.jpg' };
-  const samplePdf = settings?.samplePdf;
-
-  const FaqAnswer = ({ blocks }: { blocks: FaqBlock[] }) => (
-    <div className="text-gray-850 text-[15px] leading-relaxed space-y-4 font-medium">
-      {blocks.map((block, i) => {
-        if (block.type === 'p') {
-          return <p key={i}>{block.text}</p>;
-        }
-        if (block.type === 'list') {
-          return (
-            <ul key={i} className="space-y-2">
-              {block.items.map((item, j) => (
-                <li key={j} className="flex gap-2.5 items-start">
-                  <span className="text-[#d68636] font-bold flex-shrink-0 mt-[2px]">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          );
-        }
-        if (block.type === 'table') {
-          return (
-            <div key={i} className="overflow-x-auto border border-[#ebdcc7] rounded-md">
-              <table className="w-full text-left border-collapse min-w-[480px]">
-                <thead>
-                  <tr className="bg-[#fdfaf6]">
-                    {block.headers.map((h, hi) => (
-                      <th key={hi} className="text-[#5c1a1f] text-[13px] font-bold uppercase tracking-wide px-4 py-3 whitespace-nowrap border-b border-[#ebdcc7]">
-                        {h}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {block.rows.map((row, ri) => (
-                    <tr key={ri} className="bg-white">
-                      {row.map((cell, ci) => (
-                        <td
-                          key={ci}
-                          className={`px-4 py-3 text-[14px] border-b border-[#ebdcc7] ${ci === 0 ? 'font-bold text-[#5c1a1f] whitespace-nowrap' : ''}`}
-                        >
-                          {cell}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          );
-        }
-        return null;
-      })}
-    </div>
-  );
-
   const validVideos = (settings?.videos || []).filter((v: any) => v.url);
+  const faqList = settings?.faqs?.length > 0
+    ? settings.faqs.map((f: any) => ({ q: f.q, content: [{ type: 'p' as const, text: f.a }] }))
+    : faqData;
 
   return (
     <div className="w-full min-h-screen bg-[#fdfaf6] font-sans text-gray-850 relative">
-
-      {/* Lightbox */}
-      {lightboxImg && (
-        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={() => setLightboxImg(null)}>
-          <button className="absolute top-6 right-6 text-white bg-white/20 rounded-full p-2 hover:bg-white/40"><X className="w-6 h-6" /></button>
-          <img src={lightboxImg} className="max-w-full max-h-full object-contain rounded-lg" alt="Preview" />
-        </div>
-      )}
 
       {/* ============ HERO ============ */}
       <section className="relative w-full pt-6 pb-16 overflow-hidden bg-[#7a4b3a]">
         {/* Video Background */}
         <div className="absolute inset-0 z-0 bg-[#4c2918]">
           {settings?.banner?.url && /\.(mp4|webm|mov)(\?.*)?$/i.test(settings.banner.url) ? (
-            <video autoPlay loop muted playsInline className="w-full h-full object-cover object-center opacity-100" src={settings.banner.url} />
+            <LazyVideo src={settings.banner.url} className="w-full h-full object-cover object-center opacity-100" />
           ) : settings?.banner?.url ? (
             <img src={settings.banner.url} alt="Kundali Matching" className="w-full h-full object-cover object-center opacity-100" />
           ) : (
-            <video autoPlay loop muted playsInline className="w-full h-full object-cover object-center opacity-100" src="/smart%20kundali.mp4" />
+            <LazyVideo src="/smart%20kundali.mp4" className="w-full h-full object-cover object-center opacity-100" />
           )}
           {/* Gradient dark overlay for perfect text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/10 pointer-events-none"></div>
         </div>
 
         <div className="relative z-10 max-w-[1200px] mx-auto px-4 text-center mt-1">
-          <h1 className="text-[28px] md:text-[48px] lg:text-[58px] font-bold mb-2 font-serif leading-tight text-white drop-shadow-md">Ashtakoot Milan: Ensure a Harmonious & Dosha-Free Marriage</h1>
-          <p className="text-[16px] md:text-[20px] text-white/100 mb-4 max-w-2xl mx-auto font-semibold drop-shadow-sm">Premium Kundali Matching Report by India's Most Trusted Astrologer</p>
+          <h1 className="text-[28px] md:text-[48px] lg:text-[58px] font-bold mb-2 font-serif leading-tight text-white drop-shadow-md">{settings?.heroHeading || "Ashtakoot Milan: Ensure a Harmonious & Dosha-Free Marriage"}</h1>
+          <p className="text-[16px] md:text-[20px] text-white/100 mb-4 max-w-2xl mx-auto font-semibold drop-shadow-sm">{settings?.heroSubheading || "Premium Kundali Matching Report by India's Most Trusted Astrologer"}</p>
 
           <Link href="/report/kundali/kundali-matching/checkout" className="inline-block bg-white text-[#b06126] font-bold text-[15px] md:text-[18px] px-5 md:px-10 py-3 md:py-4 rounded-xl shadow-lg hover:scale-105 transition-transform mb-5">
             Get Your Matching Report @ <span className="line-through text-[#3a1216] mx-1">₹{settings?.price || 1299}</span> ₹{settings?.discountedPrice || 649}
@@ -252,7 +186,7 @@ export default function KundaliMatchingPage() {
                   <path d="M12 2L12 22M2 12L22 12" stroke="#f97316" strokeWidth="1.5" />
                   <circle cx="12" cy="12" r="2" fill="#ef4444" />
                 </svg>
-                <span className="text-[#5c1a1f] font-bold text-[13px]">Ashtakoota Milan</span>
+                <span className="text-[#5c1a1f] font-bold text-[13px]">{settings?.featureCards?.[0] || "Ashtakoota Milan"}</span>
               </div>
               <div className="bg-white rounded-[10px] shadow-sm px-4 py-2.5 flex items-center gap-2 shrink-0 border border-[#ebdcc7]/50">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 shrink-0">
@@ -262,7 +196,7 @@ export default function KundaliMatchingPage() {
                   <path d="M7 10C7 7 9 5 12 5C15 5 17 7 17 10" stroke="#f472b6" strokeWidth="1.5" />
                   <path d="M5 14L8 12M19 14L16 12" stroke="#ec4899" strokeWidth="1.5" strokeLinecap="round" />
                 </svg>
-                <span className="text-[#5c1a1f] font-bold text-[13px]">Manglik Dosha Check</span>
+                <span className="text-[#5c1a1f] font-bold text-[13px]">{settings?.featureCards?.[1] || "Manglik Dosha Check"}</span>
               </div>
               <div className="bg-white rounded-[10px] shadow-sm px-4 py-2.5 flex items-center gap-2 shrink-0 border border-[#ebdcc7]/50">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 shrink-0">
@@ -271,7 +205,7 @@ export default function KundaliMatchingPage() {
                   <path d="M9 10H15M9 14H13" stroke="#f59e0b" strokeWidth="1.5" strokeLinecap="round" />
                   <circle cx="12" cy="6" r="1.5" fill="#b45309" />
                 </svg>
-                <span className="text-[#5c1a1f] font-bold text-[13px]">Detailed Remedies</span>
+                <span className="text-[#5c1a1f] font-bold text-[13px]">{settings?.featureCards?.[2] || "Detailed Remedies"}</span>
               </div>
               <div className="bg-white rounded-[10px] shadow-sm px-4 py-2.5 flex items-center gap-2 shrink-0 border border-[#ebdcc7]/50">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 shrink-0">
@@ -280,7 +214,7 @@ export default function KundaliMatchingPage() {
                   <path d="M10 17L9 20M14 17L15 20" stroke="#a855f7" strokeWidth="1.5" strokeLinecap="round" />
                   <path d="M11 7L12 8M13 11L14 10" stroke="#a855f7" strokeWidth="1.5" strokeLinecap="round" />
                 </svg>
-                <span className="text-[#5c1a1f] font-bold text-[13px]">Financial Alignment</span>
+                <span className="text-[#5c1a1f] font-bold text-[13px]">{settings?.featureCards?.[3] || "Financial Alignment"}</span>
               </div>
               <div className="bg-white rounded-[10px] shadow-sm px-4 py-2.5 flex items-center gap-2 shrink-0 border border-[#ebdcc7]/50">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 shrink-0">
@@ -289,7 +223,7 @@ export default function KundaliMatchingPage() {
                   <circle cx="19" cy="9" r="1.5" fill="#3b82f6" />
                   <circle cx="4" cy="16" r="2" fill="#ef4444" />
                 </svg>
-                <span className="text-[#5c1a1f] font-bold text-[13px]">Mutual Harmony</span>
+                <span className="text-[#5c1a1f] font-bold text-[13px]">{settings?.featureCards?.[4] || "Mutual Harmony"}</span>
               </div>
             </React.Fragment>
           ))}
@@ -304,7 +238,7 @@ export default function KundaliMatchingPage() {
               <path d="M12 2L12 22M2 12L22 12" stroke="#f97316" strokeWidth="1.5" />
               <circle cx="12" cy="12" r="2" fill="#ef4444" />
             </svg>
-            <span className="text-[#5c1a1f] font-bold text-[14.5px]">Ashtakoota Milan</span>
+            <span className="text-[#5c1a1f] font-bold text-[14.5px]">{settings?.featureCards?.[0] || "Ashtakoota Milan"}</span>
           </div>
           <div className="bg-white rounded-[14px] shadow-sm px-5 py-3.5 flex items-center gap-3">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 shrink-0">
@@ -314,7 +248,7 @@ export default function KundaliMatchingPage() {
               <path d="M7 10C7 7 9 5 12 5C15 5 17 7 17 10" stroke="#f472b6" strokeWidth="1.5" />
               <path d="M5 14L8 12M19 14L16 12" stroke="#ec4899" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
-            <span className="text-[#5c1a1f] font-bold text-[14.5px]">Manglik Dosha Check</span>
+            <span className="text-[#5c1a1f] font-bold text-[14.5px]">{settings?.featureCards?.[1] || "Manglik Dosha Check"}</span>
           </div>
           <div className="bg-white rounded-[14px] shadow-sm px-5 py-3.5 flex items-center gap-3">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 shrink-0">
@@ -323,7 +257,7 @@ export default function KundaliMatchingPage() {
               <path d="M9 10H15M9 14H13" stroke="#f59e0b" strokeWidth="1.5" strokeLinecap="round" />
               <circle cx="12" cy="6" r="1.5" fill="#b45309" />
             </svg>
-            <span className="text-[#5c1a1f] font-bold text-[14.5px]">Detailed Remedies</span>
+            <span className="text-[#5c1a1f] font-bold text-[14.5px]">{settings?.featureCards?.[2] || "Detailed Remedies"}</span>
           </div>
           <div className="bg-white rounded-[14px] shadow-sm px-5 py-3.5 flex items-center gap-3">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 shrink-0">
@@ -332,7 +266,7 @@ export default function KundaliMatchingPage() {
               <path d="M10 17L9 20M14 17L15 20" stroke="#a855f7" strokeWidth="1.5" strokeLinecap="round" />
               <path d="M11 7L12 8M13 11L14 10" stroke="#a855f7" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
-            <span className="text-[#5c1a1f] font-bold text-[14.5px]">Financial Alignment</span>
+            <span className="text-[#5c1a1f] font-bold text-[14.5px]">{settings?.featureCards?.[3] || "Financial Alignment"}</span>
           </div>
           <div className="bg-white rounded-[14px] shadow-sm px-5 py-3.5 flex items-center gap-3">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 shrink-0">
@@ -341,7 +275,7 @@ export default function KundaliMatchingPage() {
               <circle cx="19" cy="9" r="1.5" fill="#3b82f6" />
               <circle cx="4" cy="16" r="2" fill="#ef4444" />
             </svg>
-            <span className="text-[#5c1a1f] font-bold text-[14.5px]">Mutual Harmony</span>
+            <span className="text-[#5c1a1f] font-bold text-[14.5px]">{settings?.featureCards?.[4] || "Mutual Harmony"}</span>
           </div>
         </div>
       </div>
@@ -353,33 +287,30 @@ export default function KundaliMatchingPage() {
           {/* Astrologer Profile */}
           <div className="flex flex-col items-center shrink-0 mt-1 md:mt-0">
             <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-[3px] md:border-[4px] border-white shadow-md mb-1 bg-white flex items-center justify-center">
-              <img src="/vaidiktalklogo.webp" alt="Vaidik Talk" className="w-[85%] h-[85%] object-contain" onError={(e) => { e.currentTarget.src = 'https://ui-avatars.com/api/?name=Vaidik+Talk&background=fff&color=1e293b&size=200' }} />
+              <img src="/vaidiktalklogo.webp" alt="Vaidik Talk" className="w-[85%] h-[85%] object-contain" />
             </div>
             <span className="hidden md:block font-bold text-[#1a1a1a] text-[14px]">Vaidik Talk</span>
           </div>
 
           {/* Content & Tags */}
           <div className="text-left flex-1">
-            <h2 className="text-[18px] sm:text-[22px] md:text-[26px] font-bold text-[#6b3112] mb-1 leading-tight">Everything You Need For A Happy Union</h2>
-            <p className="text-[13px] md:text-[15px] text-[#6b3112]/80 font-medium mb-3 md:mb-4">Deep insights into compatibility beyond just a 36-point score.</p>
+            <h2 className="text-[18px] sm:text-[22px] md:text-[26px] font-bold text-[#6b3112] mb-1 leading-tight">{settings?.highlightsHeading || "Everything You Need For A Happy Union"}</h2>
+            <p className="text-[13px] md:text-[15px] text-[#6b3112]/80 font-medium mb-3 md:mb-4">{settings?.highlightsSubheading || "Deep insights into compatibility beyond just a 36-point score."}</p>
 
             <div className="grid grid-cols-3 md:flex md:flex-wrap gap-1.5 md:gap-2.5 w-full">
-              {[
-                { label: 'Marriage', icon: Heart },
-                { label: 'Doshas', icon: ShieldCheck },
-                { label: 'Remedies', icon: Flower2 },
-                { label: 'Longevity', icon: Plus },
-                { label: 'Prosperity', icon: Star },
-                { label: 'Understanding', icon: BookOpen },
-                { label: 'Varna', icon: Briefcase },
-                { label: 'Nadi Check', icon: Activity },
-                { label: 'Mutual Trust', icon: CheckCircle2 },
-              ].map((item, i) => (
-                <div key={i} className="bg-[#f26522] text-white px-1 md:px-4 py-1 md:py-1.5 rounded-full md:rounded-full font-bold text-[8.5px] sm:text-[10px] md:text-[13px] flex items-center justify-center md:justify-start gap-1 md:gap-1.5 shadow-sm overflow-hidden text-center">
-                  <item.icon className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 shrink-0" strokeWidth={2.5} />
-                  <span className="truncate whitespace-nowrap">{item.label}</span>
-                </div>
-              ))}
+              {(() => {
+                const tagsList = settings?.highlightTags?.length ? settings.highlightTags : ['Marriage', 'Doshas', 'Remedies', 'Longevity', 'Prosperity', 'Understanding', 'Varna', 'Nadi Check', 'Mutual Trust'];
+                const icons = [Heart, ShieldCheck, Flower2, Plus, Star, BookOpen, Briefcase, Activity, CheckCircle2];
+                return tagsList.map((tag: string, i: number) => {
+                  const Icon = icons[i % icons.length];
+                  return (
+                    <div key={i} className="bg-[#f26522] text-white px-1 md:px-4 py-1 md:py-1.5 rounded-full md:rounded-full font-bold text-[8.5px] sm:text-[10px] md:text-[13px] flex items-center justify-center md:justify-start gap-1 md:gap-1.5 shadow-sm overflow-hidden text-center">
+                      <Icon className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 shrink-0" strokeWidth={2.5} />
+                      <span className="truncate whitespace-nowrap">{tag}</span>
+                    </div>
+                  );
+                });
+              })()}
             </div>
           </div>
 
@@ -392,7 +323,7 @@ export default function KundaliMatchingPage() {
           
           {/* Desktop Image (Hidden on mobile) */}
           <div className="hidden md:flex md:w-1/2 justify-center">
-            <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} alt="Premium Kundali Matching" className="w-full max-w-[470px] rounded-xl mix-blend-multiply" onError={(e) => { e.currentTarget.src = 'https://placehold.co/400x550/f8f9fa/5c3a21?text=Kundali+Mockup' }} />
+            <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} alt="Premium Kundali Matching Report" className="w-full max-w-[470px] rounded-xl mix-blend-multiply" />
           </div>
           
           {/* Content */}
@@ -402,31 +333,30 @@ export default function KundaliMatchingPage() {
             <div className="flex items-center gap-4 mb-4 md:mb-3">
               {/* Mobile Thumbnail */}
               <div className="md:hidden shrink-0 w-[85px] sm:w-[100px] flex items-center justify-center">
-                <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} className="w-full h-auto object-contain drop-shadow-md rounded-sm mix-blend-multiply" alt="Book Thumbnail" onError={(e) => { e.currentTarget.src = 'https://placehold.co/400x550/ffffff/5c3a21?text=Kundali+Mockup' }} />
+                <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} className="w-full h-auto object-contain drop-shadow-md rounded-sm mix-blend-multiply" alt="Kundali Matching" />
               </div>
-              <h2 className="text-[22px] sm:text-3xl md:text-4xl font-serif font-bold text-[#5c1a1f] leading-tight">Premium Kundali Matching Report</h2>
+              <h2 className="text-[22px] sm:text-3xl md:text-4xl font-serif font-bold text-[#5c1a1f] leading-tight">{settings?.productHeading || "Premium Kundali Matching Report"}</h2>
             </div>
 
-            <p className="text-[#5c1a1f] text-[14px] md:text-[15px] leading-relaxed mb-6 font-medium">
-              A comprehensive compatibility analysis focusing on the 8 Kootas, Manglik dosha presence, planetary friendships, and karmic alignment for a successful marriage.
+            <p className="text-[#5c1a1f] text-[14px] md:text-[15px] leading-relaxed mb-6 font-medium whitespace-pre-wrap">
+              {settings?.productDescription || "A comprehensive compatibility analysis focusing on the 8 Kootas, Manglik dosha presence, planetary friendships, and karmic alignment for a successful marriage."}
             </p>
 
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-8">
-              <li className="flex items-start gap-2.5 text-[#5c1a1f] text-[14px] font-bold">
-                <Check className="text-[#d68636] w-4 h-4 shrink-0 mt-0.5" strokeWidth={3} /> Detailed Gun Milan
-              </li>
-              <li className="flex items-start gap-2.5 text-[#5c1a1f] text-[14px] font-bold">
-                <Check className="text-[#d68636] w-4 h-4 shrink-0 mt-0.5" strokeWidth={3} /> In-depth Dosha Analysis
-              </li>
-              <li className="flex items-start gap-2.5 text-[#5c1a1f] text-[14px] font-bold">
-                <Check className="text-[#d68636] w-4 h-4 shrink-0 mt-0.5" strokeWidth={3} /> Financial Compatibility
-              </li>
-              <li className="flex items-start gap-2.5 text-[#5c1a1f] text-[14px] font-bold">
-                <Check className="text-[#d68636] w-4 h-4 shrink-0 mt-0.5" strokeWidth={3} /> Practical Remedies
-              </li>
-              <li className="flex items-start gap-2.5 text-[#5c1a1f] text-[14px] font-bold sm:col-span-2">
-                <Check className="text-[#d68636] w-4 h-4 shrink-0 mt-0.5" strokeWidth={3} /> Available in English, Hindi & More.
-              </li>
+              {(() => {
+                const features = settings?.productFeatures?.length ? settings.productFeatures : [
+                  'Detailed Gun Milan',
+                  'In-depth Dosha Analysis',
+                  'Financial Compatibility',
+                  'Practical Remedies',
+                  'Available in English, Hindi & More.'
+                ];
+                return features.map((feat: string, i: number) => (
+                  <li key={i} className={`flex items-start gap-2.5 text-[#5c1a1f] text-[14px] font-bold ${(i === features.length - 1 && features.length % 2 !== 0) ? 'sm:col-span-2' : ''}`}>
+                    <Check className="text-[#d68636] w-4 h-4 shrink-0 mt-0.5" strokeWidth={3} /> {feat}
+                  </li>
+                ));
+              })()}
             </ul>
 
             <div className="flex items-center gap-3 mb-8">
@@ -479,27 +409,26 @@ export default function KundaliMatchingPage() {
       <section className="py-16 md:py-24 bg-[#fdfaf6]">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12 lg:gap-16">
           <div className="md:w-[45%] lg:w-[40%] xl:-ml-6">
-            <video
+            <LazyVideo
               src={settings?.video?.url || "/vaidik video.mp4"}
-              autoPlay loop muted playsInline
               className="w-full rounded-[2rem] shadow-lg object-cover aspect-square md:aspect-[4/4.5]"
             />
           </div>
           <div className="md:w-[55%] lg:w-[60%] md:pl-6 lg:pl-10">
-            <h2 className="text-[28px] md:text-[32px] lg:text-[38px] xl:text-[42px] font-serif font-bold text-[#5c1a1f] mb-10 leading-tight xl:whitespace-nowrap">What Your Matching Report Reveals</h2>
+            <h2 className="text-[28px] md:text-[32px] lg:text-[38px] xl:text-[42px] font-serif font-bold text-[#5c1a1f] mb-10 leading-tight xl:whitespace-nowrap">{settings?.whatItRevealsHeading || "What Your Matching Report Reveals"}</h2>
 
             <div className="space-y-6 mb-12">
-              {[
-                { t: 'Gun Milan & Ashtakoota Score Breakdown' },
-                { t: 'Manglik, Nadi, & Bhakut Dosha Check' },
-                { t: 'Emotional, Physical & Spiritual Harmony' },
-                { t: 'Financial Luck After Marriage' },
-                { t: 'Behavioral Traits & Compatibility' },
-                { t: 'Remedies for a Peaceful & Happy Union' }
-              ].map((item, i) => (
-                <div key={i} className="flex gap-4 items-center">
-                  <Check className="text-[#b06126] w-5 h-5 shrink-0" strokeWidth={3} />
-                  <h4 className="font-medium text-[#5c1a1f] text-[16px] md:text-[18px]">{item.t}</h4>
+              {(settings?.whatItReveals?.length ? settings.whatItReveals : [
+                'Gun Milan & Ashtakoota Score Breakdown',
+                'Manglik, Nadi, & Bhakut Dosha Check',
+                'Emotional, Physical & Spiritual Harmony',
+                'Financial Luck After Marriage',
+                'Behavioral Traits & Compatibility',
+                'Remedies for a Peaceful & Happy Union'
+              ]).map((item: string, i: number) => (
+                <div key={i} className="flex gap-4 items-start">
+                  <Check className="text-[#b06126] w-5 h-5 shrink-0 mt-0.5" strokeWidth={3} />
+                  <h4 className="font-medium text-[#5c1a1f] text-[16px] md:text-[18px] leading-snug">{item}</h4>
                 </div>
               ))}
             </div>
@@ -566,9 +495,9 @@ export default function KundaliMatchingPage() {
                   return (
                     <div key={i} className="w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px] aspect-video bg-black rounded-2xl overflow-hidden relative shadow-xl snap-center flex-shrink-0 border-[3px] border-white">
                       {ytId ? (
-                        <iframe className="w-full h-full pointer-events-auto" src={`https://www.youtube.com/embed/${ytId}`} allowFullScreen></iframe>
+                        <iframe loading="lazy" className="w-full h-full pointer-events-auto" src={`https://www.youtube.com/embed/${ytId}`} allowFullScreen></iframe>
                       ) : (
-                        <video className="w-full h-full object-cover pointer-events-auto" src={v.url} controls playsInline></video>
+                        <video className="w-full h-full object-cover pointer-events-auto" src={v.url} controls playsInline preload="none"></video>
                       )}
                     </div>
                   )
@@ -608,29 +537,7 @@ export default function KundaliMatchingPage() {
       </section>
 
       {/* ============ FAQS ============ */}
-      <section className="py-16 md:py-24 bg-white" id="faqSection">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-[28px] md:text-[36px] font-serif font-bold text-[#5c1a1f] mb-12 text-center">Frequently Asked Questions</h2>
-          <div className="space-y-4">
-            {(settings?.faqs?.length > 0 ? settings.faqs.map((f: any) => ({ q: f.q, content: [{ type: 'p', text: f.a }] })) : faqData).map((faq: any, i: number) => (
-              <div key={i} className="border border-[#ebdcc7] rounded-xl overflow-hidden bg-[#fdfaf6]">
-                <button
-                  className="w-full px-6 py-5 text-left flex justify-between items-center font-bold text-[#5c1a1f] hover:bg-[#f4ece3] transition-colors text-[16px]"
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                >
-                  <span className="pr-4">{faq.q}</span>
-                  {openFaq === i ? <Minus className="w-5 h-5 flex-shrink-0 text-[#d68636]" /> : <Plus className="w-5 h-5 flex-shrink-0 text-[#d68636]" />}
-                </button>
-                {openFaq === i && (
-                  <div className="px-6 pb-6 pt-2 bg-[#fdfaf6]">
-                    <FaqAnswer blocks={faq.content} />
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FaqSection faqs={faqList} />
 
       {/* ============ CTA / GET IT NOW ============ */}
       <section className="pt-16 pb-28 md:py-24 bg-[#fdfaf6] border-t border-[#ebdcc7]">

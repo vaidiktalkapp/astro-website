@@ -61,7 +61,7 @@ function SuccessContent() {
         <div className="flex bg-[#f4ece3] justify-center relative">
           <img 
             src="/images/vaidiktalk-kundli-mockup.webp" 
-            alt="Premium Kundali" 
+            alt="Premium Report" 
             className="w-full h-auto max-h-[250px] md:max-h-[550px] object-contain mix-blend-multiply scale-110 mt-4 md:mt-0"
             onError={(e) => { e.currentTarget.src = 'https://placehold.co/400x550/fdfaf6/5c1a1f?text=Report' }}
           />
@@ -75,7 +75,7 @@ function SuccessContent() {
                 <Loader2 className="w-10 h-10 text-[#d68636] animate-spin absolute" />
                 <FileText className="w-5 h-5 text-[#5c1a1f]" />
               </div>
-              <h2 className="text-[24px] font-bold text-[#5c1a1f] mb-3">Generating Your Kundali</h2>
+              <h2 className="text-[24px] font-bold text-[#5c1a1f] mb-3">Generating Your Gemstone Report</h2>
               <p className="text-[15px] text-[#3a1216]/80 leading-relaxed font-medium mb-2">
                 Please wait while we consult the stars.
               </p>
@@ -96,7 +96,7 @@ function SuccessContent() {
               </p>
               <div className="bg-[#fcf8f2] border border-[#ebdcc7] p-4 rounded-lg mb-6 w-full text-left">
                 <p className="text-[13px] text-[#5c1a1f] font-semibold mb-1">✅ If Payment Successful</p>
-                <p className="text-[12px] text-[#3a1216]/80 leading-relaxed">Don't worry, your payment has been successfully recorded. If your Kundali cannot be generated due to technical reasons, please contact us at<strong> contact@vaidiktalk.com</strong> and a full refund will be initiated to your original payment method.</p>
+                <p className="text-[12px] text-[#3a1216]/80 leading-relaxed">Don't worry, your payment has been successfully recorded. If your Gemstone Report cannot be generated due to technical reasons, please contact us at<strong> contact@vaidiktalk.com</strong> and a full refund will be initiated to your original payment method.</p>
               </div>
 
               <Link
@@ -111,9 +111,9 @@ function SuccessContent() {
               <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-6">
                 <CheckCircle2 className="w-10 h-10 text-green-500" />
               </div>
-              <h2 className="text-[24px] font-bold text-[#5c1a1f] mb-3">Kundali Ready!</h2>
+              <h2 className="text-[24px] font-bold text-[#5c1a1f] mb-3">Report Ready!</h2>
               <p className="text-[15px] text-[#3a1216]/80 leading-relaxed font-medium mb-8">
-                Your Premium Vaidik Smart Kundali has been successfully generated.
+                Your Premium Gemstone Report has been successfully generated.
               </p>
 
               <div className="flex flex-col gap-3 w-full max-w-[300px]">
@@ -123,7 +123,7 @@ function SuccessContent() {
                     className="flex items-center justify-center gap-2 bg-[#d68636] text-white px-8 py-3.5 rounded-xl font-bold hover:bg-[#b06126] transition-all shadow-[0_4px_14px_rgba(214,134,54,0.3)] w-full"
                   >
                     <Download className="w-5 h-5" />
-                    Download Your Kundali
+                    Download Your Report
                   </a>
                 )}
 

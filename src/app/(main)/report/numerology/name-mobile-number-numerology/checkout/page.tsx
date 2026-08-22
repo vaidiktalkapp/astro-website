@@ -93,7 +93,7 @@ export default function NameMobileNumerologyCheckoutPage() {
       state: userData.state,
       email: userData.email || 'customer@vaidiktalk.com',
       phone: userData.phone,
-      language: language || 'English',
+      language: language || 'en',
     };
 
     handleSubmit(e, overrideData);
@@ -102,7 +102,7 @@ export default function NameMobileNumerologyCheckoutPage() {
   return (
     <div className="min-h-screen bg-[#fdfaf6] pb-32">
       <style>{`footer { display: none !important; }`}</style>
-            <div className="bg-white border-b border-[#ebdcc7] sticky top-0 z-50 mb-4">
+            <div className="bg-white border-b border-[#ebdcc7] mb-4">
         <div className="max-w-[900px] mx-auto px-4 py-3 flex items-center">
           <button onClick={() => router.back()} type="button" className="flex items-center gap-2 text-[#5c1a1f] font-bold text-[14px] hover:text-[#d68636] transition-colors">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
@@ -209,8 +209,7 @@ export default function NameMobileNumerologyCheckoutPage() {
                         <div 
                           key={idx}
                           className="px-4 py-2.5 hover:bg-[#fdfaf6] cursor-pointer border-b border-gray-50 last:border-0 text-[13px] text-[#5c1a1f] flex items-start gap-2"
-                          onClick={() => {
-                            setUserData({ ...userData, pob: displayName, state: state || '', country: country || '' });
+                          onMouseDown={(e) => { e.preventDefault(); setUserData({ ...userData, pob: displayName, state: state || '', country: country || '' });
                             setShowSuggestions(false);
                           }}
                         >
@@ -223,11 +222,7 @@ export default function NameMobileNumerologyCheckoutPage() {
                 )}
               </div>
 
-              {/* Email */}
-              <div className="flex flex-col gap-1.5 md:col-span-2">
-                <label className="text-[14px] font-bold text-[#5c1a1f] mb-1">Email ID</label>
-                <input type="email" value={userData.email} onChange={(e) => setUserData({ ...userData, email: e.target.value })} className="w-full border border-[#ebdcc7] rounded-md py-2.5 px-3 bg-[#fdfaf6] outline-none focus:border-[#c57636] text-[14px]" placeholder="Enter email id" />
-              </div>
+
 
               {/* Date of Birth */}
               <div className="flex flex-col gap-1.5">
@@ -256,13 +251,17 @@ export default function NameMobileNumerologyCheckoutPage() {
                   </div>
                   <input required type="tel" maxLength={10} pattern="[0-9]{10}" onKeyPress={(e) => { if (!/[0-9]/.test(e.key)) e.preventDefault(); }} value={userData.phone} onChange={(e) => setUserData({ ...userData, phone: e.target.value })} className="w-full border border-[#ebdcc7] rounded-r-md py-2.5 px-3 bg-[#fdfaf6] outline-none focus:border-[#c57636] text-[14px]" placeholder="9874589698" />
                 </div>
-                <p className="text-[11px] text-[#3a1216]/80 italic mt-0.5">Your report will be sent on this number</p>
+                {/* <p className="text-[11px] text-[#3a1216]/80 italic mt-0.5">Your report will be sent on this number</p> */}
               </div>
 
               {/* Report Language */}
               <div className="flex flex-col gap-1.5 md:col-span-2">
                 <label className="text-[14px] font-bold text-[#5c1a1f] mb-1">Report Language <span className="text-red-500">*</span></label>
-                <input required type="text" value={language} onChange={(e) => setLanguage(e.target.value)} className="w-full border border-[#ebdcc7] rounded-md py-2.5 px-3 bg-[#fdfaf6] outline-none focus:border-[#c57636] text-[14px]" placeholder="Enter language (e.g., English, Hindi)" />
+                <select required value={language} onChange={(e) => setLanguage(e.target.value)} className="w-full border border-[#ebdcc7] rounded-md py-2.5 px-3 bg-[#fdfaf6] outline-none focus:border-[#c57636] text-[14px]">
+                  <option value="" disabled hidden>Select Language</option>
+                  <option value="en">English</option>
+                  <option value="hi">Hindi</option>
+                </select>
               </div>
 
               {/* Consultation Time Option (Conditionally Rendered) */}

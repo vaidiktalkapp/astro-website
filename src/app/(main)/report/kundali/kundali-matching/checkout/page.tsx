@@ -8,8 +8,6 @@ import { useRouter } from 'next/navigation';
 
 export default function CheckoutPage() {
   const [settings, setSettings] = useState<any>(null);
-  const [addConsultation, setAddConsultation] = useState(false);
-  const [addExpressDelivery, setAddExpressDelivery] = useState(false);
   const router = useRouter();
 
   // Boy Details
@@ -29,27 +27,15 @@ export default function CheckoutPage() {
   const [language, setLanguage] = useState('');
 
   const basePrice = settings?.discountedPrice || 649;
-  const consultationPrice = settings?.astrologerConsultationPrice > 0 ? settings.astrologerConsultationPrice : 1100;
-  const expressPrice = settings?.expressDeliveryPrice > 0 ? settings.expressDeliveryPrice : 149;
-
-  const consultationOriginalPrice = 4999;
-  const consultationDiscountPercent = Math.round(((consultationOriginalPrice - consultationPrice) / consultationOriginalPrice) * 100);
-
-  const totalAmount = basePrice + (addConsultation ? consultationPrice : 0) + (addExpressDelivery ? expressPrice : 0);
-
-  const [consultationDate, setConsultationDate] = useState('');
-  const [consultationTime, setConsultationTime] = useState('');
-
-  const finalReportName = 'Premium Kundali Matching' 
-    + (addConsultation ? ` + Consultation${consultationDate && consultationTime ? ` (${consultationDate} ${consultationTime})` : ''}` : '') 
-    + (addExpressDelivery ? ' (Express)' : '');
+  const totalAmount = basePrice;
+  const finalReportName = 'Premium Kundali Matching';
 
   const { handleSubmit, isProcessing } = useReportBooking({
     name: finalReportName,
     slug: 'kundali-matching',
     amount: totalAmount,
-    onSuccess: () => {
-      router.push('/report/kundali/kundali-matching');
+    onSuccess: (bookingId) => {
+      router.push(`/report/kundali/kundali-matching/success?bookingId=${bookingId}`);
     }
   });
 
@@ -123,7 +109,7 @@ export default function CheckoutPage() {
       state: boyData.state,
       email: boyData.email || 'customer@vaidiktalk.com',
       phone: boyData.phone,
-      language: language || 'English',
+      language: language || 'en',
       partnerDetails: {
         name: girlData.name,
         gender: 'female',
@@ -196,7 +182,8 @@ export default function CheckoutPage() {
                   <div 
                     key={idx}
                     className="px-4 py-2.5 hover:bg-[#fdfaf6] cursor-pointer border-b border-gray-50 last:border-0 text-[13px] text-[#3a1216] flex items-start gap-2"
-                    onClick={() => {
+                    onMouseDown={(e) => {
+                      e.preventDefault();
                       setData({ ...data, pob: displayName, state: state || '', country: country || '' });
                       setShowSuggestions(false);
                     }}
@@ -226,16 +213,18 @@ export default function CheckoutPage() {
           </label>
         </div>
 
-        <div className="flex flex-col gap-1.5">
-          <label className="text-[14px] font-bold text-[#5c1a1f] mb-1">{isPartner ? "Partner's WhatsApp" : "Primary WhatsApp"} <span className="text-red-500">*</span></label>
-          <div className="flex">
-            <div className="border border-r-0 border-[#ebdcc7] rounded-l-md px-2 py-2.5 bg-white flex items-center justify-center shrink-0">
-              <span className="text-[13px] text-[#3a1216]">+91</span>
+        {!isPartner && (
+          <div className="flex flex-col gap-1.5">
+            <label className="text-[14px] font-bold text-[#5c1a1f] mb-1">Primary WhatsApp <span className="text-red-500">*</span></label>
+            <div className="flex">
+              <div className="border border-r-0 border-[#ebdcc7] rounded-l-md px-2 py-2.5 bg-white flex items-center justify-center shrink-0">
+                <span className="text-[13px] text-[#3a1216]">+91</span>
+              </div>
+              <input required type="tel" maxLength={10} pattern="[0-9]{10}" onKeyPress={(e) => { if (!/[0-9]/.test(e.key)) e.preventDefault(); }} value={data.phone} onChange={(e) => setData({ ...data, phone: e.target.value })} className="w-full border border-[#ebdcc7] rounded-r-md py-2.5 px-3 bg-[#fdfaf6] outline-none focus:border-[#d68636] text-[14px]" placeholder="9874589698" />
             </div>
-            <input required type="tel" maxLength={10} pattern="[0-9]{10}" onKeyPress={(e) => { if (!/[0-9]/.test(e.key)) e.preventDefault(); }} value={data.phone} onChange={(e) => setData({ ...data, phone: e.target.value })} className="w-full border border-[#ebdcc7] rounded-r-md py-2.5 px-3 bg-[#fdfaf6] outline-none focus:border-[#d68636] text-[14px]" placeholder="9874589698" />
+            <p className="text-[11px] text-[#3a1216]/80 italic mt-0.5"></p>
           </div>
-          {!isPartner && <p className="text-[11px] text-[#3a1216]/80 italic mt-0.5"></p>}
-        </div>
+        )}
 
       </div>
     </div>
@@ -244,7 +233,7 @@ export default function CheckoutPage() {
   return (
     <div className="min-h-screen bg-[#fdfaf6] pb-32">
       <style>{`footer { display: none !important; }`}</style>
-            <div className="bg-white border-b border-[#ebdcc7] sticky top-0 z-50 mb-4">
+            <div className="bg-white border-b border-[#ebdcc7] mb-4">
         <div className="max-w-[900px] mx-auto px-4 py-3 flex items-center">
           <button onClick={() => router.back()} type="button" className="flex items-center gap-2 text-[#5c1a1f] font-bold text-[14px] hover:text-[#d68636] transition-colors">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
@@ -255,38 +244,7 @@ export default function CheckoutPage() {
 
       <div className="max-w-[900px] mx-auto px-4 pt-2 pb-8 md:pt-4 md:pb-12 space-y-6">
 
-        {/* Addon 1: Consultation */}
-        <div className="bg-white rounded-xl border border-[#ebdcc7] p-5 shadow-sm relative overflow-hidden">
-          <div className="absolute top-0 left-0 bg-[#22c55e] text-white text-[10px] font-bold px-2 py-0.5 rounded-br-lg tracking-wider">
-            HIGHLY RECOMMENDED
-          </div>
-          <div className="mt-3 flex justify-between items-start gap-4">
-            <div>
-              <h3 className="text-[18px] font-bold text-[#5c1a1f] mb-1">Astrologer Consultation</h3>
-              <div className="flex items-start gap-2 mb-1">
-                <span className="text-[#996033] text-[16px] shrink-0 mt-0.5">✦</span>
-                <p className="text-[13px] text-[#3a1216]">Speak directly with our expert astrologer about your report and what it means.</p>
-              </div>
-              <div className="flex items-center gap-1.5 text-[#3a1216] mb-3">
-                <Clock className="w-3.5 h-3.5" />
-                <span className="text-[13px]">30 mins session</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-[#1a1a1a] text-[18px]">₹{consultationPrice}</span>
-                <span className="line-through text-[#3a1216]/60 text-[13px]">₹{consultationOriginalPrice}</span>
-                <span className="bg-[#e8ffd6] text-[#2e7d32] text-[10px] font-bold px-2 py-0.5 rounded-full border border-[#a5d6a7]">Save {consultationDiscountPercent}%</span>
-              </div>
-            </div>
-            <button
-              type="button"
-              onClick={() => setAddConsultation(!addConsultation)}
-              className={`shrink-0 font-bold text-[14px] px-5 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${addConsultation ? 'bg-red-50 text-red-600 border border-red-200 hover:bg-red-100' : 'bg-[#c57636] text-white hover:bg-[#b06126]'}`}
-            >
-              {addConsultation ? <X className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-              {addConsultation ? 'Remove' : 'Add'}
-            </button>
-          </div>
-        </div>
+
 
         {/* Form Container */}
         <div className="bg-white rounded-xl border-[1.5px] border-[#c57636] p-5 md:p-8 shadow-md">
@@ -302,74 +260,20 @@ export default function CheckoutPage() {
             <div className="border-t border-[#ebdcc7] pt-8 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
               <div className="flex flex-col gap-1.5 md:col-span-2">
                 <label className="text-[14px] font-bold text-[#5c1a1f] mb-1">Report Language <span className="text-red-500">*</span></label>
-                <input required type="text" value={language} onChange={(e) => setLanguage(e.target.value)} className="w-full border border-[#ebdcc7] rounded-md py-2.5 px-3 bg-[#fdfaf6] outline-none focus:border-[#d68636] text-[14px]" placeholder="Enter language (e.g., English, Hindi)" />
+                <select required value={language} onChange={(e) => setLanguage(e.target.value)} className="w-full border border-[#ebdcc7] rounded-md py-2.5 px-3 bg-[#fdfaf6] outline-none focus:border-[#d68636] text-[14px]">
+                  <option value="" disabled hidden>Select Language</option>
+                  <option value="en">English</option>
+                  <option value="hi">Hindi</option>
+                </select>
               </div>
 
-              {/* Consultation Time Option (Conditionally Rendered) */}
-              {addConsultation && (
-                <div className="flex flex-col gap-3 md:col-span-2 pt-2 pb-1">
-                  <label className="text-[15px] font-bold text-[#5c1a1f] mb-1">Consultation Time <span className="text-red-500">*</span></label>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[13px] font-bold text-[#5c1a1f]">Date</label>
-                      <input 
-                        required={addConsultation}
-                        type="date" 
-                        value={consultationDate} 
-                        onChange={(e) => setConsultationDate(e.target.value)} 
-                        onClick={(e) => { try { (e.target as HTMLInputElement).showPicker(); } catch (err) {} }}
-                        className="w-full border border-[#ebdcc7] rounded-md py-2.5 px-3 bg-white outline-none focus:border-[#d68636] text-[14px] uppercase" 
-                      />
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[13px] font-bold text-[#5c1a1f]">Time</label>
-                      <select 
-                        required={addConsultation}
-                        value={consultationTime} 
-                        onChange={(e) => setConsultationTime(e.target.value)} 
-                        className={`w-full border border-[#ebdcc7] rounded-md py-2.5 px-3 bg-white outline-none focus:border-[#d68636] text-[14px] ${!consultationTime ? 'text-[#3a1216]' : 'text-[#1a1a1a]'}`} 
-                      >
-                        <option value="" disabled hidden>HH:MM AM/PM</option>
-                        <option value="10:00 AM - 10:30 AM" className="text-[#1a1a1a]">10:00 AM - 10:30 AM</option>
-                        <option value="10:30 AM - 11:00 AM" className="text-[#1a1a1a]">10:30 AM - 11:00 AM</option>
-                        <option value="11:00 AM - 11:30 AM" className="text-[#1a1a1a]">11:00 AM - 11:30 AM</option>
-                        <option value="11:30 AM - 12:00 PM" className="text-[#1a1a1a]">11:30 AM - 12:00 PM</option>
-                        <option value="12:00 PM - 12:30 PM" className="text-[#1a1a1a]">12:00 PM - 12:30 PM</option>
-                        <option value="12:30 PM - 1:00 PM" className="text-[#1a1a1a]">12:30 PM - 1:00 PM</option>
-                        <option value="1:00 PM - 1:30 PM" className="text-[#1a1a1a]">1:00 PM - 1:30 PM</option>
-                        <option value="1:30 PM - 2:00 PM" className="text-[#1a1a1a]">1:30 PM - 2:00 PM</option>
-                        <option value="2:00 PM - 2:30 PM" className="text-[#1a1a1a]">2:00 PM - 2:30 PM</option>
-                        <option value="2:30 PM - 3:00 PM" className="text-[#1a1a1a]">2:30 PM - 3:00 PM</option>
-                        <option value="3:00 PM - 3:30 PM" className="text-[#1a1a1a]">3:00 PM - 3:30 PM</option>
-                        <option value="3:30 PM - 4:00 PM" className="text-[#1a1a1a]">3:30 PM - 4:00 PM</option>
-                        <option value="4:00 PM - 4:30 PM" className="text-[#1a1a1a]">4:00 PM - 4:30 PM</option>
-                        <option value="4:30 PM - 5:00 PM" className="text-[#1a1a1a]">4:30 PM - 5:00 PM</option>
-                        <option value="5:00 PM - 5:30 PM" className="text-[#1a1a1a]">5:00 PM - 5:30 PM</option>
-                        <option value="5:30 PM - 6:00 PM" className="text-[#1a1a1a]">5:30 PM - 6:00 PM</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              )}
+
             </div>
 
           </form>
         </div>
 
-        {/* Addon 2: Express Delivery */}
-        <div className="bg-white rounded-xl border border-[#ebdcc7] p-5 shadow-sm relative overflow-hidden">
-          <div className="absolute top-0 left-0 bg-[#22c55e] text-white text-[10px] font-bold px-2 py-0.5 rounded-br-lg tracking-wider">
-            TOP PICK
-          </div>
-          <div className="mt-3 flex items-center gap-3">
-            <label className="cursor-pointer shrink-0">
-              <input type="checkbox" checked={addExpressDelivery} onChange={() => setAddExpressDelivery(!addExpressDelivery)} className="w-5 h-5 accent-[#c57636] rounded" />
-            </label>
-            <p className="text-[17px] text-[#3a1216]">
-              Express Delivery (delivered in just <span className="line-through text-[#3a1216]/60">5 days</span> <strong>24 -48 hours</strong>) at <strong>₹{expressPrice} only</strong>
-            </p>
-          </div>
-        </div>
+
 
       </div>
 

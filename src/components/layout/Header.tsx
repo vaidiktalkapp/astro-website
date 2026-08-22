@@ -12,6 +12,102 @@ const LANGUAGES = [
   { code: 'hi', name: 'हिन्दी', short: 'HI' },
 ];
 
+const getNavIcon = (title: string) => {
+  const t = title.toLowerCase();
+  
+  if(t.includes('chat') && t.includes('ai')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#cffafe" stroke="#06b6d4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>;
+  if(t.includes('talk') && t.includes('ai')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#f3e8ff" stroke="#a855f7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>;
+  if(t.includes('chat')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#dcfce7" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>;
+  if(t.includes('talk') || t.includes('call')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>;
+  
+  if(t.includes('celebrity')) return '👑';
+  if(t.includes('daily') || t.includes('today')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#fef08a" stroke="#eab308" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>;
+  if(t.includes('tomorrow')) return '🔭';
+  if(t.includes('weekly')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#e0e7ff" stroke="#6366f1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>;
+  if(t.includes('monthly')) return '🌕';
+  if(t.includes('yearly')) return '🪐';
+  if(t.includes('blog') || t.includes('insight')) return '📰';
+  if(t.includes('faq')) return '💬';
+  if(t.includes('matrimony')) return '💞';
+  // Specific Pujas and Reports
+  if(t.includes('rudrabhishek') || t.includes('shiv') || t.includes('mahamrityunjay')) return '🕉️';
+  if(t.includes('mangal')) return '🔴';
+  if(t.includes('hanuman')) return '🚩';
+  if(t.includes('job') || t.includes('career') || t.includes('business')) return '💼';
+  if(t.includes('money') || t.includes('dhan')) return '💰';
+  if(t.includes('ganesh') || t.includes('ganapati')) return '🐘';
+  if(t.includes('vishnu') || t.includes('satyanarayan')) return '🐚';
+  if(t.includes('shani')) return '🪐';
+  if(t.includes('rahu') || t.includes('ketu')) return '🌑';
+  if(t.includes('attract your love')) return '🧲';
+  if(t.includes('commitment')) return '💍';
+  if(t.includes('love') || t.includes('marriage') || t.includes('spell')) return '💖';
+
+  // Fallbacks
+  if(t.includes('heal')) return '🌿';
+  if(t.includes('learn') || t.includes('course')) return '📚';
+  if(t.includes('puja') || t.includes('pooja')) return '🪔';
+  
+  if(t.includes('kundali matching') || t.includes('kundli matching')) return '💑';
+  if(t.includes('smart kundali') || t.includes('smart kundli')) return '🔮';
+  if(t.includes('kundli') || t.includes('kundali')) return '🕉️';
+  if(t.includes('flame')) return '❤️‍🔥';
+  if(t.includes('love') || t.includes('match') || t.includes('compatibility')) return '💖';
+  if(t.includes('numerology') || t.includes('destiny')) return '🔢';
+  if(t.includes('nakshatra')) return '🌟';
+  if(t.includes('sade sati')) return '🪐';
+  if(t.includes('rudraksha')) return '📿';
+  if(t.includes('gemstone')) return '💎';
+  if(t.includes('muhurat')) return '🔔';
+  if(t.includes('date')) return '📆';
+  if(t.includes('color')) return '🎨';
+  if(t.includes('lal kitab')) return '📕';
+  if(t.includes('baby')) return '👶';
+  if(t.includes('moon')) return '🌙';
+  if(t.includes('rashi')) return '🧿';
+  if(t.includes('chinese')) return '🐉';
+  if(t.includes('festival')) return '🎉';
+  if(t.includes('panchang')) return '📜';
+  if(t.includes('rahu')) return '🌑';
+  if(t.includes('atlas') || t.includes('location')) return '🗺️';
+  if(t.includes('horoscope') || t.includes('report')) return '📜';
+  if(t.includes('kaal sarp')) return '🐍';
+  if(t.includes('occult')) return '👁️';
+  return '⭐';
+};
+
+const getNavLineColor = (title: string) => {
+  const t = title.toLowerCase();
+  
+  if(t.includes('chat') && t.includes('ai')) return 'bg-cyan-500';
+  if(t.includes('talk') && t.includes('ai')) return 'bg-purple-500';
+  if(t.includes('chat')) return 'bg-green-500';
+  if(t.includes('talk') || t.includes('call')) return 'bg-blue-500';
+
+  if(t.includes('daily') || t.includes('tomorrow')) return 'bg-sky-400';
+  if(t.includes('weekly') || t.includes('monthly')) return 'bg-indigo-400';
+  if(t.includes('yearly')) return 'bg-fuchsia-400';
+  if(t.includes('celebrity')) return 'bg-yellow-400';
+
+  if(t.includes('rudrabhishek') || t.includes('shiv') || t.includes('mahamrityunjay')) return 'bg-slate-400';
+  if(t.includes('mangal') || t.includes('hanuman')) return 'bg-red-500';
+  if(t.includes('job') || t.includes('career') || t.includes('business')) return 'bg-blue-500';
+  if(t.includes('money') || t.includes('dhan')) return 'bg-green-500';
+  if(t.includes('ganesh') || t.includes('vishnu')) return 'bg-yellow-500';
+  if(t.includes('shani') || t.includes('rahu') || t.includes('ketu')) return 'bg-gray-600';
+  if(t.includes('love') || t.includes('marriage') || t.includes('spell') || t.includes('heal')) return 'bg-pink-500';
+  if(t.includes('puja') || t.includes('pooja')) return 'bg-orange-400';
+  
+  if(t.includes('destiny') || t.includes('numerology') || t.includes('kundli') || t.includes('kundali')) return 'bg-amber-400';
+  if(t.includes('rudraksha') || t.includes('gemstone') || t.includes('baby')) return 'bg-teal-400';
+  if(t.includes('date') || t.includes('muhurat') || t.includes('panchang')) return 'bg-emerald-400';
+  if(t.includes('love') || t.includes('flame') || t.includes('lal kitab') || t.includes('match') || t.includes('matrimony')) return 'bg-rose-400';
+  if(t.includes('chinese') || t.includes('festival')) return 'bg-red-400';
+  if(t.includes('moon') || t.includes('atlas') || t.includes('rashi')) return 'bg-blue-400';
+  if(t.includes('rahu') || t.includes('sade') || t.includes('kaal')) return 'bg-stone-500';
+  return 'bg-violet-400';
+};
+
 export default function Header() {
   const {
     user,
@@ -94,29 +190,6 @@ export default function Header() {
             <span className="hidden sm:inline">68,00,000+ Happy &amp; Secure</span>
             <span className="hidden md:inline">100% Safe &amp; Support</span>
           </div>
-          {/* 
-          <div className="flex gap-5 items-center relative shrink-0" ref={languageMenuRef}>
-            <button
-              onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
-              className="flex items-center gap-1 hover:text-white transition-colors"
-            >
-              {LANGUAGES.find(l => l.code === locale)?.name || 'English'} ▾
-            </button>
-            {isLanguageMenuOpen && (
-              <div className="absolute top-6 right-0 bg-white text-gray-850 rounded-md shadow-lg border border-gray-100 py-1 z-50 min-w-[100px]">
-                {LANGUAGES.map(lang => (
-                  <button
-                    key={lang.code}
-                    onClick={() => { setLocale(lang.code as any); setIsLanguageMenuOpen(false); }}
-                    className="w-full text-left px-3 py-1.5 hover:bg-gray-100 text-[13px]"
-                  >
-                    {lang.name}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-          */}
         </div>
 
         {/* Main Tier */}
@@ -129,6 +202,7 @@ export default function Header() {
               className="h-8 sm:h-10 w-[120px] lg:w-[140px] xl:w-[150px] 2xl:w-[170px] object-contain object-left -translate-y-1"
             />
           </Link>
+
 
           {/* Desktop Nav */}
           <nav className="hidden xl:flex gap-2 xl:gap-[12px] 2xl:gap-[20px] items-center text-[12px] 2xl:text-[14px] font-medium text-[#3a1216] whitespace-nowrap flex-1 justify-center shrink">
@@ -159,20 +233,28 @@ export default function Header() {
             </div>
             <div className="flex flex-col space-y-1">
               {navPujas.slice(0, Math.ceil(navPujas.length / 2)).map(puja => (
-                <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="group/item flex items-center px-3.5 py-2.5 text-[13.5px] font-medium text-[#4a1c22] hover:bg-gradient-to-r hover:from-[#fdf8f0] hover:to-white hover:text-[#d97706] hover:shadow-[0_2px_10px_rgba(217,119,6,0.06)] rounded-xl transition-all duration-300 border border-transparent hover:border-[#f0ddc0]/50" title={puja.title}>
-                  <div className="flex items-center gap-2.5 w-full truncate">
-                     <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]/70 group-hover/item:bg-[#d97706] group-hover/item:scale-150 group-hover/item:shadow-[0_0_8px_rgba(217,119,6,0.6)] transition-all duration-300 shrink-0" />
-                     <span className="group-hover/item:translate-x-1 transition-transform duration-300 truncate">{puja.title}</span>
+                <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300 mb-1" title={puja.title}>
+                  <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
+                    <div className={`w-[3px] h-6 ${getNavLineColor(puja.title)} rounded-full shrink-0`} />
+                    <div className="text-[18px] shrink-0 leading-none">{getNavIcon(puja.title)}</div>
+                    <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{puja.title}</span>
+                  </div>
+                  <div className="flex items-center shrink-0">
+                    <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all">→</span>
                   </div>
                 </Link>
               ))}
             </div>
             <div className="flex flex-col space-y-1">
               {navPujas.slice(Math.ceil(navPujas.length / 2)).map(puja => (
-                <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="group/item flex items-center px-3.5 py-2.5 text-[13.5px] font-medium text-[#4a1c22] hover:bg-gradient-to-r hover:from-[#fdf8f0] hover:to-white hover:text-[#d97706] hover:shadow-[0_2px_10px_rgba(217,119,6,0.06)] rounded-xl transition-all duration-300 border border-transparent hover:border-[#f0ddc0]/50" title={puja.title}>
-                  <div className="flex items-center gap-2.5 w-full truncate">
-                     <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]/70 group-hover/item:bg-[#d97706] group-hover/item:scale-150 group-hover/item:shadow-[0_0_8px_rgba(217,119,6,0.6)] transition-all duration-300 shrink-0" />
-                     <span className="group-hover/item:translate-x-1 transition-transform duration-300 truncate">{puja.title}</span>
+                <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300 mb-1" title={puja.title}>
+                  <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
+                    <div className={`w-[3px] h-6 ${getNavLineColor(puja.title)} rounded-full shrink-0`} />
+                    <div className="text-[18px] shrink-0 leading-none">{getNavIcon(puja.title)}</div>
+                    <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{puja.title}</span>
+                  </div>
+                  <div className="flex items-center shrink-0">
+                    <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all">→</span>
                   </div>
                 </Link>
               ))}
@@ -199,6 +281,40 @@ export default function Header() {
     );
   }
 
+  // 3.5 Special Case: Free Calculators Mega Menu
+  if (topMenu.title === 'Free Astrology Tools' || (topMenu.url || '').includes('calculator')) {
+    return (
+      <div key={topMenu._id} className="relative group cursor-pointer">
+        <Link href={topMenu.url || '/astrology-calculators'} className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
+          {topMenu.title}
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+        </Link>
+        <div className="absolute top-full left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-3xl min-w-[750px] max-h-[85vh] overflow-y-auto p-5 lg:p-6 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4 custom-scrollbar">
+          <h2 className="text-[20px] font-extrabold text-[#1a1208] mb-4 tracking-tight">Free Calculator</h2>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
+            {mySubMenus.map(menu => {
+              return (
+                <Link key={menu._id} href={menu.url} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300">
+                  <div className="flex items-center gap-3 w-full">
+                    <div className={`w-[3px] h-6 ${getNavLineColor(menu.title)} rounded-full shrink-0`} />
+                    <div className="text-[18px] shrink-0 leading-none">{getNavIcon(menu.title)}</div>
+                    <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{menu.title}</span>
+                  </div>
+                  <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all shrink-0 ml-2">→</span>
+                </Link>
+              );
+            })}
+          </div>
+          <div className="mt-5 text-center pb-2">
+            <Link href="/astrology-calculators" className="text-[#b45309] font-bold text-[14.5px] hover:text-[#d97706] transition-colors inline-flex items-center gap-1.5 group/btn">
+              View all Calculators <span className="group-hover/btn:translate-x-1 transition-transform">→</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // 4. Standard Dropdowns (Generic or Kundli etc.)
   const uniqueGroups = Array.from(new Set(mySubMenus.map(m => m.group || 'General')));
   const isMultiColumn = uniqueGroups.length > 1 || mySubMenus.length > 7;
@@ -213,9 +329,11 @@ export default function Header() {
       <div className={`absolute ${
         topMenu.category === 'consult' 
           ? 'top-[calc(100%-8px)] right-0 min-w-[260px]' 
-          : topMenu.category === 'knowledge' 
-            ? `top-full right-[-50px] xl:right-[-100px] 2xl:right-[-150px] ${isMultiColumn ? 'min-w-[600px]' : 'min-w-[300px]'}`
-            : `top-full left-0 ${isMultiColumn ? 'min-w-[600px]' : 'min-w-[300px]'}`
+          : topMenu.category === 'knowledge'
+            ? `top-full right-[-20px] xl:right-[-50px] ${isMultiColumn ? 'min-w-[650px]' : 'min-w-[250px]'}`
+            : isMultiColumn
+              ? 'top-full left-[-20px] xl:left-[-50px] min-w-[650px]'
+              : 'top-full left-0 min-w-[250px]'
       } bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-2xl p-4 md:p-5 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4`}>
         <div className={isMultiColumn ? "columns-2 gap-x-8" : "flex flex-col space-y-1"}>
           {uniqueGroups.map((grp, idx) => {
@@ -225,12 +343,16 @@ export default function Header() {
               return (
                 <React.Fragment key={grp}>
                   {groupLinks.map(menu => (
-                    <Link key={menu._id} href={menu.url} className="group/item flex items-center justify-between px-3.5 py-2.5 text-[13.5px] font-medium text-[#4a1c22] hover:bg-gradient-to-r hover:from-[#fdf8f0] hover:to-white hover:text-[#d97706] hover:shadow-[0_2px_10px_rgba(217,119,6,0.06)] rounded-xl transition-all duration-300 break-inside-avoid mb-1 border border-transparent hover:border-[#f0ddc0]/50">
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]/70 group-hover/item:bg-[#d97706] group-hover/item:scale-150 group-hover/item:shadow-[0_0_8px_rgba(217,119,6,0.6)] transition-all duration-300" />
-                        <span className="group-hover/item:translate-x-1 transition-transform duration-300">{menu.title}</span>
+                    <Link key={menu._id} href={menu.url} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300 mb-1">
+                      <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
+                        <div className={`w-[3px] h-6 ${getNavLineColor(menu.title)} rounded-full shrink-0`} />
+                        <div className="text-[18px] shrink-0 leading-none">{getNavIcon(menu.title)}</div>
+                        <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{menu.title}</span>
+                        {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-1">{menu.badge}</span>}
                       </div>
-                      {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-2">{menu.badge}</span>}
+                      <div className="flex items-center shrink-0">
+                        <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all">→</span>
+                      </div>
                     </Link>
                   ))}
                 </React.Fragment>
@@ -244,12 +366,16 @@ export default function Header() {
                   {grp}
                 </div>
                 {groupLinks.map(menu => (
-                  <Link key={menu._id} href={menu.url} className="group/item flex items-center justify-between px-3.5 py-2.5 text-[13.5px] font-medium text-[#4a1c22] hover:bg-gradient-to-r hover:from-[#fdf8f0] hover:to-white hover:text-[#d97706] hover:shadow-[0_2px_10px_rgba(217,119,6,0.06)] rounded-xl transition-all duration-300 border border-transparent hover:border-[#f0ddc0]/50 mb-1">
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]/70 group-hover/item:bg-[#d97706] group-hover/item:scale-150 group-hover/item:shadow-[0_0_8px_rgba(217,119,6,0.6)] transition-all duration-300" />
-                      <span className="group-hover/item:translate-x-1 transition-transform duration-300">{menu.title}</span>
+                  <Link key={menu._id} href={menu.url} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300 mb-2">
+                    <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
+                      <div className={`w-[3px] h-6 ${getNavLineColor(menu.title)} rounded-full shrink-0`} />
+                      <div className="text-[18px] shrink-0 leading-none">{getNavIcon(menu.title)}</div>
+                      <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{menu.title}</span>
+                      {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-1">{menu.badge}</span>}
                     </div>
-                    {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-2">{menu.badge}</span>}
+                    <div className="flex items-center shrink-0">
+                      <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all">→</span>
+                    </div>
                   </Link>
                 ))}
               </div>
@@ -257,15 +383,7 @@ export default function Header() {
           })}
         </div>
 
-        {/* View All Free Calculators Button */}
-        {topMenu.title === 'Free Astrology Tools' && (
-          <div className="mt-4 pt-4 border-t-2 border-dashed border-[#f0ddc0]/50 block clear-both">
-            <Link href="/astrology-calculators" className="flex items-center justify-center gap-1.5 w-full py-3 text-[14px] text-white bg-gradient-to-r from-[#d97706] to-[#b45309] font-bold rounded-xl hover:shadow-lg transition-all hover:-translate-y-0.5 shadow-md group/btn">
-              View All Free Calculators
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="group-hover/btn:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </Link>
-          </div>
-        )}
+        {/* View All Free Calculators Button is handled in the Special Case above */}
       </div>
     </div>
   );
