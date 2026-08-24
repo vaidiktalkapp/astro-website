@@ -704,7 +704,7 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
               animation-play-state: paused;
             }
           `}} />
-          <div className="overflow-hidden relative w-full" style={{ WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
+          <div className="overflow-hidden relative w-full max-w-7xl mx-auto" style={{ WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)' }}>
             <div className="testimonial-marquee py-4 px-4">
               {[...(dynamicData?.testimonials?.length > 0 ? dynamicData.testimonials : [
                 { name: 'Anita Sharma', city: 'Mumbai', review: 'The booking was smooth and the Pandit recited our family names perfectly during the puja. Felt truly connected despite being far away.' },
