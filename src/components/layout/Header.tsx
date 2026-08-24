@@ -6,6 +6,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useTranslation } from '../../context/LanguageContext';
 import axios from 'axios';
 import LoginModal from './LoginModal';
+import { FALLBACK_MENUS } from './fallbackMenus';
 
 const LANGUAGES = [
   { code: 'en', name: 'English', short: 'EN' },
@@ -150,7 +151,13 @@ export default function Header() {
         setNavPujas(pujasData.filter((p: any) => p.slug !== 'book-a-puja'));
         
         // Filter out inactive menus for the frontend
-        const activeMenus = (menusRes.data || []).filter((m: any) => m.isActive);
+        let activeMenus = (menusRes.data || []).filter((m: any) => m.isActive);
+        
+        // Fallback to essential menus if server is down or returns empty
+        if (activeMenus.length === 0) {
+          activeMenus = FALLBACK_MENUS;
+        }
+        
         setNavMenus(activeMenus);
       } catch (error) {
         console.error('Failed to load nav data', error);
