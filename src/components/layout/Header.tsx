@@ -109,7 +109,8 @@ const getNavLineColor = (title: string) => {
 };
 
 const renderIcon = (iconVal: any, title: string) => {
-  const finalIcon = iconVal || getNavIcon(title);
+  // If iconVal is explicitly provided and not empty, use it. Otherwise fallback.
+  const finalIcon = (iconVal !== undefined && iconVal !== null && iconVal !== '') ? iconVal : getNavIcon(title);
   if (typeof finalIcon === 'string' && finalIcon.trim().startsWith('<svg')) {
     return <span dangerouslySetInnerHTML={{ __html: finalIcon }} className="inline-flex items-center justify-center" />;
   }
@@ -145,7 +146,8 @@ export default function Header() {
           axios.get(`${apiUrl}/pujas?status=active&limit=12`).catch(() => ({ data: { data: [] } })),
           axios.get(`${apiUrl}/menus`).catch(() => ({ data: [] }))
         ]);
-        setNavPujas(pujasRes.data.data || []);
+        const pujasData = pujasRes.data.data || [];
+        setNavPujas(pujasData.filter((p: any) => p.slug !== 'book-a-puja'));
         
         // Filter out inactive menus for the frontend
         const activeMenus = (menusRes.data || []).filter((m: any) => m.isActive);

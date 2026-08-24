@@ -186,6 +186,7 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
 
   // Format and sort dynamic pujas
   const allPujas = [...dynamicPujas]
+    .filter(p => p.slug !== 'book-a-puja')
     .sort((a, b) => {
       // 1. Popular pujas always come first
       if (a.popular && !b.popular) return -1;
@@ -300,17 +301,15 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
             {/* LEFT - Text */}
             <div className="w-full lg:w-[45%] flex-shrink-0 pr-2 md:pr-4 -mt-12">
               <h1 className="premium-serif text-3xl md:text-[36px] lg:text-[42px] font-bold leading-[1.2] mb-5">
-                <span className="text-[#d97706]">Book Vedic Pujas</span>
+                <span className="text-[#d97706]">{dynamicData?.landingHeading1 || 'Book Vedic Pujas'}</span>
                 <br />
-                <span className="text-[#5c1a1f]">Performed in Your</span>
+                <span className="text-[#5c1a1f]">{dynamicData?.landingHeading2 || 'Performed in Your'}</span>
                 <br />
-                <span className="text-[#5c1a1f]">Name &amp; Gotra</span>
+                <span className="text-[#5c1a1f]">{dynamicData?.landingHeading3 || 'Name & Gotra'}</span>
               </h1>
-              <p className="text-[#412a1e] text-sm md:text-base leading-relaxed mb-8 font-medium max-w-xl">
-                Authentic rituals by verified Pandits — <br className="hidden md:block" />
-                sankalp recited aloud with your name, <br className="hidden md:block" />
-                wherever you are in the world.
-              </p>
+              <div className="text-[#412a1e] text-sm md:text-base leading-relaxed mb-8 font-medium max-w-xl whitespace-pre-line">
+                {dynamicData?.landingDesc || 'Authentic rituals by verified Pandits — \nsankalp recited aloud with your name, \nwherever you are in the world.'}
+              </div>
 
               {/* Trust row */}
               <div className="flex items-center gap-4 mb-8">
