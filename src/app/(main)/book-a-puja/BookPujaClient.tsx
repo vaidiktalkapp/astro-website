@@ -682,38 +682,61 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
 
       {/* TESTIMONIALS SECTION */}
       <div className="w-full bg-white py-14 md:py-20 px-6 border-t border-[#f0ddc0] relative z-10">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-10">
+        <div className="w-full">
+          <div className="text-center mb-10 max-w-5xl mx-auto px-6">
             <p className="text-[#d97706] font-bold text-sm uppercase tracking-widest mb-2">From Our Devotees</p>
             <h2 className="premium-serif text-3xl md:text-4xl font-bold text-[#5c1a1f]">
               What They&apos;re <span className="text-[#d97706]">Saying?</span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {(dynamicData?.testimonials?.length > 0 ? dynamicData.testimonials : [
-              { name: 'Anita Sharma', city: 'Mumbai', review: 'The booking was smooth and the Pandit recited our family names perfectly during the puja. Felt truly connected despite being far away.' },
-              { name: 'Pradeep Mishra', city: 'Delhi', review: 'VaidikTalk made our Satyanarayan Puja so effortless. We got WhatsApp updates throughout and the prasad arrived on time.' },
-              { name: 'Kavya Reddy', city: 'Bengaluru', review: 'We had complete peace of mind. The pandit was well-prepared, recited the sankalp correctly, and the whole experience felt sacred.' },
-            ]).slice(0, 3).map((t: any, i: number) => (
-              <div key={i} className="bg-[#fdfaf7] border border-[#f0ddc0] rounded-2xl p-5 shadow-sm flex flex-col justify-between">
-                {/* Stars */}
-                <div className="flex gap-0.5 mb-3">
-                  {[...Array(5)].map((_, s) => (
-                    <svg key={s} width="16" height="16" viewBox="0 0 24 24" fill="#d97706"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
-                  ))}
-                </div>
-                <p className="text-[#3a1216] text-[14px] leading-relaxed mb-5 flex-1">&quot;{t.review}&quot;</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-[#5c1a1f] text-white text-xs font-black flex items-center justify-center shrink-0">
-                    {t.name?.charAt(0) || 'U'}
+          <style dangerouslySetInnerHTML={{__html: `
+            @keyframes marqueeScroll {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(calc(-50% - 10px)); }
+            }
+            .testimonial-marquee {
+              display: flex;
+              gap: 20px;
+              width: max-content;
+              animation: marqueeScroll 40s linear infinite;
+            }
+            .testimonial-marquee:hover {
+              animation-play-state: paused;
+            }
+          `}} />
+          <div className="overflow-hidden relative w-full" style={{ WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
+            <div className="testimonial-marquee py-4 px-4">
+              {[...(dynamicData?.testimonials?.length > 0 ? dynamicData.testimonials : [
+                { name: 'Anita Sharma', city: 'Mumbai', review: 'The booking was smooth and the Pandit recited our family names perfectly during the puja. Felt truly connected despite being far away.' },
+                { name: 'Pradeep Mishra', city: 'Delhi', review: 'VaidikTalk made our Satyanarayan Puja so effortless. We got WhatsApp updates throughout and the prasad arrived on time.' },
+                { name: 'Kavya Reddy', city: 'Bengaluru', review: 'We had complete peace of mind. The pandit was well-prepared, recited the sankalp correctly, and the whole experience felt sacred.' },
+                { name: 'Ramesh Singh', city: 'Pune', review: 'Very authentic and professional service. The chanting was powerful and the video quality was excellent.' }
+              ]), ...(dynamicData?.testimonials?.length > 0 ? dynamicData.testimonials : [
+                { name: 'Anita Sharma', city: 'Mumbai', review: 'The booking was smooth and the Pandit recited our family names perfectly during the puja. Felt truly connected despite being far away.' },
+                { name: 'Pradeep Mishra', city: 'Delhi', review: 'VaidikTalk made our Satyanarayan Puja so effortless. We got WhatsApp updates throughout and the prasad arrived on time.' },
+                { name: 'Kavya Reddy', city: 'Bengaluru', review: 'We had complete peace of mind. The pandit was well-prepared, recited the sankalp correctly, and the whole experience felt sacred.' },
+                { name: 'Ramesh Singh', city: 'Pune', review: 'Very authentic and professional service. The chanting was powerful and the video quality was excellent.' }
+              ])].map((t: any, i: number) => (
+                <div key={i} className="bg-[#fdfaf7] border border-[#f0ddc0] rounded-2xl p-5 shadow-sm flex flex-col justify-between w-[320px] md:w-[380px] shrink-0">
+                  {/* Stars */}
+                  <div className="flex gap-0.5 mb-3">
+                    {[...Array(5)].map((_, s) => (
+                      <svg key={s} width="16" height="16" viewBox="0 0 24 24" fill="#d97706"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
+                    ))}
                   </div>
-                  <div>
-                    <p className="font-bold text-[#3a1216] text-[13px]">{t.name}</p>
-                    <p className="text-[#3a1216] text-[11px]">{t.city}</p>
+                  <p className="text-[#3a1216] text-[14px] leading-relaxed mb-5 flex-1">&quot;{t.review}&quot;</p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-full bg-[#5c1a1f] text-white text-xs font-black flex items-center justify-center shrink-0">
+                      {t.name?.charAt(0) || 'U'}
+                    </div>
+                    <div>
+                      <p className="font-bold text-[#3a1216] text-[13px]">{t.name}</p>
+                      <p className="text-[#3a1216] text-[11px]">{t.city}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
