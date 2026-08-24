@@ -299,8 +299,8 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
 
           <div className="flex flex-col md:flex-row items-center gap-8 lg:gap-2">
             {/* LEFT - Text */}
-            <div className="w-full lg:w-[45%] flex-shrink-0 pr-2 md:pr-4 -mt-12">
-              <h1 className="premium-serif text-3xl md:text-[36px] lg:text-[42px] font-bold leading-[1.2] mb-5">
+            <div className="w-full lg:w-[45%] flex-shrink-0 pr-2 md:pr-4 lg:pr-12 xl:pr-16 -mt-12 relative z-20">
+              <h1 className="premium-serif text-3xl md:text-[36px] lg:text-[42px] font-bold leading-[1.2] mb-5 break-words">
                 <span className="text-[#d97706]">{dynamicData?.landingHeading1 || 'Book Vedic Pujas'}</span>
                 <br />
                 <span className="text-[#5c1a1f]">{dynamicData?.landingHeading2 || 'Performed in Your'}</span>
