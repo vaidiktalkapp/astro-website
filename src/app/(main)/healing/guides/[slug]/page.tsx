@@ -49,7 +49,7 @@ export default function HealingGuideDetail() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0d0d0d] flex items-center justify-center">
+      <div className="min-h-screen bg-[#fafaf8] flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 rounded-full border-2 border-[#b8962e] border-t-transparent animate-spin" />
           <p className="text-[11px] font-bold uppercase text-[#b8962e] tracking-[0.3em]">Loading Guide</p>
@@ -60,10 +60,10 @@ export default function HealingGuideDetail() {
 
   if (!item) {
     return (
-      <div className="min-h-screen bg-[#0d0d0d] flex flex-col items-center justify-center p-6 text-center">
-        <AlertCircle className="w-14 h-14 text-red-400 mb-5 opacity-70" />
-        <h1 className="text-2xl font-bold text-white mb-2">Guide Not Found</h1>
-        <p className="text-gray-500 mb-8 max-w-sm text-sm">This guide may have been archived or moved.</p>
+      <div className="min-h-screen bg-[#fafaf8] flex flex-col items-center justify-center p-6 text-center">
+        <AlertCircle className="w-14 h-14 text-red-500 mb-5 opacity-70" />
+        <h1 className="text-2xl font-bold text-[#3a1216] mb-2">Guide Not Found</h1>
+        <p className="text-gray-600 mb-8 max-w-sm text-sm">This guide may have been archived or moved.</p>
         <Link href="/healing" className="inline-flex items-center gap-2 bg-[#b8962e] text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-[#967a26] transition-colors">
           <ArrowLeft className="w-4 h-4" /> Return to Healing Hub
         </Link>
@@ -118,10 +118,10 @@ export default function HealingGuideDetail() {
         <div className="absolute bottom-6 left-[32%] text-[#b8962e]/10 text-3xl select-none pointer-events-none">✦</div>
         <div className="absolute top-12 right-[42%] text-[#b8962e]/10 text-2xl select-none pointer-events-none">❋</div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-10 pb-0">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-end">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-10 pb-10">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-center">
             {/* Left text */}
-            <div className="pb-12">
+            <div>
               <Link href="/healing" className="inline-flex items-center gap-2 text-[#3a1216] hover:text-[#b8962e] transition-colors text-sm font-medium mb-7 group">
                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                 Back to Healing Hub
@@ -174,12 +174,12 @@ export default function HealingGuideDetail() {
 
             {/* Right: Featured Image — fully visible */}
             {item.featuredImage && (
-              <div className="hidden md:block w-[220px] shrink-0">
+              <div className="hidden md:block w-[280px] shrink-0">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl border border-[#e8dbb8]/60 h-[220px]">
                   <img
                     src={item.featuredImage}
                     alt={item.title}
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-cover object-top"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent" />
                 </div>

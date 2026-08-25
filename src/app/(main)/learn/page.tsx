@@ -162,15 +162,15 @@ export default function LearnAstrologyHub() {
                     >
                         <Link
                             href="/learn/planets"
-                            className="group flex items-center justify-between bg-[#1a1a1a] rounded-xl p-6 md:p-8 text-white hover:bg-[#222] transition-colors border border-transparent hover:border-[#b8962e]/30"
+                            className="group flex items-center justify-between bg-white rounded-2xl p-6 md:p-8 text-[#3a1216] hover:shadow-lg transition-all border border-[#e8dbb8]/60 hover:border-[#b8962e]/40"
                         >
                             <div className="flex items-center gap-5">
-                                <div className="w-12 h-12 rounded-lg bg-[#b8962e]/10 border border-[#b8962e]/20 flex items-center justify-center group-hover:bg-[#b8962e]/20 transition-colors">
+                                <div className="w-12 h-12 rounded-xl bg-[#fdfaf3] border border-[#e8dbb8]/80 flex items-center justify-center group-hover:bg-[#b8962e]/10 transition-colors">
                                     <Globe className="w-6 h-6 text-[#b8962e]" />
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-bold serif text-[#e8dbb8]">{t("learn.explore_the_9_grahas")}</h3>
-                                    <p className="text-[13px] text-gray-400 font-medium mt-1">{t("learn.detailed_profiles_of_all_nine")}</p>
+                                    <h3 className="text-xl font-bold serif text-[#3a1216] group-hover:text-[#b8962e] transition-colors">{t("learn.explore_the_9_grahas")}</h3>
+                                    <p className="text-[14px] text-gray-600 font-medium mt-1">{t("learn.detailed_profiles_of_all_nine")}</p>
                                 </div>
                             </div>
                             <ArrowRight className="w-5 h-5 text-[#b8962e] group-hover:translate-x-1 transition-transform" />

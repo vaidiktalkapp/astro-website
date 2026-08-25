@@ -85,61 +85,59 @@ export default function LessonDetailPage() {
   return (
     <div className="min-h-screen bg-[#fffdf5] selection:bg-[#b8962e]/20 overflow-x-hidden max-w-full">
             {/* Top Series Banner */}
-            <div className="bg-gradient-to-r from-[#e8a020] to-[#d4912e] text-white">
+            <div className="bg-[#fdf8ed] border-b border-[#e8dbb8]/50 text-[#3a1216]">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <div className="flex items-center gap-3 text-[11px] font-bold">
-                        <span className="leading-relaxed">{t("_slug_.this_is_part")}<strong>{lesson.partNumber}</strong>{t("_slug_.of_our_series_on_learning_indi")}<strong>{t("_slug_.vaidiktalk")}</strong>.</span>
+                    <div className="flex items-center gap-3 text-[11.5px] font-semibold tracking-wide">
+                        <span className="leading-relaxed">
+                            {t("_slug_.this_is_part")} <strong className="text-[#b8962e] font-bold">{lesson.partNumber}</strong> {t("_slug_.of_our_series_on_learning_indi")} <strong className="text-[#b8962e] font-bold">{t("_slug_.vaidiktalk")}</strong>.
+                        </span>
                     </div>
                     <div className="flex items-center gap-4 flex-shrink-0">
                         {lesson.hindiVersionUrl &&
-            <a href={lesson.hindiVersionUrl} className="text-[10px] font-black uppercase tracking-widest hover:underline flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg active:scale-95 transition-all">
+                            <a href={lesson.hindiVersionUrl} className="text-[10px] font-black uppercase tracking-widest hover:underline flex items-center gap-1.5 bg-[#b8962e]/10 text-[#b8962e] border border-[#b8962e]/20 px-3 py-1.5 rounded-lg active:scale-95 transition-all">
                                 हिन्दी में पढ़ें <ExternalLink className="w-3 h-3" />
                             </a>
-            }
+                        }
                     </div>
                 </div>
             </div>
 
             {/* Main Content */}
-            <div className="max-w-3xl mx-auto px-4 md:px-6 py-12 overflow-x-hidden">
-                {/* Breadcrumb */}
-                <Link
-          href="/learn"
-          className="inline-flex items-center gap-2 text-[11px] font-black uppercase text-[#3a1216] tracking-widest hover:text-[#b8962e] transition-colors mb-8">
-          
-                    <ArrowLeft className="w-3.5 h-3.5" />{t("_slug_.back_to_all_lessons")}
-        </Link>
-
-                {/* Title and Featured Image */}
-                <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-10 border-b border-[#e8dbb8]/30 pb-8">
-          
-                    <div className="flex flex-col md:flex-row gap-6 items-start">
-                        {lesson.featuredImage &&
-            <div className="w-full md:w-[180px] aspect-[4/3] rounded-xl overflow-hidden border border-[#e8dbb8]/40 shadow-sm flex-shrink-0">
-                                <img src={lesson.featuredImage} alt={lesson.title} className="w-full h-full object-cover" />
-                            </div>
-            }
-                        <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 text-[#b8962e] text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+            <div className="max-w-4xl mx-auto px-4 md:px-6 py-12 overflow-x-hidden">
+                {/* Hero Section */}
+                <div className="mb-12 border-b border-[#e8dbb8]/40 pb-10">
+                    <Link href="/learn" className="inline-flex items-center gap-2 text-[11px] font-black uppercase text-[#3a1216] tracking-widest hover:text-[#b8962e] transition-colors mb-8 group">
+                        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                        {t("_slug_.back_to_all_lessons")}
+                    </Link>
+                    
+                    <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
+                        <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-4 text-[#b8962e] text-[10px] font-black uppercase tracking-[0.2em]">
                                 <Sparkles className="w-3 h-3" />
-                                <span>{lesson.seriesTitle || 'Astrology Series'}{t("_slug_._part")}{lesson.partNumber}</span>
+                                <span>{lesson.seriesTitle || 'Astrology Series'} {t("_slug_._part")} {lesson.partNumber}</span>
                             </div>
-                            <h1 className="text-3xl md:text-4xl font-bold text-[#3a1216] serif leading-[1.2] mb-5 break-words">
+                            
+                            <h1 className="text-3xl md:text-5xl font-bold text-[#3a1216] serif leading-[1.15] mb-5 break-words">
                                 {lesson.title}
                             </h1>
+                            
                             {lesson.shortDescription &&
-              <p className="text-[17px] text-[#3a1216] serif leading-relaxed opacity-80">{lesson.shortDescription}</p>
-              }
+                                <p className="text-[17px] md:text-xl text-[#3a1216] serif leading-relaxed opacity-80 max-w-2xl">{lesson.shortDescription}</p>
+                            }
                         </div>
+
+                        {lesson.featuredImage &&
+                            <div className="w-full md:w-[320px] shrink-0 rounded-2xl overflow-hidden shadow-sm border border-[#e8dbb8]/40 bg-[#fdfaf3]">
+                                <img src={lesson.featuredImage} alt={lesson.title} className="w-full h-auto object-contain" />
+                            </div>
+                        }
                     </div>
-                </motion.div>
+                </div>
 
                 {/* YouTube Embed */}
                 {lesson.youtubeUrl &&
-        <div className="mb-10 max-w-lg mx-auto space-y-4">
+        <div className="mb-12 max-w-3xl mx-auto space-y-4">
                         <div className="rounded-xl overflow-hidden border border-[#e8dbb8]/40 shadow-lg bg-black aspect-video">
                             <iframe
               width="100%"

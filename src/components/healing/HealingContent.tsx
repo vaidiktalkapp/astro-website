@@ -102,15 +102,15 @@ export default function HealingContent() {
         {/* Large faint mandala - left */}
         <div className="absolute -left-20 top-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-[0.07] pointer-events-none">
           <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="200" cy="200" r="190" stroke="#b8962e" strokeWidth="1"/>
-            <circle cx="200" cy="200" r="150" stroke="#b8962e" strokeWidth="1"/>
-            <circle cx="200" cy="200" r="110" stroke="#b8962e" strokeWidth="1"/>
-            <circle cx="200" cy="200" r="70" stroke="#b8962e" strokeWidth="1"/>
-            {[0,30,60,90,120,150,180,210,240,270,300,330].map((a,i) => (
+            <circle cx="200" cy="200" r="190" stroke="#b8962e" strokeWidth="1" />
+            <circle cx="200" cy="200" r="150" stroke="#b8962e" strokeWidth="1" />
+            <circle cx="200" cy="200" r="110" stroke="#b8962e" strokeWidth="1" />
+            <circle cx="200" cy="200" r="70" stroke="#b8962e" strokeWidth="1" />
+            {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((a, i) => (
               <line key={i} x1="200" y1="200"
-                x2={200 + 190*Math.cos(a*Math.PI/180)}
-                y2={200 + 190*Math.sin(a*Math.PI/180)}
-                stroke="#b8962e" strokeWidth="0.5"/>
+                x2={200 + 190 * Math.cos(a * Math.PI / 180)}
+                y2={200 + 190 * Math.sin(a * Math.PI / 180)}
+                stroke="#b8962e" strokeWidth="0.5" />
             ))}
           </svg>
         </div>
@@ -118,15 +118,15 @@ export default function HealingContent() {
         {/* Large faint mandala - right */}
         <div className="absolute -right-20 top-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-[0.07] pointer-events-none">
           <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="200" cy="200" r="190" stroke="#b8962e" strokeWidth="1"/>
-            <circle cx="200" cy="200" r="150" stroke="#b8962e" strokeWidth="1"/>
-            <circle cx="200" cy="200" r="110" stroke="#b8962e" strokeWidth="1"/>
-            <circle cx="200" cy="200" r="70" stroke="#b8962e" strokeWidth="1"/>
-            {[0,30,60,90,120,150,180,210,240,270,300,330].map((a,i) => (
+            <circle cx="200" cy="200" r="190" stroke="#b8962e" strokeWidth="1" />
+            <circle cx="200" cy="200" r="150" stroke="#b8962e" strokeWidth="1" />
+            <circle cx="200" cy="200" r="110" stroke="#b8962e" strokeWidth="1" />
+            <circle cx="200" cy="200" r="70" stroke="#b8962e" strokeWidth="1" />
+            {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((a, i) => (
               <line key={i} x1="200" y1="200"
-                x2={200 + 190*Math.cos(a*Math.PI/180)}
-                y2={200 + 190*Math.sin(a*Math.PI/180)}
-                stroke="#b8962e" strokeWidth="0.5"/>
+                x2={200 + 190 * Math.cos(a * Math.PI / 180)}
+                y2={200 + 190 * Math.sin(a * Math.PI / 180)}
+                stroke="#b8962e" strokeWidth="0.5" />
             ))}
           </svg>
         </div>
@@ -175,11 +175,10 @@ export default function HealingContent() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`shrink-0 px-4 py-3 text-sm font-semibold border-b-2 transition-all ${
-                  activeTab === tab.id
+                className={`shrink-0 px-4 py-3 text-sm font-semibold border-b-2 transition-all ${activeTab === tab.id
                     ? 'border-[#b8962e] text-[#b8962e]'
                     : 'border-transparent text-[#3a1216] hover:text-[#b8962e]'
-                }`}
+                  }`}
               >
                 {tab.label}
               </button>
