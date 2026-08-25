@@ -80,13 +80,13 @@ export default function AboutPage() {
         <div className="absolute inset-0 z-0 hidden md:flex justify-end pointer-events-none">
            <img 
              src="/founder.webp" 
-             alt="Shri Jitendra Kumar Mishra" 
+             alt="Shri Jitendra K Mishra" 
              className="h-full w-full object-cover md:w-[70%] lg:w-[60%] object-center lg:object-right mix-blend-multiply opacity-95"
              style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 25%, black 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 25%, black 100%)' }}
            />
            <div className="absolute bottom-6 right-8 md:right-12 lg:right-[10%] bg-[#5c1420] text-center py-3 px-6 rounded-xl shadow-lg pointer-events-auto">
-             <div className="font-bold text-[16px] md:text-[18px] text-white">Shri Jitendra Kumar Mishra</div>
-             <div className="text-[13px] md:text-[14px] text-[#fbe7d3]">Founder, VaidikTalk</div>
+             <div className="font-bold text-[16px] md:text-[18px] text-white">Shri Jitendra K Mishra</div>
+             <div className="text-[13px] md:text-[14px] text-[#fbe7d3]">Co-Founder, VaidikTalk</div>
            </div>
         </div>
 
@@ -99,11 +99,11 @@ export default function AboutPage() {
             </div>
             
             <h1 className="font-serif font-bold text-[#5c1420] text-[40px] md:text-[54px] lg:text-[64px] leading-[1.1] mb-2 tracking-tight">
-              Shri Jitendra<br/>Kumar Mishra
+              Shri Jitendra<br/>K Mishra
             </h1>
             
             <h2 className="font-serif font-bold text-[#8a1c2a] text-[20px] md:text-[24px] mb-6">
-              Founder, VaidikTalk
+              Co-Founder, VaidikTalk
             </h2>
 
             {/* Decorative Divider */}
@@ -118,7 +118,7 @@ export default function AboutPage() {
             </h3>
             
             <p className="text-[15px] md:text-[16px] text-[#412a1e] font-medium leading-[1.7] max-w-[480px]">
-              VaidikTalk was founded by Shri Jitendra Kumar Mishra, an entrepreneur whose journey spans two seemingly different worlds—global manufacturing and spiritual wellness.
+              VaidikTalk was founded by Shri Jitendra K Mishra, an entrepreneur whose journey spans two seemingly different worlds—global manufacturing and spiritual wellness.
             </p>
           </div>
         </div>
@@ -127,13 +127,13 @@ export default function AboutPage() {
         <div className="w-full relative mt-10 md:hidden flex flex-col items-center justify-center pb-0 pointer-events-none">
            <img 
              src="/founder.webp" 
-             alt="Shri Jitendra Kumar Mishra" 
+             alt="Shri Jitendra K Mishra" 
              className="w-full max-w-[500px] h-auto object-cover object-top mix-blend-multiply opacity-95"
              style={{ maskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)' }}
            />
            <div className="w-full bg-[#5c1420] text-center py-3 px-4 shadow-lg z-10 pointer-events-auto">
-             <div className="font-bold text-[16px] text-white">Shri Jitendra Kumar Mishra</div>
-             <div className="text-[13px] text-[#fbe7d3]">Founder, VaidikTalk</div>
+             <div className="font-bold text-[16px] text-white">Shri Jitendra K Mishra</div>
+             <div className="text-[13px] text-[#fbe7d3]">Co-Founder, VaidikTalk</div>
            </div>
         </div>
       </section>
@@ -172,7 +172,7 @@ export default function AboutPage() {
             
             <div className="space-y-6 text-[#412a1e] text-[17px] leading-[1.8]">
               <p>
-                As the Founder of Catalyst Sourcing, Jitendra Kumar Mishra has spent years working with manufacturers, exporters, and international customers across industries. His work took him inside factories, boardrooms, and supply chains, helping businesses build trust, solve problems, and create long-term partnerships across borders.
+                As the Founder of Catalyst Sourcing, Jitendra K Mishra has spent years working with manufacturers, exporters, and international customers across industries. His work took him inside factories, boardrooms, and supply chains, helping businesses build trust, solve problems, and create long-term partnerships across borders.
               </p>
               
               {/* Small dot divider */}
@@ -222,7 +222,7 @@ export default function AboutPage() {
           </div>
           <div className="text-center md:text-left">
             <p className="text-[#412a1e] text-[16px] leading-[1.8] mb-3">
-              For Jitendra Kumar Mishra, VaidikTalk represents a natural extension of his entrepreneurial journey. After helping international businesses build trusted supply chains and global partnerships, he is now focused on helping individuals find clarity, confidence, and direction in their personal lives.
+              For Jitendra K Mishra, VaidikTalk represents a natural extension of his entrepreneurial journey. After helping international businesses build trusted supply chains and global partnerships, he is now focused on helping individuals find clarity, confidence, and direction in their personal lives.
             </p>
             <p className="font-serif font-bold text-[#5c1420] text-[18px]">
               This is more than a business. It is a mission to build trust in an industry where trust matters most.

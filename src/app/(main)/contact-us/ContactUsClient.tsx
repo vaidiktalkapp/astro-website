@@ -1,10 +1,38 @@
 'use client';
 
-import React from 'react';
-import { Mail, MessageCircle, Clock, HelpCircle, Target } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, MessageCircle, Clock, HelpCircle, Target, Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { toast } from 'react-hot-toast';
 
 export default function ContactUsPage() {
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1'}/contact-us`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      
+      if (data.success) {
+        toast.success('Your message has been sent successfully!');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        toast.error(data.message || 'Failed to send message.');
+      }
+    } catch (error) {
+      toast.error('Network error. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <div className="w-full flex flex-col overflow-hidden text-[#2f1718]">
 
@@ -85,27 +113,60 @@ export default function ContactUsPage() {
             {/* Form */}
             <div id="contact-form" className="bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-[#f0ddc0]/50 relative z-10 scroll-mt-32">
               <h3 className="font-serif font-bold text-[#5c1420] text-[28px] mb-8">Send Us a Message</h3>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-[#5c1420] mb-2">Full Name</label>
-                    <input type="text" className="w-full bg-[#fdfaf5] border border-[#e8d1b3] rounded-xl px-4 py-3 outline-none focus:border-[#d97706] transition-colors" placeholder="Enter your name" />
+                    <input 
+                      type="text" 
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full bg-[#fdfaf5] border border-[#e8d1b3] rounded-xl px-4 py-3 outline-none focus:border-[#d97706] transition-colors" 
+                      placeholder="Enter your name" 
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-[#5c1420] mb-2">Email Address</label>
-                    <input type="email" className="w-full bg-[#fdfaf5] border border-[#e8d1b3] rounded-xl px-4 py-3 outline-none focus:border-[#d97706] transition-colors" placeholder="Enter your email" />
+                    <input 
+                      type="email" 
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full bg-[#fdfaf5] border border-[#e8d1b3] rounded-xl px-4 py-3 outline-none focus:border-[#d97706] transition-colors" 
+                      placeholder="Enter your email" 
+                    />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-[#5c1420] mb-2">Subject</label>
-                  <input type="text" className="w-full bg-[#fdfaf5] border border-[#e8d1b3] rounded-xl px-4 py-3 outline-none focus:border-[#d97706] transition-colors" placeholder="How can we help you?" />
+                  <input 
+                    type="text" 
+                    required
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    className="w-full bg-[#fdfaf5] border border-[#e8d1b3] rounded-xl px-4 py-3 outline-none focus:border-[#d97706] transition-colors" 
+                    placeholder="How can we help you?" 
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-[#5c1420] mb-2">Message</label>
-                  <textarea rows={5} className="w-full bg-[#fdfaf5] border border-[#e8d1b3] rounded-xl px-4 py-3 outline-none focus:border-[#d97706] transition-colors" placeholder="Write your message here..."></textarea>
+                  <textarea 
+                    rows={5} 
+                    required
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full bg-[#fdfaf5] border border-[#e8d1b3] rounded-xl px-4 py-3 outline-none focus:border-[#d97706] transition-colors" 
+                    placeholder="Write your message here..."
+                  ></textarea>
                 </div>
-                <button type="submit" className="bg-[#8a1c2a] hover:bg-[#721522] text-white font-semibold px-8 py-3.5 rounded-xl transition-colors shadow-md w-full md:w-auto">
-                  Submit Request
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="bg-[#8a1c2a] hover:bg-[#721522] disabled:opacity-70 text-white font-semibold px-8 py-3.5 rounded-xl transition-colors shadow-md w-full md:w-auto flex items-center justify-center gap-2"
+                >
+                  {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
+                  {isSubmitting ? 'Submitting...' : 'Submit Request'}
                 </button>
               </form>
             </div>

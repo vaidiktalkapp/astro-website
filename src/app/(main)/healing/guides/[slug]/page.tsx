@@ -11,15 +11,17 @@ import {
   Wind,
   Flower2,
   Gem,
-  AlertCircle } from
-'lucide-react';
+  AlertCircle,
+  Clock,
+  Zap,
+  Circle
+} from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1';
 
 export default function HealingGuideDetail() {
-    const { t } = useTranslation();
-
+  const { t } = useTranslation();
   const params = useParams();
   const [item, setItem] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -47,189 +49,232 @@ export default function HealingGuideDetail() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#fffdf5] flex items-center justify-center">
-                <div className="animate-pulse space-y-4 text-center">
-                    <BookOpen className="w-12 h-12 text-[#b8962e] mx-auto opacity-20" />
-                    <p className="text-[10px] font-black uppercase text-[#b8962e] tracking-widest">{t("_slug_.loading_guide")}</p>
-                </div>
-            </div>);
-
+      <div className="min-h-screen bg-[#0d0d0d] flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 rounded-full border-2 border-[#b8962e] border-t-transparent animate-spin" />
+          <p className="text-[11px] font-bold uppercase text-[#b8962e] tracking-[0.3em]">Loading Guide</p>
+        </div>
+      </div>
+    );
   }
 
   if (!item) {
     return (
-      <div className="min-h-screen bg-[#fffdf5] flex flex-col items-center justify-center p-6 text-center">
-                <AlertCircle className="w-16 h-16 text-red-400 mb-4" />
-                <h1 className="text-3xl font-bold text-gray-900 serif mb-2">{t("_slug_.guide_not_found")}</h1>
-                <p className="text-gray-850 mb-8 max-w-sm">{t("_slug_.this_guide_might_have_been_arc")}</p>
-                <Link href="/healing" className="bg-[#b8962e] text-white px-8 py-3 rounded-2xl font-bold text-sm">{t("_slug_.return_to_healing_hub")}</Link>
-            </div>);
-
+      <div className="min-h-screen bg-[#0d0d0d] flex flex-col items-center justify-center p-6 text-center">
+        <AlertCircle className="w-14 h-14 text-red-400 mb-5 opacity-70" />
+        <h1 className="text-2xl font-bold text-white mb-2">Guide Not Found</h1>
+        <p className="text-gray-500 mb-8 max-w-sm text-sm">This guide may have been archived or moved.</p>
+        <Link href="/healing" className="inline-flex items-center gap-2 bg-[#b8962e] text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-[#967a26] transition-colors">
+          <ArrowLeft className="w-4 h-4" /> Return to Healing Hub
+        </Link>
+      </div>
+    );
   }
 
   const m = item.metadata || {};
-  const typeLabel = item.type === 'meditation' ? 'Meditation' : item.type === 'yoga' ? 'Yoga Asana' : 'Crystal Healing';
+  const typeLabel = item.type === 'meditation' ? 'Meditation' : item.type === 'yoga' ? 'Yoga' : 'Crystal Healing';
   const TypeIcon = item.type === 'meditation' ? Wind : item.type === 'yoga' ? Flower2 : Gem;
 
+  const typeColors: Record<string, string> = {
+    meditation: '#6366f1',
+    yoga: '#10b981',
+    crystal: '#b8962e',
+  };
+  const accentColor = typeColors[item.type] || '#b8962e';
+
   return (
-    <div className="min-h-screen bg-[#fffdf5] selection:bg-[#b8962e]/20 overflow-x-hidden max-w-full">
-            {/* Top Banner */}
-            <div className="bg-gradient-to-r from-[#e8a020] to-[#d4912e] text-white">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <div className="flex items-center gap-3 text-[11px] font-bold">
-                        <TypeIcon className="w-4 h-4" />
-                        <span className="leading-relaxed">
-                            <strong>{typeLabel}</strong>{t("_slug_.guide_from")}<strong>{t("_slug_.vaidiktalk")}</strong>{t("_slug_.healing_wellness_series")}
-            </span>
-                    </div>
-                    <div className="flex items-center gap-4 flex-shrink-0">
-                        {m.duration &&
-            <span className="text-[10px] font-black uppercase tracking-widest bg-white/10 px-3 py-1.5 rounded-lg">
-                                {m.duration}
-                            </span>
-            }
-                        {m.difficulty &&
-            <span className="text-[10px] font-black uppercase tracking-widest bg-white/10 px-3 py-1.5 rounded-lg">
-                                {m.difficulty}
-                            </span>
-            }
-                        {m.chakra &&
-            <span className="text-[10px] font-black uppercase tracking-widest bg-white/10 px-3 py-1.5 rounded-lg">
-                                {m.chakra}{t("_slug_.chakra")}
-            </span>
-            }
-                    </div>
+    <div className="min-h-screen bg-[#fafaf8] selection:bg-[#b8962e]/20">
+
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-br from-[#fdf8ed] via-[#fdfaf3] to-[#fdf3e3] border-b border-[#e8dbb8]/60 overflow-hidden">
+        {/* SVG dot grid */}
+        <svg className="absolute inset-0 w-full h-full opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="hero-dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+              <circle cx="20" cy="20" r="1" fill="#b8962e" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hero-dots)" />
+        </svg>
+
+        {/* Mandala left */}
+        <div className="absolute -left-16 top-1/2 -translate-y-1/2 w-[300px] h-[300px] opacity-[0.08] pointer-events-none">
+          <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {[140,105,70,40].map((r,i) => <circle key={i} cx="150" cy="150" r={r} stroke="#b8962e" strokeWidth="1"/>)}
+            {[0,45,90,135,180,225,270,315].map((a,i) => (
+              <line key={i} x1="150" y1="150"
+                x2={150+145*Math.cos(a*Math.PI/180)} y2={150+145*Math.sin(a*Math.PI/180)}
+                stroke="#b8962e" strokeWidth="0.5"/>
+            ))}
+          </svg>
+        </div>
+
+        {/* Glowing orbs */}
+        <div className="absolute top-0 left-[20%] w-48 h-48 bg-[#b8962e]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-[35%] w-32 h-32 bg-[#7A1F01]/8 rounded-full blur-2xl pointer-events-none" />
+
+        {/* Floating symbols */}
+        <div className="absolute top-8 left-[5%] text-[#b8962e]/15 text-5xl select-none pointer-events-none">☯</div>
+        <div className="absolute bottom-6 left-[32%] text-[#b8962e]/10 text-3xl select-none pointer-events-none">✦</div>
+        <div className="absolute top-12 right-[42%] text-[#b8962e]/10 text-2xl select-none pointer-events-none">❋</div>
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-10 pb-0">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-end">
+            {/* Left text */}
+            <div className="pb-12">
+              <Link href="/healing" className="inline-flex items-center gap-2 text-[#3a1216] hover:text-[#b8962e] transition-colors text-sm font-medium mb-7 group">
+                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                Back to Healing Hub
+              </Link>
+
+              <div className="flex items-center gap-2.5 mb-4">
+                <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider border"
+                  style={{ borderColor: `${accentColor}50`, color: accentColor, backgroundColor: `${accentColor}12` }}>
+                  <TypeIcon className="w-3 h-3" />
+                  {typeLabel}
                 </div>
+                {m.sanskritName && (
+                  <span className="text-[#3a1216] text-[11px] font-medium italic">· {m.sanskritName}</span>
+                )}
+              </div>
+
+              <h1 className="text-3xl md:text-4xl font-bold text-[#3a1216] leading-tight mb-4 max-w-2xl">
+                {item.title}
+              </h1>
+
+              {item.shortDescription && (
+                <p className="text-[#3a1216] text-base leading-relaxed max-w-xl mb-6">
+                  {item.shortDescription}
+                </p>
+              )}
+
+              <div className="flex flex-wrap gap-2">
+                {m.duration && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-[11px] font-semibold text-gray-600 uppercase tracking-wider shadow-sm">
+                    <Clock className="w-3 h-3" /> {m.duration}
+                  </span>
+                )}
+                {m.difficulty && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-[11px] font-semibold text-gray-600 uppercase tracking-wider shadow-sm">
+                    <Zap className="w-3 h-3" /> {m.difficulty}
+                  </span>
+                )}
+                {m.chakra && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-[11px] font-semibold text-gray-600 uppercase tracking-wider shadow-sm">
+                    <Circle className="w-3 h-3" /> {m.chakra} Chakra
+                  </span>
+                )}
+                {m.focus && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-[11px] font-semibold text-gray-600 uppercase tracking-wider shadow-sm">
+                    Focus: {m.focus}
+                  </span>
+                )}
+              </div>
             </div>
 
-            {/* Main Content */}
-            <div className="max-w-3xl mx-auto px-4 md:px-6 py-12 overflow-x-hidden">
-                {/* Breadcrumb */}
-                <Link
-          href="/healing"
-          className="inline-flex items-center gap-2 text-[11px] font-black uppercase text-[#3a1216] tracking-widest hover:text-[#b8962e] transition-colors mb-8">
-          
-                    <ArrowLeft className="w-3.5 h-3.5" />{t("_slug_.back_to_healing_hub")}
-        </Link>
-
-                {/* Title and Featured Image */}
-                <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-10 border-b border-[#e8dbb8]/30 pb-8">
-          
-                    <div className="flex flex-col md:flex-row gap-6 items-start">
-                        {item.featuredImage &&
-            <div className="w-full md:w-[180px] aspect-[4/3] rounded-xl overflow-hidden border border-[#e8dbb8]/40 shadow-sm flex-shrink-0">
-                                <img src={item.featuredImage} alt={item.title} className="w-full h-full object-cover" />
-                            </div>
-            }
-                        <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 text-[#b8962e] text-[10px] font-black uppercase tracking-[0.2em] mb-4">
-                                <Sparkles className="w-3 h-3" />
-                                <span>{typeLabel} {m.sanskritName ? `• ${m.sanskritName}` : ''}</span>
-                            </div>
-                            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 serif leading-[1.2] mb-5 break-words">
-                                {item.title}
-                            </h1>
-                            {item.shortDescription &&
-              <p className="text-[17px] text-gray-850 serif leading-relaxed opacity-80">{item.shortDescription}</p>
-              }
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* Metadata Pills */}
-                {(m.benefits?.length > 0 || m.element || m.color) &&
-        <div className="flex flex-wrap gap-2 mb-10">
-                        {m.element &&
-          <span className="text-[10px] font-bold uppercase tracking-widest text-[#b8962e] bg-[#b8962e]/5 px-4 py-2 rounded-xl border border-[#b8962e]/10">
-                                {m.element}{t("_slug_.element")}
-          </span>
-          }
-                        {m.color && !m.color.startsWith('bg-') &&
-          <span className="text-[10px] font-bold uppercase tracking-widest text-[#b8962e] bg-[#b8962e]/5 px-4 py-2 rounded-xl border border-[#b8962e]/10">
-                                {m.color}
-                            </span>
-          }
-                        {m.focus &&
-          <span className="text-[10px] font-bold uppercase tracking-widest text-[#b8962e] bg-[#b8962e]/5 px-4 py-2 rounded-xl border border-[#b8962e]/10">
-{t("_slug_.focus")}{m.focus}
-                            </span>
-          }
-                    </div>
-        }
-
-                {/* Rich HTML Content */}
-                <motion.article
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="healing-content prose prose-sm md:prose-base lg:prose-lg max-w-none serif text-gray-850 leading-relaxed overflow-hidden break-words"
-          dangerouslySetInnerHTML={{ __html: item.content }} />
-        
-
-                {/* Benefits Section */}
-                {m.benefits && m.benefits.length > 0 &&
-        <div className="mt-12 p-8 rounded-2xl bg-[#fdf6e3] border border-[#e8dbb8]/50">
-                        <h3 className="text-lg font-bold text-gray-900 serif mb-6 flex items-center gap-2">
-                            <Sparkles className="w-4 h-4 text-[#b8962e]" />
-{t("_slug_.key_benefits")}
-          </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            {m.benefits.map((benefit: string, idx: number) =>
-            <div key={idx} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-[#e8dbb8]/30">
-                                    <div className="w-2 h-2 rounded-full bg-[#b8962e]" />
-                                    <span className="text-sm font-medium text-gray-850 serif">{benefit}</span>
-                                </div>
+            {/* Right: Featured Image — fully visible */}
+            {item.featuredImage && (
+              <div className="hidden md:block w-[220px] shrink-0">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl border border-[#e8dbb8]/60 h-[220px]">
+                  <img
+                    src={item.featuredImage}
+                    alt={item.title}
+                    className="w-full h-full object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent" />
+                </div>
+              </div>
             )}
-                        </div>
-                    </div>
-        }
+          </div>
+        </div>
+      </div>
 
-                {/* Navigation Footer */}
-                <div className="mt-16 pt-8 border-t border-[#e8dbb8]/50">
-                    <div className="flex items-center justify-center">
-                        <Link
-              href="/healing"
-              className="group flex items-center gap-3 bg-gradient-to-r from-[#b8962e] to-[#967a26] rounded-2xl px-8 py-4 text-white hover:shadow-lg transition-all">
-              
-                            <BookOpen className="w-5 h-5" />
-                            <div>
-                                <span className="text-[10px] font-black uppercase tracking-widest block opacity-80">{t("_slug_.browse_all_guides")}</span>
-                                <span className="text-sm font-bold serif">{t("_slug_.return_to_healing_hub")}</span>
-                            </div>
-                        </Link>
+      {/* Body Content */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10 items-start">
+
+          {/* Main Article */}
+          <motion.article
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="healing-content"
+            dangerouslySetInnerHTML={{ __html: item.content }}
+          />
+
+          {/* Sidebar */}
+          <aside className="lg:sticky lg:top-24 space-y-5">
+
+            {/* Benefits */}
+            {m.benefits && m.benefits.length > 0 && (
+              <div className="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
+                <h3 className="text-sm font-bold text-[#3a1216] uppercase tracking-wider mb-4 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-[#b8962e]" />
+                  Key Benefits
+                </h3>
+                <ul className="space-y-2.5">
+                  {m.benefits.map((benefit: string, idx: number) => (
+                    <li key={idx} className="flex items-start gap-2.5 text-sm text-[#3a1216]">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#b8962e] mt-1.5 shrink-0" />
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Extra metadata */}
+            {(m.element || m.color) && (
+              <div className="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
+                <h3 className="text-sm font-bold text-[#3a1216] uppercase tracking-wider mb-4">Details</h3>
+                <div className="space-y-2">
+                  {m.element && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-[#3a1216] font-medium">Element</span>
+                      <span className="font-semibold text-[#3a1216]">{m.element}</span>
                     </div>
+                  )}
+                  {m.color && !m.color.startsWith('bg-') && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-[#3a1216] font-medium">Color</span>
+                      <span className="font-semibold text-[#3a1216]">{m.color}</span>
+                    </div>
+                  )}
                 </div>
-            </div>
+              </div>
+            )}
 
-            {/* Style for rich HTML content - matches learn astrology */}
-            <style jsx global>{`
-                .healing-content { word-break: break-word; overflow-wrap: break-word; }
-                .healing-content h1 { font-size: 1.6rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #1a1a1a; line-height: 1.2; }
-                .healing-content h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; color: #1a1a1a; border-bottom: 1px solid #e8dbb8; padding-bottom: 0.75rem; line-height: 1.3; }
-                .healing-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #333; line-height: 1.4; }
-                @media (min-width: 768px) {
-                    .healing-content h1 { font-size: 2rem; }
-                    .healing-content h2 { font-size: 1.6rem; }
-                    .healing-content h3 { font-size: 1.3rem; }
-                }
-                .healing-content p { margin-bottom: 1.5rem; line-height: 1.85; font-size: 17px; color: #374151; }
-                .healing-content ul, .healing-content ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
-                .healing-content li { margin-bottom: 0.75rem; line-height: 1.75; font-size: 17px; color: #374151; }
-                .healing-content table { width: 100%; border-collapse: collapse; margin: 2rem 0; border-radius: 12px; border: 1px solid #e8dbb8; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; box-sizing: border-box; }
-                .healing-content th { background-color: #f5e6c8; padding: 14px 18px; text-align: left; font-weight: 700; font-size: 14px; color: #1a1a1a; border: 1px solid #e8dbb8; white-space: nowrap; }
-                .healing-content td { padding: 12px 18px; border: 1px solid #e8dbb8; font-size: 14px; color: #4b5563; }
-                .healing-content tr:nth-child(even) { background-color: #fdfaf0; }
-                .healing-content tr:hover { background-color: #fdf6e3; }
-                .healing-content blockquote { border-left: 4px solid #b8962e; padding: 1.25rem 1.75rem; margin: 2rem 0; background: #fdf6e3; border-radius: 0 12px 12px 0; font-style: normal; color: #4b5563; }
-                .healing-content a { color: #b8962e; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
-                .healing-content a:hover { color: #967a26; }
-                .healing-content strong { font-weight: 700; color: #111827; }
-                .healing-content img { max-width: 100% !important; height: auto !important; border-radius: 16px; margin: 2rem 0; border: 1px solid #e8dbb8; box-sizing: border-box; }
-                .healing-content iframe { max-width: 100%; border-radius: 16px; margin: 2rem 0; display: block; box-sizing: border-box; }
-            `}</style>
-        </div>);
+            {/* Back CTA */}
+            <Link href="/healing" className="flex items-center gap-3 bg-[#0f0f0f] hover:bg-[#1a1a1a] transition-colors rounded-2xl px-5 py-4 text-white group">
+              <BookOpen className="w-5 h-5 text-[#b8962e] shrink-0" />
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Browse All</p>
+                <p className="text-sm font-semibold">Return to Healing Hub</p>
+              </div>
+              <ArrowLeft className="w-4 h-4 ml-auto text-gray-500 group-hover:-translate-x-1 transition-transform" />
+            </Link>
+          </aside>
+        </div>
+      </div>
 
+      <style jsx global>{`
+        .healing-content { word-break: break-word; overflow-wrap: break-word; font-size: 17px; line-height: 1.85; color: #3a1216; }
+        .healing-content h1 { font-size: 1.75rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; color: #3a1216; line-height: 1.2; }
+        .healing-content h2 { font-size: 1.4rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; color: #3a1216; border-bottom: 2px solid #e8dbb8; padding-bottom: 0.6rem; line-height: 1.3; }
+        .healing-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #3a1216; line-height: 1.4; }
+        .healing-content p { margin-bottom: 1.5rem; }
+        .healing-content ul, .healing-content ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+        .healing-content li { margin-bottom: 0.6rem; }
+        .healing-content blockquote { border-left: 3px solid #b8962e; padding: 1rem 1.5rem; margin: 2rem 0; background: #fdf6e3; border-radius: 0 12px 12px 0; color: #3a1216; font-style: italic; }
+        .healing-content a { color: #b8962e; font-weight: 600; text-decoration: none; border-bottom: 1px solid #b8962e40; }
+        .healing-content a:hover { color: #967a26; border-color: #967a26; }
+        .healing-content strong { font-weight: 700; color: #3a1216; }
+        .healing-content table { width: 100%; border-collapse: collapse; margin: 2rem 0; border-radius: 12px; border: 1px solid #e8dbb8; display: block; overflow-x: auto; }
+        .healing-content th { background: #fdf6e3; padding: 12px 16px; font-weight: 700; font-size: 13px; color: #3a1216; border: 1px solid #e8dbb8; text-align: left; }
+        .healing-content td { padding: 11px 16px; border: 1px solid #e8dbb8; font-size: 14px; color: #3a1216; }
+        .healing-content tr:nth-child(even) td { background: #fdf9f0; }
+        .healing-content img { max-width: 100% !important; height: auto !important; border-radius: 12px; margin: 2rem 0; border: 1px solid #e8dbb8; }
+      `}</style>
+    </div>
+  );
 }

@@ -14,67 +14,7 @@ const LANGUAGES = [
 ];
 
 const getNavIcon = (title: string) => {
-  const t = title.toLowerCase();
-  
-  if(t.includes('chat') && t.includes('ai')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#cffafe" stroke="#06b6d4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>;
-  if(t.includes('talk') && t.includes('ai')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#f3e8ff" stroke="#a855f7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>;
-  if(t.includes('chat')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#dcfce7" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>;
-  if(t.includes('talk') || t.includes('call')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>;
-  
-  if(t.includes('celebrity')) return '👑';
-  if(t.includes('daily') || t.includes('today')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#fef08a" stroke="#eab308" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>;
-  if(t.includes('tomorrow')) return '🔭';
-  if(t.includes('weekly')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#e0e7ff" stroke="#6366f1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>;
-  if(t.includes('monthly')) return '🌕';
-  if(t.includes('yearly')) return '🪐';
-  if(t.includes('blog') || t.includes('insight')) return '📰';
-  if(t.includes('faq')) return '💬';
-  if(t.includes('matrimony')) return '💞';
-  // Specific Pujas and Reports
-  if(t.includes('rudrabhishek') || t.includes('shiv') || t.includes('mahamrityunjay')) return '🕉️';
-  if(t.includes('mangal')) return '🔴';
-  if(t.includes('hanuman')) return '🚩';
-  if(t.includes('job') || t.includes('career') || t.includes('business')) return '💼';
-  if(t.includes('money') || t.includes('dhan')) return '💰';
-  if(t.includes('ganesh') || t.includes('ganapati')) return '🐘';
-  if(t.includes('vishnu') || t.includes('satyanarayan')) return '🐚';
-  if(t.includes('shani')) return '🪐';
-  if(t.includes('rahu') || t.includes('ketu')) return '🌑';
-  if(t.includes('attract your love')) return '🧲';
-  if(t.includes('commitment')) return '💍';
-  if(t.includes('love') || t.includes('marriage') || t.includes('spell')) return '💖';
-
-  // Fallbacks
-  if(t.includes('heal')) return '🌿';
-  if(t.includes('learn') || t.includes('course')) return '📚';
-  if(t.includes('puja') || t.includes('pooja')) return '🪔';
-  
-  if(t.includes('kundali matching') || t.includes('kundli matching')) return '💑';
-  if(t.includes('smart kundali') || t.includes('smart kundli')) return '🔮';
-  if(t.includes('kundli') || t.includes('kundali')) return '🕉️';
-  if(t.includes('flame')) return '❤️‍🔥';
-  if(t.includes('love') || t.includes('match') || t.includes('compatibility')) return '💖';
-  if(t.includes('numerology') || t.includes('destiny')) return '🔢';
-  if(t.includes('nakshatra')) return '🌟';
-  if(t.includes('sade sati')) return '🪐';
-  if(t.includes('rudraksha')) return '📿';
-  if(t.includes('gemstone')) return '💎';
-  if(t.includes('muhurat')) return '🔔';
-  if(t.includes('date')) return '📆';
-  if(t.includes('color')) return '🎨';
-  if(t.includes('lal kitab')) return '📕';
-  if(t.includes('baby')) return '👶';
-  if(t.includes('moon')) return '🌙';
-  if(t.includes('rashi')) return '🧿';
-  if(t.includes('chinese')) return '🐉';
-  if(t.includes('festival')) return '🎉';
-  if(t.includes('panchang')) return '📜';
-  if(t.includes('rahu')) return '🌑';
-  if(t.includes('atlas') || t.includes('location')) return '🗺️';
-  if(t.includes('horoscope') || t.includes('report')) return '📜';
-  if(t.includes('kaal sarp')) return '🐍';
-  if(t.includes('occult')) return '👁️';
-  return '⭐';
+  return null;
 };
 
 const getNavLineColor = (title: string) => {
@@ -110,12 +50,28 @@ const getNavLineColor = (title: string) => {
 };
 
 const renderIcon = (iconVal: any, title: string) => {
-  // If iconVal is explicitly provided and not empty, use it. Otherwise fallback.
-  const finalIcon = (iconVal !== undefined && iconVal !== null && iconVal !== '') ? iconVal : getNavIcon(title);
-  if (typeof finalIcon === 'string' && finalIcon.trim().startsWith('<svg')) {
-    return <span dangerouslySetInnerHTML={{ __html: finalIcon }} className="inline-flex items-center justify-center" />;
+  // 1. Check if Admin has provided a custom SVG icon
+  if (iconVal && typeof iconVal === 'string' && iconVal.trim() !== '') {
+    if (iconVal.trim().startsWith('<svg')) {
+      return <span dangerouslySetInnerHTML={{ __html: iconVal }} className="inline-flex items-center justify-center" />;
+    }
+    // Emojis/text from admin are intentionally ignored to maintain the premium look.
   }
-  return finalIcon;
+
+  // 2. Fallbacks if Admin icon is empty
+  const t = title.toLowerCase();
+  
+  if(t.includes('chat') && t.includes('ai')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#cffafe" stroke="#06b6d4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>;
+  if(t.includes('talk') && t.includes('ai')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#f3e8ff" stroke="#a855f7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>;
+  if(t.includes('chat')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#dcfce7" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>;
+  if(t.includes('talk') || t.includes('call')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>;
+
+  // Sleek, minimal spark/star icon for everything else
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-[#d97706]/70 group-hover/calc:text-[#ee6c1e] transition-colors duration-300">
+      <path d="M12 2l2.4 7.6 7.6 2.4-7.6 2.4L12 22l-2.4-7.6-7.6-2.4 7.6-2.4L12 2z"/>
+    </svg>
+  );
 };
 
 export default function Header() {
@@ -144,7 +100,7 @@ export default function Header() {
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
         const [pujasRes, menusRes] = await Promise.all([
-          axios.get(`${apiUrl}/pujas?status=active&limit=12`).catch(() => ({ data: { data: [] } })),
+          axios.get(`${apiUrl}/pujas?status=active&limit=30`).catch(() => ({ data: { data: [] } })),
           axios.get(`${apiUrl}/menus`).catch(() => ({ data: [] }))
         ]);
         const pujasData = pujasRes.data.data || [];
@@ -204,8 +160,8 @@ export default function Header() {
               </svg>
               Talk to India&apos;s Verified Astrologers
             </span>
-            <span className="hidden sm:inline">68,00,000+ Happy &amp; Secure</span>
-            <span className="hidden md:inline">100% Safe &amp; Support</span>
+            <span className="hidden sm:inline">68,000+ Happy Customers</span>
+            <span className="hidden md:inline">100% Secure &amp; Confidential</span>
           </div>
         </div>
 
@@ -224,10 +180,11 @@ export default function Header() {
           {/* Desktop Nav */}
           <nav className="hidden xl:flex gap-2 xl:gap-[12px] 2xl:gap-[20px] items-center text-[12px] 2xl:text-[14px] font-medium text-[#3a1216] whitespace-nowrap flex-1 justify-center shrink">
             {topLevelMenus.map(topMenu => {
-  const mySubMenus = subMenus.filter(m => m.category === topMenu.category);
+  const safeTopCategory = (topMenu.category || '').trim();
+  const mySubMenus = subMenus.filter(m => (m.category || '').trim() === safeTopCategory);
   
   // 1. Direct Links (No Submenus & Not Special)
-  if (mySubMenus.length === 0 && topMenu.category !== 'pujas' && topMenu.category !== 'shop') {
+  if (mySubMenus.length === 0 && safeTopCategory !== 'pujas' && safeTopCategory !== 'shop') {
     return (
       <Link key={topMenu._id} href={topMenu.url || '/'} className={topMenu.category === 'consult' ? 'bg-[#8a1c2a] text-white px-3 py-[7px] rounded-md hover:bg-[#721522] transition-colors font-semibold' : 'hover:text-[#ee6c1e] transition-colors py-4'}>
         {topMenu.title}
@@ -236,7 +193,7 @@ export default function Header() {
   }
 
   // 2. Special Case: Pujas Dropdown
-  if (topMenu.category === 'pujas') {
+  if (safeTopCategory === 'pujas') {
     return (
       <div key={topMenu._id} className="relative group cursor-pointer">
         <Link href={topMenu.url || '/book-a-puja'} className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
@@ -289,7 +246,7 @@ export default function Header() {
   }
 
   // 3. Special Case: Shop
-  if (topMenu.category === 'shop') {
+  if (safeTopCategory === 'shop') {
     return (
       <a key={topMenu._id} href={topMenu.url || 'https://vaidiktalk.store/'} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-[#ee6c1e] text-white px-3.5 py-2 rounded-md font-bold hover:bg-[#d65f17] transition-colors shadow-sm ml-1">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
@@ -337,16 +294,16 @@ export default function Header() {
   const isMultiColumn = uniqueGroups.length > 1 || mySubMenus.length > 7;
 
   return (
-    <div key={topMenu._id} className={`relative group cursor-pointer ${topMenu.category === 'consult' ? 'flex items-center py-4' : ''}`}>
-      <Link href={topMenu.url || '#'} className={topMenu.category === 'consult' ? "bg-gradient-to-r from-[#8a1c2a] to-[#721522] text-white px-4 py-[8px] rounded-lg hover:shadow-lg transition-all font-semibold flex items-center gap-1.5 border border-[#8a1c2a]" : "hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4"}>
+    <div key={topMenu._id} className={`relative group cursor-pointer ${safeTopCategory === 'consult' ? 'flex items-center py-4' : ''}`}>
+      <Link href={topMenu.url || '#'} className={safeTopCategory === 'consult' ? "bg-gradient-to-r from-[#8a1c2a] to-[#721522] text-white px-4 py-[8px] rounded-lg hover:shadow-lg transition-all font-semibold flex items-center gap-1.5 border border-[#8a1c2a]" : "hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4"}>
         {topMenu.title}
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
       </Link>
       
       <div className={`absolute ${
-        topMenu.category === 'consult' 
+        safeTopCategory === 'consult' 
           ? 'top-[calc(100%-8px)] right-0 min-w-[260px]' 
-          : topMenu.category === 'knowledge'
+          : safeTopCategory === 'knowledge'
             ? `top-full right-[-20px] xl:right-[-50px] ${isMultiColumn ? 'min-w-[650px]' : 'min-w-[250px]'}`
             : isMultiColumn
               ? 'top-full left-[-20px] xl:left-[-50px] min-w-[650px]'

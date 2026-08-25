@@ -91,12 +91,11 @@ function PujaCarousel({ items = [] }: { items?: any[] }) {
                 alt={puja.title}
                 loading={isCenter ? "eager" : "lazy"}
                 fetchPriority={isCenter ? "high" : "auto"}
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
               />
               {/* Brand Logo Top Right */}
-              <div className="absolute top-0 right-0 z-20 bg-white px-4 py-2 rounded-bl-[12px] flex items-center gap-2 shadow-sm border-l border-b border-gray-100">
-                <img src="/vaidiktalklogo.webp" alt="Vaidik Logo" className="h-[20px] object-contain" />
-                <span className="font-extrabold text-[#5c1a1f] text-[12px] uppercase tracking-wide">Vaidik Talk</span>
+              <div className="absolute top-0 right-0 z-20 bg-white px-3 py-2 rounded-bl-[12px] flex items-center shadow-sm border-l border-b border-gray-100">
+                <img src="/Vaidik-talk1.webp" alt="Vaidik Talk" className="h-[22px] object-contain" />
               </div>
 
               {/* Dark gradient for text visibility (only on center card) */}
@@ -420,9 +419,8 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
                 className="relative flex flex-col rounded-2xl overflow-hidden bg-white border border-gray-300 transition-all duration-300 hover:border-gray-500 hover:shadow-lg hover:-translate-y-1 group"
               >
                 {/* Brand Logo Top Right */}
-                <div className="absolute top-0 right-0 z-20 bg-white px-3 py-1.5 rounded-bl-[14px] flex items-center gap-1.5 shadow-sm border-l border-b border-gray-100">
-                  <img src="/vaidiktalklogo.webp" alt="Vaidik Logo" className="h-[18px] object-contain" />
-                  <span className="font-extrabold text-[#5c1a1f] text-[11px] uppercase tracking-wide">Vaidik Talk</span>
+                <div className="absolute top-0 right-0 z-20 bg-white px-3 py-2 rounded-bl-[14px] flex items-center shadow-sm border-l border-b border-gray-100">
+                  <img src="/Vaidik-talk1.webp" alt="Vaidik Talk" className="h-[20px] object-contain" />
                 </div>
                 {/* Popular Badge */}
                 {puja.popular && (
@@ -432,12 +430,12 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
                 )}
 
                 {/* Image with title overlay */}
-                <div className="relative w-full h-[230px] overflow-hidden shrink-0">
+                <div className="relative w-full h-[250px] overflow-hidden shrink-0">
                   <img
                     src={puja.image}
                     alt={puja.title}
                     loading="lazy"
-                    className="w-full h-full object-cover object-right hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
                   />
                   {/* Dark gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />

@@ -27,7 +27,7 @@ export default function NotFound() {
               Astrologically Lost in Space
             </h1>
             <p className="text-[#6E2F37] text-lg md:text-xl mb-10 max-w-lg mx-auto leading-relaxed">
-              It seems the stars haven't aligned for this page. The path you're looking for might have shifted into another dimension.
+              It seems the stars haven't aligned for this page. The page you are looking for does not exist.
             </p>
             
             <Link 

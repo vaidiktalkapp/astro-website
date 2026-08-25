@@ -37,7 +37,7 @@ export default function CelebrityListPage() {
   };
 
   const filtered = celebrities.filter((c) => {
-    const matchesCategory = activeCategory === 'All' || c.category === activeCategory;
+    const matchesCategory = activeCategory === 'All' || c.category?.toLowerCase() === activeCategory.toLowerCase();
     const matchesSearch = c.name.toLowerCase().includes(search.toLowerCase());
     return matchesCategory && matchesSearch;
   });
@@ -50,30 +50,25 @@ export default function CelebrityListPage() {
         .celeb-list-wrap .serif { font-family: 'Playfair Display', Georgia, serif; }
       `}</style>
 
-      <div className="relative overflow-hidden bg-gradient-to-br from-[#1a1a1a] via-[#121212] to-[#0a0a0a] py-8 md:py-12 px-4 border-b border-amber-500/10 mb-8">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_rgba(184,150,46,0.1)_0%,_transparent_70%)]" />
-        </div>
+      <div className="relative overflow-hidden bg-gradient-to-r from-[#5c1420] to-[#8a1c2a] pt-4 pb-8 md:pt-5 md:pb-10 px-4 mb-6 shadow-lg border-b-2 border-[#d97706]">
+        <div className="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(circle_at_top_right,_#ffffff_0%,_transparent_60%)]" />
         
-        <div className="max-w-7xl mx-auto relative z-20 mb-8">
+        <div className="max-w-7xl mx-auto relative z-20 mb-4">
             <div className="flex items-center justify-between">
-                <Link href="/" className="text-white/40 hover:text-amber-400 font-bold flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] transition-colors">
-                    <ChevronLeft className="w-4 h-4" />{t("celebrity_horoscopes.back_to_home")}
-            </Link>
-                <div className="hidden md:flex items-center gap-2 text-white/20 text-[10px] font-black uppercase tracking-[0.2em]">
-                    <Clock className="w-4 h-4" />{t("celebrity_horoscopes.celestial_records_v2")}
-            </div>
+                <Link href="/" className="text-white/90 hover:text-white font-black flex items-center gap-2 text-[10px] uppercase tracking-widest transition-colors drop-shadow-sm">
+                    <ChevronLeft className="w-3 h-3" />{t("celebrity_horoscopes.back_to_home")}
+                </Link>
             </div>
         </div>
 
-        <div className="max-w-6xl mx-auto relative z-10 text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[10px] font-black uppercase tracking-[0.2em]">
-            <Star size={12} fill="currentColor" />{t("celebrity_horoscopes.divine_alignments")}
+        <div className="max-w-6xl mx-auto relative z-10 text-center space-y-3">
+          <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[10px] font-black uppercase tracking-widest shadow-sm">
+            <Star size={12} className="text-[#d97706]" fill="currentColor" />{t("celebrity_horoscopes.divine_alignments")}
           </div>
-          <h1 className="text-4xl md:text-6xl font-black text-white serif tracking-tight">
-{t("celebrity_horoscopes.celebrity")}<span className="text-[#b8962e]">{t("celebrity_horoscopes.horoscopes")}</span>
+          <h1 className="text-3xl md:text-5xl font-black text-white serif tracking-tight drop-shadow-md">
+{t("celebrity_horoscopes.celebrity")} <span className="text-[#d97706] drop-shadow-sm">{t("celebrity_horoscopes.horoscopes")}</span>
           </h1>
-          <p className="text-[#3a1216] max-w-2xl mx-auto text-base md:text-lg font-medium">
+          <p className="text-white/95 max-w-2xl mx-auto text-sm md:text-base font-medium drop-shadow-md">
 {t("celebrity_horoscopes.explore_the_cosmic_blueprints")}
           </p>
         </div>
@@ -81,37 +76,35 @@ export default function CelebrityListPage() {
 
       <div className="max-w-7xl mx-auto px-4 mb-20 relative z-20 celeb-list-wrap">
         {/* Search & Filter Bar */}
-        <div className="bg-white rounded-3xl shadow-xl shadow-gray-200/20 border border-[#d6c89a]/30 p-4 md:p-6 mb-12">
-          <div className="flex flex-col md:flex-row gap-6 justify-between items-center">
-            {/* Categories */}
-            <div className="flex gap-2 p-1 bg-gray-50 rounded-xl overflow-x-auto w-full md:w-0 md:flex-1 no-scrollbar" suppressHydrationWarning>
+        <div className="bg-white rounded-2xl shadow-xl shadow-[#d97706]/10 border-2 border-[#f0ddc0] p-3 md:p-4 mb-8">
+          <div className="flex flex-col gap-4">
+            {/* Search */}
+            <div className="relative w-full">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#5c1420]" size={18} />
+              <input
+                type="text"
+                suppressHydrationWarning
+                placeholder="Search celebrity..."
+                className="w-full pl-10 pr-4 py-2.5 bg-[#fdf8f0] border-2 border-[#f0ddc0] rounded-xl outline-none focus:border-[#d97706] focus:ring-4 focus:ring-[#d97706]/10 transition-all text-sm font-medium text-[#412a1e] placeholder-[#412a1e]/50"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)} />
+            </div>
+
+            {/* Categories - Wrapped nicely instead of scrolling */}
+            <div className="flex flex-wrap gap-1.5 md:gap-2" suppressHydrationWarning>
               {CATEGORIES.map((cat) =>
               <button
                 key={cat}
                 suppressHydrationWarning
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2 rounded-lg text-sm font-bold transition-all whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all border-2 ${
                 activeCategory === cat ?
-                'bg-white text-[#b8962e] shadow-sm' :
-                'text-gray-850 hover:text-gray-900'}`
+                'bg-gradient-to-r from-[#5c1420] to-[#8a1c2a] text-white border-transparent shadow-sm' :
+                'bg-white text-[#412a1e] border-[#f0ddc0] hover:border-[#d97706] hover:bg-[#faf6ed]'}`
                 }>
-                
                   {cat}
                 </button>
               )}
-            </div>
-
-            {/* Search */}
-            <div className="relative w-full md:w-80">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3a1216]" size={18} />
-              <input
-                type="text"
-                suppressHydrationWarning
-                placeholder="Search celebrity..."
-                className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-amber-500/20 transition-all text-sm"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)} />
-              
             </div>
           </div>
         </div>
@@ -131,45 +124,53 @@ export default function CelebrityListPage() {
             <p className="text-gray-850">{t("celebrity_horoscopes.try_adjusting_your_filters_or")}</p>
           </div> :
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filtered.map((celebrity) =>
           <Link
             key={celebrity._id}
             href={`/celebrity-horoscopes/${celebrity.slug}`}
-            className="group flex flex-row items-center p-3 bg-white rounded-3xl border border-[#d6c89a]/30 shadow-sm hover:shadow-xl hover:border-amber-300 transition-all duration-500 transform hover:-translate-y-1">
+            className="group flex flex-col overflow-hidden bg-white rounded-3xl border-2 border-[#f0ddc0] shadow-sm hover:shadow-xl hover:border-[#d97706] transition-all duration-300 transform hover:-translate-y-1">
             
-                {/* Horizontal Image Capsule */}
-                <div className="w-24 h-20 md:w-32 md:h-24 flex-shrink-0 overflow-hidden rounded-xl bg-gray-50 relative border border-gray-100/50">
+                {/* Image Header */}
+                <div className="w-full h-48 md:h-56 bg-[#faf6ed] relative overflow-hidden border-b-2 border-[#f0ddc0]">
                     {celebrity.image ?
               <img
                 src={celebrity.image}
                 alt={celebrity.name}
-                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" /> :
-
-
-              <div className="w-full h-full flex items-center justify-center text-[#3a1216]">
-                        <Users size={24} />
+                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110" /> :
+              <div className="w-full h-full flex items-center justify-center text-[#5c1420]/20 group-hover:text-[#5c1420]/40 transition-colors">
+                        <Users size={64} />
                     </div>
               }
+                  {/* Category Pill Over Image */}
+                  <div className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full border border-white/50 text-[10px] font-black text-[#8a1c2a] uppercase tracking-widest shadow-sm">
+                    {celebrity.category}
+                  </div>
                 </div>
 
-                {/* Minimal Content */}
-                <div className="ml-4 flex-1 min-w-0 pr-2">
-                  <h3 className="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition-colors mb-1 line-clamp-1">
+                {/* Content Details */}
+                <div className="p-5 flex-1 flex flex-col">
+                  <h3 className="text-lg font-bold text-[#412a1e] group-hover:text-[#d97706] transition-colors mb-2 line-clamp-1">
                     {celebrity.name}
                   </h3>
                   {celebrity.summary &&
-              <p className="text-[10px] md:text-[11px] text-[#3a1216] line-clamp-1 mb-2">
+              <p className="text-sm text-[#412a1e]/70 line-clamp-2 mb-4 flex-1">
                        {celebrity.summary}
                     </p>
               }
                   
-                  <div className="text-[11px] md:text-xs text-gray-850 space-y-0.5">
-                    <p className="truncate">
-                      {celebrity.birthDate ? new Date(celebrity.birthDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : 'Unknown Date'}
-                      {celebrity.birthTime ? ` at ${celebrity.birthTime}` : ''}
-                    </p>
-                    <p className="truncate text-[#3a1216]">{celebrity.birthPlace || 'Unknown Location'}</p>
+                  <div className="pt-4 border-t border-[#f0ddc0]/60 space-y-2 mt-auto">
+                    <div className="flex items-center gap-2 text-xs font-bold text-[#412a1e]/80">
+                      <Calendar size={14} className="text-[#d97706]" />
+                      <span className="truncate">
+                        {celebrity.birthDate ? new Date(celebrity.birthDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : 'Unknown Date'}
+                        {celebrity.birthTime ? ` • ${celebrity.birthTime}` : ''}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs font-bold text-[#412a1e]/80">
+                      <MapPin size={14} className="text-[#d97706]" />
+                      <span className="truncate">{celebrity.birthPlace || 'Unknown Location'}</span>
+                    </div>
                   </div>
                 </div>
               </Link>
@@ -179,14 +180,13 @@ export default function CelebrityListPage() {
       </div>
 
       {/* Why Listen Section */}
-      <div className="bg-[#1a1a1a] py-12">
-        <div className="max-w-4xl mx-auto px-4 text-center space-y-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-white">{t("celebrity_horoscopes.the_stars_of_the_famous")}</h2>
-          <p className="text-[#3a1216] leading-relaxed text-sm md:text-base">
+      <div className="bg-gradient-to-r from-[#5c1420] to-[#8a1c2a] py-16 relative overflow-hidden shadow-inner border-t-2 border-[#d97706]">
+        <div className="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(circle_at_center,_#ffffff_0%,_transparent_70%)]" />
+        
+        <div className="max-w-4xl mx-auto px-4 text-center space-y-6 relative z-10">
+          <h2 className="text-3xl md:text-4xl font-black text-white serif drop-shadow-md">{t("celebrity_horoscopes.the_stars_of_the_famous")}</h2>
+          <p className="text-white font-medium leading-relaxed text-base md:text-lg drop-shadow-md">
 {t("celebrity_horoscopes.astrology_isn_t_just_for_predi")}
-
-
-
           </p>
         </div>
       </div>

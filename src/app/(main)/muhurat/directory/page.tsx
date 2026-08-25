@@ -160,17 +160,17 @@ function MonthTable({ monthIdx, category, location }: {monthIdx: number;category
                 </div> :
       results ?
       results.auspicious_dates?.length > 0 ?
-      <div className="overflow-x-auto rounded-2xl border border-[#e8dbb8]/60 bg-white/80 shadow-sm">
+      <div className="overflow-x-auto rounded-2xl border-2 border-[#f0ddc0] bg-white shadow-md">
                         <table className="w-full text-left border-collapse">
                             <thead>
-                                <tr className="bg-[#fdf6e3]/80 border-b border-[#e8dbb8]/60">
-                                    <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">{t("directory.date_day")}</th>
-                                    <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">{t("directory.nakshatra")}</th>
-                                    <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">{t("directory.tithi")}</th>
-                                    <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">{t("directory.muhurat_timing")}</th>
+                                <tr className="bg-gradient-to-r from-[#5c1420] to-[#8a1c2a] text-white border-b-2 border-[#d97706]">
+                                    <th className="p-4 text-[13px] font-black uppercase tracking-widest text-white">{t("directory.date_day")}</th>
+                                    <th className="p-4 text-[13px] font-black uppercase tracking-widest text-white">{t("directory.nakshatra")}</th>
+                                    <th className="p-4 text-[13px] font-black uppercase tracking-widest text-white">{t("directory.tithi")}</th>
+                                    <th className="p-4 text-[13px] font-black uppercase tracking-widest text-white">{t("directory.muhurat_timing")}</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-[#e8dbb8]/30">
+                            <tbody className="divide-y divide-[#f0ddc0]/60">
                                 {results.auspicious_dates.map((date: any, i: number) => {
               const d = new Date(date.date);
               const dateStr = d.toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' });
@@ -182,20 +182,20 @@ function MonthTable({ monthIdx, category, location }: {monthIdx: number;category
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: i * 0.05 }}
-                    className="hover:bg-[#fdf6e3]/30 transition-colors cursor-pointer"
+                    className={`transition-colors cursor-pointer hover:bg-[#fdf8f0] ${i % 2 === 0 ? 'bg-white' : 'bg-[#faf6ed]'}`}
                     onClick={() => setExpandedRow(expandedRow === i ? null : i)}>
                     
                                                 <td className="p-4 whitespace-nowrap">
-                                                    <p className="font-bold text-[#3a1216] text-[15px]">{dateStr}</p>
-                                                    <p className="text-[11px] text-[#b8962e] font-semibold font-astrology">({dayStr})</p>
+                                                    <p className="font-bold text-[#412a1e] text-[15px]">{dateStr}</p>
+                                                    <p className="text-[12px] text-[#d97706] font-semibold font-astrology">({dayStr})</p>
                                                 </td>
-                                                <td className="p-4 text-[14px] text-[#3a1216] font-medium">{date.nakshatra}</td>
-                                                <td className="p-4 text-[14px] text-[#3a1216] font-medium">{date.tithi}</td>
+                                                <td className="p-4 text-[15px] text-[#412a1e] font-medium">{date.nakshatra}</td>
+                                                <td className="p-4 text-[15px] text-[#412a1e] font-medium">{date.tithi}</td>
                                                 <td className="p-4">
                                                     <div className="flex flex-col gap-1.5">
                                                         <div className="flex items-center gap-2">
-                                                            <Clock className="w-3.5 h-3.5 text-[#b8962e]" />
-                                                            <span className="text-[13px] font-bold text-[#3a1216]">
+                                                            <Clock className="w-4 h-4 text-[#d97706]" />
+                                                            <span className="text-[14px] font-bold text-[#412a1e]">
                                                                 {date.muhurat_start ? `From ${date.muhurat_start} to ${date.muhurat_end}` : `Sunrise to Sunset`}
                                                             </span>
                                                         </div>
@@ -359,7 +359,7 @@ export default function MuhuratDirectoryPage() {
                   
                                             <div className="w-1.5 h-1.5 rounded-full bg-rose-600 group-hover:scale-125 transition-transform" />
                                             <span className="border-b border-transparent group-hover:border-rose-600 transition-all">
-                                                {cat.label}{t("directory.muhurat_2026")}
+                                                {cat.label} {t("directory.muhurat_2026")}
                   </span>
                                         </button>
                 )}
@@ -401,25 +401,25 @@ export default function MuhuratDirectoryPage() {
 {t("directory.before_going_ahead_with_shubh")}
                     </p>
                                         </div>
-                                        <div className="max-w-3xl mx-auto overflow-x-auto rounded-3xl border border-[#e8dbb8]/50 bg-white/60 shadow-sm">
+                                        <div className="max-w-3xl mx-auto overflow-x-auto rounded-2xl border-2 border-[#f0ddc0] shadow-md bg-white">
                                             <table className="w-full text-left border-collapse">
                                                 <thead>
-                                                    <tr className="bg-[#fcf8ec] border-b border-[#e8dbb8]/40">
-                                                        <th className="p-5 text-[12px] font-black text-[#3a1216] uppercase tracking-widest px-8">{t("directory.name_of_the_muhurat")}</th>
-                                                        <th className="p-5 text-[12px] font-black text-[#3a1216] uppercase tracking-widest px-8 text-right">{t("directory.nature")}</th>
+                                                    <tr className="bg-gradient-to-r from-[#5c1420] to-[#8a1c2a] text-white border-b-2 border-[#d97706]">
+                                                        <th className="p-4 text-[13px] font-black uppercase tracking-widest px-8 text-white">{t("directory.name_of_the_muhurat")}</th>
+                                                        <th className="p-4 text-[13px] font-black uppercase tracking-widest px-8 text-right text-white">{t("directory.nature")}</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody className="divide-y divide-[#e8dbb8]/20">
+                                                <tbody className="divide-y divide-[#f0ddc0]/60">
                                                     {MUHURAT_TYPES.map((m, i) =>
-                        <tr key={i} className="hover:bg-white/40 transition-colors">
-                                                            <td className="p-5 px-8 text-[15px] font-bold text-[#3a1216] font-astrology">{m.name}</td>
-                                                            <td className="p-5 px-8 text-right">
-                                                                <span className={`inline-flex items-center px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-tighter ${
+                        <tr key={i} className={`transition-colors hover:bg-[#fdf8f0] ${i % 2 === 0 ? 'bg-white' : 'bg-[#faf6ed]'}`}>
+                                                            <td className="p-4 px-8 text-[15px] font-bold text-[#412a1e] font-astrology">{m.name}</td>
+                                                            <td className="p-4 px-8 text-right">
+                                                                <span className={`inline-flex items-center px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wide shadow-sm ${
                             m.nature === 'Extremely Auspicious' ?
-                            'bg-emerald-100/50 text-emerald-800 border border-emerald-200/50' :
+                            'bg-emerald-600 text-white border border-emerald-700' :
                             m.nature.startsWith('Auspicious') ?
-                            'bg-amber-50 text-amber-800 border border-amber-200/50' :
-                            'bg-rose-50 text-rose-700 border border-rose-200/50'}`
+                            'bg-[#d97706] text-white border border-[#b46004]' :
+                            'bg-[#8a1c2a] text-white border border-[#5c1420]'}`
                             }>
                                                                     {m.nature}
                                                                 </span>
@@ -439,31 +439,31 @@ export default function MuhuratDirectoryPage() {
 {t("directory.a_tithi_or_date_as_per_the_ved")}
                     </p>
                                         </div>
-                                        <div className="max-w-4xl mx-auto overflow-x-auto rounded-3xl border border-[#e8dbb8]/50 bg-white/60 shadow-sm">
+                                        <div className="max-w-4xl mx-auto overflow-x-auto rounded-2xl border-2 border-[#f0ddc0] shadow-md bg-white">
                                             <table className="w-full text-left border-collapse">
                                                 <thead>
-                                                    <tr className="bg-[#fcf8ec] border-b border-[#e8dbb8]/40">
-                                                        <th className="p-5 text-[12px] font-black text-[#3a1216] uppercase tracking-widest px-8 w-1/2">{t("directory.dates_as_per_krishna_paksha")}</th>
-                                                        <th className="p-5 text-[12px] font-black text-[#3a1216] uppercase tracking-widest px-8 w-1/2 border-l border-[#e8dbb8]/40">{t("directory.dates_as_per_shukla_paksha")}</th>
+                                                    <tr className="bg-gradient-to-r from-[#5c1420] to-[#8a1c2a] text-white border-b-2 border-[#d97706]">
+                                                        <th className="p-4 text-[13px] font-black uppercase tracking-widest px-8 w-1/2 border-r border-[#d97706]/30 text-white">{t("directory.dates_as_per_krishna_paksha")}</th>
+                                                        <th className="p-4 text-[13px] font-black uppercase tracking-widest px-8 w-1/2 text-white">{t("directory.dates_as_per_shukla_paksha")}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td className="p-8 align-top">
+                                                    <tr className="bg-[#faf6ed]">
+                                                        <td className="p-6 align-top border-r border-[#f0ddc0]/60">
                                                             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
                                                                 {KRISHNA_PAKSHA_TITHIS.map((t, i) =>
-                               <li key={i} className="flex items-center gap-3 text-[14px] font-medium text-[#3a1216] px-3 py-1.5 rounded-lg hover:bg-[#b8962e]/5 transition-colors group cursor-default">
-                                                                        <div className="w-1.5 h-1.5 rounded-full bg-rose-500 flex-shrink-0 group-hover:scale-125 transition-transform" />
+                               <li key={i} className="flex items-center gap-3 text-[14px] font-bold text-[#412a1e] px-3 py-2 rounded-xl bg-white border border-[#f0ddc0] hover:border-[#d97706] hover:shadow-sm transition-all group cursor-default">
+                                                                        <div className="w-2 h-2 rounded-full bg-[#8a1c2a] flex-shrink-0 group-hover:scale-125 transition-transform" />
                                                                         {t}
                                                                     </li>
                                )}
                                                             </ul>
                                                         </td>
-                                                        <td className="p-8 align-top border-l border-[#e8dbb8]/40">
+                                                        <td className="p-6 align-top">
                                                             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
                                                                 {SHUKLA_PAKSHA_TITHIS.map((t, i) =>
-                               <li key={i} className="flex items-center gap-3 text-[14px] font-medium text-[#3a1216] px-3 py-1.5 rounded-lg hover:bg-emerald-500/5 transition-colors group cursor-default">
-                                                                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0 group-hover:scale-125 transition-transform" />
+                               <li key={i} className="flex items-center gap-3 text-[14px] font-bold text-[#412a1e] px-3 py-2 rounded-xl bg-white border border-[#f0ddc0] hover:border-[#d97706] hover:shadow-sm transition-all group cursor-default">
+                                                                        <div className="w-2 h-2 rounded-full bg-emerald-600 flex-shrink-0 group-hover:scale-125 transition-transform" />
                                                                         {t}
                                                                     </li>
                                )}
@@ -500,22 +500,22 @@ export default function MuhuratDirectoryPage() {
                     </p>
                                         </div>
                                         <h4 className="text-lg font-bold text-[#3a1216] mb-4">{t("directory.nakshatras_and_their_ruling_pl")}</h4>
-                                        <div className="max-w-4xl mx-auto overflow-x-auto rounded-3xl border border-[#e8dbb8]/50 bg-white/60 shadow-sm">
+                                        <div className="max-w-4xl mx-auto overflow-x-auto rounded-2xl border-2 border-[#f0ddc0] shadow-md bg-white">
                                             <table className="w-full text-left border-collapse">
                                                 <thead>
-                                                    <tr className="bg-[#fcf8ec] border-b border-[#e8dbb8]/40">
-                                                        <th className="p-5 text-[12px] font-black text-[#3a1216] uppercase tracking-widest px-8">{t("directory.ruling_planet")}</th>
-                                                        <th className="p-5 text-[12px] font-black text-[#3a1216] uppercase tracking-widest px-8">{t("directory.nakshatra_1")}</th>
-                                                        <th className="p-5 text-[12px] font-black text-[#3a1216] uppercase tracking-widest px-8">{t("directory.nakshatra_2")}</th>
-                                                        <th className="p-5 text-[12px] font-black text-[#3a1216] uppercase tracking-widest px-8">{t("directory.nakshatra_3")}</th>
+                                                    <tr className="bg-gradient-to-r from-[#5c1420] to-[#8a1c2a] text-white border-b-2 border-[#d97706]">
+                                                        <th className="p-4 text-[13px] font-black uppercase tracking-widest px-6 border-r border-[#d97706]/30 text-white">{t("directory.ruling_planet")}</th>
+                                                        <th className="p-4 text-[13px] font-black uppercase tracking-widest px-6 text-white">{t("directory.nakshatra_1")}</th>
+                                                        <th className="p-4 text-[13px] font-black uppercase tracking-widest px-6 text-white">{t("directory.nakshatra_2")}</th>
+                                                        <th className="p-4 text-[13px] font-black uppercase tracking-widest px-6 text-white">{t("directory.nakshatra_3")}</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody className="divide-y divide-[#e8dbb8]/20">
+                                                <tbody className="divide-y divide-[#f0ddc0]/60">
                                                     {NAKSHATRA_RULING_PLANETS.map((row, i) =>
-                        <tr key={i} className="hover:bg-white/40 transition-colors">
-                                                            <td className="p-5 px-8 text-[15px] font-bold text-[#b8962e] font-astrology">{row.planet}</td>
+                        <tr key={i} className={`transition-colors hover:bg-[#fdf8f0] ${i % 2 === 0 ? 'bg-white' : 'bg-[#faf6ed]'}`}>
+                                                            <td className="p-4 px-6 text-[15px] font-bold text-[#d97706] font-astrology border-r border-[#f0ddc0]/60">{row.planet}</td>
                                                             {row.nakshatras.map((n, j) =>
-                          <td key={j} className="p-5 px-8 text-[14px] font-medium text-[#3a1216]">{n}</td>
+                          <td key={j} className="p-4 px-6 text-[15px] font-medium text-[#412a1e]">{n}</td>
                           )}
                                                         </tr>
                         )}
@@ -563,15 +563,15 @@ export default function MuhuratDirectoryPage() {
                                     <categoryMeta.icon className={`w-6 h-6 ${categoryMeta.color}`} />
                                 </div>
                                 <div>
-                                    <h1 className="text-4xl font-bold text-[#3a1216] font-astrology">{categoryMeta.label}{t("directory.muhurat_2026")}</h1>
+                                    <h1 className="text-4xl font-bold text-[#3a1216] font-astrology">{categoryMeta.label} {t("directory.muhurat_2026")}</h1>
                                     <p className="text-[#3a1216] text-[15px] font-astrology">{t("directory.general_india_guide_ist_timing")}</p>
                                 </div>
                             </div>
                             
                             <div className="bg-white/40 p-8 rounded-[2rem] border border-[#e8dbb8]/40 shadow-sm prose prose-stone max-w-none">
-                                <h3 className="text-2xl font-bold text-[#3a1216] mb-4 font-astrology">{t("directory.importance_of")}{categoryMeta.label}{t("directory.muhurat")}</h3>
+                                <h3 className="text-2xl font-bold text-[#3a1216] mb-4 font-astrology">{t("directory.importance_of")} {categoryMeta.label} {t("directory.muhurat")}</h3>
                                 <div className="text-[#3a1216] leading-relaxed text-[17px]">
-                                    <p>{t("directory.find_the_most_auspicious_dates")}{categoryMeta.label}{t("directory.in_2026_based_on_expert_vedic")}</p>
+                                    <p>{t("directory.find_the_most_auspicious_dates")} {categoryMeta.label} {t("directory.in_2026_based_on_expert_vedic")}</p>
                                 </div>
                             </div>
                         </div>

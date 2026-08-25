@@ -37,6 +37,11 @@ export default function FaqPage() {
     setExpandedId(expandedId === id ? null : id);
   };
 
+  const formatCategory = (cat: string) => {
+    if (cat === 'All') return cat;
+    return cat.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  };
+
   // Generate JSON-LD schema
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -88,21 +93,31 @@ export default function FaqPage() {
                   {categories.map(cat => (
                     <button
                       key={cat}
-                      onClick={() => setActiveCategory(cat)}
+                      onClick={() => {
+                        setActiveCategory(cat);
+                        setTimeout(() => {
+                          const element = document.getElementById('faq-accordion-list');
+                          if (element) {
+                            // Adjust scroll position to account for fixed header
+                            const y = element.getBoundingClientRect().top + window.scrollY - 180;
+                            window.scrollTo({ top: y, behavior: 'smooth' });
+                          }
+                        }, 100);
+                      }}
                       className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm ${
                         activeCategory === cat 
                           ? 'bg-[#5c1420] text-white' 
                           : 'bg-white text-[#412a1e] border border-[#f0ddc0] hover:border-[#d97706] hover:text-[#d97706]'
                       }`}
                     >
-                      {cat}
+                      {formatCategory(cat)}
                     </button>
                   ))}
                 </div>
               )}
 
               {/* FAQ Accordion */}
-              <div className="space-y-4">
+              <div id="faq-accordion-list" className="space-y-4">
                 {filteredFaqs.map((faq) => (
                   <div 
                     key={faq._id} 

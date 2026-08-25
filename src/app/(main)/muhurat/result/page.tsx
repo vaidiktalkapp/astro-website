@@ -420,20 +420,20 @@ function MuhuratResultContent() {
   const categoryMeta = CATEGORY_META[input?.category || 'marriage'];
   const CatIcon = categoryMeta?.icon || Sparkles;
 
-  if (!mounted) return <div className="min-h-screen py-16 px-4 sm:px-6 relative" style={{ backgroundColor: '#fdf6e3' }} />;
+  if (!mounted) return <div className="min-h-screen pt-8 pb-16 px-4 sm:px-6 relative" style={{ backgroundColor: '#fdf6e3' }} />;
 
   return (
-    <div className="min-h-screen py-16 px-4 sm:px-6 relative" style={{ backgroundColor: '#fdf6e3' }}>
+    <div className="min-h-screen pt-8 pb-16 px-4 sm:px-6 relative" style={{ backgroundColor: '#fdf6e3' }}>
             <style dangerouslySetInnerHTML={{ __html: `
-                @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+                @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap');
                 .mr-wrap * { font-family: 'Source Sans 3', sans-serif; }
-                .mr-wrap h1, .mr-wrap h2, .mr-wrap .serif { font-family: 'Playfair Display', Georgia, serif; }
+                .mr-wrap h1, .mr-wrap h2, .mr-wrap .serif { font-family: 'Outfit', sans-serif; }
                 .anim-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
                 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
             ` }} />
 
-            <div className="max-w-5xl mx-auto mr-wrap">
-                <div className="flex flex-col items-center text-center gap-6 mb-16">
+            <div className="max-w-5xl mx-auto mr-wrap relative">
+                <div className="md:absolute md:top-2 md:-left-8 lg:-left-20 xl:-left-32 flex justify-center md:justify-start mb-6 md:mb-0 z-10 w-full md:w-auto">
                     <button
             onClick={() => router.push('/muhurat')}
             className="inline-flex items-center gap-2 group text-[#b8962e] font-bold text-xs uppercase tracking-widest px-5 py-2.5 rounded-full border border-[#b8962e]/20 bg-[#b8962e]/5 hover:bg-[#b8962e]/10 transition-all active:scale-95">
@@ -441,7 +441,9 @@ function MuhuratResultContent() {
                         <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
 {t("result.modify_search_criteria")}
           </button>
-                    
+                </div>
+                
+                <div className="flex flex-col items-center text-center gap-6 mb-10 md:pt-4">
                     <div className="max-w-3xl">
                         <div className="flex items-center justify-center gap-3 mb-4">
                             <div className="h-px w-8 bg-[#e8dbb8]" />
@@ -455,7 +457,7 @@ function MuhuratResultContent() {
                         {input?.place &&
             <div className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/60 border border-[#e8dbb8]/40 shadow-sm text-gray-850 text-sm font-medium">
                                 <Sun className="w-4 h-4 text-orange-400" />
-                                <span>{t("result.calculated_for_celestial_align")}<strong className="text-gray-900">{input.place}</strong></span>
+                                <span>{t("result.calculated_for_celestial_align")} <strong className="text-gray-900">{input.place}</strong></span>
                             </div>
             }
                     </div>
@@ -497,7 +499,7 @@ function MuhuratResultContent() {
                                     <div className="flex items-center gap-2">
                                         <Calendar className="w-4 h-4 text-[#b8962e]" />
                                         <span className="text-[15px] font-bold text-gray-900">
-                                            {result.summary?.total_scanned || 0}{t("result.days_analyzed")}
+                                            {result.summary?.total_scanned || 0} {t("result.days_analyzed")}
                   </span>
                                     </div>
                                 </div>
@@ -507,7 +509,7 @@ function MuhuratResultContent() {
                                     <div className="flex items-center gap-2">
                                         <Sparkles className="w-4 h-4 text-emerald-500" />
                                         <span className="text-[15px] font-bold text-emerald-600">
-                                            {result.summary?.total_auspicious || 0}{t("result.auspicious_dates")}
+                                            {result.summary?.total_auspicious || 0} {t("result.auspicious_dates")}
                   </span>
                                     </div>
                                 </div>

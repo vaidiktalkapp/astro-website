@@ -156,7 +156,7 @@ export default async function KundaliMatchingPage() {
           <p className="text-[16px] md:text-[20px] text-white/100 mb-4 max-w-2xl mx-auto font-semibold drop-shadow-sm">{settings?.heroSubheading || "Premium Kundali Matching Report by India's Most Trusted Astrologer"}</p>
 
           <Link href="/report/kundali/kundali-matching/checkout" className="inline-block bg-white text-[#b06126] font-bold text-[15px] md:text-[18px] px-5 md:px-10 py-3 md:py-4 rounded-xl shadow-lg hover:scale-105 transition-transform mb-5">
-            Get Your Matching Report @ <span className="line-through text-[#3a1216] mx-1">₹{settings?.price || 1299}</span> ₹{settings?.discountedPrice || 649}
+            {settings?.heroCtaText || "Get Your Matching Report"} @ <span className="line-through text-[#3a1216] mx-1">₹{settings?.price || 1299}</span> ₹{settings?.discountedPrice || 649}
           </Link>
 
           {/* Happy Customers Avatars */}
@@ -362,11 +362,11 @@ export default async function KundaliMatchingPage() {
             <div className="flex items-center gap-3 mb-8">
               <span className="text-[32px] md:text-[40px] font-bold text-[#5c1a1f]">₹{settings?.discountedPrice || 649}</span>
               <span className="text-lg text-[#3a1216] line-through font-medium">₹{settings?.price || 1299}</span>
-              <span className="bg-[#e8ffd6] text-[#2e7d32] text-[11px] font-bold px-2 py-1 rounded border border-[#a5d6a7] uppercase tracking-wide ml-2">SPECIAL</span>
+              <span className="bg-[#e8ffd6] text-[#2e7d32] text-[12px] font-bold px-3 py-1 rounded-full border border-[#a5d6a7] uppercase tracking-wide ml-2 inline-flex items-center gap-1.5 shadow-sm"><span className="w-1.5 h-1.5 rounded-full bg-[#2e7d32] animate-pulse"></span> SPECIAL OFFER</span>
             </div>
 
             <Link href="/report/kundali/kundali-matching/checkout" className="inline-block bg-[#d68636] text-white font-bold text-[16px] px-10 py-4 rounded-lg shadow-lg hover:bg-[#b06126] transition-colors w-full md:w-auto text-center">
-              Get Your Matching Report →
+              {settings?.imageSectionCtaText || "Get Your Kundali Matching Report →"}
             </Link>
           </div>
         </div>
@@ -411,7 +411,7 @@ export default async function KundaliMatchingPage() {
           <div className="md:w-[45%] lg:w-[40%] xl:-ml-6">
             <LazyVideo
               src={settings?.video?.url || "/vaidik video.mp4"}
-              className="w-full rounded-[2rem] shadow-lg object-cover aspect-square md:aspect-[4/4.5]"
+              className="w-full rounded-[2rem] shadow-lg object-cover object-[center_15%] aspect-square md:aspect-[4/4.5]"
             />
           </div>
           <div className="md:w-[55%] lg:w-[60%] md:pl-6 lg:pl-10">
@@ -434,7 +434,7 @@ export default async function KundaliMatchingPage() {
             </div>
 
             <a href="/report/kundali/kundali-matching/checkout" className="inline-block bg-[#d68636] text-white font-bold text-[16px] px-10 py-4 rounded-xl shadow-md hover:bg-[#8c4d1e] transition-colors w-full md:w-auto text-center">
-              Get Your Matching Report →
+              {settings?.videoSectionCtaText || "Get Your Kundali Matching Report →"}
             </a>
           </div>
         </div>
@@ -545,7 +545,7 @@ export default async function KundaliMatchingPage() {
           <h2 className="premium-serif text-center text-[28px] md:text-[36px] font-bold text-[#5c1a1f] mb-4 leading-tight">Ready to Find Your Cosmic Match?</h2>
           <p className="text-center text-[#3a1216] text-[15px] md:text-[16px] mb-10 max-w-[600px] mx-auto">Get your Premium Kundali Matching Report today and understand the spiritual, emotional, and physical alignment with your partner.</p>
           <Link href="/report/kundali/kundali-matching/checkout" className="inline-block bg-[#d68636] text-white font-bold text-[18px] px-12 py-4 rounded-xl shadow-[0_8px_20px_rgba(214,134,54,0.3)] hover:bg-[#b06126] transition-all hover:scale-105">
-            Check Compatibility Now
+            {settings?.bottomCtaText || "Check Compatibility Now"}
           </Link>
         </div>
       </section>
@@ -553,7 +553,7 @@ export default async function KundaliMatchingPage() {
       {/* ============ MOBILE STICKY BOTTOM CTA ============ */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 z-[60] shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
         <Link href="/report/kundali/kundali-matching/checkout" className="flex items-center justify-center bg-[#b06126] text-white font-bold text-[16px] py-3.5 rounded-lg shadow-sm hover:bg-[#8c481c] transition-colors w-full">
-          Get Your Matching Report →
+          {settings?.stickyCtaText || "Get Your Kundali Matching Report →"}
         </Link>
       </div>
 

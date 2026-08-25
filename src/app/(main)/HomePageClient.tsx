@@ -813,10 +813,10 @@ export default function HomePage({
         {/* Banner */}
         <div className="rounded-t-xl overflow-hidden grid grid-cols-1 md:grid-cols-[1fr_1.6fr] bg-[#fdfaf5] border border-[#f0ddc0]/80 border-b-0 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
           <div className="h-[250px] md:h-auto border-r border-[#f0ddc0]/50 flex flex-col bg-white relative">
-            <img loading="lazy" src="/founder.webp" alt="Founder Shri Jitendra Kumar Mishra" className="w-full h-full md:flex-1 object-cover object-top" />
+            <img loading="lazy" src="/founder.webp" alt="Co-Founder Shri Jitendra K Mishra" className="w-full h-full md:flex-1 object-cover object-top" />
             <div className="bg-[#5c1420] text-center py-3 px-4 shrink-0 absolute bottom-0 w-full md:relative">
-              <div className="font-bold text-[15px] md:text-[16px] text-white">Shri Jitendra Kumar Mishra</div>
-              <div className="text-[12px] md:text-[13px] text-[#fbe7d3]">Founder, VaidikTalk</div>
+              <div className="font-bold text-[15px] md:text-[16px] text-white">Shri Jitendra K Mishra</div>
+              <div className="text-[12px] md:text-[13px] text-[#fbe7d3]">Co-Founder, VaidikTalk</div>
             </div>
           </div>
           <div className="p-7 md:p-9 text-[#6E2F37] flex flex-col justify-center">
@@ -829,11 +829,11 @@ export default function HomePage({
 
             <p className="text-[15px] md:text-[14.5px] leading-[1.6] mb-3 text-[#6E2F37]">
               <strong className="text-[#3a1216] block mb-1">From Factory Floors to Faith-Driven Guidance</strong>
-              VaidikTalk was founded by Shri Jitendra Kumar Mishra, an entrepreneur whose journey spans two seemingly different worlds—global manufacturing and spiritual wellness.
+              VaidikTalk was founded by Shri Jitendra K Mishra, an entrepreneur whose journey spans two seemingly different worlds—global manufacturing and spiritual wellness.
             </p>
 
             <p className="text-[15px] md:text-[14.5px] leading-[1.6] mb-6 text-[#6E2F37]">
-              As the Founder of Catalyst Sourcing, Jitendra Kumar Mishra has spent years working with manufacturers, exporters, and international customers across industries. His work took him inside factories, boardrooms, and supply chains, helping businesses build trust, solve problems, and create long-term partnerships across borders.
+              As the Founder of Catalyst Sourcing, Jitendra K Mishra has spent years working with manufacturers, exporters, and international customers across industries. His work took him inside factories, boardrooms, and supply chains, helping businesses build trust, solve problems, and create long-term partnerships across borders.
             </p>
 
             <Link href="/about-us" className="inline-block bg-[#5c1420] text-white text-[13px] font-bold px-7 py-3 rounded-lg w-fit hover:bg-[#721522] transition-colors shadow-sm">

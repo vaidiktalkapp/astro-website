@@ -167,7 +167,7 @@ export default function CelebrityDetailPage({ params }: {params: Promise<{slug: 
           <div className="max-w-6xl mx-auto relative z-10">
             <Link
               href="/celebrity-horoscopes"
-              className="inline-flex items-center gap-2 text-white/40 hover:text-amber-400 transition-colors text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+              className="inline-flex items-center gap-2 text-white/80 hover:text-amber-400 transition-colors text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-6">
               
               <ChevronLeft size={14} />{t("_slug_.back_to_library")}
             </Link>
@@ -203,12 +203,12 @@ export default function CelebrityDetailPage({ params }: {params: Promise<{slug: 
                   {profile.name}
                 </h1>
                 {profile.summary &&
-                <p className="text-[#3a1216] text-sm md:text-base leading-relaxed max-w-2xl">
+                <p className="text-white/90 text-sm md:text-base leading-relaxed max-w-2xl">
                     {profile.summary}
                   </p>
                 }
                 
-                <div className="flex flex-wrap justify-center md:justify-start items-center gap-y-3 gap-x-6 text-white/50 text-xs font-bold uppercase tracking-widest">
+                <div className="flex flex-wrap justify-center md:justify-start items-center gap-y-3 gap-x-6 text-white/80 text-xs font-bold uppercase tracking-widest">
                   <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-lg">
                     <Calendar size={12} className="text-amber-500" /> {profile.birthDate}
                   </div>
@@ -239,16 +239,16 @@ export default function CelebrityDetailPage({ params }: {params: Promise<{slug: 
         </div>
 
         {/* Quick Facts Integrated Bar */}
-        <div className="max-w-6xl mx-auto px-4 -mt-10 relative z-30">
-          <div className="bg-white rounded-2xl md:rounded-full p-2 shadow-xl border border-[#d6c89a]/30 flex flex-col md:flex-row gap-2 overflow-hidden items-stretch">
+        <div className="max-w-6xl mx-auto px-4 -mt-8 relative z-30">
+          <div className="bg-white rounded-2xl md:rounded-full p-1.5 shadow-xl border border-[#d6c89a]/30 flex flex-col md:flex-row gap-1.5 overflow-hidden items-stretch">
              {facts.map((fact, idx) =>
-            <div key={idx} className="flex-1 flex items-center gap-4 bg-gray-50/50 hover:bg-amber-50 rounded-xl md:rounded-full px-6 py-4 transition-colors group">
-                   <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-amber-500 group-hover:scale-110 transition-transform">
-                      <fact.icon size={16} />
+            <div key={idx} className="flex-1 flex items-center gap-3 bg-gray-50/50 hover:bg-amber-50 rounded-xl md:rounded-full px-4 py-3 transition-colors group">
+                   <div className="w-8 h-8 shrink-0 rounded-full bg-white shadow-sm flex items-center justify-center text-amber-500 group-hover:scale-110 transition-transform">
+                      <fact.icon size={14} />
                    </div>
                    <div className="min-w-0">
-                      <p className="text-[10px] font-black text-[#3a1216] uppercase tracking-widest leading-none mb-1">{fact.label}</p>
-                      <p className="text-sm font-bold text-gray-900 truncate">
+                      <p className="text-[9px] font-black text-[#3a1216] uppercase tracking-widest leading-none mb-1">{fact.label}</p>
+                      <p className="text-xs md:text-sm font-bold text-gray-900 truncate">
                         {fact.value || (calculating ? '...' : '--')}
                       </p>
                    </div>
@@ -317,7 +317,7 @@ export default function CelebrityDetailPage({ params }: {params: Promise<{slug: 
             }
             
             {/* Footer Navigation */}
-            <div className="flex justify-center pt-10">
+            <div className="flex justify-center pt-10 pb-24">
               <Link
                 href="/celebrity-horoscopes"
                 className="px-8 py-4 bg-gray-900 text-white rounded-full font-bold uppercase tracking-widest text-xs hover:bg-amber-600 transition-colors shadow-lg">

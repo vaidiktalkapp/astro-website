@@ -8,8 +8,9 @@ import {
   Loader2,
   Activity,
   Compass,
-  Calendar as CalendarIcon } from
-'lucide-react';
+  Calendar as CalendarIcon
+} from
+  'lucide-react';
 import { motion } from 'framer-motion';
 import { GeoapifyContext } from '@geoapify/react-geocoder-autocomplete';
 import dynamic from 'next/dynamic';
@@ -36,7 +37,7 @@ interface LocationState {
 }
 
 export default function RahuKaalPage() {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
   const [isMounted, setIsMounted] = useState(false);
   const [location, setLocation] = useState<LocationState>({
@@ -65,7 +66,7 @@ export default function RahuKaalPage() {
           lon: position.coords.longitude,
           place: t("rahu_kaal.active_location")
         }));
-      }, () => {});
+      }, () => { });
     }
   }, []);
 
@@ -188,7 +189,8 @@ export default function RahuKaalPage() {
   return (
     <div className="min-h-screen pb-24 rk-wrap" style={{ backgroundColor: '#fdf6e3' }}>
 
-            <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
                 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap');
 
                 .rk-wrap * { font-family: 'Source Sans 3', sans-serif; }
@@ -198,19 +200,19 @@ export default function RahuKaalPage() {
                 .rk-geo > div, .rk-geo .geoapify-container { width: 100% !important; }
                 .rk-geo .geoapify-autocomplete-input {
                     color: #111827 !important;
-                    font-weight: 400 !important;
-                    background: transparent !important;
-                    border: 1px solid #d6c89a !important;
-                    border-radius: 8px !important;
-                    padding: 11px 16px 11px 38px !important;
-                    font-size: 14px !important;
+                    font-weight: 600 !important;
+                    background: #ffffff !important;
+                    border: 1px solid #ebdca8 !important;
+                    border-radius: 10px !important;
+                    padding: 12px 16px 12px 38px !important;
+                    font-size: 15px !important;
                     font-family: 'Source Sans 3', sans-serif !important;
                     width: 100% !important;
                     box-sizing: border-box !important;
                     line-height: 1.5 !important;
-                    box-shadow: none !important;
+                    box-shadow: 0 2px 10px rgba(184, 150, 46, 0.05) !important;
                 }
-                .rk-geo .geoapify-autocomplete-input::placeholder { color: #9ca3af !important; }
+                .rk-geo .geoapify-autocomplete-input::placeholder { color: #9ca3af !important; font-weight: 400 !important; }
                 .rk-geo .geoapify-autocomplete-input:focus {
                     border-color: #b8962e !important;
                     box-shadow: 0 0 0 3px rgba(184,150,46,0.15) !important;
@@ -230,230 +232,231 @@ export default function RahuKaalPage() {
                 .rk-geo .geoapify-autocomplete-item:hover { background-color: #f5e9c8 !important; color: #7a6010 !important; }
             ` }} />
 
-            <GeoapifyContext apiKey="47b4a8afc7734a12bd28b482d3dbff76">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+      <GeoapifyContext apiKey="47b4a8afc7734a12bd28b482d3dbff76">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
 
-                    {/* Page Header */}
-                    <div className="mb-6 pb-6 border-b border-[#d6c89a]">
-                        <div className="flex items-center gap-2 text-[#b8962e] text-sm font-semibold mb-2">
-                            <Clock className="w-3.5 h-3.5" />
-                            <span className="serif">{t("rahu_kaal.rahu_kaal")}</span>
-                        </div>
-                        <div className="flex items-center justify-between gap-6">
-                            {/* Title + location stacked */}
-                            <div>
-                                <h1 className="text-3xl font-semibold text-gray-900 leading-tight whitespace-nowrap">
-{t("rahu_kaal.rahu_kaal_today")}
+          {/* Page Header */}
+          <div className="mb-6 pb-6 border-b border-[#d6c89a]">
+            <div className="flex items-center gap-2 text-[#b8962e] text-sm font-semibold mb-2">
+              <Clock className="w-3.5 h-3.5" />
+              <span className="serif">{t("rahu_kaal.rahu_kaal")}</span>
+            </div>
+            <div className="flex items-center justify-between gap-6">
+              {/* Title + location stacked */}
+              <div>
+                <h1 className="text-3xl sm:text-4xl font-bold text-[#3a1216] leading-tight whitespace-nowrap">
+                  {t("rahu_kaal.rahu_kaal_today")}
                 </h1>
-                                <div className="flex items-center gap-1.5 text-gray-850 text-sm mt-1">
-                                    <MapPin className="w-3 h-3 text-[#b8962e]" />
-                                    <span>{location.place}</span>
-                                </div>
-                            </div>
+                <div className="flex items-center gap-1.5 text-gray-700 font-medium text-[15px] mt-2 bg-white/60 px-3 py-1.5 rounded-lg border border-[#ebdca8]/50 w-fit">
+                  <MapPin className="w-4 h-4 text-[#b8962e]" />
+                  <span>{location.place}</span>
+                </div>
+              </div>
 
-                            {/* Location Selector — aligned to top of title */}
-                            <div className="flex flex-col items-end gap-3 flex-shrink-0">
-                                <div className="relative rk-geo" style={{ width: "256px" }}>
-                                    <Compass className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-4 h-4 text-[#b8962e]" />
-                                    <GeoapifyGeocoderAutocomplete
-                                        placeholder={t("rahu_kaal.change_location")}
-                                        value={location.place}
-                                        debounceDelay={300}
-                                        placeSelect={(value: any) => {
-                                            if (value?.properties) {
-                                                setLocation({ place: value.properties.formatted, lat: value.properties.lat, lon: value.properties.lon });
-                                            }
-                                        }} 
-                                    />
-                                </div>
-                                
-                                <PaidPDFButton 
-                                    toolKey="rahu-kaal"
-                                    reportName={`Rahu Kaal Report - ${location.place}`}
-                                    downloadFn={async () => {
-                                        await downloadRahuKaalPDF({
-                                            location: location.place,
-                                            date: new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' }),
-                                            rahuToday: rahuToday || '--:-- to --:--',
-                                            weeklyRahu: weeklyRahu
-                                        });
-                                    }}
-                                    variant="outline"
-                                    size="sm"
-                                    className="w-full"
-                                />
-                            </div>
-                        </div>
-                    </div>
+              {/* Location Selector — aligned to top of title */}
+              <div className="flex flex-col items-end gap-3 flex-shrink-0">
+                <div className="relative rk-geo" style={{ width: "256px" }}>
+                  <Compass className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-4 h-4 text-[#b8962e]" />
+                  <GeoapifyGeocoderAutocomplete
+                    placeholder={t("rahu_kaal.change_location")}
+                    value={location.place}
+                    debounceDelay={300}
+                    placeSelect={(value: any) => {
+                      if (value?.properties) {
+                        setLocation({ place: value.properties.formatted, lat: value.properties.lat, lon: value.properties.lon });
+                      }
+                    }}
+                  />
+                </div>
 
-                    {/* Monitor Card */}
-                    <div className="mb-8">
-                        <div
-              className="rounded-xl p-6 sm:p-8 transition-all duration-500"
+                <PaidPDFButton
+                  toolKey="rahu-kaal"
+                  reportName={`Rahu Kaal Report - ${location.place}`}
+                  downloadFn={async () => {
+                    await downloadRahuKaalPDF({
+                      location: location.place,
+                      date: new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' }),
+                      rahuToday: rahuToday || '--:-- to --:--',
+                      weeklyRahu: weeklyRahu
+                    });
+                  }}
+                  variant="outline"
+                  size="sm"
+                  className="w-full"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Monitor Card */}
+          <div className="mb-8">
+            <div
+              className="rounded-xl p-6 sm:p-8 transition-all duration-500 shadow-sm"
               style={{
                 background: '#ffffff',
-                border: '1px solid #d6c89a'
+                border: '1px solid #ebdca8',
+                boxShadow: '0 4px 20px rgba(184, 150, 46, 0.08)'
               }}>
-              
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
 
-                                {/* Left: Window info */}
-                                <div className="space-y-5">
-                                    <div className="flex items-center gap-4">
-                                        <div
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+
+                {/* Left: Window info */}
+                <div className="space-y-5">
+                  <div className="flex items-center gap-4">
+                    <div
                       className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
                       style={{ background: isRahuNow ? '#b8441e' : '#b8962e' }}>
-                      
-                                            <Clock className="w-5 h-5 text-white" />
-                                        </div>
-                                        <div>
-                                            <p
+
+                      <Clock className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <p
                         className="text-[11px] font-semibold uppercase tracking-widest mb-0.5"
                         style={{ color: '#b8962e' }}>
-{t("rahu_kaal.inauspicious_window")}
+                        {t("rahu_kaal.inauspicious_window")}
 
                       </p>
-                                            <p
+                      <p
                         className="text-xl sm:text-2xl font-semibold tracking-tight"
                         style={{ color: '#111827' }}>
-                        
-                                                {rahuToday || '--:-- to --:--'}
-                                            </p>
-                                        </div>
-                                    </div>
 
-                                    <div className="space-y-2.5">
-                                        <div className="flex items-center gap-3 flex-wrap">
-                                            <span
+                        {rahuToday || '--:-- to --:--'}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2.5">
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <span
                         className="px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider"
                         style={{
                           background: isRahuNow ? '#b8441e' : 'rgba(34,197,94,0.12)',
                           color: isRahuNow ? '#fff' : '#15803d'
                         }}>
-                        
-                                                {isRahuNow ? t("rahu_kaal.active") : t("rahu_kaal.safe_zone")}
-                                            </span>
-                                            <span
+
+                        {isRahuNow ? t("rahu_kaal.active") : t("rahu_kaal.safe_zone")}
+                      </span>
+                      <span
                         className="text-xs font-medium"
                         style={{ color: '#6b7280' }}>
-                        
-                                                {timeToNext}
-                                            </span>
-                                        </div>
 
-                                        {/* Progress bar */}
-                                        <div
+                        {timeToNext}
+                      </span>
+                    </div>
+
+                    {/* Progress bar */}
+                    <div
                       className="h-1.5 w-full rounded-full overflow-hidden"
                       style={{ background: '#e9ddb8' }}>
-                      
-                                            <motion.div
+
+                      <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${progress}%` }}
                         transition={{ duration: 1.5, ease: "easeOut" }}
                         className="h-full rounded-full"
                         style={{ background: isRahuNow ? '#b8441e' : (progress === 100 ? '#15803d' : '#b8962e') }} />
-                      
-                                        </div>
-                                    </div>
-                                </div>
 
-                                {/* Right: Clock */}
-                                <div className="flex flex-col items-start md:items-end md:text-right">
-                                    <p
-                    className="text-[11px] font-semibold uppercase tracking-widest mb-1.5"
-                    style={{ color: '#b8962e' }}>
-{t("rahu_kaal.system_time")}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right: Clock */}
+                <div className="flex flex-col items-start md:items-end md:text-right">
+                  <p
+                    className="text-[12px] font-bold uppercase tracking-widest mb-2"
+                    style={{ color: '#9c7a1a' }}>
+                    {t("rahu_kaal.system_time")}
 
                   </p>
-                                    <p
-                    className="text-3xl sm:text-4xl font-semibold tracking-tight font-mono"
+                  <p
+                    className="text-4xl sm:text-5xl font-bold tracking-tight font-mono"
                     style={{ color: '#111827' }}>
-                    
-                                        {currentTime.toLocaleTimeString(t('common.locale_code') === 'hi' ? 'hi-IN' : 'en-IN', { hour: '2-digit', minute: '2-digit', hour12: false })}
-                                        <span className="text-lg ml-1" style={{ opacity: 0.4, color: '#111827' }}>
-                                            :{currentTime.getSeconds().toString().padStart(2, '0')}
-                                        </span>
-                                    </p>
-                                    <div
+
+                    {currentTime.toLocaleTimeString(t('common.locale_code') === 'hi' ? 'hi-IN' : 'en-IN', { hour: '2-digit', minute: '2-digit', hour12: false })}
+                    <span className="text-xl ml-1 font-medium" style={{ opacity: 0.5, color: '#111827' }}>
+                      :{currentTime.getSeconds().toString().padStart(2, '0')}
+                    </span>
+                  </p>
+                  <div
                     className="mt-2.5 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider"
                     style={{ color: '#b8962e' }}>
-                    
-                                        <Activity className="w-3 h-3" />{t("rahu_kaal.astronomical_precision")}
+
+                    <Activity className="w-3 h-3" />{t("rahu_kaal.astronomical_precision")}
                   </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* 7-Day Table */}
-                    <div className="space-y-5">
-                        {/* Section header */}
-                        <div className="flex items-center gap-2 pb-3 border-b border-[#d6c89a]">
-                            <CalendarIcon className="w-4 h-4 text-[#b8962e]" />
-                            <span className="text-[15px] font-semibold text-gray-850">{t("rahu_kaal.7_day_timing_table")}</span>
-                        </div>
-
-                        {/* Table */}
-                        <div className="rounded-xl overflow-hidden border border-[#d6c89a]">
-                            {/* Table head */}
-                            <div
-                className="grid grid-cols-2 px-5 py-3 text-[11px] font-semibold uppercase tracking-wider text-[#b8962e]"
-                style={{ background: '#ffffff', borderBottom: '1px solid #d6c89a' }}>
-                
-                                <div>{t("rahu_kaal.calendar_entry")}</div>
-                                <div className="text-right">{t("rahu_kaal.transit_window")}</div>
-                            </div>
-
-                            {/* Rows */}
-                            <div className="divide-y divide-[#e9ddb8]">
-                                {loading ?
-                <div className="p-12 flex flex-col items-center justify-center gap-3" style={{ background: '#ffffff' }}>
-                                        <Loader2 className="w-5 h-5 animate-spin" style={{ color: '#b8962e' }} />
-                                        <span className="text-sm text-gray-850">{t("rahu_kaal.syncing_data")}</span>
-                                    </div> :
-                weeklyRahu.map((item, i) =>
-                <div
-                  key={i}
-                  className="grid grid-cols-2 px-5 py-4 items-center transition-all"
-                  style={{
-                    background: '#ffffff',
-                    borderLeft: item.is_today ? '3px solid #b8962e' : '3px solid transparent'
-                  }}>
-                  
-                                        <div className="flex flex-col gap-0.5">
-                                            <span className="text-[15px] font-semibold text-gray-900">{item.date}</span>
-                                            <span
-                      className="text-[11px] font-semibold uppercase tracking-wide"
-                      style={{ color: item.is_today ? '#b8962e' : '#9ca3af' }}>
-                      
-                                                {t(`common.days.${item.day}`)}
-                                                {item.is_today &&
-                      <span className="ml-2 normal-case tracking-normal font-medium" style={{ color: '#b8962e' }}>
-{t("rahu_kaal._today")}
-                      </span>
-                      }
-                                            </span>
-                                        </div>
-                                        <div className="text-right">
-                                            <span
-                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-[13px] font-semibold"
-                      style={{
-                        background: item.is_today ? '#b8962e' : 'rgba(184,150,46,0.1)',
-                        color: item.is_today ? '#fff' : '#111827'
-                      }}>
-                      
-                                                <Clock className="w-3.5 h-3.5" />
-                                                {item.rahu_kaal}
-                                            </span>
-                                        </div>
-                                    </div>
-                )}
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-            </GeoapifyContext>
-        </div>);
+              </div>
+            </div>
+          </div>
+
+          {/* 7-Day Table */}
+          <div className="space-y-5">
+            {/* Section header */}
+            <div className="flex items-center gap-2 pb-3 border-b border-[#d6c89a]">
+              <CalendarIcon className="w-4 h-4 text-[#b8962e]" />
+              <span className="text-[15px] font-semibold text-gray-850">{t("rahu_kaal.7_day_timing_table")}</span>
+            </div>
+
+            {/* Table */}
+            <div className="rounded-xl overflow-hidden border border-[#ebdca8] shadow-sm">
+              {/* Table head */}
+              <div
+                className="grid grid-cols-2 px-6 py-4 text-[12px] font-bold uppercase tracking-widest text-[#9c7a1a]"
+                style={{ background: '#faf6e8', borderBottom: '1px solid #ebdca8' }}>
+
+                <div>{t("rahu_kaal.calendar_entry")}</div>
+                <div className="text-right">{t("rahu_kaal.transit_window")}</div>
+              </div>
+
+              {/* Rows */}
+              <div className="divide-y divide-[#e9ddb8]">
+                {loading ?
+                  <div className="p-12 flex flex-col items-center justify-center gap-3" style={{ background: '#ffffff' }}>
+                    <Loader2 className="w-5 h-5 animate-spin" style={{ color: '#b8962e' }} />
+                    <span className="text-sm text-gray-850">{t("rahu_kaal.syncing_data")}</span>
+                  </div> :
+                  weeklyRahu.map((item, i) =>
+                    <div
+                      key={i}
+                      className="grid grid-cols-2 px-6 py-4 items-center transition-all hover:bg-[#fffcf5]"
+                      style={{
+                        background: item.is_today ? '#fffcf5' : '#ffffff',
+                        borderLeft: item.is_today ? '4px solid #b8962e' : '4px solid transparent'
+                      }}>
+
+                      <div className="flex flex-col gap-1">
+                        <span className={`text-[16px] font-bold ${item.is_today ? 'text-[#9c7a1a]' : 'text-gray-900'}`}>{item.date}</span>
+                        <span
+                          className="text-[12px] font-bold uppercase tracking-wide"
+                          style={{ color: item.is_today ? '#b8962e' : '#737373' }}>
+
+                          {t(`common.days.${item.day}`)}
+                          {item.is_today &&
+                            <span className="ml-2 normal-case tracking-normal font-medium" style={{ color: '#b8962e' }}>
+                              {t("rahu_kaal._today")}
+                            </span>
+                          }
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <span
+                          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-[13px] font-semibold"
+                          style={{
+                            background: item.is_today ? '#b8962e' : 'rgba(184,150,46,0.1)',
+                            color: item.is_today ? '#fff' : '#111827'
+                          }}>
+
+                          <Clock className="w-3.5 h-3.5" />
+                          {item.rahu_kaal}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </GeoapifyContext>
+    </div>);
 
 }

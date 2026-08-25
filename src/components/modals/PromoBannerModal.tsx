@@ -42,12 +42,12 @@ export default function PromoBannerModal() {
         const response = await walletService.getPromoBanner();
         if (response.success && response.data?.isActive) {
           setData(response.data);
-          
+
           // Delay display slightly for smooth entrance animation
           const timer = setTimeout(() => {
             setIsVisible(true);
           }, 1500);
-          
+
           return () => clearTimeout(timer);
         }
       } catch (error) {
@@ -79,9 +79,9 @@ export default function PromoBannerModal() {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity duration-300 animate-fadeIn">
       {/* Modal Box */}
       <div className={`relative w-full ${hasImage && !hasText ? 'max-w-sm' : 'max-w-md'} bg-white rounded-3xl shadow-2xl mx-4 overflow-hidden border border-gray-100 transition-all duration-300 transform scale-100 animate-slideUp`}>
-        
+
         {/* Close Button */}
-        <button 
+        <button
           onClick={handleClose}
           className={`absolute top-4 right-4 z-30 p-2 rounded-full ${hasImage && !hasText ? 'bg-black/40 hover:bg-black/60 text-white' : 'bg-black/10 hover:bg-black/20 text-white'} transition-all focus:outline-none`}
           aria-label="Close Promo"
@@ -96,7 +96,7 @@ export default function PromoBannerModal() {
           <div className="bg-gradient-to-b from-yellow-400 via-amber-500 to-orange-500 pt-6 pb-5 text-center text-white relative flex flex-col items-center gap-3">
             {/* Subtle cosmic stars background */}
             <div className="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]" />
-            
+
             {/* Divine Symbol Badge Inside Header (Never Cut Off!) */}
             <div className="w-14 h-14 rounded-full bg-white p-1 shadow-lg shadow-amber-600/30 flex items-center justify-center relative z-10 transform hover:scale-105 transition-transform duration-200">
               <div className="w-full h-full rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white text-2xl font-black drop-shadow-sm animate-pulse">
@@ -112,18 +112,17 @@ export default function PromoBannerModal() {
 
         {/* Body Section */}
         <div className={`text-center bg-white relative ${hasImage && !hasText ? 'p-0' : 'p-6'}`}>
-          
+
           {/* Dynamic Image Banner Render */}
           {hasImage ? (
-            <div 
+            <div
               onClick={() => data.redirectRoute && handleAction(data.redirectRoute)}
-              className={`overflow-hidden ${hasText ? 'my-4 rounded-2xl border border-gray-150 shadow-sm' : 'w-full h-auto'} ${
-                data.redirectRoute ? 'cursor-pointer hover:opacity-95 transition-opacity duration-200' : ''
-              }`}
+              className={`overflow-hidden ${hasText ? 'my-4 rounded-2xl border border-gray-150 shadow-sm' : 'w-full h-auto'} ${data.redirectRoute ? 'cursor-pointer hover:opacity-95 transition-opacity duration-200' : ''
+                }`}
             >
-              <img 
-                src={data.promoImage} 
-                alt="Promotion" 
+              <img
+                src={data.promoImage}
+                alt="Promotion"
                 className="w-full h-auto object-contain max-h-[460px] mx-auto block"
               />
             </div>
@@ -135,10 +134,10 @@ export default function PromoBannerModal() {
                   {data.astrologers.map((astro, idx) => (
                     <div key={astro._id} className="relative z-10 hover:z-20 transition-all transform hover:scale-105">
                       <div className="w-20 h-20 rounded-full border-4 border-white shadow-lg overflow-hidden bg-gray-50 flex items-center justify-center">
-                        <img 
-                          src={astro.profilePicture} 
-                          alt={astro.name} 
-                          className="w-full h-full object-cover" 
+                        <img
+                          src={astro.profilePicture}
+                          alt={astro.name}
+                          className="w-full h-full object-cover"
                           onError={(e) => {
                             (e.target as HTMLImageElement).src = 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
                           }}
@@ -171,7 +170,7 @@ export default function PromoBannerModal() {
               {/* Optional Redirect Badge under Subtitle */}
               {data.redirectRoute && !hasImage && (
                 <div className="mb-4">
-                  <button 
+                  <button
                     onClick={() => data.redirectRoute && handleAction(data.redirectRoute)}
                     className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 text-xs font-black rounded-full border border-amber-200 transition-all cursor-pointer"
                   >

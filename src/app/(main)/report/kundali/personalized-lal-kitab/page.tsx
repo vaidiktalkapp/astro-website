@@ -236,7 +236,7 @@ export default async function PersonalizedLalKitabPage() {
           </p>
 
           <Link href="/report/numerology/personalized-lal-kitab/checkout" className="inline-block bg-white text-[#b06126] font-bold text-[16px] md:text-[18px] px-10 py-3.5 md:py-4 rounded-xl shadow-lg hover:scale-105 transition-transform mb-6">
-            Get Your Numerology Report @ <span className="line-through text-[#3a1216] mx-1">₹{settings?.price || 600}</span> ₹{settings?.discountedPrice || 549}
+            {settings?.heroCtaText || "Get Your Report"} @ <span className="line-through text-[#3a1216] mx-1">₹{settings?.price || 600}</span> ₹{settings?.discountedPrice || 549}
           </Link>
 
           {/* Happy Customers Avatars */}
@@ -391,11 +391,11 @@ export default async function PersonalizedLalKitabPage() {
             <div className="flex items-center gap-3 mb-8">
               <span className="text-[32px] md:text-[40px] font-bold text-[#5c1a1f]">₹{settings?.discountedPrice || 549}</span>
               <span className="text-lg text-[#3a1216]/60 line-through font-medium">₹{settings?.price || 600}</span>
-              <span className="bg-[#fdfaf6] text-[#d68636] border border-[#ebdcc7] text-[11px] font-bold px-2 py-1 rounded uppercase tracking-wide ml-2">SPECIAL</span>
+              <span className="bg-[#e8ffd6] text-[#2e7d32] text-[12px] font-bold px-3 py-1 rounded-full border border-[#a5d6a7] uppercase tracking-wide ml-2 inline-flex items-center gap-1.5 shadow-sm"><span className="w-1.5 h-1.5 rounded-full bg-[#2e7d32] animate-pulse"></span> SPECIAL OFFER</span>
             </div>
 
             <Link href="/report/numerology/personalized-lal-kitab/checkout" className="inline-block bg-[#d68636] text-white font-bold text-[16px] px-10 py-4 rounded-lg shadow-lg hover:bg-[#b06126] transition-colors w-full md:w-auto text-center">
-              Fill The Form Below →
+              {settings?.imageSectionCtaText || "Fill The Form Below →"}
             </Link>
           </div>
         </div>
@@ -407,7 +407,7 @@ export default async function PersonalizedLalKitabPage() {
           <div className="md:w-[45%] lg:w-[40%] xl:-ml-6">
             <LazyVideo
               src={settings?.video?.url || "/vaidik video.mp4"}
-              className="w-full rounded-[2rem] shadow-lg object-cover aspect-square md:aspect-[4/4.5]"
+              className="w-full rounded-[2rem] shadow-lg object-cover object-[center_15%] aspect-square md:aspect-[4/4.5]"
             />
           </div>
           <div className="md:w-[55%] lg:w-[60%] md:pl-6 lg:pl-10">
@@ -429,7 +429,7 @@ export default async function PersonalizedLalKitabPage() {
             </div>
 
             <a href="/report/numerology/personalized-lal-kitab/checkout" className="inline-block bg-[#d68636] text-white font-bold text-[16px] px-10 py-4 rounded-xl shadow-md hover:bg-[#b06126] transition-colors w-full md:w-auto text-center">
-              Order Your Personalized Lal Kitab →
+              {settings?.videoSectionCtaText || "Order Your Personalized Lal Kitab →"}
             </a>
           </div>
         </div>
@@ -522,7 +522,7 @@ export default async function PersonalizedLalKitabPage() {
           <h2 className="premium-serif text-center text-[28px] md:text-[36px] font-bold text-[#3a1216] mb-4 leading-tight">Ready to Unlock Your Destiny?</h2>
           <p className="text-center text-[#3a1216]/80 text-[15px] md:text-[16px] mb-10 max-w-[600px] mx-auto">Get your personalized Personalized Lal Kitab today and remove the blocks holding you back.</p>
           <Link href="/report/numerology/personalized-lal-kitab/checkout" className="inline-block bg-[#d68636] text-white font-bold text-[18px] px-12 py-4 rounded-xl shadow-[0_8px_20px_rgba(214,134,54,0.3)] hover:bg-[#b06126] transition-all hover:scale-105">
-            Book Personalized Lal Kitab
+            {settings?.bottomCtaText || "Book Personalized Lal Kitab"}
           </Link>
         </div>
       </section>
