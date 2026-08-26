@@ -273,37 +273,18 @@ function LoveHoroscopeContent() {
 
 }
 
-import { fetchPageSeo, generatePageMetadata } from '@/lib/fetchPageSeo';
-import PageSeoProvider from '@/components/shared/PageSeoProvider';
-import { Metadata } from 'next';
-
-export async function generateMetadata(): Promise<Metadata> {
-  const slug = 'love-horoscope';
-  const defaultMeta = {
-    title: "Love Horoscope & Compatibility | VaidikTalk",
-    description: "Read your free love horoscope and discover astrological compatibility. Get deep insights into your romantic relationships using Vedic astrology.",
-  };
-
-  const seoData = await fetchPageSeo(slug);
-  return generatePageMetadata(seoData, defaultMeta);
-}
-
-export default function LoveHoroscopePage() {
+export default function LoveHoroscopeClient() {
     const { t } = useTranslation();
 
   return (
-    <>
-      <PageSeoProvider slug="love-horoscope" />
-      <div className="min-h-screen py-6 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: '#fdf6e3' }}>
-            <Suspense fallback={
-      <div className="flex items-center justify-center h-screen">
-                    <Loader2 className="animate-spin text-[#b8962e] w-7 h-7" />
-                </div>
-      }>
-                <LoveHoroscopeContent />
-            </Suspense>
-        </div>
-    </>
+    <div className="min-h-screen py-6 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: '#fdf6e3' }}>
+        <Suspense fallback={
+            <div className="flex items-center justify-center h-screen">
+                <Loader2 className="animate-spin text-[#b8962e] w-7 h-7" />
+            </div>
+        }>
+            <LoveHoroscopeContent />
+        </Suspense>
+    </div>
   );
-
 }
