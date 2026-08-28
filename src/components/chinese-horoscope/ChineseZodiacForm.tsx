@@ -47,17 +47,17 @@ const ChineseZodiacForm = ({ onSubmit, loading }: ChineseZodiacFormProps) => {
     };
 
     const inputClass = `
-        w-full px-4 py-3.5 rounded-lg border border-[#d6c89a]
-        bg-transparent text-gray-900 placeholder:text-gray-400
-        focus:outline-none focus:border-[#b8962e] focus:ring-2 focus:ring-[#b8962e]/15
-        text-[15px] font-normal transition-all
+        w-full px-4 py-3.5 rounded-lg border border-gray-200
+        bg-white text-gray-900 placeholder:text-gray-500
+        focus:outline-none focus:border-[#b8962e] focus:ring-1 focus:ring-[#b8962e]
+        text-[15px] font-normal transition-all shadow-sm
     `;
 
     const selectClass = `
-        appearance-none w-full px-4 py-3.5 rounded-lg border border-[#d6c89a]
-        bg-transparent text-gray-900
-        focus:outline-none focus:border-[#b8962e] focus:ring-2 focus:ring-[#b8962e]/15
-        text-[15px] font-normal transition-all cursor-pointer
+        appearance-none w-full px-4 py-3.5 rounded-lg border border-gray-200
+        bg-white text-gray-900
+        focus:outline-none focus:border-[#b8962e] focus:ring-1 focus:ring-[#b8962e]
+        text-[15px] font-normal transition-all cursor-pointer shadow-sm
     `;
 
     const ChevronDown = () => (
@@ -69,7 +69,7 @@ const ChineseZodiacForm = ({ onSubmit, loading }: ChineseZodiacFormProps) => {
     );
 
     return (
-        <div className="w-full max-w-2xl mx-auto px-4 mt-6 cz-form-wrap">
+        <div className="w-full max-w-2xl mx-auto px-4 mt-2 cz-form-wrap">
             <style dangerouslySetInnerHTML={{ __html: `
                 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap');
                 .cz-form-wrap * { font-family: 'Source Sans 3', sans-serif; }
@@ -78,26 +78,27 @@ const ChineseZodiacForm = ({ onSubmit, loading }: ChineseZodiacFormProps) => {
             `}} />
 
             {/* Header — mirrors PersonalLoveForm exactly */}
-            <div className="mb-10 text-center">
-                <div className="flex items-center justify-center gap-2 text-[#b8962e] text-sm font-semibold mb-3">
+            <div className="mb-6 text-center">
+                <div className="flex items-center justify-center gap-2 text-[#b8962e] text-sm font-semibold mb-2">
                     <span className="text-base serif">☯</span>
                     <span className="serif">Personalized Lunar Reading</span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-5 leading-tight serif">
+                <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-3 leading-tight serif">
                     Reveal Your Lunar Destiny
                 </h2>
-                <p className="text-gray-600 text-base leading-relaxed max-w-lg mx-auto">
-                    Enter your birth details to discover your <em className="serif text-gray-700 not-">celestial animal sign</em> and hidden character.
+                <p className="text-gray-800 text-base leading-relaxed max-w-lg mx-auto">
+                    Enter your birth details to discover your <em className="serif font-bold text-gray-900 not-">celestial animal sign</em> and hidden character.
                 </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="bg-white/70 backdrop-blur-md border border-[#d6c89a]/50 rounded-2xl p-6 md:p-10 shadow-sm">
+                <form onSubmit={handleSubmit} className="space-y-6">
 
                 {/* Full Name */}
                 <div>
                     <label className="block text-[15px] font-semibold text-gray-800 mb-2.5 ml-1">Full Name</label>
                     <div className="relative">
-                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                         <input
                             type="text"
                             required
@@ -159,7 +160,7 @@ const ChineseZodiacForm = ({ onSubmit, loading }: ChineseZodiacFormProps) => {
                         </div>
                     </div>
 
-                    <p className="mt-3 text-[13px] text-gray-400 text-center serif">
+                    <p className="mt-3 text-[13px] text-gray-600 text-center serif">
                         We use this to calculate your exact Lunar New Year position.
                     </p>
                 </div>
@@ -169,7 +170,7 @@ const ChineseZodiacForm = ({ onSubmit, loading }: ChineseZodiacFormProps) => {
                     <button
                         type="button"
                         onClick={handleReset}
-                        className="flex items-center gap-1.5 text-[11px] font-bold uppercase text-gray-400 hover:text-[#b8962e] transition-colors tracking-widest"
+                        className="flex items-center gap-1.5 text-[11px] font-bold uppercase text-gray-500 hover:text-[#b8962e] transition-colors tracking-widest"
                     >
                         <RotateCcw className="w-3 h-3" />
                         Reset
@@ -199,11 +200,12 @@ const ChineseZodiacForm = ({ onSubmit, loading }: ChineseZodiacFormProps) => {
                         )}
                     </motion.button>
 
-                    <p className="text-center text-[11px] text-gray-400 mt-4 uppercase tracking-[0.2em] font-bold">
+                    <p className="text-center text-[11px] text-gray-500 mt-4 uppercase tracking-[0.2em] font-bold">
                         Secure & Private Celestial Analysis
                     </p>
                 </div>
             </form>
+            </div>
         </div>
     );
 };

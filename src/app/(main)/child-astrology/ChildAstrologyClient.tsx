@@ -545,7 +545,7 @@ export default function ChildAstrologyClient({
               <h3 className="premium-serif font-bold text-[24px] text-[#3a1216] mb-6">Detailed Reports</h3>
               <div className="space-y-3">
                 {[
-                  { title: 'Kundali Matching Report', link: '/report/kundali/kundali-matching' },
+                  { title: 'Premium Kundali Matching Report', link: '/report/kundali/kundali-matching' },
                   { title: 'Personalized Lal Kitab', link: '/report/kundali/personalized-lal-kitab' },
                   { title: 'Hastlikhit Kundali', link: '/report/kundali/hastlikhit-kundali' }
                 ].map((rep, i) => (

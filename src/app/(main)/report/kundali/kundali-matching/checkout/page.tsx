@@ -248,7 +248,7 @@ export default function CheckoutPage() {
 
         {/* Form Container */}
         <div className="bg-white rounded-xl border-[1.5px] border-[#c57636] p-5 md:p-8 shadow-md">
-          <h2 className="text-[20px] md:text-[22px] font-bold text-[#5c1a1f] mb-8">Details Required for Kundali Matching</h2>
+          <h2 className="text-[20px] md:text-[22px] font-bold text-[#5c1a1f] mb-8">Details Required for Premium Kundali Matching</h2>
 
           <form id="checkout-form" onSubmit={handleFormSubmit}>
             

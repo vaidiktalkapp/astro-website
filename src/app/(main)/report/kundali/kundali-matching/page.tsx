@@ -28,27 +28,27 @@ interface FaqItem {
 
 const faqData: FaqItem[] = [
   {
-    q: 'What is Kundali Matching?',
+    q: 'What is Premium Kundali Matching?',
     content: [
-      { type: 'p', text: 'Kundali Matching, also known as Kundali Milan or Gun Milan, is the Vedic process of analysing the compatibility between two individuals based on their birth charts (Janma Kundalis) before marriage. It compares the astrological positions of planets, the Moon, and other celestial factors to determine emotional, mental, and spiritual harmony between the prospective bride and groom.' }
+      { type: 'p', text: 'Premium Kundali Matching, also known as Kundali Milan or Gun Milan, is the Vedic process of analysing the compatibility between two individuals based on their birth charts (Janma Kundalis) before marriage. It compares the astrological positions of planets, the Moon, and other celestial factors to determine emotional, mental, and spiritual harmony between the prospective bride and groom.' }
     ]
   },
   {
-    q: 'Why is Kundali Matching important before marriage?',
+    q: 'Why is Premium Kundali Matching important before marriage?',
     content: [
-      { type: 'p', text: 'Kundali Matching holds immense importance in Indian culture because it helps assess compatibility, harmony, and long-term relationship success. It predicts various dimensions of marital life, including:' },
+      { type: 'p', text: 'Premium Kundali Matching holds immense importance in Indian culture because it helps assess compatibility, harmony, and long-term relationship success. It predicts various dimensions of marital life, including:' },
       { type: 'list', items: ['Emotional and mental compatibility', 'Physical attraction and health harmony', 'Financial stability and family well-being', 'Longevity of the relationship', 'Fertility and progeny', 'Mutual respect and understanding'] }
     ]
   },
   {
-    q: 'What details are required for Kundali Matching?',
+    q: 'What details are required for Premium Kundali Matching?',
     content: [
-      { type: 'p', text: 'For accurate Kundali Matching, the following birth details of both the bride and groom are essential:' },
+      { type: 'p', text: 'For accurate Premium Kundali Matching, the following birth details of both the bride and groom are essential:' },
       { type: 'list', items: ['Full Name', 'Date of Birth (DD/MM/YYYY)', 'Exact Time of Birth', 'Place of Birth (City, State, Country)'] }
     ]
   },
   {
-    q: 'What is the Ashtakoota method in Kundali Matching?',
+    q: 'What is the Ashtakoota method in Premium Kundali Matching?',
     content: [
       { type: 'p', text: 'The Ashtakoota Milan system is the most widely used method in Vedic astrology for assessing marital compatibility. It involves comparing eight different parameters (Kootas), collectively contributing 36 points (Gunas) in total.' },
       {
@@ -68,7 +68,7 @@ const faqData: FaqItem[] = [
     ]
   },
   {
-    q: 'What is considered a good Kundali Matching score?',
+    q: 'What is considered a good Premium Kundali Matching score?',
     content: [
       { type: 'p', text: 'The total score of Guna Milan ranges from 0 to 36. The general compatibility guidelines are:' },
       { type: 'list', items: ['Above 30 Gunas: Excellent match, highly compatible couple.', '25–30 Gunas: Good match, prosperous marriage.', '18–24 Gunas: Average match, acceptable with minor remedies.', 'Below 18 Gunas: Not recommended, may lead to disharmony.'] }
@@ -143,7 +143,7 @@ export default async function KundaliMatchingPage() {
           {settings?.banner?.url && /\.(mp4|webm|mov)(\?.*)?$/i.test(settings.banner.url) ? (
             <LazyVideo src={settings.banner.url} className="w-full h-full object-cover object-center opacity-100" />
           ) : settings?.banner?.url ? (
-            <img src={settings.banner.url} alt="Kundali Matching" className="w-full h-full object-cover object-center opacity-100" />
+            <img src={settings.banner.url} alt="Premium Kundali Matching" className="w-full h-full object-cover object-center opacity-100" />
           ) : (
             <LazyVideo src="/smart%20kundali.mp4" className="w-full h-full object-cover object-center opacity-100" />
           )}
@@ -333,7 +333,7 @@ export default async function KundaliMatchingPage() {
             <div className="flex items-center gap-4 mb-4 md:mb-3">
               {/* Mobile Thumbnail */}
               <div className="md:hidden shrink-0 w-[85px] sm:w-[100px] flex items-center justify-center">
-                <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} className="w-full h-auto object-contain drop-shadow-md rounded-sm mix-blend-multiply" alt="Kundali Matching" />
+                <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} className="w-full h-auto object-contain drop-shadow-md rounded-sm mix-blend-multiply" alt="Premium Kundali Matching" />
               </div>
               <h2 className="text-[22px] sm:text-3xl md:text-4xl font-serif font-bold text-[#5c1a1f] leading-tight">{settings?.productHeading || "Premium Kundali Matching Report"}</h2>
             </div>
@@ -366,7 +366,7 @@ export default async function KundaliMatchingPage() {
             </div>
 
             <Link href="/report/kundali/kundali-matching/checkout" className="inline-block bg-[#d68636] text-white font-bold text-[16px] px-10 py-4 rounded-lg shadow-lg hover:bg-[#b06126] transition-colors w-full md:w-auto text-center">
-              {settings?.imageSectionCtaText || "Get Your Kundali Matching Report →"}
+              {settings?.imageSectionCtaText || "Get Your Premium Kundali Matching Report →"}
             </Link>
           </div>
         </div>
@@ -434,7 +434,7 @@ export default async function KundaliMatchingPage() {
             </div>
 
             <a href="/report/kundali/kundali-matching/checkout" className="inline-block bg-[#d68636] text-white font-bold text-[16px] px-10 py-4 rounded-xl shadow-md hover:bg-[#8c4d1e] transition-colors w-full md:w-auto text-center">
-              {settings?.videoSectionCtaText || "Get Your Kundali Matching Report →"}
+              {settings?.videoSectionCtaText || "Get Your Premium Kundali Matching Report →"}
             </a>
           </div>
         </div>
@@ -553,7 +553,7 @@ export default async function KundaliMatchingPage() {
       {/* ============ MOBILE STICKY BOTTOM CTA ============ */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 z-[60] shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
         <Link href="/report/kundali/kundali-matching/checkout" className="flex items-center justify-center bg-[#b06126] text-white font-bold text-[16px] py-3.5 rounded-lg shadow-sm hover:bg-[#8c481c] transition-colors w-full">
-          {settings?.stickyCtaText || "Get Your Kundali Matching Report →"}
+          {settings?.stickyCtaText || "Get Your Premium Kundali Matching Report →"}
         </Link>
       </div>
 

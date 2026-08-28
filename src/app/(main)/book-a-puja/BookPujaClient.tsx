@@ -748,7 +748,7 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
               <p className="text-gray-850 text-[13px] md:text-sm">Our team is here to guide you with any questions about your puja booking.</p>
             </div>
             <a
-              href="https://wa.me/919999999999"
+              href="https://wa.me/919031823276"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5c] transition-colors text-white font-bold px-6 py-3 rounded-full shadow-md text-[14px] shrink-0"

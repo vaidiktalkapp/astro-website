@@ -33,7 +33,7 @@ interface FaqItem {
 
 const faqData: FaqItem[] = [
   {
-    q: 'What is a Vaidik Smart Kundali for 10 Years?',
+    q: 'What is a Premium Personalised Kundli for 10 Years?',
     content: [
       {
         type: 'p',
@@ -46,12 +46,12 @@ const faqData: FaqItem[] = [
     ]
   },
   {
-    q: 'How does a Vaidik Smart Kundali differ from a traditional Kundali?',
+    q: 'How does a Premium Personalised Kundli differ from a traditional Kundali?',
     content: [
-      { type: 'p', text: 'While both are based on Vedic astrology, a Vaidik Smart Kundali is a next-generation horoscope analysis:' },
+      { type: 'p', text: 'While both are based on Vedic astrology, a Premium Personalised Kundli is a next-generation horoscope analysis:' },
       {
         type: 'table',
-        headers: ['Aspect', 'Traditional Kundali', 'Vaidik Smart Kundali (10 Years)'],
+        headers: ['Aspect', 'Traditional Kundali', 'Premium Personalised Kundli (10 Years)'],
         rows: [
           ['Format', 'Handwritten or basic chart', 'Digitally designed with a modern layout'],
           ['Focus', 'Birth-time planetary positions', '10-year life prediction and Dasha analysis'],
@@ -64,7 +64,7 @@ const faqData: FaqItem[] = [
     ]
   },
   {
-    q: 'What does the Vaidik Smart Kundali include?',
+    q: 'What does the Premium Personalised Kundli include?',
     content: [
       {
         type: 'list',
@@ -83,20 +83,20 @@ const faqData: FaqItem[] = [
     ]
   },
   {
-    q: 'How accurate are the predictions in the Vaidik Smart Kundali?',
+    q: 'How accurate are the predictions in the Premium Personalised Kundli?',
     content: [
       { type: 'p', text: 'Accuracy depends on precise birth data, authentic Vedic algorithms, and expert astrologer interpretation. Charts use NASA-based planetary positions and manual verification.' },
       { type: 'p', text: 'Astrology indicates possibilities and karmic tendencies, so predictions are reliable guidance tools, not rigid certainties.' }
     ]
   },
   {
-    q: 'What time period does the 10-year Vaidik Smart Kundali cover?',
+    q: 'What time period does the 10-year Premium Personalised Kundli cover?',
     content: [
-      { type: 'p', text: 'The Vaidik Smart Kundali provides forecasts for 10 continuous years from the preparation date. For example, a Kundali prepared in October 2025 will cover 2025–2035, helping plan career, finance, family and spiritual decisions with foresight.' }
+      { type: 'p', text: 'The Premium Personalised Kundli provides forecasts for 10 continuous years from the preparation date. For example, a Kundali prepared in October 2025 will cover 2025–2035, helping plan career, finance, family and spiritual decisions with foresight.' }
     ]
   },
   {
-    q: 'Who should get a Vaidik Smart Kundali for 10 Years?',
+    q: 'Who should get a Premium Personalised Kundli for 10 Years?',
     content: [
       { type: 'p', text: 'Ideal for anyone seeking long-term clarity. Especially helpful for:' },
       {
@@ -113,7 +113,7 @@ const faqData: FaqItem[] = [
     ]
   },
   {
-    q: 'What remedies are suggested in the Vaidik Smart Kundali?',
+    q: 'What remedies are suggested in the Premium Personalised Kundli?',
     content: [
       {
         type: 'list',
@@ -129,13 +129,13 @@ const faqData: FaqItem[] = [
     ]
   },
   {
-    q: 'Is the Vaidik Smart Kundali available in digital formats?',
+    q: 'Is the Premium Personalised Kundli available in digital formats?',
     content: [
       { type: 'p', text: 'Yes. It is available in PDF digital format accessible on phones, tablets, or computers. The report includes astrologer analysis for convenience and accuracy.' }
     ]
   },
   {
-    q: 'How can I order or get my Vaidik Smart Kundali prepared?',
+    q: 'How can I order or get my Premium Personalised Kundli prepared?',
     content: [
       { type: 'p', text: 'Provide the following details via the VaidikTalk website or a consultation:' },
       {
@@ -151,7 +151,7 @@ const faqData: FaqItem[] = [
     ]
   },
   {
-    q: 'What are the benefits of having a Vaidik Smart Kundali for 10 Years?',
+    q: 'What are the benefits of having a Premium Personalised Kundli for 10 Years?',
     content: [
       {
         type: 'list',
@@ -227,7 +227,7 @@ export default async function SmartKundaliPage() {
           {settings?.banner?.url && /\.(mp4|webm|mov)(\?.*)?$/i.test(settings.banner.url) ? (
             <LazyVideo src={settings.banner.url} className="w-full h-full object-cover object-center opacity-100" />
           ) : settings?.banner?.url ? (
-            <img src={settings.banner.url} alt="Vaidik Smart Kundali" className="w-full h-full object-cover object-center opacity-100" />
+            <img src={settings.banner.url} alt="Premium Personalised Kundli" className="w-full h-full object-cover object-center opacity-100" />
           ) : (
             <LazyVideo src="/smart%20kundali.mp4" className="w-full h-full object-cover object-center opacity-100" />
           )}
@@ -433,7 +433,7 @@ export default async function SmartKundaliPage() {
               <div className="md:hidden shrink-0 w-[85px] sm:w-[100px] flex items-center justify-center">
                 <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} alt="Premium Personalised VaidikTalk Kundli" className="w-full max-w-[470px] rounded-xl mix-blend-multiply" />
               </div>
-              <h2 className="text-[22px] sm:text-3xl md:text-4xl font-serif font-bold text-[#5c1a1f] leading-tight">{settings?.productHeading || "Vaidik Smart Kundali (10 Years)"}</h2>
+              <h2 className="text-[22px] sm:text-3xl md:text-4xl font-serif font-bold text-[#5c1a1f] leading-tight">{settings?.productHeading || "Premium Personalised Kundli (10 Years)"}</h2>
             </div>
 
             <p className="text-[#5c1a1f] text-[15px] leading-relaxed mb-6 font-medium whitespace-pre-wrap">

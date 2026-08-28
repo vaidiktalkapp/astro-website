@@ -360,8 +360,8 @@ export default function DynamicPujaPage({ propSlug }: { propSlug?: string }) {
                   key={i}
                   onClick={() => setSelectedPkg(i)}
                   className={`rounded-[16px] p-5 flex-1 min-w-[240px] cursor-pointer transition-all ${isActive
-                      ? 'border-2 border-[#d97706] bg-[rgba(217,119,6,0.05)] shadow-[0_4px_16px_rgba(217,119,6,0.18)]'
-                      : 'border-2 border-[#e5e0d8] hover:border-[#d97706]/60 hover:bg-[#faf6ee]'
+                    ? 'border-2 border-[#d97706] bg-[rgba(217,119,6,0.05)] shadow-[0_4px_16px_rgba(217,119,6,0.18)]'
+                    : 'border-2 border-[#e5e0d8] hover:border-[#d97706]/60 hover:bg-[#faf6ee]'
                     }`}
                 >
                   <div className={`mb-3 w-[56px] h-[56px] rounded-[14px] flex items-center justify-center overflow-hidden border-2 ${isActive ? 'border-[#d97706]' : 'border-transparent'}`}>
@@ -385,8 +385,8 @@ export default function DynamicPujaPage({ propSlug }: { propSlug?: string }) {
                   <Link
                     href={`/book-a-puja/${slug}/checkout?package=${pkg.name.toLowerCase()}&price=${pkg.price}`}
                     className={`mt-3 block text-center py-[11px] rounded-[10px] font-bold text-[15px] no-underline transition-colors ${isActive
-                        ? 'bg-[#d97706] hover:bg-[#b56003] text-white shadow-[0_4px_12px_rgba(217,119,6,0.25)]'
-                        : 'bg-white border border-[#e5e0d8] hover:bg-[#d97706] hover:text-white hover:border-[#d97706] text-[#3a1216]'
+                      ? 'bg-[#d97706] hover:bg-[#b56003] text-white shadow-[0_4px_12px_rgba(217,119,6,0.25)]'
+                      : 'bg-white border border-[#e5e0d8] hover:bg-[#d97706] hover:text-white hover:border-[#d97706] text-[#3a1216]'
                       }`}
                     onClick={e => e.stopPropagation()}
                   >
@@ -501,7 +501,7 @@ export default function DynamicPujaPage({ propSlug }: { propSlug?: string }) {
               <p className="text-[#3a1216] text-[15px] mt-1 mb-0">Our team is here to help you with any questions about your booking.</p>
             </div>
             <div className="text-center">
-              <a href={`https://wa.me/919818999037?text=Hi%2C+I+want+to+book+${encodeURIComponent(puja?.title || 'a Puja')}`} target="_blank" rel="noopener noreferrer" className="inline-block bg-[#25d366] hover:bg-[#1da851] text-white py-[14px] px-[32px] rounded-[12px] font-bold text-[15px] no-underline transition-colors">
+              <a href={`https://wa.me/919031823276?text=Hi%2C+I+want+to+book+${encodeURIComponent(puja?.title || 'a Puja')}`} target="_blank" rel="noopener noreferrer" className="inline-block bg-[#25d366] hover:bg-[#1da851] text-white py-[14px] px-[32px] rounded-[12px] font-bold text-[15px] no-underline transition-colors">
                 Chat on WhatsApp
               </a>
               <p className="text-[12px] text-[#3a1216]/50 mt-2 mb-0">24/7 support available</p>

@@ -951,7 +951,7 @@ export default function HomePage({
             ))
           ) : recentBlogs.map((article, i) => (
             <Link href={`/blog/${article.slug}`} key={i} className="w-[85vw] sm:w-[280px] md:w-[320px] lg:w-[340px] xl:w-[360px] shrink-0 snap-start group flex flex-col bg-white border border-[#f0ddc0]/80 rounded-2xl overflow-hidden hover:shadow-[0_8px_24px_rgba(238,108,30,0.1)] transition-all duration-300 hover:-translate-y-1 h-full">
-              <div className="w-full aspect-[2/1] overflow-hidden relative border-b border-[#f0ddc0]/30">
+              <div className="w-full aspect-video overflow-hidden relative border-b border-[#f0ddc0]/30">
                 <img
                   src={article.bannerImage || 'https://images.unsplash.com/photo-1598090216740-eb040d8c3f82?q=72&w=480&h=360&fit=crop'}
                   alt={article.title}

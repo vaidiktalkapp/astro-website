@@ -113,7 +113,7 @@ function SuccessContent() {
               </div>
               <h2 className="text-[24px] font-bold text-[#5c1a1f] mb-3">Kundali Ready!</h2>
               <p className="text-[15px] text-[#3a1216]/80 leading-relaxed font-medium mb-8">
-                Your Premium Vaidik Smart Kundali has been successfully generated.
+                Your Premium Premium Personalised Kundli has been successfully generated.
               </p>
 
               <div className="flex flex-col gap-3 w-full max-w-[300px]">

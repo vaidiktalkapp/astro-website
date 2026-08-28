@@ -12,7 +12,7 @@ export const FALLBACK_MENUS = [
   },
   {
     "_id": "6a7ee9603ac57da1f2b018e6",
-    "title": "Vaidik Smart Kundali",
+    "title": "Premium Personalised Kundli",
     "url": "/report/kundli/vaidik-smart-kundali",
     "category": "kundli",
     "group": "Premium Reports",
@@ -90,7 +90,7 @@ export const FALLBACK_MENUS = [
   },
   {
     "_id": "6a7ee9603ac57da1f2b018e7",
-    "title": "Kundali Matching",
+    "title": "Premium Kundali Matching",
     "url": "/report/kundli/kundali-matching",
     "category": "kundli",
     "group": "Premium Reports",

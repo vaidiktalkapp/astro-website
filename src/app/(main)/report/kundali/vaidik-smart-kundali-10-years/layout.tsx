@@ -16,7 +16,7 @@ async function fetchSettings() {
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await fetchSettings();
   
-  const title = settings?.seoTitle || 'Vaidik Smart Kundali (10-Year Forecast) - Career, Marriage & Wealth';
+  const title = settings?.seoTitle || 'Premium Personalised Kundli (10-Year Forecast) - Career, Marriage & Wealth';
   const description = settings?.seoDescription || 'Get your 10-Year Premium Vaidik Kundali by India\'s most trusted astrologers. Unlock detailed predictions on career, finance, marriage, karmic lessons, and personalized remedies.';
   const keywords = settings?.seoKeywords || 'Vaidik Kundali, 10 Year Kundli, Premium Kundli, Astrology Report, Career Prediction';
 

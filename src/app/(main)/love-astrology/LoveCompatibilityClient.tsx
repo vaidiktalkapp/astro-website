@@ -172,7 +172,7 @@ export default function LoveCompatibilityClient({
       content: 'The strength of the 5th house (romance) vs 9th house (tradition) reveals whether love or arranged marriage is written in your destiny.',
       icon: <Sparkles className="w-6 h-6 text-[#d97706]" />,
       tool: { name: 'Free Kundli', link: '/kundli' },
-      report: { name: 'Kundali Matching', link: '/report/kundali/kundali-matching' }
+      report: { name: 'Premium Kundali Matching', link: '/report/kundali/kundali-matching' }
     },
     {
       title: 'Compatibility Check',
@@ -342,7 +342,7 @@ export default function LoveCompatibilityClient({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                         {[
-              { title: 'Kundali Matching', desc: 'Check love compatibility score', icon: <Heart className="w-7 h-7" />, link: '/compatibility', color: 'bg-pink-50', text: 'text-[#e11d48]' },
+              { title: 'Premium Kundali Matching', desc: 'Check love compatibility score', icon: <Heart className="w-7 h-7" />, link: '/compatibility', color: 'bg-pink-50', text: 'text-[#e11d48]' },
               { title: 'Free Janam Kundali', desc: 'Know your Venus placement', icon: <ShieldCheck className="w-7 h-7" />, link: '/kundli', color: 'bg-orange-50', text: 'text-[#ee6c1e]' },
               { title: 'Daily Love Horoscope', desc: 'Today\'s relationship insights', icon: <Sparkles className="w-7 h-7" />, link: '/daily-horoscope', color: 'bg-rose-50', text: 'text-[#f43f5e]' }
             ].map((tool, i) => (
@@ -541,7 +541,7 @@ export default function LoveCompatibilityClient({
               <h3 className="premium-serif font-bold text-[24px] text-[#3a1216] mb-6">Detailed Reports</h3>
               <div className="space-y-3">
                 {[
-                  { title: 'Kundali Matching Report', link: '/report/kundali/kundali-matching' },
+                  { title: 'Premium Kundali Matching Report', link: '/report/kundali/kundali-matching' },
                   { title: 'Personalized Lal Kitab', link: '/report/kundali/personalized-lal-kitab' },
                   { title: 'Hastlikhit Kundali', link: '/report/kundali/hastlikhit-kundali' }
                 ].map((rep, i) => (

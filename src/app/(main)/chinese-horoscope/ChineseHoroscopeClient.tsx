@@ -145,6 +145,28 @@ const FIVE_ELEMENTS = [
   dot: 'bg-blue-500'
 }];
 
+const CHINESE_HOROSCOPE_FAQS = [
+  {
+    question: "What is my Chinese Zodiac sign based on?",
+    answer: "Your Chinese Zodiac sign is based on your birth year, not your birth month. The cycle repeats every 12 years, with each year represented by one of the 12 animals. However, it follows the Lunar calendar (which usually starts between late January and mid-February), so if you were born early in the year, your sign might belong to the previous year."
+  },
+  {
+    question: "How is the Chinese Zodiac different from Western Astrology?",
+    answer: "Western astrology is based on the months of the year and the alignment of constellations (sun signs). The Chinese Zodiac is based on a 12-year lunar cycle, where each year is associated with an animal and one of five elements."
+  },
+  {
+    question: "What does the element in my Chinese Horoscope mean?",
+    answer: "Alongside the 12 animals, Chinese astrology uses five elements: Wood, Fire, Earth, Metal, and Water. Your element is determined by the last digit of your birth year. The element interacts with your animal sign to provide a more specific and nuanced reading of your personality and destiny."
+  },
+  {
+    question: "Can I be compatible with any Chinese Zodiac sign?",
+    answer: "While any two signs can build a relationship, Chinese astrology groups certain animals into trines (highly compatible) and identifies conflicting signs (challenging). Knowing these dynamics helps in navigating personal and professional relationships."
+  },
+  {
+    question: "Which is the most powerful Chinese Zodiac sign?",
+    answer: "In traditional Chinese culture, the Dragon is often considered the most powerful and auspicious sign, symbolizing strength, fortune, and imperial power. However, every sign has its own unique strengths and paths to success."
+  }
+];
 
 function ChineseHoroscopeContent() {
   const { t } = useTranslation();
@@ -249,7 +271,7 @@ function ChineseHoroscopeContent() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto relative z-10 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto relative z-10 pt-6 pb-12 px-4 sm:px-6 lg:px-8">
 
             <style dangerouslySetInnerHTML={{ __html: `
                 .chinese-wrap { font-family: 'Inter', sans-serif !important; }
@@ -258,7 +280,7 @@ function ChineseHoroscopeContent() {
             <div className="chinese-wrap">
 
                 {/* Mode Switcher */}
-                <div className="flex justify-center mb-12">
+                <div className="flex justify-center mb-8">
                     <div className="inline-flex p-1 rounded-2xl bg-white/40 backdrop-blur-md border border-[#d6c89a] shadow-sm">
                         <button
               onClick={() => {
@@ -305,7 +327,7 @@ function ChineseHoroscopeContent() {
             className="w-full">
             
                             {/* Header */}
-                            <div className="mb-10">
+                            <div className="mb-8">
                                 <div className="flex items-center gap-2 text-[#b8962e] text-sm font-semibold mb-3">
                                     <span className="text-base serif">☯</span>
                                     <span>{t("chinese_horoscope.daily_chinese_reading")}</span>
@@ -319,39 +341,39 @@ function ChineseHoroscopeContent() {
               </p>
                             </div>
 
-                            {/* Animal Grid */}
-                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                            {/* Animal Grid - Premium Redesign */}
+                            <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-white/63 py-12 flex justify-center">
+                                <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-12">
                                 {profiles.map((animal) =>
-              <motion.button
-                key={animal.name}
-                onClick={() => fetchSignReading(animal.name)}
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                className="flex flex-col items-center justify-center p-5 rounded-2xl border border-[#d6c89a] bg-transparent hover:border-[#b8962e] transition-all group text-center">
-                
-                                        <div className="w-12 h-12 mb-2 flex items-center justify-center">
-                                            {isUrl(animal.icon) ?
-                  <img
-                    src={animal.icon}
-                    alt={animal.name}
-                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" /> :
-
-
-                  <span className="text-3xl leading-none group-hover:scale-110 transition-transform duration-300">
+                                    <motion.button
+                                        key={animal.name}
+                                        onClick={() => fetchSignReading(animal.name)}
+                                        whileHover={{ y: -5 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="flex flex-col items-center justify-center bg-transparent group text-center cursor-pointer border-none outline-none"
+                                    >
+                                        <div className="w-28 h-28 mb-4 rounded-full bg-[#fae32c] flex items-center justify-center overflow-hidden border border-transparent shadow-sm group-hover:shadow-md transition-all">
+                                            {isUrl(animal.icon) ? (
+                                                <img
+                                                    src={animal.icon}
+                                                    alt={animal.name}
+                                                    className="w-[90%] h-[90%] object-contain group-hover:scale-110 transition-transform duration-300 mix-blend-multiply"
+                                                />
+                                            ) : (
+                                                <span className="text-[3rem] leading-none group-hover:scale-110 transition-transform duration-300 grayscale contrast-200 brightness-0 opacity-90">
                                                     {animal.icon}
                                                 </span>
-                  }
+                                            )}
                                         </div>
 
-                                        <span className="text-[13px] font-semibold text-gray-850 group-hover:text-gray-900 transition-colors tracking-wide">
-                                            {animal.name}
-                                        </span>
-
-                                        <span className="text-[10px] text-[#3a1216] mt-1 group-hover:text-[#b8962e] transition-colors leading-tight">
-                                            {CHINESE_ZODIAC_YEARS[animal.name] ?? ''}
+                                        <span className="text-[14px] font-bold text-[#1a1a1a] group-hover:text-[#b8962e] transition-colors tracking-wide">
+                                            {animal.name} {animal.name === 'Ox' ? '(or Cow)' : animal.name === 'Goat' ? '(or Sheep)' : animal.name === 'Pig' ? '(or Boar)' : ''}
                                         </span>
                                     </motion.button>
-              )}
+                                )}
+                                    </div>
+                                </div>
                             </div>
 
                             {/* Footer quote */}
@@ -369,7 +391,7 @@ function ChineseHoroscopeContent() {
                                 {/* What is Chinese Horoscope */}
                                 <section className="border-t border-[#d6c89a]/50 pt-10">
                                     <h2 className="text-3xl font-semibold text-gray-900 mb-4">{t("chinese_horoscope.chinese_horoscope_what_is_it")}</h2>
-                                    <div className="space-y-4 text-gray-850 leading-relaxed text-[15px]">
+                                    <div className="space-y-4 text-gray-850 leading-relaxed text-base">
                                         <p>
 {t("chinese_horoscope.the_chinese_horoscope_is_one_o")}
                   </p>
@@ -382,10 +404,72 @@ function ChineseHoroscopeContent() {
                                     </div>
                                 </section>
 
+                                {/* Animal Profiles Table */}
+                                <section className="border-t border-[#d6c89a]/50 pt-10">
+                                    <h2 className="text-3xl font-semibold text-gray-900 mb-2">{t("chinese_horoscope.the_12_chinese_zodiac_animals")}</h2>
+                                    <p className="text-gray-850 text-base leading-relaxed mb-6">
+{t("chinese_horoscope.each_of_the_12_animals_carries")}
+                </p>
+                                    <div className="space-y-16 mt-8">
+                                        {CHINESE_ANIMALS.map((animalName, index) => {
+                                            const zodiacData = CHINESE_ZODIAC_DATA[animalName];
+                                            if (!zodiacData) return null;
+                                            return (
+                                                <div key={animalName} className={`flex flex-col-reverse ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-16 items-start justify-between border-b border-[#d6c89a]/30 pb-16 last:border-0`}>
+                                                    {/* Text Content */}
+                                                    <div className="flex-1 space-y-6">
+                                                        <div>
+                                                            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 uppercase tracking-wider mb-2 font-sans">
+                                                                {animalName} {animalName === 'Ox' ? '(OR COW)' : animalName === 'Goat' ? '(OR SHEEP)' : animalName === 'Pig' ? '(OR BOAR)' : ''}
+                                                            </h3>
+                                                            <div className="w-16 h-1 bg-[#fae32c]"></div>
+                                                        </div>
+                                                        
+                                                        <p className="text-base text-gray-850 leading-relaxed font-sans text-justify">
+                                                            {zodiacData.personality}
+                                                        </p>
+
+                                                        <p className="text-base text-gray-850 leading-relaxed font-sans text-justify">
+                                                            Listing the {animalName} Zodiac sign weakness, such people do lack certain traits. Though the {animalName} zodiac does good in terms of career, they usually need to work on: {zodiacData.weaknesses.join(', ')}.
+                                                        </p>
+
+                                                        <p className="text-base text-gray-850 leading-relaxed font-sans text-justify">
+                                                            When it comes to love, the Chinese horoscope for {animalName} tells us how their natural traits shine. With their core element being {zodiacData.elementInfo}, they bring unique energy to relationships.
+                                                        </p>
+
+                                                        <p className="text-base text-gray-850 leading-relaxed font-sans text-justify">
+                                                            Their best compatibility is with: {zodiacData.compatibility.join(', ')}.
+                                                        </p>
+                                                    </div>
+
+                                                    {/* Right Icon Card */}
+                                                    <div className="w-full md:w-[380px] flex-shrink-0 flex justify-center pt-2">
+                                                        <div className="bg-white/60 backdrop-blur-md rounded-3xl p-4 shadow-sm border-2 border-[#fae32c] w-full max-w-[320px] aspect-square flex items-center justify-center">
+                                                            <div className="w-full h-full rounded-full bg-[#fae32c] flex items-center justify-center overflow-hidden border border-transparent shadow-inner">
+                                                                {isUrl(zodiacData.icon) ? (
+                                                                    <img 
+                                                                        src={zodiacData.icon} 
+                                                                        alt={animalName} 
+                                                                        className="w-[90%] h-[90%] object-contain mix-blend-multiply" 
+                                                                    />
+                                                                ) : (
+                                                                    <span className="text-[8rem] leading-none grayscale contrast-200 brightness-0 opacity-90">
+                                                                        {zodiacData.icon}
+                                                                    </span>
+                                                                )}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </section>
+
                                 {/* The Five Elements */}
                                 <section className="border-t border-[#d6c89a]/50 pt-10">
                                     <h2 className="text-3xl font-semibold text-gray-900 mb-4">{t("chinese_horoscope.the_five_elements_in_chinese_a")}</h2>
-                                    <div className="space-y-4 text-gray-850 leading-relaxed text-[15px] mb-6">
+                                    <div className="space-y-4 text-gray-850 leading-relaxed text-base mb-6">
                                         <p>
 {t("chinese_horoscope.in_addition_to_the_12_year_ani")}
                   </p>
@@ -408,44 +492,10 @@ function ChineseHoroscopeContent() {
                                     </div>
                                 </section>
 
-                                {/* Animal Profiles Table */}
-                                <section className="border-t border-[#d6c89a]/50 pt-10">
-                                    <h2 className="text-3xl font-semibold text-gray-900 mb-2">{t("chinese_horoscope.the_12_chinese_zodiac_animals")}</h2>
-                                    <p className="text-gray-850 text-[15px] leading-relaxed mb-6">
-{t("chinese_horoscope.each_of_the_12_animals_carries")}
-                </p>
-                                    <div className="overflow-x-auto rounded-2xl border border-[#d6c89a]/60 bg-transparent">
-                                        <table className="w-full text-left border-collapse">
-                                            <thead>
-                                                <tr className="border-b border-[#d6c89a]/60 bg-[#fdf6e3]/40">
-                                                    <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">{t("chinese_horoscope.animal")}</th>
-                                                    <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">{t("chinese_horoscope.element")}</th>
-                                                    <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">{t("chinese_horoscope.yin_yang")}</th>
-                                                    <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">{t("chinese_horoscope.key_traits")}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody className="divide-y divide-[#d6c89a]/30">
-                                                {CHINESE_ANIMAL_PROFILES.map((a, i) =>
-                      <tr
-                        key={i}
-                        className="hover:bg-[#fdf6e3]/30 transition-colors cursor-pointer"
-                        onClick={() => fetchSignReading(a.name)}>
-                        
-                                                        <td className="p-4 font-semibold text-gray-850 text-[14px] whitespace-nowrap">{a.name}</td>
-                                                        <td className="p-4 text-[14px] text-gray-850">{a.element}</td>
-                                                        <td className="p-4 text-[14px] text-gray-850">{a.yin_yang}</td>
-                                                        <td className="p-4 text-[13px] text-gray-850 leading-relaxed">{a.traits}</td>
-                                                    </tr>
-                      )}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </section>
-
                                 {/* How to Read Your Chinese Horoscope */}
                                 <section className="border-t border-[#d6c89a]/50 pt-10">
                                     <h2 className="text-3xl font-semibold text-gray-900 mb-4">{t("chinese_horoscope.how_to_read_your_chinese_horos")}</h2>
-                                    <div className="space-y-4 text-gray-850 leading-relaxed text-[15px] mb-6">
+                                    <div className="space-y-4 text-gray-850 leading-relaxed text-base mb-6">
                                         <p>
 {t("chinese_horoscope.a_chinese_horoscope_reading_dr")}
                   </p>
@@ -479,6 +529,26 @@ function ChineseHoroscopeContent() {
                                                 </div>
                                             </div>
                   )}
+                                    </div>
+                                </section>
+
+                                {/* Frequently Asked Questions */}
+                                <section className="border-t border-[#d6c89a]/50 pt-10">
+                                    <h2 className="text-3xl font-semibold text-gray-900 mb-8">Frequently Asked Questions</h2>
+                                    <div className="space-y-4">
+                                        {CHINESE_HOROSCOPE_FAQS.map((faq, idx) => (
+                                            <details key={idx} className="group bg-white/40 border border-[#d6c89a]/50 rounded-2xl overflow-hidden shadow-sm [&_summary::-webkit-details-marker]:hidden">
+                                                <summary className="flex items-center justify-between cursor-pointer p-6 font-semibold text-gray-900 text-[16px] hover:bg-white/50 transition-colors">
+                                                    {faq.question}
+                                                    <span className="transition duration-300 group-open:rotate-180 text-[#b8962e]">
+                                                        <svg fill="none" height="20" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" viewBox="0 0 24 24" width="20"><path d="M6 9l6 6 6-6"></path></svg>
+                                                    </span>
+                                                </summary>
+                                                <div className="text-gray-850 px-6 pb-6 text-[15px] leading-relaxed">
+                                                    <p>{faq.answer}</p>
+                                                </div>
+                                            </details>
+                                        ))}
                                     </div>
                                 </section>
 

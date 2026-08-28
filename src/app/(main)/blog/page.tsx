@@ -114,7 +114,7 @@ export default async function BlogListingPage({
             {blogs.length > 0 ? (
               blogs.map((blog: any) => (
                 <Link href={`/blog/${blog.slug}`} key={blog._id} className="group flex flex-col bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
-                  <div className="relative w-full aspect-[21/9] overflow-hidden">
+                  <div className="relative w-full aspect-video overflow-hidden">
                     <img 
                       src={blog.bannerImage || 'https://images.unsplash.com/photo-1598090216740-eb040d8c3f82?q=72&w=480&h=360&fit=crop'} 
                       alt={blog.title} 

@@ -17,9 +17,9 @@ async function fetchSettings() {
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await fetchSettings();
   
-  const title = settings?.seoTitle || 'Kundali Matching - Horoscope Matching for Marriage';
-  const description = settings?.seoDescription || 'Get comprehensive Kundali Matching (Ashtakoot Guna Milan) report. Check compatibility, Manglik dosha, and get personalized remedies for a happy married life.';
-  const keywords = settings?.seoKeywords || 'Kundali Matching, Horoscope Matching, Guna Milan, Marriage Compatibility, Kundli Milan';
+  const title = settings?.seoTitle || 'Premium Kundali Matching - Horoscope Matching for Marriage';
+  const description = settings?.seoDescription || 'Get comprehensive Premium Kundali Matching (Ashtakoot Guna Milan) report. Check compatibility, Manglik dosha, and get personalized remedies for a happy married life.';
+  const keywords = settings?.seoKeywords || 'Premium Kundali Matching, Horoscope Matching, Guna Milan, Marriage Compatibility, Kundli Milan';
 
   return {
     title,

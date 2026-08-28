@@ -135,15 +135,15 @@ const ChineseZodiacReading: React.FC<ChineseZodiacReadingProps> = ({ data, onBac
                     <div className="flex flex-col md:flex-row gap-10 items-start relative z-10">
                         {/* Animal Icon Block */}
                         <div className="flex-shrink-0 mx-auto md:mx-0">
-                            <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl border border-[#d6c89a] bg-transparent flex items-center justify-center text-6xl md:text-7xl group-hover:scale-105 transition-transform duration-700 overflow-hidden">
+                            <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-[#fae32c] flex items-center justify-center text-6xl md:text-7xl group-hover:scale-105 transition-transform duration-700 overflow-hidden shadow-sm">
                                 {isUrl(zodiacData.icon) ? (
                                     <img 
                                         src={zodiacData.icon} 
                                         alt={data.sign} 
-                                        className="w-full h-full object-contain" 
+                                        className="w-[90%] h-[90%] object-contain mix-blend-multiply" 
                                     />
                                 ) : (
-                                    <span>{zodiacData.icon}</span>
+                                    <span className="grayscale contrast-200 brightness-0 opacity-90">{zodiacData.icon}</span>
                                 )}
                             </div>
                             <div className="mt-4 text-center">
@@ -210,59 +210,75 @@ const ChineseZodiacReading: React.FC<ChineseZodiacReadingProps> = ({ data, onBac
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="pt-12 border-t border-[#d6c89a]/30"
+                    className="pt-16 pb-12 border-t border-[#d6c89a]/30"
                 >
-                    <div className="flex items-center gap-3 mb-8">
-                        <User className="w-4 h-4 text-[#b8962e]" />
-                        <h2 className="text-2xl font-semibold text-gray-900 serif tracking-tight">Celestial Personality Profile</h2>
-                    </div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-12 font-sans tracking-wide">
+                        About Your Chinese Animal Sign
+                    </h2>
 
-                    <div className="border border-[#d6c89a] rounded-2xl p-8 md:p-10 bg-transparent transition-all">
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                            <div className="lg:col-span-2 space-y-6">
-                                <p className="text-lg text-gray-850 leading-relaxed serif">
-                                    {zodiacData.personality}
-                                </p>
-                                
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-[#d6c89a]/20">
-                                    <div className="space-y-4">
-                                        <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#3a1216]">Core Strengths</h4>
-                                        <div className="flex flex-wrap gap-2">
-                                            {zodiacData.strengths.map(s => (
-                                                <span key={s} className="px-3 py-1 rounded-full text-emerald-700 bg-emerald-50/30 text-[10px] font-bold uppercase tracking-tighter border border-emerald-100/50">{s}</span>
-                                            ))}
-                                        </div>
+                    <div className="flex flex-col-reverse md:flex-row gap-12 items-start justify-between">
+                        {/* Left Content */}
+                        <div className="flex-1 space-y-6">
+                            <div>
+                                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 uppercase tracking-wider mb-2 font-sans">
+                                    {normalizedSign}
+                                </h3>
+                                <div className="w-12 h-1 bg-[#fae32c]"></div>
+                            </div>
+                            
+                            <p className="text-[15px] text-gray-800 leading-relaxed font-sans text-justify">
+                                {zodiacData.personality}
+                            </p>
+                            
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6">
+                                <div className="space-y-3">
+                                    <h4 className="text-[12px] font-bold uppercase tracking-widest text-[#3a1216]">Core Strengths</h4>
+                                    <div className="flex flex-wrap gap-2">
+                                        {zodiacData.strengths.map(s => (
+                                            <span key={s} className="px-3 py-1.5 rounded bg-white border border-[#d6c89a]/40 text-gray-800 text-[11px] font-bold uppercase tracking-wide">{s}</span>
+                                        ))}
                                     </div>
-                                    <div className="space-y-4">
-                                        <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#3a1216]">Shadow Traits</h4>
-                                        <div className="flex flex-wrap gap-2">
-                                            {zodiacData.weaknesses.map(w => (
-                                                <span key={w} className="px-3 py-1 rounded-full text-rose-700 bg-rose-50/30 text-[10px] font-bold uppercase tracking-tighter border border-rose-100/50">{w}</span>
-                                            ))}
-                                        </div>
+                                </div>
+                                <div className="space-y-3">
+                                    <h4 className="text-[12px] font-bold uppercase tracking-widest text-[#3a1216]">Shadow Traits</h4>
+                                    <div className="flex flex-wrap gap-2">
+                                        {zodiacData.weaknesses.map(w => (
+                                            <span key={w} className="px-3 py-1.5 rounded bg-white border border-[#d6c89a]/40 text-gray-800 text-[11px] font-bold uppercase tracking-wide">{w}</span>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="space-y-6 lg:border-l lg:border-[#d6c89a]/20 lg:pl-12">
-                                <div className="pt-6 border-t border-[#d6c89a]/10">
-                                    <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#b8962e] mb-4 flex items-center gap-2">
-                                        <Star className="w-3 h-3" /> Celestial Essence
-                                    </h4>
-                                    <p className="text-sm text-gray-850 font-medium leading-relaxed serif">
-                                        {zodiacData.elementInfo}
-                                    </p>
-                                </div>
+                            <div className="space-y-4 pt-6 border-t border-[#d6c89a]/20">
+                                <h4 className="text-[12px] font-bold uppercase tracking-widest text-[#b8962e] mb-2">Celestial Essence</h4>
+                                <p className="text-[14px] text-gray-800 leading-relaxed font-sans">
+                                    {zodiacData.elementInfo}
+                                </p>
                                 
-                                <div className="pt-6 border-t border-[#d6c89a]/10">
-                                    <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#b8962e] mb-4 flex items-center gap-2">
-                                        <Heart className="w-3 h-3" /> Binary Synergies
-                                    </h4>
-                                    <div className="flex flex-wrap gap-2">
-                                        {zodiacData.compatibility.map(c => (
-                                            <span key={c} className="text-[11px] font-bold uppercase tracking-tighter text-gray-850 border border-[#d6c89a]/40 px-3 py-1.5 rounded-lg">{c}</span>
-                                        ))}
-                                    </div>
+                                <h4 className="text-[12px] font-bold uppercase tracking-widest text-[#b8962e] mb-2 mt-4">Best Compatibility</h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {zodiacData.compatibility.map(c => (
+                                        <span key={c} className="text-[12px] font-bold uppercase tracking-wider text-gray-800 border-b-2 border-[#fae32c] pb-0.5">{c}</span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Right Icon Card */}
+                        <div className="w-full md:w-[320px] flex-shrink-0 flex justify-center">
+                            <div className="bg-white/60 backdrop-blur-md rounded-3xl p-4 shadow-sm border-2 border-[#fae32c] w-full max-w-[280px] aspect-square flex items-center justify-center">
+                                <div className="w-full h-full rounded-full bg-[#fae32c] flex items-center justify-center overflow-hidden border border-transparent shadow-inner">
+                                    {isUrl(zodiacData.icon) ? (
+                                        <img 
+                                            src={zodiacData.icon} 
+                                            alt={data.sign} 
+                                            className="w-[90%] h-[90%] object-contain mix-blend-multiply" 
+                                        />
+                                    ) : (
+                                        <span className="text-[8rem] leading-none grayscale contrast-200 brightness-0 opacity-90">
+                                            {zodiacData.icon}
+                                        </span>
+                                    )}
                                 </div>
                             </div>
                         </div>

@@ -34,7 +34,7 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
       }}
     >
       <div className="flex h-full w-full transition-transform duration-500 ease-out" style={{ transform: `translateX(-${idx * 100}%)` }}>
-        {images.map((src, i) => <img key={i} src={src} className="w-full h-full object-cover shrink-0" alt={`Slide ${i + 1}`} />)}
+        {images.map((src, i) => <img key={i} src={src} className="min-w-full h-full object-cover shrink-0" alt={`Slide ${i + 1}`} onError={(e) => { (e.target as HTMLImageElement).style.opacity = '0'; }} onLoad={(e) => { (e.target as HTMLImageElement).style.opacity = '1'; }} />)}
       </div>
       {images.length > 1 && <>
         <button onClick={() => setIdx(i => i === 0 ? images.length - 1 : i - 1)} className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/90 hover:bg-white text-gray-800 rounded-full flex items-center justify-center transition-all shadow-md opacity-0 group-hover:opacity-100">
@@ -159,7 +159,9 @@ export default function DynamicPujaClient({ initialPuja, slug }: { initialPuja: 
 
   const primaryImage = puja?.image ? (puja.image.startsWith('/pooja') ? puja.image : getImageUrl(puja.image, puja.title)) : '/pooja/Rudraabhishek.webp';
   const defaultImages = [primaryImage];
-  const galleryImages = puja?.gallery?.length > 0 ? puja.gallery : defaultImages;
+  const galleryImages = puja?.gallery?.length > 0 
+    ? puja.gallery.map((img: string) => img.startsWith('/pooja') ? img : getImageUrl(img, puja.title)) 
+    : defaultImages;
   
   const price = puja?.discountedPrice || puja?.price || 1599;
   const origPrice = Math.round(price * 1.28);
@@ -315,7 +317,7 @@ export default function DynamicPujaClient({ initialPuja, slug }: { initialPuja: 
         <section className="py-8 border-t border-[#e5e0d8]">
           <h2 className="text-[25px] font-bold text-[#3a1216] mb-4">About this Puja</h2>
           <div className="flex gap-6 flex-wrap items-start">
-            <img src={primaryImage} alt={puja?.title} className="w-full max-w-[420px] rounded-[12px] object-cover aspect-[4/3]" />
+            <img src={primaryImage} alt={puja?.title} className="w-full max-w-[320px] md:max-w-[350px] rounded-[16px] h-auto object-contain shadow-sm border border-[#e5e0d8] shrink-0" />
             <div className="flex-1 min-w-[250px] space-y-4">
               {puja?.extraContent ? (
                 <div className="text-[#3a1216] text-[16px] leading-[1.8] space-y-4 whitespace-pre-line break-words text-justify">
@@ -490,7 +492,7 @@ export default function DynamicPujaClient({ initialPuja, slug }: { initialPuja: 
               <p className="text-[#3a1216] text-[15px] mt-1 mb-0">Our team is here to help you with any questions about your booking.</p>
             </div>
             <div className="text-center">
-              <a href={`https://wa.me/919818999037?text=Hi%2C+I+want+to+book+${encodeURIComponent(puja?.title || 'a Puja')}`} target="_blank" rel="noopener noreferrer" className="inline-block bg-[#25d366] hover:bg-[#1da851] text-white py-[14px] px-[32px] rounded-[12px] font-bold text-[15px] no-underline transition-colors">
+              <a href={`https://wa.me/919031823276?text=Hi%2C+I+want+to+book+${encodeURIComponent(puja?.title || 'a Puja')}`} target="_blank" rel="noopener noreferrer" className="inline-block bg-[#25d366] hover:bg-[#1da851] text-white py-[14px] px-[32px] rounded-[12px] font-bold text-[15px] no-underline transition-colors">
                 Chat on WhatsApp
               </a>
               <p className="text-[12px] text-[#3a1216]/50 mt-2 mb-0">24/7 support available</p>

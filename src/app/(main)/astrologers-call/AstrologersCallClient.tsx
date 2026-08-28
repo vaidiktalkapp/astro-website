@@ -1,5 +1,6 @@
 'use client';
 import { useTranslation } from '@/context/LanguageContext';
+import { Search, ListFilter } from 'lucide-react';
 
 import { useState, useEffect, useCallback } from 'react';
 import AstrologerCard from '../../../components/astrologers/AstrologerCard';
@@ -178,7 +179,7 @@ export default function AstrologersPage() {
         <div className="flex items-center space-x-3">
           {/* Search */}
           <form onSubmit={handleSearch} className="hidden md:flex items-center bg-yellow-400 rounded-full px-5 py-2.5 shadow-sm">
-            <span className="mr-2 text-lg text-gray-900">🔍</span>
+            <Search size={18} className="mr-2 text-gray-900" />
             <input
               type="text"
               value={searchQuery}
@@ -194,7 +195,7 @@ export default function AstrologersPage() {
             className="flex items-center border border-gray-300 rounded-full px-5 py-2.5 text-sm text-gray-850 bg-white hover:bg-gray-50 shadow-sm"
             onClick={() => setShowSortModal(true)}>
 
-            <span className="mr-2 text-gray-850">⚙</span>
+            <ListFilter size={16} className="mr-2 text-gray-850" />
             {t("astrologers_call.filter")}
           </button>
         </div>
@@ -203,7 +204,7 @@ export default function AstrologersPage() {
       {/* Mobile Search */}
       <div className="md:hidden bg-white border-b border-gray-200 px-4 py-3">
         <form onSubmit={handleSearch} className="flex items-center bg-yellow-400 rounded-full px-4 py-2 shadow-sm">
-          <span className="mr-2 text-lg text-gray-900">🔍</span>
+          <Search size={18} className="mr-2 text-gray-900" />
           <input
             type="text"
             value={searchQuery}

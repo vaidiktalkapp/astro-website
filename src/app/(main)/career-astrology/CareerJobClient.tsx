@@ -541,7 +541,7 @@ export default function CareerJobClient({
               <h3 className="premium-serif font-bold text-[24px] text-[#3a1216] mb-6">Detailed Reports</h3>
               <div className="space-y-3">
                                 {[
-                  { title: 'Vaidik Smart Kundali (10 Years)', link: '/report/kundali/vaidik-smart-kundali-10-years' },
+                  { title: 'Premium Personalised Kundli (10 Years)', link: '/report/kundali/vaidik-smart-kundali-10-years' },
                   { title: 'Personalized Lal Kitab', link: '/report/kundali/personalized-lal-kitab' },
                   { title: 'Hastlikhit Kundali', link: '/report/kundali/hastlikhit-kundali' }
                 ].map((rep, i) => (

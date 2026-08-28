@@ -177,7 +177,7 @@ export default function MarriageRelationshipClient({
       report: { name: 'Talk to Expert', link: '/astrologers-chat' }
     },
     {
-      title: 'Kundali Matching',
+      title: 'Premium Kundali Matching',
       content: 'Matching horoscopes on the 36-Guna system checks compatibility across temperament, health, and harmony. We also check for Mangal Dosh and Nadi Dosh.',
       icon: <HeartHandshake className="w-6 h-6 text-[#4f46e5]" />,
       tool: { name: 'Free Matching', link: '/horoscope-matching' },
@@ -344,7 +344,7 @@ export default function MarriageRelationshipClient({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { title: 'Kundali Matching', desc: 'Ashtakoot Guna Milan for compatibility', icon: <Heart className="w-7 h-7" />, link: '/horoscope-matching', color: 'bg-orange-50', text: 'text-[#ee6c1e]' },
+              { title: 'Premium Kundali Matching', desc: 'Ashtakoot Guna Milan for compatibility', icon: <Heart className="w-7 h-7" />, link: '/horoscope-matching', color: 'bg-orange-50', text: 'text-[#ee6c1e]' },
               { title: 'Manglik Check', desc: 'Find severity & cancellation rules', icon: <ShieldCheck className="w-7 h-7" />, link: '/kundli', color: 'bg-rose-50', text: 'text-[#e11d48]' },
               { title: 'Daily Horoscope', desc: 'Read your daily planetary insights', icon: <Sparkles className="w-7 h-7" />, link: '/daily-horoscope', color: 'bg-indigo-50', text: 'text-[#4f46e5]' }
             ].map((tool, i) => (
@@ -543,7 +543,7 @@ export default function MarriageRelationshipClient({
               <h3 className="premium-serif font-bold text-[24px] text-[#3a1216] mb-6">Detailed Reports</h3>
               <div className="space-y-3">
                 {[
-                  { title: 'Vaidik Smart Kundali (10 Years)', link: '/report/kundali/vaidik-smart-kundali-10-years' },
+                  { title: 'Premium Personalised Kundli (10 Years)', link: '/report/kundali/vaidik-smart-kundali-10-years' },
                   { title: 'Complete Kundali Milan', link: '/horoscope-matching' },
                   { title: 'Free Manglik Dosh Check', link: '/kundli' }
                 ].map((rep, i) => (
@@ -637,14 +637,14 @@ export default function MarriageRelationshipClient({
               </p>
             </div>
 
-            {/* Card 2: Kundali Matching */}
+            {/* Card 2: Premium Kundali Matching */}
             <div className="p-6 md:p-8 rounded-[1.5rem] bg-[#fdfaf7] border border-[#f0ddc0]/80 shadow-[0_4px_15px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_25px_rgba(34,197,94,0.08)] hover:border-[#22c55e]/40 transition-all duration-300 group">
               <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-5 text-[#22c55e] group-hover:scale-110 transition-transform duration-300">
                 <HeartHandshake className="w-6 h-6" />
               </div>
-              <h3 className="premium-serif font-bold text-[22px] md:text-[24px] text-[#3a1216] mb-3">Importance of Kundali Matching</h3>
+              <h3 className="premium-serif font-bold text-[22px] md:text-[24px] text-[#3a1216] mb-3">Importance of Premium Kundali Matching</h3>
               <p className="text-[#5e4339] text-[14.5px] md:text-[15.5px] leading-relaxed">
-                Before tying the knot, <strong className="text-[#3a1216] font-semibold">Kundali Matching (Guna Milan)</strong> is highly recommended. Using the traditional Ashtakoot system, our experts evaluate 36 Gunas to check emotional, mental, and physical compatibility. A deeper analysis of the Navamsha chart (D9) is also done to accurately predict the true quality and longevity of married life.
+                Before tying the knot, <strong className="text-[#3a1216] font-semibold">Premium Kundali Matching (Guna Milan)</strong> is highly recommended. Using the traditional Ashtakoot system, our experts evaluate 36 Gunas to check emotional, mental, and physical compatibility. A deeper analysis of the Navamsha chart (D9) is also done to accurately predict the true quality and longevity of married life.
               </p>
             </div>
 

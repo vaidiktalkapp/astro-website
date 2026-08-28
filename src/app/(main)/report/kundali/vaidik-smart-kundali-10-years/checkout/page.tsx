@@ -15,7 +15,7 @@ export default function CheckoutPage() {
   const router = useRouter();
   const basePrice = settings?.discountedPrice || 649;
   const totalAmount = basePrice;
-  const finalReportName = 'Vaidik Smart Kundali 10 Years';
+  const finalReportName = 'Premium Personalised Kundli 10 Years';
 
   const { formData, setFormData, handleChange, handleSubmit, isProcessing } = useReportBooking({
     name: finalReportName,

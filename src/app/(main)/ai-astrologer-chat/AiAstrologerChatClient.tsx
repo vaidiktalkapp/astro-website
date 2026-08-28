@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import aiAstrologerService, { AiAstrologer } from '@/lib/aiAstrologerService';
 import { useAuth } from '@/context/AuthContext';
 import {
-  Star, MessageSquare, Filter, Search, Check,
+  Star, MessageSquare, Filter, ListFilter, Search, Check,
   ChevronRight, Sparkles, User, Users, Clock, ChevronDown,
   MapPin, Calendar, Mail, Phone, Video, TrendingUp, Award,
   Zap, Crown, BadgeCheck, X, Moon, Sun, Globe, Heart, Shield } from
@@ -351,7 +351,7 @@ const AstrologerListingContent = () => {
               onClick={() => setShowSortModal(true)}
               className="flex items-center border border-gray-300 rounded-full px-5 py-2.5 text-sm text-gray-850 bg-white hover:bg-gray-50 shadow-sm transition-all shrink-0 cursor-pointer">
               
-              <Filter className="w-4 h-4 text-gray-850 mr-2" />
+              <ListFilter className="w-4 h-4 text-gray-850 mr-2" />
               <span>{t("ai_astrologer_chat.filter")}</span>
             </button>
           </div>

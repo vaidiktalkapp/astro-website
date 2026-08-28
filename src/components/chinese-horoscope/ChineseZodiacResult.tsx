@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import { ArrowLeft, Share2, Download, Loader2 } from 'lucide-react';
+import { ArrowLeft, Download, Loader2 } from 'lucide-react';
 import { downloadChineseHoroscopePDF } from '@/lib/chineseHoroscopePdfGenerator';
+import { CHINESE_ZODIAC_DATA } from '@/lib/chineseZodiacData';
 import { toast } from 'react-hot-toast';
 
 interface ChineseZodiacResultProps {
@@ -79,9 +80,9 @@ const ChineseZodiacResult = ({ data, userName, onReset }: ChineseZodiacResultPro
         <div
             style={{
                 fontFamily: "'DM Sans', 'Helvetica Neue', Arial, sans-serif",
-                maxWidth: 860,
+                maxWidth: 1200,
                 margin: '0 auto',
-                padding: '1.5rem 1rem 3rem',
+                padding: '0.5rem 1rem 3rem',
             }}
         >
             <style>{`
@@ -117,26 +118,13 @@ const ChineseZodiacResult = ({ data, userName, onReset }: ChineseZodiacResultPro
                             borderRadius: 8,
                             padding: '6px 14px',
                             fontSize: 13,
-                            color: '#666',
+                            color: '#444',
                         }}
                     >
                         <ArrowLeft size={14} />
                         Recalculate
                     </button>
                     <div style={{ display: 'flex', gap: 8 }}>
-                        <button
-                            className="czr-btn"
-                            style={{
-                                border: '0.5px solid rgba(0,0,0,0.15)',
-                                borderRadius: 8,
-                                padding: '6px 14px',
-                                fontSize: 13,
-                                color: '#666',
-                            }}
-                        >
-                            <Share2 size={14} />
-                            Share
-                        </button>
                         <button
                             disabled={isDownloading}
                             onClick={handleDownload}
@@ -146,7 +134,7 @@ const ChineseZodiacResult = ({ data, userName, onReset }: ChineseZodiacResultPro
                                 borderRadius: 8,
                                 padding: '6px 14px',
                                 fontSize: 13,
-                                color: '#666',
+                                color: '#444',
                                 opacity: isDownloading ? 0.5 : 1,
                             }}
                         >
@@ -181,8 +169,8 @@ const ChineseZodiacResult = ({ data, userName, onReset }: ChineseZodiacResultPro
                     >
                         <div>
                             <p style={{
-                                fontSize: 11, fontWeight: 500, letterSpacing: '0.12em',
-                                textTransform: 'uppercase', color: '#999', margin: '0 0 10px',
+                                fontSize: 11, fontWeight: 600, letterSpacing: '0.12em',
+                                textTransform: 'uppercase', color: '#555', margin: '0 0 10px',
                             }}>
                                 Personal Destiny
                             </p>
@@ -194,37 +182,21 @@ const ChineseZodiacResult = ({ data, userName, onReset }: ChineseZodiacResultPro
                                 color: '#111',
                                 lineHeight: 1.15,
                             }}>
-                                The {data.element}{' '}
-                                <span style={{ color: '#8B4A0E' }}>{data.animal}</span>
+                                The {data.element} <span style={{ color: '#b8962e' }}>{data.animal}</span>
                             </h1>
-                            <p style={{ fontSize: 14, color: '#999', margin: 0 }}>
+                            <p style={{ fontSize: 14, color: '#666', margin: 0 }}>
                                 Born for legacy · Year of transformation
                             </p>
                         </div>
 
-                        <div style={{ display: 'flex', gap: 8, flexShrink: 0 }}>
-                            {[
-                                { label: 'Element', value: data.element },
-                                { label: 'Animal', value: data.animal },
-                            ].map(({ label, value }) => (
-                                <div
-                                    key={label}
-                                    style={{
-                                        background: '#fafafa',
-                                        border: '0.5px solid rgba(0,0,0,0.08)',
-                                        borderRadius: 12,
-                                        padding: '10px 18px',
-                                        textAlign: 'center',
-                                    }}
-                                >
-                                    <p style={{ fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#aaa', margin: '0 0 3px', fontWeight: 500 }}>
-                                        {label}
-                                    </p>
-                                    <p style={{ fontSize: 16, fontWeight: 500, color: '#111', margin: 0 }}>
-                                        {value}
-                                    </p>
-                                </div>
-                            ))}
+                        <div style={{ display: 'flex', gap: 16, flexShrink: 0 }}>
+                            <div className="w-24 h-24 rounded-full bg-[#fae32c] flex items-center justify-center overflow-hidden border border-transparent shadow-sm">
+                                <img
+                                    src={CHINESE_ZODIAC_DATA[data.animal]?.icon}
+                                    alt={data.animal}
+                                    className="w-[90%] h-[90%] object-contain mix-blend-multiply"
+                                />
+                            </div>
                         </div>
                     </motion.div>
 
@@ -242,14 +214,14 @@ const ChineseZodiacResult = ({ data, userName, onReset }: ChineseZodiacResultPro
                         }}>
                             Destiny arc
                         </p>
-                        <p style={{ fontSize: 14, color: '#555', lineHeight: 1.8, margin: '0 0 8px' }}>
+                        <p style={{ fontSize: 16, color: '#1a1a1a', lineHeight: 1.8, margin: '0 0 12px' }}>
                             Greetings{' '}
-                            <strong style={{ color: '#111', fontWeight: 500 }}>
+                            <strong style={{ color: '#111', fontWeight: 600 }}>
                                 {userName || data.userName || 'Seeker'}
                             </strong>
                             , your path as a {data.element} {data.animal} is one of profound significance.
                         </p>
-                        <p style={{ fontSize: 14, color: '#555', lineHeight: 1.8, margin: 0, whiteSpace: 'pre-line' }}>
+                        <p style={{ fontSize: 16, color: '#1a1a1a', lineHeight: 1.9, margin: 0, whiteSpace: 'pre-line' }}>
                             {data.destinyPath}
                         </p>
                     </motion.div>
@@ -269,8 +241,8 @@ const ChineseZodiacResult = ({ data, userName, onReset }: ChineseZodiacResultPro
                             borderRight: '0.5px solid rgba(0,0,0,0.07)',
                         }}>
                             <p style={{
-                                fontSize: 11, fontWeight: 500, letterSpacing: '0.12em',
-                                textTransform: 'uppercase', color: '#999', margin: '0 0 14px',
+                                fontSize: 11, fontWeight: 600, letterSpacing: '0.12em',
+                                textTransform: 'uppercase', color: '#555', margin: '0 0 14px',
                             }}>
                                 Virtues of power
                             </p>
@@ -290,8 +262,8 @@ const ChineseZodiacResult = ({ data, userName, onReset }: ChineseZodiacResultPro
                         {/* Shadows */}
                         <div style={{ padding: '2rem 2.5rem' }}>
                             <p style={{
-                                fontSize: 11, fontWeight: 500, letterSpacing: '0.12em',
-                                textTransform: 'uppercase', color: '#999', margin: '0 0 14px',
+                                fontSize: 11, fontWeight: 600, letterSpacing: '0.12em',
+                                textTransform: 'uppercase', color: '#555', margin: '0 0 14px',
                             }}>
                                 Shadows to balance
                             </p>
@@ -319,14 +291,14 @@ const ChineseZodiacResult = ({ data, userName, onReset }: ChineseZodiacResultPro
                         }}
                     >
                         <p style={{
-                            fontSize: 11, fontWeight: 500, letterSpacing: '0.12em',
-                            textTransform: 'uppercase', color: '#999', margin: '0 0 10px',
+                            fontSize: 11, fontWeight: 600, letterSpacing: '0.12em',
+                            textTransform: 'uppercase', color: '#555', margin: '0 0 10px',
                         }}>
                             Grand master's feng shui tip
                         </p>
                         <p style={{
-                            fontSize: 15,
-                            color: '#444',
+                            fontSize: 18,
+                            color: '#1a1a1a',
                             lineHeight: 1.8,
                             margin: 0,
                             fontStyle: 'normal',
@@ -373,8 +345,8 @@ const ChineseZodiacResult = ({ data, userName, onReset }: ChineseZodiacResultPro
                                 }}
                             >
                                 <p style={{
-                                    fontSize: 11, fontWeight: 500, letterSpacing: '0.1em',
-                                    textTransform: 'uppercase', color: '#aaa', margin: '0 0 6px',
+                                    fontSize: 11, fontWeight: 600, letterSpacing: '0.1em',
+                                    textTransform: 'uppercase', color: '#555', margin: '0 0 6px',
                                 }}>
                                     {label}
                                 </p>
