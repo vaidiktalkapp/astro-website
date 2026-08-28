@@ -414,7 +414,7 @@ export default function HoroscopeDetailClient({
 
             <div className="min-h-[300px]">
               {active.reading ? (
-                <div className="prose prose-p:text-[#3a1216] prose-headings:text-[#5c1420] prose-a:text-[#ee6c1e] max-w-none text-base md:text-lg leading-relaxed">
+                <div className="prose text-[#3a1216] prose-p:text-[#3a1216] prose-li:text-[#3a1216] prose-headings:text-[#5c1420] prose-strong:text-[#5c1420] prose-a:text-[#ee6c1e] max-w-none text-base md:text-lg leading-relaxed">
                   {active.reading.trim().startsWith('<') || active.reading.includes('</p>') ? (
                     <div className="break-words overflow-x-auto max-w-full" dangerouslySetInnerHTML={{ __html: active.reading }} />
                   ) : (

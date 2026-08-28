@@ -615,6 +615,7 @@ Kundali & Reports
                               {booking.reportSlug === 'vaidik-smart-kundali-10-years' ? 'Smart Kundali 10-Years' : 
                                booking.reportSlug === 'kundali-matching' ? 'Kundali Match Making' : 
                                booking.reportSlug === 'gemstone-report' ? 'Gemstone Report' : 
+                               booking.reportSlug === 'fortune-numerology' ? 'Pro Numerology Report' : 
                                booking.reportSlug}
                             </h3>
                             <span className="text-sm font-semibold text-gray-900 bg-gray-50 px-2 py-1 rounded">
