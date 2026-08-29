@@ -14,11 +14,15 @@ export async function generateMetadata(): Promise<Metadata> {
   return generatePageMetadata(seoData, defaultMeta);
 }
 
+import React, { Suspense } from 'react';
+
 export default function Page() {
   return (
     <>
       <PageSeoProvider slug="atlas" />
-      <AtlasClient />
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+        <AtlasClient />
+      </Suspense>
     </>
   );
 }

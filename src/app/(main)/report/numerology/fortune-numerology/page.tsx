@@ -166,7 +166,7 @@ const faqData: FaqItem[] = [
   }
 ];
 
-export default async function SmartNumerology ReportPage() {
+export default async function SmartNumerologyReportPage() {
   const settings = await fetchSettings();
 
   const getYoutubeVideoId = (url: string) => {
