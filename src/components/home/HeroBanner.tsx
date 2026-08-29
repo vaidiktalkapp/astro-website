@@ -23,7 +23,7 @@ const HeroBanner = ({ initialSettings }: { initialSettings?: any }) => {
     isActive: true
   }]);
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
-  
+
   const [heroText, setHeroText] = useState({
     badgeText: initialSettings?.badgeText || DEFAULT_HERO.badgeText,
     headingPrefix: initialSettings?.headingPrefix || DEFAULT_HERO.headingPrefix,
@@ -47,14 +47,14 @@ const HeroBanner = ({ initialSettings }: { initialSettings?: any }) => {
               if (orderA !== orderB) return orderA - orderB;
               return new Date(a.createdAt || 0).getTime() - new Date(b.createdAt || 0).getTime();
             });
-          
+
           if (heroes.length > 0) {
             // Preload the first image to prevent white flash
             const firstHero = heroes[0];
-            const imgSrc = window.innerWidth < 1024 
+            const imgSrc = window.innerWidth < 1024
               ? (firstHero.mobileImageUrl || firstHero.desktopImageUrl || '/Astrology image.webp')
               : (firstHero.desktopImageUrl || '/Astrology image.webp');
-              
+
             const img = new window.Image();
             img.src = imgSrc;
             img.onload = () => {
@@ -108,7 +108,7 @@ const HeroBanner = ({ initialSettings }: { initialSettings?: any }) => {
   const displayHeadingHighlight = currentBanner.headingHighlight || heroText.headingHighlight;
   const displayHeadingSuffix = currentBanner.headingSuffix || heroText.headingSuffix;
   const displaySubheading = currentBanner.subheading || heroText.subheading;
-  
+
   const btn1Text = currentBanner.button1Text || "Talk to Astrologer";
   const btn1Link = currentBanner.button1Link || "/astrologers-chat";
   const btn2Text = currentBanner.button2Text || "Get Free Kundli";
@@ -120,7 +120,7 @@ const HeroBanner = ({ initialSettings }: { initialSettings?: any }) => {
   const textKey = `${displayBadgeText}|${displayHeadingPrefix}|${displayHeadingHighlight}|${displayHeadingSuffix}|${displaySubheading}|${btn1Text}|${btn1Link}|${btn2Text}|${btn2Link}|${btn3Text}|${btn3Link}`;
 
   return (
-    <div className="relative w-full min-h-[550px] lg:min-h-[650px] flex flex-col lg:flex-row lg:items-center overflow-hidden pt-12 lg:py-20 z-10">
+    <div className="relative w-full min-h-[500px] lg:min-h-[550px] flex flex-col lg:flex-row lg:items-center overflow-hidden pt-4 lg:pt-6 lg:pb-6 z-10">
 
       {/* Desktop-only absolute background image (Crossfade sliding) */}
       <div className="absolute inset-0 z-0 hidden lg:flex justify-end pointer-events-none">
@@ -131,7 +131,7 @@ const HeroBanner = ({ initialSettings }: { initialSettings?: any }) => {
               key={banner._id || index}
               src={banner.desktopImageUrl || "/Astrology image.webp"}
               alt={banner.title || "Vaidik Astrology Consultation"}
-              className={`absolute h-full lg:w-[70%] object-cover object-center lg:object-right transition-opacity duration-500 ease-in-out right-0 lg:translate-x-12
+              className={`absolute h-full lg:w-[70%] object-cover object-center lg:object-[20%_35%] transition-opacity duration-500 ease-in-out right-0 lg:translate-x-12
                   ${isActive ? 'opacity-95 z-10' : 'opacity-0 z-0'}`}
               style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 25%, black 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 25%, black 100%)' }}
             />
@@ -140,9 +140,9 @@ const HeroBanner = ({ initialSettings }: { initialSettings?: any }) => {
       </div>
 
       {/* Text Content */}
-      <div className="relative z-20 w-full px-6 md:px-10 mx-auto max-w-[1600px] flex-shrink-0 lg:-mt-16">
+      <div className="relative z-20 w-full px-6 md:px-10 mx-auto max-w-[1600px] flex-shrink-0 lg:-mt-10">
         <div className="max-w-[650px] lg:max-w-[700px] xl:max-w-[800px]">
-          
+
           {/* Animated Text & Buttons */}
           <div key={textKey} className="animate-fade-in-up">
             <div className="inline-block bg-[#f6e2c8] text-[#8a4410] text-xs font-bold px-3.5 py-1.5 rounded-full mb-4.5 shadow-sm">
