@@ -13,20 +13,27 @@ function PujaCarousel({ items = [] }: { items?: any[] }) {
 
   if (total === 0) return null; // Safe guard for empty items
 
-  const CARD_W = 520;
-  const CARD_H = 410;
-  const OFFSET = 480; // Adjusted for smaller scale
-
   const [isMounted, setIsMounted] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
     setIsMounted(true);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); // Check initially
+    window.addEventListener('resize', handleResize);
     const t = setInterval(() => setActive(p => (p + 1) % total), 4000);
-    return () => clearInterval(t);
+    return () => {
+      clearInterval(t);
+      window.removeEventListener('resize', handleResize);
+    };
   }, [total]);
 
+  const CARD_W = isMobile ? 310 : 520;
+  const CARD_H = isMobile ? 310 : 410;
+  const OFFSET = isMobile ? 300 : 480;
+
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', minHeight: 460, width: '100%', userSelect: 'none', position: 'relative', overflow: 'visible', marginTop: '-70px' }}>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', minHeight: isMobile ? 360 : 460, width: '100%', userSelect: 'none', position: 'relative', overflow: 'visible', marginTop: isMobile ? '20px' : '-70px' }}>
       <div style={{
         position: 'relative',
         width: '140%', // Makes container wider than the flex column so side cards aren't clipped
@@ -34,8 +41,8 @@ function PujaCarousel({ items = [] }: { items?: any[] }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        WebkitMaskImage: 'linear-gradient(to right, transparent 0px, black 60px, black calc(100% - 60px), transparent 100%)',
-        maskImage: 'linear-gradient(to right, transparent 0px, black 60px, black calc(100% - 60px), transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to right, transparent 0px, black 15%, black 85%, transparent 100%)',
+        maskImage: 'linear-gradient(to right, transparent 0px, black 15%, black 85%, transparent 100%)',
       }}>
         {items.map((puja, idx) => {
           const diff = ((idx - active) % total + total) % total;
@@ -117,15 +124,15 @@ function PujaCarousel({ items = [] }: { items?: any[] }) {
               )}
 
               <div style={{
-                position: 'absolute', bottom: 0, left: 0, right: 0, padding: '20px 24px',
+                position: 'absolute', bottom: 0, left: 0, right: 0, padding: isMobile ? '12px 16px' : '20px 24px',
                 opacity: isCenter ? 1 : 0,
                 transition: 'opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1)',
                 pointerEvents: 'none',
                 zIndex: 3
               }}>
-                <p style={{ color: '#fff', fontWeight: 800, fontSize: 22, lineHeight: 1.3, margin: 0, textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>{puja.title}</p>
-                <p style={{ color: '#f5d08b', fontSize: 15, margin: '4px 0 0', fontWeight: 500, textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>{puja.subtitle}</p>
-                <div style={{ display: 'inline-block', marginTop: 14, background: '#d97706', color: '#fff', fontSize: 14, fontWeight: 700, padding: '10px 22px', borderRadius: 99, boxShadow: '0 4px 10px rgba(217, 119, 6, 0.3)' }}>
+                <p style={{ color: '#fff', fontWeight: 800, fontSize: isMobile ? 18 : 22, lineHeight: 1.3, margin: 0, textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>{puja.title}</p>
+                <p style={{ color: '#f5d08b', fontSize: isMobile ? 13 : 15, margin: '4px 0 0', fontWeight: 500, textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>{puja.subtitle}</p>
+                <div style={{ display: 'inline-block', marginTop: isMobile ? 10 : 14, background: '#d97706', color: '#fff', fontSize: isMobile ? 12 : 14, fontWeight: 700, padding: isMobile ? '8px 18px' : '10px 22px', borderRadius: 99, boxShadow: '0 4px 10px rgba(217, 119, 6, 0.3)' }}>
                   Book Now →
                 </div>
               </div>
@@ -134,7 +141,7 @@ function PujaCarousel({ items = [] }: { items?: any[] }) {
         })}
       </div>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8, marginTop: 14, maxWidth: '80%' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8, marginTop: isMobile ? 0 : 14, maxWidth: '80%' }}>
         {items.map((_, i) => (
           <button
             key={i}
@@ -296,22 +303,22 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
             <span className="text-[#d97706] font-semibold">Puja</span>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center gap-8 lg:gap-2">
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-8 lg:gap-2">
             {/* LEFT - Text */}
-            <div className="w-full lg:w-[45%] flex-shrink-0 pr-2 md:pr-4 lg:pr-12 xl:pr-16 -mt-12 relative z-20">
-              <h1 className="premium-serif text-3xl md:text-[36px] lg:text-[42px] font-bold leading-[1.2] mb-5 break-words">
+            <div className="w-full lg:w-[45%] flex-shrink-0 pr-0 md:pr-4 lg:pr-12 xl:pr-16 md:-mt-12 relative z-20 text-left flex flex-col items-start md:items-start">
+              <h1 className="premium-serif text-3xl md:text-[36px] lg:text-[42px] font-bold leading-[1.2] mb-4 md:mb-5 break-words w-full">
                 <span className="text-[#d97706]">{dynamicData?.landingHeading1 || 'Book Vedic Pujas'}</span>
                 <br />
                 <span className="text-[#5c1a1f]">{dynamicData?.landingHeading2 || 'Performed in Your'}</span>
                 <br />
                 <span className="text-[#5c1a1f]">{dynamicData?.landingHeading3 || 'Name & Gotra'}</span>
               </h1>
-              <div className="text-[#412a1e] text-sm md:text-base leading-relaxed mb-8 font-medium max-w-xl whitespace-pre-line">
+              <div className="text-[#412a1e] text-sm md:text-base leading-relaxed mb-6 md:mb-8 font-medium max-w-xl whitespace-pre-line">
                 {dynamicData?.landingDesc || 'Authentic rituals by verified Pandits — \nsankalp recited aloud with your name, \nwherever you are in the world.'}
               </div>
 
               {/* Trust row */}
-              <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center justify-start md:justify-start gap-4 mb-2 md:mb-8">
                 <div className="flex -space-x-2.5">
                   {[
                     'https://randomuser.me/api/portraits/women/44.jpg',

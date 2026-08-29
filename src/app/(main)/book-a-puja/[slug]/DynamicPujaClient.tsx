@@ -315,12 +315,12 @@ export default function DynamicPujaClient({ initialPuja, slug }: { initialPuja: 
 
         {/* ── ABOUT THIS PUJA ── */}
         <section className="py-8 border-t border-[#e5e0d8]">
-          <h2 className="text-[25px] font-bold text-[#3a1216] mb-4">About this Puja</h2>
-          <div className="flex gap-6 flex-wrap items-start">
-            <img src={primaryImage} alt={puja?.title} className="w-full max-w-[320px] md:max-w-[350px] rounded-[16px] h-auto object-contain shadow-sm border border-[#e5e0d8] shrink-0" />
-            <div className="flex-1 min-w-[250px] space-y-4">
+          <h2 className="text-[25px] font-bold text-[#3a1216] mb-4 text-center md:text-left">About this Puja</h2>
+          <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
+            <img src={primaryImage} alt={puja?.title} className="w-full max-w-[380px] md:max-w-[420px] mx-auto md:mx-0 rounded-[16px] h-auto object-contain shadow-sm border border-[#e5e0d8] shrink-0" />
+            <div className="flex-1 w-full md:w-auto min-w-[250px] space-y-4">
               {puja?.extraContent ? (
-                <div className="text-[#3a1216] text-[16px] leading-[1.8] space-y-4 whitespace-pre-line break-words text-justify">
+                <div className="text-[#3a1216] text-[16px] leading-[1.8] space-y-4 whitespace-pre-line break-words text-justify md:text-left">
                   {puja.extraContent}
                 </div>
               ) : (
