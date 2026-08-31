@@ -161,10 +161,50 @@ function MonthTable({ monthIdx, category, location }: {monthIdx: number;category
       results ?
       results.auspicious_dates?.length > 0 ?
       <>
-        <div className="flex md:hidden items-center justify-end mb-2 text-[11px] text-[#b8962e] font-bold uppercase tracking-wider animate-pulse opacity-80">
-          <span className="flex items-center gap-1">Swipe to view more <ChevronRight className="w-3 h-3" /></span>
+        <div className="block md:hidden space-y-4">
+          {results.auspicious_dates.map((date: any, i: number) => {
+            const d = new Date(date.date);
+            const dateStr = d.toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' });
+            const dayStr = d.toLocaleDateString('en-IN', { weekday: 'long' });
+
+            return (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.05 }}
+                key={i} 
+                className="bg-white rounded-xl border border-[#f0ddc0] p-4 shadow-sm relative overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-1.5 h-full bg-[#d97706]" />
+                
+                <div className="flex justify-between items-start mb-3 border-b border-[#f0ddc0]/50 pb-3 pl-2">
+                   <div>
+                      <p className="font-bold text-[#412a1e] text-[16px]">{dateStr}</p>
+                      <p className="text-[13px] text-[#d97706] font-semibold font-astrology">{dayStr}</p>
+                   </div>
+                   <div className="text-right">
+                      <p className="text-[13px] text-[#412a1e] font-medium"><span className="text-[#8a1c2a] text-[11px] uppercase tracking-wider font-bold mr-1">Nakshatra:</span>{date.nakshatra}</p>
+                      <p className="text-[13px] text-[#412a1e] font-medium"><span className="text-[#8a1c2a] text-[11px] uppercase tracking-wider font-bold mr-1">Tithi:</span>{date.tithi}</p>
+                   </div>
+                </div>
+
+                <div className="bg-[#faf6ed] rounded-lg p-3 border border-[#e8dbb8] ml-2">
+                    <div className="flex items-center gap-2 mb-1.5">
+                        <Clock className="w-4 h-4 text-[#d97706]" />
+                        <span className="text-[14px] font-bold text-[#412a1e]">
+                            {date.muhurat_start ? `From ${date.muhurat_start} to ${date.muhurat_end}` : `Sunrise to Sunset`}
+                        </span>
+                    </div>
+                    <div className="flex items-center gap-4 text-[12px] text-[#3a1216] font-medium ml-6">
+                        <span className="flex items-center gap-1"><Sun className="w-3.5 h-3.5 text-amber-500" /> {date.sun_rise}</span>
+                        <span className="flex items-center gap-1"><Sun className="w-3.5 h-3.5 text-orange-400" /> {date.sun_set}</span>
+                    </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
-        <div className="overflow-x-auto rounded-2xl border-2 border-[#f0ddc0] bg-white shadow-md">
+        <div className="hidden md:block overflow-x-auto rounded-2xl border-2 border-[#f0ddc0] bg-white shadow-md custom-scrollbar">
                         <table className="w-full text-left border-collapse">
                             <thead>
                                 <tr className="bg-gradient-to-r from-[#5c1420] to-[#8a1c2a] text-white border-b-2 border-[#d97706]">
@@ -312,6 +352,9 @@ export default function MuhuratDirectoryPage() {
                 .md-wrap h1, .font-astrology { font-family: 'Outfit', sans-serif !important; }
                 .anim-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
                 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+                .custom-scrollbar::-webkit-scrollbar { height: 6px; }
+                .custom-scrollbar::-webkit-scrollbar-track { background: #fdf8f0; border-radius: 4px; }
+                .custom-scrollbar::-webkit-scrollbar-thumb { background: #d97706; border-radius: 4px; }
             ` }} />
 
             <div className="max-w-6xl mx-auto md-wrap">
@@ -409,7 +452,7 @@ export default function MuhuratDirectoryPage() {
                                         <div className="flex md:hidden items-center justify-end mb-2 text-[11px] text-[#b8962e] font-bold uppercase tracking-wider animate-pulse opacity-80 max-w-3xl mx-auto">
                                             <span className="flex items-center gap-1">Swipe to view more <ChevronRight className="w-3 h-3" /></span>
                                         </div>
-                                        <div className="max-w-3xl mx-auto overflow-x-auto rounded-2xl border-2 border-[#f0ddc0] shadow-md bg-white">
+                                        <div className="max-w-3xl mx-auto overflow-x-auto rounded-2xl border-2 border-[#f0ddc0] shadow-md bg-white custom-scrollbar">
                                             <table className="w-full text-left border-collapse">
                                                 <thead>
                                                     <tr className="bg-gradient-to-r from-[#5c1420] to-[#8a1c2a] text-white border-b-2 border-[#d97706]">
