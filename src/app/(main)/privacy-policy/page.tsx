@@ -100,7 +100,7 @@ export default function PrivacyPolicy() {
           <p>You may delete your account using:</p>
           <ul className="list-disc pl-5 space-y-2">
             <li><strong>In-App:</strong> Settings → Delete Account</li>
-            <li><strong>Web:</strong> <a href="https://app.vaidiktalk.com/delete-account" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">https://app.vaidiktalk.com/delete-account</a></li>
+            <li><strong>Web:</strong> <a href="https://vaidiktalk.com/delete-account" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">https://vaidiktalk.com/delete-account</a> or <a href="https://app.vaidiktalk.com/delete-account" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">https://app.vaidiktalk.com/delete-account</a></li>
             <li><strong>Email:</strong> <a href="mailto:admin@vaidiktalk.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">admin@vaidiktalk.com</a></li>
           </ul>
           <p>Account deletion includes a 7-day grace period and permanent anonymization thereafter. Wallet balance is forfeited upon final deletion.</p>
