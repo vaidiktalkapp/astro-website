@@ -478,10 +478,11 @@ export default function Header() {
         {/* Mobile Navigation Links */}
         <div className="flex-1 overflow-y-auto p-4 space-y-1">
           {topLevelMenus.map(topMenu => {
-            const mySubMenus = subMenus.filter(m => m.category === topMenu.category);
+            const safeTopCategory = (topMenu.category || '').trim();
+            const mySubMenus = subMenus.filter(m => (m.category || '').trim() === safeTopCategory);
 
             // Direct Links
-            if (mySubMenus.length === 0 && topMenu.category !== 'pujas' && topMenu.category !== 'shop') {
+            if (mySubMenus.length === 0 && safeTopCategory !== 'pujas' && safeTopCategory !== 'shop') {
               return (
                 <div key={topMenu._id}>
                   <Link href={topMenu.url || '/'} onClick={() => setIsMobileMenuOpen(false)} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
@@ -492,7 +493,7 @@ export default function Header() {
             }
 
             // Shop Link
-            if (topMenu.category === 'shop') {
+            if (safeTopCategory === 'shop') {
               return (
                 <a key={topMenu._id} href={topMenu.url || 'https://vaidiktalk.store/'} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 mx-3 mt-4 mb-4 p-3 rounded-lg bg-[#ee6c1e] text-white font-bold hover:bg-[#d65f17] shadow-sm transition-colors">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
@@ -502,7 +503,7 @@ export default function Header() {
             }
 
             // Pujas Special Case
-            if (topMenu.category === 'pujas') {
+            if (safeTopCategory === 'pujas') {
               return (
                 <div key={topMenu._id}>
                   <button onClick={() => toggleAccordion('pujas')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
@@ -524,7 +525,7 @@ export default function Header() {
             }
 
             // Consult Special Case (Red Button Text)
-            if (topMenu.category === 'consult') {
+            if (safeTopCategory === 'consult') {
               return (
                 <div key={topMenu._id}>
                   <button onClick={() => toggleAccordion('consult')} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 text-[#8a1c2a] font-bold">
@@ -550,11 +551,11 @@ export default function Header() {
 
             return (
               <div key={topMenu._id}>
-                <button onClick={() => toggleAccordion(topMenu.category)} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
+                <button onClick={() => toggleAccordion(safeTopCategory)} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 font-semibold text-gray-850">
                   {topMenu.title}
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === topMenu.category ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transform transition-transform ${expandedMenu === safeTopCategory ? 'rotate-180 text-[#ee6c1e]' : ''}`}><path d="M6 9l6 6 6-6" /></svg>
                 </button>
-                {expandedMenu === topMenu.category && (
+                {expandedMenu === safeTopCategory && (
                   <div className="pl-6 py-2 space-y-2 border-l-2 border-orange-100 ml-4">
                     {uniqueGroups.map((grp, idx) => (
                       <div key={grp}>

@@ -322,7 +322,7 @@ export default function HoroscopeDetailClient({
                   return (
                     <Link
                       key={z.id}
-                      href={`${basePath}/${z.id}`}
+                      href={`${basePath}/${z.id}#reading`}
                       className="flex flex-col items-center justify-center group"
                     >
                       <div className={`w-14 h-14 md:w-[68px] md:h-[68px] rounded-full overflow-hidden flex items-center justify-center transition-all duration-300 ${
@@ -369,7 +369,7 @@ export default function HoroscopeDetailClient({
       </div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className="bg-white rounded-[2rem] p-6 md:p-10 shadow-[0_8px_40px_rgba(92,20,32,0.04)] relative overflow-hidden mb-16 mt-4">
+        <div id="reading" className="bg-white rounded-[2rem] p-6 md:p-10 shadow-[0_8px_40px_rgba(92,20,32,0.04)] relative overflow-hidden mb-16 mt-4 scroll-mt-24">
         {isLoading && (
           <div className="absolute inset-0 bg-[#fff9f0]/70 backdrop-blur-sm z-10 flex flex-col items-center justify-center">
             <div className="w-10 h-10 border-4 border-[#f0ddc0] border-t-[#ee6c1e] rounded-full animate-spin mb-3"></div>
@@ -495,13 +495,13 @@ export default function HoroscopeDetailClient({
             )}
 
             <div className="flex flex-wrap gap-4 mt-2">
-              <Link href="/astrologers-chat" className="bg-[#ee6c1e] text-white font-bold py-3 px-6 md:px-8 rounded-full hover:bg-[#d95c14] transition-colors shadow-sm">
+              <Link href="/astrologers-chat" className="bg-[#ee6c1e] text-white font-bold py-3 px-6 md:px-8 rounded-full hover:bg-[#d95c14] transition-colors shadow-sm text-center flex items-center justify-center">
                 Talk to {activeBaseZodiac.name} Expert
               </Link>
-              <button className="bg-white border-2 border-[#5c1420] text-[#5c1420] font-bold py-3 px-6 md:px-8 rounded-full hover:bg-[#5c1420] hover:text-white transition-colors">
+              <Link href="/kundli" className="bg-white border-2 border-[#5c1420] text-[#5c1420] font-bold py-3 px-6 md:px-8 rounded-full hover:bg-[#5c1420] hover:text-white transition-colors text-center flex items-center justify-center">
                 Get Free Kundli
-              </button>
-              <Link href="/kundli-matching" className="bg-white border-2 border-[#d97706] text-[#d97706] font-bold py-3 px-6 md:px-8 rounded-full hover:bg-[#d97706] hover:text-white transition-colors">
+              </Link>
+              <Link href="/horoscope-matching" className="bg-white border-2 border-[#d97706] text-[#d97706] font-bold py-3 px-6 md:px-8 rounded-full hover:bg-[#d97706] hover:text-white transition-colors text-center flex items-center justify-center">
                 Free Horoscope Matching
               </Link>
             </div>

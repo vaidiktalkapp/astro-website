@@ -160,7 +160,11 @@ function MonthTable({ monthIdx, category, location }: {monthIdx: number;category
                 </div> :
       results ?
       results.auspicious_dates?.length > 0 ?
-      <div className="overflow-x-auto rounded-2xl border-2 border-[#f0ddc0] bg-white shadow-md">
+      <>
+        <div className="flex md:hidden items-center justify-end mb-2 text-[11px] text-[#b8962e] font-bold uppercase tracking-wider animate-pulse opacity-80">
+          <span className="flex items-center gap-1">Swipe to view more <ChevronRight className="w-3 h-3" /></span>
+        </div>
+        <div className="overflow-x-auto rounded-2xl border-2 border-[#f0ddc0] bg-white shadow-md">
                         <table className="w-full text-left border-collapse">
                             <thead>
                                 <tr className="bg-gradient-to-r from-[#5c1420] to-[#8a1c2a] text-white border-b-2 border-[#d97706]">
@@ -211,7 +215,8 @@ function MonthTable({ monthIdx, category, location }: {monthIdx: number;category
             })}
                             </tbody>
                         </table>
-                    </div> :
+                    </div>
+      </> :
 
       <div className="py-12 px-6 bg-amber-50 rounded-3xl border border-amber-100 text-center">
                         <Info className="w-10 h-10 text-amber-400 mx-auto mb-3" />
@@ -401,6 +406,9 @@ export default function MuhuratDirectoryPage() {
 {t("directory.before_going_ahead_with_shubh")}
                     </p>
                                         </div>
+                                        <div className="flex md:hidden items-center justify-end mb-2 text-[11px] text-[#b8962e] font-bold uppercase tracking-wider animate-pulse opacity-80 max-w-3xl mx-auto">
+                                            <span className="flex items-center gap-1">Swipe to view more <ChevronRight className="w-3 h-3" /></span>
+                                        </div>
                                         <div className="max-w-3xl mx-auto overflow-x-auto rounded-2xl border-2 border-[#f0ddc0] shadow-md bg-white">
                                             <table className="w-full text-left border-collapse">
                                                 <thead>
@@ -438,6 +446,9 @@ export default function MuhuratDirectoryPage() {
                                             <p>
 {t("directory.a_tithi_or_date_as_per_the_ved")}
                     </p>
+                                        </div>
+                                        <div className="flex md:hidden items-center justify-end mb-2 text-[11px] text-[#b8962e] font-bold uppercase tracking-wider animate-pulse opacity-80 max-w-4xl mx-auto">
+                                            <span className="flex items-center gap-1">Swipe to view more <ChevronRight className="w-3 h-3" /></span>
                                         </div>
                                         <div className="max-w-4xl mx-auto overflow-x-auto rounded-2xl border-2 border-[#f0ddc0] shadow-md bg-white">
                                             <table className="w-full text-left border-collapse">
@@ -500,6 +511,9 @@ export default function MuhuratDirectoryPage() {
                     </p>
                                         </div>
                                         <h4 className="text-lg font-bold text-[#3a1216] mb-4">{t("directory.nakshatras_and_their_ruling_pl")}</h4>
+                                        <div className="flex md:hidden items-center justify-end mb-2 text-[11px] text-[#b8962e] font-bold uppercase tracking-wider animate-pulse opacity-80 max-w-4xl mx-auto">
+                                            <span className="flex items-center gap-1">Swipe to view more <ChevronRight className="w-3 h-3" /></span>
+                                        </div>
                                         <div className="max-w-4xl mx-auto overflow-x-auto rounded-2xl border-2 border-[#f0ddc0] shadow-md bg-white">
                                             <table className="w-full text-left border-collapse">
                                                 <thead>
