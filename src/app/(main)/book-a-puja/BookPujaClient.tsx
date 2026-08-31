@@ -296,15 +296,16 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
         <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, #f5e6c8 0%, transparent 50%), radial-gradient(circle at 80% 20%, #fce4d4 0%, transparent 40%)' }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-4 md:py-8">
+          {/* Breadcrumb */}
+          <div className="flex items-center gap-2 text-sm text-gray-850 mb-6 md:mb-8">
+            <Link href="/" className="hover:text-[#d97706] transition-colors">Home</Link>
+            <span className="text-[#d4af37]">›</span>
+            <span className="text-[#d97706] font-semibold">Puja</span>
+          </div>
+
           <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-8 lg:gap-2">
             {/* LEFT - Text */}
-            <div className="w-full lg:w-[45%] flex-shrink-0 pr-0 md:pr-4 lg:pr-12 xl:pr-16 md:-mt-12 relative z-20 text-left flex flex-col items-start md:items-start">
-              {/* Breadcrumb */}
-              <div className="flex items-center gap-2 text-sm text-gray-850 mb-4 md:mb-6 w-full">
-                <Link href="/" className="hover:text-[#d97706] transition-colors">Home</Link>
-                <span className="text-[#d4af37]">›</span>
-                <span className="text-[#d97706] font-semibold">Puja</span>
-              </div>
+            <div className="w-full lg:w-[45%] flex-shrink-0 pr-0 md:pr-4 lg:pr-12 xl:pr-16 relative z-20 text-left flex flex-col items-start md:items-start">
 
               <h1 className="premium-serif text-3xl md:text-[36px] lg:text-[42px] font-bold leading-[1.2] mb-4 md:mb-5 break-words w-full">
                 <span className="text-[#d97706]">{dynamicData?.landingHeading1 || 'Book Vedic Pujas'}</span>
