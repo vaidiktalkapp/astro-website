@@ -627,10 +627,17 @@ Occupation: ${intakeData.occupation || 'Employee'}`;
   };
 
   const scrollToBottom = (instant = false) => {
-    messagesEndRef.current?.scrollIntoView({
-      behavior: instant ? 'auto' : 'smooth',
-      block: 'end'
-    });
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({
+        top: scrollContainerRef.current.scrollHeight,
+        behavior: instant ? 'auto' : 'smooth'
+      });
+    } else {
+      messagesEndRef.current?.scrollIntoView({
+        behavior: instant ? 'auto' : 'smooth',
+        block: 'end'
+      });
+    }
   };
 
   const handleSendMessage = (e?: React.FormEvent) => {

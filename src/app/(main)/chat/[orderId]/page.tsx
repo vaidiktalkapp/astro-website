@@ -274,6 +274,7 @@ export default function ChatScreen() {
   // --- Refs ---
   const fileInputRef = useRef<HTMLInputElement>(null);
   const activeSessionRef = useRef<ActiveSession | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const typingTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
   const detailsSentRef = useRef(false);
@@ -287,7 +288,14 @@ export default function ChatScreen() {
 
   // Auto-scroll
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({
+        top: scrollContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    } else {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
   useEffect(() => { scrollToBottom(); }, [messages, isTyping, isActiveMode]);
 
@@ -894,6 +902,7 @@ export default function ChatScreen() {
 
         {/* Messages List */}
         <div
+          ref={scrollContainerRef}
           className="flex-1 overflow-y-auto px-3 py-4 custom-scrollbar"
           style={{
             backgroundImage: `url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png")`,
