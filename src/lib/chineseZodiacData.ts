@@ -37,7 +37,7 @@ export const CHINESE_ANIMALS = [
 export const CHINESE_ZODIAC_DATA: Record<string, ChineseSign> = {
     "Rat": {
         name: "Rat",
-        icon: "/chinease/Mouse.webp",
+        icon: "/Chinease/Mouse.webp",
         personality: "Resourceful, versatile, and kind, people born under the Year of the Rat are quick-witted and intelligent. They are masters of adaptation and can find opportunity in any situation. Their charm and sharp observation skills make them excellent leaders in business and social circles.",
         strengths: ["Intelligent", "Resourceful", "Adaptable", "Charming"],
         weaknesses: ["Greedy", "Timid", "Secretive", "Stubborn"],
@@ -46,7 +46,7 @@ export const CHINESE_ZODIAC_DATA: Record<string, ChineseSign> = {
     },
     "Ox": {
         name: "Ox",
-        icon: "/chinease/Ox.webp",
+        icon: "/Chinease/Ox.webp",
         personality: "Diligence, dependability, strength, and determination are the key traits of the Ox. They are honest people with a strong sense of patriotism and ideals for life. Oxen are known for their patience and desire to make progress through consistent effort rather than luck.",
         strengths: ["Reliable", "Patient", "Methodical", "Strong-willed"],
         weaknesses: ["Stubborn", "Narrow-minded", "Poor communication", "Inflexibile"],
@@ -55,7 +55,7 @@ export const CHINESE_ZODIAC_DATA: Record<string, ChineseSign> = {
     },
     "Tiger": {
         name: "Tiger",
-        icon: "/chinease/Tiger.webp",
+        icon: "/Chinease/Tiger.webp",
         personality: "Brave, competitive, and unpredictable, Tigers are the symbols of power and authority. They are natural leaders who command respect. Tigers are adventurers who aren't afraid to take risks to achieve their goals, though their impulsive nature can sometimes lead to trouble.",
         strengths: ["Brave", "Confident", "Charismatic", "Magnetic"],
         weaknesses: ["Impulsive", "Irritable", "Rebellious", "Over-indulgent"],
@@ -64,7 +64,7 @@ export const CHINESE_ZODIAC_DATA: Record<string, ChineseSign> = {
     },
     "Rabbit": {
         name: "Rabbit",
-        icon: "/chinease/Rabbit.webp",
+        icon: "/Chinease/Rabbit.webp",
         personality: "Gentle, quiet, and elegant, Rabbits represent hope and life. They are artistic and have a good sense of beauty. Rabbits are peace-seekers who avoid conflict at all costs. Their cautious and sensitive nature makes them excellent diplomats and advisors.",
         strengths: ["Elegant", "Kind", "Patient", "Responsible"],
         weaknesses: ["Hesitantly", "Conservative", "Shy", "Easily discouraged"],
@@ -73,7 +73,7 @@ export const CHINESE_ZODIAC_DATA: Record<string, ChineseSign> = {
     },
     "Dragon": {
         name: "Dragon",
-        icon: "/chinease/Dragon.webp",
+        icon: "/Chinease/Dragon.webp",
         personality: "The Dragon is the most powerful and auspicious sign in Chinese culture. Dragons are multi-talented, energetic, and gifted. They are natural born leaders who possess a high level of self-confidence and an indomitable spirit. They are often the center of attention wherever they go.",
         strengths: ["Powerful", "Energetic", "Ambitious", "Self-assured"],
         weaknesses: ["Arrogant", "Impatience", "Overconfident", "Demanding"],
@@ -82,7 +82,7 @@ export const CHINESE_ZODIAC_DATA: Record<string, ChineseSign> = {
     },
     "Snake": {
         name: "Snake",
-        icon: "/chinease/snake.webp",
+        icon: "/Chinease/snake.webp",
         personality: "Snakes are mysterious, intelligent, and wise. They are the most intuitive sign and tend to follow their gut feeling. Snakes are sophisticated and like the finer things in life. They prefer to work alone and value their privacy above all else.",
         strengths: ["Wise", "Intuitive", "Calm", "Sophisticated"],
         weaknesses: ["Jealous", "Suspicious", "Cold", "Lazy"],
@@ -91,7 +91,7 @@ export const CHINESE_ZODIAC_DATA: Record<string, ChineseSign> = {
     },
     "Horse": {
         name: "Horse",
-        icon: "/chinease/Horse.webp",
+        icon: "/Chinease/Horse.webp",
         personality: "Animated, active, and energetic, Horses love to be in a crowd. They are pathfinders who seek freedom and independent life. Horses are incredibly hard-working and have a good sense of humor, making them very popular among their peers.",
         strengths: ["Energetic", "Independent", "Optimistic", "Popular"],
         weaknesses: ["Impatience", "Self-centered", "Short-tempered", "Unstable"],
@@ -100,7 +100,7 @@ export const CHINESE_ZODIAC_DATA: Record<string, ChineseSign> = {
     },
     "Goat": {
         name: "Goat",
-        icon: "/chinease/sheep.webp",
+        icon: "/Chinease/sheep.webp",
         personality: "Gentle, mild-mannered, and stable, Goats have a strong sense of kindness and justice. They are creative and have an inner resilience that surprises many. Goats prefer a quiet and predictable life and are true caregivers to their loved ones.",
         strengths: ["Creative", "Gentle", "Resilient", "Kind-hearted"],
         weaknesses: ["Indecisive", "Timid", "Worry-prone", "Pessimistic"],
@@ -109,7 +109,7 @@ export const CHINESE_ZODIAC_DATA: Record<string, ChineseSign> = {
     },
     "Monkey": {
         name: "Monkey",
-        icon: "/chinease/monkey.webp",
+        icon: "/Chinease/monkey.webp",
         personality: "Magnetic, mischievous, and incredibly smart, Monkeys are the ultimate problem solvers. They are curious about everything and have a trick for every situation. Their wit and playful nature make them the life of any party, though they can sometimes be perceived as opportunists.",
         strengths: ["Intelligent", "Witty", "Innovative", "Enthusiastic"],
         weaknesses: ["Selfish", "Arrogant", "Deceptive", "Restless"],
@@ -118,7 +118,7 @@ export const CHINESE_ZODIAC_DATA: Record<string, ChineseSign> = {
     },
     "Rooster": {
         name: "Rooster",
-        icon: "/chinease/Rooster.webp",
+        icon: "/Chinease/Rooster.webp",
         personality: "Observant, hardworking, and courageous, Roosters are the most confident sign. They are proud of themselves and enjoy being the center of attention. Roosters are known for their loyalty and honesty, always speaking their mind directly and clearly.",
         strengths: ["Hardworking", "Confident", "Loyal", "Honest"],
         weaknesses: ["Vain", "Critical", "Self-centered", "Short-tempered"],
@@ -127,7 +127,7 @@ export const CHINESE_ZODIAC_DATA: Record<string, ChineseSign> = {
     },
     "Dog": {
         name: "Dog",
-        icon: "/chinease/dog.webp",
+        icon: "/Chinease/dog.webp",
         personality: "Loyal, honest, and kind, Dogs are the truest friends. They have a strong sense of responsibility and will do anything for the person they think is most important. Dogs are cautious by nature and value justice and fairness above all else.",
         strengths: ["Loyal", "Honest", "Trustworthy", "Protective"],
         weaknesses: ["Stubborn", "Emotional", "Critical", "Anxious"],
@@ -136,7 +136,7 @@ export const CHINESE_ZODIAC_DATA: Record<string, ChineseSign> = {
     },
     "Pig": {
         name: "Pig",
-        icon: "/chinease/pig.webp",
+        icon: "/Chinease/pig.webp",
         personality: "Compassionate, generous, and diligent, Pigs are the most easy-going sign. They are great at concentrating on their goals and achieving them through hard work. Pigs are true hedonists who enjoy the pleasures of life and are always ready to help others.",
         strengths: ["Generous", "Compassionate", "Diligent", "Gentle"],
         weaknesses: ["Gullible", "Naive", "Short-tempered", "Lazy"],

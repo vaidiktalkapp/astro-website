@@ -106,17 +106,17 @@ const MoonSignForm = ({ onSubmit, loading, onCancel }: MoonSignFormProps) => {
     };
 
     const inputBase = `
-        w-full px-4 py-3.5 rounded-lg border border-[#d6c89a]
-        bg-transparent text-gray-900 placeholder:text-gray-400
+        w-full px-4 py-3.5 rounded-lg border border-[#d6c89a]/80
+        bg-white text-gray-900 placeholder:text-gray-400
         focus:outline-none focus:border-[#b8962e] focus:ring-2 focus:ring-[#b8962e]/15
-        text-[15px] font-normal transition-all
+        text-[15px] font-normal transition-all shadow-sm
     `;
 
     const selectBase = `
-        appearance-none w-full bg-transparent border border-[#d6c89a] rounded-lg
+        appearance-none w-full bg-white border border-[#d6c89a]/80 rounded-lg
         px-4 py-3.5 pr-10 text-gray-900 text-[15px] font-normal
         focus:outline-none focus:border-[#b8962e] focus:ring-2 focus:ring-[#b8962e]/15
-        cursor-pointer transition-all
+        cursor-pointer transition-all shadow-sm
     `;
 
     const ChevronDown = () => (
@@ -156,8 +156,8 @@ const MoonSignForm = ({ onSubmit, loading, onCancel }: MoonSignFormProps) => {
                 .moon-geo .geoapify-autocomplete-input {
                     color: #111827 !important;
                     font-weight: 400;
-                    background: transparent !important;
-                    border: 1px solid #d6c89a !important;
+                    background: #ffffff !important;
+                    border: 1px solid rgba(214, 200, 154, 0.8) !important;
                     border-radius: 8px !important;
                     padding: 14px 16px 14px 42px !important;
                     font-size: 15px !important;
@@ -165,12 +165,12 @@ const MoonSignForm = ({ onSubmit, loading, onCancel }: MoonSignFormProps) => {
                     width: 100% !important;
                     box-sizing: border-box !important;
                     line-height: 1.5 !important;
-                    box-shadow: none !important;
+                    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
                 }
                 .moon-geo .geoapify-autocomplete-input::placeholder { color: #9ca3af !important; }
                 .moon-geo .geoapify-autocomplete-input:focus {
                     border-color: #b8962e !important;
-                    box-shadow: 0 0 0 3px rgba(184,150,46,0.15) !important;
+                    box-shadow: 0 0 0 3px rgba(184,150,46,0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
                     outline: none !important;
                 }
                 .moon-geo .geoapify-autocomplete-items {
@@ -201,7 +201,7 @@ const MoonSignForm = ({ onSubmit, loading, onCancel }: MoonSignFormProps) => {
                     <h1 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-4 leading-tight">
                         What Is My Moon Sign?
                     </h1>
-                    <p className="text-gray-500 text-[15px] leading-relaxed mb-7 max-w-2xl">
+                    <p className="text-[#3a1216] text-[16px] leading-relaxed mb-7 max-w-2xl">
                         If you are unsure of your Moon sign, use our Moon sign calculator to look up in which constellation the Moon was located at the moment of your birth.
                     </p>
                     <motion.button
@@ -223,7 +223,7 @@ const MoonSignForm = ({ onSubmit, loading, onCancel }: MoonSignFormProps) => {
                     {/* What is a Moon Sign */}
                     <section>
                         <h2 className="text-2xl font-semibold text-gray-900 mb-4">What Is a Moon Sign in Astrology?</h2>
-                        <div className="space-y-4 text-gray-500 leading-relaxed text-[15px]">
+                        <div className="space-y-4 text-[#3a1216] leading-relaxed text-[16px]">
                             <p>
                                 In astrology, your Moon sign is determined by the position of the Moon at the exact moment of your birth. While your Sun sign reflects your outer personality and identity, your Moon sign reveals your inner emotional world — how you feel, what makes you feel secure, and how you instinctively respond to the people and situations around you.
                             </p>
@@ -239,7 +239,7 @@ const MoonSignForm = ({ onSubmit, loading, onCancel }: MoonSignFormProps) => {
                     {/* Moon Sign vs Sun Sign */}
                     <section className="border-t border-[#d6c89a] pt-10">
                         <h2 className="text-2xl font-semibold text-gray-900 mb-4">Moon Sign vs Sun Sign — What Is the Difference?</h2>
-                        <p className="text-gray-500 text-[15px] leading-relaxed mb-6">
+                        <p className="text-[#3a1216] text-[16px] leading-relaxed mb-6">
                             Most people are familiar with their Sun sign — the zodiac sign determined by the date of birth, which forms the basis of popular horoscopes. However, the Sun sign represents only one dimension of your astrological profile. Your Moon sign adds a crucial emotional and psychological layer to that picture.
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -272,7 +272,7 @@ const MoonSignForm = ({ onSubmit, loading, onCancel }: MoonSignFormProps) => {
                                     <p className="font-bold text-[#b8962e] text-[13px] uppercase tracking-wider mb-3">{col.title}</p>
                                     <ul className="space-y-2.5">
                                         {col.points.map((pt, j) => (
-                                            <li key={j} className="flex items-start gap-2.5 text-[13px] text-gray-600">
+                                            <li key={j} className="flex items-start gap-2.5 text-[14px] text-[#3a1216]">
                                                 <div className="w-1.5 h-1.5 rounded-full bg-[#b8962e] flex-shrink-0 mt-1.5" />
                                                 {pt}
                                             </li>
@@ -286,7 +286,7 @@ const MoonSignForm = ({ onSubmit, loading, onCancel }: MoonSignFormProps) => {
                     {/* Moon Signs Table */}
                     <section className="border-t border-[#d6c89a] pt-10">
                         <h2 className="text-2xl font-semibold text-gray-900 mb-2">Moon Signs and Their Emotional Nature</h2>
-                        <p className="text-gray-500 text-[15px] leading-relaxed mb-6">
+                        <p className="text-[#3a1216] text-[16px] leading-relaxed mb-6">
                             Each Moon sign carries a distinct emotional quality. Here is a brief profile of all 12 Moon signs and the inner world they represent.
                         </p>
                         <div className="rounded-xl border border-[#d6c89a] overflow-hidden">
@@ -312,7 +312,7 @@ const MoonSignForm = ({ onSubmit, loading, onCancel }: MoonSignFormProps) => {
                                                     <span className="font-semibold text-gray-800 text-[14px]">{m.sign}</span>
                                                 </div>
                                             </td>
-                                            <td className="px-5 py-4 text-[13px] text-gray-500 leading-relaxed">{m.traits}</td>
+                                            <td className="px-5 py-4 text-[14.5px] text-[#3a1216] leading-relaxed">{m.traits}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -323,7 +323,7 @@ const MoonSignForm = ({ onSubmit, loading, onCancel }: MoonSignFormProps) => {
                     {/* Why Moon Sign Matters */}
                     <section className="border-t border-[#d6c89a] pt-10">
                         <h2 className="text-2xl font-semibold text-gray-900 mb-4">Why Does Your Moon Sign Matter?</h2>
-                        <p className="text-gray-500 text-[15px] leading-relaxed mb-6">
+                        <p className="text-[#3a1216] text-[16px] leading-relaxed mb-6">
                             Understanding your Moon sign can bring meaningful clarity to areas of life that feel confusing or difficult to articulate. It helps explain why you react emotionally the way you do, what environments feel most nourishing to you, and what you truly need beneath the surface to feel safe and content.
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -354,7 +354,7 @@ const MoonSignForm = ({ onSubmit, loading, onCancel }: MoonSignFormProps) => {
                                     </div>
                                     <div>
                                         <p className="font-semibold text-gray-800 text-[14px] mb-1">{tip.title}</p>
-                                        <p className="text-[13px] text-gray-500 leading-relaxed">{tip.desc}</p>
+                                        <p className="text-[14.5px] text-[#3a1216] leading-relaxed">{tip.desc}</p>
                                     </div>
                                 </div>
                             ))}
@@ -373,7 +373,7 @@ const MoonSignForm = ({ onSubmit, loading, onCancel }: MoonSignFormProps) => {
                             <span className="serif">Calculator</span>
                         </div>
                         <h2 className="text-3xl font-semibold text-gray-900 mb-2">Calculate Your Moon Sign</h2>
-                        <p className="text-gray-500 text-[15px] leading-relaxed">
+                        <p className="text-[#3a1216] text-[16px] leading-relaxed">
                             Enter your birth details below to find out your Moon sign instantly.
                         </p>
                     </div>
@@ -383,7 +383,7 @@ const MoonSignForm = ({ onSubmit, loading, onCancel }: MoonSignFormProps) => {
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.35 }}
-                        className="space-y-7"
+                        className="space-y-7 bg-[#fdfaf2] p-6 sm:p-10 rounded-2xl border border-[#d6c89a] shadow-sm max-w-3xl"
                     >
 
                         {/* First Name */}
@@ -520,7 +520,7 @@ const MoonSignForm = ({ onSubmit, loading, onCancel }: MoonSignFormProps) => {
                                     className="w-4 h-4 rounded border-[#d6c89a] accent-[#b8962e] cursor-pointer"
                                     suppressHydrationWarning
                                 />
-                                <span className="text-[13px] text-gray-500 group-hover:text-gray-700 transition-colors">
+                                <span className="text-[14.5px] text-[#3a1216] group-hover:text-gray-700 transition-colors">
                                     I don't know the time of birth
                                 </span>
                             </label>
