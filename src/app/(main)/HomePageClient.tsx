@@ -848,7 +848,7 @@ export default function HomePage({
             { to: 68000, suffix: '+', label: 'Happy Customers' },
             { to: 4.8, isDecimal: true, suffix: '/5', label: 'Google Rating' },
             { to: 15, suffix: '+ Years', label: 'Experience' },
-            { to: 10000, suffix: '+', label: 'Astrologers' }
+            { to: 300, suffix: '+', label: 'Astrologers' }
           ].map((item, i) => (
             <div key={i} className={`flex-1 text-center text-[#5c1420] ${i > 0 ? 'border-l border-[#e8cba8]' : ''} min-w-[120px] py-2`}>
               <div className="font-extrabold text-base">

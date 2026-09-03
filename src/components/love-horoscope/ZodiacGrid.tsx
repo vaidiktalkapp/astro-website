@@ -3,18 +3,18 @@ import { motion } from 'framer-motion';
 import { astrologyService } from '@/lib/astrologyService';
 
 const ZODIAC_SIGNS = [
-  { name: 'Aries',       symbol: '♈', date: 'Mar 21 - Apr 19', hindiName: 'Mesh (मेष)' },
-  { name: 'Taurus',      symbol: '♉', date: 'Apr 20 - May 20', hindiName: 'Vrishabha (वृषभ)' },
-  { name: 'Gemini',      symbol: '♊', date: 'May 21 - Jun 20', hindiName: 'Mithun (मिथुन)' },
-  { name: 'Cancer',      symbol: '♋', date: 'Jun 21 - Jul 22', hindiName: 'Kark (कर्क)' },
-  { name: 'Leo',         symbol: '♌', date: 'Jul 23 - Aug 22', hindiName: 'Singh (सिंह)' },
-  { name: 'Virgo',       symbol: '♍', date: 'Aug 23 - Sep 22', hindiName: 'Kanya (कन्या)' },
-  { name: 'Libra',       symbol: '♎', date: 'Sep 23 - Oct 22', hindiName: 'Tula (तुला)' },
-  { name: 'Scorpio',     symbol: '♏', date: 'Oct 23 - Nov 21', hindiName: 'Vrishchik (वृश्चिक)' },
+  { name: 'Aries', symbol: '♈', date: 'Mar 21 - Apr 19', hindiName: 'Mesh (मेष)' },
+  { name: 'Taurus', symbol: '♉', date: 'Apr 20 - May 20', hindiName: 'Vrishabha (वृषभ)' },
+  { name: 'Gemini', symbol: '♊', date: 'May 21 - Jun 20', hindiName: 'Mithun (मिथुन)' },
+  { name: 'Cancer', symbol: '♋', date: 'Jun 21 - Jul 22', hindiName: 'Kark (कर्क)' },
+  { name: 'Leo', symbol: '♌', date: 'Jul 23 - Aug 22', hindiName: 'Singh (सिंह)' },
+  { name: 'Virgo', symbol: '♍', date: 'Aug 23 - Sep 22', hindiName: 'Kanya (कन्या)' },
+  { name: 'Libra', symbol: '♎', date: 'Sep 23 - Oct 22', hindiName: 'Tula (तुला)' },
+  { name: 'Scorpio', symbol: '♏', date: 'Oct 23 - Nov 21', hindiName: 'Vrishchik (वृश्चिक)' },
   { name: 'Sagittarius', symbol: '♐', date: 'Nov 22 - Dec 21', hindiName: 'Dhanu (धनु)' },
-  { name: 'Capricorn',   symbol: '♑', date: 'Dec 22 - Jan 19', hindiName: 'Makar (मकर)' },
-  { name: 'Aquarius',    symbol: '♒', date: 'Jan 20 - Feb 18', hindiName: 'Kumbh (कुंभ)' },
-  { name: 'Pisces',      symbol: '♓', date: 'Feb 19 - Mar 20', hindiName: 'Meen (मीन)' },
+  { name: 'Capricorn', symbol: '♑', date: 'Dec 22 - Jan 19', hindiName: 'Makar (मकर)' },
+  { name: 'Aquarius', symbol: '♒', date: 'Jan 20 - Feb 18', hindiName: 'Kumbh (कुंभ)' },
+  { name: 'Pisces', symbol: '♓', date: 'Feb 19 - Mar 20', hindiName: 'Meen (मीन)' },
 ];
 
 const ZODIAC_LOVE_PROFILES = [
@@ -145,7 +145,8 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 love-grid-wrap">
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap');
         .love-grid-wrap * { font-family: 'Source Sans 3', sans-serif; }
         .love-grid-wrap h2, .love-grid-wrap .serif { font-family: 'Playfair Display', Georgia, serif; }
@@ -174,15 +175,15 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
             onClick={() => onSelect(sign.name || sign.sign)}
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
-            className="flex flex-col items-center justify-center p-5 rounded-2xl border border-[#d6c89a] bg-transparent hover:border-[#b8962e] transition-all group text-center"
+            className="flex flex-col items-center justify-center p-5 rounded-2xl border border-[#d6c89a] bg-white/60 hover:bg-white/90 hover:border-[#b8962e] transition-all group text-center"
           >
             {/* Symbol/Image */}
             <div className="w-12 h-12 mb-2 flex items-center justify-center">
               {isUrl(sign.icon || sign.symbol) ? (
-                <img 
-                  src={sign.icon || sign.symbol} 
-                  alt={sign.name || sign.sign} 
-                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" 
+                <img
+                  src={sign.icon || sign.symbol}
+                  alt={sign.name || sign.sign}
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                 />
               ) : (
                 <span
@@ -225,7 +226,7 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
         {/* What is Love Horoscope */}
         <section className="border-t border-[#d6c89a]/50 pt-10">
           <h2 className="text-3xl font-semibold text-gray-900 mb-4 serif">Love Horoscope — What Does It Mean?</h2>
-          <div className="space-y-4 text-gray-850 leading-relaxed text-[15px]">
+          <div className="space-y-4 text-gray-850 leading-relaxed text-[17px]">
             <p>
               A love horoscope is an astrological reading that reveals the influence of planetary positions on your romantic life, relationships, and emotional well-being. Based on your zodiac sign, it offers insights into compatibility, communication with your partner, the right time to express your feelings, and potential challenges you may face in love.
             </p>
@@ -241,7 +242,7 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
         {/* How Planets Influence Love */}
         <section className="border-t border-[#d6c89a]/50 pt-10">
           <h2 className="text-3xl font-semibold text-gray-900 mb-4 serif">How Planets Influence Your Love Life</h2>
-          <div className="space-y-4 text-gray-850 leading-relaxed text-[15px]">
+          <div className="space-y-4 text-gray-850 leading-relaxed text-[17px]">
             <p>
               In Vedic and Western astrology, certain planets hold special significance when it comes to love and relationships. Understanding their influence can give you deeper clarity about your romantic patterns and desires.
             </p>
@@ -255,8 +256,8 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
                 { planet: 'Saturn', role: 'The planet of discipline and longevity. Saturn tests the strength of relationships and rewards those built on genuine trust and commitment.' },
               ].map((item, i) => (
                 <div key={i} className="p-5 rounded-2xl border border-[#d6c89a]/60 bg-transparent">
-                  <p className="text-[14px] font-bold text-[#b8962e] mb-1">{item.planet}</p>
-                  <p className="text-[13px] text-gray-850 leading-relaxed">{item.role}</p>
+                  <p className="text-[15px] font-bold text-[#b8962e] mb-1">{item.planet}</p>
+                  <p className="text-[15px] text-gray-850 leading-relaxed">{item.role}</p>
                 </div>
               ))}
             </div>
@@ -266,7 +267,7 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
         {/* Love Traits by Zodiac */}
         <section className="border-t border-[#d6c89a]/50 pt-10">
           <h2 className="text-3xl font-semibold text-gray-900 mb-2 serif">Love Traits of Each Zodiac Sign</h2>
-          <p className="text-gray-850 text-[15px] leading-relaxed mb-6">
+          <p className="text-gray-850 text-[17px] leading-relaxed mb-6">
             Every zodiac sign has a unique way of loving and being loved. Here is a brief overview of the romantic nature of all 12 signs.
           </p>
           <div className="overflow-x-auto rounded-2xl border border-[#d6c89a]/60 bg-transparent">
@@ -291,9 +292,9 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
                       <span className="font-semibold text-gray-850 text-[14px]">{z.name}</span>
                       <span className="text-gray-850 text-[12px] ml-1 font-medium">{z.hindiName}</span>
                     </td>
-                    <td className="p-4 text-[14px] text-gray-850">{z.element}</td>
-                    <td className="p-4 text-[14px] text-gray-850">{z.rulingPlanet}</td>
-                    <td className="p-4 text-[13px] text-gray-850 leading-relaxed">{z.loveTraits}</td>
+                    <td className="p-4 text-[15px] text-gray-850">{z.element}</td>
+                    <td className="p-4 text-[15px] text-gray-850">{z.rulingPlanet}</td>
+                    <td className="p-4 text-[15px] text-gray-850 leading-relaxed">{z.loveTraits}</td>
                   </tr>
                 ))}
               </tbody>
@@ -304,7 +305,7 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
         {/* Tips for Using Love Horoscope */}
         <section className="border-t border-[#d6c89a]/50 pt-10">
           <h2 className="text-3xl font-semibold text-gray-900 mb-4 serif">How to Use Your Daily Love Horoscope</h2>
-          <div className="space-y-4 text-gray-850 leading-relaxed text-[15px]">
+          <div className="space-y-4 text-gray-850 leading-relaxed text-[17px]">
             <p>
               Your daily love horoscope is a guide, not a guarantee. Here are a few ways to make the most of your reading:
             </p>
@@ -316,12 +317,12 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
                 { title: 'Combine with your partner\'s sign', desc: 'Reading both your sign and your partner\'s sign can offer a fuller picture of the day\'s relational dynamics and areas of harmony or tension.' },
               ].map((tip, i) => (
                 <div key={i} className="flex gap-4 p-4 rounded-2xl border border-[#d6c89a]/40">
-                  <div className="w-7 h-7 rounded-full border border-[#b8962e] text-[#b8962e] text-[13px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-8 h-8 rounded-full border border-[#b8962e] text-[#b8962e] text-[14px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
                     {i + 1}
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-850 text-[14px] mb-1">{tip.title}</p>
-                    <p className="text-[13px] text-gray-850 leading-relaxed">{tip.desc}</p>
+                    <p className="font-semibold text-gray-850 text-[16px] mb-1">{tip.title}</p>
+                    <p className="text-[15px] text-gray-850 leading-relaxed">{tip.desc}</p>
                   </div>
                 </div>
               ))}
