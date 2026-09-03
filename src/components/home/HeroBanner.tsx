@@ -127,12 +127,14 @@ const HeroBanner = ({ initialSettings }: { initialSettings?: any }) => {
         {heroBanners.map((banner, index) => {
           const isActive = index === currentBannerIndex;
           return (
-            <img
-              key={banner._id || index}
-              src={banner.desktopImageUrl || "/Astrology image.webp"}
-              alt={banner.title || "Vaidik Astrology Consultation"}
-              className={`absolute h-full lg:w-[70%] object-cover object-center lg:object-[20%_35%] transition-opacity duration-500 ease-in-out right-0 lg:translate-x-12
-                  ${isActive ? 'opacity-95 z-10' : 'opacity-0 z-0'}`}
+              <img
+                key={banner._id || index}
+                src={banner.desktopImageUrl || "/Astrology image.webp"}
+                alt={banner.title || "Vaidik Astrology Consultation"}
+                fetchPriority={index === 0 ? "high" : "auto"}
+                loading={index === 0 ? "eager" : "lazy"}
+                className={`absolute h-full lg:w-[70%] object-cover object-center lg:object-[20%_35%] transition-opacity duration-500 ease-in-out right-0 lg:translate-x-12
+                    ${isActive ? 'opacity-95 z-10' : 'opacity-0 z-0'}`}
               style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 25%, black 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 25%, black 100%)' }}
             />
           );
@@ -212,6 +214,8 @@ const HeroBanner = ({ initialSettings }: { initialSettings?: any }) => {
               key={banner._id || index}
               src={banner.mobileImageUrl || banner.desktopImageUrl || "/Astrology image.webp"}
               alt={banner.title || "Vaidik Astrology Consultation"}
+              fetchPriority={index === 0 ? "high" : "auto"}
+              loading={index === 0 ? "eager" : "lazy"}
               className={`absolute w-full max-w-[500px] h-full object-cover object-center mix-blend-multiply transition-opacity duration-500 ease-in-out
                   ${isActive ? 'opacity-95 z-10' : 'opacity-0 z-0'}`}
               style={{ maskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)' }}

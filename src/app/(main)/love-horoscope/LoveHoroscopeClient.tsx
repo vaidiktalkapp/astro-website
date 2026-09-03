@@ -119,7 +119,6 @@ function LoveHoroscopeContent() {
   return (
     <div className="w-full min-h-screen love-page-content">
             <style dangerouslySetInnerHTML={{ __html: `
-                @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap');
                 .love-page-content * { font-family: 'Source Sans 3', sans-serif; }
                 .love-page-content .serif { font-family: 'Playfair Display', Georgia, serif; }
             ` }} />

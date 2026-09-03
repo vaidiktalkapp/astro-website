@@ -147,7 +147,6 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
     <div className="w-full max-w-5xl mx-auto px-4 love-grid-wrap">
       <style dangerouslySetInnerHTML={{
         __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap');
         .love-grid-wrap * { font-family: 'Source Sans 3', sans-serif; }
         .love-grid-wrap h2, .love-grid-wrap .serif { font-family: 'Playfair Display', Georgia, serif; }
       `}} />
@@ -195,16 +194,16 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
               )}
             </div>
 
-            <div className="flex flex-col items-center flex-grow justify-center mt-1">
-              <span className="text-[14px] font-bold text-gray-900 group-hover:text-[#b8962e] transition-colors tracking-wide text-center leading-none">
+            <div className="flex flex-col items-center">
+              <span className="font-bold text-[#1a1a1a] text-[17px] group-hover:text-[#b8962e] transition-colors tracking-wide">
                 {sign.name || sign.sign}
               </span>
-              <span className="text-[12px] text-gray-850 font-semibold mt-1">
+              <span className="text-[14px] text-gray-850 font-semibold mt-1">
                 {sign.hindiName || ZODIAC_SIGNS.find(s => s.name === (sign.name || sign.sign))?.hindiName || ''}
               </span>
             </div>
 
-            <span className="serif text-[11px] text-gray-850 mt-2 group-hover:text-[#b8962e] transition-colors leading-tight">
+            <span className="serif text-[13px] text-gray-850 mt-2 group-hover:text-[#b8962e] transition-colors leading-tight">
               {sign.date || ZODIAC_SIGNS.find(s => s.name === (sign.name || sign.sign))?.date || ''}
             </span>
           </motion.button>
@@ -274,10 +273,10 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-[#d6c89a]/60">
-                  <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">Sign</th>
-                  <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">Element</th>
-                  <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">Ruling Planet</th>
-                  <th className="p-4 text-[12px] font-black text-[#3a1216] uppercase tracking-wider">Love Nature</th>
+                  <th className="p-4 text-[14px] font-black text-[#3a1216] uppercase tracking-wider">Sign</th>
+                  <th className="p-4 text-[14px] font-black text-[#3a1216] uppercase tracking-wider">Element</th>
+                  <th className="p-4 text-[14px] font-black text-[#3a1216] uppercase tracking-wider">Ruling Planet</th>
+                  <th className="p-4 text-[14px] font-black text-[#3a1216] uppercase tracking-wider">Love Nature</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#d6c89a]/30">
@@ -288,13 +287,13 @@ const ZodiacGrid: React.FC<ZodiacGridProps> = ({ onSelect }) => {
                     onClick={() => onSelect(z.name)}
                   >
                     <td className="p-4 whitespace-nowrap">
-                      <span className="text-[#b8962e] font-bold text-[15px] mr-2" style={{ fontFamily: 'Georgia, serif' }}>{z.symbol}</span>
-                      <span className="font-semibold text-gray-850 text-[14px]">{z.name}</span>
-                      <span className="text-gray-850 text-[12px] ml-1 font-medium">{z.hindiName}</span>
+                      <span className="text-[#b8962e] font-bold text-[18px] mr-2" style={{ fontFamily: 'Georgia, serif' }}>{z.symbol}</span>
+                      <span className="font-semibold text-gray-850 text-[17px]">{z.name}</span>
+                      <span className="text-gray-850 text-[14px] ml-1 font-medium">{z.hindiName}</span>
                     </td>
-                    <td className="p-4 text-[15px] text-gray-850">{z.element}</td>
-                    <td className="p-4 text-[15px] text-gray-850">{z.rulingPlanet}</td>
-                    <td className="p-4 text-[15px] text-gray-850 leading-relaxed">{z.loveTraits}</td>
+                    <td className="p-4 text-[17px] text-gray-850">{z.element}</td>
+                    <td className="p-4 text-[17px] text-gray-850">{z.rulingPlanet}</td>
+                    <td className="p-4 text-[17px] text-gray-850 leading-relaxed">{z.loveTraits}</td>
                   </tr>
                 ))}
               </tbody>
