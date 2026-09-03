@@ -32,11 +32,7 @@ export default function PromoBannerModal() {
   const router = useRouter();
 
   useEffect(() => {
-    // 1. Check if closed in this session
-    const isClosed = sessionStorage.getItem('promo_banner_closed');
-    if (isClosed === 'true') return;
-
-    // 2. Fetch active banner from server
+    // Fetch active banner from server — shows on every page load
     const fetchBanner = async () => {
       try {
         const response = await walletService.getPromoBanner();
@@ -60,12 +56,10 @@ export default function PromoBannerModal() {
 
   const handleClose = () => {
     setIsVisible(false);
-    sessionStorage.setItem('promo_banner_closed', 'true');
   };
 
   const handleAction = (targetUrl: string) => {
     setIsVisible(false);
-    sessionStorage.setItem('promo_banner_closed', 'true');
     router.push(targetUrl);
   };
 

@@ -19,33 +19,33 @@ const getNavIcon = (title: string) => {
 
 const getNavLineColor = (title: string) => {
   const t = title.toLowerCase();
-  
-  if(t.includes('chat') && t.includes('ai')) return 'bg-cyan-500';
-  if(t.includes('talk') && t.includes('ai')) return 'bg-purple-500';
-  if(t.includes('chat')) return 'bg-green-500';
-  if(t.includes('talk') || t.includes('call')) return 'bg-blue-500';
 
-  if(t.includes('daily') || t.includes('tomorrow')) return 'bg-sky-400';
-  if(t.includes('weekly') || t.includes('monthly')) return 'bg-indigo-400';
-  if(t.includes('yearly')) return 'bg-fuchsia-400';
-  if(t.includes('celebrity')) return 'bg-yellow-400';
+  if (t.includes('chat') && t.includes('ai')) return 'bg-cyan-500';
+  if (t.includes('talk') && t.includes('ai')) return 'bg-purple-500';
+  if (t.includes('chat')) return 'bg-green-500';
+  if (t.includes('talk') || t.includes('call')) return 'bg-blue-500';
 
-  if(t.includes('rudrabhishek') || t.includes('shiv') || t.includes('mahamrityunjay')) return 'bg-slate-400';
-  if(t.includes('mangal') || t.includes('hanuman')) return 'bg-red-500';
-  if(t.includes('job') || t.includes('career') || t.includes('business')) return 'bg-blue-500';
-  if(t.includes('money') || t.includes('dhan')) return 'bg-green-500';
-  if(t.includes('ganesh') || t.includes('vishnu')) return 'bg-yellow-500';
-  if(t.includes('shani') || t.includes('rahu') || t.includes('ketu')) return 'bg-gray-600';
-  if(t.includes('love') || t.includes('marriage') || t.includes('spell') || t.includes('heal')) return 'bg-pink-500';
-  if(t.includes('puja') || t.includes('pooja')) return 'bg-orange-400';
-  
-  if(t.includes('destiny') || t.includes('numerology') || t.includes('kundli') || t.includes('kundali')) return 'bg-amber-400';
-  if(t.includes('rudraksha') || t.includes('gemstone') || t.includes('baby')) return 'bg-teal-400';
-  if(t.includes('date') || t.includes('muhurat') || t.includes('panchang')) return 'bg-emerald-400';
-  if(t.includes('love') || t.includes('flame') || t.includes('lal kitab') || t.includes('match') || t.includes('matrimony')) return 'bg-rose-400';
-  if(t.includes('chinese') || t.includes('festival')) return 'bg-red-400';
-  if(t.includes('moon') || t.includes('atlas') || t.includes('rashi')) return 'bg-blue-400';
-  if(t.includes('rahu') || t.includes('sade') || t.includes('kaal')) return 'bg-stone-500';
+  if (t.includes('daily') || t.includes('tomorrow')) return 'bg-sky-400';
+  if (t.includes('weekly') || t.includes('monthly')) return 'bg-indigo-400';
+  if (t.includes('yearly')) return 'bg-fuchsia-400';
+  if (t.includes('celebrity')) return 'bg-yellow-400';
+
+  if (t.includes('rudrabhishek') || t.includes('shiv') || t.includes('mahamrityunjay')) return 'bg-slate-400';
+  if (t.includes('mangal') || t.includes('hanuman')) return 'bg-red-500';
+  if (t.includes('job') || t.includes('career') || t.includes('business')) return 'bg-blue-500';
+  if (t.includes('money') || t.includes('dhan')) return 'bg-green-500';
+  if (t.includes('ganesh') || t.includes('vishnu')) return 'bg-yellow-500';
+  if (t.includes('shani') || t.includes('rahu') || t.includes('ketu')) return 'bg-gray-600';
+  if (t.includes('love') || t.includes('marriage') || t.includes('spell') || t.includes('heal')) return 'bg-pink-500';
+  if (t.includes('puja') || t.includes('pooja')) return 'bg-orange-400';
+
+  if (t.includes('destiny') || t.includes('numerology') || t.includes('kundli') || t.includes('kundali')) return 'bg-amber-400';
+  if (t.includes('rudraksha') || t.includes('gemstone') || t.includes('baby')) return 'bg-teal-400';
+  if (t.includes('date') || t.includes('muhurat') || t.includes('panchang')) return 'bg-emerald-400';
+  if (t.includes('love') || t.includes('flame') || t.includes('lal kitab') || t.includes('match') || t.includes('matrimony')) return 'bg-rose-400';
+  if (t.includes('chinese') || t.includes('festival')) return 'bg-red-400';
+  if (t.includes('moon') || t.includes('atlas') || t.includes('rashi')) return 'bg-blue-400';
+  if (t.includes('rahu') || t.includes('sade') || t.includes('kaal')) return 'bg-stone-500';
   return 'bg-violet-400';
 };
 
@@ -60,16 +60,16 @@ const renderIcon = (iconVal: any, title: string) => {
 
   // 2. Fallbacks if Admin icon is empty
   const t = title.toLowerCase();
-  
-  if(t.includes('chat') && t.includes('ai')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#cffafe" stroke="#06b6d4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>;
-  if(t.includes('talk') && t.includes('ai')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#f3e8ff" stroke="#a855f7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>;
-  if(t.includes('chat')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#dcfce7" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>;
-  if(t.includes('talk') || t.includes('call')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>;
+
+  if (t.includes('chat') && t.includes('ai')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#cffafe" stroke="#06b6d4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 8V4H8" /><rect width="16" height="12" x="4" y="8" rx="2" /><path d="M2 14h2" /><path d="M20 14h2" /><path d="M15 13v2" /><path d="M9 13v2" /></svg>;
+  if (t.includes('talk') && t.includes('ai')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#f3e8ff" stroke="#a855f7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6" /><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" /></svg>;
+  if (t.includes('chat')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#dcfce7" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>;
+  if (t.includes('talk') || t.includes('call')) return <svg width="18" height="18" viewBox="0 0 24 24" fill="#dbeafe" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>;
 
   // Sleek, minimal spark/star icon for everything else
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-[#d97706]/70 group-hover/calc:text-[#ee6c1e] transition-colors duration-300">
-      <path d="M12 2l2.4 7.6 7.6 2.4-7.6 2.4L12 22l-2.4-7.6-7.6-2.4 7.6-2.4L12 2z"/>
+      <path d="M12 2l2.4 7.6 7.6 2.4-7.6 2.4L12 22l-2.4-7.6-7.6-2.4 7.6-2.4L12 2z" />
     </svg>
   );
 };
@@ -89,11 +89,12 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
   const [navPujas, setNavPujas] = useState<any[]>([]);
-  const [navMenus, setNavMenus] = useState<any[]>([]);
+  const [navMenus, setNavMenus] = useState<any[]>(FALLBACK_MENUS);
   const languageMenuRef = useRef<HTMLDivElement>(null);
 
-  const topLevelMenus = navMenus.filter(m => m.isTopLevel).sort((a,b) => (a.order || 0) - (b.order || 0));
+  const topLevelMenus = navMenus.filter(m => m.isTopLevel).sort((a, b) => (a.order || 0) - (b.order || 0));
   const subMenus = navMenus.filter(m => !m.isTopLevel);
+  const isFallback = navMenus === FALLBACK_MENUS;
 
   useEffect(() => {
     const fetchNavData = async () => {
@@ -105,15 +106,15 @@ export default function Header() {
         ]);
         const pujasData = pujasRes.data.data || [];
         setNavPujas(pujasData.filter((p: any) => p.slug !== 'book-a-puja'));
-        
+
         // Filter out inactive menus for the frontend
         let activeMenus = (menusRes.data || []).filter((m: any) => m.isActive);
-        
+
         // Fallback to essential menus if server is down or returns empty
         if (activeMenus.length === 0) {
           activeMenus = FALLBACK_MENUS;
         }
-        
+
         setNavMenus(activeMenus);
       } catch (error) {
         console.error('Failed to load nav data', error);
@@ -178,191 +179,188 @@ export default function Header() {
 
 
           {/* Desktop Nav */}
-          <nav className="hidden xl:flex gap-2 xl:gap-[12px] 2xl:gap-[20px] items-center text-[12px] 2xl:text-[14px] font-medium text-[#3a1216] whitespace-nowrap flex-1 justify-center shrink">
+          <nav className="hidden xl:flex gap-2 xl:gap-[8px] 2xl:gap-[20px] items-center text-[11.5px] 2xl:text-[14px] font-medium text-[#3a1216] whitespace-nowrap flex-1 min-w-0 justify-center shrink">
             {topLevelMenus.map(topMenu => {
-  const safeTopCategory = (topMenu.category || '').trim();
-  const mySubMenus = subMenus.filter(m => (m.category || '').trim() === safeTopCategory);
-  
-  // 1. Direct Links (No Submenus & Not Special)
-  if (mySubMenus.length === 0 && safeTopCategory !== 'pujas' && safeTopCategory !== 'shop') {
-    return (
-      <Link key={topMenu._id} href={topMenu.url || '/'} className={topMenu.category === 'consult' ? 'bg-[#8a1c2a] text-white px-3 py-[7px] rounded-md hover:bg-[#721522] transition-colors font-semibold' : 'hover:text-[#ee6c1e] transition-colors py-4'}>
-        {topMenu.title}
-      </Link>
-    );
-  }
+              const safeTopCategory = (topMenu.category || '').trim();
+              const mySubMenus = subMenus.filter(m => (m.category || '').trim() === safeTopCategory);
 
-  // 2. Special Case: Pujas Dropdown
-  if (safeTopCategory === 'pujas') {
-    return (
-      <div key={topMenu._id} className="relative group cursor-pointer">
-        <Link href={topMenu.url || '/book-a-puja'} className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
-          {topMenu.title}
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
-        </Link>
-        <div className="absolute top-full right-[-50px] xl:right-[-100px] 2xl:right-[-150px] bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-2xl min-w-[640px] p-5 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4">
-          <div className="grid grid-cols-2 gap-x-8 gap-y-1">
-            <div className="col-span-2 mb-3 pb-3 border-b-2 border-dashed border-[#f0ddc0]/50 text-center">
-              <span className="text-[12px] font-extrabold text-[#8a1c2a] uppercase tracking-wider">Top Verified Pujas</span>
-            </div>
-            <div className="flex flex-col space-y-1">
-              {navPujas.slice(0, Math.ceil(navPujas.length / 2)).map(puja => (
-                <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300 mb-1" title={puja.title}>
-                  <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
-                    <div className={`w-[3px] h-6 ${getNavLineColor(puja.title)} rounded-full shrink-0`} />
-                    <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(puja.icon, puja.title)}</div>
-                    <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{puja.title}</span>
-                  </div>
-                  <div className="flex items-center shrink-0">
-                    <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all">→</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-            <div className="flex flex-col space-y-1">
-              {navPujas.slice(Math.ceil(navPujas.length / 2)).map(puja => (
-                <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300 mb-1" title={puja.title}>
-                  <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
-                    <div className={`w-[3px] h-6 ${getNavLineColor(puja.title)} rounded-full shrink-0`} />
-                    <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(puja.icon, puja.title)}</div>
-                    <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{puja.title}</span>
-                  </div>
-                  <div className="flex items-center shrink-0">
-                    <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all">→</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-            <div className="col-span-2 mt-4 pt-4 border-t-2 border-dashed border-[#f0ddc0]/50">
-              <Link href="/book-a-puja" className="flex items-center justify-center gap-1.5 w-full py-3 text-[14px] text-white bg-gradient-to-r from-[#d97706] to-[#b45309] font-bold rounded-xl hover:shadow-lg transition-all hover:-translate-y-0.5 shadow-md group/btn">
-                View All Pujas 
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="group-hover/btn:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+              if (mySubMenus.length === 0 && safeTopCategory !== 'pujas' && safeTopCategory !== 'shop') {
+                return (
+                  <Link key={topMenu._id} href={topMenu.url || '/'} className={topMenu.category === 'consult' ? 'bg-[#8a1c2a] text-white px-3 py-[7px] rounded-md hover:bg-[#721522] transition-colors font-semibold' : 'hover:text-[#ee6c1e] transition-colors py-4'}>
+                    {topMenu.title}
+                  </Link>
+                );
+              }
 
-  // 3. Special Case: Shop
-  if (safeTopCategory === 'shop') {
-    return (
-      <a key={topMenu._id} href={topMenu.url || 'https://vaidiktalk.store/'} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-[#ee6c1e] text-white px-3.5 py-2 rounded-md font-bold hover:bg-[#d65f17] transition-colors shadow-sm ml-1">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
-        {topMenu.title}
-      </a>
-    );
-  }
+              // 2. Special Case: Pujas Dropdown
+              if (safeTopCategory === 'pujas') {
+                return (
+                  <div key={topMenu._id} className="relative group cursor-pointer">
+                    <Link href={topMenu.url || '/book-a-puja'} className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
+                      {topMenu.title}
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+                    </Link>
+                    <div className="absolute top-full right-[-50px] xl:right-[-100px] 2xl:right-[-150px] bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-2xl min-w-[640px] p-5 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4">
+                      <div className="grid grid-cols-2 gap-x-8 gap-y-1">
+                        <div className="col-span-2 mb-3 pb-3 border-b-2 border-dashed border-[#f0ddc0]/50 text-center">
+                          <span className="text-[12px] font-extrabold text-[#8a1c2a] uppercase tracking-wider">Top Verified Pujas</span>
+                        </div>
+                        <div className="flex flex-col space-y-1">
+                          {navPujas.slice(0, Math.ceil(navPujas.length / 2)).map(puja => (
+                            <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300 mb-1" title={puja.title}>
+                              <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
+                                <div className={`w-[3px] h-6 ${getNavLineColor(puja.title)} rounded-full shrink-0`} />
+                                <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(puja.icon, puja.title)}</div>
+                                <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{puja.title}</span>
+                              </div>
+                              <div className="flex items-center shrink-0">
+                                <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all">→</span>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                        <div className="flex flex-col space-y-1">
+                          {navPujas.slice(Math.ceil(navPujas.length / 2)).map(puja => (
+                            <Link key={puja._id} href={`/book-a-puja/${puja.slug}`} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300 mb-1" title={puja.title}>
+                              <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
+                                <div className={`w-[3px] h-6 ${getNavLineColor(puja.title)} rounded-full shrink-0`} />
+                                <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(puja.icon, puja.title)}</div>
+                                <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{puja.title}</span>
+                              </div>
+                              <div className="flex items-center shrink-0">
+                                <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all">→</span>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                        <div className="col-span-2 mt-4 pt-4 border-t-2 border-dashed border-[#f0ddc0]/50">
+                          <Link href="/book-a-puja" className="flex items-center justify-center gap-1.5 w-full py-3 text-[14px] text-white bg-gradient-to-r from-[#d97706] to-[#b45309] font-bold rounded-xl hover:shadow-lg transition-all hover:-translate-y-0.5 shadow-md group/btn">
+                            View All Pujas
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="group-hover/btn:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
 
-  // 3.5 Special Case: Free Calculators Mega Menu
-  if (topMenu.title === 'Free Astrology Tools' || (topMenu.url || '').includes('calculator')) {
-    return (
-      <div key={topMenu._id} className="relative group cursor-pointer">
-        <Link href={topMenu.url || '/astrology-calculators'} className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
-          {topMenu.title}
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
-        </Link>
-        <div className="absolute top-full left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-3xl min-w-[750px] max-h-[85vh] overflow-y-auto p-5 lg:p-6 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4 custom-scrollbar">
-          <h2 className="text-[20px] font-extrabold text-[#1a1208] mb-4 tracking-tight">Free Calculator</h2>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
-            {mySubMenus.map(menu => {
+              if (safeTopCategory === 'shop') {
+                return (
+                  <a key={topMenu._id} href={topMenu.url || 'https://vaidiktalk.store/'} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-[#ee6c1e] text-white px-3.5 py-2 rounded-md font-bold hover:bg-[#d65f17] transition-colors shadow-sm ml-1">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
+                    {topMenu.title}
+                  </a>
+                );
+              }
+
+              // 3.5 Special Case: Free Calculators Mega Menu
+              if (topMenu.title === 'Free Astrology Tools' || (topMenu.url || '').includes('calculator')) {
+                return (
+                  <div key={topMenu._id} className="relative group cursor-pointer">
+                    <Link href={topMenu.url || '/astrology-calculators'} className="hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4">
+                      {topMenu.title}
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+                    </Link>
+                    <div className="absolute top-full left-[-100px] xl:left-[-150px] bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-3xl min-w-[700px] xl:min-w-[750px] max-h-[85vh] overflow-y-auto p-5 lg:p-6 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4 custom-scrollbar">
+                      <h2 className="text-[20px] font-extrabold text-[#1a1208] mb-4 tracking-tight">Free Calculator</h2>
+                      <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
+                        {mySubMenus.map(menu => {
+                          return (
+                            <Link key={menu._id} href={menu.url} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300">
+                              <div className="flex items-center gap-3 w-full">
+                                <div className={`w-[3px] h-6 ${getNavLineColor(menu.title)} rounded-full shrink-0`} />
+                                <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(menu.icon, menu.title)}</div>
+                                <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{menu.title}</span>
+                              </div>
+                              <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all shrink-0 ml-2">→</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                      <div className="mt-5 text-center pb-2">
+                        <Link href="/astrology-calculators" className="text-[#b45309] font-bold text-[14.5px] hover:text-[#d97706] transition-colors inline-flex items-center gap-1.5 group/btn">
+                          View all Calculators <span className="group-hover/btn:translate-x-1 transition-transform">→</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              // 4. Standard Dropdowns (Generic or Kundli etc.)
+              const uniqueGroups = Array.from(new Set(mySubMenus.map(m => m.group || 'General')));
+              const isMultiColumn = uniqueGroups.length > 1 || mySubMenus.length > 7;
+
               return (
-                <Link key={menu._id} href={menu.url} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300">
-                  <div className="flex items-center gap-3 w-full">
-                    <div className={`w-[3px] h-6 ${getNavLineColor(menu.title)} rounded-full shrink-0`} />
-                    <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(menu.icon, menu.title)}</div>
-                    <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{menu.title}</span>
+                <div key={topMenu._id} className={`relative group cursor-pointer ${safeTopCategory === 'consult' ? 'flex items-center py-4' : ''}`}>
+                  <Link href={topMenu.url || '#'} className={safeTopCategory === 'consult' ? "bg-gradient-to-r from-[#8a1c2a] to-[#721522] text-white px-4 py-[8px] rounded-lg hover:shadow-lg transition-all font-semibold flex items-center gap-1.5 border border-[#8a1c2a]" : "hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4"}>
+                    {topMenu.title}
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+                  </Link>
+
+                  <div className={`absolute ${safeTopCategory === 'consult'
+                    ? 'top-[calc(100%-8px)] right-0 min-w-[260px]'
+                    : safeTopCategory === 'knowledge'
+                      ? `top-full right-[-20px] xl:right-[-50px] ${isMultiColumn ? 'min-w-[650px]' : 'min-w-[250px]'}`
+                      : isMultiColumn
+                        ? 'top-full left-[-20px] xl:left-[-50px] min-w-[650px]'
+                        : 'top-full left-0 min-w-[250px]'
+                    } bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-2xl p-4 md:p-5 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4`}>
+                    <div className={isMultiColumn ? "columns-2 gap-x-8" : "flex flex-col space-y-1"}>
+                      {uniqueGroups.map((grp, idx) => {
+                        const groupLinks = mySubMenus.filter(m => (m.group || 'General') === grp);
+
+                        if (grp === 'General') {
+                          return (
+                            <React.Fragment key={grp}>
+                              {groupLinks.map(menu => (
+                                <Link key={menu._id} href={menu.url} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300 mb-1">
+                                  <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
+                                    <div className={`w-[3px] h-6 ${getNavLineColor(menu.title)} rounded-full shrink-0`} />
+                                    <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(menu.icon, menu.title)}</div>
+                                    <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{menu.title}</span>
+                                    {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-1">{menu.badge}</span>}
+                                  </div>
+                                  <div className="flex items-center shrink-0">
+                                    <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all">→</span>
+                                  </div>
+                                </Link>
+                              ))}
+                            </React.Fragment>
+                          );
+                        }
+
+                        return (
+                          <div key={grp} className={`flex flex-col space-y-1 break-inside-avoid ${idx !== uniqueGroups.length - 1 ? 'mb-4' : ''}`}>
+                            <div className="px-3.5 py-1.5 text-[11px] font-extrabold text-[#d97706] uppercase tracking-wider mb-2 mt-1 border-b-2 border-dashed border-[#f0ddc0]/50 pb-2 flex items-center gap-2">
+                              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
+                              {grp}
+                            </div>
+                            {groupLinks.map(menu => (
+                              <Link key={menu._id} href={menu.url} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300 mb-2">
+                                <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
+                                  <div className={`w-[3px] h-6 ${getNavLineColor(menu.title)} rounded-full shrink-0`} />
+                                  <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(menu.icon, menu.title)}</div>
+                                  <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{menu.title}</span>
+                                  {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-1">{menu.badge}</span>}
+                                </div>
+                                <div className="flex items-center shrink-0">
+                                  <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all">→</span>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {/* View All Free Calculators Button is handled in the Special Case above */}
                   </div>
-                  <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all shrink-0 ml-2">→</span>
-                </Link>
+                </div>
               );
             })}
-          </div>
-          <div className="mt-5 text-center pb-2">
-            <Link href="/astrology-calculators" className="text-[#b45309] font-bold text-[14.5px] hover:text-[#d97706] transition-colors inline-flex items-center gap-1.5 group/btn">
-              View all Calculators <span className="group-hover/btn:translate-x-1 transition-transform">→</span>
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // 4. Standard Dropdowns (Generic or Kundli etc.)
-  const uniqueGroups = Array.from(new Set(mySubMenus.map(m => m.group || 'General')));
-  const isMultiColumn = uniqueGroups.length > 1 || mySubMenus.length > 7;
-
-  return (
-    <div key={topMenu._id} className={`relative group cursor-pointer ${safeTopCategory === 'consult' ? 'flex items-center py-4' : ''}`}>
-      <Link href={topMenu.url || '#'} className={safeTopCategory === 'consult' ? "bg-gradient-to-r from-[#8a1c2a] to-[#721522] text-white px-4 py-[8px] rounded-lg hover:shadow-lg transition-all font-semibold flex items-center gap-1.5 border border-[#8a1c2a]" : "hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4"}>
-        {topMenu.title}
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
-      </Link>
-      
-      <div className={`absolute ${
-        safeTopCategory === 'consult' 
-          ? 'top-[calc(100%-8px)] right-0 min-w-[260px]' 
-          : safeTopCategory === 'knowledge'
-            ? `top-full right-[-20px] xl:right-[-50px] ${isMultiColumn ? 'min-w-[650px]' : 'min-w-[250px]'}`
-            : isMultiColumn
-              ? 'top-full left-[-20px] xl:left-[-50px] min-w-[650px]'
-              : 'top-full left-0 min-w-[250px]'
-      } bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-2xl p-4 md:p-5 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4`}>
-        <div className={isMultiColumn ? "columns-2 gap-x-8" : "flex flex-col space-y-1"}>
-          {uniqueGroups.map((grp, idx) => {
-            const groupLinks = mySubMenus.filter(m => (m.group || 'General') === grp);
-
-            if (grp === 'General') {
-              return (
-                <React.Fragment key={grp}>
-                  {groupLinks.map(menu => (
-                    <Link key={menu._id} href={menu.url} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300 mb-1">
-                      <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
-                        <div className={`w-[3px] h-6 ${getNavLineColor(menu.title)} rounded-full shrink-0`} />
-                        <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(menu.icon, menu.title)}</div>
-                        <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{menu.title}</span>
-                        {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-1">{menu.badge}</span>}
-                      </div>
-                      <div className="flex items-center shrink-0">
-                        <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all">→</span>
-                      </div>
-                    </Link>
-                  ))}
-                </React.Fragment>
-              );
-            }
-
-            return (
-              <div key={grp} className={`flex flex-col space-y-1 break-inside-avoid ${idx !== uniqueGroups.length - 1 ? 'mb-4' : ''}`}>
-                <div className="px-3.5 py-1.5 text-[11px] font-extrabold text-[#d97706] uppercase tracking-wider mb-2 mt-1 border-b-2 border-dashed border-[#f0ddc0]/50 pb-2 flex items-center gap-2">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  {grp}
-                </div>
-                {groupLinks.map(menu => (
-                  <Link key={menu._id} href={menu.url} className="group/calc flex items-center justify-between px-3.5 py-2.5 bg-white border border-[#f0ddc0]/80 rounded-2xl hover:border-[#d97706]/40 hover:shadow-[0_4px_15px_rgba(217,119,6,0.08)] transition-all duration-300 mb-2">
-                    <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
-                      <div className={`w-[3px] h-6 ${getNavLineColor(menu.title)} rounded-full shrink-0`} />
-                      <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(menu.icon, menu.title)}</div>
-                      <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{menu.title}</span>
-                      {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-1">{menu.badge}</span>}
-                    </div>
-                    <div className="flex items-center shrink-0">
-                      <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all">→</span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            );
-          })}
-        </div>
-
-        {/* View All Free Calculators Button is handled in the Special Case above */}
-      </div>
-    </div>
-  );
-})}
-</nav>
+          </nav>
 
           {/* Right Actions */}
           <div className="flex items-center gap-2 xl:gap-5 text-[12px] 2xl:text-[13px] font-medium text-[#3a1216] whitespace-nowrap shrink-0 ml-auto">

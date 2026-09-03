@@ -1,9 +1,17 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-
 import CountUp from '@/components/ui/CountUp';
+
+const DEFAULT_BANNER = [{
+  _id: 'default',
+  title: 'Default Hero',
+  desktopImageUrl: '/Astrology image.webp',
+  mobileImageUrl: '/Astrology image.webp',
+  position: 'hero',
+  isActive: true
+}];
 
 const DEFAULT_HERO = {
   badgeText: "India's Most Trusted Vedic Guidance Platform",
@@ -13,15 +21,13 @@ const DEFAULT_HERO = {
   subheading: "Chat, call, or consult with India's best astrologers and get accurate solutions to your life's challenges.",
 };
 
-const HeroBanner = ({ initialSettings }: { initialSettings?: any }) => {
-  const [heroBanners, setHeroBanners] = useState<any[]>([{
-    _id: 'default',
-    title: 'Default Hero',
-    desktopImageUrl: '/Astrology image.webp',
-    mobileImageUrl: '/Astrology image.webp',
-    position: 'hero',
-    isActive: true
-  }]);
+// ✅ Now accepts initialBanners from SSR — no client wait needed
+const HeroBanner = ({ initialSettings, initialBanners = [] }: { initialSettings?: any; initialBanners?: any[] }) => {
+  // ✅ Use SSR banners immediately (or default if empty)
+  const [heroBanners, setHeroBanners] = useState<any[]>(
+    initialBanners.length > 0 ? initialBanners : DEFAULT_BANNER
+  );
+
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
 
   const [heroText, setHeroText] = useState({
@@ -34,6 +40,10 @@ const HeroBanner = ({ initialSettings }: { initialSettings?: any }) => {
 
   useEffect(() => {
     const fetchHeroBanner = async () => {
+      // ✅ Agar SSR se banners pehle se aa gaye hain toh client fetch skip karo
+      // Sirf tab fetch karo jab SSR fail hua ho (initialBanners empty)
+      if (initialBanners.length > 0) return;
+
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
         const response = await fetch(`${apiUrl}/banners/active`);
@@ -42,28 +52,12 @@ const HeroBanner = ({ initialSettings }: { initialSettings?: any }) => {
           const heroes = banners
             .filter((b: any) => b.position === 'hero')
             .sort((a: any, b: any) => {
-              const orderA = a.order || 999;
-              const orderB = b.order || 999;
+              const orderA = a.order ?? 999;
+              const orderB = b.order ?? 999;
               if (orderA !== orderB) return orderA - orderB;
               return new Date(a.createdAt || 0).getTime() - new Date(b.createdAt || 0).getTime();
             });
-
-          if (heroes.length > 0) {
-            // Preload the first image to prevent white flash
-            const firstHero = heroes[0];
-            const imgSrc = window.innerWidth < 1024
-              ? (firstHero.mobileImageUrl || firstHero.desktopImageUrl || '/Astrology image.webp')
-              : (firstHero.desktopImageUrl || '/Astrology image.webp');
-
-            const img = new window.Image();
-            img.src = imgSrc;
-            img.onload = () => {
-              setHeroBanners(heroes);
-            };
-            img.onerror = () => {
-              setHeroBanners(heroes); // fallback if error
-            };
-          }
+          if (heroes.length > 0) setHeroBanners(heroes);
         }
       } catch (error) {
         console.error('Failed to fetch banners:', error);

@@ -1,5 +1,6 @@
 // src/lib/chatService.ts
-import { io, Socket } from 'socket.io-client';
+// ✅ socket.io-client lazy imported — initial 
+import type { Socket } from 'socket.io-client';
 import { apiClient } from './api';
 
 interface Message {
@@ -68,6 +69,9 @@ class ChatService {
 
   private async _establishConnection(token: string, userId?: string): Promise<Socket> {
     const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:3001';
+
+    // ✅ Lazy load — sirf jab chat page pe jaaye
+    const { io } = await import('socket.io-client');
 
     return new Promise((resolve, reject) => {
       this.socket = io(`${SOCKET_URL}/chat`, {

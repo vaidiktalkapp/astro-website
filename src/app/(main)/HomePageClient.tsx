@@ -20,6 +20,7 @@ interface HomePageClientProps {
   initialAiAstrologers?: any[];
   initialDailyPanchang?: any;
   initialDailyHoroscopes?: any[];
+  initialBanners?: any[]; // ✅ NEW: SSR se pre-fetched banners
 }
 
 export default function HomePage({ 
@@ -30,7 +31,8 @@ export default function HomePage({
   initialTopAstrologers = [],
   initialAiAstrologers = [],
   initialDailyPanchang = null,
-  initialDailyHoroscopes = []
+  initialDailyHoroscopes = [],
+  initialBanners = [],    // ✅ NEW
 }: HomePageClientProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   
@@ -189,13 +191,12 @@ export default function HomePage({
 
   return (
     <div className="relative w-full max-w-[1600px] min-w-[320px] mx-auto overflow-hidden">
-      {/* Premium Ambient Background Elements */}
-      <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-[#f8e2c9] rounded-full mix-blend-multiply filter blur-[120px] opacity-20 pointer-events-none z-0"></div>
-      <div className="absolute top-[20%] right-[-10%] w-[700px] h-[700px] bg-[#f3d5b5] rounded-full mix-blend-multiply filter blur-[150px] opacity-15 pointer-events-none z-0"></div>
-      <div className="absolute bottom-[30%] left-[-20%] w-[900px] h-[900px] bg-[#f8e2c9] rounded-full mix-blend-multiply filter blur-[150px] opacity-15 pointer-events-none z-0"></div>
-      <div className="absolute top-[60%] right-[10%] w-[600px] h-[600px] bg-[#fdf0e0] rounded-full mix-blend-multiply filter blur-[100px] opacity-25 pointer-events-none z-0"></div>
+      {/* ✅ Ambient Background — GPU layer pe daale (will-change: transform) to prevent forced reflow */}
+      <div aria-hidden="true" className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#f8e2c9] rounded-full mix-blend-multiply filter blur-[100px] opacity-20 pointer-events-none z-0" style={{ willChange: 'transform', transform: 'translateZ(0)' }}></div>
+      <div aria-hidden="true" className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-[#f3d5b5] rounded-full mix-blend-multiply filter blur-[120px] opacity-15 pointer-events-none z-0" style={{ willChange: 'transform', transform: 'translateZ(0)' }}></div>
+      <div aria-hidden="true" className="absolute bottom-[30%] left-[-20%] w-[600px] h-[600px] bg-[#f8e2c9] rounded-full mix-blend-multiply filter blur-[120px] opacity-10 pointer-events-none z-0" style={{ willChange: 'transform', transform: 'translateZ(0)' }}></div>
 
-      <HeroBanner initialSettings={initialSettings} />
+      <HeroBanner initialSettings={initialSettings} initialBanners={initialBanners} />
 
       <div className="px-6 md:px-10 py-12">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">

@@ -1,5 +1,6 @@
 // src/lib/callService.ts
-import { io, Socket } from 'socket.io-client';
+// ✅ socket.io-client lazy imported — initial 
+import type { Socket } from 'socket.io-client';
 import { apiClient } from './api';
 
 // Dynamic import handler for Agora (Client-side only)
@@ -66,6 +67,9 @@ class CallService {
 
   private async _establishConnection(token: string): Promise<Socket> {
     const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:3001';
+
+    // ✅ Lazy load — sirf jab call page pe jaaye
+    const { io } = await import('socket.io-client');
 
     return new Promise((resolve, reject) => {
       const socket = io(`${SOCKET_URL}/calls`, {

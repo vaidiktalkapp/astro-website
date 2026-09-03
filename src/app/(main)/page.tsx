@@ -4,6 +4,25 @@ import HomePageClient from './HomePageClient';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
 
+// ✅ FIX: Banner SSR pe fetch karo — LCP 18s → ~3-4s
+async function fetchHeroBanners() {
+  try {
+    const res = await fetch(`${API_URL}/banners/active`, { next: { revalidate: 300 } }); // 5 min cache
+    if (!res.ok) return [];
+    const banners = await res.json();
+    return (banners || [])
+      .filter((b: any) => b.position === 'hero' && b.isActive !== false)
+      .sort((a: any, b: any) => {
+        const orderA = a.order ?? 999;
+        const orderB = b.order ?? 999;
+        if (orderA !== orderB) return orderA - orderB;
+        return new Date(a.createdAt || 0).getTime() - new Date(b.createdAt || 0).getTime();
+      });
+  } catch {
+    return [];
+  }
+}
+
 async function fetchHeroSettings() {
   try {
     const res = await fetch(`${API_URL}/hero-settings`, { next: { revalidate: 60 } });
@@ -149,7 +168,8 @@ export default async function HomePage() {
     initialTopAstrologers,
     initialAiAstrologers,
     initialDailyPanchang,
-    initialDailyHoroscopes
+    initialDailyHoroscopes,
+    initialBanners          // ✅ NEW: Banner SSR se
   ] = await Promise.all([
     fetchHeroSettings(),
     fetchFeaturedFaqs(),
@@ -158,11 +178,19 @@ export default async function HomePage() {
     fetchTopAstrologers(),
     fetchAiAstrologers(),
     fetchDailyPanchang(),
-    fetchDailyHoroscope()
+    fetchDailyHoroscope(),
+    fetchHeroBanners()      // ✅ NEW
   ]);
+
+  // ✅ First hero image preload karo — LCP boost
+  const firstBanner = initialBanners?.[0];
+  const heroImageUrl = firstBanner?.desktopImageUrl || '/Astrology image.webp';
 
   return (
     <>
+      {/* ✅ Preload LCP hero image — browser ko pehle se pata chalega */}
+      <link rel="preload" as="image" href={heroImageUrl} fetchPriority="high" />
+
       {settings?.schemaMarkup && (
         <Script id="schema-markup-home" type="application/ld+json" dangerouslySetInnerHTML={{ __html: settings.schemaMarkup }} />
       )}
@@ -175,6 +203,7 @@ export default async function HomePage() {
         initialAiAstrologers={initialAiAstrologers}
         initialDailyPanchang={initialDailyPanchang}
         initialDailyHoroscopes={initialDailyHoroscopes}
+        initialBanners={initialBanners}   // ✅ NEW prop
       />
     </>
   );
