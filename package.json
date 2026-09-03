@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npx rimraf .next && next dev",
-    "build": "npx rimraf .next && next build",
+    "build": "next build",
     "start": "next start",
     "i18n:sync": "node scripts/extract.js && node scripts/auto-translate.js && node scripts/validate.js"
   },
