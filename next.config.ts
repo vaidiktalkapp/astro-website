@@ -37,13 +37,29 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // ✅ Pages — CDN caches for 60s, browser revalidates (was: no-cache = re-fetch EVERY time!)
+      // ✅ Pages — CDN caches for 60s, browser revalidates + Security Headers
       {
         source: '/(.*)',
         headers: [
           {
             key: 'Cache-Control',
             value: 'public, s-maxage=60, stale-while-revalidate=3600',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
           },
         ],
       },
