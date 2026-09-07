@@ -612,10 +612,10 @@ Kundali & Reports
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between mb-1">
                             <h3 className="font-bold text-gray-900 text-lg truncate">
-                              {booking.reportSlug === 'vaidik-smart-kundali-10-years' ? 'Smart Kundali 10-Years' : 
-                               booking.reportSlug === 'kundali-matching' ? 'Kundali Match Making' : 
-                               booking.reportSlug === 'gemstone-report' ? 'Gemstone Report' : 
-                               booking.reportSlug === 'fortune-numerology' ? 'Pro Numerology Report' : 
+                              {booking.reportSlug === 'vaidik-smart-kundali-10-years' ? 'Premium Personalised Kundli' : 
+                               booking.reportSlug === 'kundali-matching' ? 'Premium Kundali Matching Report' : 
+                               booking.reportSlug === 'gemstone-report' ? 'Premium Gemstone Report' : 
+                               booking.reportSlug === 'fortune-numerology' ? 'Premium Numerology Report' : 
                                booking.reportSlug}
                             </h3>
                             <span className="text-sm font-semibold text-gray-900 bg-gray-50 px-2 py-1 rounded">

@@ -12,6 +12,15 @@ function SuccessContent() {
   const [isGenerating, setIsGenerating] = useState(true);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [settings, setSettings] = useState<any>(null);
+
+  useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+    fetch(`${apiUrl}/smart-kundali-settings/fortune-numerology`)
+      .then(res => res.json())
+      .then(data => setSettings(data))
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (!bookingId) {
@@ -60,8 +69,8 @@ function SuccessContent() {
         {/* Left Side: Promo Image (Visible on Mobile) */}
         <div className="flex bg-[#f4ece3] justify-center relative">
           <img 
-            src="/images/vaidiktalk-kundli-mockup.webp" 
-            alt="Premium Kundali" 
+            src={settings?.mockups?.pdf || "/images/fortune-numerology.webp"} 
+            alt={settings?.productHeading || "Premium Numerology Report"} 
             className="w-full h-auto max-h-[250px] md:max-h-[550px] object-contain mix-blend-multiply scale-110 mt-4 md:mt-0"
             onError={(e) => { e.currentTarget.src = 'https://placehold.co/400x550/fdfaf6/5c1a1f?text=Report' }}
           />
@@ -75,7 +84,7 @@ function SuccessContent() {
                 <Loader2 className="w-10 h-10 text-[#d68636] animate-spin absolute" />
                 <FileText className="w-5 h-5 text-[#5c1a1f]" />
               </div>
-              <h2 className="text-[24px] font-bold text-[#5c1a1f] mb-3">Generating Your Kundali</h2>
+              <h2 className="text-[24px] font-bold text-[#5c1a1f] mb-3">Generating Your Numerology Report</h2>
               <p className="text-[15px] text-[#3a1216]/80 leading-relaxed font-medium mb-2">
                 Please wait while we consult the stars.
               </p>
@@ -96,7 +105,7 @@ function SuccessContent() {
               </p>
               <div className="bg-[#fcf8f2] border border-[#ebdcc7] p-4 rounded-lg mb-6 w-full text-left">
                 <p className="text-[13px] text-[#5c1a1f] font-semibold mb-1">✅ If Payment Successful</p>
-                <p className="text-[12px] text-[#3a1216]/80 leading-relaxed">Don't worry, your payment has been successfully recorded. If your Kundali cannot be generated due to technical reasons, please contact us at<strong> contact@vaidiktalk.com</strong> and a full refund will be initiated to your original payment method.</p>
+                <p className="text-[12px] text-[#3a1216]/80 leading-relaxed">Don't worry, your payment has been successfully recorded. If your Numerology Report cannot be generated due to technical reasons, please contact us at<strong> contact@vaidiktalk.com</strong> and a full refund will be initiated to your original payment method.</p>
               </div>
 
               <Link
@@ -111,9 +120,9 @@ function SuccessContent() {
               <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-6">
                 <CheckCircle2 className="w-10 h-10 text-green-500" />
               </div>
-              <h2 className="text-[24px] font-bold text-[#5c1a1f] mb-3">Kundali Ready!</h2>
+              <h2 className="text-[24px] font-bold text-[#5c1a1f] mb-3">Numerology Report Ready!</h2>
               <p className="text-[15px] text-[#3a1216]/80 leading-relaxed font-medium mb-8">
-                Your Premium Premium Personalised Kundli has been successfully generated.
+                Your Premium Numerology Report has been successfully generated.
               </p>
 
               <div className="flex flex-col gap-3 w-full max-w-[300px]">
@@ -123,7 +132,7 @@ function SuccessContent() {
                     className="flex items-center justify-center gap-2 bg-[#d68636] text-white px-8 py-3.5 rounded-xl font-bold hover:bg-[#b06126] transition-all shadow-[0_4px_14px_rgba(214,134,54,0.3)] w-full"
                   >
                     <Download className="w-5 h-5" />
-                    Download Your Kundali
+                    Download Your Report
                   </a>
                 )}
 
@@ -145,7 +154,7 @@ function SuccessContent() {
   );
 }
 
-export default function SmartKundaliSuccessPage() {
+export default function NumerologySuccessPage() {
   return (
     <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><Loader2 className="w-10 h-10 animate-spin text-[#d68636]" /></div>}>
       <SuccessContent />

@@ -6,7 +6,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useTranslation } from '../../context/LanguageContext';
 import axios from 'axios';
 import LoginModal from './LoginModal';
-import { FALLBACK_MENUS } from './fallbackMenus';
+import { FALLBACK_MENUS, FALLBACK_PUJAS } from './fallbackMenus';
 
 const LANGUAGES = [
   { code: 'en', name: 'English', short: 'EN' },
@@ -104,7 +104,10 @@ export default function Header() {
           axios.get(`${apiUrl}/pujas?status=active&limit=30`).catch(() => ({ data: { data: [] } })),
           axios.get(`${apiUrl}/menus`).catch(() => ({ data: [] }))
         ]);
-        const pujasData = pujasRes.data.data || [];
+        let pujasData = pujasRes.data.data || [];
+        if (pujasData.length === 0) {
+          pujasData = FALLBACK_PUJAS;
+        }
         setNavPujas(pujasData.filter((p: any) => p.slug !== 'book-a-puja'));
 
         // Filter out inactive menus for the frontend
@@ -167,7 +170,7 @@ export default function Header() {
         </div>
 
         {/* Main Tier */}
-        <div className="flex items-center justify-between gap-2 xl:gap-4 px-3 md:px-5 lg:px-6 py-[12px] bg-white border-b border-[#f0ddc0] w-full max-w-full">
+        <div className="relative flex items-center justify-between gap-2 xl:gap-4 px-3 md:px-5 lg:px-6 py-[12px] bg-white border-b border-[#f0ddc0] w-full max-w-full">
           {/* Logo (Reverted to old logo image) */}
           <Link href="/" className="flex items-center shrink-0">
             <img
@@ -179,7 +182,7 @@ export default function Header() {
 
 
           {/* Desktop Nav */}
-          <nav className="hidden xl:flex gap-2 xl:gap-[8px] 2xl:gap-[20px] items-center text-[11.5px] 2xl:text-[14px] font-medium text-[#3a1216] whitespace-nowrap flex-1 min-w-0 justify-center shrink">
+          <nav className="hidden xl:flex gap-2 xl:gap-[5px] 2xl:gap-[16px] items-center text-[12px] xl:text-[12px] 2xl:text-[14px] font-medium text-[#3a1216] whitespace-nowrap flex-1 justify-center ml-1 mr-2">
             {topLevelMenus.map(topMenu => {
               const safeTopCategory = (topMenu.category || '').trim();
               const mySubMenus = subMenus.filter(m => (m.category || '').trim() === safeTopCategory);
@@ -200,7 +203,7 @@ export default function Header() {
                       {topMenu.title}
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
                     </Link>
-                    <div className="absolute top-full right-[-50px] xl:right-[-100px] 2xl:right-[-150px] bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-2xl min-w-[640px] p-5 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4">
+                    <div className="absolute top-full right-0 w-[min(660px,calc(100vw-24px))] bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-2xl p-5 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4">
                       <div className="grid grid-cols-2 gap-x-8 gap-y-1">
                         <div className="col-span-2 mb-3 pb-3 border-b-2 border-dashed border-[#f0ddc0]/50 text-center">
                           <span className="text-[12px] font-extrabold text-[#8a1c2a] uppercase tracking-wider">Top Verified Pujas</span>
@@ -211,7 +214,7 @@ export default function Header() {
                               <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
                                 <div className={`w-[3px] h-6 ${getNavLineColor(puja.title)} rounded-full shrink-0`} />
                                 <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(puja.icon, puja.title)}</div>
-                                <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{puja.title}</span>
+                                <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors leading-tight">{puja.title}</span>
                               </div>
                               <div className="flex items-center shrink-0">
                                 <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all">→</span>
@@ -225,7 +228,7 @@ export default function Header() {
                               <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
                                 <div className={`w-[3px] h-6 ${getNavLineColor(puja.title)} rounded-full shrink-0`} />
                                 <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(puja.icon, puja.title)}</div>
-                                <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{puja.title}</span>
+                                <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors leading-tight">{puja.title}</span>
                               </div>
                               <div className="flex items-center shrink-0">
                                 <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all">→</span>
@@ -262,7 +265,7 @@ export default function Header() {
                       {topMenu.title}
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
                     </Link>
-                    <div className="absolute top-full left-[-100px] xl:left-[-150px] bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-3xl min-w-[700px] xl:min-w-[750px] max-h-[85vh] overflow-y-auto p-5 lg:p-6 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4 custom-scrollbar">
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-[min(760px,calc(100vw-24px))] max-h-[85vh] overflow-y-auto bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-3xl p-5 lg:p-6 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4 custom-scrollbar">
                       <h2 className="text-[20px] font-extrabold text-[#1a1208] mb-4 tracking-tight">Free Calculator</h2>
                       <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
                         {mySubMenus.map(menu => {
@@ -271,7 +274,7 @@ export default function Header() {
                               <div className="flex items-center gap-3 w-full">
                                 <div className={`w-[3px] h-6 ${getNavLineColor(menu.title)} rounded-full shrink-0`} />
                                 <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(menu.icon, menu.title)}</div>
-                                <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{menu.title}</span>
+                                <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors leading-tight">{menu.title}</span>
                               </div>
                               <span className="text-[#a0a0a0] font-light text-[18px] group-hover/calc:text-[#ee6c1e] group-hover/calc:translate-x-1 transition-all shrink-0 ml-2">→</span>
                             </Link>
@@ -300,12 +303,12 @@ export default function Header() {
                   </Link>
 
                   <div className={`absolute ${safeTopCategory === 'consult'
-                    ? 'top-[calc(100%-8px)] right-0 min-w-[260px]'
+                    ? 'top-[calc(100%-8px)] right-0 w-[min(280px,calc(100vw-24px))]'
                     : safeTopCategory === 'knowledge'
-                      ? `top-full right-[-20px] xl:right-[-50px] ${isMultiColumn ? 'min-w-[650px]' : 'min-w-[250px]'}`
+                      ? `top-full right-0 ${isMultiColumn ? 'w-[min(660px,calc(100vw-24px))]' : 'w-[min(260px,calc(100vw-24px))]'}`
                       : isMultiColumn
-                        ? 'top-full left-[-20px] xl:left-[-50px] min-w-[650px]'
-                        : 'top-full left-0 min-w-[250px]'
+                        ? 'top-full left-0 w-[min(660px,calc(100vw-24px))]'
+                        : 'top-full left-0 w-[min(260px,calc(100vw-24px))]'
                     } bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-2xl p-4 md:p-5 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4`}>
                     <div className={isMultiColumn ? "columns-2 gap-x-8" : "flex flex-col space-y-1"}>
                       {uniqueGroups.map((grp, idx) => {
@@ -319,7 +322,7 @@ export default function Header() {
                                   <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
                                     <div className={`w-[3px] h-6 ${getNavLineColor(menu.title)} rounded-full shrink-0`} />
                                     <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(menu.icon, menu.title)}</div>
-                                    <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{menu.title}</span>
+                                    <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors leading-tight">{menu.title}</span>
                                     {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-1">{menu.badge}</span>}
                                   </div>
                                   <div className="flex items-center shrink-0">
@@ -342,7 +345,7 @@ export default function Header() {
                                 <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
                                   <div className={`w-[3px] h-6 ${getNavLineColor(menu.title)} rounded-full shrink-0`} />
                                   <div className="text-[18px] shrink-0 leading-none flex items-center justify-center">{renderIcon(menu.icon, menu.title)}</div>
-                                  <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors truncate">{menu.title}</span>
+                                  <span className="text-[13.5px] font-bold text-[#3a1216] group-hover/calc:text-[#ee6c1e] transition-colors leading-tight">{menu.title}</span>
                                   {menu.badge && <span className="bg-[#ee6c1e] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider shrink-0 ml-1">{menu.badge}</span>}
                                 </div>
                                 <div className="flex items-center shrink-0">
@@ -363,7 +366,7 @@ export default function Header() {
           </nav>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-2 xl:gap-5 text-[12px] 2xl:text-[13px] font-medium text-[#3a1216] whitespace-nowrap shrink-0 ml-auto">
+          <div className="flex items-center gap-2 xl:gap-2 2xl:gap-5 text-[12px] 2xl:text-[13px] font-medium text-[#3a1216] whitespace-nowrap shrink-0 ml-auto">
             {!isAuthenticated ? (
               <button onClick={openLoginModal} className="hidden lg:flex items-center gap-1.5 bg-[#8a1c2a] text-white px-5 py-2.5 rounded-lg hover:bg-[#721522] transition-colors font-semibold shadow-sm cursor-pointer">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

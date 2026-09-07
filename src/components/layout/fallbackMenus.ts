@@ -2,24 +2,24 @@ export const FALLBACK_MENUS = [
   {
     "_id": "6a7eee832e36bbf82f505a90",
     "isTopLevel": true,
-    "category": "astrology",
+    "category": "home",
     "__v": 0,
     "isActive": true,
     "order": 1,
-    "title": "Astrology Services",
-    "url": "/astrology",
+    "title": "Home",
+    "url": "/",
     "icon": ""
   },
   {
     "_id": "6a7ee9603ac57da1f2b018e6",
     "title": "Premium Personalised Kundli",
-    "url": "/report/kundli/vaidik-smart-kundali",
+    "url": "/report/kundali/vaidik-smart-kundali-10-years",
     "category": "kundli",
     "group": "Premium Reports",
     "order": 1,
     "isActive": true,
     "__v": 0,
-    "badge": "14+",
+    "badge": "",
     "icon": "🔮"
   },
   {
@@ -91,7 +91,7 @@ export const FALLBACK_MENUS = [
   {
     "_id": "6a7ee9603ac57da1f2b018e7",
     "title": "Premium Kundali Matching",
-    "url": "/report/kundli/kundali-matching",
+    "url": "/report/kundali/kundali-matching",
     "category": "kundli",
     "group": "Premium Reports",
     "order": 2,
@@ -157,7 +157,7 @@ export const FALLBACK_MENUS = [
   {
     "_id": "6a7ee9603ac57da1f2b018e8",
     "title": "Premium Gemstone Report",
-    "url": "/report/kundli/gemstone-report",
+    "url": "/report/detailed/gemstone",
     "category": "kundli",
     "group": "Premium Reports",
     "order": 3,
@@ -267,13 +267,14 @@ export const FALLBACK_MENUS = [
   },
   {
     "_id": "6a7ee9603ac57da1f2b018e9",
-    "title": "Fortune Numerology",
+    "title": "Premium Numerology Report",
     "url": "/report/numerology/fortune-numerology",
     "category": "kundli",
-    "group": "Premium Numerology",
+    "group": "Premium Reports",
     "order": 5,
     "isActive": true,
     "__v": 0,
+    "badge": "NEW",
     "icon": "🔢"
   },
   {
@@ -342,17 +343,7 @@ export const FALLBACK_MENUS = [
     "url": "/book-a-puja",
     "icon": ""
   },
-  {
-    "_id": "6a7ee9603ac57da1f2b018ea",
-    "title": "Name & Mobile Numerology",
-    "url": "/report/numerology/name-mobile-number-numerology",
-    "category": "kundli",
-    "group": "Premium Numerology",
-    "order": 6,
-    "isActive": true,
-    "__v": 0,
-    "icon": "🔢"
-  },
+
   {
     "_id": "6a7ee9603ac57da1f2b01902",
     "title": "Horoscope Matching",
@@ -551,4 +542,18 @@ export const FALLBACK_MENUS = [
     "__v": 0,
     "icon": "⭐"
   }
+];
+export const FALLBACK_PUJAS = [
+  { _id: 'p1', title: 'Rudrabhishek Puja', slug: 'rudrabhishek' },
+  { _id: 'p2', title: 'Job Attract & Confirm Puja', slug: 'job-attract-confirm-puja' },
+  { _id: 'p3', title: 'Money Attract Puja (Dhan Laxmi Puja)', slug: 'dhan-laxmi-puja' },
+  { _id: 'p4', title: 'Ganesh Ji Ko Laddoo Arpan', slug: 'ganesh-ji-ko-laddoo-arpan' },
+  { _id: 'p5', title: 'Love / Marriage Healing', slug: 'love-marriage-healing' },
+  { _id: 'p6', title: 'Commitment Spell', slug: 'commitment-spell' },
+  { _id: 'p7', title: 'Mangal Dosh Nivaran Puja', slug: 'mangal-dosh-nivaran-puja' },
+  { _id: 'p8', title: 'Attract Your Love Spell', slug: 'attract-your-love-spell' },
+  { _id: 'p9', title: 'Hanuman Sindoor / Boondi Puja', slug: 'hanuman-sindoor-boondi-arpan' },
+  { _id: 'p10', title: 'Vishnu Sahasranamam', slug: 'vishnu-sahasranamam-puja' },
+  { _id: 'p11', title: 'Shani Tel Arpan and Aarti', slug: 'shani-tel-arpan-aarti' },
+  { _id: 'p12', title: 'Rahu Ketu Grah Shanti Puja', slug: 'rahu-ketu-grah-shanti-puja' }
 ];

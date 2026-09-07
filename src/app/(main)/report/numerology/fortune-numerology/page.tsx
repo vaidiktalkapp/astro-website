@@ -293,7 +293,7 @@ export default async function SmartNumerologyReportPage() {
               <path d="M9 10H15M9 14H13" stroke="#f59e0b" strokeWidth="1.5" strokeLinecap="round" />
               <circle cx="12" cy="6" r="1.5" fill="#b45309" />
             </svg>
-            <span className="text-[#5c1a1f] font-bold text-[14.5px]">{settings?.featureCards?.[2] || "250+ Page Numerology Report Report"}</span>
+            <span className="text-[#5c1a1f] font-bold text-[14.5px]">{settings?.featureCards?.[2] || "250+ Page Numerology Report"}</span>
           </div>
 
           
@@ -322,7 +322,7 @@ export default async function SmartNumerologyReportPage() {
         </div>
 
         {/* Desktop Normal Grid */}
-        <div className="hidden md:flex flex-wrap gap-4 justify-center px-4">
+        <div className="hidden md:flex flex-nowrap lg:flex-nowrap gap-2 xl:gap-4 justify-center px-2 w-full">
           <div className="bg-white rounded-[14px] shadow-sm px-5 py-3 lg:py-3.5 flex items-center gap-3">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
               <rect x="2" y="2" width="20" height="20" stroke="#f97316" strokeWidth="1.5" />
@@ -330,7 +330,7 @@ export default async function SmartNumerologyReportPage() {
               <path d="M12 2L12 22M2 12L22 12" stroke="#f97316" strokeWidth="1.5" />
               <circle cx="12" cy="12" r="2" fill="#ef4444" />
             </svg>
-            <span className="text-[#5c1a1f] font-bold text-[14.5px]">{settings?.featureCards?.[0] || "Doshas & Their Impact"}</span>
+            <span className="text-[#5c1a1f] font-bold text-[12px] xl:text-[14.5px] whitespace-nowrap">{settings?.featureCards?.[0] || "Doshas & Their Impact"}</span>
           </div>
 
           
@@ -342,7 +342,7 @@ export default async function SmartNumerologyReportPage() {
               <path d="M7 10C7 7 9 5 12 5C15 5 17 7 17 10" stroke="#f472b6" strokeWidth="1.5" />
               <path d="M5 14L8 12M19 14L16 12" stroke="#ec4899" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
-            <span className="text-[#5c1a1f] font-bold text-[14.5px]">{settings?.featureCards?.[1] || "Remedies"}</span>
+            <span className="text-[#5c1a1f] font-bold text-[12px] xl:text-[14.5px] whitespace-nowrap">{settings?.featureCards?.[1] || "Remedies"}</span>
           </div>
 
           
@@ -353,7 +353,7 @@ export default async function SmartNumerologyReportPage() {
               <path d="M9 10H15M9 14H13" stroke="#f59e0b" strokeWidth="1.5" strokeLinecap="round" />
               <circle cx="12" cy="6" r="1.5" fill="#b45309" />
             </svg>
-            <span className="text-[#5c1a1f] font-bold text-[14.5px]">{settings?.featureCards?.[2] || "250+ Page Numerology Report Report"}</span>
+            <span className="text-[#5c1a1f] font-bold text-[12px] xl:text-[14.5px] whitespace-nowrap">{settings?.featureCards?.[2] || "250+ Page Numerology Report"}</span>
           </div>
 
           
@@ -364,7 +364,7 @@ export default async function SmartNumerologyReportPage() {
               <path d="M10 17L9 20M14 17L15 20" stroke="#a855f7" strokeWidth="1.5" strokeLinecap="round" />
               <path d="M11 7L12 8M13 11L14 10" stroke="#a855f7" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
-            <span className="text-[#5c1a1f] font-bold text-[14.5px]">{settings?.featureCards?.[3] || "Personalized Insights"}</span>
+            <span className="text-[#5c1a1f] font-bold text-[12px] xl:text-[14.5px] whitespace-nowrap">{settings?.featureCards?.[3] || "Personalized Insights"}</span>
           </div>
 
           
@@ -375,7 +375,7 @@ export default async function SmartNumerologyReportPage() {
               <circle cx="19" cy="9" r="1.5" fill="#3b82f6" />
               <circle cx="4" cy="16" r="2" fill="#ef4444" />
             </svg>
-            <span className="text-[#5c1a1f] font-bold text-[14.5px]">{settings?.featureCards?.[4] || "Planetary Transits"}</span>
+            <span className="text-[#5c1a1f] font-bold text-[12px] xl:text-[14.5px] whitespace-nowrap">{settings?.featureCards?.[4] || "Planetary Transits"}</span>
         </div>
       </div>
       </div>
@@ -513,7 +513,7 @@ export default async function SmartNumerologyReportPage() {
             />
           </div>
           <div className="md:w-[55%] lg:w-[60%] md:pl-6 lg:pl-10">
-            <h2 className="text-[28px] md:text-[32px] lg:text-[38px] xl:text-[42px] font-serif font-bold text-[#5c1a1f] mb-10 leading-tight xl:whitespace-nowrap">{settings?.whatItRevealsHeading || "What Your 10-Year Numerology Report Reveals"}</h2>
+            <h2 className="text-[28px] md:text-[32px] lg:text-[38px] xl:text-[42px] font-serif font-bold text-[#5c1a1f] mb-10 leading-tight">{settings?.whatItRevealsHeading || "What Your 10-Year Numerology Report Reveals"}</h2>
 
             <div className="space-y-6 mb-12">
               {(settings?.whatItReveals?.length ? settings.whatItReveals : [

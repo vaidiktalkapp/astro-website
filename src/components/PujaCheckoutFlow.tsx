@@ -307,7 +307,9 @@ export function PujaCheckoutFlow({ pujaTitle, pujaSlug, defaultPrice, offeringsL
               <span className="text-[24px] font-black text-[#d97706]">₹{finalTotal}</span>
             </div>
 
-            <p className="text-center text-[12px] text-[#888] mt-6 flex items-center justify-center gap-1.5"><Lock className="w-3.5 h-3.5" /> 100% Secure Payment powered by Razorpay</p>
+            <p className="text-center text-[12px] text-[#888] mt-6 flex items-center justify-center gap-1.5">
+              <Lock className="w-3.5 h-3.5" /> 100% Secure Payment powered by <img src="https://badges.razorpay.com/badge-light.png" alt="Razorpay" className="h-5 ml-1" />
+            </p>
           </div>
         )}
 

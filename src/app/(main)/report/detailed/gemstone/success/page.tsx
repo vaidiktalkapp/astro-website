@@ -12,6 +12,15 @@ function SuccessContent() {
   const [isGenerating, setIsGenerating] = useState(true);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [settings, setSettings] = useState<any>(null);
+
+  useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+    fetch(`${apiUrl}/smart-kundali-settings/gemstone`)
+      .then(res => res.json())
+      .then(data => setSettings(data))
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (!bookingId) {
@@ -60,8 +69,8 @@ function SuccessContent() {
         {/* Left Side: Promo Image (Visible on Mobile) */}
         <div className="flex bg-[#f4ece3] justify-center relative">
           <img 
-            src="/images/vaidiktalk-kundli-mockup.webp" 
-            alt="Premium Report" 
+            src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} 
+            alt={settings?.productHeading || "Premium Gemstone Report"} 
             className="w-full h-auto max-h-[250px] md:max-h-[550px] object-contain mix-blend-multiply scale-110 mt-4 md:mt-0"
             onError={(e) => { e.currentTarget.src = 'https://placehold.co/400x550/fdfaf6/5c1a1f?text=Report' }}
           />
@@ -75,7 +84,7 @@ function SuccessContent() {
                 <Loader2 className="w-10 h-10 text-[#d68636] animate-spin absolute" />
                 <FileText className="w-5 h-5 text-[#5c1a1f]" />
               </div>
-              <h2 className="text-[24px] font-bold text-[#5c1a1f] mb-3">Generating Your Gemstone Report</h2>
+              <h2 className="text-[24px] font-bold text-[#5c1a1f] mb-3">Generating Your {settings?.productHeading || "Gemstone Report"}</h2>
               <p className="text-[15px] text-[#3a1216]/80 leading-relaxed font-medium mb-2">
                 Please wait while we consult the stars.
               </p>
@@ -96,7 +105,7 @@ function SuccessContent() {
               </p>
               <div className="bg-[#fcf8f2] border border-[#ebdcc7] p-4 rounded-lg mb-6 w-full text-left">
                 <p className="text-[13px] text-[#5c1a1f] font-semibold mb-1">✅ If Payment Successful</p>
-                <p className="text-[12px] text-[#3a1216]/80 leading-relaxed">Don't worry, your payment has been successfully recorded. If your Gemstone Report cannot be generated due to technical reasons, please contact us at<strong> contact@vaidiktalk.com</strong> and a full refund will be initiated to your original payment method.</p>
+                <p className="text-[12px] text-[#3a1216]/80 leading-relaxed">Don't worry, your payment has been successfully recorded. If your {settings?.productHeading || "Gemstone Report"} cannot be generated due to technical reasons, please contact us at<strong> contact@vaidiktalk.com</strong> and a full refund will be initiated to your original payment method.</p>
               </div>
 
               <Link
@@ -111,9 +120,9 @@ function SuccessContent() {
               <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-6">
                 <CheckCircle2 className="w-10 h-10 text-green-500" />
               </div>
-              <h2 className="text-[24px] font-bold text-[#5c1a1f] mb-3">Report Ready!</h2>
+              <h2 className="text-[24px] font-bold text-[#5c1a1f] mb-3">{settings?.productHeading ? settings.productHeading + " Ready!" : "Gemstone Report Ready!"}</h2>
               <p className="text-[15px] text-[#3a1216]/80 leading-relaxed font-medium mb-8">
-                Your Premium Gemstone Report has been successfully generated.
+                Your {settings?.productHeading || "Premium Gemstone Report"} has been successfully generated.
               </p>
 
               <div className="flex flex-col gap-3 w-full max-w-[300px]">

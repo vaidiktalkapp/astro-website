@@ -9,7 +9,7 @@ declare global {
 
 export const PAYMENT_CONFIG = {
   razorpay: {
-    key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_test_pgNwN5gpPzbjfq',
+    key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_test_RqbM42nX68n7Zw',
     merchantName: 'Vaidik Talk',
     merchantLogo: 'https://vaidiktalk.store/cdn/shop/files/logo.png?v=1747895829&width=300',
     themeColor: '#f8d900',

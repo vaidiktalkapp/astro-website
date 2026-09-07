@@ -35,10 +35,10 @@ export default function Footer() {
           {/* Reports */}
           <FooterSection title="Reports">
             <ul className="space-y-3.5 pb-2 lg:pb-0">
-              <li><Link href="/kundli" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Kundli &amp; Reports</Link></li>
-              <li><Link href="/kundli" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Vastu Reports</Link></li>
-              <li><Link href="/numerology" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Numerology Reports</Link></li>
-              <li><Link href="/free-reports" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Dosh &amp; Life Reports</Link></li>
+              <li><Link href="/report/kundali/vaidik-smart-kundali-10-years" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Premium Personalised Kundli</Link></li>
+              <li><Link href="/report/kundali/kundali-matching" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Premium Kundli Matching</Link></li>
+              <li><Link href="/report/detailed/gemstone" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Premium Gemstone Report</Link></li>
+              <li><Link href="/report/numerology/fortune-numerology" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Premium Numerology Report</Link></li>
             </ul>
           </FooterSection>
 
@@ -207,7 +207,7 @@ export default function Footer() {
 
           <div className="flex items-center gap-2 text-[13px] text-[#412a1e] font-medium">
             Payments powered &amp; secured by
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg" alt="Razorpay" className="h-4 object-contain filter grayscale opacity-70 ml-1" />
+            <img src="https://badges.razorpay.com/badge-light.png" alt="Razorpay" className="h-8 object-contain ml-1" />
           </div>
 
         </div>
