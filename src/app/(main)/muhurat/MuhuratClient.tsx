@@ -269,8 +269,9 @@ function MuhuratForm() {
                             <span className="serif">{t("muhurat.vedic_muhurat_calculator")}</span>
                         </div>
                         <h1 className="text-4xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight serif">
-{t("muhurat.auspicious_moment_finder")}
-            </h1>
+                            <span className="text-[#ee6c1e]">{t("muhurat.auspicious_moment_finder").split(' ')[0]}</span>{' '}
+                            {t("muhurat.auspicious_moment_finder").split(' ').slice(1).join(' ')}
+                        </h1>
                         <div className="flex flex-wrap items-center gap-4">
                             <p className="text-gray-850 text-lg leading-relaxed max-w-2xl serif">
 {t("muhurat._timing_is_everything_ensure_s")}

@@ -46,9 +46,9 @@ export default function Footer() {
           <FooterSection title="Explore">
             <ul className="space-y-3.5 pb-2 lg:pb-0">
               <li><Link href="/astrology-calculators" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Free Astrology Tools</Link></li>
-              <li><Link href="/daily-horoscope" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Horoscope</Link></li>
+              <li><Link href="/daily-horoscope" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Daily Horoscope</Link></li>
               <li><Link href="/book-a-puja" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Book a Remedy Puja</Link></li>
-              <li><Link href="/learn" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Knowledge Center</Link></li>
+              <li><Link href="/rahu-kaal" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Rahu Kaal Today</Link></li>
               <li><Link href="/panchang" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Today&apos;s Panchang</Link></li>
             </ul>
           </FooterSection>
@@ -59,6 +59,8 @@ export default function Footer() {
               <li><Link href="/muhurat" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Marriage Muhurat 2026</Link></li>
               <li><Link href="/muhurat" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Griha Pravesh Muhurat 2026</Link></li>
               <li><Link href="/muhurat" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Mundan Muhurat 2026</Link></li>
+              <li><Link href="/muhurat" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Namkaran Muhurat 2026</Link></li>
+              <li><Link href="/muhurat" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Business Muhurat 2026</Link></li>
             </ul>
           </FooterSection>
 
@@ -137,7 +139,7 @@ export default function Footer() {
               <ul className="space-y-3.5 pb-2 lg:pb-0">
                 <li><Link href="/contact-us" className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium hover:text-[#ee6c1e] transition-colors">Contact Support Team</Link></li>
                 <li className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium">Available 24x7 on chat support</li>
-                <li className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium">Email: contact@vaidiktalk.com</li>
+                <li className="text-[14.5px] lg:text-[15.5px] text-[#412a1e] font-medium">Email: <a href="mailto:contact@vaidiktalk.com" className="hover:text-[#ee6c1e] transition-colors underline">contact@vaidiktalk.com</a></li>
               </ul>
             </FooterSection>
           </div>
