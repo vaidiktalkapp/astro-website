@@ -126,9 +126,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Core Services
     { url: 'https://AstroSolution.com/blog' },
     { url: 'https://AstroSolution.com/book-a-puja' },
-    { url: 'https://AstroSolution.com/astrologers-chat' },
-    { url: 'https://AstroSolution.com/astrologers-call' },
-    { url: 'https://AstroSolution.com/ai-astrologer-chat' },
+
     
     // Tools & Calculators
     { url: 'https://AstroSolution.com/astrology-calculators' },

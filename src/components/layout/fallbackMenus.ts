@@ -153,17 +153,7 @@ export const FALLBACK_MENUS = [
     "__v": 0,
     "icon": "⭐"
   },
-  {
-    "_id": "6a7ee9603ac57da1f2b01908",
-    "title": "Chat with AI Astrologer",
-    "url": "#?mode=chat",
-    "category": "consult",
-    "group": "General",
-    "order": 3,
-    "isActive": true,
-    "__v": 0,
-    "icon": "<svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"#cffafe\" stroke=\"#06b6d4\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\"><path d=\"M12 8V4H8\"/><rect width=\"16\" height=\"12\" x=\"4\" y=\"8\" rx=\"2\"/><path d=\"M2 14h2\"/><path d=\"M20 14h2\"/><path d=\"M15 13v2\"/><path d=\"M9 13v2\"/></svg>"
-  },
+
   {
     "_id": "6a7ee9603ac57da1f2b0190c",
     "title": "Astrology Articles",
@@ -219,28 +209,7 @@ export const FALLBACK_MENUS = [
     "__v": 0,
     "icon": "🧿"
   },
-  {
-    "_id": "6a7ee9603ac57da1f2b01909",
-    "title": "Talk with AI Astrologer",
-    "url": "#?mode=call",
-    "category": "consult",
-    "group": "General",
-    "order": 4,
-    "isActive": true,
-    "__v": 0,
-    "icon": "<svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"#f3e8ff\" stroke=\"#a855f7\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\"><path d=\"M3 18v-6a9 9 0 0 1 18 0v6\"/><path d=\"M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z\"/></svg>"
-  },
-  {
-    "_id": "6a7eee832e36bbf82f505a93",
-    "isTopLevel": true,
-    "category": "consult",
-    "__v": 0,
-    "isActive": true,
-    "order": 5,
-    "title": "Consult an Astrologer",
-    "url": "#",
-    "icon": ""
-  },
+
   {
     "_id": "6a7ee9603ac57da1f2b0190e",
     "title": "Celebrity Horoscope",
