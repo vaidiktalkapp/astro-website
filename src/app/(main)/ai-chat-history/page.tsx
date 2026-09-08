@@ -216,7 +216,7 @@ const AiChatHistoryPage = () => {
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                         <div className="flex items-center gap-3 md:gap-4 flex-1 min-w-0">
                             <button
-                onClick={() => /* disabled */}
+                onClick={() => router.back()}
                 className="p-2 hover:bg-orange-100 rounded-full transition-colors shrink-0">
                 
                                 <ChevronRight className="w-5 h-5 md:w-6 md:h-6 rotate-180" />
@@ -453,7 +453,7 @@ const AiChatHistoryPage = () => {
                             </p>
                             {!searchQuery && filterStatus === 'all' &&
             <button
-              onClick={() => /* disabled */}
+              onClick={() => { /* disabled */ }}
               className="mt-6 bg-orange-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-orange-700 transition-all shadow-lg hover:shadow-xl">
 {t("ai_chat_history.start_your_first_consultation")}
 
