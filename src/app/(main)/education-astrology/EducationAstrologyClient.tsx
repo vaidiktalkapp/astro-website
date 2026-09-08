@@ -179,7 +179,7 @@ export default function EducationAstrologyClient({
       content: 'Failing exams despite hard work? Your 6th house governs competitions. We predict the best time for success and suggest rituals to overcome academic hurdles.',
       icon: <CheckCircle2 className="w-6 h-6 text-[#4f46e5]" />,
       tool: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' },
-      report: { name: 'Premium Report', link: '/report/kundali/vaidik-smart-kundali-10-years' }
+      report: { name: 'Detailed Kundli', link: '/kundli' }
 
     },
     {
@@ -193,7 +193,7 @@ export default function EducationAstrologyClient({
       content: 'Experiencing extreme fear before exams? Strengthening your Moon can calm your nerves and build confidence to perform your best under pressure.',
       icon: <HeartHandshake className="w-6 h-6 text-[#ee6c1e]" />,
       tool: { name: 'Consult Expert', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' },
-      report: { name: 'Premium Report', link: '/report/kundali/vaidik-smart-kundali-10-years' }
+      report: { name: 'Detailed Kundli', link: '/kundli' }
     },
     {
       title: 'Breaks in Education',

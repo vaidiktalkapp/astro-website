@@ -179,7 +179,7 @@ export default function LoveCompatibilityClient({
       content: 'Beyond Guna Milan (36 points), true compatibility lies in Navamsha chart, Nadi Dosh, and Venus-Moon synergy. We check all factors for long-term harmony.',
       icon: <ShieldCheck className="w-6 h-6 text-[#4f46e5]" />,
       tool: { name: 'Free Matching', link: '/compatibility' },
-      report: { name: 'Premium Report', link: '/report/kundali/kundali-matching' }
+      report: { name: 'Detailed Kundli', link: '/report/kundali/kundali-matching' }
     },
     {
       title: 'Relationship Conflicts',

@@ -668,8 +668,8 @@ Kundali & Reports
                   }
                   title="No Reports Found"
                   description="You haven't purchased any Kundali or Astrological reports yet."
-                  ctaText="Browse Reports"
-                  ctaLink="/report/kundali/vaidik-smart-kundali-10-years"
+                  ctaText="Get Free Kundli"
+                  ctaLink="/kundli"
                 />
               )
             )}

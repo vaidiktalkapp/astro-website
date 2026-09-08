@@ -168,7 +168,7 @@ export default function MarriageRelationshipClient({
       content: 'Manglik Dosh occurs when Mars is placed in specific houses of your birth chart. We assess whether your dosh is genuine, its intensity, and whether it cancels out naturally.',
       icon: <ShieldAlert className="w-6 h-6 text-[#e11d48]" />,
       tool: { name: 'Dosh Checker', link: '/kundli' },
-      report: { name: 'Full Report', link: '/report/kundali/vaidik-smart-kundali-10-years' }
+      report: { name: 'Full Report', link: '/kundli' }
     },
     {
       title: 'Marriage Delay',

@@ -190,7 +190,7 @@ export default function HealthAstrologyClient({
       content: 'The 5th house governs progeny. If you are facing delays or complications, analyzing Jupiter and the 5th lord can provide precise remedies for a safe delivery.',
       icon: <HeartHandshake className="w-6 h-6 text-[#059669]" />,
       tool: { name: 'Consult Expert', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' },
-      report: { name: 'Premium Report', link: '/report/kundali/vaidik-smart-kundali-10-years' }
+      report: { name: 'Detailed Kundli', link: '/kundli' }
     },
     {
       title: 'Healing Malefic Dashas',

@@ -144,14 +144,14 @@ export default function PropertyVehicleAstrologyClient({
       content: 'Trapped in legal battles over family land? The 8th and 4th houses govern inherited assets. We suggest powerful Vedic remedies to win legal cases and resolve family disputes.',
       icon: <Sparkles className="w-6 h-6 text-[#d97706]" />,
       tool: { name: 'Free Kundli', link: '/kundli' },
-      report: { name: 'Premium Report', link: '/report/kundali/vaidik-smart-kundali-10-years' }
+      report: { name: 'Detailed Kundli', link: '/kundli' }
     },
     {
       title: 'Vehicle Accidents (Vahan Dosh)',
       content: 'Facing frequent car accidents or damage? This is a classic sign of Vahan Dosh caused by afflicted Venus or Rahu. Discover specific protective rituals before buying a vehicle.',
       icon: <HeartHandshake className="w-6 h-6 text-[#4f46e5]" />,
       tool: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' },
-      report: { name: 'Premium Report', link: '/report/kundali/vaidik-smart-kundali-10-years' }
+      report: { name: 'Detailed Kundli', link: '/kundli' }
     },
     {
       title: 'Vastu Defects (Vastu Dosh)',

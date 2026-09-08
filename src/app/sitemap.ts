@@ -185,13 +185,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: 'https://AstroSolution.com/planets' },
     { url: 'https://AstroSolution.com/atlas' },
 
-    // Premium Reports
-    { url: 'https://AstroSolution.com/report/kundali/vaidik-smart-kundali-10-years' },
-    { url: 'https://AstroSolution.com/report/kundali/kundali-matching' },
-    { url: 'https://AstroSolution.com/report/kundali/personalized-lal-kitab' },
-    { url: 'https://AstroSolution.com/report/kundali/hastlikhit-kundali' },
-    { url: 'https://AstroSolution.com/report/numerology/fortune-numerology' },
-    { url: 'https://AstroSolution.com/report/numerology/name-mobile-number-numerology' },
+
   ].map(route => ({
     ...route,
     lastModified: new Date(),

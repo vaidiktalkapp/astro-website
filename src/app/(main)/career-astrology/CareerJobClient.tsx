@@ -172,14 +172,14 @@ export default function CareerJobClient({
       content: 'Awaiting a promotion? The 11th house of gains and the sun (authority) dictate your professional rise. We decode when your next big career jump will happen.',
       icon: <Sparkles className="w-6 h-6 text-[#d97706]" />,
       tool: { name: 'Free Kundli', link: '/kundli' },
-      report: { name: 'Premium Report', link: '/report/kundali/vaidik-smart-kundali-10-years' }
+      report: { name: 'Detailed Kundli', link: '/kundli' }
     },
     {
       title: 'Business vs Job',
       content: 'Confused whether to do business or a job? The strength of the 7th house (business) vs 6th house (service) reveals the most profitable path for you.',
       icon: <ShieldCheck className="w-6 h-6 text-[#4f46e5]" />,
       tool: { name: 'Free Kundli', link: '/kundli' },
-      report: { name: 'Premium Report', link: '/report/kundali/vaidik-smart-kundali-10-years' }
+      report: { name: 'Detailed Kundli', link: '/kundli' }
     },
     {
       title: 'Workplace Politics',

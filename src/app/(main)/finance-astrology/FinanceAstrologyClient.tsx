@@ -172,14 +172,14 @@ export default function FinanceAstrologyClient({
       content: 'Want to know when you will achieve financial freedom? The 2nd and 11th houses dictate your Dhana Yogas. We decode the exact time periods for sudden wealth and steady growth.',
       icon: <Sparkles className="w-6 h-6 text-[#d97706]" />,
       tool: { name: 'Free Kundli', link: '/kundli' },
-      report: { name: 'Premium Report', link: '/report/kundali/vaidik-smart-kundali-10-years' }
+      report: { name: 'Detailed Kundli', link: '/kundli' }
     },
     {
       title: 'Startup & Partnership',
       content: 'Planning to start a new venture or enter a partnership? The 7th house reveals if a partnership will bring fortune or failure. Know your compatibility before investing.',
       icon: <HeartHandshake className="w-6 h-6 text-[#4f46e5]" />,
       tool: { name: 'Free Kundli', link: '/kundli' },
-      report: { name: 'Premium Report', link: '/report/kundali/vaidik-smart-kundali-10-years' }
+      report: { name: 'Detailed Kundli', link: '/kundli' }
     },
     {
       title: 'Stock Market Success',

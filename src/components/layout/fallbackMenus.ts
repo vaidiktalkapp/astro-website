@@ -183,7 +183,7 @@ export const FALLBACK_MENUS = [
     "isActive": true,
     "order": 4,
     "title": "Kundli & Reports",
-    "url": "/report",
+    "url": "/kundli",
     "icon": ""
   },
   {

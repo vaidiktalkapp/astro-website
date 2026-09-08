@@ -179,7 +179,7 @@ export default function ChildAstrologyClient({
       content: 'Is your child extremely stubborn, aggressive, or struggling with focus? Malefic Rahu or Mars can cause hyperactivity. Simple astrological remedies can bring peace and improve their nature.',
       icon: <Sparkles className="w-6 h-6 text-[#4f46e5]" />,
       tool: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' },
-      report: { name: 'Premium Report', link: '/report/kundali/vaidik-smart-kundali-10-years' }
+      report: { name: 'Detailed Kundli', link: '/kundli' }
     },
     {
       title: 'Family Disputes & Disharmony',
@@ -192,7 +192,7 @@ export default function ChildAstrologyClient({
       content: 'Planning to adopt? Astrology can guide you on the most favorable time to bring a child home and ensure a smooth, loving bond between the child and the family.',
       icon: <CheckCircle2 className="w-6 h-6 text-[#ee6c1e]" />,
       tool: { name: 'Consult Expert', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' },
-      report: { name: 'Premium Report', link: '/report/kundali/vaidik-smart-kundali-10-years' }
+      report: { name: 'Detailed Kundli', link: '/kundli' }
     },
     {
       title: 'Parent-Child Relationship',

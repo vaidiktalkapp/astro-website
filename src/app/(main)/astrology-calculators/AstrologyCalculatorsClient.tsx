@@ -180,21 +180,7 @@ const tools: Tool[] = [
     href: '/atlas',
     icon: Globe2,
   },
-  {
-    title: 'Premium Personalised Kundli',
-    description: 'Comprehensive premium birth chart report.',
-    category: 'Kundli & Reports',
-    href: '/reports',
-    icon: BookOpen,
-    premium: true,
-  },
-  {
-    title: 'Handwritten Kundali',
-    description: 'Authentic handwritten Kundali by Vedic scholars.',
-    category: 'Kundli & Reports',
-    href: '/reports',
-    icon: BookOpen,
-  },
+
   {
     title: 'Kaal Sarp Dosh Check',
     description: 'Check the presence and impact of Kaal Sarp Dosh.',
@@ -252,7 +238,6 @@ const navItems = [
   { label: 'Kundli', href: '/kundli' },
   { label: 'Horoscope', href: '/horoscope' },
   { label: 'Calculators', href: '/astrology-calculators' },
-  { label: 'Reports', href: '/reports' },
   { label: 'Panchang', href: '/panchang' },
   { label: 'Learn', href: '/learn-astrology' }];
 
@@ -743,7 +728,7 @@ export default function AstrologyCalculatorsClient() {
                     </Link>
 
                     <Link
-                      href="/reports"
+                      href="/kundli"
                       className="group flex items-center gap-3 rounded-xl border border-[#f0e6d9] bg-[#fffaf3] p-4 transition-all hover:border-[#dfc9a9] hover:shadow-sm"
                     >
 
@@ -753,7 +738,7 @@ export default function AstrologyCalculatorsClient() {
 
                       <div className="min-w-0 flex-1">
                         <div className="text-[12px] font-semibold text-[#302721]">
-                          Premium Kundli
+                          Free Janam Kundli
                         </div>
 
                         <div className="mt-1 text-[10px] text-[#806f62]">
@@ -779,7 +764,7 @@ export default function AstrologyCalculatorsClient() {
 
                       <div className="min-w-0 flex-1">
                         <div className="text-[12px] font-semibold text-[#302721]">
-                          Premium Kundali Matching
+                          Kundali Matching
                         </div>
 
                         <div className="mt-1 text-[10px] text-[#806f62]">
