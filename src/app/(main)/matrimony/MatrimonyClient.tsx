@@ -159,8 +159,7 @@ export default function MatrimonyPage() {
                   {[
                     { val: '10,000+', label: 'Verified Profiles' },
                     { val: '36 Gunas', label: 'Compatibility Score' },
-                    { val: '100%', label: 'Privacy Protected' },
-                  ].map((s, i) => (
+                    { val: '100%', label: 'Privacy Protected' }].map((s, i) => (
                     <div key={i}>
                       <div className="mat-serif" style={{ fontSize: 20, fontWeight: 700, color: '#7A1F01' }}>{s.val}</div>
                       <div style={{ fontSize: 11, color: '#9b8860', fontWeight: 500, marginTop: 2, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{s.label}</div>
@@ -233,8 +232,7 @@ export default function MatrimonyPage() {
                 icon: <Heart style={{ width: 22, height: 22, color: '#b8962e' }} />,
                 title: 'Privacy First',
                 desc: 'Contact details stay hidden until mutual interest is confirmed. Your dignity is always protected.',
-              },
-            ].map((f, i) => (
+              }].map((f, i) => (
               <motion.div
                 key={i}
                 className="mat-card-hover"
@@ -394,7 +392,7 @@ export default function MatrimonyPage() {
                       <div style={{ position: 'relative', height: 200, flexShrink: 0, overflow: 'hidden' }}>
                         <img
                           className="match-card-img"
-                          src={(match.profile.photos && match.profile.photos.length > 0 && match.profile.photos[0]) || match.user.profileImage || 'https://vaidiktalk.s3.ap-south-1.amazonaws.com/images/row-1-column-1.png'}
+                          src={(match.profile.photos && match.profile.photos.length > 0 && match.profile.photos[0]) || match.user.profileImage || 'https://AstroSolution.s3.ap-south-1.amazonaws.com/images/row-1-column-1.png'}
                           alt={match.user.name}
                           style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease', display: 'block' }}
                         />

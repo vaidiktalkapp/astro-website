@@ -85,7 +85,7 @@ export default function LearnAstrologyHub() {
                         className="mb-12"
                     >
                         <h2 className="text-center text-xl font-bold text-gray-800 serif mb-8">
-                            {t("learn._astrology_tutorials_by").replace('"', '').replace('"', '').trim()} <span className="text-[#b8962e]">{t("learn.vaidiktalk")}</span>
+                            {t("learn._astrology_tutorials_by").replace('"', '').replace('"', '').trim()} <span className="text-[#b8962e]">{t("learn.AstroSolution")}</span>
                         </h2>
 
                         {loading ? (

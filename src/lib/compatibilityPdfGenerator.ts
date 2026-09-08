@@ -91,7 +91,7 @@ export const downloadCompatibilityPDF = async (data: CompatibilityData) => {
             p.setFont('helvetica', 'bold');
             p.setFontSize(10);
             p.setTextColor(...NAVY);
-            p.text('VaidikTalk', m, 8);
+            p.text('AstroSolution', m, 8);
             p.setDrawColor(...GOLD);
             p.setLineWidth(0.3);
             p.line(m, 10, pw - m, 10);
@@ -101,7 +101,7 @@ export const downloadCompatibilityPDF = async (data: CompatibilityData) => {
             p.setFont('helvetica', 'normal');
             p.setFontSize(8);
             p.setTextColor(...GRAY);
-            p.text('www.vaidiktalk.com', m, ph - 10);
+            p.text('www.AstroSolution.com', m, ph - 10);
             p.text('Auto-generated compatibility reference report.', pw / 2, ph - 10, { align: 'center' });
             p.text(`Page ${p.getNumberOfPages()}`, pw - m, ph - 10, { align: 'right' });
         };
@@ -117,7 +117,7 @@ export const downloadCompatibilityPDF = async (data: CompatibilityData) => {
         pdf.setTextColor(255, 255, 255);
         pdf.setFont('helvetica', 'bold');
         pdf.setFontSize(22);
-        pdf.text('VaidikTalk', margin, 18);
+        pdf.text('AstroSolution', margin, 18);
         
         pdf.setFontSize(9);
         pdf.setFont('helvetica', 'normal');

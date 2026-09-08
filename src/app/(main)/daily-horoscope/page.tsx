@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'daily-horoscope';
   const defaultMeta = {
-    title: "Today's Horoscope | VaidikTalk",
+    title: "Today's Horoscope | AstroSolution",
     description: "Read your free daily horoscope for all 12 zodiac signs. Get personalized insights into love, career, and health based on precise Vedic astrology.",
   };
 

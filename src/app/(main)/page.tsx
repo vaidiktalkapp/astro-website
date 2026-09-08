@@ -36,9 +36,9 @@ async function fetchHeroSettings() {
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await fetchHeroSettings();
   
-  const title = settings?.seoTitle || 'VaidikTalk | India\'s Most Trusted Vedic Guidance Platform';
+  const title = settings?.seoTitle || 'AstroSolution | India\'s Most Trusted Vedic Guidance Platform';
   const description = settings?.seoDescription || 'Chat, call, or consult with India\'s best astrologers and get accurate solutions to your life\'s challenges.';
-  const keywords = settings?.seoKeywords || 'astrology, vedic astrology, talk to astrologer, online puja, VaidikTalk';
+  const keywords = settings?.seoKeywords || 'astrology, vedic astrology, WhatsApp Us, online puja, AstroSolution';
 
   return {
     title,
@@ -48,8 +48,8 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       type: 'website',
-      url: 'https://vaidiktalk.com/',
-      siteName: 'VaidikTalk',
+      url: 'https://AstroSolution.com/',
+      siteName: 'AstroSolution',
     },
     twitter: {
       card: 'summary_large_image',
@@ -57,7 +57,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
     },
     alternates: {
-      canonical: 'https://vaidiktalk.com/',
+      canonical: 'https://AstroSolution.com/',
     }
   };
 }

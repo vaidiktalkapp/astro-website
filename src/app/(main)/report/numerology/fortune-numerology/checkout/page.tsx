@@ -28,7 +28,7 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     if (!formData.email) {
-      setFormData((prev: any) => ({ ...prev, email: 'customer@vaidiktalk.com' }));
+      setFormData((prev: any) => ({ ...prev, email: 'customer@AstroSolution.com' }));
     }
   }, [formData.email, setFormData]);
 

@@ -236,8 +236,7 @@ const tools: Tool[] = [
     category: 'Spiritual',
     href: '/learn-astrology',
     icon: GraduationCap,
-  },
-];
+  }];
 
 const categoryList: Category[] = [
   'All Tools',
@@ -246,8 +245,7 @@ const categoryList: Category[] = [
   'Horoscope',
   'Muhurat & Panchang',
   'Love & Marriage',
-  'Spiritual',
-];
+  'Spiritual'];
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -256,8 +254,7 @@ const navItems = [
   { label: 'Calculators', href: '/astrology-calculators' },
   { label: 'Reports', href: '/reports' },
   { label: 'Panchang', href: '/panchang' },
-  { label: 'Learn', href: '/learn-astrology' },
-];
+  { label: 'Learn', href: '/learn-astrology' }];
 
 export default function AstrologyCalculatorsClient() {
   const { t } = useTranslation();
@@ -375,7 +372,7 @@ export default function AstrologyCalculatorsClient() {
                   <span className="h-px w-10 bg-[#b37b2c]" />
 
                   <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#985e1d]">
-                    VAIDIKTALK ASTROLOGY
+                    AstroSolution ASTROLOGY
                   </span>
 
                   <span className="text-[#bd8435]">✦</span>
@@ -694,7 +691,7 @@ export default function AstrologyCalculatorsClient() {
                     </Link>
 
                     <Link
-                      href="/astrologers-chat"
+                      href="#"
                       className="group flex items-center gap-3 rounded-xl border border-[#f0e6d9] bg-[#fffaf3] p-4 transition-all hover:border-[#dfc9a9] hover:shadow-sm"
                     >
 
@@ -704,7 +701,7 @@ export default function AstrologyCalculatorsClient() {
 
                       <div className="min-w-0 flex-1">
                         <div className="text-[12px] font-semibold text-[#302721]">
-                          Talk to Astrologer
+                          WhatsApp Us
                         </div>
 
                         <div className="mt-1 text-[10px] text-[#806f62]">
@@ -963,7 +960,7 @@ export default function AstrologyCalculatorsClient() {
                 </div>
 
                 <Link
-                  href="/astrologers-chat"
+                  href="#"
                   className="flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-[#e8c276] px-7 text-[12px] font-bold text-[#641a07] transition-all hover:bg-white"
                 >
                   {t('astrology_calculators.chat_with_an_astrologer')}

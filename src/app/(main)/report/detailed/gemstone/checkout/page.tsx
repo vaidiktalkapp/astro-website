@@ -77,7 +77,7 @@ export default function GemstoneCheckoutPage() {
       pob: userData.pob,
       country: userData.country || 'India',
       state: userData.state,
-      email: userData.email || 'customer@vaidiktalk.com',
+      email: userData.email || 'customer@AstroSolution.com',
       phone: userData.phone,
       language: language || 'en',
     };

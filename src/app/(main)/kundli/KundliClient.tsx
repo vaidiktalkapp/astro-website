@@ -83,8 +83,7 @@ const KUNDLI_HOUSES = [
   {
     house: "12th House",
     rules: "Losses, liberation, foreign lands, spiritual retreat",
-  },
-];
+  }];
 
 const NAVAGRAHAS = [
   {
@@ -119,8 +118,7 @@ const NAVAGRAHAS = [
     planet: "Rahu",
     rules: "Ambition, illusion, foreign matters, unconventional paths",
   },
-  { planet: "Ketu", rules: "Detachment, spirituality, past life, liberation" },
-];
+  { planet: "Ketu", rules: "Detachment, spirituality, past life, liberation" }];
 
 const KundliClient = () => {
   const { t } = useTranslation();
@@ -538,8 +536,7 @@ const KundliClient = () => {
                         {
                           title: "Examine planetary strengths and aspects",
                           desc: "Planets in their own sign, exaltation, or in a friendly house are considered strong and deliver positive results. Planets in debilitation or in enemy signs may create challenges. Planetary aspects (Drishti) show the areas of life one planet influences another.",
-                        },
-                      ].map((tip, i) => (
+                        }].map((tip, i) => (
                         <div
                           key={i}
                           className="flex gap-4 p-4 rounded-2xl border border-[#d6c89a]/40"

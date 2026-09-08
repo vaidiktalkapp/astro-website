@@ -47,7 +47,7 @@ export default function PagePlaceholder({ title, description, icon }: PagePlaceh
             Go Back
           </button>
           <button
-            onClick={() => router.push('/astrologers-chat')}
+            onClick={() => /* disabled */}
             className="px-10 py-4 bg-gradient-to-r from-[#922501] to-[#6A1A01] text-white font-bold rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all active:scale-95 w-full sm:w-auto"
           >
             Explore Astrologers
@@ -57,7 +57,7 @@ export default function PagePlaceholder({ title, description, icon }: PagePlaceh
         {/* Footer info */}
         <div className="mt-12 pt-8 border-t border-gray-100">
           <p className="text-sm font-medium text-[#3a1216] uppercase tracking-widest">
-            Coming Soon • VaidikTalk AI
+            Coming Soon • AstroSolution AI
           </p>
         </div>
       </div>

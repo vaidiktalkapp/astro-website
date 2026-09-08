@@ -50,7 +50,7 @@ const AiChatHistoryPage = () => {
   const setupSocketConnection = () => {
     if (socketRef.current) return; // Prevent duplicate connections
 
-    const socketUrl = process.env.NEXT_PUBLIC_SOCKET_URL || 'https://vaidiktalk-server1.onrender.com';
+    const socketUrl = process.env.NEXT_PUBLIC_SOCKET_URL || 'https://AstroSolution-server1.onrender.com';
     const token = localStorage.getItem('accessToken');
 
     if (!token) return;
@@ -183,7 +183,7 @@ const AiChatHistoryPage = () => {
     if (astroId) {
       router.push(`/ai-astrologer/${astroId}`);
     } else {
-      router.push(`/ai-astrologer-chat`);
+      router.push(`#`);
     }
   };
 
@@ -216,7 +216,7 @@ const AiChatHistoryPage = () => {
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                         <div className="flex items-center gap-3 md:gap-4 flex-1 min-w-0">
                             <button
-                onClick={() => router.push('/ai-astrologer-chat')}
+                onClick={() => /* disabled */}
                 className="p-2 hover:bg-orange-100 rounded-full transition-colors shrink-0">
                 
                                 <ChevronRight className="w-5 h-5 md:w-6 md:h-6 rotate-180" />
@@ -453,7 +453,7 @@ const AiChatHistoryPage = () => {
                             </p>
                             {!searchQuery && filterStatus === 'all' &&
             <button
-              onClick={() => router.push('/ai-astrologer-chat')}
+              onClick={() => /* disabled */}
               className="mt-6 bg-orange-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-orange-700 transition-all shadow-lg hover:shadow-xl">
 {t("ai_chat_history.start_your_first_consultation")}
 

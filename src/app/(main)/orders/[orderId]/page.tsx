@@ -358,7 +358,7 @@ export default function ChatHistoryScreen() {
               </button>
               <div className="flex items-center gap-3">
                 <img
-                  src={!imgError && astrologer?.profilePicture ? astrologer.profilePicture : '/vaidiktalklogo.webp'}
+                  src={!imgError && astrologer?.profilePicture ? astrologer.profilePicture : '/astrosolution-logo.png'}
                   onError={() => setImgError(true)}
                   className="w-10 h-10 rounded-full border border-gray-200 object-cover"
                   alt="Astrologer"
@@ -454,7 +454,7 @@ export default function ChatHistoryScreen() {
             </button>
             <div className="flex items-center gap-3">
               <img
-                src={!imgError && astrologer?.profilePicture ? astrologer.profilePicture : '/vaidiktalklogo.webp'}
+                src={!imgError && astrologer?.profilePicture ? astrologer.profilePicture : '/astrosolution-logo.png'}
                 onError={() => setImgError(true)}
                 className="w-10 h-10 rounded-full border border-gray-200 object-cover"
                 alt="Astrologer" />

@@ -81,10 +81,10 @@ function PujaCarousel({ items = [] }: { items?: any[] }) {
                 transition: hasTransition ? 'transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.8s cubic-bezier(0.25, 1, 0.5, 1)' : 'none',
                 boxShadow: isCenter ? '0 10px 25px rgba(0,0,0,0.08)' : 'none',
                 backgroundColor: '#341111ff', // Dark background to prevent white flash before image loads
-                backgroundImage: 'url(/vaidiktalklogo.webp)',
+                backgroundImage: 'url(/astrosolution-logo.png)',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
-                backgroundSize: '150px',
+                backgroundSize: '250px',
                 width: CARD_W,
                 height: CARD_H,
                 zIndex,
@@ -101,8 +101,8 @@ function PujaCarousel({ items = [] }: { items?: any[] }) {
                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
               />
               {/* Brand Logo Top Right */}
-              <div className="absolute top-0 right-0 z-20 bg-white px-3 py-2 rounded-bl-[12px] flex items-center shadow-sm border-l border-b border-gray-100">
-                <img src="/Vaidik-talk1.webp" alt="Vaidik Talk" className="h-[22px] object-contain" />
+              <div className="absolute top-0 right-0 z-20 bg-white px-2 py-1 rounded-bl-[10px] flex items-center justify-center overflow-hidden shadow-sm border-l border-b border-gray-100">
+                <img src="/astrosolution-logo.png" alt="Astro Solution" className="h-[28px] w-auto object-contain scale-150" />
               </div>
 
               {/* Dark gradient for text visibility (only on center card) */}
@@ -427,8 +427,8 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
                 className="relative flex flex-col rounded-2xl overflow-hidden bg-white border border-gray-300 transition-all duration-300 hover:border-gray-500 hover:shadow-lg hover:-translate-y-1 group"
               >
                 {/* Brand Logo Top Right */}
-                <div className="absolute top-0 right-0 z-20 bg-white px-3 py-2 rounded-bl-[14px] flex items-center shadow-sm border-l border-b border-gray-100">
-                  <img src="/Vaidik-talk1.webp" alt="Vaidik Talk" className="h-[20px] object-contain" />
+                <div className="absolute top-0 right-0 z-20 bg-white px-2 py-1 rounded-bl-[10px] flex items-center justify-center overflow-hidden shadow-sm border-l border-b border-gray-100">
+                  <img src="/astrosolution-logo.png" alt="Astro Solution" className="h-[26px] w-auto object-contain scale-150" />
                 </div>
                 {/* Popular Badge */}
                 {puja.popular && (
@@ -556,8 +556,7 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
             { icon: <ShieldCheck className="w-7 h-7 text-[#5c1a1f]" />, title: 'Authentic Rituals', desc: 'Performed as per Vedic Scriptures' },
             { icon: <UserCheck className="w-7 h-7 text-[#5c1a1f]" />, title: 'Expert Purohits', desc: 'Experienced and Verified Pandits' },
             { icon: <Leaf className="w-7 h-7 text-[#5c1a1f]" />, title: 'Pure Samagri', desc: 'Sattvik and High Quality Ritual items' },
-            { icon: <Lock className="w-7 h-7 text-[#5c1a1f]" />, title: 'Secure Booking', desc: '100% Safe and Hassle Free Booking' },
-          ].map((feature, idx) => (
+            { icon: <Lock className="w-7 h-7 text-[#5c1a1f]" />, title: 'Secure Booking', desc: '100% Safe and Hassle Free Booking' }].map((feature, idx) => (
             <div key={idx} className="flex flex-col items-center">
               <div className="w-16 h-16 rounded-full bg-[#fcf5eb] border border-[#f0ddc0] flex items-center justify-center mb-4 shadow-sm">
                 {feature.icon}
@@ -594,8 +593,7 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
                 { n: '3', title: 'Enter Sankalp', desc: 'Add your Name & Gotra for the ritual.' },
                 { n: '4', title: 'Complete Payment', desc: 'Pay via UPI, cards, or net banking.' },
                 { n: '5', title: 'Puja Performed', desc: 'Verified Pandit performs with your sankalp.' },
-                { n: '6', title: 'Receive Prasad', desc: 'Updates & prasad delivered to your door.' },
-              ].map((item, idx) => (
+                { n: '6', title: 'Receive Prasad', desc: 'Updates & prasad delivered to your door.' }].map((item, idx) => (
                 <div key={idx} className="flex flex-col items-center text-center">
                   <div className="w-13 h-13 rounded-full bg-[#5c1a1f] text-white font-bold text-[15px] flex items-center justify-center shadow-lg border-[3px] border-white mb-5 relative z-10 ring-2 ring-[#d4af37]/50">
                     {item.n}
@@ -615,8 +613,7 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
               { n: '3', title: 'Enter Sankalp Details', desc: 'Add devotee Name & Gotra for the puja.' },
               { n: '4', title: 'Complete Payment', desc: 'Pay via UPI, cards, or net banking.' },
               { n: '5', title: 'Puja Performed', desc: 'Verified pandit performs with your sankalp.' },
-              { n: '6', title: 'Receive Prasad', desc: 'Get updates & prasad delivered to your door.' },
-            ].map((item, idx) => (
+              { n: '6', title: 'Receive Prasad', desc: 'Get updates & prasad delivered to your door.' }].map((item, idx) => (
               <div key={idx} className="flex items-start gap-4 bg-[#fdfaf7] border border-[#f0ddc0] rounded-xl px-4 py-4 shadow-sm">
                 <div className="shrink-0 w-8 h-8 rounded-full bg-[#5c1a1f] text-white font-bold text-xs flex items-center justify-center shadow-md ring-[1.5px] ring-[#d4af37]/40">
                   {item.n}
@@ -632,13 +629,13 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
       </div>
 
 
-      {/* WHY VAIDIKTALK SECTION */}
+      {/* WHY AstroSolution SECTION */}
       <div className="w-full bg-[#fdfaf7] py-14 md:py-18 px-6 border-t border-[#f0ddc0] relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Heading */}
           <div className="text-center mb-10">
             <h2 className="premium-serif text-3xl md:text-5xl font-bold text-[#5c1a1f]">
-              Why <span className="text-[#d97706]">VaidikTalk?</span>
+              Why <span className="text-[#d97706]">AstroSolution?</span>
             </h2>
           </div>
 
@@ -646,9 +643,9 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
           <div className="bg-white border border-[#f0ddc0] rounded-2xl p-6 md:p-8 shadow-[0_4px_24px_rgba(92,26,31,0.06)]">
             {/* Brand Header */}
             <div className="flex items-center gap-3 mb-5">
-              <img src="/vaidiktalklogo.webp" alt="VaidikTalk Logo" className="h-9 object-contain" />
+              <img src="/astrosolution-logo.png" alt="AstroSolution Logo" className="h-9 object-contain" />
               <div>
-                <span className="font-extrabold text-[#5c1a1f] text-lg tracking-tight">Vaidik Talk</span>
+                <span className="font-extrabold text-[#5c1a1f] text-lg tracking-tight">Astro Solution</span>
                 <p className="text-[11px] text-[#d97706] font-semibold uppercase tracking-wider">India's Trusted Puja Platform</p>
               </div>
             </div>
@@ -656,10 +653,10 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
             {/* Description with logo */}
             <div className="flex items-start gap-4 mb-6">
               <div className="w-14 h-14 rounded-xl overflow-hidden border border-[#f0ddc0] shrink-0 shadow-sm bg-white flex items-center justify-center p-1">
-                <img src="/vaidiktalklogo.webp" alt="VaidikTalk" className="w-full h-full object-contain" />
+                <img src="/astrosolution-logo.png" alt="AstroSolution" className="w-full h-full object-contain" />
               </div>
               <p className="text-[#3a1216] text-[15px] md:text-[16px] leading-relaxed">
-                VaidikTalk is a dedicated Vedic puja platform connecting devotees across India and the world with verified, experienced Pandits. Every puja is performed with your personal sankalp — your name and gotra recited aloud before the rituals begin — so you receive the blessings meant for you, no matter where you are.
+                AstroSolution is a dedicated Vedic puja platform connecting devotees across India and the world with verified, experienced Pandits. Every puja is performed with your personal sankalp — your name and gotra recited aloud before the rituals begin — so you receive the blessings meant for you, no matter where you are.
               </p>
             </div>
 
@@ -714,12 +711,12 @@ export default function BookAPujaPage({ initialDynamicData = null, initialDynami
             <div className="testimonial-marquee py-4 px-4">
               {[...(dynamicData?.testimonials?.length > 0 ? dynamicData.testimonials : [
                 { name: 'Anita Sharma', city: 'Mumbai', review: 'The booking was smooth and the Pandit recited our family names perfectly during the puja. Felt truly connected despite being far away.' },
-                { name: 'Pradeep Mishra', city: 'Delhi', review: 'VaidikTalk made our Satyanarayan Puja so effortless. We got WhatsApp updates throughout and the prasad arrived on time.' },
+                { name: 'Pradeep Mishra', city: 'Delhi', review: 'AstroSolution made our Satyanarayan Puja so effortless. We got WhatsApp updates throughout and the prasad arrived on time.' },
                 { name: 'Kavya Reddy', city: 'Bengaluru', review: 'We had complete peace of mind. The pandit was well-prepared, recited the sankalp correctly, and the whole experience felt sacred.' },
                 { name: 'Ramesh Singh', city: 'Pune', review: 'Very authentic and professional service. The chanting was powerful and the video quality was excellent.' }
               ]), ...(dynamicData?.testimonials?.length > 0 ? dynamicData.testimonials : [
                 { name: 'Anita Sharma', city: 'Mumbai', review: 'The booking was smooth and the Pandit recited our family names perfectly during the puja. Felt truly connected despite being far away.' },
-                { name: 'Pradeep Mishra', city: 'Delhi', review: 'VaidikTalk made our Satyanarayan Puja so effortless. We got WhatsApp updates throughout and the prasad arrived on time.' },
+                { name: 'Pradeep Mishra', city: 'Delhi', review: 'AstroSolution made our Satyanarayan Puja so effortless. We got WhatsApp updates throughout and the prasad arrived on time.' },
                 { name: 'Kavya Reddy', city: 'Bengaluru', review: 'We had complete peace of mind. The pandit was well-prepared, recited the sankalp correctly, and the whole experience felt sacred.' },
                 { name: 'Ramesh Singh', city: 'Pune', review: 'Very authentic and professional service. The chanting was powerful and the video quality was excellent.' }
               ])].map((t: any, i: number) => (

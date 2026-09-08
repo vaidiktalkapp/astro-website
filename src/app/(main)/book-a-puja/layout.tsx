@@ -17,17 +17,17 @@ async function fetchLandingPageSettings() {
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await fetchLandingPageSettings();
   
-  const title = settings?.seoTitle || 'Book Vedic Pujas Online - Verified Pandits | VaidikTalk';
+  const title = settings?.seoTitle || 'Book Vedic Pujas Online - Verified Pandits | AstroSolution';
   const description = settings?.seoDescription || 'Book authentic Vedic pujas online with verified Pandits. Every ritual is performed with your personal sankalp and gotra. Live streaming & prasad delivery available.';
-  const keywords = settings?.seoKeywords || 'Book Puja Online, Vedic Puja, Online Pandit, VaidikTalk';
-  const url = `https://vaidiktalk.com/book-a-puja`;
-  const image = settings?.image ? (settings.image.startsWith('/pooja') ? `https://vaidiktalk.com${settings.image}` : getImageUrl(settings.image, 'Book a Puja')) : 'https://vaidiktalk.com/pooja/Rudraabhishek.webp';
+  const keywords = settings?.seoKeywords || 'Book Puja Online, Vedic Puja, Online Pandit, AstroSolution';
+  const url = `https://AstroSolution.com/book-a-puja`;
+  const image = settings?.image ? (settings.image.startsWith('/pooja') ? `https://AstroSolution.com${settings.image}` : getImageUrl(settings.image, 'Book a Puja')) : 'https://AstroSolution.com/pooja/Rudraabhishek.webp';
 
   return {
     title,
     description,
     keywords,
-    authors: [{ name: 'VaidikTalk', url: 'https://vaidiktalk.com/' }],
+    authors: [{ name: 'AstroSolution', url: 'https://AstroSolution.com/' }],
     alternates: {
       canonical: url,
     },
@@ -39,7 +39,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       url,
-      siteName: 'VaidikTalk',
+      siteName: 'AstroSolution',
       images: [
         {
           url: image,
@@ -47,8 +47,7 @@ export async function generateMetadata(): Promise<Metadata> {
           height: 630,
           alt: title,
           type: 'image/jpeg',
-        },
-      ],
+        }],
       locale: 'en_IN',
       type: 'website',
     },

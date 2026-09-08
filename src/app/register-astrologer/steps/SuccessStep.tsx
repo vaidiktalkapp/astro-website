@@ -27,11 +27,11 @@ export default function SuccessStep() {
        </div>
 
        <p className="text-[#D8C9ED] text-sm leading-relaxed max-w-xs mx-auto mb-8">
-           Our team will review your application. Reach out to <u className="text-[#ff9a2e]">vaidiktalk@gmail.com</u> for queries.
+           Our team will review your application. Reach out to <u className="text-[#ff9a2e]">AstroSolution@gmail.com</u> for queries.
        </p>
 
        <Link
-  href="/astrologers-chat"
+  href="#"
   className="block w-full bg-[#ff9a2e] text-center text-white font-bold py-4 rounded-xl shadow-lg shadow-orange-900/20 hover:bg-[#e68a1d] transition-colors"
 >
   Go to Dashboard

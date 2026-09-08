@@ -69,7 +69,7 @@ function SuccessContent() {
         {/* Left Side: Promo Image (Visible on Mobile) */}
         <div className="flex bg-[#f4ece3] justify-center relative">
           <img 
-            src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} 
+            src={settings?.mockups?.pdf || "/images/AstroSolution-kundli-mockup.webp"} 
             alt={settings?.productHeading || "Premium Smart Kundali"} 
             className="w-full h-auto max-h-[250px] md:max-h-[550px] object-contain mix-blend-multiply scale-110 mt-4 md:mt-0"
             onError={(e) => { e.currentTarget.src = 'https://placehold.co/400x550/fdfaf6/5c1a1f?text=Report' }}
@@ -105,7 +105,7 @@ function SuccessContent() {
               </p>
               <div className="bg-[#fcf8f2] border border-[#ebdcc7] p-4 rounded-lg mb-6 w-full text-left">
                 <p className="text-[13px] text-[#5c1a1f] font-semibold mb-1">✅ If Payment Successful</p>
-                <p className="text-[12px] text-[#3a1216]/80 leading-relaxed">Don't worry, your payment has been successfully recorded. If your {settings?.productHeading || "Smart Kundali"} cannot be generated due to technical reasons, please contact us at<strong> contact@vaidiktalk.com</strong> and a full refund will be initiated to your original payment method.</p>
+                <p className="text-[12px] text-[#3a1216]/80 leading-relaxed">Don't worry, your payment has been successfully recorded. If your {settings?.productHeading || "Smart Kundali"} cannot be generated due to technical reasons, please contact us at<strong> contact@AstroSolution.com</strong> and a full refund will be initiated to your original payment method.</p>
               </div>
 
               <Link

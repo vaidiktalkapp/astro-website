@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'baby-names';
   const defaultMeta = {
-    title: "Astrology Baby Names | Nakshatra Names | VaidikTalk",
+    title: "Astrology Baby Names | Nakshatra Names | AstroSolution",
     description: "Find the perfect Vedic baby name based on birth nakshatra and rashi.",
   };
 

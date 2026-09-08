@@ -8,7 +8,7 @@ import { Metadata } from 'next';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'learn-astrology';
   const defaultMeta = {
-    title: "Learn Astrology | VaidikTalk",
+    title: "Learn Astrology | AstroSolution",
     description: "Access beginner-friendly guides and in-depth tutorials to understand the language of the stars.",
   };
 

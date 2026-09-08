@@ -37,7 +37,7 @@ const renderInlineFormatting = (text: string) => {
   // 1. **bold**
   // 2. [text](url)
   // 3. URLs
-  const combinedRegex = /(\*\*.*?\*\*|\[.*?\]\(https?:\/\/[^\s)]+\)|https?:\/\/[^\s]+|vaidiktalk\.store)/g;
+  const combinedRegex = /(\*\*.*?\*\*|\[.*?\]\(https?:\/\/[^\s)]+\)|https?:\/\/[^\s]+|AstroSolution\.store)/g;
 
   let lastIndex = 0;
   let match;

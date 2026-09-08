@@ -1,5 +1,5 @@
 /**
- * Lal Kitab PDF Report Generator — VaidikTalk
+ * Lal Kitab PDF Report Generator — AstroSolution
  * 
  * Generates a high-fidelity, comprehensive Lal Kitab analysis report.
  * Features planetary interpretations, remedies, and general rules.
@@ -93,7 +93,7 @@ export const downloadLalKitabPDF = async (data: LalKitabData) => {
             doc.setFont('helvetica', 'bold');
             doc.setFontSize(16);
             doc.setTextColor(...DARK);
-            doc.text('VaidikTalk', margin, 12);
+            doc.text('AstroSolution', margin, 12);
             
             doc.setFontSize(8);
             doc.setTextColor(...GOLD);
@@ -109,7 +109,7 @@ export const downloadLalKitabPDF = async (data: LalKitabData) => {
             doc.setFontSize(8);
             doc.setTextColor(...GRAY);
             doc.text(`Page ${pageNum}`, pageW - margin - 15, pageH - 10);
-            doc.text('© VaidikTalk Premium Astrology Reports', margin, pageH - 10);
+            doc.text('© AstroSolution Premium Astrology Reports', margin, pageH - 10);
             
             doc.setFont('helvetica', 'italic');
             doc.setFontSize(7);

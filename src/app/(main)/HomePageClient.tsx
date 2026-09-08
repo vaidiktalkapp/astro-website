@@ -23,10 +23,10 @@ interface HomePageClientProps {
   initialBanners?: any[]; // ✅ NEW: SSR se pre-fetched banners
 }
 
-export default function HomePage({ 
+export default function HomePage({
   initialSettings = null,
-  initialFaqs = [], 
-  initialBlogs = [], 
+  initialFaqs = [],
+  initialBlogs = [],
   initialTestimonials = [],
   initialTopAstrologers = [],
   initialAiAstrologers = [],
@@ -35,25 +35,25 @@ export default function HomePage({
   initialBanners = [],    // ✅ NEW
 }: HomePageClientProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  
+
   // Use SSR data
   const [topAstrologers, setTopAstrologers] = useState<any[]>(initialTopAstrologers);
   const [loadingAstros, setLoadingAstros] = useState(initialTopAstrologers.length === 0);
-  
+
   const [aiAstrologers, setAiAstrologers] = useState<any[]>(initialAiAstrologers);
   const [loadingAiAstros, setLoadingAiAstros] = useState(initialAiAstrologers.length === 0);
-  
+
   const [dailyPanchang, setDailyPanchang] = useState<any>(initialDailyPanchang);
-  
+
   // Use SSR data to prevent empty initial render in source code
   const [testimonials, setTestimonials] = useState<any[]>(initialTestimonials);
   const [loadingTestimonials, setLoadingTestimonials] = useState(initialTestimonials.length === 0);
-  
+
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
-  
+
   const [recentBlogs, setRecentBlogs] = useState<any[]>(initialBlogs);
   const [loadingBlogs, setLoadingBlogs] = useState(initialBlogs.length === 0);
-  
+
   const [faqs, setFaqs] = useState<any[]>(initialFaqs);
   const [loadingFaqs, setLoadingFaqs] = useState(initialFaqs.length === 0);
 
@@ -76,7 +76,7 @@ export default function HomePage({
         const response = await astrologerService.searchAstrologers({ limit: 10, isOnline: true });
         setTopAstrologers(response.data || []);
       } catch (error) {
-        console.error('Failed to fetch top astrologers:', error);
+        console.error('Failed to fetch API data', error);
       } finally {
         setLoadingAstros(false);
       }
@@ -88,7 +88,7 @@ export default function HomePage({
         const data = await aiAstrologerService.getAllAiAstrologers();
         setAiAstrologers(data || []);
       } catch (error) {
-        console.error('Failed to fetch AI astrologers:', error);
+        console.error('Failed to fetch API data', error);
       } finally {
         setLoadingAiAstros(false);
       }
@@ -102,7 +102,7 @@ export default function HomePage({
           setDailyPanchang(response.data);
         }
       } catch (error) {
-        console.error('Failed to fetch daily panchang:', error);
+        console.error('Failed to fetch API data', error);
       }
     };
 
@@ -117,7 +117,7 @@ export default function HomePage({
           setTestimonials(data || []);
         }
       } catch (error) {
-        console.error('Failed to fetch testimonials:', error);
+        console.error('Failed to fetch API data', error);
       } finally {
         setLoadingTestimonials(false);
       }
@@ -137,16 +137,16 @@ export default function HomePage({
             const fallbackRes = await fetch(`${apiUrl}/blogs?status=published&limit=${8}`);
             const fallbackData = await fallbackRes.json();
             const fallbackBlogs = fallbackData.data || [];
-            
+
             const existingIds = new Set(blogs.map((b: any) => b._id));
             const additionalBlogs = fallbackBlogs.filter((b: any) => !existingIds.has(b._id));
-            
+
             blogs = [...blogs, ...additionalBlogs].slice(0, 8);
           }
           setRecentBlogs(blogs);
         }
       } catch (error) {
-        console.error('Failed to fetch blogs:', error);
+        console.error('Failed to fetch API data', error);
       } finally {
         setLoadingBlogs(false);
       }
@@ -162,7 +162,7 @@ export default function HomePage({
           setFaqs(data.data || []);
         }
       } catch (error) {
-        console.error('Failed to fetch FAQs:', error);
+        console.error('Failed to fetch API data', error);
       } finally {
         setLoadingFaqs(false);
       }
@@ -175,8 +175,8 @@ export default function HomePage({
     fetchRecentBlogs();
     fetchFeaturedFaqs();
   }, [
-    initialBlogs.length, 
-    initialFaqs.length, 
+    initialBlogs.length,
+    initialFaqs.length,
     initialTestimonials.length,
     initialTopAstrologers.length,
     initialAiAstrologers.length,
@@ -298,299 +298,31 @@ export default function HomePage({
                   <path d="M9 20v-6h6v6" />
                 </svg>
               ),
-            },
-          ].map((intent, i) => (
-            <Link
-              href={intent.slug}
-              key={i}
-              className="border border-[#f0ddc0] rounded-xl p-4 flex flex-col items-center gap-2.5 bg-white hover:-translate-y-1 hover:shadow-md transition-all"
-            >
-              <div className="w-10 h-10 rounded-full bg-[#fbe7d3] flex items-center justify-center text-[#ee6c1e]">
-                {intent.icon}
-              </div>
-              <div className="text-[11.5px] font-semibold text-[#3a1216] text-center leading-tight">{intent.name}</div>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Astrologers */}
-      <div className="px-6 md:px-10 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-          <div className="text-left">
-            <h2 className="font-sans font-bold tracking-tight text-[33px] md:text-[45px] leading-[1.2] text-[#5c1420] mb-3">
-              Connect with India's <span className="text-[#d97706]">Top Rated</span> Astrologers
-            </h2>
-            <p className="text-[#6E2F37] text-[18px] md:text-[19px] max-w-3xl leading-relaxed">
-              Connect with India's top certified and verified astrologers for expert guidance on your life's journey. Get personalized insights for your career, love life, health, and future.
-            </p>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="flex gap-2 shrink-0">
-              <button onClick={() => scrollContainer(astroRef, 'left')} className="w-8 h-8 rounded-full bg-[#fdf0e0] flex items-center justify-center text-[#5c1420] hover:bg-[#5c1420] hover:text-white transition-colors">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
-              </button>
-              <button onClick={() => scrollContainer(astroRef, 'right')} className="w-8 h-8 rounded-full bg-[#fdf0e0] flex items-center justify-center text-[#5c1420] hover:bg-[#5c1420] hover:text-white transition-colors">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
-              </button>
-            </div>
-            <Link href="/astrologers-chat" className="shrink-0 hidden md:flex bg-[#5c1420] text-white font-bold text-[14px] md:text-[15px] px-7 py-3 rounded-full hover:bg-[#721522] shadow-sm transition-all items-center gap-2">
-              View All Astrologers
-            </Link>
-          </div>
-        </div>
-        <div ref={astroRef} className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 pb-6 hide-scrollbar w-full" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          {loadingAstros ? (
-            [1, 2, 3, 4, 5].map((_, i) => (
-              <div key={i} className="shrink-0 w-[280px] lg:w-[320px] snap-center flex flex-col justify-between h-full border border-[#f0ddc0]/60 rounded-2xl p-5 bg-white text-center animate-pulse">
-                <div>
-                  <div className="w-20 h-20 mx-auto rounded-full bg-gray-200 mb-4 mt-1"></div>
-                  <div className="h-4 bg-gray-200 rounded w-3/4 mx-auto mb-2"></div>
-                  <div className="h-3 bg-gray-200 rounded w-full mx-auto mb-1.5"></div>
-                  <div className="h-3 bg-gray-200 rounded w-5/6 mx-auto mb-1.5"></div>
-                  <div className="h-3 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
-                  <div className="h-5 bg-gray-200 rounded w-2/3 mx-auto mb-4"></div>
+            }].map((intent, i) => (
+              <Link
+                href={intent.slug}
+                key={i}
+                className="border border-[#f0ddc0] rounded-xl p-4 flex flex-col items-center gap-2.5 bg-white hover:-translate-y-1 hover:shadow-md transition-all"
+              >
+                <div className="w-10 h-10 rounded-full bg-[#fbe7d3] flex items-center justify-center text-[#ee6c1e]">
+                  {intent.icon}
                 </div>
-                <div className="flex gap-2.5 mt-auto pt-5">
-                  <div className="flex-1 h-9 bg-gray-200 rounded-xl"></div>
-                  <div className="flex-1 h-9 bg-gray-200 rounded-xl"></div>
-                </div>
-              </div>
-            ))
-          ) : topAstrologers.length > 0 ? (
-            topAstrologers.slice(0, 10).map((astrologer: any, i: number) => (
-              <Link href={`/astrologer/${astrologer._id}`} key={i} className="shrink-0 w-[280px] lg:w-[320px] snap-center group flex flex-col justify-between h-full border border-[#f0ddc0] hover:border-[#ee6c1e]/30 shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_32px_rgba(230,74,25,0.12)] hover:-translate-y-1.5 rounded-2xl p-3.5 md:p-4.5 bg-white text-left transition-all duration-300 relative overflow-hidden">
-
-                <div>
-                  {/* Header: Avatar + Info */}
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-3 md:gap-3.5">
-                      <div className="relative w-[45px] h-[45px] md:w-[50px] md:h-[50px] shrink-0">
-                        <div className="w-full h-full rounded-full overflow-hidden border-[1.5px] border-[#22c55e] p-0.5">
-                          <img loading="lazy" src={getImageUrl(astrologer.profileImage || astrologer.profilePicture, astrologer.name)} alt={astrologer.name} className="w-full h-full rounded-full object-cover" />
-                        </div>
-                        {(astrologer.availability?.isOnline || astrologer.status === 'online' || astrologer.isOnline) && (
-                          <div className="absolute bottom-0 right-0 w-2.5 h-2.5 md:w-3 md:h-3 bg-[#22c55e] rounded-full border-[1.5px] border-white"></div>
-                        )}
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-[14px] md:text-[15px] text-[#3a1216] flex items-center gap-1.5">
-                          {astrologer.name || 'Astrologer'}
-                          <svg className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#22c55e]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z" /></svg>
-                        </h3>
-                        <p className="text-[11px] md:text-[11.5px] text-gray-850 mt-0.5 truncate max-w-[130px]">
-                          {astrologer.experienceYears || 1} yrs exp • {astrologer.languages?.slice(0, 2).join(', ') || 'Hindi'}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Skills Pills */}
-                  <div className="flex gap-1.5 md:gap-2 mt-2.5 md:mt-3.5 flex-wrap">
-                    {(astrologer.specializations?.length ? astrologer.specializations : ['Vedic', 'Tarot', 'Vastu']).slice(0, 3).map((skill: string, idx: number) => (
-                      <span key={idx} className="text-[10px] md:text-[11px] font-medium text-[#5c1420] border border-[#f0ddc0]/60 rounded-full px-2.5 md:px-3 py-1 bg-[#fdf8f0]/50">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Detailed Info */}
-                  <div className="mt-2.5 md:mt-3.5 text-[12px] md:text-[13px] text-[#6E2F37]/90 space-y-0.5 md:space-y-1">
-                    <p className="truncate">{astrologer.languages?.join(' • ') || 'English • Hindi • Punjabi'}</p>
-                    <p>{astrologer.experienceYears || 1} yrs exp</p>
-                  </div>
-
-                  {/* Stats */}
-                  <div className="flex items-center justify-between mt-2.5 md:mt-3.5 text-[12px] md:text-[13px] font-bold text-[#2c0d12]">
-                    <div className="flex items-center gap-1 md:gap-1.5">
-                      <span className="text-[#f59e0b] text-[14px] md:text-[15px]">★</span>
-                      <span>{astrologer.ratings?.average ? Number(astrologer.ratings.average).toFixed(1) : '5.0'}</span>
-                    </div>
-                    <span className={(astrologer.availability?.isOnline || astrologer.status === 'online' || astrologer.isOnline) ? "text-[#22c55e] font-semibold text-[11px] md:text-[12px]" : "text-[#7ea4b5] font-semibold text-[11px] md:text-[12px]"}>
-                      {(astrologer.availability?.isOnline || astrologer.status === 'online' || astrologer.isOnline) ? 'Online' : 'Offline'}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Pricing & CTA */}
-                <div className="mt-auto pt-3 md:pt-4 flex gap-2 md:gap-2.5 w-full">
-                  <div className="flex-1 flex items-center justify-between border-[1.5px] border-[#8a1c2a] text-[#8a1c2a] rounded-xl px-2.5 md:px-3 py-1.5 md:py-2 hover:bg-[#8a1c2a] hover:text-white transition-colors duration-300">
-                    <div className="flex items-center gap-1 md:gap-1.5 text-[12px] md:text-[13.5px] font-bold">
-                      <svg className="w-3 h-3 md:w-3.5 md:h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L18 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 6a2 2 0 0 1 0-2z" /></svg>
-                      Call
-                    </div>
-                    <div className="text-[12px] md:text-[13px] font-bold">₹{astrologer.pricing?.call || 30}/m</div>
-                  </div>
-                  <div className="flex-1 flex items-center justify-between border-[1.5px] border-[#8a1c2a] text-[#8a1c2a] rounded-xl px-2.5 md:px-3 py-1.5 md:py-2 hover:bg-[#8a1c2a] hover:text-white transition-colors duration-300">
-                    <div className="flex items-center gap-1 md:gap-1.5 text-[12px] md:text-[13.5px] font-bold">
-                      <svg className="w-3 h-3 md:w-3.5 md:h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.5A8 8 0 1 1 21 12z" /></svg>
-                      Chat
-                    </div>
-                    <div className="text-[12px] md:text-[13px] font-bold">₹{astrologer.pricing?.chat || 30}/m</div>
-                  </div>
-                </div>
+                <div className="text-[11.5px] font-semibold text-[#3a1216] text-center leading-tight">{intent.name}</div>
               </Link>
-            ))
-          ) : (
-            [1, 2, 3, 4].map((_, i) => (
-              <div key={i} className="border border-[#f0ddc0]/60 rounded-2xl p-4 bg-white text-center animate-pulse">
-                <div className="w-20 h-20 mx-auto rounded-full bg-gray-200 mb-4 mt-1"></div>
-                <div className="h-4 bg-gray-200 rounded w-3/4 mx-auto mb-2"></div>
-                <div className="h-3 bg-gray-200 rounded w-full mx-auto mb-1.5"></div>
-                <div className="h-3 bg-gray-200 rounded w-5/6 mx-auto mb-1.5"></div>
-                <div className="h-3 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
-                <div className="h-5 bg-gray-200 rounded w-2/3 mx-auto mb-4"></div>
-                <div className="flex gap-2.5">
-                  <div className="flex-1 h-9 bg-gray-200 rounded-full"></div>
-                  <div className="flex-1 h-9 bg-gray-200 rounded-full"></div>
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-        <div className="mt-8 flex justify-center md:hidden">
-          <Link href="/astrologers-chat" className="bg-[#5c1420] text-white font-bold text-[14px] px-7 py-3 rounded-full hover:bg-[#721522] shadow-sm transition-all flex items-center gap-2 w-full justify-center">
-            View All Astrologers
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
-          </Link>
+            ))}
         </div>
       </div>
 
-      {/* AI Astrologers */}
-      <div className="px-6 md:px-10 py-12 bg-[#fdf0e0]/50">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-          <div className="text-left">
-            <h2 className="font-sans font-bold tracking-tight text-[33px] md:text-[45px] leading-[1.2] text-[#5c1420] mb-3">
-              Ask Our <span className="text-[#d97706]">AI Astrologers</span>, Anytime
-            </h2>
-            <p className="text-[#6E2F37] text-[18px] md:text-[19px] max-w-3xl leading-relaxed">
-              Get instant answers to your questions from our advanced AI astrologers. Experience the perfect blend of ancient Vedic wisdom and cutting-edge artificial intelligence for highly accurate, 24/7 personalized guidance.
-            </p>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="flex gap-2 shrink-0">
-              <button onClick={() => scrollContainer(aiAstroRef, 'left')} className="w-8 h-8 rounded-full bg-[#fdf0e0] flex items-center justify-center text-[#5c1420] border border-[#f0ddc0] hover:bg-[#5c1420] hover:text-white transition-colors">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
-              </button>
-              <button onClick={() => scrollContainer(aiAstroRef, 'right')} className="w-8 h-8 rounded-full bg-[#fdf0e0] flex items-center justify-center text-[#5c1420] border border-[#f0ddc0] hover:bg-[#5c1420] hover:text-white transition-colors">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
-              </button>
-            </div>
-            <Link href="/ai-astrologer-chat" className="shrink-0 hidden md:flex bg-[#5c1420] text-white font-bold text-[14px] md:text-[15px] px-7 py-3 rounded-full hover:bg-[#721522] shadow-sm transition-all items-center gap-2">
-              View All AI Astrologers
-            </Link>
-          </div>
-        </div>
-        <div ref={aiAstroRef} className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 pb-6 hide-scrollbar w-full" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          {loadingAiAstros ? (
-            [1, 2, 3, 4, 5].map((_, i) => (
-              <div key={i} className="shrink-0 w-[280px] lg:w-[320px] snap-center flex flex-col justify-between h-full border border-[#f0ddc0]/60 rounded-2xl p-5 bg-white text-center animate-pulse">
-                <div>
-                  <div className="w-20 h-20 mx-auto rounded-full bg-gray-200 mb-4 mt-1"></div>
-                  <div className="h-4 bg-gray-200 rounded w-3/4 mx-auto mb-2"></div>
-                  <div className="h-3 bg-gray-200 rounded w-full mx-auto mb-1.5"></div>
-                  <div className="h-3 bg-gray-200 rounded w-5/6 mx-auto mb-1.5"></div>
-                  <div className="h-3 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
-                  <div className="h-5 bg-gray-200 rounded w-2/3 mx-auto mb-4"></div>
-                </div>
-                <div className="flex gap-2.5 mt-auto pt-5">
-                  <div className="flex-1 h-9 bg-gray-200 rounded-xl"></div>
-                  <div className="flex-1 h-9 bg-gray-200 rounded-xl"></div>
-                </div>
-              </div>
-            ))
-          ) : aiAstrologers.length > 0 ? (
-            aiAstrologers.slice(0, 10).map((astro: any, i: number) => (
-              <Link href={`/ai-astrologer/${astro._id}`} key={i} className="shrink-0 w-[280px] lg:w-[320px] snap-center group flex flex-col justify-between h-full border border-[#f0ddc0] hover:border-[#ee6c1e]/30 shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_32px_rgba(230,74,25,0.12)] hover:-translate-y-1.5 rounded-2xl p-3.5 md:p-4.5 bg-white text-left transition-all duration-300 relative overflow-hidden">
 
-                <div>
-                  {/* Header: Avatar + Info */}
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-3 md:gap-3.5">
-                      <div className="relative w-[45px] h-[45px] md:w-[50px] md:h-[50px] shrink-0">
-                        <div className="w-full h-full rounded-full overflow-hidden border-[1.5px] border-[#22c55e] p-0.5">
-                          <img loading="lazy" src={getImageUrl(astro.profileImage, astro.name)} alt={astro.name} className="w-full h-full rounded-full object-cover" />
-                        </div>
-                        {astro.status === 'active' && (
-                          <div className="absolute bottom-0 right-0 w-2.5 h-2.5 md:w-3 md:h-3 bg-[#22c55e] rounded-full border-[1.5px] border-white"></div>
-                        )}
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-[14px] md:text-[15px] text-[#3a1216] flex items-center gap-1.5">
-                          {astro.name || 'AI Astrologer'}
-                          <svg className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#22c55e]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z" /></svg>
-                        </h3>
-                        <p className="text-[11px] md:text-[11.5px] text-gray-850 mt-0.5 truncate max-w-[130px]">
-                          {astro.experienceYears || 5} yrs exp • {astro.languages?.slice(0, 2).join(', ') || 'Hindi'}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
 
-                  {/* Skills Pills */}
-                  <div className="flex gap-1.5 md:gap-2 mt-2.5 md:mt-3 flex-wrap">
-                    {(astro.specialization?.length ? astro.specialization : ['Vedic', 'Tarot', 'Vastu']).slice(0, 3).map((skill: string, idx: number) => (
-                      <span key={idx} className="text-[10px] md:text-[11px] font-medium text-[#5c1420] border border-[#f0ddc0]/60 rounded-full px-2.5 md:px-3 py-1 bg-[#fdf8f0]/50">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
 
-                  {/* Detailed Info */}
-                  <div className="mt-2.5 md:mt-3 text-[12px] md:text-[13px] text-[#6E2F37]/90 space-y-0.5 md:space-y-1">
-                    <p className="truncate">{astro.languages?.join(' • ') || 'English • Hindi • Punjabi'}</p>
-                    <p>{astro.experienceYears || 5} yrs exp</p>
-                  </div>
-
-                  {/* Stats */}
-                  <div className="flex items-center justify-between mt-2.5 md:mt-3 text-[12px] md:text-[12.5px] font-bold text-[#6E2F37]">
-                    <div className="flex items-center gap-1 md:gap-1.5">
-                      <span className="text-[#f59e0b] text-[14px] md:text-[15px]">★</span>
-                      <span>{astro.rating ? Number(astro.rating).toFixed(1) : '5.0'}</span>
-                    </div>
-                    <span className={astro.status === 'active' ? "text-[#22c55e] font-semibold text-[11px] md:text-[11.5px]" : "text-[#7ea4b5] font-semibold text-[11px] md:text-[11.5px]"}>
-                      {astro.status === 'active' ? 'Online' : 'Offline'}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Pricing & CTA */}
-                <div className="mt-auto pt-3 flex gap-2 md:gap-2.5 w-full">
-                  <div className="flex-1 flex items-center justify-between border-[1.5px] border-[#8a1c2a] text-[#8a1c2a] rounded-xl px-2.5 md:px-3 py-1.5 md:py-2 hover:bg-[#8a1c2a] hover:text-white transition-colors duration-300">
-                    <div className="flex items-center gap-1 md:gap-1.5 text-[12px] md:text-[13px] font-bold">
-                      <svg className="w-3 h-3 md:w-3.5 md:h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L18 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 6a2 2 0 0 1 0-2z" /></svg>
-                      Call
-                    </div>
-                    <div className="text-[12px] md:text-[12.5px] font-bold">₹{astro.voiceRate || 10}/m</div>
-                  </div>
-                  <div className="flex-1 flex items-center justify-between border-[1.5px] border-[#8a1c2a] text-[#8a1c2a] rounded-xl px-2.5 md:px-3 py-1.5 md:py-2 hover:bg-[#8a1c2a] hover:text-white transition-colors duration-300">
-                    <div className="flex items-center gap-1 md:gap-1.5 text-[12px] md:text-[13px] font-bold">
-                      <svg className="w-3 h-3 md:w-3.5 md:h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.5A8 8 0 1 1 21 12z" /></svg>
-                      Chat
-                    </div>
-                    <div className="text-[12px] md:text-[12.5px] font-bold">₹{astro.chatRate || 10}/m</div>
-                  </div>
-                </div>
-              </Link>
-            ))
-          ) : (
-            <p className="text-center text-gray-850 col-span-full">No AI Astrologers available.</p>
-          )}
-        </div>
-        <div className="mt-8 flex justify-center md:hidden">
-          <Link href="/ai-astrologer-chat" className="bg-[#5c1420] text-white font-bold text-[14px] px-7 py-3 rounded-full hover:bg-[#721522] shadow-sm transition-all flex items-center gap-2 w-full justify-center">
-            View All AI Astrologers
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
-          </Link>
-        </div>
-      </div>
 
       {/* Reports & Tools */}
       <div className="mx-6 md:mx-10 mt-12 mb-2 px-6 md:px-10 py-10 bg-[#fdf0e0]/50 rounded-2xl relative">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div className="text-left">
             <h2 className="font-sans font-bold tracking-tight text-[33px] md:text-[45px] leading-[1.2] text-[#5c1420] mb-3">
-              Reports &amp; Tools
+              Reports &amp; <span className="text-[#d97706]">Tools</span>
             </h2>
             <p className="text-[#6E2F37] text-[18px] md:text-[19px] max-w-3xl leading-relaxed">
               Powerful astrological reports and smart tools to analyse your life, relationships, and future with deep Vedic insights
@@ -660,7 +392,7 @@ export default function HomePage({
       <div className="mx-6 md:mx-10 mt-16 mb-6">
         <div className="text-left mb-8">
           <h2 className="font-sans font-bold tracking-tight text-[33px] md:text-[45px] leading-[1.2] text-[#5c1420] mb-3">
-            Your Daily Astrology
+            Your Daily <span className="text-[#d97706]">Astrology</span>
           </h2>
           <p className="text-[#6E2F37] text-[18px] md:text-[19px] max-w-3xl leading-relaxed">
             Start your day with personalised insights, planetary updates, and timely guidance for a better tomorrow
@@ -808,16 +540,16 @@ export default function HomePage({
       {/* Founder Section */}
       <div className="mx-6 md:mx-10 mt-16 mb-2">
         <h2 className="font-sans font-bold tracking-tight text-[33px] md:text-[45px] leading-[1.2] text-[#5c1420] text-center mb-10">
-          The <span className="text-[#d97706]">Visionary</span> Behind VaidikTalk
+          The <span className="text-[#d97706]">Visionary</span> Behind AstroSolution
         </h2>
 
         {/* Banner */}
         <div className="rounded-t-xl overflow-hidden grid grid-cols-1 md:grid-cols-[1fr_1.6fr] bg-[#fdfaf5] border border-[#f0ddc0]/80 border-b-0 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-          <div className="h-[250px] md:h-auto border-r border-[#f0ddc0]/50 flex flex-col bg-white relative">
-            <img loading="lazy" src="/founder.webp" alt="Co-Founder Shri Jitendra K Mishra" className="w-full h-full md:flex-1 object-cover object-top" />
+          <div className="h-[280px] md:h-[450px] border-r border-[#f0ddc0]/50 flex flex-col bg-white relative overflow-hidden">
+            <img loading="lazy" src="/founder.webp" alt="Co-Founder Shri Arvind R Sharma" className="w-full h-full object-cover object-[center_10%]" />
             <div className="bg-[#5c1420] text-center py-3 px-4 shrink-0 absolute bottom-0 w-full md:relative">
-              <div className="font-bold text-[15px] md:text-[16px] text-white">Shri Jitendra K Mishra</div>
-              <div className="text-[12px] md:text-[13px] text-[#fbe7d3]">Co-Founder, VaidikTalk</div>
+              <div className="font-bold text-[15px] md:text-[16px] text-white">Shri Arvind R Sharma</div>
+              <div className="text-[12px] md:text-[13px] text-[#fbe7d3]">Co-Founder, AstroSolution</div>
             </div>
           </div>
           <div className="p-7 md:p-9 text-[#6E2F37] flex flex-col justify-center">
@@ -829,12 +561,12 @@ export default function HomePage({
             </div>
 
             <p className="text-[15px] md:text-[14.5px] leading-[1.6] mb-3 text-[#6E2F37]">
-              <strong className="text-[#3a1216] block mb-1">From Factory Floors to Faith-Driven Guidance</strong>
-              VaidikTalk was founded by Shri Jitendra K Mishra, an entrepreneur whose journey spans two seemingly different worlds—global manufacturing and spiritual wellness.
+              <strong className="text-[#3a1216] block mb-1">From Sacred Traditions to Digital Guidance</strong>
+              AstroSolution was co-founded by Shri Arvind R Sharma, a visionary whose journey spans the ancient science of Jyotish and the modern world of technology-driven wellness.
             </p>
 
             <p className="text-[15px] md:text-[14.5px] leading-[1.6] mb-6 text-[#6E2F37]">
-              As the Founder of Catalyst Sourcing, Jitendra K Mishra has spent years working with manufacturers, exporters, and international customers across industries. His work took him inside factories, boardrooms, and supply chains, helping businesses build trust, solve problems, and create long-term partnerships across borders.
+              With over 15 years of experience studying Vedic astrology and spiritual sciences, Shri Arvind R Sharma has guided thousands of families through life's most pivotal decisions—from marriage and career to health and prosperity. His mission was always clear: to make authentic Vedic wisdom accessible to every Indian household.
             </p>
 
             <Link href="/about-us" className="inline-block bg-[#5c1420] text-white text-[13px] font-bold px-7 py-3 rounded-lg w-fit hover:bg-[#721522] transition-colors shadow-sm">
@@ -849,7 +581,7 @@ export default function HomePage({
             { to: 68000, suffix: '+', label: 'Happy Customers' },
             { to: 4.8, isDecimal: true, suffix: '/5', label: 'Google Rating' },
             { to: 15, suffix: '+ Years', label: 'Experience' },
-            { to: 300, suffix: '+', label: 'Astrologers' }
+            { to: 500, suffix: '+', label: 'Reports Delivered' }
           ].map((item, i) => (
             <div key={i} className={`flex-1 text-center text-[#5c1420] ${i > 0 ? 'border-l border-[#e8cba8]' : ''} min-w-[120px] py-2`}>
               <div className="font-extrabold text-base">
@@ -872,7 +604,7 @@ export default function HomePage({
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 relative">
-          
+
           {/* Connecting Dashed Line (Desktop Only) */}
           <div className="hidden lg:block absolute top-7 left-[10%] right-[15%] h-[2px] border-t-2 border-dashed border-[#ee6c1e]/20 z-0"></div>
 
@@ -936,7 +668,7 @@ export default function HomePage({
               Expand your spiritual awareness and understanding of cosmic energies. Read our latest insights, daily panchang, and profound articles on ancient Vedic wisdom.
             </p>
           </div>
-          <Link href="/blog" className="shrink-0 border-[1.5px] border-[#5c1420] text-[#5c1420] text-[13px] font-bold px-6 py-2.5 rounded-lg hover:bg-[#5c1420] hover:text-white transition-colors">
+          <Link href="#!" className="shrink-0 border-[1.5px] border-[#5c1420] text-[#5c1420] text-[13px] font-bold px-6 py-2.5 rounded-lg hover:bg-[#5c1420] hover:text-white transition-colors">
             View All Articles
           </Link>
         </div>
@@ -951,16 +683,15 @@ export default function HomePage({
               </div>
             ))
           ) : recentBlogs.map((article, i) => (
-            <Link href={`/blog/${article.slug}`} key={i} className="w-[85vw] sm:w-[280px] md:w-[320px] lg:w-[340px] xl:w-[360px] shrink-0 snap-start group flex flex-col bg-white border border-[#f0ddc0]/80 rounded-2xl overflow-hidden hover:shadow-[0_8px_24px_rgba(238,108,30,0.1)] transition-all duration-300 hover:-translate-y-1 h-full">
+            <div key={i} className="w-[85vw] sm:w-[280px] md:w-[320px] lg:w-[340px] xl:w-[360px] shrink-0 snap-start group flex flex-col bg-white border border-[#f0ddc0]/80 rounded-2xl overflow-hidden hover:shadow-[0_8px_24px_rgba(238,108,30,0.1)] transition-all duration-300 hover:-translate-y-1 h-full cursor-default">
               <div className="w-full aspect-video overflow-hidden relative border-b border-[#f0ddc0]/30">
                 <img
-                  src={article.bannerImage || 'https://images.unsplash.com/photo-1598090216740-eb040d8c3f82?q=72&w=480&h=360&fit=crop'}
+                  src={`/images/blogs/blog${(i % 3) + 1}.jpg`}
                   alt={article.title}
                   loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#5c1420]/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
               </div>
 
               <div className="p-4 md:p-5 flex flex-col flex-grow">
@@ -973,12 +704,12 @@ export default function HomePage({
                   {article.title}
                 </h3>
 
-                <div className="mt-auto pt-2 flex items-center text-[#d97706] text-[12px] font-bold gap-1 group-hover:gap-2 transition-all">
+                <div className="mt-auto pt-2 flex items-center text-[#999] text-[12px] font-bold gap-1 group-hover:gap-2 transition-all">
                   Read More
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
@@ -1004,6 +735,46 @@ export default function HomePage({
         </div>
 
         <div ref={testiRef} className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 pb-6 hide-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          {/* STATIC IMAGE TESTIMONIALS (Videos disabled for now) */}
+          {[
+            { id: 1, name: "Sneha P.", location: "Mumbai", text: "\"Very accurate predictions, helped me in a tough time.\"" },
+            { id: 2, name: "Rahul S.", location: "Delhi", text: "\"Booked a puja and felt immense peace in my home.\"" },
+            { id: 3, name: "Anita V.", location: "Pune", text: "\"The Kundli reading changed my perspective entirely!\"" },
+            { id: 4, name: "Vikram & Pooja", location: "Bangalore", text: "\"Our marriage compatibility report was spot on!\"" },
+            { id: 5, name: "Rajesh K.", location: "Ahmedabad", text: "\"Excellent career guidance. Very professional and insightful.\"" }
+          ].map((item) => (
+            <div key={item.id} className="shrink-0 w-[260px] md:w-[280px] lg:w-[310px] snap-center relative aspect-[4/5] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 bg-gray-100 border border-[#f0ddc0]/60 group">
+              <img src={`/images/testimonials/t${item.id}.jpg`} alt={`Success Story ${item.name}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+
+              {/* Dark Gradient Overlay for Text Visibility */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+              {/* Testimonial Content */}
+              <div className="absolute inset-x-0 bottom-0 p-5 flex flex-col justify-end text-left pointer-events-none">
+                {/* 5 Stars */}
+                <div className="flex gap-1 mb-2">
+                  {[1, 2, 3, 4, 5].map(star => (
+                    <svg key={star} className="w-4 h-4 text-yellow-400 fill-yellow-400" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+
+                {/* Review Text */}
+                <p className="text-white text-[14px] md:text-[15px] font-medium leading-snug mb-3 italic">
+                  {item.text}
+                </p>
+
+                {/* Customer Details */}
+                <div>
+                  <h4 className="font-bold text-[15px] text-[#f0ddc0] leading-none mb-1">{item.name}</h4>
+                  <p className="text-[12px] text-white/70">{item.location}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/* DYNAMIC VIDEO TESTIMONIALS (DISABLED)
           {loadingTestimonials ? (
             [1, 2, 3, 4, 5].map((_, i) => (
               <div key={i} className="shrink-0 w-[260px] md:w-[280px] lg:w-[310px] snap-center aspect-[4/5] rounded-2xl bg-gray-200 animate-pulse"></div>
@@ -1030,19 +801,16 @@ export default function HomePage({
                     ></iframe>
                   ) : (
                     <>
-                      {/* Scaled image to crop out YouTube letterboxing on vertical videos */}
                       <div className="absolute inset-0 flex items-center justify-center bg-black cursor-pointer">
                         <img src={vId ? `https://img.youtube.com/vi/${vId}/hqdefault.jpg` : '/placeholder-video.jpg'} alt={item.name} loading="lazy" className="w-full h-full object-cover scale-[1.35] group-hover:scale-[1.45] transition-transform duration-700 opacity-90 group-hover:opacity-100" />
                       </div>
 
-                      {/* Play Button Overlay */}
                       <div className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/20 transition-colors duration-500 cursor-pointer">
                         <div className="w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-[#ee6c1e] shadow-lg group-hover:scale-110 transition-transform duration-500">
                           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M8 5v14l11-7z" /></svg>
                         </div>
                       </div>
 
-                      {/* Bottom Info Gradient */}
                       <div className="absolute inset-x-0 bottom-0 pt-16 pb-5 px-5 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-left pointer-events-none">
                         <h4 className="font-bold text-[15px] text-white leading-tight mb-1">{item.name}</h4>
                         {item.city && <p className="text-[12px] text-[#f0ddc0]">{item.city}</p>}
@@ -1055,6 +823,7 @@ export default function HomePage({
           ) : (
             <p className="text-gray-850 col-span-full">No testimonials available at the moment.</p>
           )}
+          */}
         </div>
       </div>
 
@@ -1065,7 +834,7 @@ export default function HomePage({
             Frequently Asked <span className="text-[#d97706]">Questions</span>
           </h2>
           <p className="text-[#6E2F37] text-[18px] md:text-[19px] max-w-2xl leading-relaxed">
-            Find answers to the most common questions about VaidikTalk
+            Find answers to the most common questions about AstroSolution
           </p>
         </div>
 
@@ -1097,54 +866,7 @@ export default function HomePage({
         </div>
       </div>
 
-      {/* App Download Banner */}
-      <div className="px-6 md:px-10 mt-6 mb-8 max-w-[1400px] mx-auto w-full">
-        <div className="bg-[#fff1e3] rounded-2xl md:rounded-3xl p-6 md:p-10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-[#f0ddc0]">
 
-          {/* Spiritual Background */}
-          <div className="absolute inset-0 z-0 opacity-10 bg-[url('/spiritual-banner-light.webp')] bg-cover bg-center pointer-events-none" />
-          <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#fff1e3] via-transparent to-[#fff1e3] opacity-60 pointer-events-none" />
-
-          {/* Left Column */}
-          <div className="relative z-10 max-w-md text-center md:text-left flex-1">
-            <h2 className="font-sans font-bold text-2xl md:text-3xl text-[#c62828] mb-2 tracking-tight">Download the VaidikTalk App</h2>
-            <p className="text-[#5d4037] text-[14px] md:text-[15px] font-medium mb-6">
-              Get instant astrology guidance on your smartphone.
-            </p>
-            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-              {/* App Store Button */}
-              <a href="https://apps.apple.com/in/app/vaidik-talk/id6759283230" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity inline-block w-[140px]">
-                <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" className="w-full h-auto" />
-              </a>
-              {/* Google Play Button */}
-              <a href="https://play.google.com/store/apps/details?id=com.vaidiktalk&hl=en_IN" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity inline-block w-[140px]">
-                <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" className="w-full h-auto" />
-              </a>
-            </div>
-          </div>
-
-          {/* Middle Column - QR Code */}
-          <div className="relative z-10 flex flex-col items-center shrink-0 hidden lg:flex">
-            <div className="w-[100px] h-[100px] bg-white p-1 rounded-xl shadow-sm border border-gray-200 flex items-center justify-center overflow-hidden">
-              <img loading="lazy" src="/VaidikTalk_PlayStore_QR.webp" alt="Scan to Download" className="w-full h-full object-contain" />
-            </div>
-            <div className="text-[#c62828] font-bold text-[12px] mt-2">Scan to Download</div>
-          </div>
-
-          {/* Right Column - Phone Image Mockup */}
-          <div className="relative z-10 shrink-0 hidden md:block mt-8 md:mt-0 w-[200px] lg:w-[250px]">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[50%] rotate-[15deg]">
-              {/* Phone Frame */}
-              <div className="w-[140px] lg:w-[160px] h-[280px] lg:h-[320px] bg-[#111] rounded-[24px] border-4 border-[#222] p-1 shadow-2xl relative overflow-hidden">
-                <div className="w-full h-full bg-white rounded-[18px] overflow-hidden flex flex-col relative">
-                  {/* Screen Content */}
-                  <img loading="lazy" src="/app-mockup.webp" alt="App Screen" className="w-full h-full object-cover" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Newsletter */}
       <div className="px-6 md:px-10 mb-16 max-w-[1400px] mx-auto w-full">
@@ -1164,10 +886,10 @@ export default function HomePage({
               const emailInput = form.elements.namedItem('email') as HTMLInputElement;
               const email = emailInput.value;
               if (!email) return;
-              
+
               const btn = form.querySelector('button');
               if (btn) btn.disabled = true;
-              
+
               try {
                 const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
                 const res = await fetch(`${apiUrl}/subscribers`, {

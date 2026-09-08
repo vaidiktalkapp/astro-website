@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'free-reports';
   const defaultMeta = {
-    title: "Free Astrology Reports | VaidikTalk",
+    title: "Free Astrology Reports | AstroSolution",
     description: "Get free personalized astrology reports, dosha checks, and gemstone recommendations.",
   };
 

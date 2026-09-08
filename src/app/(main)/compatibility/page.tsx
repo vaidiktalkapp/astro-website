@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'compatibility';
   const defaultMeta = {
-    title: "Zodiac Sign Compatibility Calculator | VaidikTalk",
+    title: "Zodiac Sign Compatibility Calculator | AstroSolution",
     description: "Check love and marriage compatibility between zodiac signs.",
   };
 

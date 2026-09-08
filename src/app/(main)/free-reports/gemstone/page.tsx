@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'free-reports/gemstone';
   const defaultMeta = {
-    title: "Free Gemstone Recommendation | Lucky Stone | VaidikTalk",
+    title: "Free Gemstone Recommendation | Lucky Stone | AstroSolution",
     description: "Find your lucky gemstone based on your birth date and time. Get personalized gemstone recommendations for wealth, health, and success.",
   };
 

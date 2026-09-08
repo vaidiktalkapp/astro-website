@@ -1,5 +1,5 @@
 /**
- * Horoscope Matching PDF Report Generator — VaidikTalk
+ * Horoscope Matching PDF Report Generator — AstroSolution
  * 
  * Generates a professional, structured compatibility report (Ashtakoot/Dashakoot).
  * Uses jsPDF + jspdf-autotable.
@@ -111,7 +111,7 @@ export const downloadMatchingPDF = async (data: MatchingData) => {
     pdf.setFont('helvetica', 'bold');
     pdf.setFontSize(18);
     pdf.setTextColor(...DARK);
-    pdf.text('VaidikTalk', margin, y);
+    pdf.text('AstroSolution', margin, y);
 
     pdf.setFont('helvetica', 'normal');
     pdf.setFontSize(8);
@@ -318,7 +318,7 @@ function drawPageHeader(pdf: any, pageW: number, margin: number) {
   pdf.setFont('helvetica', 'bold');
   pdf.setFontSize(10);
   pdf.setTextColor(...DARK);
-  pdf.text('VaidikTalk', margin, 8);
+  pdf.text('AstroSolution', margin, 8);
   pdf.setDrawColor(...GOLD);
   pdf.setLineWidth(0.3);
   pdf.line(margin, 11, pageW - margin, 11);
@@ -332,7 +332,7 @@ function drawFooter(pdf: any, pageW: number, pageH: number, current: number, tot
   pdf.setFont('helvetica', 'normal');
   pdf.setFontSize(7);
   pdf.setTextColor(...GOLD);
-  pdf.text('www.vaidiktalk.com', 15, y);
+  pdf.text('www.AstroSolution.com', 15, y);
   pdf.setFontSize(6);
   pdf.setTextColor(...GRAY);
   pdf.text('This report is auto-generated for compatible matching references.', pageW / 2, y, { align: 'center' });

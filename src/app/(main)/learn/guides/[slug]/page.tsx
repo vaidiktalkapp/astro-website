@@ -89,7 +89,7 @@ export default function LessonDetailPage() {
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div className="flex items-center gap-3 text-[11.5px] font-semibold tracking-wide">
                         <span className="leading-relaxed">
-                            {t("_slug_.this_is_part")} <strong className="text-[#b8962e] font-bold">{lesson.partNumber}</strong> {t("_slug_.of_our_series_on_learning_indi")} <strong className="text-[#b8962e] font-bold">{t("_slug_.vaidiktalk")}</strong>.
+                            {t("_slug_.this_is_part")} <strong className="text-[#b8962e] font-bold">{lesson.partNumber}</strong> {t("_slug_.of_our_series_on_learning_indi")} <strong className="text-[#b8962e] font-bold">{t("_slug_.AstroSolution")}</strong>.
                         </span>
                     </div>
                     <div className="flex items-center gap-4 flex-shrink-0">

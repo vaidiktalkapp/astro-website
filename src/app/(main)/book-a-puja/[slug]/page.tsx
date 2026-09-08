@@ -12,10 +12,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       const image = puja.image ? (puja.image.startsWith('/pooja') ? puja.image : getImageUrl(puja.image, puja.title)) : '/pooja/Rudraabhishek.webp';
       
       return {
-        title: `${puja.title} | VaidikTalk`,
+        title: `${puja.title} | AstroSolution`,
         description: puja.shortDesc || puja.description?.replace(/<[^>]+>/g, '').slice(0, 150) || `Book ${puja.title} online.`,
         openGraph: {
-          title: `${puja.title} | VaidikTalk`,
+          title: `${puja.title} | AstroSolution`,
           description: puja.shortDesc || puja.description?.replace(/<[^>]+>/g, '').slice(0, 150) || `Book ${puja.title} online.`,
           images: [image]
         }
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     console.error('Error generating metadata:', e);
   }
   
-  return { title: 'Book Puja | VaidikTalk' };
+  return { title: 'Book Puja | AstroSolution' };
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {

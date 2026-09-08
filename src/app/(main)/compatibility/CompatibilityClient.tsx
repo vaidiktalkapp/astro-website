@@ -28,8 +28,7 @@ const ZODIAC_SIGNS = [
     { name: 'Sagittarius', sanskritName: 'Dhanu', symbol: '♐', element: 'Fire', ruling: 'Jupiter', dateRange: 'Nov 22 – Dec 21', quality: 'Mutable' },
     { name: 'Capricorn', sanskritName: 'Makar', symbol: '♑', element: 'Earth', ruling: 'Saturn', dateRange: 'Dec 22 – Jan 19', quality: 'Cardinal' },
     { name: 'Aquarius', sanskritName: 'Kumbh', symbol: '♒', element: 'Air', ruling: 'Saturn', dateRange: 'Jan 20 – Feb 18', quality: 'Fixed' },
-    { name: 'Pisces', sanskritName: 'Meen', symbol: '♓', element: 'Water', ruling: 'Jupiter', dateRange: 'Feb 19 – Mar 20', quality: 'Mutable' },
-];
+    { name: 'Pisces', sanskritName: 'Meen', symbol: '♓', element: 'Water', ruling: 'Jupiter', dateRange: 'Feb 19 – Mar 20', quality: 'Mutable' }];
 
 const ELEMENT_COLORS: Record<string, string> = {
     Fire: '#ef4444', Earth: '#84cc16', Air: '#3b82f6', Water: '#06b6d4'
@@ -47,8 +46,7 @@ const COMPAT_MATRIX: number[][] = [
     [95, 38, 80, 45, 92, 48, 78, 48, 82, 45, 85, 50],
     [40, 95, 45, 80, 42, 90, 55, 82, 45, 78, 50, 75],
     [82, 45, 93, 42, 78, 55, 90, 50, 85, 50, 76, 52],
-    [57, 82, 52, 95, 45, 65, 48, 88, 50, 75, 52, 80],
-];
+    [57, 82, 52, 95, 45, 65, 48, 88, 50, 75, 52, 80]];
 
 // ─── SPECIFIC PAIR INSIGHTS (28 pairs) ──────────────────────────────────────
 // Key = "min_idx-max_idx"
@@ -384,7 +382,7 @@ export default function CompatibilityToolsPage() {
     useEffect(() => {
         // 1. Initial hydration check
         const isNewQuery = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('new') === 'true';
-        const historyKey = sessionStorage.getItem('vaidiktalk_compat_load');
+        const historyKey = sessionStorage.getItem('AstroSolution_compat_load');
 
         if (historyKey && historyKey !== 'undefined') {
             // Priority: Load from history (for clicking history items)
@@ -425,7 +423,7 @@ export default function CompatibilityToolsPage() {
                     }
                 }
             }
-            sessionStorage.removeItem('vaidiktalk_compat_load');
+            sessionStorage.removeItem('AstroSolution_compat_load');
         } else if (!isNewQuery) {
             // Fallback: Load saved state from localStorage
             const saved = loadState();

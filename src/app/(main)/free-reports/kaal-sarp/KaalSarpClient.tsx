@@ -273,7 +273,7 @@ export default function KaalSarpPage() {
   useEffect(() => {
     const fetchSettings = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.vaidiktalk.com'}/free-tool-settings`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.AstroSolution.com'}/free-tool-settings`);
         const data = await response.json();
         if (data) setCustomSettings(data);
       } catch (error) {
@@ -292,7 +292,7 @@ export default function KaalSarpPage() {
   const handleSubmit = async (formData: any) => {
     setLoading(true);
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.vaidiktalk.com'}/free-reports/kaal-sarp`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.AstroSolution.com'}/free-reports/kaal-sarp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -631,7 +631,7 @@ export default function KaalSarpPage() {
                         {/* CTA */}
                         <div className="flex flex-col items-center gap-4 pt-6 pb-4">
                             <p className="text-[13px] text-gray-850 text-center">{t("kaal_sarp.looking_for_personalized_guida")}</p>
-                            <Link href="/astrologers-chat" className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#b8962e] text-white font-bold rounded-xl hover:bg-[#7a6010] transition-all shadow-md group">
+                            <Link href="#" className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#b8962e] text-white font-bold rounded-xl hover:bg-[#7a6010] transition-all shadow-md group">
 {t("kaal_sarp.discuss_with_expert_astrologer")}<Sparkles className="w-4 h-4 text-yellow-300 group-hover:rotate-12 transition-transform" />
                             </Link>
                         </div>

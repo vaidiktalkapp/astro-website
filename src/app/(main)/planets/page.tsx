@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'planets';
   const defaultMeta = {
-    title: "Planets in Astrology | VaidikTalk",
+    title: "Planets in Astrology | AstroSolution",
     description: "Learn about the impact and significance of all 9 planets in Vedic astrology.",
   };
 

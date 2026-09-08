@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'kundli';
   const defaultMeta = {
-    title: "Free Kundli Generation | VaidikTalk",
+    title: "Free Kundli Generation | AstroSolution",
     description: "Generate your free online Janam Kundli with detailed astrological insights. Understand your planetary positions, doshas, and astrological remedies.",
   };
 

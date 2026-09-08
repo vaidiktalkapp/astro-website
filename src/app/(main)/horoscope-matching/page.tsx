@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'horoscope-matching';
   const defaultMeta = {
-    title: "Free Horoscope Matching | Kundali Milan | VaidikTalk",
+    title: "Free Horoscope Matching | Kundali Milan | AstroSolution",
     description: "Check your marriage compatibility with free online Kundali Milan (Horoscope Matching) using Vedic astrology.",
   };
 

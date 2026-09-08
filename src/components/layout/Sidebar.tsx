@@ -71,7 +71,7 @@ export default function Sidebar({ isOpen, onClose, isPersistent = false }: Sideb
     { 
       title: t('nav.home'), 
       icon: <Home size={18} />, 
-      href: '/astrologers-chat'
+      href: '#'
     },
     { 
       title: t('nav.calculators'), 
@@ -276,7 +276,7 @@ export default function Sidebar({ isOpen, onClose, isPersistent = false }: Sideb
               </button>
             )}
             <span className="text-2xl font-black tracking-tighter uppercase bg-gradient-to-r from-yellow-200 to-white bg-clip-text text-transparent drop-shadow-sm">
-              vaidiktalk AI
+              AstroSolution AI
             </span>
           </div>
         </div>

@@ -2,8 +2,8 @@ import React from 'react';
 import { ShieldCheck } from 'lucide-react';
 
 export const metadata = {
-  title: 'Terms & Conditions | Vaidik Talk',
-  description: 'Terms and Conditions for using Vaidik Talk services.',
+  title: 'Terms & Conditions | Astro Solution',
+  description: 'Terms and Conditions for using Astro Solution services.',
 };
 
 export default function TermsAndConditions() {
@@ -22,15 +22,15 @@ export default function TermsAndConditions() {
         
         <div className="prose prose-base md:prose-lg text-gray-900 max-w-none prose-headings:text-[#5c1a1f] prose-headings:font-serif prose-p:text-gray-900 prose-p:leading-relaxed prose-li:text-gray-900 prose-a:text-[#ee6c1e] prose-a:font-bold prose-a:underline hover:prose-a:text-[#8a1c2a] prose-strong:text-[#5c1a1f]">
           <p className="lead font-medium text-gray-900">
-            These comprehensive Terms and Conditions of Use ("Terms", "Agreement") govern the manner in which users access and use the services provided by Vaidik Talk ("Vaidik Talk", "we", "us", "our", or "Company") through its website (www.vaidiktalk.com) and mobile applications (iOS & Android).
+            These comprehensive Terms and Conditions of Use ("Terms", "Agreement") govern the manner in which users access and use the services provided by Astro Solution ("Astro Solution", "we", "us", "our", or "Company") through its website (www.AstroSolution.com) and mobile applications (iOS & Android).
           </p>
           <p>
-            By accessing or using Vaidik Talk in any manner, you agree to be legally bound by these Terms. If you do not agree, please do not use the Platform.
+            By accessing or using Astro Solution in any manner, you agree to be legally bound by these Terms. If you do not agree, please do not use the Platform.
           </p>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">1. DEFINITIONS</h3>
           <ul className="list-disc pl-5 space-y-2">
-            <li><strong>Platform:</strong> Website and mobile apps of Vaidik Talk</li>
+            <li><strong>Platform:</strong> Website and mobile apps of Astro Solution</li>
             <li><strong>User:</strong> Any person accessing or using the Platform</li>
             <li><strong>Services:</strong> All astrology consultations, reports, products</li>
             <li><strong>Consultation:</strong> Real-time interaction with astrologers</li>
@@ -39,7 +39,7 @@ export default function TermsAndConditions() {
           </ul>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">2. ACCEPTANCE & MODIFICATION</h3>
-          <p>By creating an account or using the Platform, you accept these Terms and our Privacy Policy. Vaidik Talk may modify these Terms at any time.</p>
+          <p>By creating an account or using the Platform, you accept these Terms and our Privacy Policy. Astro Solution may modify these Terms at any time.</p>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">3. ELIGIBILITY</h3>
           <p>You must be at least 18 years old or have parental consent if between 13–17. Users under 13 are not permitted.</p>
@@ -53,7 +53,7 @@ export default function TermsAndConditions() {
           </ul>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">5. COMMUNICATION CONSENT</h3>
-          <p>You consent to receive calls, messages, and notifications from Vaidik Talk even if your number is registered under DND, for service delivery and support.</p>
+          <p>You consent to receive calls, messages, and notifications from Astro Solution even if your number is registered under DND, for service delivery and support.</p>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">6. USER ACCOUNT</h3>
           <ul className="list-disc pl-5 space-y-2">
@@ -98,16 +98,16 @@ export default function TermsAndConditions() {
           </ul>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">11. ACCOUNT TERMINATION</h3>
-          <p>Vaidik Talk may suspend or terminate accounts for policy violations, fraud, abuse, or illegal activity.</p>
+          <p>Astro Solution may suspend or terminate accounts for policy violations, fraud, abuse, or illegal activity.</p>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">12. PRIVACY POLICY</h3>
-          <p>Your use is subject to our Privacy Policy: <a href="/privacy-policy" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">https://www.vaidiktalk.com/privacy-policy</a></p>
+          <p>Your use is subject to our Privacy Policy: <a href="/privacy-policy" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">https://www.AstroSolution.com/privacy-policy</a></p>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">13. DISCLAIMER & LIABILITY</h3>
-          <p>Services are provided "as-is". Vaidik Talk does not guarantee prediction accuracy, outcomes, or uninterrupted service.</p>
+          <p>Services are provided "as-is". Astro Solution does not guarantee prediction accuracy, outcomes, or uninterrupted service.</p>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">14. INTELLECTUAL PROPERTY</h3>
-          <p>All content belongs to Vaidik Talk and may not be reused without permission.</p>
+          <p>All content belongs to Astro Solution and may not be reused without permission.</p>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">15. ZERO-TOLERANCE CONTENT POLICY</h3>
           <p>Objectionable, abusive, or illegal content is removed immediately and accounts may be terminated.</p>
@@ -117,15 +117,15 @@ export default function TermsAndConditions() {
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">17. CONTACT</h3>
           <div className="bg-[#fcf8f2] p-6 rounded-xl border border-[#f0ddc0] mt-4">
-            <p className="font-bold text-[#5c1a1f] mb-2">CATALYST SOURCING PRIVATE LIMITED</p>
-            <p className="mb-1"><strong>Registered Address:</strong> 422, 4th Floor, Ashiana Trade Centre, Adityapur, Dist Sariakela Kharsawan Jamshedpur, Jharkhand 831013</p>
-            <p className="mb-1"><strong>CIN:</strong> U50500JH2022PTC018567</p>
-            <p className="mb-1"><strong>Support Email:</strong> <a href="mailto:contact@vaidiktalk.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">contact@vaidiktalk.com</a></p>
-            <p className="mb-0"><strong>Support Phone:</strong> +919031823276</p>
+            <p className="font-bold text-[#5c1a1f] mb-2">ASTRO SOLUTION TECHNOLOGIES PRIVATE LIMITED</p>
+            <p className="mb-1"><strong>Registered Address:</strong> 801, 8th Floor, Unitech Cyber Park, Tower B, Sector 39, Gurugram, Haryana 122003</p>
+            <p className="mb-1"><strong>CIN:</strong> U72900HR2021PTC098734</p>
+            <p className="mb-1"><strong>Support Email:</strong> <a href="mailto:contact@AstroSolution.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">contact@AstroSolution.com</a></p>
+            <p className="mb-0"><strong>Support Phone:</strong> +91 98104 67823</p>
           </div>
 
           <p className="text-sm text-gray-850 mt-10 text-center border-t border-[#e8d8c0] pt-6">
-            © 2026 Vaidik Talk. All Rights Reserved.
+            © 2026 Astro Solution. All Rights Reserved.
           </p>
         </div>
       </div>

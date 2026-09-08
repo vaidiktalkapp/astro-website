@@ -2,7 +2,7 @@
 
 import { historyApiService } from './historyApiService';
 
-const HISTORY_KEY = 'vaidiktalk_muhurat_history';
+const HISTORY_KEY = 'AstroSolution_muhurat_history';
 
 export interface MuhuratHistoryItem {
     category: string;

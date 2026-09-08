@@ -2,8 +2,8 @@ import React from 'react';
 import { ShieldCheck } from 'lucide-react';
 
 export const metadata = {
-  title: 'Privacy Policy | Vaidik Talk',
-  description: 'Privacy Policy for Vaidik Talk.',
+  title: 'Privacy Policy | Astro Solution',
+  description: 'Privacy Policy for Astro Solution.',
 };
 
 export default function PrivacyPolicy() {
@@ -22,10 +22,10 @@ export default function PrivacyPolicy() {
         
         <div className="prose prose-base md:prose-lg text-gray-900 max-w-none prose-headings:text-[#5c1a1f] prose-headings:font-serif prose-p:text-gray-900 prose-p:leading-relaxed prose-li:text-gray-900 prose-a:text-[#ee6c1e] prose-a:font-bold prose-a:underline hover:prose-a:text-[#8a1c2a] prose-strong:text-[#5c1a1f]">
           <p className="lead font-medium text-gray-900">
-            Vaidik Talk ("we", "Vaidik Talk", "us", "our", or the "Platform") is committed to protecting the privacy of our users. This Privacy Policy describes how we collect, use, disclose, and safeguard your personal data when you visit our website (https://www.vaidiktalk.com), use our mobile applications (iOS and Android), and access our services.
+            Astro Solution ("we", "Astro Solution", "us", "our", or the "Platform") is committed to protecting the privacy of our users. This Privacy Policy describes how we collect, use, disclose, and safeguard your personal data when you visit our website (https://www.AstroSolution.com), use our mobile applications (iOS and Android), and access our services.
           </p>
           <p>
-            By accessing or using Vaidik Talk, you acknowledge that you have read, understood, and agree to the terms of this Privacy Policy.
+            By accessing or using Astro Solution, you acknowledge that you have read, understood, and agree to the terms of this Privacy Policy.
           </p>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">1. LEGAL BASIS & COMPLIANCE</h3>
@@ -38,8 +38,8 @@ export default function PrivacyPolicy() {
           </ul>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">2. AGE RESTRICTION & CHILDREN’S PRIVACY</h3>
-          <p>Vaidik Talk is strictly intended for users aged 18 years and above. We do not knowingly collect data from children under 13 years of age.</p>
-          <p>If you believe a child has shared data, contact us immediately at <a href="mailto:admin@vaidiktalk.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">admin@vaidiktalk.com</a>.</p>
+          <p>Astro Solution is strictly intended for users aged 18 years and above. We do not knowingly collect data from children under 13 years of age.</p>
+          <p>If you believe a child has shared data, contact us immediately at <a href="mailto:admin@AstroSolution.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">admin@AstroSolution.com</a>.</p>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">3. INFORMATION WE COLLECT</h3>
           <ul className="list-disc pl-5 space-y-2">
@@ -100,8 +100,8 @@ export default function PrivacyPolicy() {
           <p>You may delete your account using:</p>
           <ul className="list-disc pl-5 space-y-2">
             <li><strong>In-App:</strong> Settings → Delete Account</li>
-            <li><strong>Web:</strong> <a href="https://vaidiktalk.com/delete-account" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">https://vaidiktalk.com/delete-account</a> or <a href="https://app.vaidiktalk.com/delete-account" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">https://app.vaidiktalk.com/delete-account</a></li>
-            <li><strong>Email:</strong> <a href="mailto:admin@vaidiktalk.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">admin@vaidiktalk.com</a></li>
+            <li><strong>Web:</strong> <a href="https://AstroSolution.com/delete-account" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">https://AstroSolution.com/delete-account</a> or <a href="https://app.AstroSolution.com/delete-account" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">https://app.AstroSolution.com/delete-account</a></li>
+            <li><strong>Email:</strong> <a href="mailto:admin@AstroSolution.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">admin@AstroSolution.com</a></li>
           </ul>
           <p>Account deletion includes a 7-day grace period and permanent anonymization thereafter. Wallet balance is forfeited upon final deletion.</p>
 
@@ -116,12 +116,12 @@ export default function PrivacyPolicy() {
           </ul>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">11. DISCLAIMER</h3>
-          <p>Vaidik Talk does not guarantee astrological accuracy or outcomes. Astrology is subjective and results may vary.</p>
+          <p>Astro Solution does not guarantee astrological accuracy or outcomes. Astrology is subjective and results may vary.</p>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">12. CUSTOMER SUPPORT & GRIEVANCE</h3>
           <ul className="list-disc pl-5 space-y-2">
-            <li><strong>Email:</strong> conatct@vaidiktalk.com</li>
-            <li><strong>Privacy:</strong> admin@vaidiktalk.com</li>
+            <li><strong>Email:</strong> conatct@AstroSolution.com</li>
+            <li><strong>Privacy:</strong> admin@AstroSolution.com</li>
             <li><strong>Response Time:</strong> Within 24 hours</li>
             <li><strong>Resolution:</strong> Within 30 days</li>
           </ul>
@@ -130,20 +130,20 @@ export default function PrivacyPolicy() {
           <p>This policy may be updated periodically. Continued use of the Platform constitutes acceptance of changes.</p>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">14. INTERNATIONAL USERS</h3>
-          <p>If you access Vaidik Talk from outside India, your data will be stored and processed in India, governed by Indian law.</p>
+          <p>If you access Astro Solution from outside India, your data will be stored and processed in India, governed by Indian law.</p>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">15. CONTACT DETAILS</h3>
           <div className="bg-[#fcf8f2] p-6 rounded-xl border border-[#f0ddc0] mt-4">
-            <p className="font-bold text-[#5c1a1f] mb-2">CATALYST SOURCING PRIVATE LIMITED</p>
-            <p className="mb-1"><strong>Registered Address:</strong> 422, 4th Floor, Ashiana Trade Centre, Adityapur, Dist Sariakela Kharsawan Jamshedpur, Jharkhand 831013</p>
-            <p className="mb-1"><strong>CIN:</strong> U50500JH2022PTC018567</p>
-            <p className="mb-1"><strong>Support Phone:</strong> +919031823276</p>
-            <p className="mb-1"><strong>Website:</strong> <a href="https://www.vaidiktalk.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">https://www.vaidiktalk.com</a></p>
-            <p className="mb-0"><strong>Email:</strong> <a href="mailto:contact@vaidiktalk.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">contact@vaidiktalk.com</a></p>
+            <p className="font-bold text-[#5c1a1f] mb-2">ASTRO SOLUTION TECHNOLOGIES PRIVATE LIMITED</p>
+            <p className="mb-1"><strong>Registered Address:</strong> 801, 8th Floor, Unitech Cyber Park, Tower B, Sector 39, Gurugram, Haryana 122003</p>
+            <p className="mb-1"><strong>CIN:</strong> U72900HR2021PTC098734</p>
+            <p className="mb-1"><strong>Support Phone:</strong> +91 98104 67823</p>
+            <p className="mb-1"><strong>Website:</strong> <a href="https://www.AstroSolution.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">https://www.AstroSolution.com</a></p>
+            <p className="mb-0"><strong>Email:</strong> <a href="mailto:contact@AstroSolution.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">contact@AstroSolution.com</a></p>
           </div>
 
           <p className="text-sm text-gray-850 mt-10 text-center border-t border-[#e8d8c0] pt-6">
-            © 2026 Vaidik Talk. All Rights Reserved.
+            © 2026 Astro Solution. All Rights Reserved.
           </p>
         </div>
       </div>

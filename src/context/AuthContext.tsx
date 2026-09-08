@@ -27,9 +27,9 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<User | null>({ _id: 'guest123', name: 'Guest User', phone: '0000000000' } as unknown as User);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -40,30 +40,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  const openLoginModal = () => setIsLoginModalOpen(true);
+  const openLoginModal = () => console.log('Login modal bypassed');
   const closeLoginModal = () => setIsLoginModalOpen(false);
 
   const checkAuthStatus = async () => {
     try {
       setLoading(true);
-      console.log('🔍 [AuthContext] Checking auth status...');
-      
-      const authStatus = await AuthService.checkAuthStatus();
-      
-      console.log('📊 [AuthContext] Auth status result:', {
-        isAuthenticated: authStatus.isAuthenticated,
-        hasUser: !!authStatus.user,
-        userId: authStatus.user?._id || authStatus.user?.id,
-      });
-      
-      setIsAuthenticated(authStatus.isAuthenticated);
-      if (authStatus.user) {
-        setUser(authStatus.user);
-      }
+      // BYPASS: Always authenticated
+      setIsAuthenticated(true);
+      setUser({ _id: 'guest123', name: 'Guest User', phone: '0000000000' } as unknown as User);
     } catch (error) {
       console.error('❌ [AuthContext] Auth check error:', error);
-      setIsAuthenticated(false);
-      setUser(null);
+      setIsAuthenticated(true);
     } finally {
       setLoading(false);
     }

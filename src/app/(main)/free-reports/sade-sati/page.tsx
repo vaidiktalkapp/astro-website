@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'free-reports/sade-sati';
   const defaultMeta = {
-    title: "Free Shani Sade Sati Calculator & Report | VaidikTalk",
+    title: "Free Shani Sade Sati Calculator & Report | AstroSolution",
     description: "Calculate your Shani Sade Sati phases. Get detailed predictions and astrological remedies to reduce Saturns malefic effects.",
   };
 

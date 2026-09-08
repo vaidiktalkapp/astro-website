@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npx rimraf .next && next dev",
+    "dev": "npx rimraf .next && next dev -p 3000",
     "build": "next build",
     "start": "next start",
     "i18n:sync": "node scripts/extract.js && node scripts/auto-translate.js && node scripts/validate.js"

@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'astrology-calculators';
   const defaultMeta = {
-    title: "Free Astrology Calculators | VaidikTalk",
+    title: "Free Astrology Calculators | AstroSolution",
     description: "Use our free online astrology calculators for Kundli, Doshas, Numerology, and more.",
   };
 

@@ -9,7 +9,7 @@ export const revalidate = 60; // ISR cache for 60 seconds
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'child-astrology';
   const defaultMeta = {
-    title: "Child Astrology & Pregnancy Predictions | VaidikTalk",
+    title: "Child Astrology & Pregnancy Predictions | AstroSolution",
     description: "Discover astrological insights about childbirth, progeny, and your child�s future using Vedic astrology.",
   };
 
@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 async function fetchInitialData() {
   try {
-    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.vaidiktalk.com/api/v1';
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.AstroSolution.com/api/v1';
     
     const [astrosRes, aiAstrosRes, settingsRes] = await Promise.all([
       fetch(`${API_URL}/astrologers/search?limit=10&isOnline=true`, { next: { revalidate: 60 } }),

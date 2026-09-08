@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'chinese-horoscope';
   const defaultMeta = {
-    title: "Free Chinese Horoscope & Zodiac | VaidikTalk",
+    title: "Free Chinese Horoscope & Zodiac | AstroSolution",
     description: "Check your free Chinese astrology predictions based on your birth year animal.",
   };
 

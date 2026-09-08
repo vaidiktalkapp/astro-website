@@ -105,7 +105,7 @@ function SuccessContent() {
               </p>
               <div className="bg-[#fcf8f2] border border-[#ebdcc7] p-4 rounded-lg mb-6 w-full text-left">
                 <p className="text-[13px] text-[#5c1a1f] font-semibold mb-1">✅ If Payment Successful</p>
-                <p className="text-[12px] text-[#3a1216]/80 leading-relaxed">Don't worry, your payment has been successfully recorded. If your Numerology Report cannot be generated due to technical reasons, please contact us at<strong> contact@vaidiktalk.com</strong> and a full refund will be initiated to your original payment method.</p>
+                <p className="text-[12px] text-[#3a1216]/80 leading-relaxed">Don't worry, your payment has been successfully recorded. If your Numerology Report cannot be generated due to technical reasons, please contact us at<strong> contact@AstroSolution.com</strong> and a full refund will be initiated to your original payment method.</p>
               </div>
 
               <Link

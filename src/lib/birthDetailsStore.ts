@@ -15,7 +15,7 @@ export interface GlobalBirthDetails {
   updatedAt: string;
 }
 
-const STORAGE_KEY = 'vaidiktalk_global_birth_details';
+const STORAGE_KEY = 'AstroSolution_global_birth_details';
 
 export const birthDetailsStore = {
   /**
@@ -34,7 +34,7 @@ export const birthDetailsStore = {
       
       localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
       // Dispatch custom event so other components can react
-      window.dispatchEvent(new CustomEvent('vaidiktalk_birth_details_updated', { detail: updated }));
+      window.dispatchEvent(new CustomEvent('AstroSolution_birth_details_updated', { detail: updated }));
     } catch (error) {
       console.warn('Failed to save birth details to localStorage:', error);
     }

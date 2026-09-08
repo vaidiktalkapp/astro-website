@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'lal-kitab';
   const defaultMeta = {
-    title: "Lal Kitab Astrology | Ancient Red Book Wisdom | VaidikTalk",
+    title: "Lal Kitab Astrology | Ancient Red Book Wisdom | AstroSolution",
     description: "Generate your free Lal Kitab report. Discover ancient remedies, planetary debts, and precise astrological solutions.",
   };
 

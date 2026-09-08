@@ -9,7 +9,7 @@ export const revalidate = 60; // ISR cache for 60 seconds
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'education-astrology';
   const defaultMeta = {
-    title: "Education Astrology & Studies | VaidikTalk",
+    title: "Education Astrology & Studies | AstroSolution",
     description: "Find out the best field of study and overcome educational hurdles with Vedic astrology predictions.",
   };
 
@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 async function fetchInitialData() {
   try {
-    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.vaidiktalk.com/api/v1';
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.AstroSolution.com/api/v1';
     
     const [astrosRes, aiAstrosRes, settingsRes] = await Promise.all([
       fetch(`${API_URL}/astrologers/search?limit=10&isOnline=true`, { next: { revalidate: 60 } }),

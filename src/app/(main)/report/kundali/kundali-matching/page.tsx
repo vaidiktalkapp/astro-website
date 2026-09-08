@@ -99,7 +99,7 @@ export default async function KundaliMatchingPage() {
       name: "Ramesh & Priya",
       city: "Delhi",
       date: "October 2025",
-      review: "We were confused about our Gun Milan score because of Nadi Dosha. The detailed report from VaidikTalk explained exactly what the dosha meant for us and the remedies have brought us so much peace of mind.",
+      review: "We were confused about our Gun Milan score because of Nadi Dosha. The detailed report from AstroSolution explained exactly what the dosha meant for us and the remedies have brought us so much peace of mind.",
       initial: "R",
       color: "#5c1a1f"
     },
@@ -287,9 +287,9 @@ export default async function KundaliMatchingPage() {
           {/* Astrologer Profile */}
           <div className="flex flex-col items-center shrink-0 mt-1 md:mt-0">
             <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-[3px] md:border-[4px] border-white shadow-md mb-1 bg-white flex items-center justify-center">
-              <img src="/vaidiktalklogo.webp" alt="Vaidik Talk" className="w-[85%] h-[85%] object-contain" />
+              <img src="/astrosolution-logo.png" alt="Astro Solution" className="w-[85%] h-[85%] object-contain" />
             </div>
-            <span className="hidden md:block font-bold text-[#1a1a1a] text-[14px]">Vaidik Talk</span>
+            <span className="hidden md:block font-bold text-[#1a1a1a] text-[14px]">Astro Solution</span>
           </div>
 
           {/* Content & Tags */}
@@ -323,7 +323,7 @@ export default async function KundaliMatchingPage() {
           
           {/* Desktop Image (Hidden on mobile) */}
           <div className="hidden md:flex md:w-1/2 justify-center">
-            <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} alt="Premium Kundali Matching Report" className="w-full max-w-[470px] rounded-xl mix-blend-multiply" />
+            <img src={settings?.mockups?.pdf || "/images/AstroSolution-kundli-mockup.webp"} alt="Premium Kundali Matching Report" className="w-full max-w-[470px] rounded-xl mix-blend-multiply" />
           </div>
           
           {/* Content */}
@@ -333,7 +333,7 @@ export default async function KundaliMatchingPage() {
             <div className="flex items-center gap-4 mb-4 md:mb-3">
               {/* Mobile Thumbnail */}
               <div className="md:hidden shrink-0 w-[85px] sm:w-[100px] flex items-center justify-center">
-                <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} className="w-full h-auto object-contain drop-shadow-md rounded-sm mix-blend-multiply" alt="Premium Kundali Matching" />
+                <img src={settings?.mockups?.pdf || "/images/AstroSolution-kundli-mockup.webp"} className="w-full h-auto object-contain drop-shadow-md rounded-sm mix-blend-multiply" alt="Premium Kundali Matching" />
               </div>
               <h2 className="text-[22px] sm:text-3xl md:text-4xl font-serif font-bold text-[#5c1a1f] leading-tight">{settings?.productHeading || "Premium Kundali Matching Report"}</h2>
             </div>

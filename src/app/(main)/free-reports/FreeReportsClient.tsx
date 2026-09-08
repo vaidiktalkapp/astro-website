@@ -39,8 +39,7 @@ export default function FreeReportsPage() {
       features: [
         'Automatic Type Detection',
         'House Placement Impact',
-        'Practical Remedies',
-      ],
+        'Practical Remedies'],
     },
     {
       title: 'Gemstone Recommendation',
@@ -52,8 +51,7 @@ export default function FreeReportsPage() {
       features: [
         'Life & Fortune Stones',
         'Metal & Finger Analysis',
-        'Wear & Care Guide',
-      ],
+        'Wear & Care Guide'],
     },
     {
       title: 'Sade Sati Analysis',
@@ -65,10 +63,8 @@ export default function FreeReportsPage() {
       features: [
         'Phase Detection (Charan)',
         '120-Year Lifetime Map',
-        'Saturn Transit Guide',
-      ],
-    },
-  ];
+        'Saturn Transit Guide'],
+    }];
 
   return (
     <main className="free-reports-page min-h-screen bg-[#fbf7f0] text-[#2c211a]">
@@ -818,7 +814,7 @@ export default function FreeReportsPage() {
               <div className="flex shrink-0 flex-wrap gap-3">
 
                 <Link
-                  href="/astrologers-chat"
+                  href="#"
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#e4bb68] px-7 text-[11px] font-bold uppercase tracking-[0.08em] text-[#641c08] transition-all duration-300 hover:bg-white"
                 >
 
@@ -831,7 +827,7 @@ export default function FreeReportsPage() {
                 </Link>
 
                 <Link
-                  href="/astrologers-call"
+                  href="#"
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-7 text-[11px] font-bold uppercase tracking-[0.08em] text-white transition-all duration-300 hover:bg-white/10"
                 >
 

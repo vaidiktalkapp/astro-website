@@ -137,7 +137,7 @@ export default function PropertyVehicleAstrologyClient({
       title: 'Delays in Buying Property',
       content: 'Struggling to buy your dream house? A weak 4th house or afflicted Mars can cause endless delays. We analyze your Dasha to find the exact time you will own property.',
       icon: <ShieldAlert className="w-6 h-6 text-[#e11d48]" />,
-      report: { name: 'Talk to Expert', link: '/astrologers-chat' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Ancestral Property Disputes',
@@ -150,7 +150,7 @@ export default function PropertyVehicleAstrologyClient({
       title: 'Vehicle Accidents (Vahan Dosh)',
       content: 'Facing frequent car accidents or damage? This is a classic sign of Vahan Dosh caused by afflicted Venus or Rahu. Discover specific protective rituals before buying a vehicle.',
       icon: <HeartHandshake className="w-6 h-6 text-[#4f46e5]" />,
-      tool: { name: 'Talk to Expert', link: '/astrologers-chat' },
+      tool: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' },
       report: { name: 'Premium Report', link: '/report/kundali/vaidik-smart-kundali-10-years' }
     },
     {
@@ -216,7 +216,7 @@ export default function PropertyVehicleAstrologyClient({
             </motion.p>
 
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-              <Link href="/astrologers-chat" className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-[#8a1c2a] text-white font-semibold px-8 py-4 rounded-xl shadow-[0_8px_20px_rgba(138,28,42,0.15)] hover:bg-[#721522] hover:-translate-y-0.5 transition-all duration-300 text-[16px]">
+              <Link href="#" className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-[#8a1c2a] text-white font-semibold px-8 py-4 rounded-xl shadow-[0_8px_20px_rgba(138,28,42,0.15)] hover:bg-[#721522] hover:-translate-y-0.5 transition-all duration-300 text-[16px]">
                 Consult an Expert <ArrowRight className="w-5 h-5" />
               </Link>
               <Link href="/kundli" className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-white/90 backdrop-blur-sm text-[#5c1420] border-2 border-[#f0ddc0] font-semibold px-8 py-4 rounded-xl hover:border-[#d97706] hover:bg-white transition-all duration-300 shadow-sm text-[16px]">
@@ -293,7 +293,7 @@ export default function PropertyVehicleAstrologyClient({
                       )}
                     </>
                   ) : (
-                    <Link href="/astrologers-chat" className="text-[14px] font-bold text-[#d97706] hover:text-[#ee6c1e] flex items-center gap-1">
+                    <Link href="#" className="text-[14px] font-bold text-[#d97706] hover:text-[#ee6c1e] flex items-center gap-1">
                       Consult Expert <ArrowRight className="w-4 h-4" />
                     </Link>
                   )}
@@ -351,7 +351,7 @@ export default function PropertyVehicleAstrologyClient({
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
                 </button>
               </div>
-              <Link href="/astrologers-chat" className="shrink-0 hidden md:flex bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all items-center gap-2">
+              <Link href="#" className="shrink-0 hidden md:flex bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all items-center gap-2">
                 View All Experts <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -408,7 +408,7 @@ export default function PropertyVehicleAstrologyClient({
             )}
           </div>
           <div className="mt-6 flex justify-center md:hidden">
-            <Link href="/astrologers-chat" className="bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all flex items-center justify-center gap-2 w-full">
+            <Link href="#" className="bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all flex items-center justify-center gap-2 w-full">
               View All Experts <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -434,7 +434,7 @@ export default function PropertyVehicleAstrologyClient({
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
                 </button>
               </div>
-              <Link href="/ai-astrologer-chat" className="shrink-0 hidden md:flex bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all items-center gap-2">
+              <Link href="#" className="shrink-0 hidden md:flex bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all items-center gap-2">
                 View All AI Experts <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -491,7 +491,7 @@ export default function PropertyVehicleAstrologyClient({
             )}
           </div>
           <div className="mt-6 flex justify-center md:hidden">
-            <Link href="/ai-astrologer-chat" className="bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all flex items-center justify-center gap-2 w-full">
+            <Link href="#" className="bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all flex items-center justify-center gap-2 w-full">
               View All AI Experts <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -513,7 +513,6 @@ export default function PropertyVehicleAstrologyClient({
               <h3 className="premium-serif font-bold text-[24px] text-[#3a1216] mb-6">Detailed Reports</h3>
               <div className="space-y-3">
                                 {[
-                  { title: 'Premium Personalised Kundli (10 Years)', link: '/report/kundali/vaidik-smart-kundali-10-years' },
                   { title: 'Personalized Lal Kitab', link: '/report/kundali/personalized-lal-kitab' },
                   { title: 'Hastlikhit Kundali', link: '/report/kundali/hastlikhit-kundali' }
                 ].map((rep, i) => (
@@ -574,8 +573,7 @@ export default function PropertyVehicleAstrologyClient({
                     { title: 'Dhana Yoga Analysis', desc: 'Discover hidden wealth combinations (Yogas) in your Kundli that promise financial abundance.' },
                     { title: 'Debt Recovery Solutions', desc: 'Identify the karmic blockages causing financial leakages and learn precise remedies to clear debts.' },
                     { title: 'Investment & Stock Guidance', desc: 'Find out the most auspicious periods for stock trading, real estate, and long-term investments.' },
-                    { title: 'Business Partnership Check', desc: 'Avoid massive losses by checking astrological compatibility with potential co-founders.' },
-                  ].map((item, idx) => (
+                    { title: 'Business Partnership Check', desc: 'Avoid massive losses by checking astrological compatibility with potential co-founders.' }].map((item, idx) => (
                     <li key={idx} className="flex gap-3 md:gap-5 items-start">
                       <div className="shrink-0 w-7 h-7 mt-0.5 rounded-full bg-[#8a1c2a]/10 text-[#8a1c2a] flex items-center justify-center text-[13px] font-bold">{idx + 1}</div>
                       <div>
@@ -586,7 +584,7 @@ export default function PropertyVehicleAstrologyClient({
                   ))}
                 </ul>
                 <div className="mt-8 md:mt-10">
-                  <Link href="/astrologers-chat" className="w-full inline-flex justify-center items-center bg-white border-2 border-[#8a1c2a] text-[#8a1c2a] font-bold px-5 py-3.5 md:py-4 rounded-xl hover:bg-[#8a1c2a] hover:text-white transition-all shadow-sm text-[15px] md:text-[15.5px]">
+                  <Link href="#" className="w-full inline-flex justify-center items-center bg-white border-2 border-[#8a1c2a] text-[#8a1c2a] font-bold px-5 py-3.5 md:py-4 rounded-xl hover:bg-[#8a1c2a] hover:text-white transition-all shadow-sm text-[15px] md:text-[15.5px]">
                     Talk to a Wealth Expert
                   </Link>
                 </div>
@@ -711,7 +709,7 @@ export default function PropertyVehicleAstrologyClient({
                   <Heart className="w-5 h-5 text-[#d946ef] shrink-0 mt-0.5" />
                   <p className="text-[#5e4339] text-[14.5px] leading-relaxed">
                     <strong className="text-[#3a1216]">Spiritual Remedies:</strong> Keeping a Shree Yantra, wearing Yellow Sapphire, or using Pyrite crystals attract massive wealth.{' '}
-                    <a href="https://vaidiktalk.store/" target="_blank" rel="noopener noreferrer" className="text-[#d97706] font-semibold hover:underline inline-flex items-center gap-1 mt-1">
+                    <a href="https://AstroSolution.store/" target="_blank" rel="noopener noreferrer" className="text-[#d97706] font-semibold hover:underline inline-flex items-center gap-1 mt-1">
                       Explore Spiritual Store <ArrowRight className="w-3 h-3" />
                     </a>
                   </p>
@@ -842,7 +840,7 @@ export default function PropertyVehicleAstrologyClient({
             Connect with a verified finance astrologer today or start by generating your free detailed Kundali.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/astrologers-chat" className="w-full sm:w-auto inline-flex justify-center items-center bg-[#8a1c2a] text-white font-bold px-8 py-4 rounded-xl hover:bg-[#721522] hover:-translate-y-1 transition-all shadow-[0_8px_20px_rgba(138,28,42,0.15)] text-[16px]">
+            <Link href="#" className="w-full sm:w-auto inline-flex justify-center items-center bg-[#8a1c2a] text-white font-bold px-8 py-4 rounded-xl hover:bg-[#721522] hover:-translate-y-1 transition-all shadow-[0_8px_20px_rgba(138,28,42,0.15)] text-[16px]">
               Talk to a Business & Finance Astrologer
             </Link>
             <Link href="/kundli" className="w-full sm:w-auto inline-flex justify-center items-center bg-white border-2 border-[#f0ddc0] text-[#5c1420] font-bold px-8 py-4 rounded-xl hover:bg-[#fdf8f0] hover:border-[#d97706] transition-all shadow-sm text-[16px]">

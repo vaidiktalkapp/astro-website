@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'numerology';
   const defaultMeta = {
-    title: "Numerology Calculator | Find your Numerology Numbers | VaidikTalk",
+    title: "Numerology Calculator | Find your Numerology Numbers | AstroSolution",
     description: "Calculate your Radical, Destiny, and Name numbers. Discover the vibrational secrets of your name and birth date with our Numerology Calculator.",
   };
 

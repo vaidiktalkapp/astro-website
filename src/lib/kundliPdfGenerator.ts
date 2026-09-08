@@ -1,5 +1,5 @@
 /**
- * Kundli PDF Report Generator — VaidikTalk
+ * Kundli PDF Report Generator — AstroSolution
  * 
  * Generates a professional, structured PDF report like AstroSage.
  * Uses jsPDF + jspdf-autotable for real text tables — NOT screenshots.
@@ -117,7 +117,7 @@ export const downloadKundliPDF = async (data: KundliData) => {
     pdf.setFont('helvetica', 'bold');
     pdf.setFontSize(18);
     pdf.setTextColor(...DARK);
-    pdf.text('VaidikTalk', margin, y);
+    pdf.text('AstroSolution', margin, y);
 
     pdf.setFont('helvetica', 'normal');
     pdf.setFontSize(8);
@@ -509,7 +509,7 @@ function drawPageHeader(pdf: any, pageW: number, margin: number) {
   pdf.setFont('helvetica', 'bold');
   pdf.setFontSize(10);
   pdf.setTextColor(...DARK);
-  pdf.text('VaidikTalk', margin, 8);
+  pdf.text('AstroSolution', margin, 8);
 
   pdf.setFont('helvetica', 'normal');
   pdf.setFontSize(7);
@@ -532,7 +532,7 @@ function drawFooter(pdf: any, pageW: number, pageH: number, current: number, tot
   pdf.setFont('helvetica', 'normal');
   pdf.setFontSize(7);
   pdf.setTextColor(...GOLD);
-  pdf.text('www.vaidiktalk.com', 15, y);
+  pdf.text('www.AstroSolution.com', 15, y);
 
   pdf.setFontSize(6);
   pdf.setTextColor(...GRAY);
@@ -731,11 +731,11 @@ function drawSouthIndianChart(pdf: any, ox: number, oy: number, size: number, ku
   pdf.setLineWidth(0.3);
   pdf.rect(ox + cell, oy + cell, cell * 2, cell * 2);
 
-  // VaidikTalk watermark in center
+  // AstroSolution watermark in center
   pdf.setFont('helvetica', 'bold');
   pdf.setFontSize(5);
   pdf.setTextColor(184, 150, 46, 80);
-  pdf.text('VaidikTalk', ox + s / 2, oy + s / 2, { align: 'center' });
+  pdf.text('AstroSolution', ox + s / 2, oy + s / 2, { align: 'center' });
 
   // Draw sign labels and planets
   for (const box of boxes) {

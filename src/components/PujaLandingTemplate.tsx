@@ -109,7 +109,7 @@ export function PujaLandingTemplate({
               </div>
               <div>
                 <p className="text-[#3a1216]/60 text-[12.5px] font-semibold uppercase tracking-wider mb-1 flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5"/> Location</p>
-                <p className="text-[17px] font-extrabold text-[#3a1216]">Vaidik Talk</p>
+                <p className="text-[17px] font-extrabold text-[#3a1216]">Astro Solution</p>
               </div>
             </div>
 

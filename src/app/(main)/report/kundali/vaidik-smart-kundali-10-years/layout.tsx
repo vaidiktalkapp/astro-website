@@ -24,9 +24,9 @@ export async function generateMetadata(): Promise<Metadata> {
     title,
     description,
     keywords,
-    authors: [{ name: 'VaidikTalk', url: 'https://vaidiktalk.com/' }],
+    authors: [{ name: 'AstroSolution', url: 'https://AstroSolution.com/' }],
     alternates: {
-      canonical: 'https://vaidiktalk.com/report/kundali/vaidik-smart-kundali-10-years',
+      canonical: 'https://AstroSolution.com/report/kundali/vaidik-smart-kundali-10-years',
     },
     robots: {
       index: true,
@@ -42,17 +42,16 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      url: 'https://vaidiktalk.com/report/kundali/vaidik-smart-kundali-10-years',
-      siteName: 'VaidikTalk',
+      url: 'https://AstroSolution.com/report/kundali/vaidik-smart-kundali-10-years',
+      siteName: 'AstroSolution',
       images: [
         {
-          url: settings?.banner?.url || 'https://vaidiktalk.com/images/vaidik-smart-kundali-og.jpg', 
+          url: settings?.banner?.url || 'https://AstroSolution.com/images/vaidik-smart-kundali-og.jpg', 
           width: 1200,
           height: 630,
           alt: title,
           type: 'image/jpeg',
-        },
-      ],
+        }],
       locale: 'en_IN',
       type: 'website',
     },
@@ -60,7 +59,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       title,
       description,
-      images: [settings?.banner?.url || 'https://vaidiktalk.com/images/vaidik-smart-kundali-og.jpg'],
+      images: [settings?.banner?.url || 'https://AstroSolution.com/images/vaidik-smart-kundali-og.jpg'],
     },
   };
 }

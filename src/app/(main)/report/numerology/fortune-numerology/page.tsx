@@ -41,7 +41,7 @@ const faqData: FaqItem[] = [
       },
       {
         type: 'p',
-        text: 'Prepared by expert astrologers at VaidikTalk, it covers all major aspects of your life — career, health, finance, relationships, education and spiritual growth. It also includes yearly planetary movements, Dasha periods, transits and personalised remedies for informed life decisions.'
+        text: 'Prepared by expert astrologers at AstroSolution, it covers all major aspects of your life — career, health, finance, relationships, education and spiritual growth. It also includes yearly planetary movements, Dasha periods, transits and personalised remedies for informed life decisions.'
       }
     ]
   },
@@ -137,7 +137,7 @@ const faqData: FaqItem[] = [
   {
     q: 'How can I order or get my Pro Fortune Numerology Report prepared?',
     content: [
-      { type: 'p', text: 'Provide the following details via the VaidikTalk website or a consultation:' },
+      { type: 'p', text: 'Provide the following details via the AstroSolution website or a consultation:' },
       {
         type: 'list',
         items: [
@@ -386,9 +386,9 @@ export default async function SmartNumerologyReportPage() {
           {/* Astrologer Profile */}
           <div className="flex flex-col items-center shrink-0">
             <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-[4px] border-white shadow-md mb-2 bg-white flex items-center justify-center">
-              <img src="/vaidiktalklogo.webp" alt="Vaidik Talk" className="w-[85%] h-[85%] object-contain" />
+              <img src="/astrosolution-logo.png" alt="Astro Solution" className="w-[85%] h-[85%] object-contain" />
             </div>
-            <span className="hidden md:block font-bold text-[#1a1a1a] text-[14px]">Vaidik Talk</span>
+            <span className="hidden md:block font-bold text-[#1a1a1a] text-[14px]">Astro Solution</span>
           </div>
 
           {/* Content & Tags */}
@@ -422,7 +422,7 @@ export default async function SmartNumerologyReportPage() {
           
           {/* Desktop Image (Hidden on mobile) */}
           <div className="hidden md:flex md:w-1/2 justify-center">
-            <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} alt="Premium Personalised VaidikTalk Numerology Report" className="w-full max-w-[470px] rounded-xl mix-blend-multiply" />
+            <img src={settings?.mockups?.pdf || "/images/AstroSolution-kundli-mockup.webp"} alt="Premium Personalised AstroSolution Numerology Report" className="w-full max-w-[470px] rounded-xl mix-blend-multiply" />
           </div>
           
           {/* Content */}
@@ -431,7 +431,7 @@ export default async function SmartNumerologyReportPage() {
             {/* Mobile Title & Thumbnail Row */}
             <div className="flex items-center gap-4 mb-4 md:mb-3">
               <div className="md:hidden shrink-0 w-[85px] sm:w-[100px] flex items-center justify-center">
-                <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} alt="Premium Personalised VaidikTalk Numerology Report" className="w-full max-w-[470px] rounded-xl mix-blend-multiply" />
+                <img src={settings?.mockups?.pdf || "/images/AstroSolution-kundli-mockup.webp"} alt="Premium Personalised AstroSolution Numerology Report" className="w-full max-w-[470px] rounded-xl mix-blend-multiply" />
               </div>
               <h2 className="text-[22px] sm:text-3xl md:text-4xl font-serif font-bold text-[#5c1a1f] leading-tight">{settings?.productHeading || "Pro Fortune Numerology Report (10 Years)"}</h2>
             </div>

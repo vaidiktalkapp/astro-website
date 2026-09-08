@@ -2,8 +2,8 @@ import React from 'react';
 import { ShieldCheck } from 'lucide-react';
 
 export const metadata = {
-  title: 'Refund & Replacement Policy | Vaidik Talk',
-  description: 'Refund and Replacement Policy for Vaidik Talk.',
+  title: 'Refund & Replacement Policy | Astro Solution',
+  description: 'Refund and Replacement Policy for Astro Solution.',
 };
 
 export default function RefundPolicy() {
@@ -22,10 +22,10 @@ export default function RefundPolicy() {
         
         <div className="prose prose-base md:prose-lg text-gray-900 max-w-none prose-headings:text-[#5c1a1f] prose-headings:font-serif prose-p:text-gray-900 prose-p:leading-relaxed prose-li:text-gray-900 prose-a:text-[#ee6c1e] prose-a:font-bold prose-a:underline hover:prose-a:text-[#8a1c2a] prose-strong:text-[#5c1a1f]">
           <p className="lead font-medium text-gray-900">
-            Vaidik Talk ("we", "Vaidik Talk", "us", or the "Platform") provides this comprehensive Refund & Replacement Policy governing all purchases of digital services, wallet recharges, and physical products made through our website and mobile applications.
+            Astro Solution ("we", "Astro Solution", "us", or the "Platform") provides this comprehensive Refund & Replacement Policy governing all purchases of digital services, wallet recharges, and physical products made through our website and mobile applications.
           </p>
           <p>
-            By placing an order or purchasing any service on Vaidik Talk, you agree to the terms outlined below. Please read this policy carefully before making any purchase.
+            By placing an order or purchasing any service on Astro Solution, you agree to the terms outlined below. Please read this policy carefully before making any purchase.
           </p>
 
           <h3 className="text-xl font-bold mt-8 mb-4 text-[#5c1a1f]">1. OVERVIEW</h3>
@@ -155,13 +155,13 @@ export default function RefundPolicy() {
           <h3 className="text-xl font-bold mt-10 mb-4 text-[#5c1a1f]">CONTACT & SUPPORT</h3>
           <p>For any refund or return issues:</p>
           <div className="bg-[#fcf8f2] p-6 rounded-xl border border-[#f0ddc0] mt-4">
-            <p className="mb-1"><strong>Email:</strong> <a href="mailto:contact@vaidiktalk.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">contact@vaidiktalk.com</a></p>
+            <p className="mb-1"><strong>Email:</strong> <a href="mailto:contact@AstroSolution.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">contact@AstroSolution.com</a></p>
             <p className="mb-1"><strong>In-App:</strong> Help & Support Section</p>
             <p className="mb-0"><strong>Phone:</strong> +919031823276</p>
           </div>
 
           <p className="text-sm text-gray-850 mt-10 text-center border-t border-[#e8d8c0] pt-6">
-            © 2026 Vaidik Talk. All Rights Reserved.
+            © 2026 Astro Solution. All Rights Reserved.
           </p>
         </div>
       </div>

@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'muhurat';
   const defaultMeta = {
-    title: "Shubh Muhurat | Auspicious Timings | VaidikTalk",
+    title: "Shubh Muhurat | Auspicious Timings | AstroSolution",
     description: "Find the most auspicious timings (Shubh Muhurat) for your important life events, property purchase, marriage, and new beginnings.",
   };
 

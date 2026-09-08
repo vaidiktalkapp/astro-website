@@ -75,7 +75,7 @@ const SouthIndianChart = ({ data, chartType = 'D1' }: SouthIndianChartProps) => 
                 {/* Empty Middle 2x2 */}
                 <rect x="76" y="76" width="148" height="148" fill="white" />
                 <text x="150" y="150" textAnchor="middle" className="text-sm font-black fill-orange-600 opacity-20 uppercase tracking-widest">
-                    VaidikTalk
+                    AstroSolution
                 </text>
 
                 {/* Render Boxes */}

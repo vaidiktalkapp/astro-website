@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = `horoscope/monthly/${rawSign.toLowerCase()}`;
   
   const defaultMeta = {
-    title: `${sign} Monthly Horoscope | VaidikTalk`,
+    title: `${sign} Monthly Horoscope | AstroSolution`,
     description: `Read your free monthly horoscope for ${sign}. Get personalized insights into love, career, and health based on precise Vedic astrology.`,
   };
 

@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     
     const headers = new Headers();
     headers.set('Content-Type', 'application/pdf');
-    headers.set('Content-Disposition', `attachment; filename="VaidikTalk_Smart_Kundali.pdf"`);
+    headers.set('Content-Disposition', `attachment; filename="AstroSolution_Smart_Kundali.pdf"`);
 
     return new NextResponse(blob, {
       status: 200,

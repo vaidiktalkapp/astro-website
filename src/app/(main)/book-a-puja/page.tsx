@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'book-a-puja';
   const defaultMeta = {
-    title: "Book an Online Puja | VaidikTalk",
+    title: "Book an Online Puja | AstroSolution",
     description: "Book authentic Vedic Pujas online with verified pandits. Get divine blessings at home.",
   };
 

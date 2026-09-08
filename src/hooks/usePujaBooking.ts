@@ -81,7 +81,7 @@ export const usePujaBooking = (pujaDetails: { title: string; slug: string; amoun
         key: orderData.key,
         amount: orderData.amount * 100,
         currency: orderData.currency,
-        name: 'Vaidik Talk',
+        name: 'Astro Solution',
         description: `Booking for ${pujaDetails.title}`,
         order_id: orderData.razorpayOrderId,
         handler: async function (response: any) {

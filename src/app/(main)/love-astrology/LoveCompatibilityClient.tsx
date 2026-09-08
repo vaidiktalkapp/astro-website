@@ -165,7 +165,7 @@ export default function LoveCompatibilityClient({
       title: 'When Will I Find Love?',
       content: 'The 7th house and Venus transit determine when love enters your life. We analyze your Dasha sequence to predict the exact window when your soulmate appears.',
       icon: <Heart className="w-6 h-6 text-[#e11d48]" />,
-      report: { name: 'Talk to Expert', link: '/astrologers-chat' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Love Marriage vs Arranged',
@@ -244,7 +244,7 @@ export default function LoveCompatibilityClient({
             </motion.p>
 
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-              <Link href="/astrologers-chat" className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-[#8a1c2a] text-white font-semibold px-8 py-4 rounded-xl shadow-[0_8px_20px_rgba(138,28,42,0.15)] hover:bg-[#721522] hover:-translate-y-0.5 transition-all duration-300 text-[16px]">
+              <Link href="#" className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-[#8a1c2a] text-white font-semibold px-8 py-4 rounded-xl shadow-[0_8px_20px_rgba(138,28,42,0.15)] hover:bg-[#721522] hover:-translate-y-0.5 transition-all duration-300 text-[16px]">
                 Consult an Expert <ArrowRight className="w-5 h-5" />
               </Link>
               <Link href="/kundli" className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-white/90 backdrop-blur-sm text-[#5c1420] border-2 border-[#f0ddc0] font-semibold px-8 py-4 rounded-xl hover:border-[#d97706] hover:bg-white transition-all duration-300 shadow-sm text-[16px]">
@@ -321,7 +321,7 @@ export default function LoveCompatibilityClient({
                       )}
                     </>
                   ) : (
-                    <Link href="/astrologers-chat" className="text-[14px] font-bold text-[#d97706] hover:text-[#ee6c1e] flex items-center gap-1">
+                    <Link href="#" className="text-[14px] font-bold text-[#d97706] hover:text-[#ee6c1e] flex items-center gap-1">
                       Consult Expert <ArrowRight className="w-4 h-4" />
                     </Link>
                   )}
@@ -379,7 +379,7 @@ export default function LoveCompatibilityClient({
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
                 </button>
               </div>
-              <Link href="/astrologers-chat" className="shrink-0 hidden md:flex bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all items-center gap-2">
+              <Link href="#" className="shrink-0 hidden md:flex bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all items-center gap-2">
                 View All Experts <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -436,7 +436,7 @@ export default function LoveCompatibilityClient({
             )}
           </div>
           <div className="mt-6 flex justify-center md:hidden">
-            <Link href="/astrologers-chat" className="bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all flex items-center justify-center gap-2 w-full">
+            <Link href="#" className="bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all flex items-center justify-center gap-2 w-full">
               View All Experts <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -462,7 +462,7 @@ export default function LoveCompatibilityClient({
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
                 </button>
               </div>
-              <Link href="/ai-astrologer-chat" className="shrink-0 hidden md:flex bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all items-center gap-2">
+              <Link href="#" className="shrink-0 hidden md:flex bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all items-center gap-2">
                 View All AI Experts <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -519,7 +519,7 @@ export default function LoveCompatibilityClient({
             )}
           </div>
           <div className="mt-6 flex justify-center md:hidden">
-            <Link href="/ai-astrologer-chat" className="bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all flex items-center justify-center gap-2 w-full">
+            <Link href="#" className="bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all flex items-center justify-center gap-2 w-full">
               View All AI Experts <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -541,7 +541,6 @@ export default function LoveCompatibilityClient({
               <h3 className="premium-serif font-bold text-[24px] text-[#3a1216] mb-6">Detailed Reports</h3>
               <div className="space-y-3">
                 {[
-                  { title: 'Premium Kundali Matching Report', link: '/report/kundali/kundali-matching' },
                   { title: 'Personalized Lal Kitab', link: '/report/kundali/personalized-lal-kitab' },
                   { title: 'Hastlikhit Kundali', link: '/report/kundali/hastlikhit-kundali' }
                 ].map((rep, i) => (
@@ -602,8 +601,7 @@ export default function LoveCompatibilityClient({
                     { title: 'Love Timing Prediction', desc: 'Identify the exact months when you are most likely to meet your soulmate.' },
                     { title: 'Compatibility Analysis', desc: 'Clear the confusion with a deep Navamsha and Guna Milan analysis of both charts.' },
                     { title: 'Overcome Relationship Conflicts', desc: 'Practical remedies to reduce fights, heal past wounds, and restore love.' },
-                    { title: 'Love & Marriage Remedies', desc: 'Powerful pujas, gemstones, and rituals to attract the right partner and ensure a blissful marriage.' },
-                  ].map((item, idx) => (
+                    { title: 'Love & Marriage Remedies', desc: 'Powerful pujas, gemstones, and rituals to attract the right partner and ensure a blissful marriage.' }].map((item, idx) => (
                     <li key={idx} className="flex gap-3 md:gap-5 items-start">
                       <div className="shrink-0 w-7 h-7 mt-0.5 rounded-full bg-[#8a1c2a]/10 text-[#8a1c2a] flex items-center justify-center text-[13px] font-bold">{idx + 1}</div>
                       <div>
@@ -614,7 +612,7 @@ export default function LoveCompatibilityClient({
                   ))}
                 </ul>
                 <div className="mt-8 md:mt-10">
-                  <Link href="/astrologers-chat" className="w-full inline-flex justify-center items-center bg-white border-2 border-[#8a1c2a] text-[#8a1c2a] font-bold px-5 py-3.5 md:py-4 rounded-xl hover:bg-[#8a1c2a] hover:text-white transition-all shadow-sm text-[15px] md:text-[15.5px]">
+                  <Link href="#" className="w-full inline-flex justify-center items-center bg-white border-2 border-[#8a1c2a] text-[#8a1c2a] font-bold px-5 py-3.5 md:py-4 rounded-xl hover:bg-[#8a1c2a] hover:text-white transition-all shadow-sm text-[15px] md:text-[15.5px]">
                     Talk to a Love Expert
                   </Link>
                 </div>
@@ -739,7 +737,7 @@ export default function LoveCompatibilityClient({
                   <Heart className="w-5 h-5 text-[#d946ef] shrink-0 mt-0.5" />
                   <p className="text-[#5e4339] text-[14.5px] leading-relaxed">
                     <strong className="text-[#3a1216]">Spiritual Remedies:</strong> Rose Quartz, Siddh Rose Quartz, or specific love-attracting bracelets can open your heart chakra and magnetize the right partner.{' '}
-                    <a href="https://vaidiktalk.store/" target="_blank" rel="noopener noreferrer" className="text-[#d97706] font-semibold hover:underline inline-flex items-center gap-1 mt-1">
+                    <a href="https://AstroSolution.store/" target="_blank" rel="noopener noreferrer" className="text-[#d97706] font-semibold hover:underline inline-flex items-center gap-1 mt-1">
                       Explore Spiritual Store <ArrowRight className="w-3 h-3" />
                     </a>
                   </p>
@@ -870,7 +868,7 @@ export default function LoveCompatibilityClient({
             Connect with a verified career astrologer today or start by generating your free detailed Kundali.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/astrologers-chat" className="w-full sm:w-auto inline-flex justify-center items-center bg-[#8a1c2a] text-white font-bold px-8 py-4 rounded-xl hover:bg-[#721522] hover:-translate-y-1 transition-all shadow-[0_8px_20px_rgba(138,28,42,0.15)] text-[16px]">
+            <Link href="#" className="w-full sm:w-auto inline-flex justify-center items-center bg-[#8a1c2a] text-white font-bold px-8 py-4 rounded-xl hover:bg-[#721522] hover:-translate-y-1 transition-all shadow-[0_8px_20px_rgba(138,28,42,0.15)] text-[16px]">
               Talk to a Career Astrologer
             </Link>
             <Link href="/kundli" className="w-full sm:w-auto inline-flex justify-center items-center bg-white border-2 border-[#f0ddc0] text-[#5c1420] font-bold px-8 py-4 rounded-xl hover:bg-[#fdf8f0] hover:border-[#d97706] transition-all shadow-sm text-[16px]">

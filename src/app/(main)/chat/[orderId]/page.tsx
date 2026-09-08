@@ -726,7 +726,7 @@ export default function ChatScreen() {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Consultation insight from Vaidik Talk',
+          title: 'Consultation insight from Astro Solution',
           text: text,
         });
       } catch (err) {

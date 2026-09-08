@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'rashi-calculator';
   const defaultMeta = {
-    title: "Rashi Calculator | Find your Moon Sign | VaidikTalk",
+    title: "Rashi Calculator | Find your Moon Sign | AstroSolution",
     description: "Calculate your Moon Sign (Rashi) instantly with our free Rashi Calculator. Get accurate predictions and astrological insights based on your birth details.",
   };
 

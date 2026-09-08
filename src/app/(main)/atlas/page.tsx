@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'atlas';
   const defaultMeta = {
-    title: "Astrology Atlas & Lat Long | VaidikTalk",
+    title: "Astrology Atlas & Lat Long | AstroSolution",
     description: "Find accurate latitude, longitude, and timezone for astrology calculations.",
   };
 

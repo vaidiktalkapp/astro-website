@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'love-horoscope';
   const defaultMeta = {
-    title: "Free Love Horoscope | Accurate Love Predictions | VaidikTalk",
+    title: "Free Love Horoscope | Accurate Love Predictions | AstroSolution",
     description: "Check your free daily, weekly, and yearly love horoscope. Get personalized love astrology predictions based on your zodiac sign.",
   };
 

@@ -73,26 +73,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   const blogUrls = blogs.map((b: any) => ({
-    url: `https://vaidiktalk.com/blog/${b.slug}`,
+    url: `https://AstroSolution.com/blog/${b.slug}`,
     lastModified: new Date(b.updatedAt || b.publishedAt || Date.now()),
   }));
 
   const pujaUrls = pujas
     .filter((p: any) => p.slug !== 'book-a-puja')
     .map((p: any) => ({
-      url: `https://vaidiktalk.com/book-a-puja/${p.slug}`,
+      url: `https://AstroSolution.com/book-a-puja/${p.slug}`,
       lastModified: new Date(p.updatedAt || p.createdAt || Date.now()),
   }));
 
   const astrologerUrls = astrologers
     .map((a: any) => ({
-      url: `https://vaidiktalk.com/astrologer/${a.slug || a._id}`,
+      url: `https://AstroSolution.com/astrologer/${a.slug || a._id}`,
       lastModified: new Date(a.updatedAt || Date.now()),
   }));
 
   const aiAstrologerUrls = aiAstrologers
     .map((a: any) => ({
-      url: `https://vaidiktalk.com/ai-astrologer/${a.slug || a._id || a.id}`,
+      url: `https://AstroSolution.com/ai-astrologer/${a.slug || a._id || a.id}`,
       lastModified: new Date(a.updatedAt || Date.now()),
   }));
 
@@ -102,96 +102,96 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   const horoscopeUrls = signs.flatMap(sign => [
-    { url: `https://vaidiktalk.com/daily-horoscope/${sign}` },
-    { url: `https://vaidiktalk.com/horoscope/tomorrow/${sign}` },
-    { url: `https://vaidiktalk.com/horoscope/weekly/${sign}` },
-    { url: `https://vaidiktalk.com/horoscope/monthly/${sign}` },
-    { url: `https://vaidiktalk.com/horoscope/yearly/${sign}` },
+    { url: `https://AstroSolution.com/daily-horoscope/${sign}` },
+    { url: `https://AstroSolution.com/horoscope/tomorrow/${sign}` },
+    { url: `https://AstroSolution.com/horoscope/weekly/${sign}` },
+    { url: `https://AstroSolution.com/horoscope/monthly/${sign}` },
+    { url: `https://AstroSolution.com/horoscope/yearly/${sign}` },
   ]).map(route => ({
     ...route,
     lastModified: new Date(),
   }));
 
   const staticUrls = [
-    { url: 'https://vaidiktalk.com' },
-    { url: 'https://vaidiktalk.com/about-us' },
-    { url: 'https://vaidiktalk.com/contact-us' },
-    { url: 'https://vaidiktalk.com/faq' },
-    { url: 'https://vaidiktalk.com/privacy-policy' },
-    { url: 'https://vaidiktalk.com/terms-and-conditions' },
-    { url: 'https://vaidiktalk.com/refund-policy' },
-    { url: 'https://vaidiktalk.com/disclaimer' },
-    { url: 'https://vaidiktalk.com/register-astrologer' },
+    { url: 'https://AstroSolution.com' },
+    { url: 'https://AstroSolution.com/about-us' },
+    { url: 'https://AstroSolution.com/contact-us' },
+    { url: 'https://AstroSolution.com/faq' },
+    { url: 'https://AstroSolution.com/privacy-policy' },
+    { url: 'https://AstroSolution.com/terms-and-conditions' },
+    { url: 'https://AstroSolution.com/refund-policy' },
+    { url: 'https://AstroSolution.com/disclaimer' },
+    { url: 'https://AstroSolution.com/register-astrologer' },
 
     // Core Services
-    { url: 'https://vaidiktalk.com/blog' },
-    { url: 'https://vaidiktalk.com/book-a-puja' },
-    { url: 'https://vaidiktalk.com/astrologers-chat' },
-    { url: 'https://vaidiktalk.com/astrologers-call' },
-    { url: 'https://vaidiktalk.com/ai-astrologer-chat' },
+    { url: 'https://AstroSolution.com/blog' },
+    { url: 'https://AstroSolution.com/book-a-puja' },
+    { url: 'https://AstroSolution.com/astrologers-chat' },
+    { url: 'https://AstroSolution.com/astrologers-call' },
+    { url: 'https://AstroSolution.com/ai-astrologer-chat' },
     
     // Tools & Calculators
-    { url: 'https://vaidiktalk.com/astrology-calculators' },
-    { url: 'https://vaidiktalk.com/free-reports' },
-    { url: 'https://vaidiktalk.com/free-reports/gemstone' },
-    { url: 'https://vaidiktalk.com/free-reports/kaal-sarp' },
-    { url: 'https://vaidiktalk.com/free-reports/manglik' },
-    { url: 'https://vaidiktalk.com/free-reports/sade-sati' },
+    { url: 'https://AstroSolution.com/astrology-calculators' },
+    { url: 'https://AstroSolution.com/free-reports' },
+    { url: 'https://AstroSolution.com/free-reports/gemstone' },
+    { url: 'https://AstroSolution.com/free-reports/kaal-sarp' },
+    { url: 'https://AstroSolution.com/free-reports/manglik' },
+    { url: 'https://AstroSolution.com/free-reports/sade-sati' },
     
     // Horoscopes
-    { url: 'https://vaidiktalk.com/daily-horoscope' },
-    { url: 'https://vaidiktalk.com/horoscope/tomorrow' },
-    { url: 'https://vaidiktalk.com/horoscope/weekly' },
-    { url: 'https://vaidiktalk.com/horoscope/monthly' },
-    { url: 'https://vaidiktalk.com/horoscope/yearly' },
-    { url: 'https://vaidiktalk.com/chinese-horoscope' },
-    { url: 'https://vaidiktalk.com/love-horoscope' },
+    { url: 'https://AstroSolution.com/daily-horoscope' },
+    { url: 'https://AstroSolution.com/horoscope/tomorrow' },
+    { url: 'https://AstroSolution.com/horoscope/weekly' },
+    { url: 'https://AstroSolution.com/horoscope/monthly' },
+    { url: 'https://AstroSolution.com/horoscope/yearly' },
+    { url: 'https://AstroSolution.com/chinese-horoscope' },
+    { url: 'https://AstroSolution.com/love-horoscope' },
     
     // Astrology Domains
-    { url: 'https://vaidiktalk.com/career-astrology' },
-    { url: 'https://vaidiktalk.com/child-astrology' },
-    { url: 'https://vaidiktalk.com/education-astrology' },
-    { url: 'https://vaidiktalk.com/finance-astrology' },
-    { url: 'https://vaidiktalk.com/health-astrology' },
-    { url: 'https://vaidiktalk.com/love-astrology' },
-    { url: 'https://vaidiktalk.com/marriage-astrology' },
-    { url: 'https://vaidiktalk.com/property-astrology' },
+    { url: 'https://AstroSolution.com/career-astrology' },
+    { url: 'https://AstroSolution.com/child-astrology' },
+    { url: 'https://AstroSolution.com/education-astrology' },
+    { url: 'https://AstroSolution.com/finance-astrology' },
+    { url: 'https://AstroSolution.com/health-astrology' },
+    { url: 'https://AstroSolution.com/love-astrology' },
+    { url: 'https://AstroSolution.com/marriage-astrology' },
+    { url: 'https://AstroSolution.com/property-astrology' },
     
     // More Tools
-    { url: 'https://vaidiktalk.com/kundli' },
-    { url: 'https://vaidiktalk.com/horoscope-matching' },
-    { url: 'https://vaidiktalk.com/lal-kitab' },
-    { url: 'https://vaidiktalk.com/numerology' },
-    { url: 'https://vaidiktalk.com/panchang' },
-    { url: 'https://vaidiktalk.com/moon-signs' },
-    { url: 'https://vaidiktalk.com/muhurat' },
-    { url: 'https://vaidiktalk.com/muhurat/directory' },
-    { url: 'https://vaidiktalk.com/rahu-kaal' },
-    { url: 'https://vaidiktalk.com/rashi-calculator' },
+    { url: 'https://AstroSolution.com/kundli' },
+    { url: 'https://AstroSolution.com/horoscope-matching' },
+    { url: 'https://AstroSolution.com/lal-kitab' },
+    { url: 'https://AstroSolution.com/numerology' },
+    { url: 'https://AstroSolution.com/panchang' },
+    { url: 'https://AstroSolution.com/moon-signs' },
+    { url: 'https://AstroSolution.com/muhurat' },
+    { url: 'https://AstroSolution.com/muhurat/directory' },
+    { url: 'https://AstroSolution.com/rahu-kaal' },
+    { url: 'https://AstroSolution.com/rashi-calculator' },
     
     // Baby Names
-    { url: 'https://vaidiktalk.com/baby-names' },
-    { url: 'https://vaidiktalk.com/baby-names/search' },
+    { url: 'https://AstroSolution.com/baby-names' },
+    { url: 'https://AstroSolution.com/baby-names/search' },
     
     // Hubs
-    { url: 'https://vaidiktalk.com/healing' },
-    { url: 'https://vaidiktalk.com/matrimony' },
-    { url: 'https://vaidiktalk.com/occult-directory' },
-    { url: 'https://vaidiktalk.com/celebrity-horoscopes' },
-    { url: 'https://vaidiktalk.com/calendar' },
-    { url: 'https://vaidiktalk.com/festivals' },
-    { url: 'https://vaidiktalk.com/learn' },
-    { url: 'https://vaidiktalk.com/learn-astrology' },
-    { url: 'https://vaidiktalk.com/planets' },
-    { url: 'https://vaidiktalk.com/atlas' },
+    { url: 'https://AstroSolution.com/healing' },
+    { url: 'https://AstroSolution.com/matrimony' },
+    { url: 'https://AstroSolution.com/occult-directory' },
+    { url: 'https://AstroSolution.com/celebrity-horoscopes' },
+    { url: 'https://AstroSolution.com/calendar' },
+    { url: 'https://AstroSolution.com/festivals' },
+    { url: 'https://AstroSolution.com/learn' },
+    { url: 'https://AstroSolution.com/learn-astrology' },
+    { url: 'https://AstroSolution.com/planets' },
+    { url: 'https://AstroSolution.com/atlas' },
 
     // Premium Reports
-    { url: 'https://vaidiktalk.com/report/kundali/vaidik-smart-kundali-10-years' },
-    { url: 'https://vaidiktalk.com/report/kundali/kundali-matching' },
-    { url: 'https://vaidiktalk.com/report/kundali/personalized-lal-kitab' },
-    { url: 'https://vaidiktalk.com/report/kundali/hastlikhit-kundali' },
-    { url: 'https://vaidiktalk.com/report/numerology/fortune-numerology' },
-    { url: 'https://vaidiktalk.com/report/numerology/name-mobile-number-numerology' },
+    { url: 'https://AstroSolution.com/report/kundali/vaidik-smart-kundali-10-years' },
+    { url: 'https://AstroSolution.com/report/kundali/kundali-matching' },
+    { url: 'https://AstroSolution.com/report/kundali/personalized-lal-kitab' },
+    { url: 'https://AstroSolution.com/report/kundali/hastlikhit-kundali' },
+    { url: 'https://AstroSolution.com/report/numerology/fortune-numerology' },
+    { url: 'https://AstroSolution.com/report/numerology/name-mobile-number-numerology' },
   ].map(route => ({
     ...route,
     lastModified: new Date(),

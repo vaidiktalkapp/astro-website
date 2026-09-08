@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'rahu-kaal';
   const defaultMeta = {
-    title: "Today's Rahu Kaal Timing | VaidikTalk",
+    title: "Today's Rahu Kaal Timing | AstroSolution",
     description: "Check accurate Rahu Kaal timings for your city today. Know the inauspicious time of the day and avoid important tasks during Rahu Kalam.",
   };
 

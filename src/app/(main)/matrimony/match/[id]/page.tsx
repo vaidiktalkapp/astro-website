@@ -149,7 +149,7 @@ export default function MatchDetailPage() {
           <div style={{ padding: '0 24px 22px', marginTop: -36, display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', gap: 16 }}>
             {/* Avatar */}
             <div style={{ width: 80, height: 80, borderRadius: 18, overflow: 'hidden', border: '3px solid white', boxShadow: '0 4px 16px rgba(0,0,0,0.12)', flexShrink: 0, position: 'relative', zIndex: 1 }}>
-              <img src={(partner.photos && partner.photos.length > 0 && partner.photos[0]) || partner.profileImage || 'https://vaidiktalk.s3.ap-south-1.amazonaws.com/images/row-1-column-1.png'} alt={partner.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={(partner.photos && partner.photos.length > 0 && partner.photos[0]) || partner.profileImage || 'https://AstroSolution.s3.ap-south-1.amazonaws.com/images/row-1-column-1.png'} alt={partner.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
 
             {/* Name & meta */}
@@ -163,8 +163,7 @@ export default function MatchDetailPage() {
                   { icon: <GraduationCap style={{ width: 12, height: 12 }} />, label: partner.education || 'Graduate' },
                   { icon: <Star style={{ width: 12, height: 12 }} />, label: partner.religion || 'Hindu' },
                   ...(partner.caste ? [{ icon: <Users style={{ width: 12, height: 12 }} />, label: partner.caste }] : []),
-                  ...(partner.height ? [{ icon: <Zap style={{ width: 12, height: 12 }} />, label: partner.height }] : []),
-                ].map((m, i) => (
+                  ...(partner.height ? [{ icon: <Zap style={{ width: 12, height: 12 }} />, label: partner.height }] : [])].map((m, i) => (
                   <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 13, color: '#9b8860', fontWeight: 600 }}>
                     <span style={{ color: '#b8962e' }}>{m.icon}</span> {m.label}
                   </span>
@@ -386,7 +385,7 @@ export default function MatchDetailPage() {
                       boxShadow: '0 4px 12px rgba(22,163,74,0.15)'
                     }}
                   >
-                    <MessageCircle style={{ width: 18, height: 18 }} /> Chat Now
+                    <MessageCircle style={{ width: 18, height: 18 }} /> WhatsApp Us
                   </Link>
                   <p style={{ fontSize: 11, color: '#15803d', opacity: 0.7, marginTop: 10, textAlign: 'center', fontWeight: 500 }}>
                     Feel free to reach out and begin your journey

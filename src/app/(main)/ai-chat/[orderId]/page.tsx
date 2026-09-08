@@ -690,7 +690,7 @@ Occupation: ${intakeData.occupation || 'Employee'}`;
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Divine Guidance from Vaidik Talk',
+          title: 'Divine Guidance from Astro Solution',
           text: text,
         });
       } catch (err) {

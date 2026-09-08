@@ -4,8 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'VaidikTalk - Astrologer Registration',
-  description: 'Join VaidikTalk as an Astrologer',
+  title: 'AstroSolution - Astrologer Registration',
+  description: 'Join AstroSolution as an Astrologer',
 };
 
 export default function AstrologerLayout({
@@ -19,9 +19,9 @@ export default function AstrologerLayout({
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <Link href="https://vaidiktalk.com">
+            <Link href="https://AstroSolution.com">
             {/* Replace with your Logo */}
-            <Image src="/Vaidik-talk1.webp" alt="VaidikTalk Logo" width={200} height={200} />
+            <Image src="/astrosolution-logo.png" alt="AstroSolution Logo" width={200} height={200} />
             </Link>
           </div>
         </div>
@@ -34,7 +34,7 @@ export default function AstrologerLayout({
 
       {/* Footer */}
       <footer className="text-center py-6 text-[#3a1216] text-sm">
-        &copy; {new Date().getFullYear()} VaidikTalk. All rights reserved.
+        &copy; {new Date().getFullYear()} AstroSolution. All rights reserved.
       </footer>
       
       {/* Toast Notifications */}

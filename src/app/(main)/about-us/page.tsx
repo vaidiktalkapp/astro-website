@@ -6,8 +6,8 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'about-us';
   const defaultMeta = {
-    title: "About Us | VaidikTalk",
-    description: "Learn more about VaidikTalk, our mission, and our expert Vedic astrologers.",
+    title: "About Us | AstroSolution",
+    description: "Learn more about AstroSolution, our mission, and our expert Vedic astrologers.",
   };
 
   const seoData = await fetchPageSeo(slug);

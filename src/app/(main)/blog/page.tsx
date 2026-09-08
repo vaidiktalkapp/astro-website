@@ -4,15 +4,15 @@ import { Metadata } from 'next';
 import BlogSearchClient from './BlogSearchClient';
 
 export const metadata: Metadata = {
-  title: 'Vedic Knowledge Center - Astrology Blogs & Insights | VaidikTalk',
-  description: 'Expand your spiritual awareness with profound articles on Astrology, Vastu, Mantras, and ancient Vedic wisdom. Read the latest blogs at VaidikTalk.',
+  title: 'Vedic Knowledge Center - Astrology Blogs & Insights | AstroSolution',
+  description: 'Expand your spiritual awareness with profound articles on Astrology, Vastu, Mantras, and ancient Vedic wisdom. Read the latest blogs at AstroSolution.',
   alternates: {
-    canonical: 'https://www.vaidiktalk.com/blog',
+    canonical: 'https://www.AstroSolution.com/blog',
   },
   openGraph: {
-    title: 'Vedic Knowledge Center - Astrology Blogs & Insights | VaidikTalk',
+    title: 'Vedic Knowledge Center - Astrology Blogs & Insights | AstroSolution',
     description: 'Expand your spiritual awareness with profound articles on Astrology, Vastu, Mantras, and ancient Vedic wisdom.',
-    url: 'https://www.vaidiktalk.com/blog',
+    url: 'https://www.AstroSolution.com/blog',
     type: 'website',
   }
 };

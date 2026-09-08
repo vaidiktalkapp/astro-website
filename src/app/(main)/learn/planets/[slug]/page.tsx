@@ -75,7 +75,7 @@ export default function PlanetDetailPage() {
                 <div className="max-w-4xl mx-auto px-6 py-3 flex items-center justify-between">
                     <div className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest">
                         <Star className="w-3.5 h-3.5" />
-                        <span>{t("_slug_.planet_library")}<strong>{t("_slug_.vaidiktalk")}</strong></span>
+                        <span>{t("_slug_.planet_library")}<strong>{t("_slug_.AstroSolution")}</strong></span>
                     </div>
                     <Link href="/learn" className="text-[10px] font-black uppercase tracking-widest hover:underline flex items-center gap-1">
 {t("_slug_.view_lessons")}<MoveRight className="w-3 h-3" />

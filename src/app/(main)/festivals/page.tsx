@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'festivals';
   const defaultMeta = {
-    title: "Hindu Festivals Calendar 2026 | VaidikTalk",
+    title: "Hindu Festivals Calendar 2026 | AstroSolution",
     description: "Discover the exact dates and Shubh Muhurat for all major Hindu festivals. Check the 2026 Indian festival calendar based on Vedic astrology.",
   };
 

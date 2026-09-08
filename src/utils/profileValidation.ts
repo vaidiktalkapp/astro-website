@@ -4,7 +4,7 @@ import { User } from '../lib/types';
 export const isProfileComplete = (user: User | null): boolean => {
   if (!user) return false;
 
-  // Fields required by the VaidikTalk app logic
+  // Fields required by the AstroSolution app logic
   const requiredFields = [
     'name',
     'gender',

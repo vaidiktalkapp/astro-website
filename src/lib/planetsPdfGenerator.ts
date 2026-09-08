@@ -60,7 +60,7 @@ export const downloadPlanetsPDF = async (data: PlanetsPdfData) => {
         pdf.setFontSize(10);
         pdf.setFont('helvetica', 'normal');
         pdf.setTextColor(...GOLD);
-        pdf.text('VaidikTalk Real-time Celestial Monitor', margin, 32);
+        pdf.text('AstroSolution Real-time Celestial Monitor', margin, 32);
 
         pdf.setTextColor(...WHITE);
         pdf.setFontSize(8);
@@ -131,7 +131,7 @@ export const downloadPlanetsPDF = async (data: PlanetsPdfData) => {
             pdf.setPage(i);
             pdf.setFontSize(8);
             pdf.setTextColor(...SILVER);
-            pdf.text(`VaidikTalk Premium Astrology Report | Page ${i} of ${totalPages}`, pageWidth / 2, pageHeight - 10, { align: 'center' });
+            pdf.text(`AstroSolution Premium Astrology Report | Page ${i} of ${totalPages}`, pageWidth / 2, pageHeight - 10, { align: 'center' });
         }
 
         pdf.save(`Planetary_Positions_${data.location.replace(/\s+/g, '_')}.pdf`);

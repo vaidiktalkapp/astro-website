@@ -2,9 +2,9 @@
 
 import { historyApiService } from './historyApiService';
 
-const STORAGE_KEY_NAME = 'vaidiktalk_name_compat_data';
-const STORAGE_KEY_LOVE = 'vaidiktalk_love_compat_data';
-const HISTORY_KEY = 'vaidiktalk_compatibility_history';
+const STORAGE_KEY_NAME = 'AstroSolution_name_compat_data';
+const STORAGE_KEY_LOVE = 'AstroSolution_love_compat_data';
+const HISTORY_KEY = 'AstroSolution_compatibility_history';
 
 export const compatibilityStorage = {
     // ------------------------------------------------------------------------

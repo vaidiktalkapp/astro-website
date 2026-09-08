@@ -17,7 +17,7 @@ export class UploadService {
       // Web browsers use File object directly - no uri/type wrapper needed
       formData.append('file', file);
 
-      const response = await apiClient.post('/upload/image', formData, {
+      const response = await apiClient.post('/upload/chat/image', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

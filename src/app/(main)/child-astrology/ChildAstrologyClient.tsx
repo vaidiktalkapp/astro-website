@@ -165,40 +165,40 @@ export default function ChildAstrologyClient({
       title: 'Delay in Childbirth (Progeny Issues)',
       content: 'Facing unexplained delays or medical complications in conception? We analyze your 5th house and Jupiter (Guru) to identify astrological blocks and provide precise Vedic remedies for successful conception.',
       icon: <HeartHandshake className="w-6 h-6 text-[#ee6c1e]" />,
-      report: { name: 'Talk to Expert', link: '/astrologers-chat' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Child\'s Health & Well-being',
       content: 'Constantly worried about your child falling sick or facing recurring health issues? A weak Moon or malefic influences on the 5th house can be the root cause. Discover protective rituals for your child.',
       icon: <ShieldAlert className="w-6 h-6 text-[#d97706]" />,
       tool: { name: 'Free Kundli', link: '/kundli' },
-      report: { name: 'Talk to Expert', link: '/astrologers-chat' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Behavioral Issues in Children',
       content: 'Is your child extremely stubborn, aggressive, or struggling with focus? Malefic Rahu or Mars can cause hyperactivity. Simple astrological remedies can bring peace and improve their nature.',
       icon: <Sparkles className="w-6 h-6 text-[#4f46e5]" />,
-      tool: { name: 'Talk to Expert', link: '/astrologers-chat' },
+      tool: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' },
       report: { name: 'Premium Report', link: '/report/kundali/vaidik-smart-kundali-10-years' }
     },
     {
       title: 'Family Disputes & Disharmony',
       content: 'Constant arguments between family members or joint family issues? Afflictions to the 2nd and 4th houses destroy domestic peace. Re-establish harmony with targeted Vastu and astrological solutions.',
       icon: <Sun className="w-6 h-6 text-[#e11d48]" />,
-      report: { name: 'Talk to Expert', link: '/astrologers-chat' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Adoption Astrology',
       content: 'Planning to adopt? Astrology can guide you on the most favorable time to bring a child home and ensure a smooth, loving bond between the child and the family.',
       icon: <CheckCircle2 className="w-6 h-6 text-[#ee6c1e]" />,
-      tool: { name: 'Consult Expert', link: '/astrologers-chat' },
+      tool: { name: 'Consult Expert', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' },
       report: { name: 'Premium Report', link: '/report/kundali/vaidik-smart-kundali-10-years' }
     },
     {
       title: 'Parent-Child Relationship',
       content: 'Experiencing a disconnect or frequent clashes with your teenager? Understanding their chart allows you to parent them according to their astrological temperament, rebuilding your bond.',
       icon: <Star className="w-6 h-6 text-[#ea580c]" />,
-      report: { name: 'Talk to Expert', link: '/astrologers-chat' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
     }
   ];
 
@@ -248,7 +248,7 @@ export default function ChildAstrologyClient({
             </motion.p>
 
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-              <Link href="/astrologers-chat" className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-[#8a1c2a] text-white font-semibold px-8 py-4 rounded-xl shadow-[0_8px_20px_rgba(138,28,42,0.15)] hover:bg-[#721522] hover:-translate-y-0.5 transition-all duration-300 text-[16px]">
+              <Link href="#" className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-[#8a1c2a] text-white font-semibold px-8 py-4 rounded-xl shadow-[0_8px_20px_rgba(138,28,42,0.15)] hover:bg-[#721522] hover:-translate-y-0.5 transition-all duration-300 text-[16px]">
                 Consult an Expert <ArrowRight className="w-5 h-5" />
               </Link>
               <Link href="/kundli" className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-white/90 backdrop-blur-sm text-[#5c1420] border-2 border-[#f0ddc0] font-semibold px-8 py-4 rounded-xl hover:border-[#d97706] hover:bg-white transition-all duration-300 shadow-sm text-[16px]">
@@ -325,7 +325,7 @@ export default function ChildAstrologyClient({
                       )}
                     </>
                   ) : (
-                    <Link href="/astrologers-chat" className="text-[14px] font-bold text-[#d97706] hover:text-[#ee6c1e] flex items-center gap-1">
+                    <Link href="#" className="text-[14px] font-bold text-[#d97706] hover:text-[#ee6c1e] flex items-center gap-1">
                       Consult Expert <ArrowRight className="w-4 h-4" />
                     </Link>
                   )}
@@ -383,7 +383,7 @@ export default function ChildAstrologyClient({
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
                 </button>
               </div>
-              <Link href="/astrologers-chat" className="shrink-0 hidden md:flex bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all items-center gap-2">
+              <Link href="#" className="shrink-0 hidden md:flex bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all items-center gap-2">
                 View All Experts <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -440,7 +440,7 @@ export default function ChildAstrologyClient({
             )}
           </div>
           <div className="mt-6 flex justify-center md:hidden">
-            <Link href="/astrologers-chat" className="bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all flex items-center justify-center gap-2 w-full">
+            <Link href="#" className="bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all flex items-center justify-center gap-2 w-full">
               View All Experts <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -466,7 +466,7 @@ export default function ChildAstrologyClient({
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
                 </button>
               </div>
-              <Link href="/ai-astrologer-chat" className="shrink-0 hidden md:flex bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all items-center gap-2">
+              <Link href="#" className="shrink-0 hidden md:flex bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all items-center gap-2">
                 View All AI Experts <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -523,7 +523,7 @@ export default function ChildAstrologyClient({
             )}
           </div>
           <div className="mt-6 flex justify-center md:hidden">
-            <Link href="/ai-astrologer-chat" className="bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all flex items-center justify-center gap-2 w-full">
+            <Link href="#" className="bg-white border border-[#f0ddc0] text-[#5c1420] font-bold px-6 py-3 rounded-xl hover:bg-[#fdf8f0] transition-all flex items-center justify-center gap-2 w-full">
               View All AI Experts <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -545,7 +545,6 @@ export default function ChildAstrologyClient({
               <h3 className="premium-serif font-bold text-[24px] text-[#3a1216] mb-6">Detailed Reports</h3>
               <div className="space-y-3">
                 {[
-                  { title: 'Premium Kundali Matching Report', link: '/report/kundali/kundali-matching' },
                   { title: 'Personalized Lal Kitab', link: '/report/kundali/personalized-lal-kitab' },
                   { title: 'Hastlikhit Kundali', link: '/report/kundali/hastlikhit-kundali' }
                 ].map((rep, i) => (
@@ -606,8 +605,7 @@ export default function ChildAstrologyClient({
                     { title: 'Childbirth Timing & Prediction', desc: 'Identify astrological blocks causing delays in conception.' },
                     { title: 'Child Behavior & Health', desc: 'Understand the astrological reasons behind your child\'s stubbornness or frequent illnesses.' },
                     { title: 'Favorable Timing (Muhurat)', desc: 'Find the most auspicious time for IVF, conception, or important family ceremonies.' },
-                    { title: 'Powerful Vedic Remedies', desc: 'Powerful pujas like Santan Gopal, rudraksha, and gemstone therapy for progeny blessings.' },
-                  ].map((item, idx) => (
+                    { title: 'Powerful Vedic Remedies', desc: 'Powerful pujas like Santan Gopal, rudraksha, and gemstone therapy for progeny blessings.' }].map((item, idx) => (
                     <li key={idx} className="flex gap-3 md:gap-5 items-start">
                       <div className="shrink-0 w-7 h-7 mt-0.5 rounded-full bg-[#8a1c2a]/10 text-[#8a1c2a] flex items-center justify-center text-[13px] font-bold">{idx + 1}</div>
                       <div>
@@ -618,7 +616,7 @@ export default function ChildAstrologyClient({
                   ))}
                 </ul>
                 <div className="mt-8 md:mt-10">
-                  <Link href="/astrologers-chat" className="w-full inline-flex justify-center items-center bg-white border-2 border-[#8a1c2a] text-[#8a1c2a] font-bold px-5 py-3.5 md:py-4 rounded-xl hover:bg-[#8a1c2a] hover:text-white transition-all shadow-sm text-[15px] md:text-[15.5px]">
+                  <Link href="#" className="w-full inline-flex justify-center items-center bg-white border-2 border-[#8a1c2a] text-[#8a1c2a] font-bold px-5 py-3.5 md:py-4 rounded-xl hover:bg-[#8a1c2a] hover:text-white transition-all shadow-sm text-[15px] md:text-[15.5px]">
                     Talk to a Family Expert
                   </Link>
                 </div>
@@ -743,7 +741,7 @@ export default function ChildAstrologyClient({
                   <Heart className="w-5 h-5 text-[#d946ef] shrink-0 mt-0.5" />
                   <p className="text-[#5e4339] text-[14.5px] leading-relaxed">
                     <strong className="text-[#3a1216]">Gemstone Therapy:</strong> Wearing a Yellow Sapphire (Pukhraj) for Jupiter can remove blocks in expanding your family and bring immense domestic prosperity.{' '}
-                    <a href="https://vaidiktalk.store/" target="_blank" rel="noopener noreferrer" className="text-[#ee6c1e] font-semibold hover:underline inline-flex items-center gap-1 mt-1">
+                    <a href="https://AstroSolution.store/" target="_blank" rel="noopener noreferrer" className="text-[#ee6c1e] font-semibold hover:underline inline-flex items-center gap-1 mt-1">
                       Explore Spiritual Store <ArrowRight className="w-3 h-3" />
                     </a>
                   </p>
@@ -874,7 +872,7 @@ export default function ChildAstrologyClient({
             Connect with a verified medical astrologer today or start by generating your free detailed Kundali.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/astrologers-chat" className="w-full sm:w-auto inline-flex justify-center items-center bg-[#8a1c2a] text-white font-bold px-8 py-4 rounded-xl hover:bg-[#721522] hover:-translate-y-1 transition-all shadow-[0_8px_20px_rgba(138,28,42,0.15)] text-[16px]">
+            <Link href="#" className="w-full sm:w-auto inline-flex justify-center items-center bg-[#8a1c2a] text-white font-bold px-8 py-4 rounded-xl hover:bg-[#721522] hover:-translate-y-1 transition-all shadow-[0_8px_20px_rgba(138,28,42,0.15)] text-[16px]">
               Talk to a Family Astrologer
             </Link>
             <Link href="/kundli" className="w-full sm:w-auto inline-flex justify-center items-center bg-white border-2 border-[#f0ddc0] text-[#5c1420] font-bold px-8 py-4 rounded-xl hover:bg-[#fdf8f0] hover:border-[#d97706] transition-all shadow-sm text-[16px]">

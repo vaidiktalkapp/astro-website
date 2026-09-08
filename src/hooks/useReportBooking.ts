@@ -98,7 +98,7 @@ export const useReportBooking = (reportDetails: {
         key: orderData.key,
         amount: orderData.amount * 100,
         currency: orderData.currency,
-        name: 'Vaidik Talk',
+        name: 'Astro Solution',
         description: `Order for ${reportDetails.name}`,
         order_id: orderData.razorpayOrderId,
         handler: async function (response: any) {

@@ -95,7 +95,7 @@ export const downloadPanchangPDF = async (data: PanchangData) => {
         pdf.setTextColor(...WHITE);
         pdf.setFont('helvetica', 'bold');
         pdf.setFontSize(22);
-        pdf.text('VaidikTalk', margin, 20);
+        pdf.text('AstroSolution', margin, 20);
         
         pdf.setFontSize(10);
         pdf.setFont('helvetica', 'normal');
@@ -206,10 +206,10 @@ export const downloadPanchangPDF = async (data: PanchangData) => {
             pdf.setPage(i);
             pdf.setFontSize(8);
             pdf.setTextColor(...SILVER);
-            pdf.text(`VaidikTalk Premium Vedic Report | Page ${i} of ${totalPages}`, pageWidth / 2, pageHeight - 10, { align: 'center' });
+            pdf.text(`AstroSolution Premium Vedic Report | Page ${i} of ${totalPages}`, pageWidth / 2, pageHeight - 10, { align: 'center' });
         }
 
-        pdf.save(`VaidikTalk_Panchang_${data.date.replace(/\s+/g, '_')}.pdf`);
+        pdf.save(`AstroSolution_Panchang_${data.date.replace(/\s+/g, '_')}.pdf`);
         toast.success('Vedic calendar archived!', { id: toastId });
 
     } catch (error) {

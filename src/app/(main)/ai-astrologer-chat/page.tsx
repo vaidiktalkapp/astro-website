@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'ai-astrologer-chat';
   const defaultMeta = {
-    title: "AI Astrologers | Chat & Call Online | VaidikTalk",
+    title: "AI Astrologers | Chat & Call Online | AstroSolution",
     description: "Connect with our advanced AI Astrologers for instant, accurate Vedic astrology predictions through chat or call.",
   };
 

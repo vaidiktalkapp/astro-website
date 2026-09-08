@@ -164,8 +164,7 @@ export default function RahuKaalClient() {
       { name: 'Kantaka / Mrityu', time: getWindow(kantakaParts[dayOfWeek]), icon: <div className="w-2.5 h-2.5 rounded-full bg-slate-500"></div> },
       { name: 'Kaalvela / Ardhayaam', time: getWindow(kaalvelaParts[dayOfWeek]), icon: <div className="w-2.5 h-2.5 rounded-full bg-slate-500"></div> },
       { name: 'Yamaghanta', time: getWindow(yamaghantaParts[dayOfWeek]), icon: <div className="w-2.5 h-2.5 rounded-full bg-slate-500"></div> },
-      { name: 'Kulika Kaal', time: getWindow(kulikaParts[dayOfWeek]), icon: <div className="w-2.5 h-2.5 rounded-full bg-slate-500"></div> },
-    ];
+      { name: 'Kulika Kaal', time: getWindow(kulikaParts[dayOfWeek]), icon: <div className="w-2.5 h-2.5 rounded-full bg-slate-500"></div> }];
   };
 
   const inauspiciousTimings = calculateTimings();

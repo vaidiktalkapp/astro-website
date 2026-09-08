@@ -239,7 +239,7 @@ const OccultDirectoryLandingPage = () => {
                 <h3 className="serif text-3xl font-semibold mb-4 text-[#1a1209]">{t("occult_directory.are_you_an_expert")}</h3>
                 <p className="text-[#6b5535] text-lg mb-8 max-w-xl mx-auto font-medium">{t("occult_directory.join_our_verified_network_of_v")}</p>
                 <Link
-              href="/register-astrologer"
+              href="#"
               className="inline-block px-12 py-4 text-white font-bold rounded-xl transition-all shadow-xl active:scale-95"
               style={{ background: 'linear-gradient(135deg, #1a1209 0%, #332b1d 100%)' }}>
 {t("occult_directory.apply_for_verification")}

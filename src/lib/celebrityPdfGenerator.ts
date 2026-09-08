@@ -334,7 +334,7 @@ export const downloadCelebrityPDF = async (data: CelebrityPdfData) => {
             pdf.setPage(i);
             pdf.setFontSize(8);
             pdf.setTextColor(...GRAY);
-            pdf.text(`VaidikTalk Premium Celebrity Report | Page ${i} of ${totalPages}`, pageW / 2, pageH - 10, { align: 'center' });
+            pdf.text(`AstroSolution Premium Celebrity Report | Page ${i} of ${totalPages}`, pageW / 2, pageH - 10, { align: 'center' });
         }
 
         pdf.save(`Celebrity_Horoscope_${profile.name.replace(/\s+/g, '_')}.pdf`);

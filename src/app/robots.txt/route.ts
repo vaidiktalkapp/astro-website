@@ -8,7 +8,7 @@ Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
 
-Sitemap: https://vaidiktalk.com/sitemap.xml`;
+Sitemap: https://AstroSolution.com/sitemap.xml`;
 
   try {
     const res = await fetch(`${apiUrl}/seo-settings`, { next: { revalidate: 3600 } });

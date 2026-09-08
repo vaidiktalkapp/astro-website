@@ -495,7 +495,7 @@ export default function HoroscopeDetailClient({
             )}
 
             <div className="flex flex-wrap gap-4 mt-2">
-              <Link href="/astrologers-chat" className="bg-[#ee6c1e] text-white font-bold py-3 px-6 md:px-8 rounded-full hover:bg-[#d95c14] transition-colors shadow-sm text-center flex items-center justify-center">
+              <Link href="#" className="bg-[#ee6c1e] text-white font-bold py-3 px-6 md:px-8 rounded-full hover:bg-[#d95c14] transition-colors shadow-sm text-center flex items-center justify-center">
                 Talk to {activeBaseZodiac.name} Expert
               </Link>
               <Link href="/kundli" className="bg-white border-2 border-[#5c1420] text-[#5c1420] font-bold py-3 px-6 md:px-8 rounded-full hover:bg-[#5c1420] hover:text-white transition-colors text-center flex items-center justify-center">

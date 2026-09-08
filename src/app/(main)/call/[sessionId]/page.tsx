@@ -620,7 +620,7 @@ function CallContent() {
               }}
               onGoHome={() => {
                 // setShowContinueModal(false); // Prevents UI flash
-                router.replace('/ai-astrologer-chat');
+                router.replace('#');
               }}
               astrologer={{ _id: astrologerId, name: astrologerName, profileImage: astrologerImage, pricing: { call: callRate } }}
               type="call"
@@ -730,7 +730,7 @@ function CallContent() {
               }}
               onGoHome={() => {
                 // setShowContinueModal(false); // Prevents UI flash
-                router.replace('/ai-astrologer-chat');
+                router.replace('#');
               }}
               astrologer={{ _id: astrologerId, name: astrologerName, profileImage: astrologerImage, pricing: { call: callRate } }}
               type="call"

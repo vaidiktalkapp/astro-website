@@ -11,18 +11,6 @@ export const FALLBACK_MENUS = [
     "icon": ""
   },
   {
-    "_id": "6a7ee9603ac57da1f2b018e6",
-    "title": "Premium Personalised Kundli",
-    "url": "/report/kundali/vaidik-smart-kundali-10-years",
-    "category": "kundli",
-    "group": "Premium Reports",
-    "order": 1,
-    "isActive": true,
-    "__v": 0,
-    "badge": "",
-    "icon": "🔮"
-  },
-  {
     "_id": "6a7ee9603ac57da1f2b018eb",
     "title": "Kundli Reading",
     "url": "/kundli",
@@ -57,8 +45,8 @@ export const FALLBACK_MENUS = [
   },
   {
     "_id": "6a7ee9603ac57da1f2b01906",
-    "title": "Chat with Astrologer",
-    "url": "/astrologers-chat",
+    "title": "WhatsApp Us",
+    "url": "#",
     "category": "consult",
     "group": "General",
     "order": 1,
@@ -69,7 +57,7 @@ export const FALLBACK_MENUS = [
   {
     "_id": "6a7ee9603ac57da1f2b0190a",
     "title": "Read Blog",
-    "url": "/blog",
+    "url": "#!",
     "category": "knowledge",
     "group": "General",
     "order": 1,
@@ -87,17 +75,6 @@ export const FALLBACK_MENUS = [
     "title": "Horoscope",
     "url": "/horoscope",
     "icon": ""
-  },
-  {
-    "_id": "6a7ee9603ac57da1f2b018e7",
-    "title": "Premium Kundali Matching",
-    "url": "/report/kundali/kundali-matching",
-    "category": "kundli",
-    "group": "Premium Reports",
-    "order": 2,
-    "isActive": true,
-    "__v": 0,
-    "icon": "💑"
   },
   {
     "_id": "6a7ee9603ac57da1f2b018ef",
@@ -123,8 +100,8 @@ export const FALLBACK_MENUS = [
   },
   {
     "_id": "6a7ee9603ac57da1f2b01907",
-    "title": "Talk to Astrologer",
-    "url": "/astrologers-call",
+    "title": "WhatsApp Us",
+    "url": "#",
     "category": "consult",
     "group": "General",
     "order": 2,
@@ -155,18 +132,6 @@ export const FALLBACK_MENUS = [
     "icon": ""
   },
   {
-    "_id": "6a7ee9603ac57da1f2b018e8",
-    "title": "Premium Gemstone Report",
-    "url": "/report/detailed/gemstone",
-    "category": "kundli",
-    "group": "Premium Reports",
-    "order": 3,
-    "isActive": true,
-    "__v": 0,
-    "badge": "NEW",
-    "icon": "💎"
-  },
-  {
     "_id": "6a7ee9603ac57da1f2b018fc",
     "title": "Weekly Horoscope",
     "url": "/horoscope/weekly",
@@ -191,7 +156,7 @@ export const FALLBACK_MENUS = [
   {
     "_id": "6a7ee9603ac57da1f2b01908",
     "title": "Chat with AI Astrologer",
-    "url": "/ai-astrologer-chat?mode=chat",
+    "url": "#?mode=chat",
     "category": "consult",
     "group": "General",
     "order": 3,
@@ -257,25 +222,13 @@ export const FALLBACK_MENUS = [
   {
     "_id": "6a7ee9603ac57da1f2b01909",
     "title": "Talk with AI Astrologer",
-    "url": "/ai-astrologer-chat?mode=call",
+    "url": "#?mode=call",
     "category": "consult",
     "group": "General",
     "order": 4,
     "isActive": true,
     "__v": 0,
     "icon": "<svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"#f3e8ff\" stroke=\"#a855f7\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\"><path d=\"M3 18v-6a9 9 0 0 1 18 0v6\"/><path d=\"M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z\"/></svg>"
-  },
-  {
-    "_id": "6a7ee9603ac57da1f2b018e9",
-    "title": "Premium Numerology Report",
-    "url": "/report/numerology/fortune-numerology",
-    "category": "kundli",
-    "group": "Premium Reports",
-    "order": 5,
-    "isActive": true,
-    "__v": 0,
-    "badge": "NEW",
-    "icon": "🔢"
   },
   {
     "_id": "6a7eee832e36bbf82f505a93",
@@ -285,7 +238,7 @@ export const FALLBACK_MENUS = [
     "isActive": true,
     "order": 5,
     "title": "Consult an Astrologer",
-    "url": "/astrologers-chat",
+    "url": "#",
     "icon": ""
   },
   {

@@ -1,5 +1,5 @@
 /**
- * Professional PDF Report Generator for VaidikTalk
+ * Professional PDF Report Generator for AstroSolution
  * 
  * Uses a print-window approach instead of html2canvas screenshots.
  * This produces REAL TEXT PDFs with proper tables, selectable text,
@@ -241,14 +241,14 @@ export const downloadAsPDF = async (elementId: string, options: PDFOptions) => {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>${options.title || 'VaidikTalk Report'}</title>
+  <title>${options.title || 'AstroSolution Report'}</title>
   <style>${PRINT_CSS}</style>
 </head>
 <body>
   <!-- Header -->
   <div class="pdf-header">
     <div>
-      <div class="brand">VaidikTalk</div>
+      <div class="brand">AstroSolution</div>
       <div class="tagline">Vedic Astrology & Spiritual Guidance</div>
     </div>
     <div class="report-info">
@@ -264,7 +264,7 @@ export const downloadAsPDF = async (elementId: string, options: PDFOptions) => {
 
   <!-- Footer -->
   <div class="pdf-footer">
-    <span class="website">www.vaidiktalk.com</span>
+    <span class="website">www.AstroSolution.com</span>
     <span>Auto-generated report for personal reference</span>
   </div>
 </body>

@@ -123,7 +123,7 @@ const faqData: FaqItem[] = [
   {
     q: 'Where can one get an authentic Personalised Lal Kitab prepared?',
     content: [
-      { type: 'p', text: 'For authentic reports, consult expert Lal Kitab astrologers. VaidikTalk offers accurate, personalised Lal Kitab reports prepared using your complete birth details, including:' },
+      { type: 'p', text: 'For authentic reports, consult expert Lal Kitab astrologers. AstroSolution offers accurate, personalised Lal Kitab reports prepared using your complete birth details, including:' },
       {
         type: 'list', items: [
           'Detailed planetary analysis',
@@ -318,9 +318,9 @@ export default async function PersonalizedLalKitabPage() {
           {/* Astrologer Profile */}
           <div className="flex flex-col items-center shrink-0">
             <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-[4px] border-white shadow-md mb-2 bg-white flex items-center justify-center">
-              <img src="/vaidiktalklogo.webp" alt="Vaidik Talk" className="w-[85%] h-[85%] object-contain" />
+              <img src="/astrosolution-logo.png" alt="Astro Solution" className="w-[85%] h-[85%] object-contain" />
             </div>
-            <span className="hidden md:block font-bold text-[#1a1a1a] text-[14px]">Vaidik Talk</span>
+            <span className="hidden md:block font-bold text-[#1a1a1a] text-[14px]">Astro Solution</span>
           </div>
 
           {/* Content & Tags */}
@@ -354,7 +354,7 @@ export default async function PersonalizedLalKitabPage() {
           
           {/* Desktop Image (Hidden on mobile) */}
           <div className="hidden md:flex md:w-1/2 justify-center">
-            <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} alt="Premium Personalized Lal Kitab" className="w-full max-w-[470px] rounded-xl mix-blend-multiply" />
+            <img src={settings?.mockups?.pdf || "/images/AstroSolution-kundli-mockup.webp"} alt="Premium Personalized Lal Kitab" className="w-full max-w-[470px] rounded-xl mix-blend-multiply" />
           </div>
           
           {/* Content */}
@@ -363,7 +363,7 @@ export default async function PersonalizedLalKitabPage() {
             {/* Mobile Title & Thumbnail Row */}
             <div className="flex items-center gap-4 mb-4 md:mb-3">
               <div className="md:hidden shrink-0 w-[85px] sm:w-[100px] flex items-center justify-center">
-                <img src={settings?.mockups?.pdf || "/images/vaidiktalk-kundli-mockup.webp"} alt="Premium Personalized Lal Kitab" className="w-full h-auto object-contain drop-shadow-md rounded-sm mix-blend-multiply" />
+                <img src={settings?.mockups?.pdf || "/images/AstroSolution-kundli-mockup.webp"} alt="Premium Personalized Lal Kitab" className="w-full h-auto object-contain drop-shadow-md rounded-sm mix-blend-multiply" />
               </div>
               <h2 className="text-[22px] sm:text-3xl md:text-4xl font-serif font-bold text-[#5c1a1f] leading-tight">{settings?.productHeading || "Premium Personalized Lal Kitab"}</h2>
             </div>

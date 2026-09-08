@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'panchang';
   const defaultMeta = {
-    title: "Daily Panchang | Hindu Calendar & Timings | VaidikTalk",
+    title: "Daily Panchang | Hindu Calendar & Timings | AstroSolution",
     description: "Check today's Panchang, Tithi, Nakshatra, Yoga, and Karana. Get accurate daily Hindu calendar details and auspicious timings.",
   };
 

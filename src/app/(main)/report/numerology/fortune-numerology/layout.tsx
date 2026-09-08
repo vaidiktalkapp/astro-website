@@ -25,9 +25,9 @@ export async function generateMetadata(): Promise<Metadata> {
     title,
     description,
     keywords,
-    authors: [{ name: 'VaidikTalk', url: 'https://vaidiktalk.com/' }],
+    authors: [{ name: 'AstroSolution', url: 'https://AstroSolution.com/' }],
     alternates: {
-      canonical: `https://vaidiktalk.com/report/numerology/${REPORT_SLUG}`,
+      canonical: `https://AstroSolution.com/report/numerology/${REPORT_SLUG}`,
     },
     robots: {
       index: true,
@@ -36,17 +36,16 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      url: `https://vaidiktalk.com/report/numerology/${REPORT_SLUG}`,
-      siteName: 'VaidikTalk',
+      url: `https://AstroSolution.com/report/numerology/${REPORT_SLUG}`,
+      siteName: 'AstroSolution',
       images: [
         {
-          url: settings?.banner?.url || 'https://vaidiktalk.com/vaidiktalklogo.webp', 
+          url: settings?.banner?.url || 'https://AstroSolution.com/astrosolution-logo.png', 
           width: 1200,
           height: 630,
           alt: title,
           type: 'image/jpeg',
-        },
-      ],
+        }],
       locale: 'en_IN',
       type: 'website',
     },
@@ -54,7 +53,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       title,
       description,
-      images: [settings?.banner?.url || 'https://vaidiktalk.com/vaidiktalklogo.webp'],
+      images: [settings?.banner?.url || 'https://AstroSolution.com/astrosolution-logo.png'],
     },
   };
 }

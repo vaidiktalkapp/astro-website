@@ -22,7 +22,7 @@ export default function PhoneStep() {
 
   return (
     <div className="p-6 sm:p-8 flex flex-col ">
-      <h1 className="text-3xl font-extrabold text-[#5b2b84] mb-2">Welcome to VaidikTalk</h1>
+      <h1 className="text-3xl font-extrabold text-[#5b2b84] mb-2">Welcome to AstroSolution</h1>
       <p className="text-gray-850 mb-8">Register as Astrologer</p>
 
       <form onSubmit={handleSubmit} className="flex-1">

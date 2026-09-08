@@ -170,20 +170,20 @@ export default function Header() {
         </div>
 
         {/* Main Tier */}
-        <div className="relative flex items-center justify-between gap-2 xl:gap-4 px-3 md:px-5 lg:px-6 py-[12px] bg-white border-b border-[#f0ddc0] w-full max-w-full">
-          {/* Logo (Reverted to old logo image) */}
-          <Link href="/" className="flex items-center shrink-0">
+        <div className="relative flex items-center justify-between gap-2 xl:gap-4 px-3 md:px-5 lg:px-10 xl:px-16 2xl:px-24 py-1 lg:py-1.5 bg-white border-b border-[#f0ddc0] w-full max-w-full">
+          {/* Logo */}
+          <Link href="/" className="flex items-center shrink-0 lg:w-[200px] xl:w-[220px] 2xl:w-[240px]">
             <img
-              src="/Vaidik-talk1.webp"
-              alt="VaidikTalk Logo"
-              className="h-8 sm:h-10 w-[120px] lg:w-[140px] xl:w-[150px] 2xl:w-[170px] object-contain object-left -translate-y-1"
+              src="/astrosolution-logo.png"
+              alt="AstroSolution Logo"
+              className="h-12 sm:h-14 lg:h-[60px] xl:h-[64px] w-[180px] lg:w-[200px] xl:w-[220px] 2xl:w-[240px] object-contain object-left scale-[1.25] xl:scale-[1.3] origin-left"
             />
           </Link>
 
 
           {/* Desktop Nav */}
-          <nav className="hidden xl:flex gap-2 xl:gap-[5px] 2xl:gap-[16px] items-center text-[12px] xl:text-[12px] 2xl:text-[14px] font-medium text-[#3a1216] whitespace-nowrap flex-1 justify-center ml-1 mr-2">
-            {topLevelMenus.map(topMenu => {
+          <nav className="hidden xl:flex gap-6 xl:gap-10 2xl:gap-14 items-center text-[15px] xl:text-[16px] 2xl:text-[17px] font-semibold text-[#3a1216] whitespace-nowrap flex-1 justify-center">
+            {topLevelMenus.filter(m => !['shop', 'kundli', 'consult'].includes((m.category || '').toLowerCase())).map(topMenu => {
               const safeTopCategory = (topMenu.category || '').trim();
               const mySubMenus = subMenus.filter(m => (m.category || '').trim() === safeTopCategory);
 
@@ -250,7 +250,7 @@ export default function Header() {
 
               if (safeTopCategory === 'shop') {
                 return (
-                  <a key={topMenu._id} href={topMenu.url || 'https://vaidiktalk.store/'} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-[#ee6c1e] text-white px-3.5 py-2 rounded-md font-bold hover:bg-[#d65f17] transition-colors shadow-sm ml-1">
+                  <a key={topMenu._id} href={topMenu.url || 'https://AstroSolution.store/'} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-[#ee6c1e] text-white px-2.5 py-1.5 rounded-md font-bold hover:bg-[#d65f17] transition-colors shadow-sm ml-1">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
                     {topMenu.title}
                   </a>
@@ -297,7 +297,7 @@ export default function Header() {
 
               return (
                 <div key={topMenu._id} className={`relative group cursor-pointer ${safeTopCategory === 'consult' ? 'flex items-center py-4' : ''}`}>
-                  <Link href={topMenu.url || '#'} className={safeTopCategory === 'consult' ? "bg-gradient-to-r from-[#8a1c2a] to-[#721522] text-white px-4 py-[8px] rounded-lg hover:shadow-lg transition-all font-semibold flex items-center gap-1.5 border border-[#8a1c2a]" : "hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4"}>
+                  <Link href={topMenu.url || '#'} className={safeTopCategory === 'consult' ? "bg-gradient-to-r from-[#8a1c2a] to-[#721522] text-white px-2.5 py-1.5 rounded-lg hover:shadow-lg transition-all font-semibold flex items-center gap-1 border border-[#8a1c2a]" : "hover:text-[#ee6c1e] transition-colors flex items-center gap-1 py-4"}>
                     {topMenu.title}
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
                   </Link>
@@ -366,50 +366,7 @@ export default function Header() {
           </nav>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-2 xl:gap-2 2xl:gap-5 text-[12px] 2xl:text-[13px] font-medium text-[#3a1216] whitespace-nowrap shrink-0 ml-auto">
-            {!isAuthenticated ? (
-              <button onClick={openLoginModal} className="hidden lg:flex items-center gap-1.5 bg-[#8a1c2a] text-white px-5 py-2.5 rounded-lg hover:bg-[#721522] transition-colors font-semibold shadow-sm cursor-pointer">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="8" r="4" />
-                  <path d="M4 21a8 8 0 0 1 16 0" />
-                </svg>
-                Login / Sign Up
-              </button>
-            ) : (
-              <div className="hidden lg:flex relative group cursor-pointer items-center py-2">
-                <div className="flex items-center gap-2 bg-gray-50 hover:bg-orange-50 border border-gray-200 hover:border-orange-200 px-2 py-1.5 rounded-full transition-all duration-200 group-hover:bg-orange-50 group-hover:border-orange-200">
-                  <div className="w-7 h-7 rounded-full bg-[#8a1c2a] text-[#ffcf9c] flex items-center justify-center font-bold text-[13px] shadow-sm">
-                    {user?.name ? user.name.charAt(0).toUpperCase() : 'U'}
-                  </div>
-                  <span className="font-bold text-[#8a1c2a] text-[13px] pr-1">
-                    {user?.name ? user.name.split(' ')[0] : 'My Account'}
-                  </span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#8a1c2a] mr-1 group-hover:rotate-180 transition-transform duration-200"><path d="M6 9l6 6 6-6" /></svg>
-                </div>
-                <div className="absolute top-full right-0 mt-1 bg-white text-gray-850 shadow-[0_10px_40px_rgba(0,0,0,0.15)] rounded-lg min-w-[220px] py-2 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
-                  <div className="px-5 py-3 border-b border-gray-100 mb-1 bg-gray-50/50 rounded-t-lg">
-                    <p className="font-bold text-[#8a1c2a] text-sm truncate">{user?.name || 'Vaidik User'}</p>
-                    <p className="text-[11px] text-gray-850 font-medium truncate mt-0.5">{user?.phoneNumber || ''}</p>
-                  </div>
-                  <Link href="/profile" className="flex items-center gap-2 px-5 py-2.5 text-[13px] font-medium hover:bg-orange-50 hover:text-[#ee6c1e]">
-                    My Profile
-                  </Link>
-                  <Link href="/wallet" className="flex items-center gap-2 px-5 py-2.5 text-[13px] font-medium hover:bg-orange-50 hover:text-[#ee6c1e]">
-                    Wallet Balance
-                  </Link>
-                  <Link href="/orders" className="flex items-center gap-2 px-5 py-2.5 text-[13px] font-medium hover:bg-orange-50 hover:text-[#ee6c1e]">
-                    Order History
-                  </Link>
-                  <Link href="/ai-chat-history" className="flex items-center gap-2 px-5 py-2.5 text-[13px] font-medium hover:bg-orange-50 hover:text-[#ee6c1e]">
-                    AI Chat History
-                  </Link>
-                  <div className="h-px bg-gray-100 my-1 mx-2"></div>
-                  <button onClick={logout} className="w-full text-left px-5 py-2.5 text-[13px] text-red-600 hover:bg-red-50 font-bold">
-                    Logout
-                  </button>
-                </div>
-              </div>
-            )}
+          <div className="flex items-center justify-end gap-2 xl:gap-2 2xl:gap-5 text-[12px] 2xl:text-[13px] font-medium text-[#3a1216] whitespace-nowrap shrink-0 ml-auto lg:w-[200px] xl:w-[220px] 2xl:w-[240px]">
 
             <button
               onClick={() => setIsMobileMenuOpen(true)}
@@ -435,50 +392,19 @@ export default function Header() {
         {/* Drawer Header */}
         <div className="bg-[#8a1c2a] p-5 flex items-center justify-between sticky top-0 z-10">
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-lg">
-            <img src="/Vaidik-talk1.webp" alt="VaidikTalk" className="h-6 object-contain" />
+            <img src="/astrosolution-logo.png" alt="AstroSolution" className="h-10 object-contain" />
           </Link>
           <button onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-[#ffcf9c] transition-colors bg-black/20 p-2 rounded-full">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>
 
-        {/* Auth Section in Mobile */}
-        <div className="p-5 border-b border-gray-100 bg-gray-50/50">
-          {!isAuthenticated ? (
-            <div className="flex flex-col gap-3">
-              <p className="text-sm font-medium text-gray-850">Login to access your profile</p>
-              <button
-                onClick={() => { setIsMobileMenuOpen(false); openLoginModal(); }}
-                className="w-full bg-[#8a1c2a] text-white py-3 rounded-lg font-bold shadow-md hover:bg-[#721522] transition-colors flex justify-center items-center gap-2 cursor-pointer"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></svg>
-                Login / Sign Up
-              </button>
-            </div>
-          ) : (
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-[#8a1c2a] flex items-center justify-center text-[#ffcf9c] text-xl font-bold border-2 border-white shadow-md">
-                  {user?.name ? user.name.charAt(0).toUpperCase() : 'U'}
-                </div>
-                <div>
-                  <h3 className="font-bold text-[#8a1c2a] text-lg leading-tight">{user?.name || 'Vaidik User'}</h3>
-                  <p className="text-sm text-gray-850 font-medium">{user?.phoneNumber || ''}</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-2 mt-2">
-                <Link href="/profile" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-2 px-3 bg-white border border-gray-200 rounded-md text-sm font-semibold hover:bg-orange-50 hover:text-[#ee6c1e]">My Profile</Link>
-                <Link href="/wallet" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-2 px-3 bg-white border border-gray-200 rounded-md text-sm font-semibold hover:bg-orange-50 hover:text-[#ee6c1e]">Wallet</Link>
-                <Link href="/orders" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-2 px-3 bg-white border border-gray-200 rounded-md text-sm font-semibold hover:bg-orange-50 hover:text-[#ee6c1e]">Orders</Link>
-                <button onClick={() => { setIsMobileMenuOpen(false); logout(); }} className="text-center py-2 px-3 bg-white border border-red-200 text-red-600 rounded-md text-sm font-semibold hover:bg-red-50">Logout</button>
-              </div>
-            </div>
-          )}
-        </div>
+        {/* Auth Section in Mobile (Removed) */}
+
 
         {/* Mobile Navigation Links */}
         <div className="flex-1 overflow-y-auto p-4 space-y-1">
-          {topLevelMenus.map(topMenu => {
+          {topLevelMenus.filter(m => !['shop', 'kundli', 'consult'].includes((m.category || '').toLowerCase())).map(topMenu => {
             const safeTopCategory = (topMenu.category || '').trim();
             const mySubMenus = subMenus.filter(m => (m.category || '').trim() === safeTopCategory);
 
@@ -496,7 +422,7 @@ export default function Header() {
             // Shop Link
             if (safeTopCategory === 'shop') {
               return (
-                <a key={topMenu._id} href={topMenu.url || 'https://vaidiktalk.store/'} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 mx-3 mt-4 mb-4 p-3 rounded-lg bg-[#ee6c1e] text-white font-bold hover:bg-[#d65f17] shadow-sm transition-colors">
+                <a key={topMenu._id} href={topMenu.url || 'https://AstroSolution.store/'} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 mx-3 mt-4 mb-4 p-3 rounded-lg bg-[#ee6c1e] text-white font-bold hover:bg-[#d65f17] shadow-sm transition-colors">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
                   {topMenu.title}
                 </a>

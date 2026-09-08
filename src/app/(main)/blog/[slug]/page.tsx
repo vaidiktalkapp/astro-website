@@ -64,7 +64,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: blog.seoTitle || blog.title,
     description: blog.seoDescription,
     keywords: blog.seoKeywords,
-    alternates: { canonical: `https://vaidiktalk.com/blog/${blog.slug}` },
+    alternates: { canonical: `https://AstroSolution.com/blog/${blog.slug}` },
     openGraph: {
       title: blog.seoTitle || blog.title,
       description: blog.seoDescription,
@@ -72,7 +72,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: 'article',
       publishedTime: blog.publishedAt,
       modifiedTime: blog.updatedAt,
-      url: `https://vaidiktalk.com/blog/${blog.slug}`,
+      url: `https://AstroSolution.com/blog/${blog.slug}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -155,39 +155,39 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
     dateModified: blog.updatedAt,
     author: { 
       '@type': 'Person', 
-      name: blog.authorName || 'VaidikTalk Editorial', 
-      url: 'https://vaidiktalk.com/about-us',
+      name: blog.authorName || 'AstroSolution Editorial', 
+      url: 'https://AstroSolution.com/about-us',
       description: blog.authorCredentials || undefined,
     },
     publisher: {
       '@type': 'Organization',
-      name: 'VaidikTalk',
-      logo: { '@type': 'ImageObject', url: 'https://vaidiktalk.com/vaidiktalklogo.webp' },
+      name: 'AstroSolution',
+      logo: { '@type': 'ImageObject', url: 'https://AstroSolution.com/astrosolution-logo.png' },
     },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://vaidiktalk.com/blog/${blog.slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://AstroSolution.com/blog/${blog.slug}` },
   };
 
   const organizationLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'VaidikTalk',
-    url: 'https://vaidiktalk.com',
-    logo: 'https://vaidiktalk.com/vaidiktalklogo.webp',
+    name: 'AstroSolution',
+    url: 'https://AstroSolution.com',
+    logo: 'https://AstroSolution.com/astrosolution-logo.png',
     sameAs: [
-      'https://www.facebook.com/vaidiktalk',
-      'https://www.instagram.com/vaidiktalk',
-      'https://www.youtube.com/vaidiktalk'
+      'https://www.facebook.com/AstroSolution',
+      'https://www.instagram.com/AstroSolution',
+      'https://www.youtube.com/AstroSolution'
     ]
   };
 
   const webSiteLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'VaidikTalk',
-    url: 'https://vaidiktalk.com',
+    name: 'AstroSolution',
+    url: 'https://AstroSolution.com',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://vaidiktalk.com/search?q={search_term_string}',
+      target: 'https://AstroSolution.com/search?q={search_term_string}',
       'query-input': 'required name=search_term_string'
     }
   };
@@ -196,10 +196,9 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://vaidiktalk.com' },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://vaidiktalk.com/blog' },
-      { '@type': 'ListItem', position: 3, name: blog.title, item: `https://vaidiktalk.com/blog/${blog.slug}` },
-    ],
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://AstroSolution.com' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://AstroSolution.com/blog' },
+      { '@type': 'ListItem', position: 3, name: blog.title, item: `https://AstroSolution.com/blog/${blog.slug}` }],
   };
 
   const faqs: any[] = [];
@@ -260,7 +259,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </div>
               <div className="flex flex-col leading-none">
-                <span className="text-[#5c1420] font-semibold">{blog.authorName || 'VaidikTalk Editorial'}</span>
+                <span className="text-[#5c1420] font-semibold">{blog.authorName || 'AstroSolution Editorial'}</span>
                 {blog.authorCredentials && (
                   <span className="text-[10px] text-gray-850 font-normal mt-0.5">{blog.authorCredentials}</span>
                 )}
@@ -321,8 +320,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                   </div>
                   <h3 className="font-serif font-bold text-white text-[18px] mb-1.5 leading-tight">Need Personal Guidance?</h3>
                   <p className="text-white/90 text-[12px] mb-4 leading-relaxed">Connect with India's best Vedic Astrologers for accurate predictions and solutions.</p>
-                  <Link href="/astrologers-chat" className="block w-full bg-white text-[#d97706] hover:bg-gray-50 font-bold py-2.5 rounded-xl transition-all shadow-md text-[13px]">
-                    Chat with Astrologer
+                  <Link href="https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance" target="_blank" rel="noopener noreferrer" className="block w-full bg-white text-[#d97706] hover:bg-gray-50 font-bold py-2.5 rounded-xl transition-all shadow-md text-[13px]">WhatsApp Us
                   </Link>
                 </div>
               </div>

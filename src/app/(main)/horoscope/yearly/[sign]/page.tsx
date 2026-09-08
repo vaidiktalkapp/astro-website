@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = `horoscope/yearly/${rawSign.toLowerCase()}`;
   
   const defaultMeta = {
-    title: `${sign} Yearly Horoscope | VaidikTalk`,
+    title: `${sign} Yearly Horoscope | AstroSolution`,
     description: `Read your free yearly horoscope for ${sign}. Get personalized insights into love, career, and health based on precise Vedic astrology.`,
   };
 

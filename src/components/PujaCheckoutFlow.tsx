@@ -59,7 +59,7 @@ export function PujaCheckoutFlow({ pujaTitle, pujaSlug, defaultPrice, offeringsL
       name: formData.name,
       gotra: dontKnowGotra ? 'Unknown' : formData.gotra,
       phone: formData.phone,
-      email: 'customer@vaidiktalk.com',
+      email: 'customer@AstroSolution.com',
       location: `${formData.address}, ${formData.city}, ${formData.state} - ${formData.pincode}`,
       date: formData.date || new Date().toISOString().split('T')[0],
       message: formData.message + (offeringsTotal > 0 ? ` [Offerings: ${Object.keys(selectedOfferings).filter(k => selectedOfferings[k]).join(', ')}]` : '')

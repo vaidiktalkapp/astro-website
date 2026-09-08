@@ -75,7 +75,7 @@ export default function DeleteAccountPage() {
                   <Mail className="text-blue-600 shrink-0 mt-1" size={18} />
                   <div className="text-sm text-blue-800">
                     <strong>{t("delete_account.need_help")}</strong><br />
-{t("delete_account.you_can_email_us_at")}<a href="mailto:contact@vaidiktalk.com" className="underline font-medium">{t("delete_account.contact_vaidiktalk_com")}</a>{t("delete_account.with_the_subject_delete_accoun")}
+{t("delete_account.you_can_email_us_at")}<a href="mailto:contact@AstroSolution.com" className="underline font-medium">{t("delete_account.contact_AstroSolution_com")}</a>{t("delete_account.with_the_subject_delete_accoun")}
                 </div>
                 </div>
               </div>

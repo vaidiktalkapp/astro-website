@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'calendar';
   const defaultMeta = {
-    title: "Hindu Calendar | VaidikTalk",
+    title: "Hindu Calendar | AstroSolution",
     description: "View the detailed Hindu Vedic calendar for festivals, muhurats, and tithis.",
   };
 

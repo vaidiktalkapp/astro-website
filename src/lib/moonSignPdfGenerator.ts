@@ -123,7 +123,7 @@ export const downloadMoonSignPDF = async (data: MoonSignData) => {
     pdf.setTextColor(255, 255, 255);
     pdf.setFont('helvetica', 'bold');
     pdf.setFontSize(22);
-    pdf.text('VaidikTalk', margin, 20);
+    pdf.text('AstroSolution', margin, 20);
     
     pdf.setFontSize(10);
     pdf.setFont('helvetica', 'normal');
@@ -372,9 +372,9 @@ export const downloadMoonSignPDF = async (data: MoonSignData) => {
     pdf.setFont('helvetica', 'normal');
     pdf.setFontSize(8);
     pdf.setTextColor(...GRAY);
-    pdf.text('Copyright © 2026 VaidikTalk. All rights reserved.', pageWidth / 2, pageHeight - 10, { align: 'center' });
+    pdf.text('Copyright © 2026 AstroSolution. All rights reserved.', pageWidth / 2, pageHeight - 10, { align: 'center' });
 
-    pdf.save(`VaidikTalk_MoonSign_${data.input.name.replace(/\s+/g, '_')}.pdf`);
+    pdf.save(`AstroSolution_MoonSign_${data.input.name.replace(/\s+/g, '_')}.pdf`);
     toast.success('Moon report ready!', { id: toastId });
 } catch (error) {
     console.error('PDF error:', error);

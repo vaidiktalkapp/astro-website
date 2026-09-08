@@ -8,7 +8,7 @@ export const revalidate = 60; // ISR cache for 60 seconds
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'property-astrology';
   const defaultMeta = {
-    title: "Property & Vehicle Astrology | VaidikTalk",
+    title: "Property & Vehicle Astrology | AstroSolution",
     description: "Get astrological insights and remedies for property and vehicle purchase using Vedic astrology.",
   };
 
@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 async function fetchInitialData() {
   try {
-    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.vaidiktalk.com/api/v1';
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.AstroSolution.com/api/v1';
     
     const [astrosRes, aiAstrosRes, settingsRes] = await Promise.all([
       fetch(`${API_URL}/astrologers/search?limit=10&isOnline=true`, { next: { revalidate: 60 } }),

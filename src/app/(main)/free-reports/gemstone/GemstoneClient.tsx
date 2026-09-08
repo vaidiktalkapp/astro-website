@@ -314,7 +314,7 @@ export default function GemstonePage() {
   useEffect(() => {
     const fetchSettings = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.vaidiktalk.com'}/free-tool-settings`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.AstroSolution.com'}/free-tool-settings`);
         const data = await response.json();
         if (data) setCustomSettings(data);
       } catch (error) {
@@ -333,7 +333,7 @@ export default function GemstonePage() {
   const handleSubmit = async (formData: any) => {
     setLoading(true);
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.vaidiktalk.com'}/free-reports/gemstone`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.AstroSolution.com'}/free-reports/gemstone`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -574,7 +574,7 @@ export default function GemstonePage() {
                   {t("gemstone.need_personalized_guidance_on")}
                 </p>
                 <div className="flex flex-wrap justify-center gap-3">
-                  <Link href="/astrologers-chat" className="px-8 py-3.5 bg-white text-gray-900 border border-[#d6c89a] font-bold rounded-xl hover:bg-gray-50 transition-all flex items-center gap-2">
+                  <Link href="#" className="px-8 py-3.5 bg-white text-gray-900 border border-[#d6c89a] font-bold rounded-xl hover:bg-gray-50 transition-all flex items-center gap-2">
                     {t("gemstone.talk_to_expert_gemologist")}
                   </Link>
                 </div>

@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ sign: str
   const slug = `daily-horoscope/${sign.toLowerCase()}`;
   
   const defaultMeta = {
-    title: `Today's ${signName} Horoscope | VaidikTalk`,
-    description: `Read your daily ${signName} horoscope on VaidikTalk. Get deep Vedic astrological insights into your love, career, and health for today.`,
+    title: `Today's ${signName} Horoscope | AstroSolution`,
+    description: `Read your daily ${signName} horoscope on AstroSolution. Get deep Vedic astrological insights into your love, career, and health for today.`,
   };
 
   const seoData = await fetchPageSeo(slug);

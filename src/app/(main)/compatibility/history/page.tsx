@@ -42,7 +42,7 @@ export default function CompatibilityHistoryPage() {
     // Save the full item so input/result/report can all be restored
     compatibilityStorage.saveActiveData(item, type);
     // We set a flag in sessionStorage so the main page knows to load it
-    sessionStorage.setItem('vaidiktalk_compat_load', type);
+    sessionStorage.setItem('AstroSolution_compat_load', type);
     router.push('/compatibility');
   };
 

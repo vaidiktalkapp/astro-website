@@ -128,7 +128,7 @@ export default function PurchasePDFModal({
               </div>
               
               <Link
-                href="/wallet"
+                href="#"
                 className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-[15px] active:scale-[0.98]"
               >
                 Recharge Wallet
@@ -150,7 +150,7 @@ export default function PurchasePDFModal({
           )}
 
           <p className="text-center text-[10px] text-[#3a1216] mt-5 leading-tight">
-            Secure payment powered by VaidikTalk Wallet. <br /> 
+            Secure payment powered by AstroSolution Wallet. <br /> 
             Reports are available for lifetime in your history.
           </p>
         </div>

@@ -7,7 +7,7 @@ export async function GET() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VaidikTalk Support</title>
+    <title>AstroSolution Support</title>
     <style>
         body, html { 
             margin: 0; 
@@ -28,7 +28,7 @@ export async function GET() {
             widgetcode: "siq80a3bbe2c971736e0ef6d8515cf0b1079dbba0b03777d497302851d328cb1719",
             values: {},
             ready: function() {
-                console.log('✅ Zoho Ready for VaidikTalk Support');
+                console.log('✅ Zoho Ready for AstroSolution Support');
                 
                 // Auto-show chat
                 $zoho.salesiq.floatwindow.visible('show');

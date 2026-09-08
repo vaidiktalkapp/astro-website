@@ -25,7 +25,7 @@ export default function ManglikPage() {
     const handleSubmit = async (formData: any) => {
         setLoading(true);
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.vaidiktalk.com'}/free-reports/manglik`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.AstroSolution.com'}/free-reports/manglik`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)

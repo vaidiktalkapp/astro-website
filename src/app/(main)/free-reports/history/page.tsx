@@ -324,7 +324,7 @@ export default function ReportHistoryPage() {
                             <Link href="/free-reports" className="px-6 py-3 bg-[#b8962e] text-white font-bold rounded-xl hover:bg-[#7a6010] transition-all text-[14px] flex items-center gap-2">
                                 <Sparkles className="w-4 h-4" />{t("history.new_report")}
             </Link>
-                            <Link href="/astrologers-chat" className="px-6 py-3 bg-white text-gray-900 border border-[#d6c89a] font-bold rounded-xl hover:bg-gray-50 transition-all text-[14px]">
+                            <Link href="#" className="px-6 py-3 bg-white text-gray-900 border border-[#d6c89a] font-bold rounded-xl hover:bg-gray-50 transition-all text-[14px]">
 {t("history.consult_an_expert")}
             </Link>
                         </div>

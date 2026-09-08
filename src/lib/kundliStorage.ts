@@ -2,8 +2,8 @@
 
 import { historyApiService } from './historyApiService';
 
-const STORAGE_KEY = 'vaidiktalk_kundli_data';
-const HISTORY_KEY = 'vaidiktalk_kundli_history';
+const STORAGE_KEY = 'AstroSolution_kundli_data';
+const HISTORY_KEY = 'AstroSolution_kundli_history';
 
 export const kundliStorage = {
     saveData: async (data: any, isFromHistory: boolean = false) => {

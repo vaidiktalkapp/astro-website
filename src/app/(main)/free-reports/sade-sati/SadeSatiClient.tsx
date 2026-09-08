@@ -153,7 +153,7 @@ export default function SadeSatiPage() {
   useEffect(() => {
     const fetchSettings = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.vaidiktalk.com'}/free-tool-settings`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.AstroSolution.com'}/free-tool-settings`);
         const data = await response.json();
         if (data) setCustomSettings(data);
       } catch (error) {
@@ -172,7 +172,7 @@ export default function SadeSatiPage() {
   const handleSubmit = async (formData: any) => {
     setLoading(true);
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.vaidiktalk.com'}/free-reports/sade-sati`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.AstroSolution.com'}/free-reports/sade-sati`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -439,7 +439,7 @@ export default function SadeSatiPage() {
 
                         {/* CTA */}
                         <div className="flex flex-col items-center gap-6 pt-10 pb-6">
-                            <Link href="/astrologers-chat" className="inline-flex items-center gap-3 px-10 py-4 bg-[#b8962e] text-white font-bold rounded-2xl hover:bg-[#7a6010] transition-all shadow-xl group hover:scale-[1.02]">
+                            <Link href="#" className="inline-flex items-center gap-3 px-10 py-4 bg-[#b8962e] text-white font-bold rounded-2xl hover:bg-[#7a6010] transition-all shadow-xl group hover:scale-[1.02]">
 {t("sade_sati.discuss_report_with_consultant")}<Sparkles className="w-5 h-5 text-yellow-300 group-hover:rotate-12 transition-transform" />
                             </Link>
                         </div>

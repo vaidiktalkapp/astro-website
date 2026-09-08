@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'moon-signs';
   const defaultMeta = {
-    title: "12 Moon Signs in Vedic Astrology | VaidikTalk",
+    title: "12 Moon Signs in Vedic Astrology | AstroSolution",
     description: "Learn about the 12 Moon Signs (Rashis) in Vedic astrology. Discover your true inner nature, emotional state, and psychological profile.",
   };
 

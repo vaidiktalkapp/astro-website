@@ -55,7 +55,7 @@ export default function ContactUsPage() {
               Contact Us
             </h1>
             <p className="text-[16px] md:text-[17px] text-[#412a1e] font-medium leading-[1.6] mb-8 pr-4">
-              At Vaidik Talk, we believe in guiding you through every step of your spiritual journey. Whether you want to book a personalized puja, get a Kundali report, or seek astrological guidance, our team of experienced astrologers and Vedic experts is here to assist you.
+              At Astro Solution, we believe in guiding you through every step of your spiritual journey. Whether you want to book a personalized puja, get a Kundali report, or seek astrological guidance, our team of experienced astrologers and Vedic experts is here to assist you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="#contact-form" className="inline-flex justify-center items-center gap-2 bg-[#8a1c2a] text-white font-semibold text-[15.5px] px-8 py-3.5 rounded-xl shadow-md hover:bg-[#721522] transition-colors">
@@ -103,9 +103,9 @@ export default function ContactUsPage() {
                 <Target size={28} />
               </div>
               <div>
-                <h3 className="font-serif font-bold text-[#5c1420] text-[24px] mb-3">Why Contact Vaidik Talk?</h3>
+                <h3 className="font-serif font-bold text-[#5c1420] text-[24px] mb-3">Why Contact Astro Solution?</h3>
                 <p className="text-[15px] text-[#5e4339] leading-[1.8]">
-                  You can easily book pujas and rituals online from anywhere in the world. We also provide detailed Kundali, Vastu, Numerology, and Astrology reports tailored to your needs. Our expert astrologers are here to guide you in important areas of life such as marriage, career, finance, and health. With Vaidik Talk, you receive personalized solutions based on the wisdom of ancient Vedic knowledge.
+                  You can easily book pujas and rituals online from anywhere in the world. We also provide detailed Kundali, Vastu, Numerology, and Astrology reports tailored to your needs. Our expert astrologers are here to guide you in important areas of life such as marriage, career, finance, and health. With Astro Solution, you receive personalized solutions based on the wisdom of ancient Vedic knowledge.
                 </p>
               </div>
             </div>
@@ -182,7 +182,7 @@ export default function ContactUsPage() {
               <div className="w-full h-48 bg-[#4d131e] relative">
                 <img
                   src="/hero-banner.webp"
-                  alt="Contact Vaidik Talk"
+                  alt="Contact Astro Solution"
                   className="w-full h-full object-cover opacity-80 mix-blend-screen"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#5c1420] to-transparent"></div>
@@ -204,7 +204,7 @@ export default function ContactUsPage() {
                     <Mail className="text-[#d97706] mt-1 shrink-0" size={20} />
                     <div>
                       <div className="text-[12px] font-semibold text-[#f4ddbf] uppercase tracking-wider mb-1">Email Us</div>
-                      <div className="font-medium text-[15px] text-white">contact@vaidiktalk.com</div>
+                      <div className="font-medium text-[15px] text-white">contact@AstroSolution.com</div>
                     </div>
                   </div>
 
@@ -231,7 +231,7 @@ export default function ContactUsPage() {
                 <h3 className="font-serif font-bold text-[#5c1420] text-[20px]">Need Immediate Support?</h3>
               </div>
               <p className="text-[14.5px] text-[#5e4339] leading-relaxed mb-4">
-                If you need urgent guidance regarding a puja, gemstone order, or consultation, you can directly email us at <strong className="text-[#8a1c2a]">contact@vaidiktalk.com</strong>.
+                If you need urgent guidance regarding a puja, gemstone order, or consultation, you can directly email us at <strong className="text-[#8a1c2a]">contact@AstroSolution.com</strong>.
               </p>
               <p className="font-medium text-[#5c1420] italic text-sm">
                 We are always ready to help you in your spiritual journey.
@@ -288,7 +288,7 @@ export default function ContactUsPage() {
             {/* FAQ 4 */}
             <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-[#e8d1b3] hover:shadow-md transition-shadow">
               <div className="w-8 h-8 rounded-full bg-[#fdf0e0] text-[#d97706] flex items-center justify-center font-bold mb-4 font-serif">4</div>
-              <h4 className="font-serif font-bold text-[#8a1c2a] text-[18px] mb-3">Can Vaidik Talk help with Vastu or Numerology?</h4>
+              <h4 className="font-serif font-bold text-[#8a1c2a] text-[18px] mb-3">Can Astro Solution help with Vastu or Numerology?</h4>
               <p className="text-[#5e4339] text-[14.5px] leading-relaxed">
                 Yes, our certified experts offer Vastu and Numerology consultations for home, business, and personal solutions.
               </p>

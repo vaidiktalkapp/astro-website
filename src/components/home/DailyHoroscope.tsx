@@ -336,7 +336,7 @@ const DailyHoroscope = ({ initialDailyHoroscopes = [] }: { initialDailyHoroscope
                       Get my detailed horoscope
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                     </Link>
-                    <Link href="/astrologers-chat" className="border border-[#f0ddc0] text-[#412a1e] text-[14px] font-bold px-6 py-3.5 rounded-xl hover:bg-[#f5e6d3] transition-colors">
+                    <Link href="#" className="border border-[#f0ddc0] text-[#412a1e] text-[14px] font-bold px-6 py-3.5 rounded-xl hover:bg-[#f5e6d3] transition-colors">
                       Talk to a specialist
                     </Link>
                   </div>
@@ -392,7 +392,7 @@ const DailyHoroscope = ({ initialDailyHoroscopes = [] }: { initialDailyHoroscope
                   Get my detailed horoscope
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                 </Link>
-                <Link href="/astrologers-chat" className="border border-[#f0ddc0] text-[#412a1e] text-[14px] font-bold py-4 rounded-full hover:bg-[#f5e6d3] transition-colors w-full text-center">
+                <Link href="#" className="border border-[#f0ddc0] text-[#412a1e] text-[14px] font-bold py-4 rounded-full hover:bg-[#f5e6d3] transition-colors w-full text-center">
                   Talk to a specialist
                 </Link>
               </div>

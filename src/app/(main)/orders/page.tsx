@@ -400,7 +400,7 @@ Kundali & Reports
                       <div className="flex items-start gap-4">
                         <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-200 shrink-0">
                           <img
-                    src={session.astrologerId?.profilePicture || session.astrologerId?.image || '/vaidiktalklogo.webp'}
+                    src={session.astrologerId?.profilePicture || session.astrologerId?.image || '/astrosolution-logo.png'}
                     alt={session.astrologerId.name}
                     className="w-full h-full object-cover" />
                   
@@ -691,7 +691,7 @@ function EmptyState({ icon, title, description, ctaText, ctaLink }: {icon: React
       <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
       <p className="text-gray-850 mb-8 max-w-md mx-auto">{description}</p>
       <Link
-        href={ctaLink || "/astrologers-chat"}
+        href={ctaLink || "#"}
         className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-black font-bold px-8 py-3 rounded-full transition-colors shadow-lg hover:shadow-xl">
 {ctaText || t("orders.browse_astrologers")}
 

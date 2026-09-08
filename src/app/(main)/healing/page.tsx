@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'healing';
   const defaultMeta = {
-    title: "Healing Services | VaidikTalk",
+    title: "Healing Services | AstroSolution",
     description: "Experience divine healing services, reiki, chakra balancing, and spiritual healing to rejuvenate your mind, body, and soul.",
   };
 

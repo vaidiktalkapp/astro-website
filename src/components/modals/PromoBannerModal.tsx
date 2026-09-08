@@ -77,7 +77,7 @@ export default function PromoBannerModal() {
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className={`absolute top-4 right-4 z-30 p-2 rounded-full ${hasImage && !hasText ? 'bg-black/40 hover:bg-black/60 text-white' : 'bg-black/10 hover:bg-black/20 text-white'} transition-all focus:outline-none`}
+          className="absolute top-4 right-4 z-30 p-2.5 rounded-full bg-black/40 hover:bg-black/70 text-white backdrop-blur-sm transition-all focus:outline-none shadow-lg border border-white/10"
           aria-label="Close Promo"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -85,34 +85,23 @@ export default function PromoBannerModal() {
           </svg>
         </button>
 
-        {/* Top Header Section - only show if title exists */}
-        {hasText && (
-          <div className="bg-gradient-to-b from-yellow-400 via-amber-500 to-orange-500 pt-6 pb-5 text-center text-white relative flex flex-col items-center gap-3">
-            {/* Subtle cosmic stars background */}
-            <div className="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]" />
-
-            {/* Divine Symbol Badge Inside Header (Never Cut Off!) */}
-            <div className="w-14 h-14 rounded-full bg-white p-1 shadow-lg shadow-amber-600/30 flex items-center justify-center relative z-10 transform hover:scale-105 transition-transform duration-200">
-              <div className="w-full h-full rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white text-2xl font-black drop-shadow-sm animate-pulse">
-                🕉️
-              </div>
-            </div>
-
-            <h3 className="text-2xl font-black uppercase tracking-wide px-6 drop-shadow-md relative z-10">
-              {data.title}
-            </h3>
-          </div>
-        )}
+        {/* Top Header Section - Premium Image */}
+        <div className="w-full h-36 sm:h-44 relative bg-gray-900 overflow-hidden">
+          <img
+            src="/images/promo-header.jpg"
+            alt="Astro Solution Premium"
+            className="w-full h-full object-cover opacity-90"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        </div>
 
         {/* Body Section */}
-        <div className={`text-center bg-white relative ${hasImage && !hasText ? 'p-0' : 'p-6'}`}>
+        <div className={`text-center bg-white relative ${hasImage && !hasText ? 'p-0' : 'p-4 sm:p-6'}`}>
 
           {/* Dynamic Image Banner Render */}
           {hasImage ? (
             <div
-              onClick={() => data.redirectRoute && handleAction(data.redirectRoute)}
-              className={`overflow-hidden ${hasText ? 'my-4 rounded-2xl border border-gray-150 shadow-sm' : 'w-full h-auto'} ${data.redirectRoute ? 'cursor-pointer hover:opacity-95 transition-opacity duration-200' : ''
-                }`}
+              className={`overflow-hidden ${hasText ? 'my-4 rounded-2xl border border-gray-150 shadow-sm' : 'w-full h-auto'}`}
             >
               <img
                 src={data.promoImage}
@@ -120,46 +109,20 @@ export default function PromoBannerModal() {
                 className="w-full h-auto object-contain max-h-[460px] mx-auto block"
               />
             </div>
-          ) : (
-            /* Overlapping Astrologer profile pictures with active indicators */
-            data.astrologers && data.astrologers.length > 0 && (
-              <div className="flex flex-col items-center my-4">
-                <div className="flex justify-center items-center -space-x-4 mb-3">
-                  {data.astrologers.map((astro, idx) => (
-                    <div key={astro._id} className="relative z-10 hover:z-20 transition-all transform hover:scale-105">
-                      <div className="w-20 h-20 rounded-full border-4 border-white shadow-lg overflow-hidden bg-gray-50 flex items-center justify-center">
-                        <img
-                          src={astro.profilePicture}
-                          alt={astro.name}
-                          className="w-full h-full object-cover"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).src = 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
-                          }}
-                        />
-                      </div>
-                      {/* Glowing active indicator dot */}
-                      <span className="absolute bottom-1 right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full shadow-md animate-ping" />
-                      <span className="absolute bottom-1 right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full shadow-md" />
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs text-green-600 font-bold tracking-wider uppercase flex items-center gap-1.5 animate-pulse">
-                  <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
-                  Live Expert Astrologers Online
-                </p>
-              </div>
-            )
-          )}
+          ) : null}
 
-          {/* Wrapper for text content when title/buttons are present */}
-          {(hasSubtitle || (data.redirectRoute && !hasImage) || data.showCall || data.showChat) && (
-            <div className={hasImage && !hasText ? 'p-6 pt-2' : ''}>
-              {/* Subtitle */}
-              {hasSubtitle && (
-                <p className="text-gray-850 text-lg font-bold px-4 mb-6 leading-relaxed">
-                  {data.subtitle}
-                </p>
-              )}
+          {/* Wrapper for text content */}
+          <div className="pt-2 pb-2 text-center bg-white">
+            
+            {/* Title */}
+            <h3 className="text-[1.05rem] sm:text-xl md:text-2xl font-black tracking-normal sm:tracking-wide text-[#5c1420] mb-2 leading-snug uppercase">
+              Welcome to Astro Solution!
+            </h3>
+
+            {/* Subtitle */}
+            <p className="text-gray-600 text-sm font-medium px-2 md:px-6 mb-5 leading-relaxed mx-auto">
+              Connect instantly on WhatsApp for personalized guidance, horoscopes, and puja bookings.
+            </p>
 
               {/* Optional Redirect Badge under Subtitle */}
               {data.redirectRoute && !hasImage && (
@@ -174,36 +137,23 @@ export default function PromoBannerModal() {
               )}
 
               {/* Action buttons */}
-              <div className="flex gap-4 px-2">
-                {data.showCall && (
-                  <button
-                    onClick={() => handleAction(data.redirectRoute || '/astrologers-call')}
-                    className="flex-1 bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-extrabold py-3.5 px-6 rounded-2xl shadow-lg shadow-orange-100 hover:shadow-orange-200 transition-all duration-200 transform active:scale-95 text-center flex items-center justify-center gap-2 cursor-pointer"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 00.906.717H9c.17 0 .34-.02.5-.058L10.3 5.4a2 2 0 012.3 2.3l-.3 1.35a2 2 0 01-.5 1.058l-1.9 1.9a11.9 11.9 0 005.15 5.15l1.9-1.9a2 2 0 011.058-.5l1.35-.3a2 2 0 012.3 2.3l-.3 1.35c-.038.16-.058.33-.058.5V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    {data.callText}
-                  </button>
-                )}
-
-                {data.showChat && (
-                  <button
-                    onClick={() => handleAction(data.redirectRoute || '/astrologers-chat')}
-                    className="flex-1 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white font-extrabold py-3.5 px-6 rounded-2xl shadow-lg shadow-yellow-100 hover:shadow-yellow-200 transition-all duration-200 transform active:scale-95 text-center flex items-center justify-center gap-2 cursor-pointer"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                    </svg>
-                    {data.chatText}
-                  </button>
-                )}
+              <div className="flex justify-center px-4 w-full">
+                <a
+                  href="https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-4/5 md:w-3/4 bg-gradient-to-r from-[#25D366] to-[#1ebe5d] hover:from-[#1ebe5d] hover:to-[#12a149] text-white font-black py-3 px-6 rounded-full shadow-[0_8px_20px_rgba(37,211,102,0.3)] hover:shadow-[0_12px_24px_rgba(37,211,102,0.4)] transition-all duration-300 transform hover:-translate-y-1 active:scale-95 text-center flex items-center justify-center gap-3 text-[17px] tracking-wide"
+                >
+                  <svg className="w-6 h-6 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.857L.057 23.882l6.224-1.633A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.007-1.374l-.36-.213-3.695.969.987-3.607-.234-.371A9.818 9.818 0 1 1 12 21.818z"/>
+                  </svg>
+                  Chat on WhatsApp
+                </a>
               </div>
             </div>
-          )}
-
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
 }

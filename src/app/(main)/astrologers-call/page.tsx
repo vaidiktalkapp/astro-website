@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'astrologers-call';
   const defaultMeta = {
-    title: "Call Astrologers Online | Talk to Astrologers | VaidikTalk",
+    title: "Call Astrologers Online | Talk to Astrologers | AstroSolution",
     description: "Talk to the best Vedic astrologers online on call. Get instant guidance on love, career, marriage, and finance.",
   };
 

@@ -27,7 +27,7 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
     <div 
       className="relative w-full aspect-[4/3] overflow-hidden rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.10)] group bg-[#3a1216]"
       style={{
-        backgroundImage: 'url(/vaidiktalklogo.webp)',
+        backgroundImage: 'url(/astrosolution-logo.png)',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: '150px'
@@ -135,11 +135,11 @@ const MobileStickyBar = ({ price, slug, timerKey }: { price: number, slug: strin
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
           <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 border border-gray-200">
-            <img src="/vaidiktalklogo.webp" alt="Vaidik Talk" className="w-full h-full object-contain" />
+            <img src="/astrosolution-logo.png" alt="Astro Solution" className="w-full h-full object-contain" />
           </div>
           <div>
             <div className="text-[10px] text-gray-500 font-medium leading-tight">Guided by</div>
-            <div className="text-[12px] font-bold text-[#374151] leading-tight">Vaidik Talk</div>
+            <div className="text-[12px] font-bold text-[#374151] leading-tight">Astro Solution</div>
           </div>
         </div>
         <Link href={`/book-a-puja/${slug}/checkout`} className="bg-[#ea580c] text-white px-8 py-2.5 rounded-xl font-bold text-[15px] active:scale-95 transition-transform shrink-0">
@@ -167,10 +167,9 @@ export default function DynamicPujaClient({ initialPuja, slug }: { initialPuja: 
   const origPrice = Math.round(price * 1.28);
 
   const defaultTestimonials = [
-    { name: 'Priya Sharma', city: 'New Delhi', review: 'The puja was absolutely divine. The pandit was deeply knowledgeable and performed every ritual with precision. I joined via live video and felt immense spiritual energy. The prasad arrived beautifully packed within 4 days. Highly recommend Vaidik Talk.', initial: 'P' },
+    { name: 'Priya Sharma', city: 'New Delhi', review: 'The puja was absolutely divine. The pandit was deeply knowledgeable and performed every ritual with precision. I joined via live video and felt immense spiritual energy. The prasad arrived beautifully packed within 4 days. Highly recommend Astro Solution.', initial: 'P' },
     { name: 'Rajesh Gupta', city: 'Mumbai', review: 'Skeptical at first, but this completely changed my view of online pujas. The sankalp was taken in my name and gotra. I received HD photos the same evening. The whole process was seamless and the results were visible within a week. Truly professional.', initial: 'R' },
-    { name: 'Anita Verma', city: 'Bengaluru', review: "Booked this puja for my mother's health. The muhurat was perfectly auspicious, the pandit spent over 2 hours performing every ritual with dedication. The difference was palpable. Will always trust Vaidik Talk for my spiritual needs.", initial: 'A' },
-  ];
+    { name: 'Anita Verma', city: 'Bengaluru', review: "Booked this puja for my mother's health. The muhurat was perfectly auspicious, the pandit spent over 2 hours performing every ritual with dedication. The difference was palpable. Will always trust Astro Solution for my spiritual needs.", initial: 'A' }];
   const testimonials = puja?.testimonials?.length > 0 ? puja.testimonials : defaultTestimonials;
 
   const steps = [
@@ -178,8 +177,7 @@ export default function DynamicPujaClient({ initialPuja, slug }: { initialPuja: 
     { title: "Enter your sankalp details", desc: "Add your Name, Gotra & intention. The pandit will personalize the Sankalp." },
     { title: "Complete secure payment", desc: "Pay via UPI, cards, net banking — all methods accepted." },
     { title: "Puja performed by verified Pandits", desc: "A verified pandit performs the puja with your sankalp on the chosen date." },
-    { title: "Receive updates & prasad", desc: "Get photos, videos on WhatsApp and prasad delivered to your door." },
-  ];
+    { title: "Receive updates & prasad", desc: "Get photos, videos on WhatsApp and prasad delivered to your door." }];
 
   const SingleIcon = () => <img src="/pooja/single-icon.png" alt="Single Devotee" className="w-full h-full object-cover rounded-lg" />;
   const CoupleIcon = () => <img src="/pooja/couple-icon.png" alt="Couple Devotees" className="w-full h-full object-cover rounded-lg" />;
@@ -218,15 +216,13 @@ export default function DynamicPujaClient({ initialPuja, slug }: { initialPuja: 
       perks: ["Live updates on WhatsApp", "HD sankalp video + photos", "Prasad couriered to your door"],
       price: Math.round(price * 2.8),
       orig: Math.round(price * 3.8),
-    },
-  ];
+    }];
 
   const defaultFaqs = [
     { q: `Who should book the ${puja?.title || 'Puja'}?`, a: `Anyone seeking divine blessings, peace, and spiritual upliftment should book this puja. It is beneficial for removing obstacles and inviting positive energies.` },
     { q: "How soon can I expect results?", a: "Many devotees report feeling a shift in positive energy and mental clarity shortly after the puja. Tangible results depend on individual karmic factors but are often noticed within a few weeks." },
     { q: "Is the puja performed using my name and gotra?", a: "Yes. A personal Sankalp is taken in your name, gotra, and specific intention before the ritual begins, making the puja spiritually personalized to your goal." },
-    { q: "Will I receive Prasad after the Puja?", a: "Yes, blessed prasad along with energized items (if applicable to the package) will be securely packed and couriered to your registered address." },
-  ];
+    { q: "Will I receive Prasad after the Puja?", a: "Yes, blessed prasad along with energized items (if applicable to the package) will be securely packed and couriered to your registered address." }];
   const faqs = puja?.faqs?.length > 0 ? puja.faqs : defaultFaqs;
 
   const defaultBenefits = [
@@ -452,15 +448,15 @@ export default function DynamicPujaClient({ initialPuja, slug }: { initialPuja: 
           </div>
         </section>
 
-        {/* ── WHY VAIDIK TALK ── */}
+        {/* ── WHY Astro Solution ── */}
         <section className="py-8 border-t border-[#e5e0d8]">
-          <h2 className="text-[25px] font-bold text-[#3a1216] mb-3">Why Vaidik Talk?</h2>
+          <h2 className="text-[25px] font-bold text-[#3a1216] mb-3">Why Astro Solution?</h2>
           <p className="text-[#3a1216] m-0 mb-4 text-[16px] leading-[1.8]">
             {puja?.whyChooseUs && puja.whyChooseUs.length > 0 
               ? (Array.isArray(puja.whyChooseUs) 
                   ? puja.whyChooseUs.join(' ') 
                   : (typeof puja.whyChooseUs === 'string' ? puja.whyChooseUs.replace(/\n/g, ' ') : puja.whyChooseUs))
-              : "Vaidik Talk is a dedicated puja platform connecting professionals with verified Pandits for authentic Vedic rituals. Every puja is performed with a real Sankalp taken in your name and intention — so you can receive divine blessings from anywhere in India or abroad."}
+              : "Astro Solution is a dedicated puja platform connecting professionals with verified Pandits for authentic Vedic rituals. Every puja is performed with a real Sankalp taken in your name and intention — so you can receive divine blessings from anywhere in India or abroad."}
           </p>
           <p className="font-bold text-[#9c5c0f] m-0">🛡 Guided by 40+ Years of Combined Vedic Expertise</p>
         </section>

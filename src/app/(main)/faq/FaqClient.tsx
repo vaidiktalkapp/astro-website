@@ -164,8 +164,7 @@ export default function FaqPage() {
               <Link href="/contact-us" className="bg-[#d97706] text-white px-8 py-3.5 rounded-xl font-bold hover:bg-[#b46004] transition-colors shadow-md">
                 Contact Support
               </Link>
-              <Link href="/astrologers-chat" className="bg-white border-2 border-[#5c1420] text-[#5c1420] px-8 py-3.5 rounded-xl font-bold hover:bg-[#5c1420] hover:text-white transition-colors">
-                Chat with Astrologer
+              <Link href="https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance" target="_blank" rel="noopener noreferrer" className="bg-white border-2 border-[#5c1420] text-[#5c1420] px-8 py-3.5 rounded-xl font-bold hover:bg-[#5c1420] hover:text-white transition-colors">WhatsApp Us
               </Link>
             </div>
           </div>

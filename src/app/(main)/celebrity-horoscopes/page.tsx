@@ -6,7 +6,7 @@ import PageSeoProvider from '@/components/shared/PageSeoProvider';
 export async function generateMetadata(): Promise<Metadata> {
   const slug = 'celebrity-horoscopes';
   const defaultMeta = {
-    title: "Celebrity Horoscopes & Kundli | VaidikTalk",
+    title: "Celebrity Horoscopes & Kundli | AstroSolution",
     description: "Explore birth charts and astrological analysis of famous celebrities.",
   };
 

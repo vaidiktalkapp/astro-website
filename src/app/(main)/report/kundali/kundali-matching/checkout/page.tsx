@@ -107,7 +107,7 @@ export default function CheckoutPage() {
       pob: boyData.pob,
       country: boyData.country || 'India',
       state: boyData.state,
-      email: boyData.email || 'customer@vaidiktalk.com',
+      email: boyData.email || 'customer@AstroSolution.com',
       phone: boyData.phone,
       language: language || 'en',
       partnerDetails: {
