@@ -320,7 +320,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                   </div>
                   <h3 className="font-serif font-bold text-white text-[18px] mb-1.5 leading-tight">Need Personal Guidance?</h3>
                   <p className="text-white/90 text-[12px] mb-4 leading-relaxed">Connect with India's best Vedic Astrologers for accurate predictions and solutions.</p>
-                  <Link href="https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance" target="_blank" rel="noopener noreferrer" className="block w-full bg-white text-[#d97706] hover:bg-gray-50 font-bold py-2.5 rounded-xl transition-all shadow-md text-[13px]">WhatsApp Us
+                  <Link href="https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance" target="_blank" rel="noopener noreferrer" className="block w-full bg-white text-[#d97706] hover:bg-gray-50 font-bold py-2.5 rounded-xl transition-all shadow-md text-[13px]">WhatsApp Us
                   </Link>
                 </div>
               </div>

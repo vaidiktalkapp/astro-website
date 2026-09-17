@@ -165,40 +165,40 @@ export default function ChildAstrologyClient({
       title: 'Delay in Childbirth (Progeny Issues)',
       content: 'Facing unexplained delays or medical complications in conception? We analyze your 5th house and Jupiter (Guru) to identify astrological blocks and provide precise Vedic remedies for successful conception.',
       icon: <HeartHandshake className="w-6 h-6 text-[#ee6c1e]" />,
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Child\'s Health & Well-being',
       content: 'Constantly worried about your child falling sick or facing recurring health issues? A weak Moon or malefic influences on the 5th house can be the root cause. Discover protective rituals for your child.',
       icon: <ShieldAlert className="w-6 h-6 text-[#d97706]" />,
       tool: { name: 'Free Kundli', link: '/kundli' },
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Behavioral Issues in Children',
       content: 'Is your child extremely stubborn, aggressive, or struggling with focus? Malefic Rahu or Mars can cause hyperactivity. Simple astrological remedies can bring peace and improve their nature.',
       icon: <Sparkles className="w-6 h-6 text-[#4f46e5]" />,
-      tool: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' },
+      tool: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' },
       report: { name: 'Detailed Kundli', link: '/kundli' }
     },
     {
       title: 'Family Disputes & Disharmony',
       content: 'Constant arguments between family members or joint family issues? Afflictions to the 2nd and 4th houses destroy domestic peace. Re-establish harmony with targeted Vastu and astrological solutions.',
       icon: <Sun className="w-6 h-6 text-[#e11d48]" />,
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Adoption Astrology',
       content: 'Planning to adopt? Astrology can guide you on the most favorable time to bring a child home and ensure a smooth, loving bond between the child and the family.',
       icon: <CheckCircle2 className="w-6 h-6 text-[#ee6c1e]" />,
-      tool: { name: 'Consult Expert', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' },
+      tool: { name: 'Consult Expert', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' },
       report: { name: 'Detailed Kundli', link: '/kundli' }
     },
     {
       title: 'Parent-Child Relationship',
       content: 'Experiencing a disconnect or frequent clashes with your teenager? Understanding their chart allows you to parent them according to their astrological temperament, rebuilding your bond.',
       icon: <Star className="w-6 h-6 text-[#ea580c]" />,
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     }
   ];
 

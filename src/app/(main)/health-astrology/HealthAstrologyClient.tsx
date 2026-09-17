@@ -165,14 +165,14 @@ export default function HealthAstrologyClient({
       title: 'Chronic & Unexplained Illness',
       content: 'Suffering from an illness that doctors can\'t diagnose? We analyze your 6th house and Rahu/Ketu placements to uncover the astrological root cause.',
       icon: <ShieldAlert className="w-6 h-6 text-[#e11d48]" />,
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Mental Health & Anxiety',
       content: 'Stress, depression, and insomnia are deeply linked to an afflicted Moon and Mercury. We provide powerful remedies to calm your mind and restore peace.',
       icon: <Sparkles className="w-6 h-6 text-[#d97706]" />,
       tool: { name: 'Free Kundli', link: '/kundli' },
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Surgery & Accident Timing',
@@ -183,20 +183,20 @@ export default function HealthAstrologyClient({
       title: 'Boosting Vitality & Immunity',
       content: 'A weak Sun in your chart lowers immunity and energy. We suggest specific gemstones (like Ruby) and mantras to supercharge your vitality.',
       icon: <Sun className="w-6 h-6 text-[#e11d48]" />,
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Pregnancy & Childbirth Issues',
       content: 'The 5th house governs progeny. If you are facing delays or complications, analyzing Jupiter and the 5th lord can provide precise remedies for a safe delivery.',
       icon: <HeartHandshake className="w-6 h-6 text-[#059669]" />,
-      tool: { name: 'Consult Expert', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' },
+      tool: { name: 'Consult Expert', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' },
       report: { name: 'Detailed Kundli', link: '/kundli' }
     },
     {
       title: 'Healing Malefic Dashas',
       content: 'Going through a harsh Shani Sade Sati or Rahu Mahadasha? These periods bring intense physical suffering. Proper Vedic Pujas can significantly reduce their impact.',
       icon: <Star className="w-6 h-6 text-[#ea580c]" />,
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     }
   ];
 

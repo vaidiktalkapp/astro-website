@@ -165,7 +165,7 @@ export default function LoveCompatibilityClient({
       title: 'When Will I Find Love?',
       content: 'The 7th house and Venus transit determine when love enters your life. We analyze your Dasha sequence to predict the exact window when your soulmate appears.',
       icon: <Heart className="w-6 h-6 text-[#e11d48]" />,
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Love Marriage vs Arranged',

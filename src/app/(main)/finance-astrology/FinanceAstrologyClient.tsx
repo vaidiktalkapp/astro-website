@@ -165,7 +165,7 @@ export default function FinanceAstrologyClient({
       title: 'Business Loss & Debt',
       content: 'Struggling with continuous business losses or trapped in debt? We analyze your 6th and 12th houses to identify financial leakages and suggest powerful remedies for recovery.',
       icon: <ShieldAlert className="w-6 h-6 text-[#e11d48]" />,
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Wealth Accumulation',

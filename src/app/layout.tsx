@@ -26,6 +26,10 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: 'Vaidik Astrology',
   description: 'Chat with expert astrologers',
+  icons: {
+    icon: '/astrosolution-logo.png',
+    apple: '/astrosolution-logo.png',
+  },
 };
 
 export default function RootLayout({
@@ -39,7 +43,7 @@ export default function RootLayout({
         {/* ❌ Hataya: render-blocking external Google Fonts link */}
         {/* ✅ next/font handles Inter + Playfair automatically */}
         {/* Meta Pixel Code */}
-        <Script id="meta-pixel" strategy="afterInteractive">
+        {/* <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -52,7 +56,7 @@ export default function RootLayout({
             fbq('init', '1744073886916354');
             fbq('track', 'PageView');
           `}
-        </Script>
+        </Script> */}
         {/* End Meta Pixel Code */}
       </head>
       <body className={inter.className}>

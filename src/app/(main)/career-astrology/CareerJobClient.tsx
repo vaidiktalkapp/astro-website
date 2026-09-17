@@ -165,7 +165,7 @@ export default function CareerJobClient({
       title: 'Job Delay or Unemployment',
       content: 'If you are struggling to find a job, the 10th house and Saturn (Karma karaka) often hold the reason. We analyze planetary transits to identify when a job offer is likely.',
       icon: <CheckCircle2 className="w-6 h-6 text-[#059669]" />,
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Promotion & Increment',

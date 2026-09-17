@@ -121,7 +121,7 @@ export default function TermsAndConditions() {
             <p className="mb-1"><strong>Registered Address:</strong> 801, 8th Floor, Unitech Cyber Park, Tower B, Sector 39, Gurugram, Haryana 122003</p>
             <p className="mb-1"><strong>CIN:</strong> U72900HR2021PTC098734</p>
             <p className="mb-1"><strong>Support Email:</strong> <a href="mailto:contact@AstroSolution.com" className="text-[#ee6c1e] font-bold underline hover:text-[#8a1c2a]">contact@AstroSolution.com</a></p>
-            <p className="mb-0"><strong>Support Phone:</strong> +91 98104 67823</p>
+            <p className="mb-0"><strong>Support Phone:</strong> +91 98105 59439</p>
           </div>
 
           <p className="text-sm text-gray-850 mt-10 text-center border-t border-[#e8d8c0] pt-6">

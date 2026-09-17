@@ -22,7 +22,7 @@ const DEFAULT_BANNER = [
     button2Text: "Book a Puja",
     button2Link: "/book-a-puja",
     button3Text: "WhatsApp Us",
-    button3Link: "https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance"
+    button3Link: "https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance"
   },
   {
     _id: 'banner2',
@@ -41,7 +41,7 @@ const DEFAULT_BANNER = [
     button2Text: "Today's Panchang",
     button2Link: "/panchang",
     button3Text: "WhatsApp Us",
-    button3Link: "https://wa.me/919810467823?text=Hello%2C%20I%20need%20guidance"
+    button3Link: "https://wa.me/919810559439?text=Hello%2C%20I%20need%20guidance"
   }
 ];
 
@@ -136,11 +136,11 @@ const HeroBanner = ({ initialSettings, initialBanners = [] }: { initialSettings?
   const displaySubheading = currentBanner.subheading || heroText.subheading;
 
   const btn1Text = currentBanner.button1Text || "WhatsApp Us";
-  const btn1Link = currentBanner.button1Link || "https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance";
+  const btn1Link = currentBanner.button1Link || "https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance";
   const btn2Text = currentBanner.button2Text || "Book a Puja";
   const btn2Link = currentBanner.button2Link || "/book-a-puja";
   const btn3Text = currentBanner.button3Text || "Call Us Now";
-  const btn3Link = currentBanner.button3Link || "tel:+919810467823";
+  const btn3Link = currentBanner.button3Link || "tel:+919810559439";
 
   // Only animate the text if the text actually changes
   const textKey = `${displayBadgeText}|${displayHeadingPrefix}|${displayHeadingHighlight}|${displayHeadingSuffix}|${displaySubheading}|${btn1Text}|${btn1Link}|${btn2Text}|${btn2Link}|${btn3Text}|${btn3Link}`;

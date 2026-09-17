@@ -174,7 +174,7 @@ export default function MarriageRelationshipClient({
       title: 'Marriage Delay',
       content: 'If proposals keep falling through, the 7th house and current Mahadasha often hold the reason. We analyse planetary transits to identify when marriage is likely.',
       icon: <Hourglass className="w-6 h-6 text-[#d97706]" />,
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Premium Kundali Matching',

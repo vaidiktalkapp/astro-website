@@ -139,7 +139,7 @@ export default function PromoBannerModal() {
               {/* Action buttons */}
               <div className="flex justify-center px-4 w-full">
                 <a
-                  href="https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance"
+                  href="https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-4/5 md:w-3/4 bg-gradient-to-r from-[#25D366] to-[#1ebe5d] hover:from-[#1ebe5d] hover:to-[#12a149] text-white font-black py-3 px-6 rounded-full shadow-[0_8px_20px_rgba(37,211,102,0.3)] hover:shadow-[0_12px_24px_rgba(37,211,102,0.4)] transition-all duration-300 transform hover:-translate-y-1 active:scale-95 text-center flex items-center justify-center gap-3 text-[17px] tracking-wide"

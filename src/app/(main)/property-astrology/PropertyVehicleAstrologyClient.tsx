@@ -137,7 +137,7 @@ export default function PropertyVehicleAstrologyClient({
       title: 'Delays in Buying Property',
       content: 'Struggling to buy your dream house? A weak 4th house or afflicted Mars can cause endless delays. We analyze your Dasha to find the exact time you will own property.',
       icon: <ShieldAlert className="w-6 h-6 text-[#e11d48]" />,
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Ancestral Property Disputes',
@@ -150,7 +150,7 @@ export default function PropertyVehicleAstrologyClient({
       title: 'Vehicle Accidents (Vahan Dosh)',
       content: 'Facing frequent car accidents or damage? This is a classic sign of Vahan Dosh caused by afflicted Venus or Rahu. Discover specific protective rituals before buying a vehicle.',
       icon: <HeartHandshake className="w-6 h-6 text-[#4f46e5]" />,
-      tool: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' },
+      tool: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' },
       report: { name: 'Detailed Kundli', link: '/kundli' }
     },
     {

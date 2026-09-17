@@ -165,20 +165,20 @@ export default function EducationAstrologyClient({
       title: 'Lack of Concentration & Focus',
       content: 'Struggling to sit and study for long hours? A weak Mercury or afflicted Moon often causes a wandering mind. We provide specific remedies to boost retention and focus.',
       icon: <ShieldAlert className="w-6 h-6 text-[#e11d48]" />,
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Choosing the Right Stream',
       content: 'Confused about which subjects or career path to take? By analyzing your 5th and 10th houses, we help you align your education with your natural planetary strengths.',
       icon: <Sparkles className="w-6 h-6 text-[#d97706]" />,
       tool: { name: 'Free Kundli', link: '/kundli' },
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Clearing Competitive Exams',
       content: 'Failing exams despite hard work? Your 6th house governs competitions. We predict the best time for success and suggest rituals to overcome academic hurdles.',
       icon: <CheckCircle2 className="w-6 h-6 text-[#4f46e5]" />,
-      tool: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' },
+      tool: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' },
       report: { name: 'Detailed Kundli', link: '/kundli' }
 
     },
@@ -186,20 +186,20 @@ export default function EducationAstrologyClient({
       title: 'Studying Abroad (Foreign Education)',
       content: 'Facing visa rejections or delays in going abroad? We check your 9th and 12th houses for foreign education yogas and provide precise remedies to remove blocks.',
       icon: <Sun className="w-6 h-6 text-[#e11d48]" />,
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     },
     {
       title: 'Exam Anxiety & Stress',
       content: 'Experiencing extreme fear before exams? Strengthening your Moon can calm your nerves and build confidence to perform your best under pressure.',
       icon: <HeartHandshake className="w-6 h-6 text-[#ee6c1e]" />,
-      tool: { name: 'Consult Expert', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' },
+      tool: { name: 'Consult Expert', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' },
       report: { name: 'Detailed Kundli', link: '/kundli' }
     },
     {
       title: 'Breaks in Education',
       content: 'Sudden loss of interest or forced gaps in studies? This usually happens during malefic Rahu or Saturn dashas. Vedic pujas can restart your educational journey.',
       icon: <Star className="w-6 h-6 text-[#ea580c]" />,
-      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810467823?text=Hello%2C%20I%20need%20astrology%20guidance' }
+      report: { name: 'WhatsApp Us', link: 'https://wa.me/919810559439?text=Hello%2C%20I%20need%20astrology%20guidance' }
     }
   ];
 
