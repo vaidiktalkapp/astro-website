@@ -486,7 +486,7 @@ export const FALLBACK_MENUS = [
     "isActive": true,
     "order": 5,
     "title": "Consult an Astrologer",
-    "url": "/astrologers-chat",
+    "url": "#",
     "icon": ""
   },
   {
