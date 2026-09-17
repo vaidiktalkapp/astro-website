@@ -264,15 +264,15 @@ export default function PlanetsPage() {
                     </div>
                     <div className="space-y-2.5">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{t("planets.sign")}</span>
+                        <span className="text-[10px] font-bold text-[#8a7258] uppercase tracking-widest">{t("planets.sign")}</span>
                         <span className="text-[13px] font-bold text-[#3a1216]">{planet.sign}</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{t("planets.degree")}</span>
+                        <span className="text-[10px] font-bold text-[#8a7258] uppercase tracking-widest">{t("planets.degree")}</span>
                         <span className="text-[13px] font-bold text-[#3a1216]">{planet.degree}</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{t("planets.house")}</span>
+                        <span className="text-[10px] font-bold text-[#8a7258] uppercase tracking-widest">{t("planets.house")}</span>
                         <span className="text-[13px] font-bold text-[#3a1216]">{planet.house}H</span>
                       </div>
                     </div>
