@@ -528,7 +528,7 @@ export default function HomePage({
               </div>
             </div>
 
-            <Link href="/transits" className="mt-5 block w-full border border-[#8a1c2a] text-[#8a1c2a] text-center text-[12px] font-semibold py-2.5 rounded-lg hover:bg-[#8a1c2a] hover:text-white transition-colors">
+            <Link href="/planets" className="mt-5 block w-full border border-[#8a1c2a] text-[#8a1c2a] text-center text-[12px] font-semibold py-2.5 rounded-lg hover:bg-[#8a1c2a] hover:text-white transition-colors">
               All Transits
             </Link>
           </div>
