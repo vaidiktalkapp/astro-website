@@ -89,7 +89,10 @@ export default function PlanetsPage() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const todayStr = new Date().toLocaleDateString('en-CA');
+      const d = new Date();
+      const todayStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      const timeStr = `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+      
       const resToday = await fetch(`${API_URL}/astrology/calculate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -98,15 +101,17 @@ export default function PlanetsPage() {
           lon: String(location.lon), 
           tzone, 
           date: todayStr,
-          time: new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
+          time: timeStr,
           name: 'Transit Monitor'
         })
       });
       const dataToday = await resToday.json();
 
       let currentPositions: PlanetPosition[] = [];
-      if (dataToday.success && dataToday.data?.planets) {
-        const p = dataToday.data.planets;
+      const planetsData = dataToday.data?.planets || dataToday.data?.kundli?.planets;
+      
+      if (dataToday.success && planetsData) {
+        const p = planetsData;
         currentPositions = [
           { name: 'Sun', sign: p.Sun?.sign || '...', degree: p.Sun?.longitude_dms || '...', house: p.Sun?.house || 1, is_retrograde: false },
           { name: 'Moon', sign: p.Moon?.sign || '...', degree: p.Moon?.longitude_dms || '...', house: p.Moon?.house || 1, is_retrograde: false },
@@ -128,18 +133,20 @@ export default function PlanetsPage() {
         body: JSON.stringify({
           year: date.getFullYear(),
           month: date.getMonth() + 1,
-          lat: location.lat,
-          lon: location.lon,
+          lat: String(location.lat),
+          lon: String(location.lon),
           tzone
         })
       });
       const dataCal = await resCal.json();
-      if (dataCal.success) {
+      if (dataCal.success && dataCal.data) {
         const allTransits: Transit[] = [];
         dataCal.data.forEach((day: any) => {
-          day.transitions.forEach((t: any) => {
-            allTransits.push({ ...t, date: day.date });
-          });
+          if (day.transitions) {
+            day.transitions.forEach((t: any) => {
+              allTransits.push({ ...t, date: day.date });
+            });
+          }
         });
         setTransits(allTransits.slice(0, 8));
       }
