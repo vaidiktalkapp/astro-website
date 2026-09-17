@@ -136,7 +136,7 @@ export default function BabyNamesPage() {
         .bn-zod-btn:hover .zod-hindi { color: #fff !important; }
       `}</style>
 
-      <div className="max-w-5xl">
+      <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="space-y-0">
 
           {/* Hero Header */}

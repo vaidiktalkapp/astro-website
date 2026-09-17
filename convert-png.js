@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 
-const dir = 'd:/Vaidik Talk Updated/astro-frontend/public/images/reports';
+const dir = 'd:/AstroSolution Updated/astro-frontend/public/images/reports';
 
 async function convertAll() {
   const files = fs.readdirSync(dir);

@@ -57,7 +57,7 @@ export default function LearnAstrologyHub() {
                             {t("learn.how_to_learn_astrology")}
                         </h1>
                         <p className="text-[15px] text-gray-600 max-w-2xl mx-auto font-medium">
-                            {t("learn.available_in_hindi_english")}
+                            {/* {t("learn.available_in_hindi_english")} */}
                         </p>
                     </motion.div>
 

@@ -100,24 +100,11 @@ export default function Header() {
     const fetchNavData = async () => {
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
-        const [pujasRes, menusRes] = await Promise.all([
-          axios.get(`${apiUrl}/pujas?status=active&limit=30`).catch(() => ({ data: { data: [] } })),
-          axios.get(`${apiUrl}/menus`).catch(() => ({ data: [] }))
-        ]);
-        let pujasData = pujasRes.data.data || [];
-        if (pujasData.length === 0) {
-          pujasData = FALLBACK_PUJAS;
-        }
+        // Bypass DB fetch and only use fallbacks as requested
+        let pujasData = FALLBACK_PUJAS;
         setNavPujas(pujasData.filter((p: any) => p.slug !== 'book-a-puja'));
 
-        // Filter out inactive menus for the frontend
-        let activeMenus = (menusRes.data || []).filter((m: any) => m.isActive);
-
-        // Fallback to essential menus if server is down or returns empty
-        if (activeMenus.length === 0) {
-          activeMenus = FALLBACK_MENUS;
-        }
-
+        let activeMenus = FALLBACK_MENUS;
         setNavMenus(activeMenus);
       } catch (error) {
         console.error('Failed to load nav data', error);
@@ -203,7 +190,7 @@ export default function Header() {
                       {topMenu.title}
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
                     </Link>
-                    <div className="absolute top-full right-0 w-[min(660px,calc(100vw-24px))] bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-2xl p-5 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4">
+                    <div className="absolute top-full right-0 w-[min(660px,calc(100vw-24px))] bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-2xl p-5 border border-[#e5b975]/40 opacity-0 invisible pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4">
                       <div className="grid grid-cols-2 gap-x-8 gap-y-1">
                         <div className="col-span-2 mb-3 pb-3 border-b-2 border-dashed border-[#f0ddc0]/50 text-center">
                           <span className="text-[12px] font-extrabold text-[#8a1c2a] uppercase tracking-wider">Top Verified Pujas</span>
@@ -265,7 +252,7 @@ export default function Header() {
                       {topMenu.title}
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
                     </Link>
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-[min(760px,calc(100vw-24px))] max-h-[85vh] overflow-y-auto bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-3xl p-5 lg:p-6 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4 custom-scrollbar">
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-[min(760px,calc(100vw-24px))] max-h-[85vh] overflow-y-auto bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-3xl p-5 lg:p-6 border border-[#e5b975]/40 opacity-0 invisible pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4 custom-scrollbar">
                       <h2 className="text-[20px] font-extrabold text-[#1a1208] mb-4 tracking-tight">Free Calculator</h2>
                       <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
                         {mySubMenus.map(menu => {
@@ -309,7 +296,7 @@ export default function Header() {
                       : isMultiColumn
                         ? 'top-full left-0 w-[min(660px,calc(100vw-24px))]'
                         : 'top-full left-0 w-[min(260px,calc(100vw-24px))]'
-                    } bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-2xl p-4 md:p-5 border border-[#e5b975]/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4`}>
+                    } bg-white/95 backdrop-blur-md shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] rounded-2xl p-4 md:p-5 border border-[#e5b975]/40 opacity-0 invisible pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto transition-all duration-400 translate-y-3 group-hover:translate-y-0 z-50 whitespace-normal before:absolute before:-top-4 before:left-0 before:w-full before:h-4`}>
                     <div className={isMultiColumn ? "columns-2 gap-x-8" : "flex flex-col space-y-1"}>
                       {uniqueGroups.map((grp, idx) => {
                         const groupLinks = mySubMenus.filter(m => (m.group || 'General') === grp);

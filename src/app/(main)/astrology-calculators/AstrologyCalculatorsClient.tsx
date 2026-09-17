@@ -167,13 +167,6 @@ const tools: Tool[] = [
     icon: Star,
   },
   {
-    title: 'Occult Directory',
-    description: 'Explore spiritual and esoteric sciences.',
-    category: 'Spiritual',
-    href: '/occult-directory',
-    icon: Sparkles,
-  },
-  {
     title: 'Atlas / Location Finder',
     description: 'Precise coordinates and time zones.',
     category: 'Calculators',
